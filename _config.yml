@@ -7,7 +7,7 @@ title: lxx的博客
 subtitle: 勤劳刻苦
 description: 前端小菜鸟,努力深造 
 author: lxx
-email: litten225@qq.com
+email: 1987607597@qq.com
 keywords: "前端,js,jquery,javascript,html5,开发者,程序猿,程序媛,极客,编程,代码,开源,IT网站,Developer,Programmer,Coder,Geek,html,css,css3,用户体验"
 
 # URL
@@ -91,7 +91,7 @@ time_format: HH:mm:ss
 
 # Pagination
 ## Set per_page to 0 to disable pagination
-per_page: 8
+per_page: 10
 pagination_dir: page
 
 # Disqus
