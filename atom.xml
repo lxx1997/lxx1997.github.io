@@ -1688,9 +1688,9 @@
     </summary>
     
     
-      <category term="设计" scheme="//litten.me/tags/%E8%AE%BE%E8%AE%A1/"/>
-    
       <category term="杂谈" scheme="//litten.me/tags/%E6%9D%82%E8%B0%88/"/>
+    
+      <category term="设计" scheme="//litten.me/tags/%E8%AE%BE%E8%AE%A1/"/>
     
   </entry>
   
@@ -1763,9 +1763,9 @@
     </summary>
     
     
-      <category term="octopress" scheme="//litten.me/tags/octopress/"/>
-    
       <category term="主题" scheme="//litten.me/tags/%E4%B8%BB%E9%A2%98/"/>
+    
+      <category term="octopress" scheme="//litten.me/tags/octopress/"/>
     
   </entry>
   
