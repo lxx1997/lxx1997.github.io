@@ -5,21 +5,21 @@
   
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <link rel="dns-prefetch" href="//litten.me">
-  <title>lxx的博客</title>
+  <link rel="dns-prefetch" href>
+  <title>eggjs token验证(redis &amp; jsonwebtoken) | lxx的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="eggjs token验证(redis &amp;amp; jsonwebtoken)redis 使用安装radislinux环境下安装radis sudo apt-get install redis-server 检查redis服务器系统进程 ps -aux|grep redis 查看redis端口状态 netstat -nlt|grep 6379 123456// 启动/etc/init.d/redi">
+  <meta name="description" content="redis 使用安装radislinux环境下安装radis sudo apt-get install redis-server 检查redis服务器系统进程 ps -aux|grep redis 查看redis端口状态 netstat -nlt|grep 6379 123456// 启动/etc/init.d/redis-server start// 停用/etc/init.d/redis-se">
 <meta name="keywords" content="eggjs,jsonwebtoken,redis,deepin">
 <meta property="og:type" content="article">
-<meta property="og:title" content="lxx的博客">
-<meta property="og:url" content="//litten.me/2020/04/10/egg-jwt/index.html">
+<meta property="og:title" content="eggjs token验证(redis &amp; jsonwebtoken)">
+<meta property="og:url" content="/2020/04/10/egg-jwt/index.html">
 <meta property="og:site_name" content="lxx的博客">
-<meta property="og:description" content="eggjs token验证(redis &amp;amp; jsonwebtoken)redis 使用安装radislinux环境下安装radis sudo apt-get install redis-server 检查redis服务器系统进程 ps -aux|grep redis 查看redis端口状态 netstat -nlt|grep 6379 123456// 启动/etc/init.d/redi">
+<meta property="og:description" content="redis 使用安装radislinux环境下安装radis sudo apt-get install redis-server 检查redis服务器系统进程 ps -aux|grep redis 查看redis端口状态 netstat -nlt|grep 6379 123456// 启动/etc/init.d/redis-server start// 停用/etc/init.d/redis-se">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-05-01T18:13:38.216Z">
+<meta property="og:updated_time" content="2020-05-04T16:22:57.936Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="lxx的博客">
-<meta name="twitter:description" content="eggjs token验证(redis &amp;amp; jsonwebtoken)redis 使用安装radislinux环境下安装radis sudo apt-get install redis-server 检查redis服务器系统进程 ps -aux|grep redis 查看redis端口状态 netstat -nlt|grep 6379 123456// 启动/etc/init.d/redi">
+<meta name="twitter:title" content="eggjs token验证(redis &amp; jsonwebtoken)">
+<meta name="twitter:description" content="redis 使用安装radislinux环境下安装radis sudo apt-get install redis-server 检查redis服务器系统进程 ps -aux|grep redis 查看redis端口状态 netstat -nlt|grep 6379 123456// 启动/etc/init.d/redis-server start// 停用/etc/init.d/redis-se">
   
     <link rel="alternative" href="/atom.xml" title="lxx的博客" type="application/atom+xml">
   
@@ -166,9 +166,24 @@ var _hmt = _hmt || [];
             <article id="post-egg-jwt" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      eggjs token验证(redis &amp; jsonwebtoken)
+    </h1>
+  
+
+        
+        <a href="/2020/04/10/egg-jwt/" class="archive-article-date">
+  	<time datetime="2020-04-09T17:33:58.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-10</time>
+</a>
+        
+      </header>
+    
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="eggjs-token验证-redis-amp-jsonwebtoken"><a href="#eggjs-token验证-redis-amp-jsonwebtoken" class="headerlink" title="eggjs token验证(redis &amp; jsonwebtoken)"></a>eggjs token验证(redis &amp; jsonwebtoken)</h1><h2 id="redis-使用"><a href="#redis-使用" class="headerlink" title="redis 使用"></a>redis 使用</h2><h3 id="安装radis"><a href="#安装radis" class="headerlink" title="安装radis"></a>安装radis</h3><p><strong>linux环境下安装radis</strong></p>
+        <h2 id="redis-使用"><a href="#redis-使用" class="headerlink" title="redis 使用"></a>redis 使用</h2><h3 id="安装radis"><a href="#安装radis" class="headerlink" title="安装radis"></a>安装radis</h3><p><strong>linux环境下安装radis</strong></p>
 <p>sudo apt-get install redis-server</p>
 <p><strong>检查redis服务器系统进程</strong></p>
 <p>ps -aux|grep redis</p>
@@ -182,7 +197,7 @@ var _hmt = _hmt || [];
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">'use strict'</span></span><br><span class="line"><span class="keyword">const</span> fs = <span class="built_in">require</span>(<span class="string">'fs'</span>)</span><br><span class="line"><span class="keyword">const</span> path = <span class="built_in">require</span>(<span class="string">'path'</span>)</span><br><span class="line"><span class="keyword">const</span> jwt = <span class="built_in">require</span>(<span class="string">'jsonwebtoken'</span>) <span class="comment">//引入jsonwebtoken</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = <span class="function">(<span class="params">options, app</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">userInterceptor</span>(<span class="params">ctx, next</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> authToken = ctx.header.authorization <span class="comment">// 获取header里的authorization</span></span><br><span class="line">    <span class="keyword">if</span> (authToken) &#123;</span><br><span class="line">      authToken = authToken.substring(<span class="number">7</span>)</span><br><span class="line">      <span class="keyword">const</span> res = verifyToken(authToken) <span class="comment">// 解密获取的Token</span></span><br><span class="line">      <span class="keyword">if</span> (res.corpid &amp;&amp; res.userid) &#123;</span><br><span class="line">        <span class="comment">// 如果需要限制单端登陆或者使用过程中废止某个token，或者更改token的权限。也就是说，一旦 JWT 签发了，在到期之前就会始终有效</span></span><br><span class="line">        <span class="comment">// 此处使用redis进行保存</span></span><br><span class="line">        <span class="keyword">const</span> redis_token = <span class="keyword">await</span> app.redis.get(<span class="string">'loginToken'</span>).get(res.corpid + res.userid) <span class="comment">// 获取保存的token</span></span><br><span class="line">        <span class="keyword">if</span> (authToken === redis_token) &#123;</span><br><span class="line">          ctx.locals.corpid = res.corpid</span><br><span class="line">          ctx.locals.userid = res.userid</span><br><span class="line">          <span class="keyword">await</span> next()</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">          ctx.body = &#123; <span class="attr">code</span>: <span class="number">50012</span>, <span class="attr">msg</span>: <span class="string">'您的账号已在其他地方登录'</span> &#125;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        ctx.body = &#123; <span class="attr">code</span>: <span class="number">50012</span>, <span class="attr">msg</span>: <span class="string">'登录状态已过期'</span> &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      ctx.body = &#123; <span class="attr">code</span>: <span class="number">50008</span>, <span class="attr">msg</span>: <span class="string">'请登陆后再进行操作'</span> &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 解密，验证</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">verifyToken</span>(<span class="params">token</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> cert = fs.readFileSync(path.join(__dirname, <span class="string">'../public/rsa_public_key.pem'</span>)) <span class="comment">// 公钥，看后面生成方法</span></span><br><span class="line">  <span class="keyword">let</span> res = <span class="string">''</span></span><br><span class="line">  <span class="keyword">try</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> result = jwt.verify(token, cert, &#123; <span class="attr">algorithms</span>: [ <span class="string">'RS256'</span> ] &#125;) || &#123;&#125;</span><br><span class="line">    <span class="keyword">const</span> &#123; exp &#125; = result,</span><br><span class="line">      current = <span class="built_in">Math</span>.floor(<span class="built_in">Date</span>.now() / <span class="number">1000</span>)</span><br><span class="line">    <span class="keyword">if</span> (current &lt;= exp) res = result.data || &#123;&#125;</span><br><span class="line">  &#125; <span class="keyword">catch</span> (e) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(e)</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> res</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h3 id="使用中间件"><a href="#使用中间件" class="headerlink" title="使用中间件"></a>使用中间件</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 方法一：在应用中使用中间件</span></span><br><span class="line">config.middleware = [ <span class="string">'jwt'</span> ]</span><br><span class="line"></span><br><span class="line">config.jwt = &#123;</span><br><span class="line">    enable: <span class="literal">true</span>,</span><br><span class="line">    ignore: [ <span class="string">'/api/v1/test/'</span>, <span class="string">'/public/'</span> ], <span class="comment">// 哪些请求不需要认证</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 方法二：router中使用中间件</span></span><br><span class="line"><span class="built_in">module</span>.exports = <span class="function"><span class="params">app</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> jwt = app.middleware.jwt();</span><br><span class="line">  app.router.get(<span class="string">'/api/v1/test/'</span>, jwt, app.controller.test.test);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 <h3 id="生成token"><a href="#生成token" class="headerlink" title="生成token"></a>生成token</h3><p>​    写在helper里面，方便调用</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 方法一：在应用中使用中间件</span></span><br><span class="line">config.middleware = [ <span class="string">'jwt'</span> ]</span><br><span class="line"></span><br><span class="line">config.jwt = &#123;</span><br><span class="line">    enable: <span class="literal">true</span>,</span><br><span class="line">    ignore: [ <span class="string">'/api/v1/test/'</span>, <span class="string">'/public/'</span> ], <span class="comment">// 哪些请求不需要认证</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 方法二：router中使用中间件</span></span><br><span class="line"><span class="built_in">module</span>.exports = <span class="function"><span class="params">app</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> jwt = app.middleware.jwt();</span><br><span class="line">  app.router.get(<span class="string">'/api/v1/test/'</span>, jwt, app.controller.test.test);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 方法一：在应用中使用中间件</span></span><br><span class="line">config.middleware = [ <span class="string">'jwt'</span> ]</span><br><span class="line"></span><br><span class="line">config.jwt = &#123;</span><br><span class="line">    enable: <span class="literal">true</span>,</span><br><span class="line">    ignore: [ <span class="string">'/api/v1/test/'</span>, <span class="string">'/public/'</span> ], <span class="comment">// 哪些请求不需要认证</span></span><br><span class="line">&#125;</span><br><span class="line">config.redis = &#123;</span><br><span class="line">    client: &#123;</span><br><span class="line">      host: <span class="string">'127.0.0.1'</span>,</span><br><span class="line">      port: <span class="string">'6379'</span>,</span><br><span class="line">      password: <span class="string">''</span>,</span><br><span class="line">      db: <span class="number">0</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;;</span><br><span class="line"><span class="comment">// 方法二：router中使用中间件</span></span><br><span class="line"><span class="built_in">module</span>.exports = <span class="function"><span class="params">app</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> jwt = app.middleware.jwt();</span><br><span class="line">  app.router.get(<span class="string">'/api/v1/test/'</span>, jwt, app.controller.test.test);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 <p>​    调用token生成方式</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 方法一：在应用中使用中间件</span></span><br><span class="line">config.middleware = [ <span class="string">'jwt'</span> ]</span><br><span class="line"></span><br><span class="line">config.jwt = &#123;</span><br><span class="line">    enable: <span class="literal">true</span>,</span><br><span class="line">    ignore: [ <span class="string">'/api/v1/test/'</span>, <span class="string">'/public/'</span> ], <span class="comment">// 哪些请求不需要认证</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 方法二：router中使用中间件</span></span><br><span class="line"><span class="built_in">module</span>.exports = <span class="function"><span class="params">app</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> jwt = app.middleware.jwt();</span><br><span class="line">  app.router.get(<span class="string">'/api/v1/test/'</span>, jwt, app.controller.test.test);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 <h3 id="利用openssl生成私钥和公钥"><a href="#利用openssl生成私钥和公钥" class="headerlink" title="利用openssl生成私钥和公钥"></a>利用openssl生成私钥和公钥</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">生成公钥：openssl genrsa -out rsa_private_key.pem <span class="number">1024</span> </span><br><span class="line">生成私钥: openssl rsa -<span class="keyword">in</span> rsa_private_key.pem -pubout -out rsa_public_key.pem</span><br></pre></td></tr></table></figure>
@@ -267,7 +282,7 @@ var _hmt = _hmt || [];
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAK4AAACuCAAAAACKZ2kyAAAB0ElEQVR42u3awW7CMBAEUP7/p6nEqVIbd8aODZWeTwhBeOGwys7u4xGf5+tcvTN+/f38fP+x4+Di4i5zn8OT48aU5Prjz+Di4p7njovXGHH1mbm/4A8bLi7uh3Hz4jV+iBnTcXFx/xc3eSe58hvqLi4u7hQ3b06SuGSl8N3Wq+Hi4i5w28B0x+uN+S4uLm7JfZan/dZK8frlari4uEe4bdOSt0Bta5QHJbi4uLu5+ZBjXyCSPMng4uKe5LbrEXlVmRum5uELLi7ubu56k9PS5wooLi7uSW6+cNm2N3mjlYcpuLi4u7nJl8f3tzIQzQtcca+4uLg3cYsOqfzhvB2qH2hwcXG3cdsFi3a1oi2L9VgFFxd3A3cupGhvbCU6wcXFfS+3XYlIHonmAtPLK+Pi4h7hTi5V56OO5bD1cmcEFxd3G7eNMHJoHrIUpQ0XF/cgt8hOSspc/BoNWXFxcTdz59atJgelKwNaXFzcI9y7ViXaYczKwAYXF/cMty1eLahd6qrXs3Bxcbdx23WrPNS4K2DFxcX9TG5ehvKrJX/EZCHDxcX9MO5caYsKHy4u7kHu+spUHqTmrdFSLIKLi7vAXQlM2zFJMqDNH5twcXE3cL8A9YRD+q9iTPgAAAAASUVORK5CYII=" alt="微信分享二维码">
+      <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJYAAACWCAAAAAAZai4+AAABVUlEQVR42u3aMRKDMAwFUe5/aXIAj8l+CQrQusqExDwKZMnyceBxLmP3/e43xxNDlqwPsfjUu5utV9f5+b1kyZrMItPtHub69yRYyJIlK2WRpTddtmXJklVjpUOWLFmE9UQJWit3ZcmayeI36H9+ZH9LlqyXs+5abncveXFRlyVrGKtWjqYhoDa/LFnTWOQl7xS0rdRclqwxLF5MXqPThPvPDLJkDWP1A0HaCg02kmTJGsBKmx/3BhEUsWTJGsAiYYKUprUmaFAGy5I1gJUGiFr6GzdQZckazOIh4zqUkEYL2syVJWskK92Q7TdUUM9HlqxPs/oHDsiCzYteWbJmsmrn4nj5mh5NiIcsWR9iFU8o4BBArsqSJYs0P2pHDVoBSJYsWfjYAU+X4xJXlixZOECkzZggFZAlaySL/K2/2RQ8nixZw1g8qU23Ysnj3ZBry5L1btYPXRoNNEAl6SIAAAAASUVORK5CYII=" alt="微信分享二维码">
     </div>
 </div>
 
@@ -285,7 +300,7 @@ var _hmt = _hmt || [];
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          eggjs-mysql
+          关于在eggjs中使用mysql进行数据处理
         
       </div>
     </a>
@@ -421,14 +436,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">js</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">html5</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">设计</a>
               </li>
              
@@ -437,7 +444,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">旅行</a>
+                <a href="javascript:void(0)" class="js-tag color3">js</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">html5</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -453,7 +464,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">coffeescript</a>
+                <a href="javascript:void(0)" class="js-tag color3">旅行</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">web</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -461,19 +476,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">coffeescript</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">css3</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">eggjs</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">node.js</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">后台</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -481,11 +488,23 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">生活</a>
+                <a href="javascript:void(0)" class="js-tag color2">chrome</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">chrome</a>
+                <a href="javascript:void(0)" class="js-tag color1">eggjs</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">mysql</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">docker</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">egg-mysql</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -501,7 +520,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">web</a>
+                <a href="javascript:void(0)" class="js-tag color3">node.js</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">后台</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">生活</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -521,11 +548,43 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">安全</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">黑科技</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">javascript</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">arguments.callee</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">经验</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">产品</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">编码</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">canvas</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">array</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">药别停</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -537,10 +596,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">药别停</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">模式</a>
               </li>
              
@@ -549,27 +604,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">mysql</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">docker</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">egg-mysql</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">安全</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">性能</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">黑科技</a>
+                <a href="javascript:void(0)" class="js-tag color4">vue</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">webpack</a>
               </li>
             
             <div class="clearfix"></div>
