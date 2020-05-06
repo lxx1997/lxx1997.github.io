@@ -1,5 +1,5 @@
 ---
-itle: egg-jwt
+title: eggjs token验证(redis & jsonwebtoken)
 date: 2020-04-10 01:33:58
 tags:
       - eggjs
@@ -9,7 +9,6 @@ tags:
 ---
 
 
-# eggjs token验证(redis & jsonwebtoken)
 ## redis 使用
 
 ### 安装radis
@@ -141,7 +140,14 @@ config.jwt = {
     enable: true,
     ignore: [ '/api/v1/test/', '/public/' ], // 哪些请求不需要认证
 }
-
+config.redis = {
+    client: {
+      host: '127.0.0.1',
+      port: '6379',
+      password: '',
+      db: 0,
+    },
+  };
 // 方法二：router中使用中间件
 module.exports = app => {
   const jwt = app.middleware.jwt();
