@@ -8,18 +8,18 @@
   <link rel="dns-prefetch" href>
   <title>从零开始搭建vue的webpack运行环境 | lxx的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="初始化 运行环境12npm init -y// 初始化package.json文件 安装 (webpack和webpack-dev-server)12// 安装webpack和webpack-dev-servernpm install -S webpack webapck-dev-server 配置package.json 和webpack.config.js1234567// package.j">
+  <meta name="description" content="初始化 运行环境12npm init -y// 初始化package.json文件 安装 (webpack和webpack-dev-server)12// 安装webpack和webpack-dev-servernpm install -S webpack webapck-dev-server">
 <meta name="keywords" content="vue,webpack">
 <meta property="og:type" content="article">
 <meta property="og:title" content="从零开始搭建vue的webpack运行环境">
 <meta property="og:url" content="/2020/05/05/vue-webpack-build/index.html">
 <meta property="og:site_name" content="lxx的博客">
-<meta property="og:description" content="初始化 运行环境12npm init -y// 初始化package.json文件 安装 (webpack和webpack-dev-server)12// 安装webpack和webpack-dev-servernpm install -S webpack webapck-dev-server 配置package.json 和webpack.config.js1234567// package.j">
+<meta property="og:description" content="初始化 运行环境12npm init -y// 初始化package.json文件 安装 (webpack和webpack-dev-server)12// 安装webpack和webpack-dev-servernpm install -S webpack webapck-dev-server">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-05-04T16:32:26.053Z">
+<meta property="og:updated_time" content="2020-05-06T05:29:23.712Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="从零开始搭建vue的webpack运行环境">
-<meta name="twitter:description" content="初始化 运行环境12npm init -y// 初始化package.json文件 安装 (webpack和webpack-dev-server)12// 安装webpack和webpack-dev-servernpm install -S webpack webapck-dev-server 配置package.json 和webpack.config.js1234567// package.j">
+<meta name="twitter:description" content="初始化 运行环境12npm init -y// 初始化package.json文件 安装 (webpack和webpack-dev-server)12// 安装webpack和webpack-dev-servernpm install -S webpack webapck-dev-server">
   
     <link rel="alternative" href="/atom.xml" title="lxx的博客" type="application/atom+xml">
   
@@ -185,6 +185,7 @@ var _hmt = _hmt || [];
       
         <h3 id="初始化-运行环境"><a href="#初始化-运行环境" class="headerlink" title="初始化 运行环境"></a>初始化 运行环境</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm init -y</span><br><span class="line"><span class="comment">// 初始化package.json文件</span></span><br></pre></td></tr></table></figure>
 <h3 id="安装-webpack和webpack-dev-server"><a href="#安装-webpack和webpack-dev-server" class="headerlink" title="安装 (webpack和webpack-dev-server)"></a>安装 (webpack和webpack-dev-server)</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 安装webpack和webpack-dev-server</span></span><br><span class="line">npm install -S webpack webapck-dev-server</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
 <h3 id="配置package-json-和webpack-config-js"><a href="#配置package-json-和webpack-config-js" class="headerlink" title="配置package.json 和webpack.config.js"></a>配置package.json 和webpack.config.js</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// package.json</span></span><br><span class="line"><span class="string">"script"</span>: &#123;</span><br><span class="line">    <span class="comment">//  本地运行环境 执行命令 npm run dev</span></span><br><span class="line">    <span class="string">"dev"</span>: <span class="string">"webpack-dev-server --open --config webpack-dev-server"</span>,</span><br><span class="line">    <span class="comment">//  打包命令  npm run build</span></span><br><span class="line">    <span class="string">"build"</span>: <span class="string">"webpack"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h3 id="入口配置和出口环境配置"><a href="#入口配置和出口环境配置" class="headerlink" title="入口配置和出口环境配置"></a>入口配置和出口环境配置</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// webpack.config.js</span></span><br><span class="line"><span class="keyword">const</span> path = <span class="built_in">require</span>(<span class="string">"path"</span>)</span><br><span class="line"><span class="keyword">const</span> config = &#123;</span><br><span class="line">    entry: &#123;</span><br><span class="line">        <span class="comment">// 入口js配置</span></span><br><span class="line">        app: <span class="string">'./mian.js'</span></span><br><span class="line">    &#125;,</span><br><span class="line">    output: &#123;</span><br><span class="line">        path: path.join(__dirname, <span class="string">'./dist'</span>),</span><br><span class="line">        pubilcPath: <span class="string">'/dist/'</span>,</span><br><span class="line">        filename: <span class="string">'./app.js'</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h3 id="css样式输出配置"><a href="#css样式输出配置" class="headerlink" title="css样式输出配置"></a>css样式输出配置</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 安装css-loader style-loader</span></span><br><span class="line">npm install -S css-loader style-loader</span><br><span class="line"></span><br><span class="line"><span class="comment">//  webpack.config.js</span></span><br><span class="line"><span class="built_in">module</span>: &#123;</span><br><span class="line">    rules:[</span><br><span class="line">        &#123;</span><br><span class="line">            test: <span class="regexp">/\.css$/</span>,</span><br><span class="line">            use: [<span class="string">'style-loader'</span>, <span class="string">'css-loader'</span>]</span><br><span class="line">        &#125;</span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -426,15 +427,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">设计</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">杂谈</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">笔记</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">设计</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -454,15 +455,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">旅行</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">web</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">coffeescript</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -470,7 +463,27 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">d3.js</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">javascript</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">html</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">css3</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">旅行</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">coffeescript</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -483,18 +496,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">eggjs</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">jsonwebtoken</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">redis</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">deepin</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -518,7 +519,27 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">jsonwebtoken</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">redis</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">deepin</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">生活</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">浏览器</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">octopress</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -530,19 +551,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">octopress</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">主题</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">hexo</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">浏览器</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -558,11 +571,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">javascript</a>
+                <a href="javascript:void(0)" class="js-tag color2">arguments.callee</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">arguments.callee</a>
+                <a href="javascript:void(0)" class="js-tag color4">药别停</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">编码</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -570,7 +587,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">编码</a>
+                <a href="javascript:void(0)" class="js-tag color3">模式</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -582,19 +599,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">药别停</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">模式</a>
+                <a href="javascript:void(0)" class="js-tag color3">性能</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">故事</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">性能</a>
               </li>
              
               <li class="article-tag-list-item">

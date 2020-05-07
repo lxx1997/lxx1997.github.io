@@ -164,6 +164,111 @@ var _hmt = _hmt || [];
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-d3-study-20200507" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/05/07/d3-study-20200507/">D3.js的学习之路</a>
+    </h1>
+  
+
+        
+        <a href="/2020/05/07/d3-study-20200507/" class="archive-article-date">
+  	<time datetime="2020-05-07T01:22:16.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-07</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="引入"><a href="#引入" class="headerlink" title="引入"></a>引入</h3><p><strong>html中引入</strong><br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"https://cdn.bootcdn.net/ajax/libs/d3/5.16.0/d3.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="核心函数"><a href="#核心函数" class="headerlink" title="核心函数"></a>核心函数</h3><blockquote>
+<p>选择器</p>
+<blockquote>
+<p>选择元素<br>D3提供了两种方法来选择元素</p>
+<ul>
+<li>d3.select()<br>  返回单元素选择结果,没有匹配的则返回空,多个匹配只返回第一个匹配的元素<ul>
+<li>d3.select(<em>selector</em>)</li>
+<li>d3.select(<em>node</em>) <strong>选中指定节点,如果已经引用了一个节点.例如时间监听器的d3.select(this),或者一个全局对象,例如document.body,这个函数不会便利DOM树</strong></li>
+</ul>
+</li>
+<li>d3.selectAll()<br>  返回选中的所有元素,按照文档的遍历顺序,从上到下选择,如果文档中没有匹配的元素则返回空的选择<ul>
+<li>d3.selectAll(<em>selector</em>)</li>
+<li>d3.selectAll(<em>nodes</em>) <strong>如果有元素已被引用,例如事件监听器中的d3.selectAll(this.childNodes),或者一个全局的document.links,节点参数不用恰好是数组,任何可以被转换为数据的伪数组都可以,这个函数不会遍历DOM树</strong></li>
+</ul>
+</li>
+</ul>
+</blockquote>
+</blockquote>
+<blockquote>
+<blockquote>
+<p>操作选择<br>选择是一组元素,D3绑定</p>
+</blockquote>
+</blockquote>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">d3.js</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">javascript</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">html</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/05/07/d3-study-20200507/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-js-canvas-bubble" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -555,11 +660,11 @@ var _hmt = _hmt || [];
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">array</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">javascript</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">javascript</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">array</a>
         		</li>
       		
 		</ul>
@@ -621,21 +726,9 @@ var _hmt = _hmt || [];
       
         <h3 id="初始化-运行环境"><a href="#初始化-运行环境" class="headerlink" title="初始化 运行环境"></a>初始化 运行环境</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm init -y</span><br><span class="line"><span class="comment">// 初始化package.json文件</span></span><br></pre></td></tr></table></figure>
 <h3 id="安装-webpack和webpack-dev-server"><a href="#安装-webpack和webpack-dev-server" class="headerlink" title="安装 (webpack和webpack-dev-server)"></a>安装 (webpack和webpack-dev-server)</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 安装webpack和webpack-dev-server</span></span><br><span class="line">npm install -S webpack webapck-dev-server</span><br></pre></td></tr></table></figure>
-<h3 id="配置package-json-和webpack-config-js"><a href="#配置package-json-和webpack-config-js" class="headerlink" title="配置package.json 和webpack.config.js"></a>配置package.json 和webpack.config.js</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// package.json</span></span><br><span class="line"><span class="string">"script"</span>: &#123;</span><br><span class="line">    <span class="comment">//  本地运行环境 执行命令 npm run dev</span></span><br><span class="line">    <span class="string">"dev"</span>: <span class="string">"webpack-dev-server --open --config webpack-dev-server"</span>,</span><br><span class="line">    <span class="comment">//  打包命令  npm run build</span></span><br><span class="line">    <span class="string">"build"</span>: <span class="string">"webpack"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="入口配置和出口环境配置"><a href="#入口配置和出口环境配置" class="headerlink" title="入口配置和出口环境配置"></a>入口配置和出口环境配置</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// webpack.config.js</span></span><br><span class="line"><span class="keyword">const</span> path = <span class="built_in">require</span>(<span class="string">"path"</span>)</span><br><span class="line"><span class="keyword">const</span> config = &#123;</span><br><span class="line">    entry: &#123;</span><br><span class="line">        <span class="comment">// 入口js配置</span></span><br><span class="line">        app: <span class="string">'./mian.js'</span></span><br><span class="line">    &#125;,</span><br><span class="line">    output: &#123;</span><br><span class="line">        path: path.join(__dirname, <span class="string">'./dist'</span>),</span><br><span class="line">        pubilcPath: <span class="string">'/dist/'</span>,</span><br><span class="line">        filename: <span class="string">'./app.js'</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="css样式输出配置"><a href="#css样式输出配置" class="headerlink" title="css样式输出配置"></a>css样式输出配置</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 安装css-loader style-loader</span></span><br><span class="line">npm install -S css-loader style-loader</span><br><span class="line"></span><br><span class="line"><span class="comment">//  webpack.config.js</span></span><br><span class="line"><span class="built_in">module</span>: &#123;</span><br><span class="line">    rules:[</span><br><span class="line">        &#123;</span><br><span class="line">            test: <span class="regexp">/\.css$/</span>,</span><br><span class="line">            use: [<span class="string">'style-loader'</span>, <span class="string">'css-loader'</span>]</span><br><span class="line">        &#125;</span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><strong>温馨提示：</strong> <em>在配置文件中的modules对象的rules属性中，可以指定一系列的loaders,每个loader都必须包含test和use两个选项，当webpack编译过程中遇到require和import语句导入一个为.css的文件，将它通过css-loader转换，再通过style-loader转换，然后继续打包，<strong>use选项的值可以是数组或者字符串，如果是数组，编译顺序就是从后往前编译</strong> </em></p>
-<h3 id="配置-将css整合并生成main-css文件"><a href="#配置-将css整合并生成main-css文件" class="headerlink" title="配置 将css整合并生成main.css文件"></a>配置 将css整合并生成main.css文件</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 安装 extract-text-webpack-plugin插件</span></span><br><span class="line">npm install -S extract-text-webpack-plugin</span><br><span class="line"></span><br><span class="line"><span class="comment">// webpack.config.js 配置extract-text-webpack-plugin</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">//  引入extract-text-webpack-plugin</span></span><br><span class="line">    <span class="keyword">const</span> ExtractTextPlugin = <span class="built_in">require</span>(<span class="string">"extract-text-webpack-plugin"</span>)</span><br><span class="line">    <span class="built_in">module</span>: &#123;</span><br><span class="line">        rules:[</span><br><span class="line">            &#123;</span><br><span class="line">                test: <span class="regexp">/\.css$/</span>,</span><br><span class="line">                use: ExtractTextPlugin.extract(&#123;</span><br><span class="line">                    use: <span class="string">'css-loader'</span>,</span><br><span class="line">                    fallback: <span class="string">'style-loader'</span></span><br><span class="line">                &#125;)</span><br><span class="line">            &#125;</span><br><span class="line">        ]</span><br><span class="line">    &#125;</span><br><span class="line">    plugins: [</span><br><span class="line">        <span class="comment">// 将整合后的css全部集中到dist目录下的mian.css文件中</span></span><br><span class="line">        <span class="keyword">new</span> ExtractTextPlugin(<span class="string">"mian.css"</span>)</span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 问题解决</span></span><br><span class="line">error： Use Chunks.groupsIterable and filter by <span class="keyword">instanceof</span> Entrypoint instead</span><br><span class="line">method： extract-text-webpack-plugin版本过低，安装最新版本的extract-text-webpack-plugin</span><br><span class="line"><span class="comment">// 安装命令</span></span><br><span class="line">npm install --save-dev extract-text-webpack-plugin@<span class="number">4.0</span><span class="number">.0</span>-beta<span class="number">.0</span></span><br></pre></td></tr></table></figure>
-<h3 id="在webpack中配置vue-loader对-vue格式的文件进行处理"><a href="#在webpack中配置vue-loader对-vue格式的文件进行处理" class="headerlink" title="在webpack中配置vue-loader对.vue格式的文件进行处理"></a>在webpack中配置vue-loader对.vue格式的文件进行处理</h3><p>​    <em>.vue文件需要安装vue-loader, vye-style-loader</em></p>
-<p>​    <em>es6语法需要安装babel-loader和babel</em></p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 安装配置文件</span></span><br><span class="line">npm install --save vue</span><br><span class="line">npm install --save-dev vue-loader</span><br><span class="line">npm install --save-dev vue-style-loader</span><br><span class="line">npm install --save-dev vue-template-compiler</span><br><span class="line">npm install --save-dev vue-hot-reload-api</span><br><span class="line">npm install --save-dev babel</span><br><span class="line">npm install --save-dev babel-loader</span><br><span class="line">npm install --save-dev babel-core</span><br><span class="line">npm install --save-dev babel-plugin-transform-runtime</span><br><span class="line">npm install --save-dev babel-preset-es2015</span><br><span class="line">npm install --save-dev babel-runtime</span><br></pre></td></tr></table></figure>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//  webpack.config.js 进行配置</span></span><br><span class="line"><span class="keyword">const</span> VueLoaderPlugin = <span class="built_in">require</span>(<span class="string">'vue-loader/lib/plugin'</span>)</span><br><span class="line"><span class="built_in">module</span>: &#123;</span><br><span class="line">    rules: [</span><br><span class="line">      &#123;</span><br><span class="line">        test: <span class="regexp">/\.css$/</span>,</span><br><span class="line">        use: ExtractTextPlugin.extract(&#123;</span><br><span class="line">          use: <span class="string">'css-loader'</span>,</span><br><span class="line">          fallback: <span class="string">'style-loader'</span></span><br><span class="line">        &#125;)</span><br><span class="line">      &#125;,</span><br><span class="line">      &#123;</span><br><span class="line">        test: <span class="regexp">/\.vue$/</span>,</span><br><span class="line">        loader: <span class="string">'vue-loader'</span>,</span><br><span class="line">        options: &#123;</span><br><span class="line">          loader: &#123;</span><br><span class="line">            css: ExtractTextPlugin.extract(&#123;</span><br><span class="line">              use: <span class="string">'css-loader'</span>,</span><br><span class="line">              fallback: <span class="string">'vue-style-loader'</span></span><br><span class="line">            &#125;)</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;,</span><br><span class="line">      &#123;</span><br><span class="line">        test: <span class="regexp">/\.js$/</span>,</span><br><span class="line">        loader: <span class="string">'babel-loader'</span>,</span><br><span class="line">        exclude: <span class="regexp">/node_modules/</span></span><br><span class="line">      &#125;</span><br><span class="line">    ]</span><br><span class="line">  &#125;,</span><br><span class="line">      plugins:[</span><br><span class="line">          <span class="keyword">new</span> VueLoaderPlugin()</span><br><span class="line">      ]</span><br></pre></td></tr></table></figure>
-<h3 id="vue文件注意事项"><a href="#vue文件注意事项" class="headerlink" title="vue文件注意事项"></a>vue文件注意事项</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"> <span class="comment">// index.html</span></span><br><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=<span class="string">"en"</span>&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">  &lt;meta charset=<span class="string">"UTF-8"</span>&gt;</span><br><span class="line">  &lt;meta name=<span class="string">"viewport"</span> content=<span class="string">"width=device-width, initial-scale=1.0"</span>&gt;</span><br><span class="line">  &lt;title&gt;Document&lt;<span class="regexp">/title&gt;</span></span><br><span class="line"><span class="regexp">  &lt;link rel="stylesheet" href="/</span>dist/main.css<span class="string">"&gt;</span></span><br><span class="line"><span class="string">&lt;/head&gt;</span></span><br><span class="line"><span class="string">&lt;body&gt;</span></span><br><span class="line"><span class="string">  &lt;div id="</span>app<span class="string">"&gt;&lt;/div&gt;</span></span><br><span class="line"><span class="string">	//  type="</span>text/javascript<span class="string">" 必须填写，负责会有部分代码无法识别</span></span><br><span class="line"><span class="string">  &lt;script type="</span>text/javascript<span class="string">" src="</span>/dist/main.js<span class="string">"&gt;&lt;/script&gt;</span></span><br><span class="line"><span class="string">&lt;/body&gt;</span></span><br><span class="line"><span class="string">&lt;/html&gt;</span></span><br></pre></td></tr></table></figure>
-<h3 id="设置文件导入省略后缀"><a href="#设置文件导入省略后缀" class="headerlink" title="设置文件导入省略后缀"></a>设置文件导入省略后缀</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">resolve: &#123;</span><br><span class="line">    <span class="comment">// js,vue,json 文件可以省略后缀，会自动识别</span></span><br><span class="line">    extensions: [<span class="string">'.js'</span>, <span class="string">'.vue'</span>, <span class="string">'.json'</span>],</span><br><span class="line">    <span class="comment">// 设置别名 /src 可以直接用@代替</span></span><br><span class="line">    alias: &#123;</span><br><span class="line">        <span class="string">'@'</span>: resolve(<span class="string">'src'</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="配置url-loader和file-loader来支持图片、字体等文件"><a href="#配置url-loader和file-loader来支持图片、字体等文件" class="headerlink" title="配置url-loader和file-loader来支持图片、字体等文件"></a>配置url-loader和file-loader来支持图片、字体等文件</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 安装url-loader和file-loader</span></span><br><span class="line">npm install -D url-loader file-loader</span><br><span class="line"></span><br><span class="line"><span class="comment">// webpack.config.js</span></span><br><span class="line"></span><br><span class="line">rules: [</span><br><span class="line">    &#123;</span><br><span class="line">        test: <span class="regexp">/\.(gif|jpg|png|woff|svg|ect|ttf)\??.*$/</span>,</span><br><span class="line">        loader: <span class="string">'url-loader?limit=1024'</span></span><br><span class="line">    &#125;</span><br><span class="line">]</span><br><span class="line"><span class="comment">// limit=1024 指小于1024b就以base64的形式加载</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// vue中使用最好使用变量承载图片路径</span></span><br></pre></td></tr></table></figure>
-<h3 id="项目打包依赖"><a href="#项目打包依赖" class="headerlink" title="项目打包依赖"></a>项目打包依赖</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 安装 webpack-merge 和 htm-webpack-plugin</span></span><br><span class="line">npm install -D webpack-merge html-webpack-plugin</span><br><span class="line"></span><br><span class="line"><span class="comment">// 新建一个webpack.prod.config.js文件</span></span><br><span class="line"><span class="keyword">var</span> webpack=<span class="built_in">require</span>(<span class="string">'webpack'</span>);</span><br><span class="line"><span class="keyword">var</span> HtmlwebpackPlugin=<span class="built_in">require</span>(<span class="string">'html-webpack-plugin'</span>);</span><br><span class="line"><span class="keyword">var</span> ExtractTextPlugin=<span class="built_in">require</span>(<span class="string">'extract-text-webpack-plugin'</span>);</span><br><span class="line"><span class="keyword">var</span> merge=<span class="built_in">require</span>(<span class="string">'webpack-merge'</span>);</span><br><span class="line"><span class="keyword">var</span> webpackBaseConfig=<span class="built_in">require</span>(<span class="string">'./webpack.config.js'</span>);</span><br><span class="line"><span class="keyword">const</span> UglifyJsPlugin = <span class="built_in">require</span>(<span class="string">'uglifyjs-webpack-plugin'</span>)</span><br><span class="line"><span class="comment">//清空基本配置的插件列表</span></span><br><span class="line"><span class="built_in">module</span>.exports=merge(webpackBaseConfig,&#123;</span><br><span class="line">output:&#123;</span><br><span class="line">publicPath:<span class="string">'/dist/'</span>,</span><br><span class="line"><span class="comment">// 将入口文件重命名为带有20位hash值的唯一文件</span></span><br><span class="line">filename:<span class="string">'[name].[hash].js'</span></span><br><span class="line">&#125;,</span><br><span class="line">plugins:[</span><br><span class="line"><span class="keyword">new</span> ExtractTextPlugin(&#123;</span><br><span class="line"><span class="comment">// 提取css，并重命名为带有20位hash值的唯一文件</span></span><br><span class="line">filename:<span class="string">'[name].[hash].css'</span>,</span><br><span class="line">allChunks:<span class="literal">true</span></span><br><span class="line">&#125;),</span><br><span class="line"><span class="comment">// 定义当前node环境为生产环境</span></span><br><span class="line"><span class="keyword">new</span> webpack.DefinePlugin(&#123;</span><br><span class="line"><span class="string">'process.env'</span>:&#123;</span><br><span class="line">NODE_ENV:<span class="string">'"production"'</span></span><br><span class="line">&#125;</span><br><span class="line">&#125;),</span><br><span class="line"><span class="comment">// 压缩js</span></span><br><span class="line"><span class="keyword">new</span> UglifyJsPlugin(),</span><br><span class="line"><span class="comment">// 提取模板，并保存入口html文件</span></span><br><span class="line"><span class="keyword">new</span> HtmlwebpackPlugin(&#123;</span><br><span class="line">filename:<span class="string">'index.html'</span>,</span><br><span class="line">template:<span class="string">'./index.html'</span>,</span><br><span class="line">inject:<span class="literal">true</span></span><br><span class="line">&#125;),</span><br><span class="line">]</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// package.json 添加build设置</span></span><br><span class="line"><span class="string">"build"</span>:<span class="string">"webpack --progress --hide-modules --config webpack.prod.config.js"</span></span><br></pre></td></tr></table></figure>
-<h4 id="报错解决"><a href="#报错解决" class="headerlink" title="报错解决"></a>报错解决</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">htmlwebpackPlugin is not defined</span><br><span class="line"></span><br><span class="line">报错是因为ejs文件的htmlwebpackPlugin拼写错误，换成htmlWebpackPlugin</span><br></pre></td></tr></table></figure>
-
+        
+          <a class="article-more-a" href="/2020/05/05/vue-webpack-build/#more">more >></a>
+        
       
 
       
@@ -967,92 +1060,9 @@ var _hmt = _hmt || [];
 
 
   
-    <article id="post-prevent-spiders" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/07/09/prevent-spiders/">反击爬虫，前端工程师的脑洞可以有多大？</a>
-    </h1>
-  
-
-        
-        <a href="/2017/07/09/prevent-spiders/" class="archive-article-date">
-  	<time datetime="2017-07-09T02:36:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-09</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><img src="http://7tszky.com1.z0.glb.clouddn.com/FmIvXiOiFFET4oPGkVU6rdDCl87S" width="400"></p>
-
-<p><em>—— 同时发表于<a href="http://imweb.io/topic/595b7161d6ca6b4f0ac71f05" target="_blank" rel="noopener">imweb.io</a></em></p>
-<h3 id="1-前言"><a href="#1-前言" class="headerlink" title="1. 前言"></a>1. 前言</h3><p>对于一张网页，我们往往希望它是结构良好，内容清晰的，这样搜索引擎才能准确地认知它。<br>而反过来，又有一些情景，我们不希望内容能被轻易获取，比方说电商网站的交易额，教育网站的题目等。因为这些内容，往往是一个产品的生命线，必须做到有效地保护。这就是<strong>爬虫与反爬虫</strong>这一话题的由来。</p>
-        
-          <a class="article-more-a" href="/2017/07/09/prevent-spiders/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">安全</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">前端</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/07/09/prevent-spiders/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
     </nav>
   
 
@@ -1143,15 +1153,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">设计</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">杂谈</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">笔记</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">设计</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1171,15 +1181,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">旅行</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">web</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">coffeescript</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1187,7 +1189,27 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">d3.js</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">javascript</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">html</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">css3</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">旅行</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">coffeescript</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1200,18 +1222,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">eggjs</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">jsonwebtoken</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">redis</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">deepin</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1235,7 +1245,27 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">jsonwebtoken</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">redis</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">deepin</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">生活</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">浏览器</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">octopress</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1247,19 +1277,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">octopress</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">主题</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">hexo</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">浏览器</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1275,11 +1297,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">javascript</a>
+                <a href="javascript:void(0)" class="js-tag color2">arguments.callee</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">arguments.callee</a>
+                <a href="javascript:void(0)" class="js-tag color4">药别停</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">编码</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1287,7 +1313,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">编码</a>
+                <a href="javascript:void(0)" class="js-tag color3">模式</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1299,19 +1325,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">药别停</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">模式</a>
+                <a href="javascript:void(0)" class="js-tag color3">性能</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">故事</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">性能</a>
               </li>
              
               <li class="article-tag-list-item">
