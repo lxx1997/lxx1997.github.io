@@ -8,18 +8,18 @@
   <link rel="dns-prefetch" href>
   <title>我的闲暇联系之作  uni-app  &amp;&amp; eggjs | lxx的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="前端  前端主要使用typescript和uniapp进行搭建框架和代码实现，页面结构使用uniapp的样式组件color-ui，图标库使用阿里巴巴矢量图标库  前端git地址: eggjs-uniapp 前端使用技术及bugtypescript 使用 this的使用  1this  =&amp;gt; (this as any)  interface接口，用于明确的强制一个类去符合某种契约，它描述了类的">
-<meta name="keywords" content="eggjs,uni-app,typescript,colorui">
+  <meta name="description" content="前端  前端主要使用 (typescript 已废弃)javascript 和uniapp进行搭建框架和代码实现，页面结构使用uniapp的样式组件color-ui，图标库使用阿里巴巴矢量图标库  前端git地址: eggjs-uniapp 前端使用技术及bug">
+<meta name="keywords" content="typescript,eggjs,uni-app,colorui">
 <meta property="og:type" content="article">
 <meta property="og:title" content="我的闲暇联系之作  uni-app  &amp;&amp; eggjs">
 <meta property="og:url" content="/2020/05/14/my-uni-app-and-eggjs-template/index.html">
 <meta property="og:site_name" content="lxx的博客">
-<meta property="og:description" content="前端  前端主要使用typescript和uniapp进行搭建框架和代码实现，页面结构使用uniapp的样式组件color-ui，图标库使用阿里巴巴矢量图标库  前端git地址: eggjs-uniapp 前端使用技术及bugtypescript 使用 this的使用  1this  =&amp;gt; (this as any)  interface接口，用于明确的强制一个类去符合某种契约，它描述了类的">
+<meta property="og:description" content="前端  前端主要使用 (typescript 已废弃)javascript 和uniapp进行搭建框架和代码实现，页面结构使用uniapp的样式组件color-ui，图标库使用阿里巴巴矢量图标库  前端git地址: eggjs-uniapp 前端使用技术及bug">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-05-14T02:50:12.033Z">
+<meta property="og:updated_time" content="2020-06-07T12:51:33.638Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="我的闲暇联系之作  uni-app  &amp;&amp; eggjs">
-<meta name="twitter:description" content="前端  前端主要使用typescript和uniapp进行搭建框架和代码实现，页面结构使用uniapp的样式组件color-ui，图标库使用阿里巴巴矢量图标库  前端git地址: eggjs-uniapp 前端使用技术及bugtypescript 使用 this的使用  1this  =&amp;gt; (this as any)  interface接口，用于明确的强制一个类去符合某种契约，它描述了类的">
+<meta name="twitter:description" content="前端  前端主要使用 (typescript 已废弃)javascript 和uniapp进行搭建框架和代码实现，页面结构使用uniapp的样式组件color-ui，图标库使用阿里巴巴矢量图标库  前端git地址: eggjs-uniapp 前端使用技术及bug">
   
     <link rel="alternative" href="/atom.xml" title="lxx的博客" type="application/atom+xml">
   
@@ -179,8 +179,9 @@ var _hmt = _hmt || [];
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="前端"><a href="#前端" class="headerlink" title="前端"></a>前端</h3><p>  前端主要使用typescript和uniapp进行搭建框架和代码实现，页面结构使用uniapp的样式组件color-ui，图标库使用阿里巴巴矢量图标库<br>  前端git地址: <a href="https://github.com/lxx1997/eggjs-uniapp" target="_blank" rel="noopener">eggjs-uniapp</a></p>
-<h4 id="前端使用技术及bug"><a href="#前端使用技术及bug" class="headerlink" title="前端使用技术及bug"></a>前端使用技术及bug</h4><h5 id="typescript-使用"><a href="#typescript-使用" class="headerlink" title="typescript 使用"></a>typescript 使用</h5><ul>
+        <h3 id="前端"><a href="#前端" class="headerlink" title="前端"></a>前端</h3><p>  前端主要使用 (<em>typescript 已废弃</em>)javascript 和uniapp进行搭建框架和代码实现，页面结构使用uniapp的样式组件color-ui，图标库使用阿里巴巴矢量图标库<br>  前端git地址: <a href="https://github.com/lxx1997/eggjs-uniapp" target="_blank" rel="noopener">eggjs-uniapp</a></p>
+<h4 id="前端使用技术及bug"><a href="#前端使用技术及bug" class="headerlink" title="前端使用技术及bug"></a>前端使用技术及bug</h4><a id="more"></a>
+<h5 id="typescript-使用"><a href="#typescript-使用" class="headerlink" title="typescript 使用"></a>typescript 使用</h5><ul>
 <li>this的使用</li>
 </ul>
 <figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">this</span>  =&gt; (<span class="keyword">this</span> <span class="keyword">as</span> <span class="built_in">any</span>)</span><br></pre></td></tr></table></figure>
@@ -188,6 +189,8 @@ var _hmt = _hmt || [];
 <li>interface<br>接口，用于明确的强制一个类去符合某种契约，它描述了类的共有部分，而不是共有和私有俩部分<br><strong>如果使用构造器去定义一个接口并驶入定义一个类去实现折扣时，就会得到一个错误</strong>因为当一个类实现了一个接口时，只会对实例部分进行类型检查，<strong>constructor</strong>存在于类的静态部分，所以不在检查范围</li>
 </ul>
 <figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">interface</span> ClockInterface &#123;</span><br><span class="line">    currentTime: <span class="built_in">Date</span>; </span><br><span class="line">    setTime(d: <span class="built_in">Date</span>):<span class="built_in">void</span>; <span class="comment">// 在接口中描述一个方法，在类里实现它</span></span><br><span class="line">  <span class="comment">// new (hour: number, minute: number); // 构造函数定义一个接口会导致Clock会报错</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> Clock <span class="keyword">implements</span> ClockInterface &#123;</span><br><span class="line">    <span class="comment">// private currentTime: Date = new Date(); // 报错，接口描述了类的公共部分，而不是公共和私有两部分</span></span><br><span class="line">    currentTime: <span class="built_in">Date</span> = <span class="keyword">new</span> <span class="built_in">Date</span>(); </span><br><span class="line">    <span class="keyword">constructor</span>(<span class="params">h: <span class="built_in">number</span>, m: <span class="built_in">number</span></span>) &#123; &#125;</span><br><span class="line">    setTime(d:<span class="built_in">Date</span>)&#123; <span class="keyword">this</span>.currentTime = d; &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="前端进度"><a href="#前端进度" class="headerlink" title="前端进度"></a>前端进度</h4><p><strong>2020-05-17</strong>  更换了ui插件 uview 由于typescript对于插件引入不行，决定更换语言 换成javascript，进行项目重构和页面复制</p>
+<p><strong>2020-05-19</strong>  完成作者作品列表和作品详情页面</p>
 <h3 id="后台"><a href="#后台" class="headerlink" title="后台"></a>后台</h3><p>  后台主要使用eggjs 以及各种第三方插件<br>  后台git地址: <a href="https://github.com/lxx1997/eggjs-node" target="_blank" rel="noopener">eggjs-node</a></p>
 <h4 id="后台插件使用"><a href="#后台插件使用" class="headerlink" title="后台插件使用"></a>后台插件使用</h4><ul>
 <li><p>mysql使用: 参考文章 <a href="/2020/04/12/eggjs-mysql/">egg-mysql</a></p>
@@ -195,8 +198,10 @@ var _hmt = _hmt || [];
 <li><p>redis使用: 参考文章 <a href="/2020/04/10/egg-jwt/">egg-redis</a></p>
 </li>
 <li><p>身份验证 token: 参考文章 <a href="/2020/04/10/egg-jwt/">身份验证</a></p>
-<h4 id="后台bug及解决方案"><a href="#后台bug及解决方案" class="headerlink" title="后台bug及解决方案"></a>后台bug及解决方案</h4></li>
+<h4 id="后台进度"><a href="#后台进度" class="headerlink" title="后台进度"></a>后台进度</h4></li>
 </ul>
+<p><strong>2020-04~2020-05-18</strong>  注册，登录，token验证，用户个人信息获取，用户个人信息修改</p>
+<p><strong>2020-05-19</strong>  编写小说上传接口 </p>
 
       
 
@@ -210,15 +215,15 @@ var _hmt = _hmt || [];
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">typescript</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
         			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">eggjs</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
         			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">uni-app</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">typescript</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
@@ -292,6 +297,15 @@ var _hmt = _hmt || [];
   
 <nav id="article-nav">
   
+    <a href="/2020/05/26/egg-swagger-ui/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          eggjs 配置swagger-ui
+        
+      </div>
+    </a>
+  
   
     <a href="/2020/05/14/uni-app-life-cycle/" id="article-nav-older" class="article-nav-link-wrap">
       <div class="article-nav-title">uni-app-life-cycle</div>
@@ -321,7 +335,7 @@ var _hmt = _hmt || [];
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#前端"><span class="toc-number">1.</span> <span class="toc-text">前端</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#前端使用技术及bug"><span class="toc-number">1.1.</span> <span class="toc-text">前端使用技术及bug</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#typescript-使用"><span class="toc-number">1.1.1.</span> <span class="toc-text">typescript 使用</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#后台"><span class="toc-number">2.</span> <span class="toc-text">后台</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#后台插件使用"><span class="toc-number">2.1.</span> <span class="toc-text">后台插件使用</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#后台bug及解决方案"><span class="toc-number">2.2.</span> <span class="toc-text">后台bug及解决方案</span></a></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#前端"><span class="toc-number">1.</span> <span class="toc-text">前端</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#前端使用技术及bug"><span class="toc-number">1.1.</span> <span class="toc-text">前端使用技术及bug</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#typescript-使用"><span class="toc-number">1.1.1.</span> <span class="toc-text">typescript 使用</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#前端进度"><span class="toc-number">1.2.</span> <span class="toc-text">前端进度</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#后台"><span class="toc-number">2.</span> <span class="toc-text">后台</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#后台插件使用"><span class="toc-number">2.1.</span> <span class="toc-text">后台插件使用</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#后台进度"><span class="toc-number">2.2.</span> <span class="toc-text">后台进度</span></a></li></ol></li></ol>
                     </div>
                 </span>
             </div>
@@ -464,7 +478,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">coffeescript</a>
+                <a href="javascript:void(0)" class="js-tag color4">web</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">旅行</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -472,11 +490,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">web</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">旅行</a>
+                <a href="javascript:void(0)" class="js-tag color3">coffeescript</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -496,7 +510,23 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">工具</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">chrome</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">typescript</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">eggjs</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">swagger-ui</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -512,14 +542,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">node.js</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">后台</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">mysql</a>
               </li>
              
@@ -532,27 +554,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">工具</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">chrome</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">生活</a>
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">node.js</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">后台</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">octopress</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">安全</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">黑科技</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -568,15 +582,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">安全</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">黑科技</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">经验</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">产品</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">canvas</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -589,6 +607,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">编码</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">canvas</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -612,11 +634,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">typescript</a>
+                <a href="javascript:void(0)" class="js-tag color3">colorui</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">colorui</a>
+                <a href="javascript:void(0)" class="js-tag color5">deno</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">nodeJs</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -625,6 +651,18 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">故事</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">ES6</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">python</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">pygame</a>
               </li>
              
               <li class="article-tag-list-item">
