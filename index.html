@@ -160,6 +160,196 @@ var _hmt = _hmt || [];
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-typescript-study-05" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/06/29/typescript-study-05/">TypeScript 学习之路进阶版 - 扩展</a>
+    </h1>
+  
+
+        
+        <a href="/2020/06/29/typescript-study-05/" class="archive-article-date">
+  	<time datetime="2020-06-29T11:39:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-06-29</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="代码检查"><a href="#代码检查" class="headerlink" title="代码检查"></a>代码检查</h4><p> eslint 能够发现一些tsc不会关心的错误，检查出一些潜在的问题</p>
+<p> <strong>TypeScript中使用Eslint</strong></p>
+<p>  <strong>eslint安装</strong></p>
+  <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install eslint -S</span><br></pre></td></tr></table></figure>
+<p>  由于ESLint 默认使用<code>Espree</code>进行语法解析，无法识别TypeScript中的一些语法，因此我们需要安装<code>@typescript-eslint/eslint-plugin</code>, 他作为eslint默认规则的补充，提供了一些额外的适用于ts语法的规则</p>
+  <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install --save-dev @typescript-eslint/eslint-plugin</span><br></pre></td></tr></table></figure>
+        
+          <a class="article-more-a" href="/2020/06/29/typescript-study-05/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">typescript</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/06/29/typescript-study-05/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-typescript-study-04" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/06/28/typescript-study-04/">TypeScript 学习之路进阶版 - 泛型</a>
+    </h1>
+  
+
+        
+        <a href="/2020/06/28/typescript-study-04/" class="archive-article-date">
+  	<time datetime="2020-06-28T01:17:07.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-06-28</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="泛型"><a href="#泛型" class="headerlink" title="泛型"></a>泛型</h4><p>  <strong>泛型</strong>是指在定义函数、接口或者类的时候，不预选指定类的具体累心，而是在使用的时候在指定类型的一种特性</p>
+  <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">createArray</span>&lt;<span class="title">T</span>&gt;(<span class="params">length: number, value: T</span>): <span class="title">Array</span>&lt;<span class="title">T</span>&gt; </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> result: T[] = [];</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; length; i++) &#123;</span><br><span class="line">      result[i] = value;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">createArray&lt;string&gt;(<span class="number">3</span>, <span class="string">'x'</span>); <span class="comment">// ['x', 'x', 'x']</span></span><br></pre></td></tr></table></figure>
+<p>  我们在函数名后添加了<code>&lt;T&gt;</code>, 其中<code>T</code>用来指代任意输入的类型，在后面的输入和输出都可以使用</p>
+<p>  在调用的时候可以指定他的具体的类型，也可以不指定，而让类型推论自动推算出来</p>
+<p>  <strong>多个类型参数</strong></p>
+<p>  定义泛型的时候,可以一次定义多个类型参数</p>
+  <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">function swap&lt;T, U&gt;(tuple: [T, U]): [U, T] &#123;</span><br><span class="line">    <span class="keyword">return</span> [tuple[<span class="number">1</span>], tuple[<span class="number">0</span>]];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">swap([<span class="number">7</span>, <span class="string">'seven'</span>]); <span class="comment">// ['seven', 7]</span></span><br></pre></td></tr></table></figure>
+<p>  输入的<code>&lt;T, U&gt;</code>是元组</p>
+<p>  <strong>泛型约束</strong></p>
+<p>  在函数内部使用泛型变量的时候，由于事先不知道它是那种类型的，所以不能随意操作它的属性和方法</p>
+<p>  这时我们可以对泛型进行约束，只允许这个函数传入那些包含<code>length</code>属性的变量</p>
+  <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">interface Lengthwise &#123;</span><br><span class="line">    length: number;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">loggingIdentity</span>&lt;<span class="title">T</span> <span class="title">extends</span> <span class="title">Lengthwise</span>&gt;(<span class="params">arg: T</span>): <span class="title">T</span> </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(arg.length);</span><br><span class="line">    <span class="keyword">return</span> arg;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>  在上面的例子中，我们使用了<code>extends</code>约束了泛型T必须符合接口l的形状，也就是必须包含length属性</p>
+<p>  多个类型参数之间也可以互相约束</p>
+  <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">copyFields</span>&lt;<span class="title">T</span> <span class="title">extends</span> <span class="title">U</span>, <span class="title">U</span>&gt;(<span class="params">target: T, source: U</span>): <span class="title">T</span> </span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> id <span class="keyword">in</span> source) &#123;</span><br><span class="line">        target[id] = (<span class="xml"><span class="tag">&lt;<span class="name">T</span>&gt;</span>source)[id];</span></span><br><span class="line"><span class="xml">    &#125;</span></span><br><span class="line"><span class="xml">    return target;</span></span><br><span class="line"><span class="xml">&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="xml">let x = &#123; a: 1, b: 2, c: 3, d: 4 &#125;;</span></span><br><span class="line"></span><br><span class="line"><span class="xml">copyFields(x, &#123; b: 10, d: 20 &#125;);</span></span><br></pre></td></tr></table></figure>
+<p>  我们使用了两个类型参数，其中要求T继承于U，这样就保证了U中不会出现T中不存在的字段</p>
+<p>  <strong>泛型接口</strong></p>
+  <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">interface CreateArrayFunc&lt;T&gt; &#123;</span><br><span class="line">    (length: number, <span class="attr">value</span>: T): <span class="built_in">Array</span>&lt;T&gt;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> createArray: CreateArrayFunc&lt;any&gt;;</span><br><span class="line">createArray = <span class="function"><span class="keyword">function</span>&lt;<span class="title">T</span>&gt;(<span class="params">length: number, value: T</span>): <span class="title">Array</span>&lt;<span class="title">T</span>&gt; </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> result: T[] = [];</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; length; i++) &#123;</span><br><span class="line">        result[i] = value;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">createArray(<span class="number">3</span>, <span class="string">'x'</span>); <span class="comment">// ['x', 'x', 'x']</span></span><br></pre></td></tr></table></figure>
+<p>  在使用泛型接口的时候，需要定义泛型的类型</p>
+<p>  <strong>泛型类</strong></p>
+<p>  与泛型接口类似，泛型也可以用于类的类型定义</p>
+  <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">GenericNumber</span>&lt;<span class="title">T</span>&gt; </span>&#123;</span><br><span class="line">    zeroValue: T;</span><br><span class="line">    add: <span class="function">(<span class="params">x: T, y: T</span>) =&gt;</span> T;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> myGenericNumber = <span class="keyword">new</span> GenericNumber&lt;number&gt;();</span><br><span class="line">myGenericNumber.zeroValue = <span class="number">0</span>;</span><br><span class="line">myGenericNumber.add = <span class="function"><span class="keyword">function</span>(<span class="params">x, y</span>) </span>&#123; <span class="keyword">return</span> x + y; &#125;;</span><br></pre></td></tr></table></figure>
+<p>  <strong>泛型参数的默认类型</strong></p>
+<p>  我们可以为泛型中的类型参数指定默认类型，从实际值参数中也无法推测出时，这个默认类型就会起作用</p>
+  <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">createArray</span>&lt;<span class="title">T</span> = <span class="title">string</span>&gt;(<span class="params">length: number, value: T</span>): <span class="title">Array</span>&lt;<span class="title">T</span>&gt; </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> result: T[] = [];</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; length; i++) &#123;</span><br><span class="line">        result[i] = value;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="声明合并"><a href="#声明合并" class="headerlink" title="声明合并"></a>声明合并</h4><p>  如果定义了两个相同名字的函数、接口或类，那么它们会合并成一个类型</p>
+<p>  <strong>函数的合并</strong></p>
+<p>  可以使用重载定义多个函数类型</p>
+  <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">reverse</span>(<span class="params">x: number</span>): <span class="title">number</span></span></span><br><span class="line"><span class="function"><span class="title">function</span> <span class="title">reverse</span>(<span class="params">y:number</span>): <span class="title">string</span></span></span><br><span class="line"><span class="function"><span class="title">function</span> <span class="title">reverse</span>(<span class="params">x: number | string</span>): <span class="title">number</span> | <span class="title">string</span> </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (<span class="keyword">typeof</span> x === <span class="string">'number'</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">Number</span>(x.toString().split(<span class="string">''</span>).reverse().join(<span class="string">''</span>))</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (<span class="keyword">typeof</span> x === <span class="string">'string'</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> x.split(<span class="string">''</span>).reverse().join(<span class="string">''</span>)</span><br><span class="line">  &#125; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>  <strong>接口的合并</strong></p>
+<p>  接口的属性在合并时会简单的合并到一个接口中</p>
+  <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">interface Alarm &#123;</span><br><span class="line">  price: number</span><br><span class="line">&#125;</span><br><span class="line">interface Alarm &#123;</span><br><span class="line">  weight: number</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 相当于</span></span><br><span class="line"></span><br><span class="line">interface Alarm &#123;</span><br><span class="line">  price：number;</span><br><span class="line">  weight: number</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>  合并的属性的类型必须是唯一的</p>
+  <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">interface Alarm &#123;</span><br><span class="line">  price: number</span><br><span class="line">&#125;</span><br><span class="line">interface Alarm &#123;</span><br><span class="line">  price: price：number</span><br><span class="line">  weight: number</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 相当于</span></span><br><span class="line"></span><br><span class="line">interface Alarm &#123;</span><br><span class="line">  price：number;</span><br><span class="line">  weight: number</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>  假如 <code>price</code> 的类型不一致就会报错</p>
+<p>  接口中方法的合并与函数的合并一样</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">typescript</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/06/28/typescript-study-04/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-typescript-study-03" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -182,19 +372,9 @@ var _hmt = _hmt || [];
       
         <h4 id="类和接口"><a href="#类和接口" class="headerlink" title="类和接口"></a>类和接口</h4><p>  <strong>类实现接口</strong><br>  实现(implements)是面向对象中一个重要概念,一般来讲,一个类只能继承自另一个类,有时候不同类之间可以有一些共有特性,这时候可以把特新提取成接口(interfaces), 用<code>implements</code>关键字来实现,这个特新大大提高了面向对象的灵活性</p>
   <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">interface Alarm &#123;</span><br><span class="line">  alert(): <span class="keyword">void</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Door</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">SecurityDoor</span> <span class="keyword">extends</span> <span class="title">Door</span> <span class="title">implements</span> <span class="title">Alarm</span> </span>&#123;</span><br><span class="line">  alert() &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'securityDoor)</span></span><br><span class="line"><span class="string">  &#125;</span></span><br><span class="line"><span class="string">&#125;</span></span><br><span class="line"><span class="string">class Car implements Alarm &#123;</span></span><br><span class="line"><span class="string">  alert() &#123;</span></span><br><span class="line"><span class="string">    console.log('</span>car<span class="string">')</span></span><br><span class="line"><span class="string">  &#125;</span></span><br><span class="line"><span class="string">&#125;</span></span><br></pre></td></tr></table></figure>
-<p>  一个类可以实现多个接口</p>
-  <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">interface Alarm &#123;</span><br><span class="line">  alert(): <span class="keyword">void</span></span><br><span class="line">&#125;</span><br><span class="line">interface Light &#123;</span><br><span class="line">  lightOn(): <span class="keyword">void</span>;</span><br><span class="line">  lightOff(): <span class="keyword">void</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Car</span> <span class="title">implements</span> <span class="title">Alarm</span>, <span class="title">Light</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>  <strong>接口继承接口</strong></p>
-<p>  接口与接口之间也可以是继承关系,并拥有继承的方法</p>
-  <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">interface Alarm &#123;</span><br><span class="line">  alert(): <span class="keyword">void</span>;</span><br><span class="line">&#125;</span><br><span class="line">interface Light extends Alarm &#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>  <strong>接口继承类</strong></p>
-<p>  常见的面向对象语言中,接口是不能继承类的,但是在TypeScript中是可以的</p>
-  <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Point</span> </span>&#123;</span><br><span class="line">    x: number;</span><br><span class="line">    y: number;</span><br><span class="line">    <span class="keyword">constructor</span>(x: number, y: number) &#123;</span><br><span class="line">        <span class="keyword">this</span>.x = x;</span><br><span class="line">        <span class="keyword">this</span>.y = y;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">interface Point3d extends Point &#123;</span><br><span class="line">    z: number;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> point3d: Point3d = &#123;<span class="attr">x</span>: <span class="number">1</span>, <span class="attr">y</span>: <span class="number">2</span>, <span class="attr">z</span>: <span class="number">3</span>&#125;;</span><br></pre></td></tr></table></figure>
-<p>  当我们在声明 <code>class Point</code> 时,除了会创建一个名为Point的类外,同时也创建了一个名为Point类型(实例的类型)</p>
-<p>  所以我们既可以将Point当作一个类来用</p>
-<p>  也可以将Point当作一个类型来用 (使用:Point表示参数的类型)</p>
-<p>  当我们声明 <code>interface Point3d extends Point</code>的时候,Point3d继承的实际上是类Point的实例的类型,<em>定义了一个接口Point3d继承了另一个接口PointInstaneType</em><br>  <em>声明point类时创建的Point类型是不包含构造函数的,静态属性和静态方法也是不包含的</em></p>
-
+        
+          <a class="article-more-a" href="/2020/06/22/typescript-study-03/#more">more >></a>
+        
       
 
       
@@ -402,101 +582,10 @@ var _hmt = _hmt || [];
     <div class="article-entry" itemprop="articleBody">
       
         <h4 id="类型别名"><a href="#类型别名" class="headerlink" title="类型别名"></a>类型别名</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">type Name = string;</span><br><span class="line">type NameResolver = <span class="function"><span class="params">()</span> =&gt;</span> string;</span><br><span class="line">type NameOrResolver = Name | NameResolver;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getName</span>(<span class="params">n: NameOrResolver</span>): <span class="title">Name</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">typeof</span> n === <span class="string">'string'</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> n;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> n();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>类型别名为类型创建新名称。类型别名有时类似于接口，但是可以命名原语，并集，元祖和其他必须手动编写的其他类型。<br>别名实际上并不会创建新的类型，他会创建一个新名称来引用该类型<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">type Container&lt;T&gt; = &#123;<span class="attr">value</span>: T&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 也可以在属性中使用类型别名来引用自身</span></span><br><span class="line">type Tree&lt;T&gt; = &#123;</span><br><span class="line">  value: T;</span><br><span class="line">  left: Tree&lt;T&gt;;</span><br><span class="line">  right: Tree&lt;T&gt;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 与交叉点类型一起使用</span></span><br><span class="line">type LinkedList&lt;T&gt; = T &amp; &#123;<span class="attr">next</span>: LinkedList&lt;T&gt;&#125;</span><br><span class="line"></span><br><span class="line">interface Person &#123;</span><br><span class="line">  name: string</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> people: LinkedList&lt;Person&gt;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> s = people.name</span><br><span class="line"><span class="keyword">var</span> s = people.next.name</span><br><span class="line"><span class="keyword">var</span> s = people.next.next.name</span><br><span class="line"><span class="keyword">var</span> s = people.next.next.next.name</span><br><span class="line"></span><br><span class="line"><span class="comment">// 但是类型别名不可能出现在声明右侧的任何其他位置</span></span><br></pre></td></tr></table></figure></p>
-<h4 id="字符串字面量类型"><a href="#字符串字面量类型" class="headerlink" title="字符串字面量类型"></a>字符串字面量类型</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">type EventNames = <span class="string">'click'</span> | <span class="string">'scroll'</span> | <span class="string">'mousemove'</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">handleEvent</span>(<span class="params">ele: Element, event: EventNames</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// do someting</span></span><br><span class="line">&#125;</span><br><span class="line">handleEvent(<span class="built_in">document</span>.getElementById(<span class="string">'hello'</span>), <span class="string">'scroll'</span>) <span class="comment">// success</span></span><br><span class="line">handleEvent(<span class="built_in">document</span>.getElementById(<span class="string">'hello'</span>), <span class="string">'dblclick'</span>) <span class="comment">// error</span></span><br></pre></td></tr></table></figure>
-<p>我们使用type定了一个字符串字面量类型<code>EventNames</code>, 它只能取三种字符串中的一种<br>类型别名与字符串字面量类型都是使用<code>type</code>进行定义</p>
-<p>可以使用相同的方式使用字符串文字类型来区分重载<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">createElement</span>(<span class="params">tagName: <span class="string">'img'</span></span>): <span class="title">HTMLImageElement</span></span></span><br><span class="line"><span class="function"><span class="title">function</span> <span class="title">createElement</span>(<span class="params">tagName: <span class="string">'input'</span></span>): <span class="title">HTMLIputElement</span></span></span><br><span class="line"><span class="function"><span class="title">function</span> <span class="title">createElement</span>(<span class="params">tagName: <span class="string">'string'</span></span>): <span class="title">Element</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<h4 id="元组"><a href="#元组" class="headerlink" title="元组"></a>元组</h4><p>数组合并了相同类型的对象，而元组(Tuple)合并了不同类型的对象</p>
-<p>eg:<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> tom: [string, number] = [<span class="string">'Tom'</span>, <span class="number">25</span>]</span><br></pre></td></tr></table></figure></p>
-<p>当赋值或访问一个已知的索引元素时,会得到正确的类型<br>也可以只赋值其中一项</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> tom: [string, number]</span><br><span class="line">tom[<span class="number">0</span>] = <span class="string">'Tom'</span></span><br></pre></td></tr></table></figure>
-<p>如果直接对元组类型的变量进行初始化或者赋值的时候,需要提供所有的元组类型中指定的项</p>
-<p>当添加越界的元素时,它的类型会被限制为元组的每个类型的联合类型</p>
-<h4 id="枚举-Enum"><a href="#枚举-Enum" class="headerlink" title="枚举  Enum"></a>枚举  Enum</h4><p>枚举类型用于取值被限定在一定范围内的场景,比如一周只能有七天,颜色限定为红绿蓝等</p>
-<p>eg:<br>枚举定义 使用<code>enum</code>定义<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">enum Days &#123;Sun, Mon, Tue, Web, Thu, Fri, Sat&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 枚举成员会被赋值从0开始递增的数字,同时也会对枚举值到枚举名进行反向映射</span></span><br><span class="line"></span><br><span class="line">Days[<span class="string">'Sun'</span>] === <span class="number">0</span>  <span class="comment">// true</span></span><br><span class="line"></span><br><span class="line">Days[<span class="number">0</span>] === <span class="string">'Sun'</span>  <span class="comment">// true</span></span><br></pre></td></tr></table></figure></p>
-<p><strong>手动赋值</strong></p>
-<p>我们也可以手动给枚举项赋值</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">enum Days &#123;Sun = <span class="number">7</span>, Mon = <span class="number">1</span>, Tue, Wed, Thu, Fri, Sat&#125;</span><br><span class="line"><span class="comment">// 未手动赋值的枚举项会接着上一个枚举项递增</span></span><br></pre></td></tr></table></figure>
-<p>如果<strong>手动赋值的枚举项</strong>与<strong>自动赋值的枚举项</strong>重复了,并不会报错</p>
-<p>手动赋值的枚举项可以不是数字,但是需要使用类型断言来无视类型检查</p>
-<p><strong>常数项和计算所得项</strong></p>
-<p>枚举有两种类型: 常数项和计算所得项</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">enum Color &#123;Red, Green, Blue = <span class="string">'blue'</span>.length&#125;</span><br></pre></td></tr></table></figure>
-<p>上面 <code>&#39;blue&#39;.length</code>就是一个计算所得项</p>
-<p>如果紧接在计算所得项后面是未手动赋值的项,那么会因为无法获得初始值而报错</p>
-<p><strong>常数枚举</strong></p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> enum Directions &#123;</span><br><span class="line">  Up,</span><br><span class="line">  Down,</span><br><span class="line">  Left,</span><br><span class="line">  Right</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> directions = [Directions.Up, Directions.Down, Direction.Left, Direction.Down]</span><br></pre></td></tr></table></figure>
-<p>常数枚举与普通枚举的区别是,它会在编译阶段被删除,并且不能包含计算成员</p>
-<p>上述编译的结果是:</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> directions = [<span class="number">0</span> <span class="comment">/* Up */</span> , <span class="number">1</span> <span class="comment">/* Up */</span>, <span class="number">2</span> <span class="comment">/* Up */</span>, <span class="number">3</span> <span class="comment">/* Up */</span>]</span><br></pre></td></tr></table></figure>
-<p><em>如果在定义的时候包含了计算成员,则会在编译阶段报错</em></p>
-<p><strong>外部枚举</strong></p>
-<p>外部枚举 是使用<code>declare enum</code> 定义的枚举类型</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">declare enum Directions &#123;</span><br><span class="line">  Up,</span><br><span class="line">  Down,</span><br><span class="line">  Left,</span><br><span class="line">  Right</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> directions = [Directions.Up, Directions.Down, Direction.Left, Direction.Down]</span><br></pre></td></tr></table></figure>
-<p>同时使用<code>declare</code> 和<code>const</code>也是可以的</p>
-<h4 id="类"><a href="#类" class="headerlink" title="类"></a>类</h4><p><strong>类的概念</strong></p>
-<ul>
-<li><p>类：定义了一件事物的抽象特点，包含他的属性和方法</p>
-</li>
-<li><p>对象：类的实例，通过new生成</p>
-</li>
-<li><p>面对对象（OPP）三大特性： 封装、继承、多态</p>
-</li>
-<li><p>封装（Encapsulation）：将对数据的操作细节隐藏起来，质保楼对外的接口，外界调用端不需要知道细节，就能通过对外提供的接口来访问该对象，同时也保证了外界无法任意更改对象内部的数据</p>
-</li>
-<li><p>继承（Inheritance）：子类继承父类，子类除了拥有父类的所有特性外，还有一些更具体的特性</p>
-</li>
-<li><p>多态（Poluymorphism）：由继承而产生的不同的类，对同一个方法可以有不同的响应，程序会自动判断应该如何执行</p>
-</li>
-<li><p>存取器(getter &amp; setter): 用于改变属性的读取和赋值行为</p>
-</li>
-<li><p>修饰符(Modifiers): 修饰符是一些关键字,用于限定成员或类型的性质,比如<code>public</code>表示共有属性和方法</p>
-</li>
-<li><p>抽象类(Abstract Class): 抽象类是供其他继承的基类,抽象类不允许被实例化,抽象类中的抽象方法必须在子类中被实现</p>
-</li>
-<li><p>接口(interface): 不同类之间巩固偶的属性和方法可以抽象成一个接口,接口可以被类实现,一个类只能继承自另一个类,但是可以实现多个接口</p>
-</li>
-</ul>
-<p><strong>ES6中类的用法</strong></p>
-<p> <strong>属性和方法</strong></p>
-<p> 使用<code>class</code>定义类,使用<code>constructor</code>定义构造函数</p>
-<p> 通过<code>new</code> 生成新实例的时候,会自动带调用构造函数</p>
-<p> <strong>类的继承</strong></p>
-<p> 使用<code>extends</code> 关键字实现继承,子类通过<code>super</code>关键字调用父类的构造函数和方法</p>
- <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Cat</span> <span class="keyword">extends</span> <span class="title">Animal</span> </span>&#123;</span><br><span class="line">  <span class="keyword">constructor</span>(name) &#123;</span><br><span class="line">    <span class="keyword">super</span>(name);</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>.name)</span><br><span class="line">  &#125;</span><br><span class="line">  sayHi() &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">super</span>.sayHi()</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p> <strong>存取器</strong></p>
-<p> 使用getter和setter可以改变属性的赋值和读取行为</p>
-  <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Animal</span> </span>&#123;</span><br><span class="line">  <span class="keyword">constructor</span>(name) &#123;</span><br><span class="line">    <span class="keyword">this</span>.name = name</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">get</span> name() &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">'jack'</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">set</span> name(value) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'setter:'</span> + value)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>  <strong>静态方法</strong></p>
-<p>  使用<code>static</code>修饰符修饰的方法称为静态方法,不需要实例化,而是直接通过类来调用</p>
-  <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">    <span class="class"><span class="keyword">class</span> <span class="title">Animal</span> </span>&#123;</span><br><span class="line">      <span class="keyword">static</span> isAnimal(a) &#123;</span><br><span class="line">        <span class="keyword">return</span> a <span class="keyword">instanceof</span> Animal</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">let</span> a = <span class="keyword">new</span> Animal(<span class="string">'Jack)</span></span><br><span class="line"><span class="string">    Animal.isAnimal(a)  // true</span></span><br><span class="line"><span class="string">    a.isAnimal(a)   // TypeError</span></span><br><span class="line"><span class="string">  ~~~ </span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">**ES7中类的用法**</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">  **实例属性**</span></span><br><span class="line"><span class="string">  </span></span><br><span class="line"><span class="string">  ES6中实例的属性只能通过构造函数中的`this.xxx`来定义,ES7可以直接在类里面定义</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">  ~~~js</span></span><br><span class="line"><span class="string">    // ES7</span></span><br><span class="line"><span class="string">    class Animal &#123;</span></span><br><span class="line"><span class="string">      name = '</span>Jack<span class="string">';</span></span><br><span class="line"><span class="string">      constructor() &#123;</span></span><br><span class="line"><span class="string">        // TODO something</span></span><br><span class="line"><span class="string">      &#125;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">      let a = new Animal()</span></span><br><span class="line"><span class="string">    &#125;</span></span><br></pre></td></tr></table></figure>
-<p>  <strong>静态属性</strong></p>
-<p>  可以用<code>static</code> 定义一个静态属性</p>
-  <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// ES7</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Animal</span> </span>&#123;</span><br><span class="line">  <span class="keyword">static</span> name = <span class="string">'Jack'</span>;</span><br><span class="line">  <span class="keyword">constructor</span>() &#123;</span><br><span class="line">    <span class="comment">// TODO something</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">let</span> a = <span class="keyword">new</span> Animal()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><strong>TypeScript中使用类</strong></p>
-<p>  <strong>public private和protect</strong></p>
-<p>  TypeScript中可以使用三种访问修饰符分别是<code>public</code>,<code>private</code>,<code>protected</code></p>
-<ul>
-<li><code>public</code>修饰的属性或方法是共有的,可以在任何地方被访问,默认所有的属性和方法都是<code>public</code>的</li>
-<li><code>private</code>修饰的属性和方法是私有的,不能在声明它的类的访问’</li>
-<li><p><code>protected</code>修饰的属性和方法是受保护的,它和<code>private</code>类似,区别是在子类中也是允许被访问的</p>
-<p><em>当构造函数<code>constructor</code>修饰为<code>private</code>时,该类不允许被继承或者实例化</em><br><em>当构造函数<code>constructor</code>修饰为<code>protected</code>时, 该类只允许被继承</em></p>
-<p><strong>参数属性</strong></p>
-<p>修饰符和<code>readonly</code>还可以使用构造函数参数中,等同于类中定义该属性的同时给该属性赋值,使代码更简洁</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Animal</span> </span>&#123;</span><br><span class="line">  public construtor(public name) &#123;</span><br><span class="line">    <span class="comment">// 等同于 this.name = name</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><strong>readonly</strong> </p>
-<p>只读属性关键字,只允许出现在属性声明或索引签名或构造函数中<br><em>如果<code>readonly</code>和其他修饰符同时存在的话,需要写在后面</em></p>
-<p><strong>抽象类</strong></p>
-<p><code>abstract</code>用于定义抽象类和其中的抽象方法</p>
-<p>抽象类是不允许被实例化的</p>
-<p>如果定义了一个抽象类,并且定义了一个抽象方法<code>sayHi</code>, 在实例化抽象类的时候报错</p>
-<p>抽象类中的抽象方法必须被子类实现,如果继承了抽象类,却没有实现抽象类中的抽象方法,就是编译报错</p>
-<p>正确使用抽象类</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">abstract <span class="class"><span class="keyword">class</span> <span class="title">Animal</span> </span>&#123;</span><br><span class="line">  public name;</span><br><span class="line">  public <span class="keyword">constructor</span>(name) &#123;</span><br><span class="line">    <span class="keyword">this</span>.name = name;</span><br><span class="line">  &#125;</span><br><span class="line">  public abstract sayHi();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Cat</span> <span class="keyword">extends</span> <span class="title">Animal</span> </span>&#123;</span><br><span class="line">  public sayHi() &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">`Meow, My name is <span class="subst">$&#123;<span class="keyword">this</span>.name&#125;</span>`</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> cat = <span class="keyword">new</span> Cat(<span class="string">'Tom'</span>);</span><br></pre></td></tr></table></figure>
-<p><strong>类的类型</strong><br>给类加上TypeScript的类型</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Animal</span> </span>&#123;</span><br><span class="line">  name: string;</span><br><span class="line">  <span class="keyword">constructor</span>(name: string) &#123;</span><br><span class="line">    <span class="keyword">this</span>.name = name;</span><br><span class="line">  &#125;</span><br><span class="line">  sayHi(): string &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">`My name is <span class="subst">$&#123;<span class="keyword">this</span>.name&#125;</span>`</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> a: Animal = <span class="keyword">new</span> Animal(<span class="string">'Jack'</span>);</span><br><span class="line"><span class="built_in">console</span>.log(a.sayHi()); <span class="comment">// My name is Jack</span></span><br></pre></td></tr></table></figure></li>
-</ul>
-
+<p>类型别名为类型创建新名称。类型别名有时类似于接口，但是可以命名原语，并集，元祖和其他必须手动编写的其他类型。<br>
+        
+          <a class="article-more-a" href="/2020/06/10/typescript-study-02/#more">more >></a>
+        
       
 
       
@@ -950,195 +1039,6 @@ var _hmt = _hmt || [];
 
 
   
-    <article id="post-d3-study-20200507" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/05/07/d3-study-20200507/">D3.js的学习之路</a>
-    </h1>
-  
-
-        
-        <a href="/2020/05/07/d3-study-20200507/" class="archive-article-date">
-  	<time datetime="2020-05-07T01:22:16.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-07</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="引入"><a href="#引入" class="headerlink" title="引入"></a>引入</h3><p><strong>html中引入</strong><br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"https://cdn.bootcdn.net/ajax/libs/d3/5.16.0/d3.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
-<h3 id="核心函数"><a href="#核心函数" class="headerlink" title="核心函数"></a>核心函数</h3><p>d3.js是链式操作,和promise结构类似,函数执行的返回值都是函数本身</p>
-<h4 id="选择器"><a href="#选择器" class="headerlink" title="选择器"></a>选择器</h4><p><strong><b>选择元素</b></strong></p>
-<p>D3提供了两种方法来选择元素</p>
-<ul>
-<li>d3.select()<br>  返回单元素选择结果,没有匹配的则返回空,多个匹配只返回第一个匹配的元素<ul>
-<li>d3.select(<em>selector</em>)</li>
-<li>d3.select(<em>node</em>) <strong>选中指定节点,如果已经引用了一个节点.例如时间监听器的d3.select(this),或者一个全局对象,例如document.body,这个函数不会便利DOM树</strong></li>
-</ul>
-</li>
-<li>d3.selectAll()<br>  返回选中的所有元素,按照文档的遍历顺序,从上到下选择,如果文档中没有匹配的元素则返回空的选择<ul>
-<li>d3.selectAll(<em>selector</em>)</li>
-<li>d3.selectAll(<em>nodes</em>) <strong>如果有元素已被引用,例如事件监听器中的d3.selectAll(this.childNodes),或者一个全局的document.links,节点参数不用恰好是数组,任何可以被转换为数据的伪数组都可以,这个函数不会遍历DOM树</strong></li>
-</ul>
-</li>
-</ul>
-        
-          <a class="article-more-a" href="/2020/05/07/d3-study-20200507/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">d3.js</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">javascript</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">html</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/05/07/d3-study-20200507/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-js-canvas-bubble" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/05/06/js-canvas-bubble/">使用canvas绘制碰撞球</a>
-    </h1>
-  
-
-        
-        <a href="/2020/05/06/js-canvas-bubble/" class="archive-article-date">
-  	<time datetime="2020-05-06T02:48:06.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-06</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><strong>实现步骤</strong></p>
-<ul>
-<li>绘制canvas，并将canvas的宽高设置为品目的宽高<br>  <em>由于canvas是行内元素，行内元素一般都有自己的行高等，所以一般会出现横向滚动条，此时需要将canvas设置为块级元素或者行内块状元素</em></li>
-<li>设置canvas的宽高跟随屏幕大小的变化而变化，使用window.onresize监听屏幕变化</li>
-<li>设置画布属性(canvas.getContext() 2d or 3d)</li>
-<li>填充颜色 (canvas.fillStyle())</li>
-<li>首先绘制出一个圆形，设置圆心位置，半径，和园的角度<br>  <em>canvas.arc(x,y,r,deg1,deg2,true/false) canvas.fillStyle() 填充颜色</em></li>
-<li>将绘制圆形的方法进行封装成一个类，通过调用这个类来循环生成圆形</li>
-<li>绘制圆形的运行轨迹，在封装好的类的基础上添加一个移动方法，然后设置定时器，每隔固定时间清除canvas并重新绘制</li>
-<li>调整圆形运行轨迹，当圆形触边的时候，使圆形发生反弹<br>  <em>触及x轴，y的移动方向相反，触及y轴，x轴的移动方向相反</em></li>
-</ul>
-        
-          <a class="article-more-a" href="/2020/05/06/js-canvas-bubble/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">javascript</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">canvas</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/05/06/js-canvas-bubble/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
@@ -1248,10 +1148,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">笔记</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">游戏</a>
               </li>
              
@@ -1260,15 +1156,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">笔记</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">web</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">旅行</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">css</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1276,7 +1168,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">css3</a>
+                <a href="javascript:void(0)" class="js-tag color4">css</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">旅行</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1289,6 +1185,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">html</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">css3</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1312,18 +1212,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">jsonwebtoken</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">redis</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">deepin</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">mysql</a>
               </li>
              
@@ -1336,10 +1224,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">生活</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">node.js</a>
               </li>
              
@@ -1348,11 +1232,23 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">octopress</a>
+                <a href="javascript:void(0)" class="js-tag color3">jsonwebtoken</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">浏览器</a>
+                <a href="javascript:void(0)" class="js-tag color1">redis</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">deepin</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">生活</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">octopress</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1372,6 +1268,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">浏览器</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">经验</a>
               </li>
              
@@ -1384,19 +1284,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">array</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">编码</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">canvas</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">药别停</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1408,15 +1296,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">模式</a>
+                <a href="javascript:void(0)" class="js-tag color2">canvas</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">uni-app</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">colorui</a>
+                <a href="javascript:void(0)" class="js-tag color4">药别停</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1428,15 +1312,31 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">array</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">uni-app</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">colorui</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">模式</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">性能</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">故事</a>
+                <a href="javascript:void(0)" class="js-tag color4">ES6</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">ES6</a>
+                <a href="javascript:void(0)" class="js-tag color3">故事</a>
               </li>
              
               <li class="article-tag-list-item">
