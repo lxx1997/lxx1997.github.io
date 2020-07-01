@@ -10,12 +10,12 @@ tags:
 ---
 
 ### 前端
-  前端主要使用typescript和uniapp进行搭建框架和代码实现，页面结构使用uniapp的样式组件color-ui，图标库使用阿里巴巴矢量图标库
+  前端主要使用 (_typescript 已废弃_)javascript 和uniapp进行搭建框架和代码实现，页面结构使用uniapp的样式组件color-ui，图标库使用阿里巴巴矢量图标库
   前端git地址: [eggjs-uniapp](https://github.com/lxx1997/eggjs-uniapp)
 
 
 #### 前端使用技术及bug
-
+<!-- more -->
 ##### typescript 使用
 
 * this的使用
@@ -43,7 +43,12 @@ tags:
   }
 ~~~
 
+#### 前端进度
 
+**2020-05-17**  更换了ui插件 uview 由于typescript对于插件引入不行，决定更换语言 换成javascript，进行项目重构和页面复制
+
+
+**2020-05-19**  完成作者作品列表和作品详情页面
 
 ### 后台
   后台主要使用eggjs 以及各种第三方插件
@@ -56,5 +61,8 @@ tags:
 * redis使用: 参考文章 [egg-redis](/2020/04/10/egg-jwt/)
 
 * 身份验证 token: 参考文章 [身份验证](/2020/04/10/egg-jwt/)
-#### 后台bug及解决方案
+#### 后台进度
 
+**2020-04~2020-05-18**  注册，登录，token验证，用户个人信息获取，用户个人信息修改
+
+**2020-05-19**  编写小说上传接口 
