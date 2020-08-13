@@ -173,7 +173,7 @@ tags:
       price: number
     }
     interface Alarm {
-      price: price：number
+      price: number
       weight: number
     }
 
