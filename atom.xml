@@ -2064,9 +2064,9 @@
     </summary>
     
     
-      <category term="主题" scheme="/tags/%E4%B8%BB%E9%A2%98/"/>
-    
       <category term="octopress" scheme="/tags/octopress/"/>
+    
+      <category term="主题" scheme="/tags/%E4%B8%BB%E9%A2%98/"/>
     
   </entry>
   
