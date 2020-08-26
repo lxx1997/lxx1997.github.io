@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="/"/>
-  <updated>2020-08-14T01:23:03.489Z</updated>
+  <updated>2020-08-26T02:51:34.531Z</updated>
   <id>/</id>
   
   <author>
@@ -15,6 +15,60 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>electron - 使用javascript编写pc应用 - 01</title>
+    <link href="/2020/08/20/electron-study-01/"/>
+    <id>/2020/08/20/electron-study-01/</id>
+    <published>2020-08-20T01:30:05.000Z</published>
+    <updated>2020-08-26T02:51:34.531Z</updated>
+    
+    <content type="html"><![CDATA[<p>  在<a href="https://www.electronjs.org/" target="_blank" rel="noopener">electron官网</a>根据文档指示，下载了一个electron模板并安装依赖成功运行</p><h2 id="版本发布"><a href="#版本发布" class="headerlink" title="版本发布"></a>版本发布</h2><p>  插件： <code>electron-packager</code></p><p>  安装： <code>npm install -g electron-packager</code></p><p>  打包： <code>package&quot;: &quot;electron-packager ./ demo_app --platform=win32 --out ../demo_app_release --version 1.4.13 --overwrite --icon=./images/app.ico</code></p><h2 id="模块"><a href="#模块" class="headerlink" title="模块"></a>模块</h2><p>  electron 提供了许多api来方便我们调用</p><h4 id="Dialog模块"><a href="#Dialog模块" class="headerlink" title="Dialog模块"></a>Dialog模块</h4><ul><li>showOpenDialog(<em>browserWindow</em>, options, <em>callback</em>)<ul><li><code>_browserWindow_</code> BrowserWindow (可选)</li></ul></li></ul>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;  在&lt;a href=&quot;https://www.electronjs.org/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;electron官网&lt;/a&gt;根据文档指示，下载了一个electron模板并安装依赖成功运行&lt;/p&gt;
+&lt;h2 id=&quot;版本发布&quot;&gt;&lt;
+      
+    
+    </summary>
+    
+    
+      <category term="css" scheme="/tags/css/"/>
+    
+      <category term="javascript" scheme="/tags/javascript/"/>
+    
+      <category term="html" scheme="/tags/html/"/>
+    
+      <category term="electron" scheme="/tags/electron/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>第三方插件安装采坑  -  01</title>
+    <link href="/2020/08/19/npm-third-party-plugin-in/"/>
+    <id>/2020/08/19/npm-third-party-plugin-in/</id>
+    <published>2020-08-19T09:16:20.000Z</published>
+    <updated>2020-08-19T09:21:40.281Z</updated>
+    
+    <content type="html"><![CDATA[<p>  此博客用来记录使用第三方插件安装及使用的时候采坑记录</p><h4 id="electron"><a href="#electron" class="headerlink" title="electron"></a>electron</h4><p>  安装 <code>npm install</code></p><ul><li><p>报错</p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Error</span>: read ECONNRESET</span><br><span class="line"># 或者</span><br><span class="line"><span class="built_in">Error</span>: Electron failed to install correctly ...</span><br></pre></td></tr></table></figure></li><li><p>解决方式</p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 设置镜像</span></span><br><span class="line"><span class="keyword">set</span> "ELECTRON_MIRROR=http://npm.taobao.org/mirrors/electron"</span><br><span class="line">// 安装</span><br><span class="line">npm install</span><br></pre></td></tr></table></figure></li></ul>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;  此博客用来记录使用第三方插件安装及使用的时候采坑记录&lt;/p&gt;
+&lt;h4 id=&quot;electron&quot;&gt;&lt;a href=&quot;#electron&quot; class=&quot;headerlink&quot; title=&quot;electron&quot;&gt;&lt;/a&gt;electron&lt;/h4&gt;&lt;p&gt;  安装 &lt;code
+      
+    
+    </summary>
+    
+    
+      <category term="npm" scheme="/tags/npm/"/>
+    
+  </entry>
   
   <entry>
     <title>HOW TO 制作一个简易的弹幕demo</title>
@@ -376,9 +430,9 @@
     </summary>
     
     
-      <category term="eggjs" scheme="/tags/eggjs/"/>
-    
       <category term="typescript" scheme="/tags/typescript/"/>
+    
+      <category term="eggjs" scheme="/tags/eggjs/"/>
     
   </entry>
   
@@ -422,9 +476,9 @@
     </summary>
     
     
-      <category term="eggjs" scheme="/tags/eggjs/"/>
-    
       <category term="typescript" scheme="/tags/typescript/"/>
+    
+      <category term="eggjs" scheme="/tags/eggjs/"/>
     
       <category term="uni-app" scheme="/tags/uni-app/"/>
     
@@ -1743,9 +1797,9 @@
     </summary>
     
     
-      <category term="js" scheme="/tags/js/"/>
-    
       <category term="web" scheme="/tags/web/"/>
+    
+      <category term="js" scheme="/tags/js/"/>
     
   </entry>
   
@@ -1765,9 +1819,9 @@
     </summary>
     
     
-      <category term="html5" scheme="/tags/html5/"/>
-    
       <category term="web" scheme="/tags/web/"/>
+    
+      <category term="html5" scheme="/tags/html5/"/>
     
   </entry>
   
