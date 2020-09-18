@@ -10,13 +10,13 @@ tags:
 
   * accesskey 规定激活元素的快捷键，使元素获得焦点（Opera浏览器不支持此选项）
 
-    以下元素支持accesskey <a>, <area>, <button>, <input>, <label>, <legend> 以及 <textarea>
+    以下元素支持accesskey a, area, button, input, label, legend 以及 textarea
 
   * contenteditable 规定元素内容是否可编辑，如果元素未设置contenteditable 属性，那么元素将会从其父元素继承该属性
 
     `contenteditable = true | false`
   
-  * contextmenu 规定 <div> 元素的上下文菜单。上下文菜单会在用户右键点击元素时出现，contextmenu 属性的值是要打开的 <menu> 元素的 id，**目前只有fireFox支持**
+  * contextmenu 规定 div 元素的上下文菜单。上下文菜单会在用户右键点击元素时出现，contextmenu 属性的值是要打开的 menu 元素的 id，**目前只有fireFox支持**
 
     ~~~html
       <div contextmenu="mymenu">
@@ -32,7 +32,7 @@ tags:
 
   * dir 属性规定元素内容的文本方向 `ltr`: 从左到右 `rtl`: 从右到左
 
-    *dir属性在以下标签中无效<base>, <br>, <frame>, <frameset>, <hr>, <iframe>, <param> 以及 <script>*
+    *dir属性在以下标签中无效base, br, frame, frameset, hr, iframe, param 以及 script*
 
   * draggable 规定元素是否可拖拽 `true|false|auto`
 
@@ -92,21 +92,21 @@ tags:
 
   * hidden 规定元素是否显示 是布尔属性 hidden属性可以用于防止用户查看元素，知道匹配某些条件
 
-    *在 XHTML 中，属性简写是禁止的，hidden 属性必须定义为 <element hidden="hidden">*
+    *在 XHTML 中，属性简写是禁止的，hidden 属性必须定义为 `<element hidden="hidden">`*
 
   * lang 规定了元素内容的语言 `zh,en`
 
-    *lang 属性在以下标签中无效：<base>, <br>, <frame>, <frameset>, <hr>, <iframe>, <param> 以及 <script>。*
+    *lang 属性在以下标签中无效：`<base>, <br>, <frame>, <frameset>, <hr>, <iframe>, <param> 以及 <script>`。*
 
   * spellcheck 规定是否对元素进行拼写和语法检查
 
     * input 元素中的文本值（非密码）
-    * <textarea> 元素中的文本
+    * `<textarea>` 元素中的文本
     * 可编辑元素中的文本
 
   * tabindex 规定元素的 tab 键控制次序（当 tab 键用于导航时）
 
-    *以下元素支持 tabindex 属性：<a>, <area>, <button>, <input>, <object>, <select> 以及 <textarea>,几乎所有浏览器均 tabindex 属性，除了 Safari*
+    *以下元素支持 tabindex 属性：`<a>, <area>, <button>, <input>, <object>, <select> 以及 <textarea>`,几乎所有浏览器均 tabindex 属性，除了 Safari*
 
   * translate 规定不应翻译某些元素
 
@@ -174,23 +174,23 @@ tags:
 
   * base 标签
 
-    <base href="http://www.baidu.com/static/">
+    `<base href="http://www.baidu.com/static/">`
 
-    <base> 标签为页面上所有链接规定默认地址和默认目标，在通常情况下浏览器会从单签文档的url中提取响应的元素来填写URL中的空白，但是<base>标签可以改变着一点，浏览器随后将不再使用当前文档的url，而是使用指定的基本url，包括<a>,<img>,<link>,<form>标签中的URL
+    `<base>` 标签为页面上所有链接规定默认地址和默认目标，在通常情况下浏览器会从单签文档的url中提取响应的元素来填写URL中的空白，但是`<base>`标签可以改变着一点，浏览器随后将不再使用当前文档的url，而是使用指定的基本url，包括`<a>`,`<img>`,`<link>`,`<form>`标签中的URL
 
-    **<base>标签必须位于head元素内部**
+    **`<base>`标签必须位于head元素内部**
 
   * basefont 标签
 
-    <basefont color="red" size="5"> 
+    `<basefont color="red" size="5">` 
 
     规定页面上默认字体颜色和字号, *主流浏览器暂不支持此标签*
 
   * blockquote 标签
 
-   <blockquote> 标签定义块引用， 标签中的所有文本都会从常规文本中分离出去，经常左右两边有间距，而且有时会使用斜体，也就是说块引用拥有自己的空间
+   `<blockquote>` 标签定义块引用， 标签中的所有文本都会从常规文本中分离出去，经常左右两边有间距，而且有时会使用斜体，也就是说块引用拥有自己的空间
 
-   把页面作为 strict XHTML 进行验证，那么 <blockquote> 元素必须包含块级元素
+   把页面作为 strict XHTML 进行验证，那么 `<blockquote>` 元素必须包含块级元素
 
   * datalist 标签
 
@@ -220,7 +220,7 @@ tags:
       </details>
     ~~~
 
-    *目前只有 Chrome 支持 <details> 标签。*
+    *目前只有 Chrome 支持 `<details>` 标签。*
 
   * dialog 标签 
 
@@ -228,7 +228,7 @@ tags:
 
   * embed 标签
   
-    <embed> 标签定义嵌入的内容，比如插件。
+    `<embed>` 标签定义嵌入的内容，比如插件。
 
     ~~~js
       <embed src="helloworld.swf" type="MIME_type" />
@@ -246,9 +246,9 @@ tags:
       </form>
     ~~~
 
-    <fieldset> 元素可将表单内的相关元素分组，将表单内容的一部分打包，生成一组相关表单的字段
+    `<fieldset>` 元素可将表单内的相关元素分组，将表单内容的一部分打包，生成一组相关表单的字段
 
-    <legend> 标签为 <fieldset> 元素定义标题。
+    `<legend>` 标签为` <fieldset>` 元素定义标题。
 
   * figcaption 标签
 
@@ -261,7 +261,7 @@ tags:
       </figure>
     ~~~
 
-    <figcaption> 标签定义 figure 元素的标题,应该被置于 "figure" 元素的第一个或最后一个子元素的位置
+    `<figcaption>` 标签定义 figure 元素的标题,应该被置于 "figure" 元素的第一个或最后一个子元素的位置
 
   * frame 标签
 
@@ -273,7 +273,7 @@ tags:
       </frameset>
     ~~~
 
-    <frame> 标签定义 frameset 中的一个特定的窗口
+    `<frame>` 标签定义 frameset 中的一个特定的窗口
 
   * frameset 标签
 
@@ -337,11 +337,11 @@ tags:
       </form>
     ~~~
 
-    <keygen> 标签规定用于表单的密钥对生成器字段。当提交表单时，私钥存储在本地，公钥发送到服务器
+    `<keygen>` 标签规定用于表单的密钥对生成器字段。当提交表单时，私钥存储在本地，公钥发送到服务器
 
   * **link** 标签
 
-    <link> 标签定义文档与外部资源的关系
+    `<link>` 标签定义文档与外部资源的关系
 
     * href 规定被链接文档的位置
     * rel  `alternate/author/elp/icon/licence/next/pingback/prefetch/prev/search/sidebar/stylesheet/tag`  规定当前文档与被链接文档之间的关系
@@ -363,11 +363,11 @@ tags:
 
   * mark 标签
 
-    <mark> 标签定义带有记号的文本。请在需要突出显示文本时使用 <m> 标签
+    `<mark>` 标签定义带有记号的文本。请在需要突出显示文本时使用 `<m>`标签
 
   * meta 标签
 
-    <meta> 元素可提供有关页面的元信息（meta-information），比如针对搜索引擎和更新频度的描述和关键词,<meta> 标签位于文档的头部，不包含任何内容。<meta> 标签的属性定义了与文档相关联的名称/值对
+    `<meta>` 元素可提供有关页面的元信息（meta-information），比如针对搜索引擎和更新频度的描述和关键词,`<meta>` 标签位于文档的头部，不包含任何内容。`<meta>` 标签的属性定义了与文档相关联的名称/值对
 
     * content 定义与 http-equiv 或 name 属性相关的元信息
     * http-equiv `content-type/expires/refresh/set-cookie`  把 content 属性关联到 HTTP 头部
@@ -382,7 +382,7 @@ tags:
       <meter value="3" min="0" max="10">十分之三</meter>
     ~~~
 
-    <meter> 标签定义已知范围或分数值内的标量测量。也被称为 gauge（尺度）
+    `<meter>` 标签定义已知范围或分数值内的标量测量。也被称为 gauge（尺度）
   
   * object 标签
 
