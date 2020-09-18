@@ -8,18 +8,18 @@
   <link rel="dns-prefetch" href>
   <title>electron - 使用javascript编写pc应用 - 01 | lxx的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="在electron官网根据文档指示，下载了一个electron模板并安装依赖成功运行 版本发布  插件： electron-packager   安装： npm install -g electron-packager   打包： package&amp;quot;: &amp;quot;electron-packager ./ demo_app --platform=win32 --out ../demo_">
+  <meta name="description" content="在electron官网根据文档指示，下载了一个electron模板并安装依赖成功运行   练习项目git地址">
 <meta name="keywords" content="css,javascript,html,electron">
 <meta property="og:type" content="article">
 <meta property="og:title" content="electron - 使用javascript编写pc应用 - 01">
 <meta property="og:url" content="/2020/08/20/electron-study-01/index.html">
 <meta property="og:site_name" content="lxx的博客">
-<meta property="og:description" content="在electron官网根据文档指示，下载了一个electron模板并安装依赖成功运行 版本发布  插件： electron-packager   安装： npm install -g electron-packager   打包： package&amp;quot;: &amp;quot;electron-packager ./ demo_app --platform=win32 --out ../demo_">
+<meta property="og:description" content="在electron官网根据文档指示，下载了一个electron模板并安装依赖成功运行   练习项目git地址">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-08-26T02:51:34.531Z">
+<meta property="og:updated_time" content="2020-08-28T03:51:53.976Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="electron - 使用javascript编写pc应用 - 01">
-<meta name="twitter:description" content="在electron官网根据文档指示，下载了一个electron模板并安装依赖成功运行 版本发布  插件： electron-packager   安装： npm install -g electron-packager   打包： package&amp;quot;: &amp;quot;electron-packager ./ demo_app --platform=win32 --out ../demo_">
+<meta name="twitter:description" content="在electron官网根据文档指示，下载了一个electron模板并安装依赖成功运行   练习项目git地址">
   
     <link rel="alternative" href="/atom.xml" title="lxx的博客" type="application/atom+xml">
   
@@ -200,6 +200,8 @@ var _hmt = _hmt || [];
     <div class="article-entry" itemprop="articleBody">
       
         <p>  在<a href="https://www.electronjs.org/" target="_blank" rel="noopener">electron官网</a>根据文档指示，下载了一个electron模板并安装依赖成功运行</p>
+<p>  练习项目<a href="https://github.com/lxx1997/react-electron-app" target="_blank" rel="noopener">git地址</a></p>
+<a id="more"></a>
 <h2 id="版本发布"><a href="#版本发布" class="headerlink" title="版本发布"></a>版本发布</h2><p>  插件： <code>electron-packager</code></p>
 <p>  安装： <code>npm install -g electron-packager</code></p>
 <p>  打包： <code>package&quot;: &quot;electron-packager ./ demo_app --platform=win32 --out ../demo_app_release --version 1.4.13 --overwrite --icon=./images/app.ico</code></p>
@@ -210,7 +212,12 @@ var _hmt = _hmt || [];
 </ul>
 </li>
 </ul>
-
+<h2 id="打包"><a href="#打包" class="headerlink" title="打包"></a>打包</h2><p>  Q:  react 文件打包之后，访问index.html,文件报错找不到js和css文件</p>
+<p>  A:  react 路由模式由 history模式修改为 hash模式, package.json 里面添加配置 <code>homePage: &#39;.&#39;</code></p>
+<p>  Q:  使用electron打包，窗口白屏，无法加载文件</p>
+<p>  A:  将package.json, electron的入口文件，（以及预加载文件preload.js）复制到react打包后的项目 build文件夹中，<br>      然后修改electron的入口文件<br>      electron.js</p>
+<pre><code><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> &#123;app, BrowserWindow&#125; = <span class="built_in">require</span>(<span class="string">'electron'</span>)</span><br><span class="line"><span class="keyword">const</span> path = <span class="built_in">require</span>(<span class="string">'path'</span>)</span><br><span class="line"><span class="keyword">const</span> url = <span class="built_in">require</span>(<span class="string">'url'</span>)</span><br><span class="line"><span class="comment">// const &#123; url &#125; = require('inspector')</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">createWindow</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="comment">// 隐藏菜单栏</span></span><br><span class="line">  <span class="comment">// Menu.setApplicationMenu(null)</span></span><br><span class="line">  <span class="keyword">const</span> mainWindow = <span class="keyword">new</span> BrowserWindow(&#123;</span><br><span class="line">    width: <span class="number">800</span>,</span><br><span class="line">    height: <span class="number">600</span>,</span><br><span class="line">    <span class="comment">// icon: path.join(__dirname, '/assets/img/2.jpg'),</span></span><br><span class="line">    <span class="comment">// title: 'this is a electron'</span></span><br><span class="line">    webPreferences: &#123;</span><br><span class="line">      javascript: <span class="literal">true</span>,</span><br><span class="line">      plugins: <span class="literal">true</span>,</span><br><span class="line">      nodeIntegration: <span class="literal">true</span>, <span class="comment">// 是否集成 Nodejs</span></span><br><span class="line">      webSecurity: <span class="literal">false</span>,</span><br><span class="line">      preload: path.join(__dirname, <span class="string">'preload.js'</span>)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;)</span><br><span class="line"></span><br><span class="line">  <span class="comment">// and load the index.html of the app.</span></span><br><span class="line">  <span class="comment">// mainWindow.loadFile(path.join(__dirname, 'index.html'))</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">// Open the DevTools.</span></span><br><span class="line">  <span class="comment">// mainWindow.webContents.openDevTools()</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">// mainWindow.loadURL('http://localhost:3000/')</span></span><br><span class="line">  <span class="comment">// 加载应用----react 打包</span></span><br><span class="line"></span><br><span class="line">　　mainWindow.loadURL(url.format(&#123;</span><br><span class="line">  　　pathname: path.join(__dirname, <span class="string">'./index.html'</span>),</span><br><span class="line">  　　protocol: <span class="string">'file:'</span>,</span><br><span class="line">  　　slashes: <span class="literal">true</span></span><br><span class="line">　　&#125;))</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">app.whenReady().then(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">  createWindow()</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'ready'</span>)</span><br><span class="line">  app.on(<span class="string">'activate'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (BrowserWindow.getAllWindows().length === <span class="number">0</span>) createWindow()</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">app.on(<span class="string">'window-all-closed'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (process.platform !== <span class="string">'darwin'</span>) app.quit()</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+</code></pre>
       
 
       
@@ -305,6 +312,15 @@ var _hmt = _hmt || [];
   
 <nav id="article-nav">
   
+    <a href="/2020/08/28/react-study-router/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          重拾 react - React-Router
+        
+      </div>
+    </a>
+  
   
     <a href="/2020/08/19/npm-third-party-plugin-in/" id="article-nav-older" class="article-nav-link-wrap">
       <div class="article-nav-title">第三方插件安装采坑  -  01</div>
@@ -334,7 +350,7 @@ var _hmt = _hmt || [];
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#版本发布"><span class="toc-number">1.</span> <span class="toc-text">版本发布</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#模块"><span class="toc-number">2.</span> <span class="toc-text">模块</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Dialog模块"><span class="toc-number">2.0.1.</span> <span class="toc-text">Dialog模块</span></a></li></ol></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#版本发布"><span class="toc-number">1.</span> <span class="toc-text">版本发布</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#模块"><span class="toc-number">2.</span> <span class="toc-text">模块</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Dialog模块"><span class="toc-number">2.0.1.</span> <span class="toc-text">Dialog模块</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#打包"><span class="toc-number">3.</span> <span class="toc-text">打包</span></a></li></ol>
                     </div>
                 </span>
             </div>
@@ -454,7 +470,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">web</a>
+                <a href="javascript:void(0)" class="js-tag color3">js</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">html5</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -466,11 +486,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">js</a>
+                <a href="javascript:void(0)" class="js-tag color3">笔记</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">html5</a>
+                <a href="javascript:void(0)" class="js-tag color4">web</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -478,31 +498,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">笔记</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">browser</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">localStorage</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">indexedDB</a>
+                <a href="javascript:void(0)" class="js-tag color4">css</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">coffeescript</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">css3</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">css</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -518,11 +518,31 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">typescript</a>
+                <a href="javascript:void(0)" class="js-tag color5">css3</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">browser</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">localStorage</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">indexedDB</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">eggjs</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">swagger-ui</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">typescript</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -531,10 +551,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">chrome</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">swagger-ui</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -550,6 +566,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">node.js</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">后台</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">mysql</a>
               </li>
              
@@ -562,27 +586,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">node.js</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">后台</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">octopress</a>
+                <a href="javascript:void(0)" class="js-tag color4">electron</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">生活</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">安全</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">黑科技</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -598,6 +606,22 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">octopress</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">HTML</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">安全</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">黑科技</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">function</a>
               </li>
              
@@ -610,19 +634,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">HTML</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">arguments.callee</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">array</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">canvas</a>
+                <a href="javascript:void(0)" class="js-tag color3">编码</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -634,15 +650,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">编码</a>
+                <a href="javascript:void(0)" class="js-tag color2">canvas</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">arguments.callee</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">药别停</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">模式</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -651,6 +667,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">nodeJs</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">模式</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -663,6 +683,34 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">npm</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">react</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">less</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">webpack</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">react-app-rewired</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">customize-cra</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">router</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">antd</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -695,14 +743,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">vue</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">webpack</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">electron</a>
               </li>
             
             <div class="clearfix"></div>

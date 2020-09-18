@@ -160,6 +160,589 @@ var _hmt = _hmt || [];
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-react-study-config" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+
+  <div class="article-inner">
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <hr>
+<p>title: react - 学习之路 - 配置<br>date: 2020-09-18 09:53:38</p>
+<h2 id="tags"><a href="#tags" class="headerlink" title="tags:"></a>tags:</h2><p>  Q: 如何配置路径别名</p>
+<p>  A: </p>
+<ul>
+<li><p>前置条件 安装 <code>npm react-app-rewired --save-dev</code></p>
+<p>根目录（即src所在目录）创建<code>config-overrides.js</code>, 添加如下内容</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> &#123; override, fixBabelImports, addWebpackAlias &#125; = <span class="built_in">require</span>(<span class="string">'customize-cra'</span>)</span><br><span class="line"><span class="keyword">const</span> path = <span class="built_in">require</span>(<span class="string">'path'</span>)</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">resolve</span>(<span class="params">dir</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> path.join(__dirname, <span class="string">'.'</span>, dir)</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">module</span>.exports = override(</span><br><span class="line">    addWebpackAlias(&#123;</span><br><span class="line">        [<span class="string">"@"</span>]: path.resolve(__dirname, <span class="string">"src"</span>)</span><br><span class="line">    &#125;)</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<p>修改 <code>package.json</code> 中的启动命令</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"script"</span>: &#123;</span><br><span class="line">  <span class="string">"dev"</span>: <span class="string">"react-app-rewired start"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<pre><code>修改完成之后重新启动
+</code></pre>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/09/18/react-study-config/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-react-study-error" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+
+  <div class="article-inner">
+    
+      <!-- <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/09/18/react-study-error/">react - 学习之路 - 问题解决集锦</a>
+    </h1>
+  
+
+        
+        <a href="/2020/09/18/react-study-error/" class="archive-article-date">
+  	<time datetime="2020-09-18T01:49:13.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-09-18</time>
+</a>
+        
+      </header> -->
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/09/18/react-study-error/">react - 学习之路 - 问题解决集锦</a>
+    </h1>
+  
+
+        
+        <a href="/2020/09/18/react-study-error/" class="archive-article-date">
+  	<time datetime="2020-09-18T01:49:13.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-09-18</time>
+</a>
+        
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <ul>
+<li><p>Q: 如何将带有html标签的字符串以html的形式在div等元素中显示出来</p>
+<p>A: 使用元素的 <code>dangerouslySetInnerHTML</code> 可以将带有html标签的字符串转化为html</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dangerouslySetInnerHTML=&#123;&#123; __html:item.content&#125;&#125;（vue中直接使用v-html就可以成功转化）</span><br></pre></td></tr></table></figure></li>
+</ul>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/09/18/react-study-error/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-react-less-loader" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+
+  <div class="article-inner">
+    
+      <!-- <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/09/03/react-less-loader/">react 项目中使用less</a>
+    </h1>
+  
+
+        
+        <a href="/2020/09/03/react-less-loader/" class="archive-article-date">
+  	<time datetime="2020-09-03T07:30:35.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-09-03</time>
+</a>
+        
+      </header> -->
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/09/03/react-less-loader/">react 项目中使用less</a>
+    </h1>
+  
+
+        
+        <a href="/2020/09/03/react-less-loader/" class="archive-article-date">
+  	<time datetime="2020-09-03T07:30:35.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-09-03</time>
+</a>
+        
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="插件安装"><a href="#插件安装" class="headerlink" title="插件安装"></a>插件安装</h2>  <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install react-app-rewired customize-cra babel-plugin-<span class="keyword">import</span> -D</span><br></pre></td></tr></table></figure>
+<p>  在项目根目录创建文件 config-overrides.js</p>
+  <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> &#123;...&#125; = <span class="built_in">require</span>(<span class="string">'customize-cra'</span>);</span><br><span class="line"><span class="built_in">module</span>.exports = override(</span><br><span class="line">    ...</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<h2 id="react-按需加载配置"><a href="#react-按需加载配置" class="headerlink" title="react 按需加载配置"></a>react 按需加载配置</h2>  <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> &#123; override, fixBabelImports &#125; = <span class="built_in">require</span>(<span class="string">"customize-cra"</span>);</span><br><span class="line"><span class="built_in">module</span>.exports = override(</span><br><span class="line">    fixBabelImports(<span class="string">'import'</span>, &#123;</span><br><span class="line">        libraryName: <span class="string">'antd'</span>,</span><br><span class="line">        libraryDirectory: <span class="string">'es'</span>,</span><br><span class="line">        style: <span class="literal">true</span>,<span class="comment">//或者css, true代表运用less</span></span><br><span class="line">    &#125;),</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<p>  修改package.json</p>
+  <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"scripts"</span>: &#123;</span><br><span class="line">  <span class="string">"start"</span>: <span class="string">"react-app-rewired start"</span>,</span><br><span class="line">  <span class="string">"build"</span>: <span class="string">"react-app-rewired build"</span>,</span><br><span class="line">  <span class="string">"test"</span>: <span class="string">"react-app-rewired test"</span>,</span><br><span class="line">  <span class="string">"eject"</span>: <span class="string">"react-app-rewired eject"</span></span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+<p>  编译less文件</p>
+  <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">yarn add --dev less less-loader <span class="comment">//less-loader用5.0版本，高版本停用了一些配属性//config-overrides.js内容</span></span><br><span class="line"><span class="keyword">const</span> &#123; override,addLessLoader&#125; = <span class="built_in">require</span>(<span class="string">"customize-cra"</span>);<span class="built_in">module</span>.exports = override(</span><br><span class="line">  　　　addLessLoader(&#123;</span><br><span class="line">          javascriptEnabled: <span class="literal">true</span>,</span><br><span class="line">          modifyVars: &#123;&#125;</span><br><span class="line">      &#125;),</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>装饰器</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">npm install -D @babel/plugin-proposal-decorators</span><br><span class="line"><span class="comment">//config-overrides.js</span></span><br><span class="line"><span class="keyword">const</span> &#123; override, addDecoratorsLegacy&#125; = <span class="built_in">require</span>(<span class="string">'customize-cra'</span>);</span><br><span class="line"><span class="built_in">module</span>.exports = override(</span><br><span class="line">  addDecoratorsLegacy()</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="问题解决"><a href="#问题解决" class="headerlink" title="问题解决"></a>问题解决</h2><ul>
+<li><p>出现如下报错</p>
+<p>ValidationError: Invalid options object. Less Loader has been initialized using an options object that does not match the API schema.<br>options has an unknown property ‘modifyVars’. These properties are valid:<br>object { lessOptions?, prependData?, appendData?, sourceMap?, implementation? }。</p>
+<p><strong>解决方案</strong><br>将</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">addLessLoader(&#123;</span><br><span class="line">  javascriptEnabled: <span class="literal">true</span>,</span><br><span class="line">  modifyVars: &#123;&#125;</span><br><span class="line">&#125;),</span><br></pre></td></tr></table></figure>
+<p>修改为</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">addLessLoader(&#123;</span><br><span class="line">  lessOptions: &#123;</span><br><span class="line">    javascriptEnabled: <span class="literal">true</span>,</span><br><span class="line">    modifyVars: &#123;&#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;),</span><br></pre></td></tr></table></figure></li>
+</ul>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">react</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">less</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">webpack</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">react-app-rewired</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">customize-cra</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/09/03/react-less-loader/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-react-study" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+
+  <div class="article-inner">
+    
+      <!-- <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/08/28/react-study/">重拾 react</a>
+    </h1>
+  
+
+        
+        <a href="/2020/08/28/react-study/" class="archive-article-date">
+  	<time datetime="2020-08-28T07:11:36.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-28</time>
+</a>
+        
+      </header> -->
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/08/28/react-study/">重拾 react</a>
+    </h1>
+  
+
+        
+        <a href="/2020/08/28/react-study/" class="archive-article-date">
+  	<time datetime="2020-08-28T07:11:36.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-28</time>
+</a>
+        
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>  由于最近一段时间一直在使用vue做项目，最近打算重拾react，在此记录react的点滴学习，实时更新</p>
+<h2 id="生命周期"><a href="#生命周期" class="headerlink" title="生命周期"></a>生命周期</h2><ul>
+<li><p>routerWillLeave 路由跳转前确认</p>
+<ul>
+<li><code>return false</code> 取消本次跳转</li>
+<li><code>return</code> 返回提示信息，在离开Route前提示用户进行确认</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; Lifecycle &#125; <span class="keyword">from</span> <span class="string">'react-router'</span></span><br><span class="line"><span class="keyword">const</span> Home = React.createClass(&#123;</span><br><span class="line">  <span class="comment">// 假设 Home 是一个 route 组件，它可能会使用</span></span><br><span class="line">  <span class="comment">// Lifecycle mixin 去获得一个 routerWillLeave 方法。</span></span><br><span class="line">  mixins: [ Lifecycle ],</span><br><span class="line">  routerWillLeave(nextLocation) &#123;</span><br><span class="line">    <span class="keyword">if</span> (!<span class="keyword">this</span>.state.isSaved)</span><br><span class="line">      <span class="keyword">return</span> <span class="string">'Your work is not saved! Are you sure you want to leave'</span></span><br><span class="line">  &#125;,</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+        
+          <a class="article-more-a" href="/2020/08/28/react-study/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">javascript</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">react</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/08/28/react-study/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-react-study-antd" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+
+  <div class="article-inner">
+    
+      <!-- <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/08/28/react-study-antd/">重拾 react - React模板 antd</a>
+    </h1>
+  
+
+        
+        <a href="/2020/08/28/react-study-antd/" class="archive-article-date">
+  	<time datetime="2020-08-28T04:05:15.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-28</time>
+</a>
+        
+      </header> -->
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/08/28/react-study-antd/">重拾 react - React模板 antd</a>
+    </h1>
+  
+
+        
+        <a href="/2020/08/28/react-study-antd/" class="archive-article-date">
+  	<time datetime="2020-08-28T04:05:15.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-28</time>
+</a>
+        
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>  由于最近一段时间一直在使用vue做项目，最近打算重拾react，在此记录react的点滴学习，实时更新</p>
+<p>  antd 是一款优秀的react 前端页面框架</p>
+<h2 id="插件使用"><a href="#插件使用" class="headerlink" title="插件使用"></a>插件使用</h2><p>  插件： <code>antd</code></p>
+<p>  安装： <code>npm install -S antd</code></p>
+<p>  使用： <code>import {Layout, Button} from &#39;antd&#39;</code></p>
+<h2 id="组件"><a href="#组件" class="headerlink" title="组件"></a>组件</h2><ul>
+<li><p>布局 <code>Layout</code></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123;Layout&#125; <span class="keyword">from</span> <span class="string">'antd'</span></span><br><span class="line"><span class="keyword">const</span> &#123;Header,Side,Content,Footer&#125; = Layout</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">javascript</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">react</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">antd</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/08/28/react-study-antd/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-react-study-router" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+
+  <div class="article-inner">
+    
+      <!-- <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/08/28/react-study-router/">重拾 react - React-Router</a>
+    </h1>
+  
+
+        
+        <a href="/2020/08/28/react-study-router/" class="archive-article-date">
+  	<time datetime="2020-08-28T03:52:22.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-28</time>
+</a>
+        
+      </header> -->
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/08/28/react-study-router/">重拾 react - React-Router</a>
+    </h1>
+  
+
+        
+        <a href="/2020/08/28/react-study-router/" class="archive-article-date">
+  	<time datetime="2020-08-28T03:52:22.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-28</time>
+</a>
+        
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>  由于最近一段时间一直在使用vue做项目，最近打算重拾react，在此记录react的点滴学习，实时更新</p>
+<h2 id="插件使用"><a href="#插件使用" class="headerlink" title="插件使用"></a>插件使用</h2><p>  插件： <code>react-router-dom</code></p>
+<p>  安装： <code>npm install -S react-router-dom</code></p>
+<p>  使用： <code>import {Router} from &#39;react-router-dom&#39;</code></p>
+        
+          <a class="article-more-a" href="/2020/08/28/react-study-router/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">javascript</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">react</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">router</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/08/28/react-study-router/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-electron-study-01" class="article article-type-post  article-index" itemscope itemprop="blogPost">
 
   <div class="article-inner">
@@ -197,17 +780,10 @@ var _hmt = _hmt || [];
     <div class="article-entry" itemprop="articleBody">
       
         <p>  在<a href="https://www.electronjs.org/" target="_blank" rel="noopener">electron官网</a>根据文档指示，下载了一个electron模板并安装依赖成功运行</p>
-<h2 id="版本发布"><a href="#版本发布" class="headerlink" title="版本发布"></a>版本发布</h2><p>  插件： <code>electron-packager</code></p>
-<p>  安装： <code>npm install -g electron-packager</code></p>
-<p>  打包： <code>package&quot;: &quot;electron-packager ./ demo_app --platform=win32 --out ../demo_app_release --version 1.4.13 --overwrite --icon=./images/app.ico</code></p>
-<h2 id="模块"><a href="#模块" class="headerlink" title="模块"></a>模块</h2><p>  electron 提供了许多api来方便我们调用</p>
-<h4 id="Dialog模块"><a href="#Dialog模块" class="headerlink" title="Dialog模块"></a>Dialog模块</h4><ul>
-<li>showOpenDialog(<em>browserWindow</em>, options, <em>callback</em>)<ul>
-<li><code>_browserWindow_</code> BrowserWindow (可选)</li>
-</ul>
-</li>
-</ul>
-
+<p>  练习项目<a href="https://github.com/lxx1997/react-electron-app" target="_blank" rel="noopener">git地址</a></p>
+        
+          <a class="article-more-a" href="/2020/08/20/electron-study-01/#more">more >></a>
+        
       
 
       
@@ -572,611 +1148,6 @@ var _hmt = _hmt || [];
 
 
   
-    <article id="post-js-image-compression" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-
-  <div class="article-inner">
-    
-      <!-- <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/08/10/js-image-compression/">使用js压缩图片</a>
-    </h1>
-  
-
-        
-        <a href="/2020/08/10/js-image-compression/" class="archive-article-date">
-  	<time datetime="2020-08-10T02:17:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-10</time>
-</a>
-        
-      </header> -->
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/08/10/js-image-compression/">使用js压缩图片</a>
-    </h1>
-  
-
-        
-        <a href="/2020/08/10/js-image-compression/" class="archive-article-date">
-  	<time datetime="2020-08-10T02:17:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-10</time>
-</a>
-        
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>  压缩图片的方式主要是使用了canvas进行了一次转码和压缩<br>  使用的方法</p>
-<ul>
-<li>var fr =  FileReader()</li>
-<li>fr.readAsDataURL(file)</li>
-<li>Image()</li>
-<li>canvas.toDataURL(imgType, quality)</li>
-</ul>
-<h4 id="FileReader-函数"><a href="#FileReader-函数" class="headerlink" title="FileReader() 函数"></a>FileReader() 函数</h4><ul>
-<li><p>使用</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> reader = <span class="keyword">new</span> FileReader()</span><br><span class="line">reader.onload = <span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(e.target.result)</span><br><span class="line">&#125;</span><br><span class="line">reader.readAsText(file)</span><br></pre></td></tr></table></figure>
-        
-          <a class="article-more-a" href="/2020/08/10/js-image-compression/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">javascript</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">canvas</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/08/10/js-image-compression/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-promise-source-code" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-
-  <div class="article-inner">
-    
-      <!-- <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/08/03/promise-source-code/">Promise 源码解析</a>
-    </h1>
-  
-
-        
-        <a href="/2020/08/03/promise-source-code/" class="archive-article-date">
-  	<time datetime="2020-08-03T02:34:59.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-03</time>
-</a>
-        
-      </header> -->
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/08/03/promise-source-code/">Promise 源码解析</a>
-    </h1>
-  
-
-        
-        <a href="/2020/08/03/promise-source-code/" class="archive-article-date">
-  	<time datetime="2020-08-03T02:34:59.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-03</time>
-</a>
-        
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">promise</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/08/03/promise-source-code/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-svg-study-02" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-
-  <div class="article-inner">
-    
-      <!-- <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/07/30/svg-study-02/">矢量图形 SVG 学习之路 --- 进阶版</a>
-    </h1>
-  
-
-        
-        <a href="/2020/07/30/svg-study-02/" class="archive-article-date">
-  	<time datetime="2020-07-30T06:42:26.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-30</time>
-</a>
-        
-      </header> -->
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/07/30/svg-study-02/">矢量图形 SVG 学习之路 --- 进阶版</a>
-    </h1>
-  
-
-        
-        <a href="/2020/07/30/svg-study-02/" class="archive-article-date">
-  	<time datetime="2020-07-30T06:42:26.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-30</time>
-</a>
-        
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="SVG-滤镜"><a href="#SVG-滤镜" class="headerlink" title="SVG 滤镜"></a>SVG 滤镜</h4><p>  SVG可用的滤镜有以下几种</p>
-<ul>
-<li>feBlend - 与图像相结合的滤镜</li>
-<li>feColorMatrix - 用于彩色滤光片转换</li>
-<li>feComponentTransfer</li>
-<li>feComposite</li>
-<li>feConvolveMatrix</li>
-<li>feDiffuseLighting</li>
-<li>feDisplacementMap</li>
-<li>feFlood</li>
-<li>feGaussianBlur</li>
-<li>feImage</li>
-<li>feMerge</li>
-<li>feMorphology</li>
-<li>feOffset - 过滤阴影</li>
-<li>feSpecularLighting</li>
-<li>feTile</li>
-<li>feTurbulence</li>
-<li>feDistantLight - 用于照明过滤</li>
-<li>fePointLight - 用于照明过滤</li>
-<li><p>feSpotLight - 用于照明过滤</p>
-<p>您可以在每个 SVG 元素上使用多个滤镜！</p>
-        
-          <a class="article-more-a" href="/2020/07/30/svg-study-02/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">svg</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/07/30/svg-study-02/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-svg-study-01" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-
-  <div class="article-inner">
-    
-      <!-- <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/07/29/svg-study-01/">矢量图形 SVG 学习之路 --- 基础版</a>
-    </h1>
-  
-
-        
-        <a href="/2020/07/29/svg-study-01/" class="archive-article-date">
-  	<time datetime="2020-07-29T06:33:53.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-29</time>
-</a>
-        
-      </header> -->
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/07/29/svg-study-01/">矢量图形 SVG 学习之路 --- 基础版</a>
-    </h1>
-  
-
-        
-        <a href="/2020/07/29/svg-study-01/" class="archive-article-date">
-  	<time datetime="2020-07-29T06:33:53.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-29</time>
-</a>
-        
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>  SVG意为可缩放矢量图形（Scalable Vector Graphics）<br>  SVG使用XML格式定义图像</p>
-<p>  <strong>如何定义一个SVG图像</strong></p>
-  <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version="1.0" standalone="no"?&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">svg</span> <span class="attr">width</span>=<span class="string">"100%"</span> <span class="attr">height</span>=<span class="string">"100%"</span> <span class="attr">version</span>=<span class="string">"1.1"</span> <span class="attr">xmlns</span>=<span class="string">"http://www.w3.org/2000/svg"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">path</span> <span class="attr">d</span>=<span class="string">"M200 200</span></span></span><br><span class="line"><span class="tag"><span class="string">  C153 334 151 334 151 334</span></span></span><br><span class="line"><span class="tag"><span class="string">  C151 339 153 344 156 344</span></span></span><br><span class="line"><span class="tag"><span class="string">  C164 344 171 339 171 334</span></span></span><br><span class="line"><span class="tag"><span class="string">  C171 322 164 314 156 314</span></span></span><br><span class="line"><span class="tag"><span class="string">  C142 314 131 322 131 334</span></span></span><br><span class="line"><span class="tag"><span class="string">  C131 350 142 364 156 364</span></span></span><br><span class="line"><span class="tag"><span class="string">  C175 364 191 350 191 334</span></span></span><br><span class="line"><span class="tag"><span class="string">  C191 311 175 294 156 294</span></span></span><br><span class="line"><span class="tag"><span class="string">  C131 294 111 311 111 334</span></span></span><br><span class="line"><span class="tag"><span class="string">  C111 361 131 384 156 384</span></span></span><br><span class="line"><span class="tag"><span class="string">  C186 384 211 361 211 334</span></span></span><br><span class="line"><span class="tag"><span class="string">  C211 300 186 274 156 274"</span> <span class="attr">style</span>=<span class="string">"fill:white;stroke:red;stroke-width:2;"</span>&gt;</span><span class="tag">&lt;/<span class="name">path</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">svg</span>&gt;</span></span><br></pre></td></tr></table></figure>
-        
-          <a class="article-more-a" href="/2020/07/29/svg-study-01/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">svg</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/07/29/svg-study-01/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-browser-storage-study" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-
-  <div class="article-inner">
-    
-      <!-- <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/07/22/browser-storage-study/">浏览器存储方式学习  cookie, session, localstorage, indexedDB</a>
-    </h1>
-  
-
-        
-        <a href="/2020/07/22/browser-storage-study/" class="archive-article-date">
-  	<time datetime="2020-07-22T07:27:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-22</time>
-</a>
-        
-      </header> -->
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/07/22/browser-storage-study/">浏览器存储方式学习  cookie, session, localstorage, indexedDB</a>
-    </h1>
-  
-
-        
-        <a href="/2020/07/22/browser-storage-study/" class="archive-article-date">
-  	<time datetime="2020-07-22T07:27:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-22</time>
-</a>
-        
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="浏览器存储方式"><a href="#浏览器存储方式" class="headerlink" title="浏览器存储方式"></a>浏览器存储方式</h4><ul>
-<li><p>cookie： cookie相当于客户端和服务器之间进行信息交互的一个标识，每次客户端访问服务器的时候都会携带上cookie，这样服务器就可以知道是谁来访问了。</p>
-</li>
-<li><p>Storage: Storage 是专门为浏览器存储提供的数据存储机制，分为localStorage和sessionStorage, 保存的数据以键值对的形式存在，并且以文本格式保存</p>
-</li>
-<li><p>indexedDB: indexedDB是运行在浏览器上的非关系型数据库, 一般来说是没有存储上限的, 不仅可以存储字符串, 还可以存储二进制数据</p>
-</li>
-</ul>
-        
-          <a class="article-more-a" href="/2020/07/22/browser-storage-study/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">browser</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">localStorage</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">indexedDB</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/07/22/browser-storage-study/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-typescript-study-05" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-
-  <div class="article-inner">
-    
-      <!-- <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/06/29/typescript-study-05/">TypeScript 学习之路进阶版 - 扩展</a>
-    </h1>
-  
-
-        
-        <a href="/2020/06/29/typescript-study-05/" class="archive-article-date">
-  	<time datetime="2020-06-29T11:39:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-06-29</time>
-</a>
-        
-      </header> -->
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/06/29/typescript-study-05/">TypeScript 学习之路进阶版 - 扩展</a>
-    </h1>
-  
-
-        
-        <a href="/2020/06/29/typescript-study-05/" class="archive-article-date">
-  	<time datetime="2020-06-29T11:39:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-06-29</time>
-</a>
-        
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="代码检查"><a href="#代码检查" class="headerlink" title="代码检查"></a>代码检查</h4><p> eslint 能够发现一些tsc不会关心的错误，检查出一些潜在的问题</p>
-<p> <strong>TypeScript中使用Eslint</strong></p>
-<p>  <strong>eslint安装</strong></p>
-  <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install eslint -S</span><br></pre></td></tr></table></figure>
-<p>  由于ESLint 默认使用<code>Espree</code>进行语法解析，无法识别TypeScript中的一些语法，因此我们需要安装<code>@typescript-eslint/eslint-plugin</code>, 他作为eslint默认规则的补充，提供了一些额外的适用于ts语法的规则</p>
-  <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install --save-dev @typescript-eslint/eslint-plugin</span><br></pre></td></tr></table></figure>
-        
-          <a class="article-more-a" href="/2020/06/29/typescript-study-05/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">typescript</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/06/29/typescript-study-05/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
@@ -1275,7 +1246,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">web</a>
+                <a href="javascript:void(0)" class="js-tag color3">js</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">html5</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1287,11 +1262,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">js</a>
+                <a href="javascript:void(0)" class="js-tag color3">笔记</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">html5</a>
+                <a href="javascript:void(0)" class="js-tag color4">web</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1299,31 +1274,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">笔记</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">browser</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">localStorage</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">indexedDB</a>
+                <a href="javascript:void(0)" class="js-tag color4">css</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">coffeescript</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">css3</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">css</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1339,11 +1294,31 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">typescript</a>
+                <a href="javascript:void(0)" class="js-tag color5">css3</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">browser</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">localStorage</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">indexedDB</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">eggjs</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">swagger-ui</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">typescript</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1352,10 +1327,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">chrome</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">swagger-ui</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1371,6 +1342,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">node.js</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">后台</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">mysql</a>
               </li>
              
@@ -1383,27 +1362,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">node.js</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">后台</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">octopress</a>
+                <a href="javascript:void(0)" class="js-tag color4">electron</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">生活</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">安全</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">黑科技</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1419,6 +1382,22 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">octopress</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">HTML</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">安全</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">黑科技</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">function</a>
               </li>
              
@@ -1431,19 +1410,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">HTML</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">arguments.callee</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">array</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">canvas</a>
+                <a href="javascript:void(0)" class="js-tag color3">编码</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1455,15 +1426,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">编码</a>
+                <a href="javascript:void(0)" class="js-tag color2">canvas</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">arguments.callee</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">药别停</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">模式</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1472,6 +1443,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">nodeJs</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">模式</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1484,6 +1459,34 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">npm</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">react</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">less</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">webpack</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">react-app-rewired</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">customize-cra</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">router</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">antd</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1516,14 +1519,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">vue</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">webpack</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">electron</a>
               </li>
             
             <div class="clearfix"></div>
