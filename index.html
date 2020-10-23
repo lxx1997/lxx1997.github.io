@@ -160,6 +160,218 @@ var _hmt = _hmt || [];
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-vue中使用typescript" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+
+  <div class="article-inner">
+    
+      <!-- <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/10/22/vue中使用typescript/">vue中使用typescript</a>
+    </h1>
+  
+
+        
+        <a href="/2020/10/22/vue中使用typescript/" class="archive-article-date">
+  	<time datetime="2020-10-22T07:45:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-10-22</time>
+</a>
+        
+      </header> -->
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/10/22/vue中使用typescript/">vue中使用typescript</a>
+    </h1>
+  
+
+        
+        <a href="/2020/10/22/vue中使用typescript/" class="archive-article-date">
+  	<time datetime="2020-10-22T07:45:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-10-22</time>
+</a>
+        
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>在此记录一下Vue中使用typescript时 遇到的一些问题</p>
+<ul>
+<li>Cannot find module ‘./xxx/xxx’ or its corresponding type declarations<br>原因是ts识别不了vue文件，在引入的最后加上<code>.vue</code>就可以了<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 错误的写法</span></span><br><span class="line"><span class="keyword">import</span> TestLayout <span class="keyword">from</span> <span class="string">'./components/test-layout'</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 正确的写法</span></span><br><span class="line"><span class="keyword">import</span> TestLayout <span class="keyword">from</span> <span class="string">'./components/test-layout.vue'</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>同时贴上我在网上找到的<code>tslint</code>配置</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// tslint.json</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="string">"defaultSeverity"</span>: <span class="string">"warning"</span>,</span><br><span class="line">  <span class="string">"extends"</span>: [</span><br><span class="line">    <span class="string">"tslint:recommended"</span></span><br><span class="line">  ],</span><br><span class="line">  <span class="string">"linterOptions"</span>: &#123;</span><br><span class="line">    <span class="string">"exclude"</span>: [</span><br><span class="line">      <span class="string">"node_modules/**"</span></span><br><span class="line">    ]</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="string">"rules"</span>: &#123;</span><br><span class="line">    <span class="string">"indent"</span>: [<span class="literal">true</span>, <span class="string">"spaces"</span>, <span class="number">2</span>],</span><br><span class="line">    <span class="string">"interface-name"</span>: <span class="literal">false</span>,</span><br><span class="line">    <span class="string">"no-consecutive-blank-lines"</span>: <span class="literal">false</span>,</span><br><span class="line">    <span class="string">"object-literal-sort-keys"</span>: <span class="literal">false</span>,</span><br><span class="line">    <span class="string">"ordered-imports"</span>: <span class="literal">false</span>,</span><br><span class="line">    <span class="string">"quotemark"</span>: [<span class="literal">true</span>, <span class="string">"single"</span>]</span><br><span class="line">  &#125;,</span><br><span class="line">　<span class="comment">// 禁止自动检测末尾行必须使用逗号，always总是检测，never从不检测，ignore忽略检测</span></span><br><span class="line">　　<span class="string">"trailing-comma"</span>: [<span class="literal">true</span>, &#123;</span><br><span class="line">　　　　<span class="string">"singleline"</span>: <span class="string">"never"</span>,</span><br><span class="line">　　　　<span class="string">"multiline"</span>: &#123;</span><br><span class="line">　　　　　　<span class="string">"objects"</span>: <span class="string">"ignore"</span>,</span><br><span class="line">　　　　　　<span class="string">"arrays"</span>: <span class="string">"always"</span>,</span><br><span class="line">　　　　　　<span class="string">"functions"</span>: <span class="string">"never"</span>,</span><br><span class="line">　　　　　　<span class="string">"typeLiterals"</span>: <span class="string">"ignore"</span></span><br><span class="line">　　　　&#125;</span><br><span class="line">　　&#125;],</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 禁止给类的构造函数的参数添加修饰符</span></span><br><span class="line">  <span class="string">"no-parameter-properties"</span>: <span class="literal">false</span>,</span><br><span class="line">  <span class="comment">// 禁止使用 debugger</span></span><br><span class="line">  <span class="string">"no-debugger"</span>: <span class="literal">false</span>,</span><br><span class="line">  <span class="comment">// 禁止行尾有空格</span></span><br><span class="line">  <span class="string">"no-trailing-whitespace"</span>: <span class="literal">false</span>,</span><br><span class="line">  <span class="comment">// 禁止无用的表达式</span></span><br><span class="line">  <span class="string">"no-unused-expression"</span>: <span class="literal">true</span>,</span><br><span class="line">  <span class="comment">// 定义过的变量必须使用</span></span><br><span class="line">  <span class="string">"no-unused-variable"</span>: <span class="literal">true</span>,</span><br><span class="line">  <span class="comment">// 变量必须先定义后使用</span></span><br><span class="line">  <span class="string">"no-use-before-declare"</span>: <span class="literal">true</span>,</span><br><span class="line">  <span class="comment">// 禁止使用 var</span></span><br><span class="line">  <span class="string">"no-var-keyword"</span>: <span class="literal">true</span>,</span><br><span class="line">  <span class="comment">// 必须使用 === 或 !==，禁止使用 == 或 !=，与 null 比较时除外</span></span><br><span class="line">  <span class="string">"triple-equals"</span>: <span class="literal">true</span>,</span><br><span class="line">  <span class="comment">// 指定类成员的排序规则</span></span><br><span class="line">  <span class="string">"member-ordering"</span>: <span class="literal">false</span>,</span><br><span class="line">  <span class="comment">// 禁止将 this 赋值给其他变量，除非是解构赋值</span></span><br><span class="line">  <span class="string">"no-this-assignment"</span>: [</span><br><span class="line">    <span class="literal">false</span>,</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="string">"allowed-names"</span>: [</span><br><span class="line">        <span class="string">"^self$"</span>,</span><br><span class="line">        <span class="string">"^that$"</span></span><br><span class="line">      ],</span><br><span class="line">      <span class="string">"allow-destructuring"</span>: <span class="literal">true</span></span><br><span class="line">    &#125;</span><br><span class="line">  ],</span><br><span class="line">  <span class="comment">// 必须使用箭头函数，除非是单独的函数声明或是命名函数</span></span><br><span class="line">  <span class="string">"only-arrow-functions"</span>: [</span><br><span class="line">    <span class="literal">true</span>,</span><br><span class="line">    <span class="string">"allow-declarations"</span>,</span><br><span class="line">    <span class="string">"allow-named-functions"</span></span><br><span class="line">  ],</span><br><span class="line">  <span class="comment">// 禁止出现空代码块，允许 catch 是空代码块</span></span><br><span class="line">  <span class="string">"no-empty"</span>: [</span><br><span class="line">    <span class="literal">true</span>,</span><br><span class="line">    <span class="string">"allow-empty-catch"</span></span><br><span class="line">  ],</span><br><span class="line">  <span class="comment">// 禁止无用的类型断言</span></span><br><span class="line">  <span class="string">"no-unnecessary-type-assertion"</span>: <span class="literal">true</span>,</span><br><span class="line">  <span class="comment">// 使用 return; 而不是 return undefined;</span></span><br><span class="line">  <span class="string">"return-undefined"</span>: <span class="literal">true</span>,</span><br><span class="line">  <span class="comment">// 禁止对 array 使用 for in 循环</span></span><br><span class="line">  <span class="string">"no-for-in-array"</span>: <span class="literal">true</span>,</span><br><span class="line">  <span class="string">"comment-format"</span>: [</span><br><span class="line">    <span class="literal">true</span>,</span><br><span class="line">    <span class="string">"check-space"</span></span><br><span class="line">  ],</span><br><span class="line">  <span class="comment">// 单行注释格式化规则</span></span><br><span class="line">  <span class="comment">// 定义函数时如果用到了覆写，则必须将覆写的函数写到一起</span></span><br><span class="line">  <span class="string">"adjacent-overload-signatures"</span>: <span class="literal">true</span>,</span><br><span class="line">  <span class="comment">// 禁止对函数的参数重新赋值</span></span><br><span class="line">  <span class="string">"no-parameter-reassignment"</span>: <span class="literal">true</span>,</span><br><span class="line">  <span class="comment">// if 后面必须有 &#123;，除非是单行 if</span></span><br><span class="line">  <span class="string">"curly"</span>: [</span><br><span class="line">    <span class="literal">true</span>,</span><br><span class="line">    <span class="string">"ignore-same-line"</span></span><br><span class="line">  ],</span><br><span class="line">  <span class="comment">// for in 内部必须有 hasOwnProperty</span></span><br><span class="line">  <span class="string">"forin"</span>: <span class="literal">true</span>,</span><br><span class="line">  <span class="comment">// 禁止在分支条件判断中有赋值操作</span></span><br><span class="line">  <span class="string">"no-conditional-assignment"</span>: <span class="literal">true</span>,</span><br><span class="line">  <span class="comment">// 禁止使用 new 来生成 String, Number 或 Boolean</span></span><br><span class="line">  <span class="string">"no-construct"</span>: <span class="literal">true</span>,</span><br><span class="line">  <span class="comment">// 禁止 super 在一个构造函数中出现两次</span></span><br><span class="line">  <span class="string">"no-duplicate-super"</span>: <span class="literal">true</span>,</span><br><span class="line">  <span class="comment">// 禁止在 switch 语句中出现重复测试表达式的 case</span></span><br><span class="line">  <span class="string">"no-duplicate-switch-case"</span>: <span class="literal">true</span>,</span><br><span class="line">  <span class="comment">// 禁止出现重复的变量定义或函数参数名</span></span><br><span class="line">  <span class="string">"no-duplicate-variable"</span>: [</span><br><span class="line">    <span class="literal">true</span>,</span><br><span class="line">    <span class="string">"check-parameters"</span></span><br><span class="line">  ],</span><br><span class="line">  <span class="comment">// 禁止使用 eval</span></span><br><span class="line">  <span class="string">"no-eval"</span>: <span class="literal">true</span>,</span><br><span class="line">  <span class="comment">// 禁止对对象字面量进行类型断言（断言成 any 是允许的）</span></span><br><span class="line">  <span class="string">"no-object-literal-type-assertion"</span>: <span class="literal">true</span>,</span><br><span class="line">  <span class="comment">// 禁止没必要的 return await</span></span><br><span class="line">  <span class="string">"no-return-await"</span>: <span class="literal">true</span>,</span><br><span class="line">  <span class="comment">// 禁止在数组中出现连续的逗号，如 let foo = [,,]</span></span><br><span class="line">  <span class="string">"no-sparse-arrays"</span>: <span class="literal">true</span>,</span><br><span class="line">  <span class="comment">// 禁止 throw 字符串，必须 throw 一个 Error 对象</span></span><br><span class="line">  <span class="string">"no-string-throw"</span>: <span class="literal">true</span>,</span><br><span class="line">  <span class="comment">// switch 的 case 必须 return 或 break</span></span><br><span class="line">  <span class="string">"no-switch-case-fall-through"</span>: <span class="literal">true</span>,</span><br><span class="line">  <span class="comment">// 使用实例的方法时，必须 bind 到实例上</span></span><br><span class="line">  <span class="string">"no-unbound-method"</span>: [</span><br><span class="line">    <span class="literal">true</span>,</span><br><span class="line">    <span class="string">"ignore-static"</span></span><br><span class="line">  ],</span><br><span class="line">  <span class="comment">// 使用 &#123; ...foo, bar: 1 &#125; 代替 Object.assign(&#123;&#125;, foo, &#123; bar: 1 &#125;)</span></span><br><span class="line">  <span class="comment">// 前者的类型检查更完善</span></span><br><span class="line">  <span class="string">"prefer-object-spread"</span>: <span class="literal">true</span>,</span><br><span class="line">  <span class="comment">// parseInt 必须传入第二个参数</span></span><br><span class="line">  <span class="string">"radix"</span>: <span class="literal">true</span>,</span><br><span class="line">  <span class="comment">// 必须使用 isNaN(foo) 而不是 foo === NaN</span></span><br><span class="line">  <span class="string">"use-isnan"</span>: <span class="literal">true</span>,</span><br><span class="line">  <span class="comment">//</span></span><br><span class="line">  <span class="comment">//</span></span><br><span class="line">  <span class="comment">// 可维护性</span></span><br><span class="line">  <span class="comment">// 这些规则可以增加代码的可维护性</span></span><br><span class="line">  <span class="comment">//</span></span><br><span class="line">  <span class="comment">// 禁止函数的循环复杂度超过 20，https://en.wikipedia.org/wiki/Cyclomatic_complexity</span></span><br><span class="line">  <span class="string">"cyclomatic-complexity"</span>: [</span><br><span class="line">    <span class="literal">true</span>,</span><br><span class="line">    <span class="number">20</span></span><br><span class="line">  ],</span><br><span class="line">  <span class="comment">// 禁止使用废弃（被标识了 @deprecated）的 API</span></span><br><span class="line">  <span class="string">"deprecation"</span>: <span class="literal">true</span>,</span><br><span class="line">  <span class="comment">// 一个缩进必须用四个空格替代</span></span><br><span class="line">  <span class="string">"indent"</span>: [</span><br><span class="line">    <span class="literal">true</span>,</span><br><span class="line">    <span class="string">"spaces"</span>,</span><br><span class="line">    <span class="number">4</span></span><br><span class="line">  ],</span><br><span class="line">  <span class="comment">// 禁止出现重复的 import</span></span><br><span class="line">  <span class="string">"no-duplicate-imports"</span>: <span class="literal">true</span>,</span><br><span class="line">  <span class="comment">// 禁止一个文件中出现多个相同的 namespace</span></span><br><span class="line">  <span class="string">"no-mergeable-namespace"</span>: <span class="literal">true</span>,</span><br><span class="line">  <span class="comment">// 文件类型必须时 utf-8</span></span><br><span class="line">  <span class="string">"encoding"</span>: <span class="literal">true</span>,</span><br><span class="line">  <span class="comment">// import 语句中，关键字之间的间距必须是一个空格</span></span><br><span class="line">  <span class="string">"import-spacing"</span>: <span class="literal">true</span>,</span><br><span class="line">  <span class="comment">// 接口可以 implement extend 和 merge</span></span><br><span class="line">  <span class="string">"interface-over-type-literal"</span>: <span class="literal">true</span>,</span><br><span class="line">  <span class="comment">// new 后面只必须有一个空格</span></span><br><span class="line">  <span class="string">"new-parens"</span>: <span class="literal">true</span>,</span><br><span class="line">  <span class="comment">// 类型断言必须使用 as Type，禁止使用 &lt;Type&gt;</span></span><br><span class="line">  <span class="comment">// &lt;Type&gt; 容易被理解为 jsx</span></span><br><span class="line">  <span class="string">"no-angle-bracket-type-assertion"</span>: <span class="literal">true</span>,</span><br><span class="line">  <span class="comment">// 禁止连续超过三行空行</span></span><br><span class="line">  <span class="string">"no-consecutive-blank-lines"</span>: [</span><br><span class="line">    <span class="literal">true</span>,</span><br><span class="line">    <span class="number">3</span></span><br><span class="line">  ],</span><br><span class="line">  <span class="comment">// 禁止使用特殊空白符（比如全角空格）</span></span><br><span class="line">  <span class="string">"no-irregular-whitespace"</span>: <span class="literal">true</span>,</span><br><span class="line">  <span class="comment">// 禁止使用 JSDoc，因为 TypeScirpt 已经包含了大部分功能</span></span><br><span class="line">  <span class="string">"no-redundant-jsdoc"</span>: <span class="literal">true</span>,</span><br><span class="line">  <span class="comment">// 禁止使用三斜杠引入类型定义文件</span></span><br><span class="line">  <span class="string">"no-reference-import"</span>: <span class="literal">true</span>,</span><br><span class="line">  <span class="comment">// 禁止变量定义时赋值为 undefined</span></span><br><span class="line">  <span class="string">"no-unnecessary-initializer"</span>: <span class="literal">true</span>,</span><br><span class="line">  <span class="comment">// 小数必须以 0. 开头，禁止以 . 开头，并且不能以 0 结尾</span></span><br><span class="line">  <span class="string">"number-literal-format"</span>: <span class="literal">true</span>,</span><br><span class="line">  <span class="comment">// 必须使用 a = &#123;b&#125; 而不是 a = &#123;b: b&#125;</span></span><br><span class="line">  <span class="string">"object-literal-shorthand"</span>: <span class="literal">true</span>,</span><br><span class="line">  <span class="comment">// 变量申明必须每行一个，for 循环的初始条件中除外</span></span><br><span class="line">  <span class="string">"one-variable-per-declaration"</span>: [</span><br><span class="line">    <span class="literal">true</span>,</span><br><span class="line">    <span class="string">"ignore-for-loop"</span></span><br><span class="line">  ],</span><br><span class="line">  <span class="comment">// if 后的 &#123; 禁止换行</span></span><br><span class="line">  <span class="string">"one-line"</span>: <span class="literal">true</span>,</span><br><span class="line">  <span class="comment">// 必须使用单引号，jsx 中必须使用双引号</span></span><br><span class="line">  <span class="string">"quotemark"</span>: [</span><br><span class="line">    <span class="literal">true</span>,</span><br><span class="line">    <span class="string">"single"</span>,</span><br><span class="line">    <span class="string">"jsx-double"</span>,</span><br><span class="line">    <span class="string">"avoid-template"</span>,</span><br><span class="line">    <span class="string">"avoid-escape"</span></span><br><span class="line">  ],</span><br><span class="line">  <span class="comment">// 行尾必须有分号</span></span><br><span class="line">  <span class="string">"semicolon"</span>: [</span><br><span class="line">    <span class="literal">true</span>,</span><br><span class="line">    <span class="string">"always"</span>,</span><br><span class="line">    <span class="string">"ignore-interfaces"</span></span><br><span class="line">  ],</span><br><span class="line">  <span class="comment">// 函数名前必须有空格</span></span><br><span class="line">  <span class="string">"space-before-function-paren"</span>: [</span><br><span class="line">    <span class="literal">true</span>,</span><br><span class="line">    <span class="string">"asyncArrow"</span></span><br><span class="line">  ],</span><br><span class="line">  <span class="comment">// 括号内首尾禁止有空格</span></span><br><span class="line">  <span class="string">"space-within-parens"</span>: [</span><br><span class="line">    <span class="literal">true</span>,</span><br><span class="line">    <span class="number">0</span></span><br><span class="line">  ],</span><br><span class="line">  <span class="comment">// 禁止 finally 内出现 return, continue, break, throw 等</span></span><br><span class="line">  <span class="comment">// finally 会比 catch 先执行</span></span><br><span class="line">  <span class="string">"no-unsafe-finally"</span>: <span class="literal">true</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">typescript</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">vue</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/10/22/vue中使用typescript/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-number-format-methods" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+
+  <div class="article-inner">
+    
+      <!-- <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/09/24/number-format-methods/">一些惊艳的字符串处理方法</a>
+    </h1>
+  
+
+        
+        <a href="/2020/09/24/number-format-methods/" class="archive-article-date">
+  	<time datetime="2020-09-24T07:49:01.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-09-24</time>
+</a>
+        
+      </header> -->
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/09/24/number-format-methods/">一些惊艳的字符串处理方法</a>
+    </h1>
+  
+
+        
+        <a href="/2020/09/24/number-format-methods/" class="archive-article-date">
+  	<time datetime="2020-09-24T07:49:01.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-09-24</time>
+</a>
+        
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="数字格式化"><a href="#数字格式化" class="headerlink" title="数字格式化"></a>数字格式化</h3><p>  描述：将一串<code>123483245678</code> 处理成为 <code>123,483,245,678</code></p>
+<ul>
+<li><p>eg1:<br>自己写的一个比较麻烦的方法</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">  <span class="comment">// 只实现了整数，其他同理，最好在获取到参数之后进行验证，是否符合自己的需求</span></span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">formatNumber</span>(<span class="params">value</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(value)</span><br><span class="line">  <span class="keyword">let</span> arrStr = []</span><br><span class="line">  <span class="keyword">const</span> arr = (value + <span class="string">''</span>).split(<span class="string">','</span>)</span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; arr.length; i++) &#123;</span><br><span class="line">    <span class="keyword">let</span> index = <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">let</span> j = arr[i].length - <span class="number">1</span>; j &gt;= <span class="number">0</span>;j--) &#123;</span><br><span class="line">      <span class="keyword">if</span>(index !== <span class="number">0</span> &amp;&amp; index % <span class="number">3</span> === <span class="number">0</span>) &#123;</span><br><span class="line">      arrStr= [<span class="string">','</span>,...arrStr]</span><br><span class="line">      &#125;</span><br><span class="line">      arrStr= [arr[i][j],...arrStr]</span><br><span class="line">      index++</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> arrStr.join(<span class="string">''</span>)</span><br><span class="line">&#125;</span><br><span class="line">formatNumber(<span class="number">1234567890</span>)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>eg2:<br><strong>toLocaleString</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(<span class="number">123456789</span>).toLocaleString(<span class="string">'en-US'</span>)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>eg3:<br>正则表达式</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">formatNumber</span>(<span class="params">str</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> str.replace(<span class="regexp">/\B(?=(\d&#123;3&#125;)+(?!\d))/g</span>, <span class="string">','</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(formatNumber(<span class="string">"123456789"</span>))</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>eg4:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">formatNumber</span>(<span class="params">str</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> arr = [],</span><br><span class="line">    count = str.length</span><br><span class="line"></span><br><span class="line">  <span class="keyword">while</span> (count &gt;= <span class="number">3</span>) &#123;</span><br><span class="line">    arr.unshift(str.slice(count - <span class="number">3</span>, count))</span><br><span class="line">    count -= <span class="number">3</span></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 如果是不是3的倍数就另外追加到上去</span></span><br><span class="line">  str.length % <span class="number">3</span> &amp;&amp; arr.unshift(str.slice(<span class="number">0</span>, str.length % <span class="number">3</span>))</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> arr.toString()</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(formatNumber(<span class="string">"1234567890"</span>))</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<ul>
+<li><p>eg5:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">formatNumber</span>(<span class="params">str</span>) </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// ["0", "9", "8", "7", "6", "5", "4", "3", "2", "1"]</span></span><br><span class="line">  <span class="keyword">return</span> str.split(<span class="string">""</span>).reverse().reduce(<span class="function">(<span class="params">prev, next, index</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> ((index % <span class="number">3</span>) ? next : (next + <span class="string">','</span>)) + prev</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(formatNumber(<span class="string">"1234567890"</span>))</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">javascript</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">method</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/09/24/number-format-methods/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-react-study-config" class="article article-type-post  article-index" itemscope itemprop="blogPost">
 
   <div class="article-inner">
@@ -947,210 +1159,9 @@ var _hmt = _hmt || [];
 
 
   
-    <article id="post-html-video-chat-bullet" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-
-  <div class="article-inner">
-    
-      <!-- <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/08/13/html-video-chat-bullet/">HOW TO 制作一个简易的弹幕demo</a>
-    </h1>
-  
-
-        
-        <a href="/2020/08/13/html-video-chat-bullet/" class="archive-article-date">
-  	<time datetime="2020-08-13T07:21:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-13</time>
-</a>
-        
-      </header> -->
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/08/13/html-video-chat-bullet/">HOW TO 制作一个简易的弹幕demo</a>
-    </h1>
-  
-
-        
-        <a href="/2020/08/13/html-video-chat-bullet/" class="archive-article-date">
-  	<time datetime="2020-08-13T07:21:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-13</time>
-</a>
-        
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>  闲来无事，对于bili上面的弹幕感兴趣，于是自己打算尝试制作一个简单的弹幕系统</p>
-<h4 id="页面布局"><a href="#页面布局" class="headerlink" title="页面布局"></a>页面布局</h4><p>  首先先创建一个容器用来存放video播放器和弹幕发射器,注意要有一个遮罩层设置透明度为0,用来显示我们输入的弹幕,位于视频的上方,为了使视频的显示不那么突兀,我们可以把存放视频的容器的背景颜色设置成深色或者黑色</p>
-        
-          <a class="article-more-a" href="/2020/08/13/html-video-chat-bullet/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">javascript</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">HTML</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/08/13/html-video-chat-bullet/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-html-label-function" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-
-  <div class="article-inner">
-    
-      <!-- <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/08/11/html-label-function/">HTML 标签及函数</a>
-    </h1>
-  
-
-        
-        <a href="/2020/08/11/html-label-function/" class="archive-article-date">
-  	<time datetime="2020-08-11T02:09:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-11</time>
-</a>
-        
-      </header> -->
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/08/11/html-label-function/">HTML 标签及函数</a>
-    </h1>
-  
-
-        
-        <a href="/2020/08/11/html-label-function/" class="archive-article-date">
-  	<time datetime="2020-08-11T02:09:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-11</time>
-</a>
-        
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="HTML全局属性"><a href="#HTML全局属性" class="headerlink" title="HTML全局属性"></a>HTML全局属性</h4><ul>
-<li><p>accesskey 规定激活元素的快捷键，使元素获得焦点（Opera浏览器不支持此选项）</p>
-<p>以下元素支持accesskey a, area, button, input, label, legend 以及 textarea</p>
-</li>
-<li><p>contenteditable 规定元素内容是否可编辑，如果元素未设置contenteditable 属性，那么元素将会从其父元素继承该属性</p>
-<p><code>contenteditable = true | false</code></p>
-</li>
-<li><p>contextmenu 规定 div 元素的上下文菜单。上下文菜单会在用户右键点击元素时出现，contextmenu 属性的值是要打开的 menu 元素的 id，<strong>目前只有fireFox支持</strong></p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">contextmenu</span>=<span class="string">"mymenu"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">menu</span> <span class="attr">type</span>=<span class="string">"context"</span> <span class="attr">id</span>=<span class="string">"mymenu"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">menuitem</span> <span class="attr">label</span>=<span class="string">"Refresh"</span>&gt;</span><span class="tag">&lt;/<span class="name">menuitem</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">menuitem</span> <span class="attr">label</span>=<span class="string">"Twitter"</span>&gt;</span><span class="tag">&lt;/<span class="name">menuitem</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">menu</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
-        
-          <a class="article-more-a" href="/2020/08/11/html-label-function/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">html</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">function</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/08/11/html-label-function/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/">10</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
     </nav>
   
 
@@ -1254,14 +1265,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">游戏</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">旧事</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">笔记</a>
               </li>
              
@@ -1274,11 +1277,31 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">css</a>
+                <a href="javascript:void(0)" class="js-tag color3">coffeescript</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">coffeescript</a>
+                <a href="javascript:void(0)" class="js-tag color3">游戏</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">旧事</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">browser</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">localStorage</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">indexedDB</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">css</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1298,35 +1321,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">browser</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">localStorage</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">indexedDB</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">eggjs</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">swagger-ui</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">typescript</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">工具</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">chrome</a>
+                <a href="javascript:void(0)" class="js-tag color1">eggjs</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1342,11 +1341,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">node.js</a>
+                <a href="javascript:void(0)" class="js-tag color1">swagger-ui</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">后台</a>
+                <a href="javascript:void(0)" class="js-tag color3">工具</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">chrome</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1362,11 +1365,31 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">node.js</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">后台</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">electron</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">生活</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">安全</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">黑科技</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">octopress</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1382,26 +1405,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">octopress</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">HTML</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">安全</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">黑科技</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">function</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">经验</a>
               </li>
              
@@ -1410,11 +1413,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">array</a>
+                <a href="javascript:void(0)" class="js-tag color5">HTML</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">编码</a>
+                <a href="javascript:void(0)" class="js-tag color4">function</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">arguments.callee</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1426,15 +1433,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">编码</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">canvas</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">arguments.callee</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">药别停</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1446,7 +1449,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">药别停</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">array</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">模式</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">method</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1462,7 +1477,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">promise</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">react</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">antd</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1486,19 +1509,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">antd</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">promise</a>
+                <a href="javascript:void(0)" class="js-tag color4">svg</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">性能</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">svg</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1510,15 +1525,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">vue</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">python</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">pygame</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">vue</a>
               </li>
             
             <div class="clearfix"></div>
