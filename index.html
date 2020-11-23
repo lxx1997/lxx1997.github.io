@@ -219,56 +219,9 @@ var _hmt = _hmt || [];
 <li><p>在script标签中是使用javascript语言，如果语句中包含<code>&lt;/script&gt;</code>则会被视为script标签的结束，应该使用<code>&quot;&lt;/sc&quot; + &quot;ript&gt;&quot;</code>来代替</p>
 </li>
 </ul>
-<h4 id="第二部分-异步和性能"><a href="#第二部分-异步和性能" class="headerlink" title="第二部分 异步和性能"></a>第二部分 异步和性能</h4><ul>
-<li><p><strong>尽量避免发送同步的ajax请求，因为这样会锁定浏览器的UI,并且阻塞所用的用户交互</strong></p>
-</li>
-<li><p>javascript从不跨线程共享数据</p>
-</li>
-</ul>
-<h6 id="New-Promise"><a href="#New-Promise" class="headerlink" title="New Promise()"></a>New Promise()</h6><ul>
-<li><p><code>Promise.all()</code><br><code>Promise.all</code>可以将多个<code>Promise</code>实例包装成一个新的<code>Promise</code>实例，同时，成功和失败的返回值是不同的, 成功的时候返回一个结果数据，失败的时候则最先被<code>reject</code>失败的状态的值</p>
-<p><em>返回的成功的结果的数据顺序和<code>Promise.all</code>接收到的数组顺序是一致的</em><br><strong>如果有一个<code>promise</code>被拒绝， 主Promise.all()就会被立刻拒绝，并丢弃来自其他所有promise的全部结果</strong></p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">add</span>(<span class="params">fun1, fun2</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="built_in">Promise</span>.all([fun1, fun2]).then(<span class="function"><span class="params">values</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> values</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> fun1 = <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">    resolve(<span class="number">2</span>)</span><br><span class="line">  &#125;)</span><br><span class="line"><span class="keyword">const</span> fun2 = <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">    resolve(<span class="number">4</span>)</span><br><span class="line">  &#125;)</span><br><span class="line">add(fun1, fun2).then(<span class="function"><span class="params">values</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(values) <span class="comment">// [2, 4]</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-</li>
-<li><p><code>Promise.race</code></p>
-<p><code>Promise.race</code> 竞赛模式 只要传入的数组里面那个结果先出来，就返回哪个结果（不论返回的接口是成功还是失败）</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> p1 = <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">  setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    resolve(<span class="string">'success'</span>)</span><br><span class="line">  &#125;,<span class="number">1000</span>)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> p2 = <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">  setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    reject(<span class="string">'failed'</span>)</span><br><span class="line">  &#125;, <span class="number">500</span>)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="built_in">Promise</span>.race([p1, p2]).then(<span class="function">(<span class="params">result</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(result)</span><br><span class="line">&#125;).catch(<span class="function">(<span class="params">error</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(error)  <span class="comment">// 打开的是 'failed'</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>调用Promise的then()时，只传入一个完全处理函数，一个默认拒绝处理函数就会顶替上来，把错误重新抛出，是的错误可以沿着Promise链传递下去，知道遇到显式定义的拒绝处理函数</p>
-</li>
-<li><p><code>Promise.finally</code> 通常用来处理被丢弃或者忽略的promise, 如果有需要释放的资源可以在finally进行释放</p>
-</li>
-<li><p><code>Promise.none</code></p>
-<p>所有的promise都被拒绝才返回</p>
-</li>
-<li><p><code>Promise.any</code></p>
-<p>至少需要一个promise完成就返回</p>
-</li>
-<li><p><code>Promise.first</code></p>
-<p>只要第一个Promise完成，后续任何拒绝和完成都会忽略</p>
-</li>
-<li><p><code>Promise.last</code></p>
-<p>只有最后一个完成的Promise胜出</p>
-</li>
-<li><p>并发迭代 <code>Promise.map</code></p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 封装Promise.map</span></span><br><span class="line"><span class="keyword">if</span>(!<span class="built_in">Promise</span>.map) &#123;</span><br><span class="line">  <span class="built_in">Promise</span>.map = <span class="function"><span class="keyword">function</span>(<span class="params">vals, cb</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">Promise</span>.all(</span><br><span class="line">      vals.map(<span class="function"><span class="keyword">function</span>(<span class="params">val</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>( <span class="function"><span class="keyword">function</span>(<span class="params">resolve</span>) </span>&#123;</span><br><span class="line">          cb(val, resolve)</span><br><span class="line">        &#125;)</span><br><span class="line">      &#125;)</span><br><span class="line">    )</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 使用Promise.map</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">Promise</span>.map([p1, p2, p3], <span class="function"><span class="keyword">function</span>(<span class="params">pr, done</span>) </span>&#123;</span><br><span class="line">  promise.resolve(pr).then(<span class="function">(<span class="params">v</span>) =&gt;</span> &#123;</span><br><span class="line">    done(v * <span class="number">2</span>)</span><br><span class="line">  &#125;, done)</span><br><span class="line">&#125;).then(<span class="function">(<span class="params">values</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(values)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-</li>
-<li><p><code>try...catch...</code> 不能和<code>Promise</code>连用，<code>try...catch...</code>只有在同步的情况下才能捕捉到异常，任何异步的错误都将无法捕捉到</p>
-</li>
-<li><p>一些无效的使用<code>Promise API</code>: <code>new Promise(null)</code>、 <code>Promise.all()</code>、<code>Promise.race(42)</code></p>
-</li>
-</ul>
-<h6 id="生成器-function-foo"><a href="#生成器-function-foo" class="headerlink" title="生成器 function *foo(){ }"></a>生成器 <code>function *foo(){ }</code></h6><ul>
-<li>定义生成器函数</li>
-</ul>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> *<span class="title">foo</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="comment">// what to do...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>调用生成器函数</li>
-</ul>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 在此处创建了一个生成器foo</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> *<span class="title">foo</span>(<span class="params">x, y</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> x + y</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 创建一个的迭代器对象，将迭代器对象赋值给了变量it</span></span><br><span class="line"><span class="keyword">var</span> it = foo(<span class="number">3</span>, <span class="number">4</span>)</span><br><span class="line"><span class="comment">// 调用it.next() 指示生成器从当前的位置继续运行，停留在下一个yield或者生成器结束</span></span><br><span class="line"><span class="keyword">var</span> res = it.next()</span><br><span class="line">res.value   <span class="comment">// 7</span></span><br></pre></td></tr></table></figure>
-<p>  需要的<code>next()</code> 调用比<code>yield</code>语句多一个，因为第一个<code>next()</code>用来启动一个生成器，并运行到第一个<code>yield</code>处，第二个<code>next()</code>调用完第一个被暂停的<code>yield</code>表达式，第三个<code>next()</code>调用完成第二个<code>yield</code>，依次类推</p>
-<p>  <strong>可以通过next向yield表达式传值</strong></p>
-
+        
+          <a class="article-more-a" href="/2020/11/20/《你不知道javascript》 读后感/#more">more >></a>
+        
       
 
       
@@ -347,7 +300,7 @@ var _hmt = _hmt || [];
     <div class="article-entry" itemprop="articleBody">
       
         <p>今天在Leecode上面练习用go语言做题，偶遇一题<br><figure class="highlight md"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">#### 剑指 Offer 58 - II. 左旋转字符串</span></span><br><span class="line">字符串的左旋转操作是把字符串前面的若干个字符转移到字符串的尾部。请定义一个函数实现字符串左旋转操作的功能。比如，输入字符串"abcdefg"和数字2，该函数将返回左旋转两位得到的结果"cdefgab"</span><br><span class="line"></span><br><span class="line">示例：</span><br><span class="line">~~~js</span><br><span class="line">  输入: s = "abcdefg", k = 2</span><br><span class="line">  输出: "cdefgab"</span><br></pre></td></tr></table></figure></p>
-<figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">然后我想起来前些天偶然遇到的一个题，有用到这部分的知识</span><br><span class="line"></span><br><span class="line">然后我急忙把对应代码复制过来，然后点击提交，令人激动的是竟然成功了，但是运行内存及时间太不理想</span><br><span class="line"></span><br><span class="line">~~~md</span><br><span class="line">提交时间 提交结果 运行时间  内存消耗   语言</span><br><span class="line"><span class="number">16</span>分钟前	 通过	  <span class="number">72</span> <span class="keyword">ms</span>	    <span class="title">9</span>.<span class="number">1</span> MB	  Go</span><br></pre></td></tr></table></figure>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">然后我想起来前些天偶然遇到的一个题，有用到这部分的知识</span><br><span class="line"></span><br><span class="line">然后我急忙把对应代码复制过来，然后点击提交，令人激动的是竟然成功了，但是运行内存及时间太不理想</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- more --&gt;</span></span><br><span class="line">~~~md</span><br><span class="line">提交时间 提交结果 运行时间  内存消耗   语言</span><br><span class="line">16分钟前	 通过	  72 ms	    9.1 MB	  Go</span><br></pre></td></tr></table></figure>
 <p>代码如下<br><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">reverseLeftWords</span><span class="params">(s <span class="keyword">string</span>, n <span class="keyword">int</span>)</span> <span class="title">string</span></span> &#123;</span><br><span class="line">	<span class="keyword">var</span> char <span class="keyword">int</span> = n</span><br><span class="line">	<span class="keyword">for</span> char &lt; <span class="built_in">len</span>(s) &#123;</span><br><span class="line">		newstr = newstr + <span class="keyword">string</span>(s[char])</span><br><span class="line">		char++</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">var</span> char2 <span class="keyword">int</span> = <span class="number">0</span></span><br><span class="line">	<span class="keyword">for</span> char2 &lt; n &#123;</span><br><span class="line">			newstr =  newstr + <span class="keyword">string</span>(s[char2])</span><br><span class="line">			char2++</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> newstr</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>然后我就打算使用golang自带的字符串切割的方法</p>
 <p>结果还是比较理想的<br><figure class="highlight md"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">提交时间 提交结果 运行时间  内存消耗   语言</span><br><span class="line">几秒前	  通过	   0 ms	   3.5 MB	    Go</span><br></pre></td></tr></table></figure></p>
@@ -563,27 +516,10 @@ var _hmt = _hmt || [];
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="数字格式化"><a href="#数字格式化" class="headerlink" title="数字格式化"></a>数字格式化</h3><p>  描述：将一串<code>123483245678</code> 处理成为 <code>123,483,245,678</code></p>
-<ul>
-<li><p>eg1:<br>自己写的一个比较麻烦的方法</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">  <span class="comment">// 只实现了整数，其他同理，最好在获取到参数之后进行验证，是否符合自己的需求</span></span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">formatNumber</span>(<span class="params">value</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(value)</span><br><span class="line">  <span class="keyword">let</span> arrStr = []</span><br><span class="line">  <span class="keyword">const</span> arr = (value + <span class="string">''</span>).split(<span class="string">','</span>)</span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; arr.length; i++) &#123;</span><br><span class="line">    <span class="keyword">let</span> index = <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">let</span> j = arr[i].length - <span class="number">1</span>; j &gt;= <span class="number">0</span>;j--) &#123;</span><br><span class="line">      <span class="keyword">if</span>(index !== <span class="number">0</span> &amp;&amp; index % <span class="number">3</span> === <span class="number">0</span>) &#123;</span><br><span class="line">      arrStr= [<span class="string">','</span>,...arrStr]</span><br><span class="line">      &#125;</span><br><span class="line">      arrStr= [arr[i][j],...arrStr]</span><br><span class="line">      index++</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> arrStr.join(<span class="string">''</span>)</span><br><span class="line">&#125;</span><br><span class="line">formatNumber(<span class="number">1234567890</span>)</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>eg2:<br><strong>toLocaleString</strong></p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(<span class="number">123456789</span>).toLocaleString(<span class="string">'en-US'</span>)</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>eg3:<br>正则表达式</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">formatNumber</span>(<span class="params">str</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> str.replace(<span class="regexp">/\B(?=(\d&#123;3&#125;)+(?!\d))/g</span>, <span class="string">','</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(formatNumber(<span class="string">"123456789"</span>))</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>eg4:</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">formatNumber</span>(<span class="params">str</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> arr = [],</span><br><span class="line">    count = str.length</span><br><span class="line"></span><br><span class="line">  <span class="keyword">while</span> (count &gt;= <span class="number">3</span>) &#123;</span><br><span class="line">    arr.unshift(str.slice(count - <span class="number">3</span>, count))</span><br><span class="line">    count -= <span class="number">3</span></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 如果是不是3的倍数就另外追加到上去</span></span><br><span class="line">  str.length % <span class="number">3</span> &amp;&amp; arr.unshift(str.slice(<span class="number">0</span>, str.length % <span class="number">3</span>))</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> arr.toString()</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(formatNumber(<span class="string">"1234567890"</span>))</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<ul>
-<li><p>eg5:</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">formatNumber</span>(<span class="params">str</span>) </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// ["0", "9", "8", "7", "6", "5", "4", "3", "2", "1"]</span></span><br><span class="line">  <span class="keyword">return</span> str.split(<span class="string">""</span>).reverse().reduce(<span class="function">(<span class="params">prev, next, index</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> ((index % <span class="number">3</span>) ? next : (next + <span class="string">','</span>)) + prev</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(formatNumber(<span class="string">"1234567890"</span>))</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-
+        <h3 id="数字格式化"><a href="#数字格式化" class="headerlink" title="数字格式化"></a>数字格式化</h3><p>  描述：将一串<code>123483245678</code> 处理成为 <code>123,483,245,678</code><br>
+        
+          <a class="article-more-a" href="/2020/09/24/number-format-methods/#more">more >></a>
+        
       
 
       
@@ -1321,7 +1257,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">笔记</a>
+                <a href="javascript:void(0)" class="js-tag color3">js</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">html5</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1329,19 +1269,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">游戏</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">旧事</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">旅行</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">js</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">coffeescript</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">css</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1357,6 +1293,22 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">笔记</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">coffeescript</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">css</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">css3</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">d3.js</a>
               </li>
              
@@ -1369,34 +1321,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">游戏</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">旧事</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">html5</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">css3</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">eggjs</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">swagger-ui</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">typescript</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">工具</a>
               </li>
              
@@ -1405,15 +1329,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">mysql</a>
+                <a href="javascript:void(0)" class="js-tag color1">eggjs</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">docker</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">egg-mysql</a>
+                <a href="javascript:void(0)" class="js-tag color1">swagger-ui</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1429,6 +1349,22 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">mysql</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">docker</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">egg-mysql</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">electron</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">node.js</a>
               </li>
              
@@ -1437,11 +1373,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">electron</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">golang</a>
+                <a href="javascript:void(0)" class="js-tag color1">typescript</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1449,11 +1381,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">安全</a>
+                <a href="javascript:void(0)" class="js-tag color5">octopress</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">黑科技</a>
+                <a href="javascript:void(0)" class="js-tag color2">golang</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1469,11 +1401,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">octopress</a>
+                <a href="javascript:void(0)" class="js-tag color4">function</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">function</a>
+                <a href="javascript:void(0)" class="js-tag color3">安全</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">黑科技</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">HTML</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1485,7 +1425,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">HTML</a>
+                <a href="javascript:void(0)" class="js-tag color1">array</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">编码</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1493,19 +1437,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">array</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">canvas</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">deno</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">nodeJs</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1517,15 +1449,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">模式</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">药别停</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">编码</a>
+                <a href="javascript:void(0)" class="js-tag color3">模式</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">deno</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">nodeJs</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1537,23 +1473,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">npm</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">promise</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">method</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">react</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">antd</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1573,7 +1497,23 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">promise</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">npm</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">router</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">antd</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">性能</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1594,10 +1534,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">pygame</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">性能</a>
               </li>
              
               <li class="article-tag-list-item">
