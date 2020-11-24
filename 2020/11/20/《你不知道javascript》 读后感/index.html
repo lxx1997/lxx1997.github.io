@@ -9,14 +9,14 @@
   <title>《你不知道javascript》 读后感 | lxx的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="《你不知道javascript》 部分知识抄录第一部分  类型和语法 &amp;amp;&amp;amp; 运算符的优先级高于 ||, 而 || 的优先级高于 ? :, &amp;amp;&amp;amp; || 是左关联， ? : 是右关联  在 try...catch...中，如果包含在for循环中，在一定情况下会在i++执行之前执行，如果在try...catch...中，加入yield, 由于yield的特性，try并未结">
-<meta name="keywords" content="前端,js,jquery,javascript,html5,开发者,程序猿,程序媛,极客,编程,代码,开源,IT网站,Developer,Programmer,Coder,Geek,html,css,css3,用户体验">
+<meta name="keywords" content="读后感">
 <meta property="og:type" content="article">
 <meta property="og:title" content="《你不知道javascript》 读后感">
 <meta property="og:url" content="/2020/11/20/《你不知道javascript》 读后感/index.html">
 <meta property="og:site_name" content="lxx的博客">
 <meta property="og:description" content="《你不知道javascript》 部分知识抄录第一部分  类型和语法 &amp;amp;&amp;amp; 运算符的优先级高于 ||, 而 || 的优先级高于 ? :, &amp;amp;&amp;amp; || 是左关联， ? : 是右关联  在 try...catch...中，如果包含在for循环中，在一定情况下会在i++执行之前执行，如果在try...catch...中，加入yield, 由于yield的特性，try并未结">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-11-23T01:41:18.915Z">
+<meta property="og:updated_time" content="2020-11-24T05:50:30.551Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="《你不知道javascript》 读后感">
 <meta name="twitter:description" content="《你不知道javascript》 部分知识抄录第一部分  类型和语法 &amp;amp;&amp;amp; 运算符的优先级高于 ||, 而 || 的优先级高于 ? :, &amp;amp;&amp;amp; || 是左关联， ? : 是右关联  在 try...catch...中，如果包含在for循环中，在一定情况下会在i++执行之前执行，如果在try...catch...中，加入yield, 由于yield的特性，try并未结">
@@ -272,6 +272,23 @@ var _hmt = _hmt || [];
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 在此处创建了一个生成器foo</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> *<span class="title">foo</span>(<span class="params">x, y</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> x + y</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 创建一个的迭代器对象，将迭代器对象赋值给了变量it</span></span><br><span class="line"><span class="keyword">var</span> it = foo(<span class="number">3</span>, <span class="number">4</span>)</span><br><span class="line"><span class="comment">// 调用it.next() 指示生成器从当前的位置继续运行，停留在下一个yield或者生成器结束</span></span><br><span class="line"><span class="keyword">var</span> res = it.next()</span><br><span class="line">res.value   <span class="comment">// 7</span></span><br></pre></td></tr></table></figure>
 <p>  需要的<code>next()</code> 调用比<code>yield</code>语句多一个，因为第一个<code>next()</code>用来启动一个生成器，并运行到第一个<code>yield</code>处，第二个<code>next()</code>调用完第一个被暂停的<code>yield</code>表达式，第三个<code>next()</code>调用完成第二个<code>yield</code>，依次类推</p>
 <p>  <strong>可以通过next向yield表达式传值</strong></p>
+<p>  <code>yield</code> 和 <code>next()</code>组合起来，在生成器的执行过程中，构成了一个双向消息传递系统</p>
+  <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> *<span class="title">foo</span>(<span class="params">x</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> y = x * (<span class="keyword">yield</span> <span class="string">"hello"</span>)</span><br><span class="line">  <span class="keyword">return</span> y</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> it = foo(<span class="number">6</span>)  <span class="comment">//初始化一个迭代器 it</span></span><br><span class="line"><span class="keyword">var</span> res = it.next()</span><br><span class="line">res.value  <span class="comment">// hello</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> res = it.next(<span class="number">7</span>)</span><br><span class="line">res.value  <span class="comment">// 42</span></span><br></pre></td></tr></table></figure>
+<p>  最后一个<code>next()</code>由<code>return</code>来回答 <code>value</code>为<code>return</code> 出来的值，如果生成器中没有<code>return</code>，会有一个假定的，隐式的<code>return</code>，会在默认的情况下回答最后的<code>next()</code>调用提出的问题</p>
+<ul>
+<li><p>多个迭代器</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> *<span class="title">foo</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> x = <span class="keyword">yield</span> <span class="number">2</span></span><br><span class="line">  z++</span><br><span class="line">  <span class="built_in">console</span>.log(z, <span class="string">'z'</span>)</span><br><span class="line">  <span class="keyword">var</span> y = <span class="keyword">yield</span> (x * z)</span><br><span class="line">  <span class="built_in">console</span>.log(x,y,z)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> z = <span class="number">1</span></span><br><span class="line"><span class="keyword">var</span> it1 = foo()  <span class="comment">// 第一个迭代器</span></span><br><span class="line"><span class="keyword">var</span> it2 = foo()  <span class="comment">// 第二个迭代器</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> val1 = it1.next().value</span><br><span class="line"><span class="keyword">var</span> val2 = it2.next().value</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(val1, val2, <span class="string">"val1, val2"</span>)</span><br><span class="line"></span><br><span class="line">val1 = it1.next(val2 * <span class="number">10</span>).value</span><br><span class="line">val2 = it2.next(val1 * <span class="number">5</span>).value</span><br><span class="line"><span class="built_in">console</span>.log(val1, val2, <span class="string">"val1, val2, two"</span>)</span><br><span class="line"></span><br><span class="line">it1.next(val2 / <span class="number">2</span>)</span><br><span class="line">it2.next(val1 / <span class="number">4</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">// console</span></span><br><span class="line"><span class="comment">// 2 2 val1, val2</span></span><br><span class="line"><span class="comment">// 2 z</span></span><br><span class="line"><span class="comment">// 3 z</span></span><br><span class="line"><span class="comment">// 40 600 val1, val2, two</span></span><br><span class="line"><span class="comment">// 20 300 3</span></span><br><span class="line"><span class="comment">// 200 10 3</span></span><br></pre></td></tr></table></figure>
+<p><em>多个迭代器交互的时候，生成器中包含有全局变量时，会对全局变量造成污染</em></p>
+<p><strong>可以用于记录函数生成的最后一个值</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> something = (<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> nextVal</span><br><span class="line">  <span class="keyword">return</span> &#123;</span><br><span class="line">    [<span class="built_in">Symbol</span>.interator]: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="keyword">this</span></span><br><span class="line">    &#125;,</span><br><span class="line">    next: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">      <span class="keyword">if</span>(nextVal === <span class="literal">undefined</span>) &#123;</span><br><span class="line">        nextVal = <span class="number">1</span></span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        nextVal = (<span class="number">3</span> * nextVal) + <span class="number">6</span></span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">return</span> &#123;<span class="attr">done</span>: <span class="literal">false</span>, <span class="attr">value</span>: nextVal&#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)()</span><br><span class="line"></span><br><span class="line">something.next().value <span class="comment">// 1</span></span><br><span class="line">something.next().value <span class="comment">// 9</span></span><br><span class="line">something.next().value <span class="comment">// 33</span></span><br></pre></td></tr></table></figure>
+<p><code>es6</code>新增了一个<code>for ... of ...</code>循环，意味着可以通过原生循环语法自动贴袋标准迭代器</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> v <span class="keyword">of</span> something) &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(v)</span><br><span class="line">  <span class="keyword">if</span>(v &gt; <span class="number">10</span>) &#123;</span><br><span class="line">    <span class="keyword">break</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>终止生成器</p>
+<p><code>for ... of ...</code> 循环内的break会触发finally语句，终止生成器，也可以在外部调用<code>it.return(..)</code>手动终止生成器的迭代器实例</p>
+<p>调用<code>it.return</code>之后会立刻终止生成器，运行finally语句</p>
+</li>
+</ul>
 
       
 
@@ -280,6 +297,17 @@ var _hmt = _hmt || [];
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">读后感</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
@@ -343,6 +371,15 @@ var _hmt = _hmt || [];
 
   
 <nav id="article-nav">
+  
+    <a href="/2020/11/24/你不知道的javascript上卷/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          《你不知道的javascript上卷》 读后感
+        
+      </div>
+    </a>
   
   
     <a href="/2020/11/12/golang-切割字符串和拼接字符串/" id="article-nav-older" class="article-nav-link-wrap">
@@ -485,23 +522,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">设计</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">杂谈</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">js</a>
+                <a href="javascript:void(0)" class="js-tag color3">笔记</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">html5</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">web</a>
+                <a href="javascript:void(0)" class="js-tag color3">设计</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -513,7 +542,23 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">web</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">js</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">html5</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">旅行</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">coffeescript</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -529,19 +574,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">笔记</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">coffeescript</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">css</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">css3</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -557,11 +590,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">工具</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">chrome</a>
+                <a href="javascript:void(0)" class="js-tag color5">css3</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -570,6 +599,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">swagger-ui</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">typescript</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -585,6 +618,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">工具</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">chrome</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">mysql</a>
               </li>
              
@@ -597,10 +638,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">electron</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">node.js</a>
               </li>
              
@@ -609,7 +646,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">typescript</a>
+                <a href="javascript:void(0)" class="js-tag color2">golang</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">electron</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -617,15 +658,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">安全</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">黑科技</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">octopress</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">golang</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">浏览器</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -637,15 +678,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">浏览器</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">function</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">安全</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">黑科技</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -661,19 +698,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">array</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">编码</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">arguments.callee</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">canvas</a>
+                <a href="javascript:void(0)" class="js-tag color1">array</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -685,11 +714,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">药别停</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">模式</a>
+                <a href="javascript:void(0)" class="js-tag color2">canvas</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -701,6 +726,18 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">药别停</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">编码</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">模式</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">uni-app</a>
               </li>
              
@@ -709,11 +746,23 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">npm</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">promise</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">method</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">react</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">antd</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -733,27 +782,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">promise</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">npm</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">router</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">antd</a>
+                <a href="javascript:void(0)" class="js-tag color4">svg</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">性能</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">svg</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -770,6 +807,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">pygame</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">读后感</a>
               </li>
              
               <li class="article-tag-list-item">
