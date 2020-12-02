@@ -160,6 +160,263 @@ var _hmt = _hmt || [];
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-typescript-pick" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+
+  <div class="article-inner">
+    
+      <!-- <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/12/02/typescript-pick/">typescript - Pick</a>
+    </h1>
+  
+
+        
+        <a href="/2020/12/02/typescript-pick/" class="archive-article-date">
+  	<time datetime="2020-12-02T02:21:41.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-12-02</time>
+</a>
+        
+      </header> -->
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/12/02/typescript-pick/">typescript - Pick</a>
+    </h1>
+  
+
+        
+        <a href="/2020/12/02/typescript-pick/" class="archive-article-date">
+  	<time datetime="2020-12-02T02:21:41.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-12-02</time>
+</a>
+        
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="什么是Pick"><a href="#什么是Pick" class="headerlink" title="什么是Pick"></a>什么是Pick</h4><p>就是从一个符合类型中，取出几个想要的类型的组合</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> Pick&lt;T, K <span class="keyword">extends</span> keyof T&gt; = &#123;</span><br><span class="line">  [key <span class="keyword">in</span> k]: T[key]</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">interface</span> TState &#123;</span><br><span class="line">  name: <span class="built_in">string</span>;</span><br><span class="line">  age: <span class="built_in">number</span>;</span><br><span class="line">  like: <span class="built_in">string</span>[]</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// if i just want one or two attribute of TState</span></span><br><span class="line"><span class="comment">// we can use Pick to get the attribute we want</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">interface</span>  TSingleState <span class="keyword">extends</span> Pick&lt;TState, 'name' | 'age'&gt; &#123;&#125;</span><br></pre></td></tr></table></figure>
+<p>泛型中的extends 并不是用来继承的，而是用来约束类型的，所以<code>K extends keyof T</code>，应该是说key被约束在T的key中，不能超出这个范围</p>
+<p><a href="https://blog.csdn.net/qq_28992047/article/details/106879772" target="_blank" rel="noopener">原文链接</a></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/12/02/typescript-pick/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-Object的方法" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+
+  <div class="article-inner">
+    
+      <!-- <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/11/26/Object的方法/">Object的方法</a>
+    </h1>
+  
+
+        
+        <a href="/2020/11/26/Object的方法/" class="archive-article-date">
+  	<time datetime="2020-11-26T09:54:45.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-11-26</time>
+</a>
+        
+      </header> -->
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/11/26/Object的方法/">Object的方法</a>
+    </h1>
+  
+
+        
+        <a href="/2020/11/26/Object的方法/" class="archive-article-date">
+  	<time datetime="2020-11-26T09:54:45.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-11-26</time>
+</a>
+        
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="属性"><a href="#属性" class="headerlink" title="属性"></a>属性</h4><ul>
+<li><p>Object.length  值为1</p>
+</li>
+<li><p>Object.prototype  可以为所有的Object类型的对象添加属性</p>
+</li>
+</ul>
+<h4 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h4><ul>
+<li><p>Object.assign()</p>
+<p>用于将所有可枚举属性的值从一个或多个源对象分配到目标对象，并返回目标对象</p>
+<p>此方法只会拷贝源对象自身的并且可枚举的属性到目标对象，该方法调用源对象的get和目标对象的set，如果为了将属性定义复制到原型应使用<code>Object.getOwnPropertyDescriptor()</code>和<code>Object.defineProperty()</code></p>
+<p><code>Object.assign()</code>是浅拷贝,会改变源对象的值</p>
+</li>
+<li><p>Object.create()</p>
+<p>创建一个新对象，使用现有的对象来提供新创建的对象的<code>__proto__</code></p>
+</li>
+<li><p>Object.defineProperty()</p>
+</li>
+<li><p>Object.defineProperties()</p>
+</li>
+<li><p>Object.entries()</p>
+</li>
+<li><p>Object.freeze()</p>
+</li>
+<li><p>Object.getOwnPropertyDescriptor()</p>
+</li>
+<li><p>Object.getOwnPropertyNames()</p>
+</li>
+<li><p>Object.getOwnPropertySymbols()</p>
+</li>
+<li><p>Object.getPrototypeOf()</p>
+</li>
+<li><p>Object.is()</p>
+</li>
+<li><p>Object.isExtensible()</p>
+</li>
+<li><p>Object.isFrozen()</p>
+</li>
+<li><p>Object.isSealed()</p>
+</li>
+<li><p>Object.keys()</p>
+</li>
+<li><p>Object.preventExtensions()</p>
+</li>
+<li><p>Object.seal()</p>
+</li>
+<li><p>Object.setPrototypeOf()</p>
+</li>
+<li><p>Object.values()</p>
+</li>
+</ul>
+<h4 id="属性-1"><a href="#属性-1" class="headerlink" title="属性"></a>属性</h4><ul>
+<li><p>Object.prototype.constructor</p>
+<p>返回创建实例对象的<code>Object</code>构造函数的引用，此属性的值是对函数本身的引用，而不是一个包含函数名称的字符串</p>
+<p>所有的对象都会从他的原型上继承一个<code>constructor</code>属性</p>
+</li>
+<li><p>Object.prototype.<strong>proto</strong></p>
+<p> <em>该特性已从Web标准中删除，但是目前一些浏览器仍然支持，但是在未来某个时间停止使用，请尽量不要使用该特性</em></p>
+<p> 该属性是一个访问器属性(一个getter函数和setter函数)，暴露了通过它访问的对象的内部prototype(一个对象或null)</p>
+<p> 推介使用<code>Object.getPrototypeOf/Reflect.getPrototypeOf</code>和<code>Object.setPrototypeOf/Reflect.setPrototypeOf</code>(<em>设置对象的prototype是一个缓慢的过程，会影响性能，应该尽量避免</em>)</p>
+</li>
+<li><p>Object.prototype.<strong>noSuchMethod</strong></p>
+</li>
+<li><p>Object.prototype.<strong>count</strong>  <em>已被废弃</em></p>
+</li>
+<li><p>Object.prototype.<strong>parent</strong> <em>已被废弃</em></p>
+</li>
+</ul>
+<h4 id="方法-1"><a href="#方法-1" class="headerlink" title="方法"></a>方法</h4><ul>
+<li><p>Object.prototype.<strong>defineGetter</strong>()</p>
+</li>
+<li><p>Object.prototype.<strong>defineGetter</strong>()</p>
+</li>
+<li><p>Object.prototype.<strong>lookupGetter</strong>()</p>
+</li>
+<li><p>Object.prototype.<strong>lookupSetter</strong>()</p>
+</li>
+<li><p>Object.prototype.hasOwnProperty()</p>
+</li>
+<li><p>Object.prototype.isPprototypeOf()</p>
+</li>
+<li><p>Object.prototype.propertyIsEnumerable()</p>
+</li>
+<li><p>Object.prototype.toSource()</p>
+</li>
+<li><p>Object.prototype.toLocaleString()</p>
+</li>
+<li><p>Object.prototype.toString()</p>
+</li>
+<li><p>Object.prototype.unwatch()</p>
+</li>
+<li><p>Object.prototype.valueOf()</p>
+</li>
+<li><p>Object.prototype.watch()</p>
+</li>
+<li><p>Object.prototype.eval()  <em>已废弃</em></p>
+</li>
+</ul>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/11/26/Object的方法/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-你不知道的javascript上卷" class="article article-type-post  article-index" itemscope itemprop="blogPost">
 
   <div class="article-inner">
@@ -405,29 +662,12 @@ var _hmt = _hmt || [];
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>今天在Leecode上面练习用go语言做题，偶遇一题<br><figure class="highlight md"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">#### 剑指 Offer 58 - II. 左旋转字符串</span></span><br><span class="line">字符串的左旋转操作是把字符串前面的若干个字符转移到字符串的尾部。请定义一个函数实现字符串左旋转操作的功能。比如，输入字符串"abcdefg"和数字2，该函数将返回左旋转两位得到的结果"cdefgab"</span><br><span class="line"></span><br><span class="line">示例：</span><br><span class="line">~~~js</span><br><span class="line">  输入: s = "abcdefg", k = 2</span><br><span class="line">  输出: "cdefgab"</span><br></pre></td></tr></table></figure></p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">然后我想起来前些天偶然遇到的一个题，有用到这部分的知识</span><br><span class="line"></span><br><span class="line">然后我急忙把对应代码复制过来，然后点击提交，令人激动的是竟然成功了，但是运行内存及时间太不理想</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- more --&gt;</span></span><br><span class="line">~~~md</span><br><span class="line">提交时间 提交结果 运行时间  内存消耗   语言</span><br><span class="line">16分钟前	 通过	  72 ms	    9.1 MB	  Go</span><br></pre></td></tr></table></figure>
-<p>代码如下<br><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">reverseLeftWords</span><span class="params">(s <span class="keyword">string</span>, n <span class="keyword">int</span>)</span> <span class="title">string</span></span> &#123;</span><br><span class="line">	<span class="keyword">var</span> char <span class="keyword">int</span> = n</span><br><span class="line">	<span class="keyword">for</span> char &lt; <span class="built_in">len</span>(s) &#123;</span><br><span class="line">		newstr = newstr + <span class="keyword">string</span>(s[char])</span><br><span class="line">		char++</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">var</span> char2 <span class="keyword">int</span> = <span class="number">0</span></span><br><span class="line">	<span class="keyword">for</span> char2 &lt; n &#123;</span><br><span class="line">			newstr =  newstr + <span class="keyword">string</span>(s[char2])</span><br><span class="line">			char2++</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> newstr</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>然后我就打算使用golang自带的字符串切割的方法</p>
-<p>结果还是比较理想的<br><figure class="highlight md"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">提交时间 提交结果 运行时间  内存消耗   语言</span><br><span class="line">几秒前	  通过	   0 ms	   3.5 MB	    Go</span><br></pre></td></tr></table></figure></p>
-<p>代码差不多只有一行<br><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">reverseLeftWords</span><span class="params">(s <span class="keyword">string</span>, n <span class="keyword">int</span>)</span> <span class="title">string</span></span> &#123;</span><br><span class="line">	<span class="keyword">return</span> <span class="keyword">string</span>([]<span class="keyword">byte</span>(s)[n:]) + <span class="keyword">string</span>([]<span class="keyword">byte</span>(s)[:n])</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<h4 id="字符串切割-string-byte-s-n-m"><a href="#字符串切割-string-byte-s-n-m" class="headerlink" title="字符串切割  string([]byte(s)[n:m])"></a>字符串切割  string([]byte(s)[n:m])</h4><p><code>string([]byte(s)[n:m])</code>  : </p>
-<p>首先是通过byte方法将字符串转为字节</p>
-<ul>
-<li><code>s</code>代表需要转换的字符串</li>
-<li><code>n</code>代表切割的起始位置，省略代表从第0位开始</li>
-<li><code>m</code>代表切割的终点位置，省略代表到末尾结束</li>
-<li>最后通过string()方法再将字节转为字符串</li>
-</ul>
-<p><em>但是这种方法并不适用于带有中文的字符串</em></p>
-<p><code>string([]rune(s)[n:m])</code><br>首先是通过byte方法将字符串转为字节</p>
-<ul>
-<li><code>s</code>代表需要转换的字符串</li>
-<li><code>n</code>代表切割的起始位置，省略代表从第0位开始</li>
-<li><code>m</code>代表切割的终点位置，省略代表到末尾结束</li>
-<li>最后通过string()方法再将字节转为字符串</li>
-</ul>
-
+        <p>今天在Leecode上面练习用go语言做题，偶遇一题</p>
+<h4 id="剑指-Offer-58-II-左旋转字符串"><a href="#剑指-Offer-58-II-左旋转字符串" class="headerlink" title="剑指 Offer 58 - II. 左旋转字符串"></a>剑指 Offer 58 - II. 左旋转字符串</h4><p>  字符串的左旋转操作是把字符串前面的若干个字符转移到字符串的尾部。请定义一个函数实现字符串左旋转操作的功能。比如，输入字符串”abcdefg”和数字2，该函数将返回左旋转两位得到的结果”cdefgab”</p>
+<p>  示例：<br>  <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入: s = <span class="string">"abcdefg"</span>, k = <span class="number">2</span></span><br><span class="line">输出: <span class="string">"cdefgab"</span></span><br></pre></td></tr></table></figure></p>
+        
+          <a class="article-more-a" href="/2020/11/12/golang-切割字符串和拼接字符串/#more">more >></a>
+        
       
 
       
@@ -518,18 +758,12 @@ var _hmt = _hmt || [];
       
         <p>在此记录一下Vue中使用typescript时 遇到的一些问题</p>
 <ul>
-<li><p>Cannot find module ‘./xxx/xxx’ or its corresponding type declarations<br>原因是ts识别不了vue文件，在引入的最后加上<code>.vue</code>就可以了</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 错误的写法</span></span><br><span class="line"><span class="keyword">import</span> TestLayout <span class="keyword">from</span> <span class="string">'./components/test-layout'</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 正确的写法</span></span><br><span class="line"><span class="keyword">import</span> TestLayout <span class="keyword">from</span> <span class="string">'./components/test-layout.vue'</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>获取DOM元素时提示  <code>Type &#39;HTMLElement | null&#39; is not assignable to type &#39;HTMLElement&#39;. Type &#39;null&#39; is not assignable to type &#39;HTMLElement&#39;</code></p>
-<p>eg: </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">this</span>.scaleBox = <span class="built_in">document</span>.querySelector(<span class="string">'.scale-box'</span>)</span><br></pre></td></tr></table></figure>
-<p>对获取到的信息做一次<strong>类型转换</strong>或者<strong>类型断言</strong></p>
-<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">this</span>.scaleBox = &lt;HTMLDivElement&gt;<span class="built_in">document</span>.querySelector(<span class="string">'.scale-box'</span>)</span><br><span class="line"><span class="keyword">this</span>.scaleBox = <span class="built_in">document</span>.querySelector(<span class="string">'.scale-box'</span>) <span class="keyword">as</span> HTMLElement</span><br></pre></td></tr></table></figure>
+<li>Cannot find module ‘./xxx/xxx’ or its corresponding type declarations<br>原因是ts识别不了vue文件，在引入的最后加上<code>.vue</code>就可以了<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 错误的写法</span></span><br><span class="line"><span class="keyword">import</span> TestLayout <span class="keyword">from</span> <span class="string">'./components/test-layout'</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 正确的写法</span></span><br><span class="line"><span class="keyword">import</span> TestLayout <span class="keyword">from</span> <span class="string">'./components/test-layout.vue'</span></span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<p>同时贴上我在网上找到的<code>tslint</code>配置</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// tslint.json</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="string">"defaultSeverity"</span>: <span class="string">"warning"</span>,</span><br><span class="line">  <span class="string">"extends"</span>: [</span><br><span class="line">    <span class="string">"tslint:recommended"</span></span><br><span class="line">  ],</span><br><span class="line">  <span class="string">"linterOptions"</span>: &#123;</span><br><span class="line">    <span class="string">"exclude"</span>: [</span><br><span class="line">      <span class="string">"node_modules/**"</span></span><br><span class="line">    ]</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="string">"rules"</span>: &#123;</span><br><span class="line">    <span class="string">"indent"</span>: [<span class="literal">true</span>, <span class="string">"spaces"</span>, <span class="number">2</span>],</span><br><span class="line">    <span class="string">"interface-name"</span>: <span class="literal">false</span>,</span><br><span class="line">    <span class="string">"no-consecutive-blank-lines"</span>: <span class="literal">false</span>,</span><br><span class="line">    <span class="string">"object-literal-sort-keys"</span>: <span class="literal">false</span>,</span><br><span class="line">    <span class="string">"ordered-imports"</span>: <span class="literal">false</span>,</span><br><span class="line">    <span class="string">"quotemark"</span>: [<span class="literal">true</span>, <span class="string">"single"</span>]</span><br><span class="line">  &#125;,</span><br><span class="line">　<span class="comment">// 禁止自动检测末尾行必须使用逗号，always总是检测，never从不检测，ignore忽略检测</span></span><br><span class="line">　　<span class="string">"trailing-comma"</span>: [<span class="literal">true</span>, &#123;</span><br><span class="line">　　　　<span class="string">"singleline"</span>: <span class="string">"never"</span>,</span><br><span class="line">　　　　<span class="string">"multiline"</span>: &#123;</span><br><span class="line">　　　　　　<span class="string">"objects"</span>: <span class="string">"ignore"</span>,</span><br><span class="line">　　　　　　<span class="string">"arrays"</span>: <span class="string">"always"</span>,</span><br><span class="line">　　　　　　<span class="string">"functions"</span>: <span class="string">"never"</span>,</span><br><span class="line">　　　　　　<span class="string">"typeLiterals"</span>: <span class="string">"ignore"</span></span><br><span class="line">　　　　&#125;</span><br><span class="line">　　&#125;],</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 禁止给类的构造函数的参数添加修饰符</span></span><br><span class="line">  <span class="string">"no-parameter-properties"</span>: <span class="literal">false</span>,</span><br><span class="line">  <span class="comment">// 禁止使用 debugger</span></span><br><span class="line">  <span class="string">"no-debugger"</span>: <span class="literal">false</span>,</span><br><span class="line">  <span class="comment">// 禁止行尾有空格</span></span><br><span class="line">  <span class="string">"no-trailing-whitespace"</span>: <span class="literal">false</span>,</span><br><span class="line">  <span class="comment">// 禁止无用的表达式</span></span><br><span class="line">  <span class="string">"no-unused-expression"</span>: <span class="literal">true</span>,</span><br><span class="line">  <span class="comment">// 定义过的变量必须使用</span></span><br><span class="line">  <span class="string">"no-unused-variable"</span>: <span class="literal">true</span>,</span><br><span class="line">  <span class="comment">// 变量必须先定义后使用</span></span><br><span class="line">  <span class="string">"no-use-before-declare"</span>: <span class="literal">true</span>,</span><br><span class="line">  <span class="comment">// 禁止使用 var</span></span><br><span class="line">  <span class="string">"no-var-keyword"</span>: <span class="literal">true</span>,</span><br><span class="line">  <span class="comment">// 必须使用 === 或 !==，禁止使用 == 或 !=，与 null 比较时除外</span></span><br><span class="line">  <span class="string">"triple-equals"</span>: <span class="literal">true</span>,</span><br><span class="line">  <span class="comment">// 指定类成员的排序规则</span></span><br><span class="line">  <span class="string">"member-ordering"</span>: <span class="literal">false</span>,</span><br><span class="line">  <span class="comment">// 禁止将 this 赋值给其他变量，除非是解构赋值</span></span><br><span class="line">  <span class="string">"no-this-assignment"</span>: [</span><br><span class="line">    <span class="literal">false</span>,</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="string">"allowed-names"</span>: [</span><br><span class="line">        <span class="string">"^self$"</span>,</span><br><span class="line">        <span class="string">"^that$"</span></span><br><span class="line">      ],</span><br><span class="line">      <span class="string">"allow-destructuring"</span>: <span class="literal">true</span></span><br><span class="line">    &#125;</span><br><span class="line">  ],</span><br><span class="line">  <span class="comment">// 必须使用箭头函数，除非是单独的函数声明或是命名函数</span></span><br><span class="line">  <span class="string">"only-arrow-functions"</span>: [</span><br><span class="line">    <span class="literal">true</span>,</span><br><span class="line">    <span class="string">"allow-declarations"</span>,</span><br><span class="line">    <span class="string">"allow-named-functions"</span></span><br><span class="line">  ],</span><br><span class="line">  <span class="comment">// 禁止出现空代码块，允许 catch 是空代码块</span></span><br><span class="line">  <span class="string">"no-empty"</span>: [</span><br><span class="line">    <span class="literal">true</span>,</span><br><span class="line">    <span class="string">"allow-empty-catch"</span></span><br><span class="line">  ],</span><br><span class="line">  <span class="comment">// 禁止无用的类型断言</span></span><br><span class="line">  <span class="string">"no-unnecessary-type-assertion"</span>: <span class="literal">true</span>,</span><br><span class="line">  <span class="comment">// 使用 return; 而不是 return undefined;</span></span><br><span class="line">  <span class="string">"return-undefined"</span>: <span class="literal">true</span>,</span><br><span class="line">  <span class="comment">// 禁止对 array 使用 for in 循环</span></span><br><span class="line">  <span class="string">"no-for-in-array"</span>: <span class="literal">true</span>,</span><br><span class="line">  <span class="string">"comment-format"</span>: [</span><br><span class="line">    <span class="literal">true</span>,</span><br><span class="line">    <span class="string">"check-space"</span></span><br><span class="line">  ],</span><br><span class="line">  <span class="comment">// 单行注释格式化规则</span></span><br><span class="line">  <span class="comment">// 定义函数时如果用到了覆写，则必须将覆写的函数写到一起</span></span><br><span class="line">  <span class="string">"adjacent-overload-signatures"</span>: <span class="literal">true</span>,</span><br><span class="line">  <span class="comment">// 禁止对函数的参数重新赋值</span></span><br><span class="line">  <span class="string">"no-parameter-reassignment"</span>: <span class="literal">true</span>,</span><br><span class="line">  <span class="comment">// if 后面必须有 &#123;，除非是单行 if</span></span><br><span class="line">  <span class="string">"curly"</span>: [</span><br><span class="line">    <span class="literal">true</span>,</span><br><span class="line">    <span class="string">"ignore-same-line"</span></span><br><span class="line">  ],</span><br><span class="line">  <span class="comment">// for in 内部必须有 hasOwnProperty</span></span><br><span class="line">  <span class="string">"forin"</span>: <span class="literal">true</span>,</span><br><span class="line">  <span class="comment">// 禁止在分支条件判断中有赋值操作</span></span><br><span class="line">  <span class="string">"no-conditional-assignment"</span>: <span class="literal">true</span>,</span><br><span class="line">  <span class="comment">// 禁止使用 new 来生成 String, Number 或 Boolean</span></span><br><span class="line">  <span class="string">"no-construct"</span>: <span class="literal">true</span>,</span><br><span class="line">  <span class="comment">// 禁止 super 在一个构造函数中出现两次</span></span><br><span class="line">  <span class="string">"no-duplicate-super"</span>: <span class="literal">true</span>,</span><br><span class="line">  <span class="comment">// 禁止在 switch 语句中出现重复测试表达式的 case</span></span><br><span class="line">  <span class="string">"no-duplicate-switch-case"</span>: <span class="literal">true</span>,</span><br><span class="line">  <span class="comment">// 禁止出现重复的变量定义或函数参数名</span></span><br><span class="line">  <span class="string">"no-duplicate-variable"</span>: [</span><br><span class="line">    <span class="literal">true</span>,</span><br><span class="line">    <span class="string">"check-parameters"</span></span><br><span class="line">  ],</span><br><span class="line">  <span class="comment">// 禁止使用 eval</span></span><br><span class="line">  <span class="string">"no-eval"</span>: <span class="literal">true</span>,</span><br><span class="line">  <span class="comment">// 禁止对对象字面量进行类型断言（断言成 any 是允许的）</span></span><br><span class="line">  <span class="string">"no-object-literal-type-assertion"</span>: <span class="literal">true</span>,</span><br><span class="line">  <span class="comment">// 禁止没必要的 return await</span></span><br><span class="line">  <span class="string">"no-return-await"</span>: <span class="literal">true</span>,</span><br><span class="line">  <span class="comment">// 禁止在数组中出现连续的逗号，如 let foo = [,,]</span></span><br><span class="line">  <span class="string">"no-sparse-arrays"</span>: <span class="literal">true</span>,</span><br><span class="line">  <span class="comment">// 禁止 throw 字符串，必须 throw 一个 Error 对象</span></span><br><span class="line">  <span class="string">"no-string-throw"</span>: <span class="literal">true</span>,</span><br><span class="line">  <span class="comment">// switch 的 case 必须 return 或 break</span></span><br><span class="line">  <span class="string">"no-switch-case-fall-through"</span>: <span class="literal">true</span>,</span><br><span class="line">  <span class="comment">// 使用实例的方法时，必须 bind 到实例上</span></span><br><span class="line">  <span class="string">"no-unbound-method"</span>: [</span><br><span class="line">    <span class="literal">true</span>,</span><br><span class="line">    <span class="string">"ignore-static"</span></span><br><span class="line">  ],</span><br><span class="line">  <span class="comment">// 使用 &#123; ...foo, bar: 1 &#125; 代替 Object.assign(&#123;&#125;, foo, &#123; bar: 1 &#125;)</span></span><br><span class="line">  <span class="comment">// 前者的类型检查更完善</span></span><br><span class="line">  <span class="string">"prefer-object-spread"</span>: <span class="literal">true</span>,</span><br><span class="line">  <span class="comment">// parseInt 必须传入第二个参数</span></span><br><span class="line">  <span class="string">"radix"</span>: <span class="literal">true</span>,</span><br><span class="line">  <span class="comment">// 必须使用 isNaN(foo) 而不是 foo === NaN</span></span><br><span class="line">  <span class="string">"use-isnan"</span>: <span class="literal">true</span>,</span><br><span class="line">  <span class="comment">//</span></span><br><span class="line">  <span class="comment">//</span></span><br><span class="line">  <span class="comment">// 可维护性</span></span><br><span class="line">  <span class="comment">// 这些规则可以增加代码的可维护性</span></span><br><span class="line">  <span class="comment">//</span></span><br><span class="line">  <span class="comment">// 禁止函数的循环复杂度超过 20，https://en.wikipedia.org/wiki/Cyclomatic_complexity</span></span><br><span class="line">  <span class="string">"cyclomatic-complexity"</span>: [</span><br><span class="line">    <span class="literal">true</span>,</span><br><span class="line">    <span class="number">20</span></span><br><span class="line">  ],</span><br><span class="line">  <span class="comment">// 禁止使用废弃（被标识了 @deprecated）的 API</span></span><br><span class="line">  <span class="string">"deprecation"</span>: <span class="literal">true</span>,</span><br><span class="line">  <span class="comment">// 一个缩进必须用四个空格替代</span></span><br><span class="line">  <span class="string">"indent"</span>: [</span><br><span class="line">    <span class="literal">true</span>,</span><br><span class="line">    <span class="string">"spaces"</span>,</span><br><span class="line">    <span class="number">4</span></span><br><span class="line">  ],</span><br><span class="line">  <span class="comment">// 禁止出现重复的 import</span></span><br><span class="line">  <span class="string">"no-duplicate-imports"</span>: <span class="literal">true</span>,</span><br><span class="line">  <span class="comment">// 禁止一个文件中出现多个相同的 namespace</span></span><br><span class="line">  <span class="string">"no-mergeable-namespace"</span>: <span class="literal">true</span>,</span><br><span class="line">  <span class="comment">// 文件类型必须时 utf-8</span></span><br><span class="line">  <span class="string">"encoding"</span>: <span class="literal">true</span>,</span><br><span class="line">  <span class="comment">// import 语句中，关键字之间的间距必须是一个空格</span></span><br><span class="line">  <span class="string">"import-spacing"</span>: <span class="literal">true</span>,</span><br><span class="line">  <span class="comment">// 接口可以 implement extend 和 merge</span></span><br><span class="line">  <span class="string">"interface-over-type-literal"</span>: <span class="literal">true</span>,</span><br><span class="line">  <span class="comment">// new 后面只必须有一个空格</span></span><br><span class="line">  <span class="string">"new-parens"</span>: <span class="literal">true</span>,</span><br><span class="line">  <span class="comment">// 类型断言必须使用 as Type，禁止使用 &lt;Type&gt;</span></span><br><span class="line">  <span class="comment">// &lt;Type&gt; 容易被理解为 jsx</span></span><br><span class="line">  <span class="string">"no-angle-bracket-type-assertion"</span>: <span class="literal">true</span>,</span><br><span class="line">  <span class="comment">// 禁止连续超过三行空行</span></span><br><span class="line">  <span class="string">"no-consecutive-blank-lines"</span>: [</span><br><span class="line">    <span class="literal">true</span>,</span><br><span class="line">    <span class="number">3</span></span><br><span class="line">  ],</span><br><span class="line">  <span class="comment">// 禁止使用特殊空白符（比如全角空格）</span></span><br><span class="line">  <span class="string">"no-irregular-whitespace"</span>: <span class="literal">true</span>,</span><br><span class="line">  <span class="comment">// 禁止使用 JSDoc，因为 TypeScirpt 已经包含了大部分功能</span></span><br><span class="line">  <span class="string">"no-redundant-jsdoc"</span>: <span class="literal">true</span>,</span><br><span class="line">  <span class="comment">// 禁止使用三斜杠引入类型定义文件</span></span><br><span class="line">  <span class="string">"no-reference-import"</span>: <span class="literal">true</span>,</span><br><span class="line">  <span class="comment">// 禁止变量定义时赋值为 undefined</span></span><br><span class="line">  <span class="string">"no-unnecessary-initializer"</span>: <span class="literal">true</span>,</span><br><span class="line">  <span class="comment">// 小数必须以 0. 开头，禁止以 . 开头，并且不能以 0 结尾</span></span><br><span class="line">  <span class="string">"number-literal-format"</span>: <span class="literal">true</span>,</span><br><span class="line">  <span class="comment">// 必须使用 a = &#123;b&#125; 而不是 a = &#123;b: b&#125;</span></span><br><span class="line">  <span class="string">"object-literal-shorthand"</span>: <span class="literal">true</span>,</span><br><span class="line">  <span class="comment">// 变量申明必须每行一个，for 循环的初始条件中除外</span></span><br><span class="line">  <span class="string">"one-variable-per-declaration"</span>: [</span><br><span class="line">    <span class="literal">true</span>,</span><br><span class="line">    <span class="string">"ignore-for-loop"</span></span><br><span class="line">  ],</span><br><span class="line">  <span class="comment">// if 后的 &#123; 禁止换行</span></span><br><span class="line">  <span class="string">"one-line"</span>: <span class="literal">true</span>,</span><br><span class="line">  <span class="comment">// 必须使用单引号，jsx 中必须使用双引号</span></span><br><span class="line">  <span class="string">"quotemark"</span>: [</span><br><span class="line">    <span class="literal">true</span>,</span><br><span class="line">    <span class="string">"single"</span>,</span><br><span class="line">    <span class="string">"jsx-double"</span>,</span><br><span class="line">    <span class="string">"avoid-template"</span>,</span><br><span class="line">    <span class="string">"avoid-escape"</span></span><br><span class="line">  ],</span><br><span class="line">  <span class="comment">// 行尾必须有分号</span></span><br><span class="line">  <span class="string">"semicolon"</span>: [</span><br><span class="line">    <span class="literal">true</span>,</span><br><span class="line">    <span class="string">"always"</span>,</span><br><span class="line">    <span class="string">"ignore-interfaces"</span></span><br><span class="line">  ],</span><br><span class="line">  <span class="comment">// 函数名前必须有空格</span></span><br><span class="line">  <span class="string">"space-before-function-paren"</span>: [</span><br><span class="line">    <span class="literal">true</span>,</span><br><span class="line">    <span class="string">"asyncArrow"</span></span><br><span class="line">  ],</span><br><span class="line">  <span class="comment">// 括号内首尾禁止有空格</span></span><br><span class="line">  <span class="string">"space-within-parens"</span>: [</span><br><span class="line">    <span class="literal">true</span>,</span><br><span class="line">    <span class="number">0</span></span><br><span class="line">  ],</span><br><span class="line">  <span class="comment">// 禁止 finally 内出现 return, continue, break, throw 等</span></span><br><span class="line">  <span class="comment">// finally 会比 catch 先执行</span></span><br><span class="line">  <span class="string">"no-unsafe-finally"</span>: <span class="literal">true</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        
+          <a class="article-more-a" href="/2020/10/22/vue中使用typescript/#more">more >></a>
+        
       
 
       
@@ -689,8 +923,10 @@ var _hmt = _hmt || [];
     <div class="article-entry" itemprop="articleBody">
       
         <hr>
-<p>title: react - 学习之路 - 配置<br>date: 2020-09-18 09:53:38</p>
-<h2 id="tags"><a href="#tags" class="headerlink" title="tags:"></a>tags:</h2><p>  Q: 如何配置路径别名</p>
+<p>title: react - 学习之路 - 配置<br>date: 2020-09-18 09:53:38<br>tags:</p>
+<pre><code>- react
+</code></pre><hr>
+<p>  Q: 如何配置路径别名</p>
 <p>  A: </p>
 <ul>
 <li><p>前置条件 安装 <code>npm react-app-rewired --save-dev</code></p>
@@ -792,6 +1028,17 @@ var _hmt = _hmt || [];
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">react</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
@@ -952,216 +1199,6 @@ var _hmt = _hmt || [];
 
 
   
-    <article id="post-react-study" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-
-  <div class="article-inner">
-    
-      <!-- <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/08/28/react-study/">重拾 react</a>
-    </h1>
-  
-
-        
-        <a href="/2020/08/28/react-study/" class="archive-article-date">
-  	<time datetime="2020-08-28T07:11:36.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-28</time>
-</a>
-        
-      </header> -->
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/08/28/react-study/">重拾 react</a>
-    </h1>
-  
-
-        
-        <a href="/2020/08/28/react-study/" class="archive-article-date">
-  	<time datetime="2020-08-28T07:11:36.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-28</time>
-</a>
-        
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>  由于最近一段时间一直在使用vue做项目，最近打算重拾react，在此记录react的点滴学习，实时更新</p>
-<h2 id="生命周期"><a href="#生命周期" class="headerlink" title="生命周期"></a>生命周期</h2><ul>
-<li><p>routerWillLeave 路由跳转前确认</p>
-<ul>
-<li><code>return false</code> 取消本次跳转</li>
-<li><code>return</code> 返回提示信息，在离开Route前提示用户进行确认</li>
-</ul>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; Lifecycle &#125; <span class="keyword">from</span> <span class="string">'react-router'</span></span><br><span class="line"><span class="keyword">const</span> Home = React.createClass(&#123;</span><br><span class="line">  <span class="comment">// 假设 Home 是一个 route 组件，它可能会使用</span></span><br><span class="line">  <span class="comment">// Lifecycle mixin 去获得一个 routerWillLeave 方法。</span></span><br><span class="line">  mixins: [ Lifecycle ],</span><br><span class="line">  routerWillLeave(nextLocation) &#123;</span><br><span class="line">    <span class="keyword">if</span> (!<span class="keyword">this</span>.state.isSaved)</span><br><span class="line">      <span class="keyword">return</span> <span class="string">'Your work is not saved! Are you sure you want to leave'</span></span><br><span class="line">  &#125;,</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-        
-          <a class="article-more-a" href="/2020/08/28/react-study/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">javascript</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">react</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/08/28/react-study/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-react-study-antd" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-
-  <div class="article-inner">
-    
-      <!-- <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/08/28/react-study-antd/">重拾 react - React模板 antd</a>
-    </h1>
-  
-
-        
-        <a href="/2020/08/28/react-study-antd/" class="archive-article-date">
-  	<time datetime="2020-08-28T04:05:15.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-28</time>
-</a>
-        
-      </header> -->
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/08/28/react-study-antd/">重拾 react - React模板 antd</a>
-    </h1>
-  
-
-        
-        <a href="/2020/08/28/react-study-antd/" class="archive-article-date">
-  	<time datetime="2020-08-28T04:05:15.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-28</time>
-</a>
-        
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>  由于最近一段时间一直在使用vue做项目，最近打算重拾react，在此记录react的点滴学习，实时更新</p>
-<p>  antd 是一款优秀的react 前端页面框架</p>
-<h2 id="插件使用"><a href="#插件使用" class="headerlink" title="插件使用"></a>插件使用</h2><p>  插件： <code>antd</code></p>
-<p>  安装： <code>npm install -S antd</code></p>
-<p>  使用： <code>import {Layout, Button} from &#39;antd&#39;</code></p>
-<h2 id="组件"><a href="#组件" class="headerlink" title="组件"></a>组件</h2><ul>
-<li><p>布局 <code>Layout</code></p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123;Layout&#125; <span class="keyword">from</span> <span class="string">'antd'</span></span><br><span class="line"><span class="keyword">const</span> &#123;Header,Side,Content,Footer&#125; = Layout</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">javascript</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">react</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">antd</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/08/28/react-study-antd/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/">10</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
@@ -1252,6 +1289,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">设计</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">杂谈</a>
               </li>
              
@@ -1260,7 +1301,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">设计</a>
+                <a href="javascript:void(0)" class="js-tag color4">web</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1272,7 +1313,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">web</a>
+                <a href="javascript:void(0)" class="js-tag color3">旅行</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1284,23 +1325,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">旅行</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">coffeescript</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">browser</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">localStorage</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">indexedDB</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1320,6 +1345,18 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">browser</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">localStorage</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">indexedDB</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">css3</a>
               </li>
              
@@ -1336,6 +1373,18 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">electron</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">工具</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">chrome</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">jsonwebtoken</a>
               </li>
              
@@ -1345,14 +1394,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">deepin</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">工具</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">chrome</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1377,10 +1418,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">golang</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">electron</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1416,10 +1453,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">HTML</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">经验</a>
               </li>
              
@@ -1432,7 +1465,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">HTML</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">array</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">编码</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1448,19 +1489,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">药别停</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">deno</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">nodeJs</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">药别停</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">编码</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1476,10 +1513,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">npm</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">promise</a>
               </li>
              
@@ -1489,10 +1522,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">react</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">antd</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1512,15 +1541,23 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">antd</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">npm</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">router</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">svg</a>
+                <a href="javascript:void(0)" class="js-tag color3">性能</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">性能</a>
+                <a href="javascript:void(0)" class="js-tag color4">svg</a>
               </li>
              
               <li class="article-tag-list-item">
