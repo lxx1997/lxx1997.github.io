@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="/"/>
-  <updated>2020-12-02T02:29:38.301Z</updated>
+  <updated>2020-12-04T01:23:40.451Z</updated>
   <id>/</id>
   
   <author>
@@ -15,6 +15,42 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>你不知道的javascript中卷 读后感</title>
+    <link href="/2020/12/03/%E4%BD%A0%E4%B8%8D%E7%9F%A5%E9%81%93%E7%9A%84javascript%E4%B8%AD%E5%8D%B7/"/>
+    <id>/2020/12/03/你不知道的javascript中卷/</id>
+    <published>2020-12-03T06:41:36.000Z</published>
+    <updated>2020-12-04T01:23:40.451Z</updated>
+    
+    <content type="html"><![CDATA[<h4 id="第一章-类型和语法"><a href="#第一章-类型和语法" class="headerlink" title="第一章 类型和语法"></a>第一章 类型和语法</h4><ul><li><p>内置类型</p><ul><li>空值 <code>null</code>  <code>typeof null === &#39;object&#39;</code></li><li>未定义 <code>undefined</code>  <code>typeof undefined === &#39;undefined&#39;</code></li><li>布尔值 <code>boolean</code>  <code>typeof true === &#39;boolean&#39;</code></li><li>数字 <code>number</code>  <code>typeof 42 === &#39;number&#39;</code></li><li>字符串 <code>string</code>  <code>typeof &#39;42&#39; === &#39;string&#39;</code></li><li>对象 <code>object</code>  <code>typeof {life: 42} === &#39;object&#39;</code></li><li>符号 <code>symbol</code>  <code>typeof Symbol() === &#39;symbol&#39;</code></li><li><code>typeof function() {/* .. */} === &#39;function&#39;</code></li><li><code>typeof [1,2,3] === &#39;object&#39;</code> 数组是object的一个子类型</li></ul><p>对变量执行<code>typeof</code>操作时，得到的结果并不是该变量的类型，而是该变量持有的值的类型，因为javascript中的变量没有类型</p></li><li><p><code>undefined</code> 和 <code>undeclared</code></p><p>已在作用域中声明但还没有赋值的变量是<code>undefined</code>，还没有在作用域声明过的变量是<code>undeclared</code></p><a id="more"></a></li><li><p><strong>数组</strong></p><ul><li><p><code>delete</code>运算符可以将单元从数组中删除，但是数据的length属性并不会发生变化</p></li><li><p><em>如果字符串键值能够被强制类型转换为十进制数字的话，他就会被当做数字索引来处理</em></p></li></ul><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = []</span><br><span class="line">a[<span class="string">'13'</span>] = <span class="number">43</span></span><br><span class="line">a.length <span class="comment">// 14</span></span><br></pre></td></tr></table></figure><ul><li><p>类数组 - 有时候需要将类数组转换为真正的数组</p><ul><li>通过for循环遍历类数组，将类数组的每一个元素复制到新的数组里</li><li><code>slice</code> 返回的是类数组的一个数组复本<br><code>Array.prototype.slice.call(arguments)</code></li><li><code>concat</code><br><code>Array.prototype.concat.apply([], arguments)</code></li><li><code>splice</code><br><code>Array.prototype.splice.call(arguments, 0)</code></li><li><code>Array.form()</code></li></ul></li></ul></li><li><p><strong>字符串</strong></p><ul><li>字符串和数据的确很相似，都是类数组，都有<code>length</code>属性，以及<code>indexOf</code>和<code>concat</code>方法，但是<em>字符串是不可变的</em>，<em>数组是可变的</em></li><li>字符串可以借用数组的非变更方法来处理字符串<br><code>Array.prototype.join.call(a, &#39;-)</code>,<code>Array.prototype.map.call(a, function() {/* .. */})</code></li><li>字符串反转 可以先将字符串转成数组反转后再转成字符串<br><code>string.split(&#39;&#39;).reverse().join(&#39;&#39;)</code> 包含复杂的字符，可以使用工具库</li></ul></li><li><p><strong>数字</strong></p><ul><li>数字常亮一般用十进制表示，数字前面的<code>0</code>可以省略，小数部分最后面的<code>0</code>也可以省略</li><li>指数模式 <code>5E10 === 50000000000 === 50000000000.toExponential() //5e+10</code></li><li><code>.toFixed()</code> 指定小数部分的显示位数 输出结果实际上是给定数字的字符串形式，如果指定的小数部分显示位数多余实际位数就用0补齐</li><li><code>.toPrecision()</code> 用来指定有效位数的显示位数</li><li><p><em>对于<code>.</code>运算符，因为它是一个有效的数字字符，会被优先识别为数字常量的一部分，然后才是对象属性访问运算符</em></p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">42.</span>toFixed(<span class="number">3</span>) <span class="comment">// SyntaxError</span></span><br><span class="line">(<span class="number">42</span>).toFixed(<span class="number">3</span>) <span class="comment">// '42.000'</span></span><br><span class="line"><span class="number">0.42</span>.toFixed(<span class="number">3</span>) <span class="comment">// '0.420'</span></span><br><span class="line"><span class="number">42.</span>.toFixed(<span class="number">3</span>) <span class="comment">// '42.000'</span></span><br><span class="line"><span class="number">42</span> .toFixed(<span class="number">3</span>) <span class="comment">// '42.000'</span></span><br></pre></td></tr></table></figure></li><li><p>数字常量的格式</p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">0xf3</span> <span class="comment">// 243的16进制</span></span><br><span class="line"><span class="number">0363</span> <span class="comment">// 243的八进制</span></span><br><span class="line"><span class="comment">// es6</span></span><br><span class="line"><span class="number">0o363</span> <span class="comment">// 243的八进制</span></span><br><span class="line"><span class="number">0b11110011</span> <span class="comment">// 243的二进制</span></span><br></pre></td></tr></table></figure></li><li><p>极小数运算 为了保证精准，可以设置一个误差范围值（<em>机械精度</em>）<code>Number.EPSILON</code></p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 如果没有Number.EPSILON，自己定义Number.EPSILON，如果有直接拿来使用</span></span><br><span class="line"><span class="keyword">if</span>(!<span class="built_in">Number</span>.EPSILON) &#123;</span><br><span class="line">  <span class="built_in">Number</span>.EPSILON = <span class="built_in">Math</span>.pow(<span class="number">2</span>, <span class="number">-52</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">numbersCloseEnoughToEqual</span>(<span class="params">n1, n2</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="built_in">Math</span>.abs(n1 - n2) &lt; <span class="built_in">Number</span>.EPSILON</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> a = <span class="number">0.1</span> + <span class="number">0.2</span></span><br><span class="line"><span class="keyword">var</span> b = <span class="number">0.3</span></span><br><span class="line">numbersCloseEnoughToEqual(a, b)  <span class="comment">// true</span></span><br></pre></td></tr></table></figure></li><li><p><code>Number.MAX_VALUE</code> 为 <code>Math.pow(2, 53) - 1</code> 即 <code>2^53-1</code> 在es6中被定义为<code>Number.MAX_SAFE_INTEGER</code></p></li><li>最小整数是 <code>-Math.pow(2, 53) + 1</code> 在es6中被定义为<code>Number.MIN_SAFE_INTEGER</code></li><li>整数检测 <code>Number.isInteger(..)</code></li><li>检查一个值是否是安全的整数 <code>Number.isSafeInteger(..)</code></li><li><code>a | 0</code>可以将变量a中的数值转化为32位有符号整数，因为数位运算符<code>|</code>只适用32位整数，因此与0进行操作即可截取a中的32位数位</li></ul></li><li><p>特殊数值</p><ul><li><p><em>不是值的值</em><br><code>undefined</code>类型只有一个值 <code>undefined</code>, <code>null</code>类型也只有一个值，即<code>null</code><br><code>null</code>指空值，不能作为标识符，不能将其作为变量来使用和赋值, <code>undefined</code>指没有值，是一个标识符，可以被当做变量使用和赋值</p><p><code>undefined</code>是一个内置标识符，他的值为<code>undefined</code>，通过<code>void</code>运算符即可得到该值</p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="number">42</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">void</span> a, a) <span class="comment">// undefined 42</span></span><br></pre></td></tr></table></figure></li></ul></li></ul><ul><li><p>特殊的数字</p><ul><li><code>NaN</code> 它与自身不相等，需要用<code>isNaN</code> or <code>Number.isNaN</code>方法来判断是否是NaN</li><li>无穷数 可以从有穷到无穷，但是无法从无穷到有穷 <code>±Infinity</code></li><li>零值 加法和减法无法的到0值 <code>JSON.stringify(-0) =&gt; &#39;0&#39;  JSON.parse(&#39;-0&#39;) =&gt; &#39;0&#39;</code></li></ul></li><li><p>特殊等式</p><ul><li><code>Object.is()</code> 主要用来处理特殊的相等比较</li><li><code>==</code>和<code>===</code>的效率更高，更为通用</li></ul></li><li><p>值和引用</p><ul><li>简单值（基本类型值）总是通过值复制的方式来赋值/传递 <code>null</code>,<code>undefined</code>,<code>symbol</code>,<code>string</code>,<code>number</code>,<code>boolean</code></li><li>复杂值（对象和函数）总是通过引用复制的方式来赋值/传递 <code>object</code>, <code>array</code>, <code>function</code><br><em>由于引用指向的值本身而非变量，因此一个引用无法更改另一个引用的指向</em><br><em>不能通过引用一个新的引用来更改旧的引用的指向，只能修改新旧引用共同指向的值</em><br>如果通过值复制的方式来传递复合值，就需要创建一个复本，这样传递的就不是原始值<code>foo(a.slice())</code>，foo中的操作不会影响到a指向的数组</li></ul></li></ul><ul><li>原生函数</li></ul>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h4 id=&quot;第一章-类型和语法&quot;&gt;&lt;a href=&quot;#第一章-类型和语法&quot; class=&quot;headerlink&quot; title=&quot;第一章 类型和语法&quot;&gt;&lt;/a&gt;第一章 类型和语法&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;内置类型&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;空值 &lt;code&gt;null&lt;/code&gt;  &lt;code&gt;typeof null === &amp;#39;object&amp;#39;&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;未定义 &lt;code&gt;undefined&lt;/code&gt;  &lt;code&gt;typeof undefined === &amp;#39;undefined&amp;#39;&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;布尔值 &lt;code&gt;boolean&lt;/code&gt;  &lt;code&gt;typeof true === &amp;#39;boolean&amp;#39;&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;数字 &lt;code&gt;number&lt;/code&gt;  &lt;code&gt;typeof 42 === &amp;#39;number&amp;#39;&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;字符串 &lt;code&gt;string&lt;/code&gt;  &lt;code&gt;typeof &amp;#39;42&amp;#39; === &amp;#39;string&amp;#39;&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;对象 &lt;code&gt;object&lt;/code&gt;  &lt;code&gt;typeof {life: 42} === &amp;#39;object&amp;#39;&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;符号 &lt;code&gt;symbol&lt;/code&gt;  &lt;code&gt;typeof Symbol() === &amp;#39;symbol&amp;#39;&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;typeof function() {/* .. */} === &amp;#39;function&amp;#39;&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;typeof [1,2,3] === &amp;#39;object&amp;#39;&lt;/code&gt; 数组是object的一个子类型&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;对变量执行&lt;code&gt;typeof&lt;/code&gt;操作时，得到的结果并不是该变量的类型，而是该变量持有的值的类型，因为javascript中的变量没有类型&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;code&gt;undefined&lt;/code&gt; 和 &lt;code&gt;undeclared&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;已在作用域中声明但还没有赋值的变量是&lt;code&gt;undefined&lt;/code&gt;，还没有在作用域声明过的变量是&lt;code&gt;undeclared&lt;/code&gt;&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="读后感" scheme="/tags/%E8%AF%BB%E5%90%8E%E6%84%9F/"/>
+    
+  </entry>
   
   <entry>
     <title>typescript - Pick</title>
@@ -776,9 +812,9 @@
     </summary>
     
     
-      <category term="eggjs" scheme="/tags/eggjs/"/>
-    
       <category term="typescript" scheme="/tags/typescript/"/>
+    
+      <category term="eggjs" scheme="/tags/eggjs/"/>
     
   </entry>
   
@@ -822,9 +858,9 @@
     </summary>
     
     
-      <category term="eggjs" scheme="/tags/eggjs/"/>
-    
       <category term="typescript" scheme="/tags/typescript/"/>
+    
+      <category term="eggjs" scheme="/tags/eggjs/"/>
     
       <category term="uni-app" scheme="/tags/uni-app/"/>
     
@@ -1433,9 +1469,9 @@
     </summary>
     
     
-      <category term="旧事" scheme="/tags/%E6%97%A7%E4%BA%8B/"/>
-    
       <category term="旅行" scheme="/tags/%E6%97%85%E8%A1%8C/"/>
+    
+      <category term="旧事" scheme="/tags/%E6%97%A7%E4%BA%8B/"/>
     
   </entry>
   
@@ -2464,9 +2500,9 @@
     </summary>
     
     
-      <category term="octopress" scheme="/tags/octopress/"/>
-    
       <category term="主题" scheme="/tags/%E4%B8%BB%E9%A2%98/"/>
+    
+      <category term="octopress" scheme="/tags/octopress/"/>
     
   </entry>
   

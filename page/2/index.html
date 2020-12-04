@@ -160,6 +160,132 @@ var _hmt = _hmt || [];
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-react-less-loader" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+
+  <div class="article-inner">
+    
+      <!-- <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/09/03/react-less-loader/">react 项目中使用less</a>
+    </h1>
+  
+
+        
+        <a href="/2020/09/03/react-less-loader/" class="archive-article-date">
+  	<time datetime="2020-09-03T07:30:35.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-09-03</time>
+</a>
+        
+      </header> -->
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/09/03/react-less-loader/">react 项目中使用less</a>
+    </h1>
+  
+
+        
+        <a href="/2020/09/03/react-less-loader/" class="archive-article-date">
+  	<time datetime="2020-09-03T07:30:35.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-09-03</time>
+</a>
+        
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="插件安装"><a href="#插件安装" class="headerlink" title="插件安装"></a>插件安装</h2>  <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install react-app-rewired customize-cra babel-plugin-<span class="keyword">import</span> -D</span><br></pre></td></tr></table></figure>
+<p>  在项目根目录创建文件 config-overrides.js</p>
+  <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> &#123;...&#125; = <span class="built_in">require</span>(<span class="string">'customize-cra'</span>);</span><br><span class="line"><span class="built_in">module</span>.exports = override(</span><br><span class="line">    ...</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<h2 id="react-按需加载配置"><a href="#react-按需加载配置" class="headerlink" title="react 按需加载配置"></a>react 按需加载配置</h2>  <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> &#123; override, fixBabelImports &#125; = <span class="built_in">require</span>(<span class="string">"customize-cra"</span>);</span><br><span class="line"><span class="built_in">module</span>.exports = override(</span><br><span class="line">    fixBabelImports(<span class="string">'import'</span>, &#123;</span><br><span class="line">        libraryName: <span class="string">'antd'</span>,</span><br><span class="line">        libraryDirectory: <span class="string">'es'</span>,</span><br><span class="line">        style: <span class="literal">true</span>,<span class="comment">//或者css, true代表运用less</span></span><br><span class="line">    &#125;),</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<p>  修改package.json</p>
+  <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"scripts"</span>: &#123;</span><br><span class="line">  <span class="string">"start"</span>: <span class="string">"react-app-rewired start"</span>,</span><br><span class="line">  <span class="string">"build"</span>: <span class="string">"react-app-rewired build"</span>,</span><br><span class="line">  <span class="string">"test"</span>: <span class="string">"react-app-rewired test"</span>,</span><br><span class="line">  <span class="string">"eject"</span>: <span class="string">"react-app-rewired eject"</span></span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+<p>  编译less文件</p>
+  <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">yarn add --dev less less-loader <span class="comment">//less-loader用5.0版本，高版本停用了一些配属性//config-overrides.js内容</span></span><br><span class="line"><span class="keyword">const</span> &#123; override,addLessLoader&#125; = <span class="built_in">require</span>(<span class="string">"customize-cra"</span>);<span class="built_in">module</span>.exports = override(</span><br><span class="line">  　　　addLessLoader(&#123;</span><br><span class="line">          javascriptEnabled: <span class="literal">true</span>,</span><br><span class="line">          modifyVars: &#123;&#125;</span><br><span class="line">      &#125;),</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>装饰器</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">npm install -D @babel/plugin-proposal-decorators</span><br><span class="line"><span class="comment">//config-overrides.js</span></span><br><span class="line"><span class="keyword">const</span> &#123; override, addDecoratorsLegacy&#125; = <span class="built_in">require</span>(<span class="string">'customize-cra'</span>);</span><br><span class="line"><span class="built_in">module</span>.exports = override(</span><br><span class="line">  addDecoratorsLegacy()</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="问题解决"><a href="#问题解决" class="headerlink" title="问题解决"></a>问题解决</h2><ul>
+<li><p>出现如下报错</p>
+<p>ValidationError: Invalid options object. Less Loader has been initialized using an options object that does not match the API schema.<br>options has an unknown property ‘modifyVars’. These properties are valid:<br>object { lessOptions?, prependData?, appendData?, sourceMap?, implementation? }。</p>
+<p><strong>解决方案</strong><br>将</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">addLessLoader(&#123;</span><br><span class="line">  javascriptEnabled: <span class="literal">true</span>,</span><br><span class="line">  modifyVars: &#123;&#125;</span><br><span class="line">&#125;),</span><br></pre></td></tr></table></figure>
+<p>修改为</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">addLessLoader(&#123;</span><br><span class="line">  lessOptions: &#123;</span><br><span class="line">    javascriptEnabled: <span class="literal">true</span>,</span><br><span class="line">    modifyVars: &#123;&#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;),</span><br></pre></td></tr></table></figure></li>
+</ul>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">react</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">less</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">webpack</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">react-app-rewired</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">customize-cra</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/09/03/react-less-loader/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-react-study" class="article article-type-post  article-index" itemscope itemprop="blogPost">
 
   <div class="article-inner">
@@ -1072,119 +1198,6 @@ var _hmt = _hmt || [];
 
 
   
-    <article id="post-svg-study-02" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-
-  <div class="article-inner">
-    
-      <!-- <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/07/30/svg-study-02/">矢量图形 SVG 学习之路 --- 进阶版</a>
-    </h1>
-  
-
-        
-        <a href="/2020/07/30/svg-study-02/" class="archive-article-date">
-  	<time datetime="2020-07-30T06:42:26.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-30</time>
-</a>
-        
-      </header> -->
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/07/30/svg-study-02/">矢量图形 SVG 学习之路 --- 进阶版</a>
-    </h1>
-  
-
-        
-        <a href="/2020/07/30/svg-study-02/" class="archive-article-date">
-  	<time datetime="2020-07-30T06:42:26.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-30</time>
-</a>
-        
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="SVG-滤镜"><a href="#SVG-滤镜" class="headerlink" title="SVG 滤镜"></a>SVG 滤镜</h4><p>  SVG可用的滤镜有以下几种</p>
-<ul>
-<li>feBlend - 与图像相结合的滤镜</li>
-<li>feColorMatrix - 用于彩色滤光片转换</li>
-<li>feComponentTransfer</li>
-<li>feComposite</li>
-<li>feConvolveMatrix</li>
-<li>feDiffuseLighting</li>
-<li>feDisplacementMap</li>
-<li>feFlood</li>
-<li>feGaussianBlur</li>
-<li>feImage</li>
-<li>feMerge</li>
-<li>feMorphology</li>
-<li>feOffset - 过滤阴影</li>
-<li>feSpecularLighting</li>
-<li>feTile</li>
-<li>feTurbulence</li>
-<li>feDistantLight - 用于照明过滤</li>
-<li>fePointLight - 用于照明过滤</li>
-<li><p>feSpotLight - 用于照明过滤</p>
-<p>您可以在每个 SVG 元素上使用多个滤镜！</p>
-        
-          <a class="article-more-a" href="/2020/07/30/svg-study-02/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">svg</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/07/30/svg-study-02/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/">10</a><a class="extend next" rel="next" href="/page/3/">Next &raquo;</a>
@@ -1283,19 +1296,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">笔记</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">web</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">游戏</a>
+                <a href="javascript:void(0)" class="js-tag color3">笔记</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">旧事</a>
+                <a href="javascript:void(0)" class="js-tag color4">css</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1311,14 +1320,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">coffeescript</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">css</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">d3.js</a>
               </li>
              
@@ -1328,6 +1329,18 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">html</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">游戏</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">旧事</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">coffeescript</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1347,19 +1360,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">eggjs</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">swagger-ui</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">typescript</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">electron</a>
+                <a href="javascript:void(0)" class="js-tag color1">eggjs</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1383,6 +1388,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">swagger-ui</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">electron</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">mysql</a>
               </li>
              
@@ -1403,11 +1416,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">golang</a>
+                <a href="javascript:void(0)" class="js-tag color3">生活</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">生活</a>
+                <a href="javascript:void(0)" class="js-tag color2">golang</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1419,10 +1432,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">octopress</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">主题</a>
               </li>
              
@@ -1431,11 +1440,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">浏览器</a>
+                <a href="javascript:void(0)" class="js-tag color5">octopress</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">function</a>
+                <a href="javascript:void(0)" class="js-tag color4">浏览器</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1447,15 +1456,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">arguments.callee</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">HTML</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">array</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">arguments.callee</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1471,11 +1480,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">药别停</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">canvas</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">药别停</a>
+                <a href="javascript:void(0)" class="js-tag color4">function</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1491,11 +1504,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">uni-app</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">colorui</a>
+                <a href="javascript:void(0)" class="js-tag color4">npm</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1508,6 +1517,18 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">react</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">antd</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">uni-app</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">colorui</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1527,19 +1548,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">antd</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">npm</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">router</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">性能</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1548,6 +1557,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">故事</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">性能</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1563,11 +1576,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">读后感</a>
+                <a href="javascript:void(0)" class="js-tag color4">vue</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">vue</a>
+                <a href="javascript:void(0)" class="js-tag color4">读后感</a>
               </li>
             
             <div class="clearfix"></div>
