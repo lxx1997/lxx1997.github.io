@@ -5,14 +5,14 @@
   
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <link rel="dns-prefetch" href="/lxx1997.github.io">
+  <link rel="dns-prefetch" href="https://lxxstar987.gitee.io/lxx1997.github.io">
   <title>深拷贝、浅拷贝 | lxx的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="前言  简单值（基本类型值）总是通过值复制的方式来赋值/传递 null,undefined,symbol,string,number,boolean  复杂值（对象和函数）总是通过引用复制的方式来赋值/传递 object, array, function  由于引用指向的值本身而非变量，因此一个引用无法更改另一个引用的指向  不能通过引用一个新的引用来更改旧的引用的指向，只能修改新旧引用共同指向的">
 <meta name="keywords" content="javascript">
 <meta property="og:type" content="article">
 <meta property="og:title" content="深拷贝、浅拷贝">
-<meta property="og:url" content="/lxx1997.github.io/2020/12/09/deep-copy-light-copy/index.html">
+<meta property="og:url" content="https://lxxstar987.gitee.io/lxx1997.github.io/2020/12/09/deep-copy-light-copy/index.html">
 <meta property="og:site_name" content="lxx的博客">
 <meta property="og:description" content="前言  简单值（基本类型值）总是通过值复制的方式来赋值/传递 null,undefined,symbol,string,number,boolean  复杂值（对象和函数）总是通过引用复制的方式来赋值/传递 object, array, function  由于引用指向的值本身而非变量，因此一个引用无法更改另一个引用的指向  不能通过引用一个新的引用来更改旧的引用的指向，只能修改新旧引用共同指向的">
 <meta property="og:locale" content="default">
@@ -292,7 +292,7 @@ var _hmt = _hmt || [];
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACIElEQVR42u3aQW7DMAwEwPz/0+4DWji7YlLA0vgUJIHN8YGgSL5e8XXdXvf/T+75+/vXNy4MDIzHMpIQk6DbpyS/Fq8PAwPjAMZ9cPef22/yFFy8OAwMDIygBLz/f0Jtn4uBgYHR3i4PLj/EYmBgYLSH2PvQ27Du7/PFszgGBsYDGXnX/f8/f2W+gYGB8SjGVV5tQy1P33mS/eOeGBgYWzPWBpCT1JwPMut4MDAwDmDMl7SSQ2ny6xoMAwNjV0Yb+nzNIocV98HAwNia0TblJ4l17XUkSx4YGBh7M/IB4aQNt3aILcpKDAyMYxhr5V0+epyXm9G2CAYGxnaMtdZbXrS16TiBRa1ADAyMjRh5KMlBdG1IkBeRb7qGGBgYmzLykWQ77GwHk0mhWReIGBgYGzE+MD5cWpL42LIFBgbGAYz5nlXbPpsn8YiHgYGxBaN9wHxgmff/Fo+pGBgYRzLa1DmfLeYjTwwMjBMYa+VdkiiTUOarHhgYGOcw8gWvJMlOQp+saGBgYJzDaAvEduSZjwHyBTUMDIwzGW1DfzI2WJtIFssWGBgYD2dc5TUvASfhFkUhBgbGRoxJsmsftjbOHO2MYGBgbMRYC649aq4dlYuEi4GBcQBjvjQ2ac/NC0cMDAyMnNEuckVN/3YJDAMD43jG2tgg+T5Jsm8OsRgYGFsz8vWsdpyZvILJWgYGBsYJjLbuysP6bBCTsSgGBsZjGT+F3BkGyvg59AAAAABJRU5ErkJggg==" alt="微信分享二维码">
+      <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACu0lEQVR42u3aQW7jMAwF0Nz/0p3tAJ1Yn6TYZoDnVYE4rp4WFvPJ1yu+vv663n2aPOH5md//fvfp5QsPDw9vsPTv1/M9OePdc5Ln5/f/Y1V4eHh4a7znhT4vuvdmnmxc4YjCw8PD+zBe/irPl5gfMHh4eHj/I2+yuHwL8mACDw8P7yd5yYs+iQYmy3oGr2cteHh4eDEvDxQ+5++V/h4eHh7euKvee+FWn9b7NHo+Hh4e3gKvOjJVDXZ7h0115OtwJx4eHt4yrxco5LFFvugkmEiCYDw8PLwNXn4MTCKD6nLzFtcopMDDw8Nr8fLiuNq+yovsSfPscMzg4eHhXeX1wtlkU3qDWdWCu9C1w8PDw7vE65W2vYCgepDkwce1yTI8PDy8YM0TRq9onmxN+ZjBw8PDW+NVY9l8ZGpyz4XiGw8PD2+NN0f2GmmTIYNoWAEPDw9vgVdtX1Xb/LcGFHpHER4eHt5P8npjT72F9o6Zwubi4eHhLfB67aUkpMjL8d5QQl6U4+Hh4W3wqovIl9Jrnk228pBY4+Hh4S3wnuOJvNjNj595q+zw3/Hw8PCu8hJGOTwtLn3+a+BQTOPh4eFd4iVBw6Q47hXceVF++C4eHh7eMm/+ip+86POtKSS0eHh4eAu8avuqGp4mIwjVYOJa1oKHh4c34OU/9avxbg8zj4lf+R7j4eHhLfAmcWqvMTYpwcsHAx4eHt6Al3fM8ldzNVwovO7z5+Dh4eFd5X0Vr94YwTyMSNKUcn8PDw8Pr8WrvnzzdtekFJ4Hyq/e2YKHh4cX8yajV7e2prpZhYMBDw8Pb41XjRLyErk6UjAJIw4zEXh4eHi/xOtV61V23pY7bBkeHh7eB/Am4wK9oyIprN+uEA8PD2+N12t69b6bDxDkG3E4GPDw8PCu8no/+OfLulWOXwg18PDw8FLeH7zxkpeI3hJXAAAAAElFTkSuQmCC" alt="微信分享二维码">
     </div>
 </div>
 
@@ -459,11 +459,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">设计</a>
+                <a href="javascript:void(0)" class="js-tag color3">js</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">杂谈</a>
+                <a href="javascript:void(0)" class="js-tag color5">html</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -475,11 +475,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">web</a>
+                <a href="javascript:void(0)" class="js-tag color3">设计</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">旅行</a>
+                <a href="javascript:void(0)" class="js-tag color3">杂谈</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">笔记</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -495,15 +499,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">js</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">html</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">笔记</a>
+                <a href="javascript:void(0)" class="js-tag color3">旅行</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -512,6 +508,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">css</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">web</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -531,23 +531,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">typescript</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">eggjs</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">mysql</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">docker</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">egg-mysql</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -563,6 +547,26 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">swagger-ui</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">typescript</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">mysql</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">docker</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">egg-mysql</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">node.js</a>
               </li>
              
@@ -571,19 +575,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">golang</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">swagger-ui</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">生活</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">electron</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">golang</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -592,6 +588,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">黑科技</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">octopress</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">生活</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -604,10 +608,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">浏览器</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">octopress</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -627,11 +627,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">canvas</a>
+                <a href="javascript:void(0)" class="js-tag color1">array</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">arguments.callee</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">编码</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">canvas</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -643,23 +651,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">药别停</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">arguments.callee</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">array</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">deno</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">nodeJs</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">药别停</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -675,11 +675,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">npm</a>
+                <a href="javascript:void(0)" class="js-tag color2">method</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">method</a>
+                <a href="javascript:void(0)" class="js-tag color4">npm</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -715,11 +715,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">性能</a>
+                <a href="javascript:void(0)" class="js-tag color4">svg</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">svg</a>
+                <a href="javascript:void(0)" class="js-tag color3">性能</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -731,19 +731,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">vue</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">读后感</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">python</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">pygame</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">vue</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">读后感</a>
               </li>
             
             <div class="clearfix"></div>
