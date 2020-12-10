@@ -6,19 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href>
-  <title>你不知道的javascript中卷 读后感 | lxx的博客</title>
+  <title>你不知道的javascript中卷 知识点摘录 | lxx的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="第一章 类型和语法 内置类型  空值 null  typeof null === &amp;#39;object&amp;#39; 未定义 undefined  typeof undefined === &amp;#39;undefined&amp;#39; 布尔值 boolean  typeof true === &amp;#39;boolean&amp;#39; 数字 number  typeof 42 === &amp;#39;number&amp;#3">
 <meta name="keywords" content="读后感">
 <meta property="og:type" content="article">
-<meta property="og:title" content="你不知道的javascript中卷 读后感">
+<meta property="og:title" content="你不知道的javascript中卷 知识点摘录">
 <meta property="og:url" content="/2020/12/03/你不知道的javascript中卷/index.html">
 <meta property="og:site_name" content="lxx的博客">
 <meta property="og:description" content="第一章 类型和语法 内置类型  空值 null  typeof null === &amp;#39;object&amp;#39; 未定义 undefined  typeof undefined === &amp;#39;undefined&amp;#39; 布尔值 boolean  typeof true === &amp;#39;boolean&amp;#39; 数字 number  typeof 42 === &amp;#39;number&amp;#3">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-12-04T01:23:40.451Z">
+<meta property="og:updated_time" content="2020-12-10T03:24:01.881Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="你不知道的javascript中卷 读后感">
+<meta name="twitter:title" content="你不知道的javascript中卷 知识点摘录">
 <meta name="twitter:description" content="第一章 类型和语法 内置类型  空值 null  typeof null === &amp;#39;object&amp;#39; 未定义 undefined  typeof undefined === &amp;#39;undefined&amp;#39; 布尔值 boolean  typeof true === &amp;#39;boolean&amp;#39; 数字 number  typeof 42 === &amp;#39;number&amp;#3">
   
     <link rel="alternative" href="/atom.xml" title="lxx的博客" type="application/atom+xml">
@@ -167,7 +167,7 @@ var _hmt = _hmt || [];
         
   
     <h1 class="article-title" itemprop="name">
-      你不知道的javascript中卷 读后感
+      你不知道的javascript中卷 知识点摘录
     </h1>
   
 
@@ -181,7 +181,7 @@ var _hmt = _hmt || [];
         
   
     <h1 class="article-title" itemprop="name">
-      你不知道的javascript中卷 读后感
+      你不知道的javascript中卷 知识点摘录
     </h1>
   
 
@@ -200,7 +200,7 @@ var _hmt = _hmt || [];
     <div class="article-entry" itemprop="articleBody">
       
         <h4 id="第一章-类型和语法"><a href="#第一章-类型和语法" class="headerlink" title="第一章 类型和语法"></a>第一章 类型和语法</h4><ul>
-<li><p>内置类型</p>
+<li><p><strong>内置类型</strong></p>
 <ul>
 <li>空值 <code>null</code>  <code>typeof null === &#39;object&#39;</code></li>
 <li>未定义 <code>undefined</code>  <code>typeof undefined === &#39;undefined&#39;</code></li>
@@ -212,11 +212,11 @@ var _hmt = _hmt || [];
 <li><code>typeof function() {/* .. */} === &#39;function&#39;</code></li>
 <li><code>typeof [1,2,3] === &#39;object&#39;</code> 数组是object的一个子类型</li>
 </ul>
+<a id="more"></a>
 <p>对变量执行<code>typeof</code>操作时，得到的结果并不是该变量的类型，而是该变量持有的值的类型，因为javascript中的变量没有类型</p>
 </li>
 <li><p><code>undefined</code> 和 <code>undeclared</code></p>
 <p>已在作用域中声明但还没有赋值的变量是<code>undefined</code>，还没有在作用域声明过的变量是<code>undeclared</code></p>
-<a id="more"></a>
 </li>
 <li><p><strong>数组</strong></p>
 <ul>
@@ -268,7 +268,7 @@ var _hmt = _hmt || [];
 <li><code>a | 0</code>可以将变量a中的数值转化为32位有符号整数，因为数位运算符<code>|</code>只适用32位整数，因此与0进行操作即可截取a中的32位数位</li>
 </ul>
 </li>
-<li><p>特殊数值</p>
+<li><p><strong>特殊数值</strong></p>
 <ul>
 <li><p><em>不是值的值</em><br><code>undefined</code>类型只有一个值 <code>undefined</code>, <code>null</code>类型也只有一个值，即<code>null</code><br><code>null</code>指空值，不能作为标识符，不能将其作为变量来使用和赋值, <code>undefined</code>指没有值，是一个标识符，可以被当做变量使用和赋值</p>
 <p><code>undefined</code>是一个内置标识符，他的值为<code>undefined</code>，通过<code>void</code>运算符即可得到该值</p>
@@ -299,9 +299,106 @@ var _hmt = _hmt || [];
 </li>
 </ul>
 <ul>
-<li>原生函数</li>
+<li><p><strong>原生函数</strong></p>
+<ul>
+<li>String()</li>
+<li>Number()</li>
+<li>Boolean() <em>通过Boolean创建的真值并不是真正意义的真值 ，它总是<code>true</code></em></li>
+<li>Array()</li>
+<li>Object()</li>
+<li>Function()</li>
+<li>RegExp()</li>
+<li>Date()</li>
+<li>Error()</li>
+<li>Symbol()</li>
 </ul>
+<p>原生函数可以被当做构造函数来使用</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="keyword">new</span> <span class="built_in">String</span>(<span class="string">'hello world'</span>)</span><br><span class="line"><span class="keyword">typeof</span> a <span class="comment">// object</span></span><br><span class="line">a <span class="keyword">instanceof</span> <span class="built_in">String</span> <span class="comment">// true</span></span><br><span class="line"><span class="built_in">Object</span>.prototype.toString.call(a) <span class="comment">// '[object String]'</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>内部属性[[Class]]<br><code>typeof</code> 返回值为<code>object</code>的对象都包含有一个内部属性[[Class]],这个属性无法直接访问，可以通过<code>Object.prototype.toString.call(..)</code>来查看</p>
+<p><em>Null的内部属性为<code>[object Null]</code> Undefined的内部属性为<code>[object Undefined]</code></em></p>
+</li>
+<li><p>封装对象包装<br>如果想要自行封装基本类型值，可以使用<code>Object(..)</code>函数，一般不推介使用封装对象<br>部分封装对象封装基本类型时获取到的值并非我们想要的值(<code>Boolean</code>)</p>
+</li>
+<li><p>拆封<br>想要得到封装对象中的基本类型值，可以使用<code>valueOf()</code>函数<br>在使用的时候回发生隐式拆分</p>
+</li>
+<li><p>原生函数</p>
+<ul>
+<li><p><code>Array(..)</code><br><em>Array构造函数只带一个数字参数时，会被作为数组的预设长度</em></p>
+<p><strong>对于一个有长度的空数组，无法使用<code>map(..)</code>但是可以使用<code>join(..)</code></strong>,因为<code>join(..)</code>首先嘉定数组不为空，然后通过<code>length</code>属性来遍历其中的元素</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Array</span>.apply( <span class="literal">null</span>, &#123; <span class="attr">length</span>: <span class="number">3</span> &#125; ) </span><br><span class="line"><span class="comment">// 等价于</span></span><br><span class="line"><span class="built_in">Array</span>(<span class="literal">undefined</span>, <span class="literal">undefined</span>, <span class="literal">undefined</span>)</span><br><span class="line"><span class="comment">// apply的第二个参数可以是数组或者类数组</span></span><br></pre></td></tr></table></figure>
+<p><strong>永远不要创建和使用空单元数组</strong></p>
+</li>
+<li><p><code>Object(..)</code>、<code>Function(..)</code>、<code>RegExp(..)</code> 同理，尽量不要使用<br>动态定义正则表达式可以使用<code>new RegExp(pattern, flags)</code>来定义</p>
+</li>
+<li><p><code>Date(..)</code> 和 <code>Error(..)</code><br>创建日期对象使用<code>new Date()</code>, <code>Date(..)</code>可以带参数，用来指定日期和时间<br><code>Date.now()</code>自动获取当前时间戳</p>
+<p><code>Error(..)</code>主要是为了获得当前运行栈的上下文，与throw一起使用</p>
+</li>
+<li><p><code>Symbol(..)</code><br>符号具有唯一性的特殊值<br>符号可以用作属性名，但无论是在代码还是开发控制台中都无法查看和访问它的值，只会 显示为诸如 Symbol(Symbol.create) 这样的值</p>
+</li>
+</ul>
+</li>
+<li><p>原生原型</p>
+<p>原生函数都有自己的<code>prototype</code>对象，包含其对应子类型所特有的行为特征<br><strong>所有的函数都可以调用<code>Function.prototype</code>的<code>apply(..)</code>, <code>call(..)</code>, <code>bind(..)</code></strong></p>
+<ul>
+<li><code>Function.prototype</code> 是一个函数</li>
+<li><code>RegExp.prototype</code> 是一个正则表达式</li>
+<li><code>Array.prototype</code> 是一个数组</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>强制类型转换</strong></p>
+<ul>
+<li><p>值类型转换 - 类型转换发生在静态类型语言的编译阶段，强制类型转换发生在动态类型语言的运行时(<code>runtime</code>)，又可以区分为”隐式强制类型转换”和”显示强制类型转换”</p>
+</li>
+<li><p>抽象值操作</p>
+<ul>
+<li><code>toString()</code> - 负责处理非字符串到字符串的强制类型转换</li>
+<li><p><code>JSON.stringify()</code> <em><code>undefined</code>,<code>function</code>, <code>symbol</code>,循环引用的对象都不能用<code>JSON.stringify</code>进行处理，会被自动忽略，在数组中则会返回null</em><br>如果需要对含有非法JSON值的对象作字符串化，或者对象中的某些值无法被序列化时，需要定义<code>toJSON()</code>方法返回一个安全的JSON值</p>
+<p><code>toJSON</code>返回的是一个能够被字符串化的安全的JSON值，然后再由<code>JSON.stringify</code>对其进行字符串化</p>
+<p>我们可以向<code>JSON.stringify()</code>传递一个可选参数replacer, 可以是数组或者函数，用来指定对象序列化过程中哪些属性应该被处理，哪些被排除</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = &#123;</span><br><span class="line">  b: <span class="number">42</span>,</span><br><span class="line">  c: <span class="string">'42'</span>.</span><br><span class="line">  d: [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// replacer为数组的话，必须是一个字符串数组</span></span><br><span class="line"><span class="built_in">JSON</span>.stringify(a, [<span class="string">'b'</span>, <span class="string">'c'</span>])  <span class="comment">// "&#123;"b":42,"c":"42"&#125;" </span></span><br><span class="line"><span class="built_in">JSON</span>.stringify(a, <span class="function"><span class="keyword">function</span>(<span class="params">k,v</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span>(k!==<span class="string">"c"</span>) <span class="keyword">return</span> v</span><br><span class="line">&#125;) <span class="comment">// "&#123;"b":42,"d":[1,2,3]&#125;"</span></span><br></pre></td></tr></table></figure>
+<p><code>JSON.stringify</code> 还有一个可选参数space用来指定输出的缩进格式。space 为正整数时是指定 每一级缩进的字符数，它还可以是字符串</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = &#123;</span><br><span class="line">  b: <span class="number">42</span>,   </span><br><span class="line">  c: <span class="string">"42"</span>,  </span><br><span class="line">  d: [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]</span><br><span class="line">&#125;; </span><br><span class="line"><span class="built_in">JSON</span>.stringify( a, <span class="literal">null</span>, <span class="number">3</span> ); </span><br><span class="line"><span class="comment">// "&#123; "b": 42, "c": "42", "d": [  1,         2,        3     ]  &#125;" </span></span><br><span class="line"><span class="built_in">JSON</span>.stringify( a, <span class="literal">null</span>, <span class="string">"-----"</span> ); <span class="comment">// "&#123; // -----"b": 42, // -----"c": "42", // -----"d": [ // ----------1, // ----------2, // ----------3 // -----] // &#125;"</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<pre><code>* `toNumber()`
 
+  true转换为1，false转化为0，undefined转化为NaN，null转化为0
+
+  在进行转化时，抽象操作ToPrimitive会首先检查该值是否有valueOf方法，如果有并且返回基本类型值，就使用该值进行强制类型转换，如果没有就使用toString的返回值来强制类型转换，如果都不返回基本值，就会报TypeError
+
+* `toBoolean`
+
+  假值包含 undefined，null，false，+0，-0，NaN, &quot;&quot; 会被转换为false
+
+* 显示强制类型转换
+
+  String(), Number() a.toString() 一元运算符+
+
+  * 日期显示转化为数字  `new Date() or +new Date()  new Date().getTime() Date.now()`
+
+  * 奇特的`~`运算符  返回2的补码 `~x ≈ -(x+1)`  
+    `~a.indexOf(b)`强制转化为真假值
+
+  * 字位截除 `~~ or x | 0` 只适用于32位数字
+
+  * 显示解析数字字符串
+    * Number()  不允许出现非数字字符
+    * parseInt()  允许出现非数字字符 第二个参数表示进制类型
+    * parseFloat()
+
+  * Boolean() !!
+
+* 隐式强制类型转换
+
+  * 字符串和数字之间的隐式强制类型转换
+</code></pre>
       
 
       
@@ -383,6 +480,15 @@ var _hmt = _hmt || [];
 
   
 <nav id="article-nav">
+  
+    <a href="/2020/12/04/Symbol详解/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          Symbol详解
+        
+      </div>
+    </a>
   
   
     <a href="/2020/12/02/typescript-pick/" id="article-nav-older" class="article-nav-link-wrap">
@@ -533,31 +639,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">web</a>
+                <a href="javascript:void(0)" class="js-tag color2">symbol</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">笔记</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">css</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">旅行</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">js</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">html5</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">d3.js</a>
+                <a href="javascript:void(0)" class="js-tag color4">es6</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -565,7 +651,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">html</a>
+                <a href="javascript:void(0)" class="js-tag color3">笔记</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -574,6 +660,22 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">旧事</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">js</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">html</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">web</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">旅行</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -593,15 +695,27 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">css</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">d3.js</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">css3</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">typescript</a>
+                <a href="javascript:void(0)" class="js-tag color1">eggjs</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">eggjs</a>
+                <a href="javascript:void(0)" class="js-tag color1">swagger-ui</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">typescript</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -625,11 +739,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">swagger-ui</a>
+                <a href="javascript:void(0)" class="js-tag color4">electron</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">electron</a>
+                <a href="javascript:void(0)" class="js-tag color2">golang</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">node.js</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">后台</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -645,19 +767,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">node.js</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">后台</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">生活</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">golang</a>
+                <a href="javascript:void(0)" class="js-tag color5">octopress</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -677,11 +791,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">octopress</a>
+                <a href="javascript:void(0)" class="js-tag color4">浏览器</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">浏览器</a>
+                <a href="javascript:void(0)" class="js-tag color4">function</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">HTML</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -693,15 +811,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">HTML</a>
+                <a href="javascript:void(0)" class="js-tag color2">arguments.callee</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">array</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">arguments.callee</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -717,15 +831,23 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">药别停</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">canvas</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">function</a>
+                <a href="javascript:void(0)" class="js-tag color4">药别停</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">模式</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">uni-app</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">colorui</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -734,10 +856,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">nodeJs</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">模式</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -761,14 +879,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">uni-app</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">colorui</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">less</a>
               </li>
              
@@ -785,6 +895,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">性能</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">router</a>
               </li>
              
@@ -793,15 +907,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">故事</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">性能</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">ES6</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">故事</a>
               </li>
              
               <li class="article-tag-list-item">
