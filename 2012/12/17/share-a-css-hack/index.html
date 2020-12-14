@@ -8,19 +8,19 @@
   
     <meta name="keywords" content="blog 博客">
   
-  <meta name="description" content="###一、分享一个IE6，7的css hack bug。     IE和我们之间，肯定有一个是傻逼，如果它不是，那我们准是。不然很多事情没法解释…  ——多么痛的领悟   先看代码，或者点击看demohtml:1234&amp;lt;div id=&quot;main&quot;&amp;gt;	&amp;lt;div class=&quot;box&quot;&amp;gt;&amp;lt;/div&amp;gt;	&amp;lt;div class=&quot;box&quot;&amp;gt;&amp;lt;/div&amp;g">
+  <meta name="description" content="一、分享一个IE6，7的css hack bug。     IE和我们之间，肯定有一个是傻逼，如果它不是，那我们准是。不然很多事情没法解释…  ——多么痛的领悟   先看代码，或者点击看demohtml:1234&amp;lt;div id=&quot;main&quot;&amp;gt;	&amp;lt;div class=&quot;box&quot;&amp;gt;&amp;lt;/div&amp;gt;	&amp;lt;div class=&quot;box&quot;&amp;gt;&amp;lt;/div&amp;gt;&amp;">
 <meta name="keywords" content="css">
 <meta property="og:type" content="article">
 <meta property="og:title" content="分享一个IE6，7的CSS hack bug">
 <meta property="og:url" content="https://lxxstar987.gitee.io/lxx1997.github.io/2012/12/17/share-a-css-hack/index.html">
 <meta property="og:site_name" content="SoulReader">
-<meta property="og:description" content="###一、分享一个IE6，7的css hack bug。     IE和我们之间，肯定有一个是傻逼，如果它不是，那我们准是。不然很多事情没法解释…  ——多么痛的领悟   先看代码，或者点击看demohtml:1234&amp;lt;div id=&quot;main&quot;&amp;gt;	&amp;lt;div class=&quot;box&quot;&amp;gt;&amp;lt;/div&amp;gt;	&amp;lt;div class=&quot;box&quot;&amp;gt;&amp;lt;/div&amp;g">
+<meta property="og:description" content="一、分享一个IE6，7的css hack bug。     IE和我们之间，肯定有一个是傻逼，如果它不是，那我们准是。不然很多事情没法解释…  ——多么痛的领悟   先看代码，或者点击看demohtml:1234&amp;lt;div id=&quot;main&quot;&amp;gt;	&amp;lt;div class=&quot;box&quot;&amp;gt;&amp;lt;/div&amp;gt;	&amp;lt;div class=&quot;box&quot;&amp;gt;&amp;lt;/div&amp;gt;&amp;">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://lxxstar987.gitee.io/assets/blogImg/css_hack.jpg">
-<meta property="og:updated_time" content="2020-12-14T08:11:17.051Z">
+<meta property="og:updated_time" content="2020-12-14T08:42:05.184Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="分享一个IE6，7的CSS hack bug">
-<meta name="twitter:description" content="###一、分享一个IE6，7的css hack bug。     IE和我们之间，肯定有一个是傻逼，如果它不是，那我们准是。不然很多事情没法解释…  ——多么痛的领悟   先看代码，或者点击看demohtml:1234&amp;lt;div id=&quot;main&quot;&amp;gt;	&amp;lt;div class=&quot;box&quot;&amp;gt;&amp;lt;/div&amp;gt;	&amp;lt;div class=&quot;box&quot;&amp;gt;&amp;lt;/div&amp;g">
+<meta name="twitter:description" content="一、分享一个IE6，7的css hack bug。     IE和我们之间，肯定有一个是傻逼，如果它不是，那我们准是。不然很多事情没法解释…  ——多么痛的领悟   先看代码，或者点击看demohtml:1234&amp;lt;div id=&quot;main&quot;&amp;gt;	&amp;lt;div class=&quot;box&quot;&amp;gt;&amp;lt;/div&amp;gt;	&amp;lt;div class=&quot;box&quot;&amp;gt;&amp;lt;/div&amp;gt;&amp;">
 <meta name="twitter:image" content="https://lxxstar987.gitee.io/assets/blogImg/css_hack.jpg">
   
   
@@ -125,7 +125,7 @@
     <div class="article-entry post-content" itemprop="articleBody">
       
             
-            <p>###一、分享一个IE6，7的css hack bug。<br><img src="/assets/blogImg/css_hack.jpg" alt="css hack">   </p>
+            <h3 id="一、分享一个IE6，7的css-hack-bug。"><a href="#一、分享一个IE6，7的css-hack-bug。" class="headerlink" title="一、分享一个IE6，7的css hack bug。"></a>一、分享一个IE6，7的css hack bug。</h3><p><img src="/assets/blogImg/css_hack.jpg" alt="css hack">   </p>
 <blockquote>
 <p>IE和我们之间，肯定有一个是傻逼，如果它不是，那我们准是。不然很多事情没法解释…  ——多么痛的领悟 </p>
 </blockquote>
@@ -138,15 +138,14 @@
 <li><code>position: relative</code> - 因为在box里面想用一个dom做绝对定位            </li>
 <li><code>background: #333</code> - 设置background颜色为#333<br>当.box触发hover时，做了一步z-index的改变，这时候在IE6，7中出现bug：因margin-left失效，.box会向左移动10px；而且这时候设置margin-left是不起作用的，hover结束后.box也不会回到原来的位置。</li>
 </ul>
-<p>###二、淡定解决异次元的bug</p>
-<p>诡异的事情最后水落石出：<strong>background属性居然影响了margin</strong>。</p>
+<h3 id="二、淡定解决异次元的bug"><a href="#二、淡定解决异次元的bug" class="headerlink" title="二、淡定解决异次元的bug"></a>二、淡定解决异次元的bug</h3><p>诡异的事情最后水落石出：<strong>background属性居然影响了margin</strong>。</p>
 <p>将.box:hover多加一行background属性，比如：<code>background: #999</code>，这样子在IE上“看上去”就解决了。<br><strong>但是</strong>，就当你以为解决了bug的时候，如果.box:hover的background颜色设置与hover之前的颜色一样，也就是设置为<code>background: #333</code>，阴魂不散的bug又会重新出现啦。</p>
 <p>庆幸你的需求是background颜色不一样吧。如果还真是悲剧到要做成一样的颜色，解决的办法恐怕只能是取消.box的<code>position: relative</code>，然后多加一层dom容器了。<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class="box"&gt;</span><br><span class="line">	&lt;div style="position: relative"&gt;…&lt;/div&gt;</span><br><span class="line">	…</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure></p>
 <p>友情link：<a href="http://xueran.github.com/blog/2012/12/17/csstest-jiugongge/" target="_blank" rel="noopener">xueran的这篇文字</a>。</p>
 
             <div class="post-copyright">
     <div class="content">
-        <p>最后更新： 2020年12月14日 16:11</p>
+        <p>最后更新： 2020年12月14日 16:42</p>
         <p>原始链接： <a class="post-url" href="/lxx1997.github.io/2012/12/17/share-a-css-hack/" title="分享一个IE6，7的CSS hack bug">https://lxxstar987.gitee.io/lxx1997.github.io/2012/12/17/share-a-css-hack/</a></p>
         <footer>
             <a href="https://lxxstar987.gitee.io/lxx1997.github.io">
@@ -262,6 +261,12 @@
 </article>
 
 
+    <aside class="post-toc-pos post-toc-top" id="post-toc">
+        <nav class="post-toc-wrap">
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#一、分享一个IE6，7的css-hack-bug。"><span class="post-toc-text">一、分享一个IE6，7的css hack bug。</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#二、淡定解决异次元的bug"><span class="post-toc-text">二、淡定解决异次元的bug</span></a></li></ol>
+        </nav>
+    </aside>
+    
 
 <nav id="article-nav">
   

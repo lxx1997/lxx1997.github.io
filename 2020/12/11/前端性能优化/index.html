@@ -9,7 +9,7 @@
     <meta name="keywords" content="blog 博客">
   
   <meta name="description" content="前言当我们去面试的时候，很大概率会被面试官问这么一个问题：你有尝试过对项目做性能优化吗？或者你了解哪些性能优化的方法？听到这个问题的你可能是这样的：  似曾相识但又说不清楚，往往只能零散地说出那么几点，难以做到有条理的回答。那么，本文就带你简单了解前端性能优化的几个主要方面，旨在抛砖引玉。 一、资源的合并和压缩web前端应用的开发与部署过程：  输入url到页面显示出来的过程：  请求过程中一些潜">
-<meta name="keywords" content="html,javascript">
+<meta name="keywords" content="javascript,html">
 <meta property="og:type" content="article">
 <meta property="og:title" content="前端性能优化 - 转载">
 <meta property="og:url" content="https://lxxstar987.gitee.io/lxx1997.github.io/2020/12/11/前端性能优化/index.html">
@@ -96,7 +96,7 @@
 <meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_png/Hp2EvpxBicAjGNAHslictNl1iaB40KAYEK8XlUKj1QLNDrVpxFWNj4RUNHT0FomGJJszcV8tkOxUATvYphty282AA/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1">
 <meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_png/Hp2EvpxBicAjGNAHslictNl1iaB40KAYEK8ymr6HJznTLey42lUoFbzqbVZxUzqXZUbPLhRGXUUE5nAMgklAiaCtFA/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1">
 <meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_png/Hp2EvpxBicAjGNAHslictNl1iaB40KAYEK8TibANyf7X1OZu9Dsc5xV6ZucPSuic2opz8RVpky6VaDQvelwyYf17zjQ/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1">
-<meta property="og:updated_time" content="2020-12-14T08:10:08.523Z">
+<meta property="og:updated_time" content="2020-12-14T08:31:54.873Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="前端性能优化 - 转载">
 <meta name="twitter:description" content="前言当我们去面试的时候，很大概率会被面试官问这么一个问题：你有尝试过对项目做性能优化吗？或者你了解哪些性能优化的方法？听到这个问题的你可能是这样的：  似曾相识但又说不清楚，往往只能零散地说出那么几点，难以做到有条理的回答。那么，本文就带你简单了解前端性能优化的几个主要方面，旨在抛砖引玉。 一、资源的合并和压缩web前端应用的开发与部署过程：  输入url到页面显示出来的过程：  请求过程中一些潜">
@@ -640,9 +640,9 @@
 <p><strong>9、为动画元素新建图层，提高动画元素的<code>z-index</code>；</strong></p>
 <p><strong>10、利用文档碎片(<code>documentFragment</code>)——<code>vue</code>使用了该种方式提升性能</strong></p>
 <p>如果我们要在一个<code>ul</code>中添加<code>10000</code>个<code>li</code>，如果不使用文档碎片，那么我们就需要使用<code>append</code>进行<code>10000</code>次的追加，这会导致页面不停地回流，非常地消耗资源：</p>
-<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> oUl = <span class="built_in">document</span>.createElement(<span class="string">"ul"</span>); </span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>;i&lt;<span class="number">10000</span>;i++)</span><br><span class="line">&#123; </span><br><span class="line">    <span class="keyword">var</span> oLi = <span class="built_in">document</span>.createElement(<span class="string">"li"</span>); </span><br><span class="line">    oUl.appendChild(oLi); </span><br><span class="line">&#125; </span><br><span class="line"><span class="built_in">document</span>.body.appendChild(oUl);</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> oUl = <span class="built_in">document</span>.createElement(<span class="string">"ul"</span>); </span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>;i&lt;<span class="number">10000</span>;i++)</span><br><span class="line">&#123; </span><br><span class="line">    <span class="keyword">var</span> oLi = <span class="built_in">document</span>.createElement(<span class="string">"li"</span>); </span><br><span class="line">    oUl.appendChild(oLi); </span><br><span class="line">&#125; </span><br><span class="line"><span class="built_in">document</span>.body.appendChild(oUl);</span><br></pre></td></tr></table></figure>
 <p>我们可以引入<code>createDocumentFragment()</code>方法，它的作用是创建一个<strong>文档碎片</strong>。先将要插入<code>10000</code>个<code>li</code>添加到文档碎片里，然后再一次性添加到<code>document</code>中。即文档碎片相当于一个<strong>临时仓库</strong>，这样能够大量减少<code>DOM</code>操作：</p>
-<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//先创建文档碎片</span></span><br><span class="line"><span class="keyword">var</span> oFragment = <span class="built_in">document</span>.createDocumentFragment(); </span><br><span class="line"></span><br><span class="line"><span class="comment">//再创建ul标签</span></span><br><span class="line"><span class="keyword">var</span> oUl = <span class="built_in">document</span>.createElement(<span class="string">"ul"</span>); </span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>;i&lt;<span class="number">10000</span>;i++)</span><br><span class="line">&#123; </span><br><span class="line">  <span class="comment">//创建li标签</span></span><br><span class="line">  <span class="keyword">var</span> oLi = <span class="built_in">document</span>.createElement(<span class="string">"li"</span>); </span><br><span class="line">  <span class="comment">//先附加在文档碎片中</span></span><br><span class="line">  oFragment.appendChild(oLi);  </span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//将文档碎片添加到ul标签中 </span></span><br><span class="line">oUl.appendChild(oFragment);</span><br><span class="line"><span class="comment">//将ul标签添加到body标签中</span></span><br><span class="line"><span class="built_in">document</span>.body.appendChild(oUl);</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//先创建文档碎片</span></span><br><span class="line"><span class="keyword">var</span> oFragment = <span class="built_in">document</span>.createDocumentFragment(); </span><br><span class="line"></span><br><span class="line"><span class="comment">//再创建ul标签</span></span><br><span class="line"><span class="keyword">var</span> oUl = <span class="built_in">document</span>.createElement(<span class="string">"ul"</span>); </span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>;i&lt;<span class="number">10000</span>;i++)</span><br><span class="line">&#123; </span><br><span class="line">  <span class="comment">//创建li标签</span></span><br><span class="line">  <span class="keyword">var</span> oLi = <span class="built_in">document</span>.createElement(<span class="string">"li"</span>); </span><br><span class="line">  <span class="comment">//先附加在文档碎片中</span></span><br><span class="line">  oFragment.appendChild(oLi);  </span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//将文档碎片添加到ul标签中 </span></span><br><span class="line">oUl.appendChild(oFragment);</span><br><span class="line"><span class="comment">//将ul标签添加到body标签中</span></span><br><span class="line"><span class="built_in">document</span>.body.appendChild(oUl);</span><br></pre></td></tr></table></figure>
 <p><strong>11、</strong>如果涉及到一些可以使用合成线程来处理 <code>CSS</code> 特效或者动画的情况，就尽量使用 <code>will-change</code> 来提前告诉渲染引擎，让它为该元素准备独立的层。</p>
 <p><strong>12、采用虚拟<code>DOM</code>；</strong></p>
 <p><strong>13、使用<code>requestAnimationFrame</code>制作动画：</strong>详细内容如下。</p>
@@ -734,7 +734,7 @@
 <p>打开<code>Application</code>选项查看当前<code>Cookie</code>，可以看到<code>Cookie</code>已被改变：</p>
 <p><img src="https://mmbiz.qpic.cn/mmbiz_png/Hp2EvpxBicAjGNAHslictNl1iaB40KAYEK8PwcibCLoCYbVW1iafUDnZdj0jclBgeHAGL9pA8e2T4k0gwllJMib9NuCA/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="图片"></p>
 <p>获取<code>Cookie</code>：</p>
-<figure class="highlight coffeescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">document</span>.cookie</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">document</span>.cookie</span><br></pre></td></tr></table></figure>
 <p><img src="https://mmbiz.qpic.cn/mmbiz_png/Hp2EvpxBicAjGNAHslictNl1iaB40KAYEK8BWW7C6xXysxR4nlm7PvtbZb4icic0JrcjJT6zNzHBtPQ0Pj2uaHicUGZA/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="图片"></p>
 <blockquote>
 <p><strong>备注：</strong></p>
@@ -1037,7 +1037,7 @@
 
             <div class="post-copyright">
     <div class="content">
-        <p>最后更新： 2020年12月14日 16:10</p>
+        <p>最后更新： 2020年12月14日 16:31</p>
         <p>原始链接： <a class="post-url" href="/lxx1997.github.io/2020/12/11/前端性能优化/" title="前端性能优化 - 转载">https://lxxstar987.gitee.io/lxx1997.github.io/2020/12/11/前端性能优化/</a></p>
         <footer>
             <a href="https://lxxstar987.gitee.io/lxx1997.github.io">
@@ -1142,9 +1142,9 @@
   <li class="article-footer-tags">
     <i class="fa fa-tags"></i>
       
-    <a href="/lxx1997.github.io/tags/html/" class="color5">html</a>
-      
     <a href="/lxx1997.github.io/tags/javascript/" class="color1">javascript</a>
+      
+    <a href="/lxx1997.github.io/tags/html/" class="color5">html</a>
       
   </li>
 
@@ -1163,6 +1163,16 @@
     
 
 <nav id="article-nav">
+  
+    <a href="/lxx1997.github.io/2020/12/14/react-study-config/" id="article-nav-newer" class="article-nav-link-wrap">
+
+      <span class="article-nav-title">
+        <i class="fa fa-hand-o-left" aria-hidden="true"></i>
+        
+          (no title)
+        
+      </span>
+    </a>
   
   
     <a href="/lxx1997.github.io/2020/12/09/deep-copy-light-copy/" id="article-nav-older" class="article-nav-link-wrap">

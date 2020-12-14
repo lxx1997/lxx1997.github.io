@@ -8,20 +8,20 @@
   
     <meta name="keywords" content="blog 博客">
   
-  <meta name="description" content="js是单线程的语言，由于此特性，我们在处理并发时需要用到一些技巧，如setTimeout()，setInterval()，调用XMLHttpRequest等。但这里的并发只是非阻塞（参照John Resig的文章How JavaScript Timers Work），真正的多线程编程则需要HTML5的web worker。 ###【worker的使用】web worker的使用非常简单，线程之间通">
+  <meta name="description" content="js是单线程的语言，由于此特性，我们在处理并发时需要用到一些技巧，如setTimeout()，setInterval()，调用XMLHttpRequest等。但这里的并发只是非阻塞（参照John Resig的文章How JavaScript Timers Work），真正的多线程编程则需要HTML5的web worker。 【worker的使用】web worker的使用非常简单，线程之间通讯的a">
 <meta name="keywords" content="html,web">
 <meta property="og:type" content="article">
 <meta property="og:title" content="web worker简易入门">
 <meta property="og:url" content="https://lxxstar987.gitee.io/lxx1997.github.io/2013/09/25/web-worker-learning/index.html">
 <meta property="og:site_name" content="SoulReader">
-<meta property="og:description" content="js是单线程的语言，由于此特性，我们在处理并发时需要用到一些技巧，如setTimeout()，setInterval()，调用XMLHttpRequest等。但这里的并发只是非阻塞（参照John Resig的文章How JavaScript Timers Work），真正的多线程编程则需要HTML5的web worker。 ###【worker的使用】web worker的使用非常简单，线程之间通">
+<meta property="og:description" content="js是单线程的语言，由于此特性，我们在处理并发时需要用到一些技巧，如setTimeout()，setInterval()，调用XMLHttpRequest等。但这里的并发只是非阻塞（参照John Resig的文章How JavaScript Timers Work），真正的多线程编程则需要HTML5的web worker。 【worker的使用】web worker的使用非常简单，线程之间通讯的a">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://lxxstar987.gitee.io/assets/blogImg/web_worker1.png">
 <meta property="og:image" content="https://lxxstar987.gitee.io/assets/blogImg/web_worker2.png">
-<meta property="og:updated_time" content="2020-12-14T08:11:19.723Z">
+<meta property="og:updated_time" content="2020-12-14T08:35:47.681Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="web worker简易入门">
-<meta name="twitter:description" content="js是单线程的语言，由于此特性，我们在处理并发时需要用到一些技巧，如setTimeout()，setInterval()，调用XMLHttpRequest等。但这里的并发只是非阻塞（参照John Resig的文章How JavaScript Timers Work），真正的多线程编程则需要HTML5的web worker。 ###【worker的使用】web worker的使用非常简单，线程之间通">
+<meta name="twitter:description" content="js是单线程的语言，由于此特性，我们在处理并发时需要用到一些技巧，如setTimeout()，setInterval()，调用XMLHttpRequest等。但这里的并发只是非阻塞（参照John Resig的文章How JavaScript Timers Work），真正的多线程编程则需要HTML5的web worker。 【worker的使用】web worker的使用非常简单，线程之间通讯的a">
 <meta name="twitter:image" content="https://lxxstar987.gitee.io/assets/blogImg/web_worker1.png">
   
   
@@ -127,7 +127,7 @@
       
             
             <p>js是单线程的语言，由于此特性，我们在处理并发时需要用到一些技巧，如setTimeout()，setInterval()，调用XMLHttpRequest等。<br>但这里的并发只是非阻塞（参照John Resig的文章<a href="http://ejohn.org/blog/how-javascript-timers-work/" target="_blank" rel="noopener">How JavaScript Timers Work</a>），真正的多线程编程则需要HTML5的web worker。</p>
-<p>###<strong>【worker的使用】</strong><br>web worker的使用非常简单，线程之间通讯的api与html5 postmessage或node.js里面的socket.io方法类似。</p>
+<h3 id="【worker的使用】"><a href="#【worker的使用】" class="headerlink" title="【worker的使用】"></a><strong>【worker的使用】</strong></h3><p>web worker的使用非常简单，线程之间通讯的api与html5 postmessage或node.js里面的socket.io方法类似。</p>
 <p>通讯：      </p>
 <ol>
 <li>发送方：postMessage(data)      </li>
@@ -138,8 +138,8 @@
 <li>子线程: self.close()</li>
 <li>父线程: worker.terminate()</li>
 </ol>
-<p>按照目前w3c规范，web worker分为两种：专用worker(Dedicated Worker)和共享worker(Shared Worker)。<br><a id="more"></a></p>
-<p>###<strong>【专用worker】</strong><br>实例化一个web worker对象，异步加载子线程文件worker.js，其中的代码将执行。</p>
+<p>按照目前w3c规范，web worker分为两种：专用worker(Dedicated Worker)和共享worker(Shared Worker)。</p>
+<h3 id="【专用worker】"><a href="#【专用worker】" class="headerlink" title="【专用worker】"></a><strong>【专用worker】</strong></h3><p>实例化一个web worker对象，异步加载子线程文件worker.js，其中的代码将执行。</p>
 <pre><code>var worker = new Worker(&quot;worker.js&quot;);
 </code></pre><p>给worker增加侦听</p>
 <pre><code>worker.onmessage = function (event) {
@@ -190,7 +190,7 @@ function msg(){
       };
 };
 </code></pre><p>从上面的例子可以看到，一是利用对象参数，进程之间能够较灵活的实现控制；二是当woker执行taskStart()处理大量数据时，只在子进程处理，不会给主页面带来阻塞，通常，处理大量数据会消极影响程序的响应能力，而web worker通过这样的方式，能提供一个更流畅更实时的UI。</p>
-<p>###<strong>【共享worker】</strong><br>共享worker允许线程在同源中的多个页面间进行共享，例如：同源中所有页面或脚本可以与同一个共享线程通信。它的实例化与事件侦听的写法与专用worker略有不同,主页面：</p>
+<h3 id="【共享worker】"><a href="#【共享worker】" class="headerlink" title="【共享worker】"></a><strong>【共享worker】</strong></h3><p>共享worker允许线程在同源中的多个页面间进行共享，例如：同源中所有页面或脚本可以与同一个共享线程通信。它的实例化与事件侦听的写法与专用worker略有不同,主页面：</p>
 <pre><code>var worker = new SharedWorker(&apos;shared-worker.js&apos;);
 worker.port.onmessage = function(e) {
     msg = &apos;Someone just said &quot;&apos; + e.data.message + &apos;&quot;. That is message number &apos; + e.data.counter;
@@ -216,7 +216,7 @@ onconnect = function(eConn) {
    port.start();
    connections.push(port);
 </code></pre><p>用两个窗口打开这个页面，第一个显示：<strong>Someone just said “Hello shared worker!” This is message number 1</strong>，第二个也收到一样的信息，<br>但是后面是<strong>message number 2</strong>。</p>
-<p>###<strong>【安全性和错误检查】</strong><br>出于安全性的考虑，web worker必须遵守同源策略。同时，它的全局对象是worker对象本身，this和self引用的都是worker对象。<br>只能访问：</p>
+<h3 id="【安全性和错误检查】"><a href="#【安全性和错误检查】" class="headerlink" title="【安全性和错误检查】"></a><strong>【安全性和错误检查】</strong></h3><p>出于安全性的考虑，web worker必须遵守同源策略。同时，它的全局对象是worker对象本身，this和self引用的都是worker对象。<br>只能访问：</p>
 <ol>
 <li>navigator 对象（仅限appName, appVersion, platform, userAgent）</li>
 <li>location 对象（只读）</li>
@@ -240,7 +240,7 @@ onconnect = function(eConn) {
 <pre><code>worker.onerror = function(e) {
     console.log(e.filename+&quot;ERROR on line&quot;+e.lineno+&quot;,msg:&quot;+e.message);
 }
-</code></pre><p>###<strong>【web worker的其他尝试】</strong><br>对于比较消耗时间的操作，我们可看到web worker能够发挥它的作用。比如：大量数据排序，精确到像素的canvas计算等。而我们又知道，jsonp加载数据时，动态创建script标签，加载和执行这些过程都是阻塞式的，而web worker正好可以异步加载，这会是更快的方式吗？带着这个疑问我做了下面的试验，分别用jsonp和worker的方式去加载文件，计算数据返回时延：</p>
+</code></pre><h3 id="【web-worker的其他尝试】"><a href="#【web-worker的其他尝试】" class="headerlink" title="【web worker的其他尝试】"></a><strong>【web worker的其他尝试】</strong></h3><p>对于比较消耗时间的操作，我们可看到web worker能够发挥它的作用。比如：大量数据排序，精确到像素的canvas计算等。而我们又知道，jsonp加载数据时，动态创建script标签，加载和执行这些过程都是阻塞式的，而web worker正好可以异步加载，这会是更快的方式吗？带着这个疑问我做了下面的试验，分别用jsonp和worker的方式去加载文件，计算数据返回时延：</p>
 <pre><code>function tryJsonp(){
     var d = (new Date()).valueOf();
     var jsonp=document.createElement(&quot;script&quot;);  
@@ -266,7 +266,7 @@ function tryWorker(){
 
             <div class="post-copyright">
     <div class="content">
-        <p>最后更新： 2020年12月14日 16:11</p>
+        <p>最后更新： 2020年12月14日 16:35</p>
         <p>原始链接： <a class="post-url" href="/lxx1997.github.io/2013/09/25/web-worker-learning/" title="web worker简易入门">https://lxxstar987.gitee.io/lxx1997.github.io/2013/09/25/web-worker-learning/</a></p>
         <footer>
             <a href="https://lxxstar987.gitee.io/lxx1997.github.io">
@@ -334,7 +334,7 @@ function tryWorker(){
             </a>
           </li>
           <li>
-            <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://lxxstar987.gitee.io/lxx1997.github.io/2013/09/25/web-worker-learning/&title=《web worker简易入门》 — SoulReader&source=js是单线程的语言，由于此特性，我们在处理并发时需要用到一些技巧，如setTimeout()，setInterval()，调用XMLHttpRequest..." data-title="QQ">
+            <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://lxxstar987.gitee.io/lxx1997.github.io/2013/09/25/web-worker-learning/&title=《web worker简易入门》 — SoulReader&source=前端小菜鸟,努力深造" data-title="QQ">
               <i class="fa fa-qq"></i>
             </a>
           </li>
@@ -384,6 +384,12 @@ function tryWorker(){
 </article>
 
 
+    <aside class="post-toc-pos post-toc-top" id="post-toc">
+        <nav class="post-toc-wrap">
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#【worker的使用】"><span class="post-toc-text">【worker的使用】</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#【专用worker】"><span class="post-toc-text">【专用worker】</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#【共享worker】"><span class="post-toc-text">【共享worker】</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#【安全性和错误检查】"><span class="post-toc-text">【安全性和错误检查】</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#【web-worker的其他尝试】"><span class="post-toc-text">【web worker的其他尝试】</span></a></li></ol>
+        </nav>
+    </aside>
+    
 
 <nav id="article-nav">
   

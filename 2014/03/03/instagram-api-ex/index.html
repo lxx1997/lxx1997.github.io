@@ -8,20 +8,20 @@
   
     <meta name="keywords" content="blog 博客">
   
-  <meta name="description" content="最近喜欢上了instagram，分享一下获取照片的经验。 ###一、三“步”曲instagram开放了API，授权遵循Oauth2.0协议。         ####1、注册client id到管理客户端页面，选择“注册新客户端”。这时会提示你填手机号，接着会收到短信验证码。经过验证，就到达了下面的界面：按照字面意思填写完毕，client id就注册完毕了。">
+  <meta name="description" content="最近喜欢上了instagram，分享一下获取照片的经验。 一、三“步”曲instagram开放了API，授权遵循Oauth2.0协议。         1、注册client id到管理客户端页面，选择“注册新客户端”。这时会提示你填手机号，接着会收到短信验证码。经过验证，就到达了下面的界面：按照字面意思填写完毕，client id就注册完毕了。">
 <meta name="keywords" content="web,经验,产品">
 <meta property="og:type" content="article">
 <meta property="og:title" content="instagram图片拉取小经验">
 <meta property="og:url" content="https://lxxstar987.gitee.io/lxx1997.github.io/2014/03/03/instagram-api-ex/index.html">
 <meta property="og:site_name" content="SoulReader">
-<meta property="og:description" content="最近喜欢上了instagram，分享一下获取照片的经验。 ###一、三“步”曲instagram开放了API，授权遵循Oauth2.0协议。         ####1、注册client id到管理客户端页面，选择“注册新客户端”。这时会提示你填手机号，接着会收到短信验证码。经过验证，就到达了下面的界面：按照字面意思填写完毕，client id就注册完毕了。">
+<meta property="og:description" content="最近喜欢上了instagram，分享一下获取照片的经验。 一、三“步”曲instagram开放了API，授权遵循Oauth2.0协议。         1、注册client id到管理客户端页面，选择“注册新客户端”。这时会提示你填手机号，接着会收到短信验证码。经过验证，就到达了下面的界面：按照字面意思填写完毕，client id就注册完毕了。">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://lxxstar987.gitee.io/assets/blogImg/instagram1.jpg">
 <meta property="og:image" content="https://lxxstar987.gitee.io/assets/blogImg/instagram2.jpg">
-<meta property="og:updated_time" content="2020-12-14T08:11:14.568Z">
+<meta property="og:updated_time" content="2020-12-14T08:40:32.882Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="instagram图片拉取小经验">
-<meta name="twitter:description" content="最近喜欢上了instagram，分享一下获取照片的经验。 ###一、三“步”曲instagram开放了API，授权遵循Oauth2.0协议。         ####1、注册client id到管理客户端页面，选择“注册新客户端”。这时会提示你填手机号，接着会收到短信验证码。经过验证，就到达了下面的界面：按照字面意思填写完毕，client id就注册完毕了。">
+<meta name="twitter:description" content="最近喜欢上了instagram，分享一下获取照片的经验。 一、三“步”曲instagram开放了API，授权遵循Oauth2.0协议。         1、注册client id到管理客户端页面，选择“注册新客户端”。这时会提示你填手机号，接着会收到短信验证码。经过验证，就到达了下面的界面：按照字面意思填写完毕，client id就注册完毕了。">
 <meta name="twitter:image" content="https://lxxstar987.gitee.io/assets/blogImg/instagram1.jpg">
   
   
@@ -127,21 +127,19 @@
       
             
             <p>最近喜欢上了instagram，分享一下获取照片的经验。</p>
-<p>###一、三“步”曲<br>instagram开放了API，授权遵循Oauth2.0协议。        </p>
-<p>####1、注册client id<br>到<a href="http://instagram.com/developer/clients/manage/" target="_blank" rel="noopener">管理客户端页面</a>，选择“注册新客户端”。<br>这时会提示你填手机号，接着会收到短信验证码。经过验证，就到达了下面的界面：<br><img src="/assets/blogImg/instagram1.jpg" alt="填写信息"><br>按照字面意思填写完毕，client id就注册完毕了。                 </p>
+<h3 id="一、三“步”曲"><a href="#一、三“步”曲" class="headerlink" title="一、三“步”曲"></a>一、三“步”曲</h3><p>instagram开放了API，授权遵循Oauth2.0协议。        </p>
+<h4 id="1、注册client-id"><a href="#1、注册client-id" class="headerlink" title="1、注册client id"></a>1、注册client id</h4><p>到<a href="http://instagram.com/developer/clients/manage/" target="_blank" rel="noopener">管理客户端页面</a>，选择“注册新客户端”。<br>这时会提示你填手机号，接着会收到短信验证码。经过验证，就到达了下面的界面：<br><img src="/assets/blogImg/instagram1.jpg" alt="填写信息"><br>按照字面意思填写完毕，client id就注册完毕了。                 </p>
 <p><img src="/assets/blogImg/instagram2.jpg" alt="获得client_id">         </p>
-<p>####2、用client_id去换取token<br>在浏览器中请求：<br><figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https:<span class="regexp">//i</span>nstagram.com<span class="regexp">/oauth/</span>authorize<span class="regexp">/?client_id=&#123;CLIENT_ID&#125;&amp;redirect_uri=&#123;REDIRECT_URI&#125;&amp;response_type=token</span></span><br></pre></td></tr></table></figure></p>
+<h4 id="2、用client-id去换取token"><a href="#2、用client-id去换取token" class="headerlink" title="2、用client_id去换取token"></a>2、用client_id去换取token</h4><p>在浏览器中请求：<br><figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https:<span class="regexp">//i</span>nstagram.com<span class="regexp">/oauth/</span>authorize<span class="regexp">/?client_id=&#123;CLIENT_ID&#125;&amp;redirect_uri=&#123;REDIRECT_URI&#125;&amp;response_type=token</span></span><br></pre></td></tr></table></figure></p>
 <p>花括号里面的值，对应上一步最终得到的<code>client_id</code>和自己设定的<code>redirect_uri</code>。<br>请求到的是一个授权页面，授权完毕后，则重定向到你的redirect_uri。注意看授权成功后的url，hash部分会附带给你的token。至此，token成功获取。</p>
-<p>####3、用token去调用API</p>
-<p>拿到token，就等于拿到仓库的钥匙了！<br>赶紧试着用token调用api查看自己的图片吧：<br><figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https:<span class="regexp">//</span>api.instagram.com<span class="regexp">/v1/u</span>sers<span class="regexp">/&#123;USER_ID&#125;/m</span>edia<span class="regexp">/recent/</span>?access_token=&#123;TOKEN&#125;</span><br></pre></td></tr></table></figure></p>
+<h4 id="3、用token去调用API"><a href="#3、用token去调用API" class="headerlink" title="3、用token去调用API"></a>3、用token去调用API</h4><p>拿到token，就等于拿到仓库的钥匙了！<br>赶紧试着用token调用api查看自己的图片吧：<br><figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https:<span class="regexp">//</span>api.instagram.com<span class="regexp">/v1/u</span>sers<span class="regexp">/&#123;USER_ID&#125;/m</span>edia<span class="regexp">/recent/</span>?access_token=&#123;TOKEN&#125;</span><br></pre></td></tr></table></figure></p>
 <p>这时，你会发现似乎…被instagram api坑了一道。user_id是个啥？机智如我，果断填上了自己的用户名。<br>结果错了。</p>
 <p>后来发现有这个的网站：<a href="http://jelled.com/instagram/lookup-user-id" target="_blank" rel="noopener">lookup-user-id</a>，通过此业界良心，成功获取到user_id，摆平了上面的请求。</p>
-<p>###二、参考</p>
-<ol>
+<h3 id="二、参考"><a href="#二、参考" class="headerlink" title="二、参考"></a>二、参考</h3><ol>
 <li>更多功能可参考<a href="http://instagram.com/developer/endpoints/users/" target="_blank" rel="noopener">api文档</a></li>
 <li>如果想了解Oauth授权，<a href="/blog/2013/08/20/oauth-rabbit/">点此</a></li>
 </ol>
-<p>###三、再说两句<br>图片分享的网站万万千，instagram却只有一个。我不是此产品的脑残粉，只是觉得社区氛围这种东西，可意会而不可言传，它是社交产品的灵魂。不是每个功能相近的产品都能营造的。</p>
+<h3 id="三、再说两句"><a href="#三、再说两句" class="headerlink" title="三、再说两句"></a>三、再说两句</h3><p>图片分享的网站万万千，instagram却只有一个。我不是此产品的脑残粉，只是觉得社区氛围这种东西，可意会而不可言传，它是社交产品的灵魂。不是每个功能相近的产品都能营造的。</p>
 <p>事实上，instagram有很多限制，或者大家称之“功能不完善”的地方。比如，在pc上浏览网站，居然不能发图片，不能看自己关注的人，或者有哪些粉丝。这都限制死了，何以称为社交？但换个角度来想，这样就“强迫”用户去用手机操作instagram，因为产品最想想表达的，就是用摄影去快速记录生活，而已。</p>
 <p>不用拓展业务的噱头去损坏产品的思想表达，不刻意向老板汇报我们新增了多少用户量。</p>
 <p><strong>“你想做什么，你就会进入什么样的圈子”</strong>，这句话，不单单是对用户而言，每个创造者心中都应有这样的思考。</p>
@@ -149,7 +147,7 @@
 
             <div class="post-copyright">
     <div class="content">
-        <p>最后更新： 2020年12月14日 16:11</p>
+        <p>最后更新： 2020年12月14日 16:40</p>
         <p>原始链接： <a class="post-url" href="/lxx1997.github.io/2014/03/03/instagram-api-ex/" title="instagram图片拉取小经验">https://lxxstar987.gitee.io/lxx1997.github.io/2014/03/03/instagram-api-ex/</a></p>
         <footer>
             <a href="https://lxxstar987.gitee.io/lxx1997.github.io">
@@ -269,6 +267,12 @@
 </article>
 
 
+    <aside class="post-toc-pos post-toc-top" id="post-toc">
+        <nav class="post-toc-wrap">
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#一、三“步”曲"><span class="post-toc-text">一、三“步”曲</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#1、注册client-id"><span class="post-toc-text">1、注册client id</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#2、用client-id去换取token"><span class="post-toc-text">2、用client_id去换取token</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#3、用token去调用API"><span class="post-toc-text">3、用token去调用API</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#二、参考"><span class="post-toc-text">二、参考</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#三、再说两句"><span class="post-toc-text">三、再说两句</span></a></li></ol>
+        </nav>
+    </aside>
+    
 
 <nav id="article-nav">
   
