@@ -5,13 +5,13 @@ date: 2014-02-12 08:55
 comments: true
 tags: 
 	- js 
-	- html5
+	- html
 ---
 
 >var pjax = pushState + ajax;                  
 >小时候，小浣熊方便面里面有各种水浒人物的卡片。我买了一包，吃了方便面，饱了。而我又买了第二包，不是想吃方便面，而是仅仅想得到里面的卡片…          
 
-<!-- more -->
+
 
 ##**一、简介**
 pushState是html5中提供的方法，用以

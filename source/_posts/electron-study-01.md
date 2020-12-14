@@ -12,7 +12,7 @@ tags:
 
   练习项目[git地址](https://github.com/lxx1997/react-electron-app)
 
-<!-- more -->
+
 
 ## 版本发布
 

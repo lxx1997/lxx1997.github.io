@@ -13,7 +13,7 @@ tags:
 其实[《CoffeeScript小书》](http://read.douban.com/ebook/198648/)是暑假实习时就买了，一直比较向往着函数式编程却拖延了很久没行动起来。小书只有几十页，本是github上一个开源的项目，我喜欢这种轻巧的文字。语法部分看下来，再看下类与继承，只花了半天的时间，而且心情非常愉悦，然后就可以开始我菜鸟的第一次试飞了。
 
 生产者-消费者模型没什么好说的了，就是读写共享缓冲区，pv操作控制是否冲突。更多的就是冲着coffeescript来的。下面是一些凌乱但自认为有思考价值的记录，或许后续我会继续写一些coffeescript的学习笔记，再做深入的研究。
-<!-- more -->
+
 ##**demo，可尝试点击“生产”“消费”按钮**
 <iframe src="/assets/demo/coffee_pc_demo/pro-con.html" width="780" height="336" scrolling="no"></iframe>
 ##**litten如是想：**

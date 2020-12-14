@@ -22,7 +22,7 @@ from pygame.locals import *
 ~~~js
 pygame.init()
 ~~~
-<!-- more -->
+
 **创建一个窗口**
 ~~~js
 screen = pygame.display.set_mode([800,600])

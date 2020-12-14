@@ -4,7 +4,7 @@ title: "再议减少HTTP请求"
 date: 2014-08-14 13:10
 comments: true
 tags: 
-	- html5 
+	- html 
 	- 前端 
 	- 性能
 brief: "第三届IMWEB前端技术沙龙分享"
@@ -13,7 +13,7 @@ brief: "第三届IMWEB前端技术沙龙分享"
 ![沙龙分享](/assets/blogImg/reduce-http.jpg)       
 > 最近参加了IMWEB前端技术沙龙活动，有幸能站到讲台上，将性能方面的经验与大家分享。现将“再议减少HTTP请求”部分简单摘剪成文。
 
-<!-- more -->
+
 
 ### 前言:
 

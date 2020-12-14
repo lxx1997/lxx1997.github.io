@@ -30,7 +30,7 @@ tags:
   * feSpotLight - 用于照明过滤
 
   您可以在每个 SVG 元素上使用多个滤镜！
-  <!-- more -->
+  
 
 ####  SVG 模糊效果
 

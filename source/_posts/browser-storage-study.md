@@ -15,7 +15,7 @@ tags:
 
  * indexedDB: indexedDB是运行在浏览器上的非关系型数据库, 一般来说是没有存储上限的, 不仅可以存储字符串, 还可以存储二进制数据
 
-<!-- more -->
+
 
 #### Cookie
 
@@ -273,7 +273,7 @@ tags:
         var objectStore = db.transaction('person').objectStore('person')
 
         objectStore.openCursor().onsuccess = function(event) {
-          var cursor event.target.result
+          var cursor = event.target.result
           if(cursor) {
             console.log('Id: ' + cursor.key);
             console.log('Name: ' + cursor.value.name);
