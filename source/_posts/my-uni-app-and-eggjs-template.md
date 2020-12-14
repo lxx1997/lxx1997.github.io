@@ -15,7 +15,7 @@ tags:
 
 
 #### 前端使用技术及bug
-<!-- more -->
+
 ##### typescript 使用
 
 * this的使用

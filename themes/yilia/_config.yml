@@ -1,7 +1,7 @@
 # Header
 
 menu:
-  主页: /
+  主页: lxx1997.github.io/
   相册: /photos
 
 # SubNav
@@ -25,7 +25,7 @@ rss: /atom.xml
 # 是否需要修改 root 路径
 # 如果您的网站存放在子目录中，例如 http://yoursite.com/blog，
 # 请将您的 url 设为 http://yoursite.com/blog 并把 root 设为 /blog/。
-root: 
+root: /lxx1997.github.io/
 
 # Content
 excerpt_link: 'more'
@@ -57,10 +57,10 @@ open_in_new: true
 # Miscellaneous
 baidu_analytics: 'a30844fa2bcbce0a9e001fe06cefeddf'
 google_analytics: false
-favicon: /assets/img/favicon.ico
+favicon: /lxx1997.github.io/assets/img/favicon.ico
 
 #你的头像url
-avatar: /assets/blogImg/-5b0ea040b23a60c6.gif
+avatar: /lxx1997.github.io/assets/blogImg/-5b0ea040b23a60c6.gif
 
 #是否开启分享
 share_jia: true

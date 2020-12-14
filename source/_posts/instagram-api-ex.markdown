@@ -10,7 +10,7 @@ tags:
 ---
 
 最近喜欢上了instagram，分享一下获取照片的经验。
-<!-- more -->
+
 ###一、三“步”曲
 instagram开放了API，授权遵循Oauth2.0协议。        
 ####1、注册client id

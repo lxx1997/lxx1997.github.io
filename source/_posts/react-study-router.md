@@ -17,7 +17,7 @@ tags:
 
   使用： `import {Router} from 'react-router-dom'`
 
-<!-- more -->
+
 
 ## Router 配置的方法
 

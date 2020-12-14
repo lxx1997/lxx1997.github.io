@@ -12,7 +12,7 @@ key: "5"
 ![css hack](/assets/blogImg/css_hack.jpg)   
 > IE和我们之间，肯定有一个是傻逼，如果它不是，那我们准是。不然很多事情没法解释…  ——多么痛的领悟 
 
-<!-- more -->
+
 先看代码，或者点击看[demo](/assets/demo/hack_demo.html)         
 html:     
 ```html

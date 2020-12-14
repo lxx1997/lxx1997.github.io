@@ -13,7 +13,7 @@ tags:
 ~~~js
 npm install egg-swagger-doc -S
 ~~~
-<!-- more -->
+
 **配置egg-swagger-doc 默认配置**
 
 ~~~js

@@ -22,7 +22,7 @@ tags:
   ~~~js
     npm install --save-dev @typescript-eslint/eslint-plugin
   ~~~
-<!-- more -->
+
   **创建配置文件**
 
   ESLint 需要配置文件来决定对哪些规则进行检查配置文件的名称一般是`.eslintrc.js`或`.eslintrc.json`

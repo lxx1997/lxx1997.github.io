@@ -3,7 +3,7 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: lxx的博客
+title: SoulReader
 subtitle: 勤劳刻苦
 description: 前端小菜鸟,努力深造 
 author: lxx
@@ -12,8 +12,8 @@ keywords: "前端,js,jquery,javascript,html5,开发者,程序猿,程序媛,极�
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: /
-root: /
+url: https://lxxstar987.gitee.io/lxx1997.github.io/
+root: /lxx1997.github.io
 permalink: :year/:month/:day/:title/
 tag_dir: tags
 archive_dir: archives
@@ -105,12 +105,12 @@ disqus_shortname:
 #  - hexo-generator-baidu-sitemap
 #  - hexo-generator-sitemap
 
-theme: yilia
+theme: miho
 exclude_generator:
 
 # Deployment
 ## Docs: http://hexo.io/docs/deployment.html
-deploy:
+deploy :
  type: git
  repository: https://github.com/lxx1997/lxx1997.github.io.git
  branch: master
@@ -145,7 +145,7 @@ jsonContent:
       slug: false
       updated: false
       comments: false
-      link: false
+      link: true
       permalink: false
       excerpt: false
       categories: false

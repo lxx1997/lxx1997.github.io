@@ -22,7 +22,7 @@ let createdByNewBoolean: boolean = new Boolean(1);
   声明一个void类型的变量 只能赋值为undefined和null
 * null undefined
   null 和 undefined 是所有类型的子类型
-<!-- more -->
+
 **任意值 any**
   如果是一个普通类型,在复制过程中改变变量类型是不允许的,但是any类型允许被赋值为任意类型.
   在任意值上访问任何属性都是允许的,也可以调用任何方法

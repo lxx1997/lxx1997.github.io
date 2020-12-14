@@ -29,7 +29,7 @@ tags:
       C211 300 186 274 156 274" style="fill:white;stroke:red;stroke-width:2;"></path>
     </svg>
   ~~~
-<!-- more -->
+
 #### 在HTML页面中使用SVG
 
   * 使用embed标签

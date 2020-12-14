@@ -25,7 +25,7 @@ tags:
     reader.readAsText(file)
   ~~~
 
-    <!-- more -->
+    
   
   * 属性
 
