@@ -1,6 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://lxxstar987.gitee.io/lxx1997.github.io/lxx1997.github.io/2020/12/15/vue-%E6%BA%90%E7%A0%81%E8%A7%A3%E8%AF%BB%E9%A1%BA%E5%BA%8F/</loc>
+    <lastmod>2020-12-15</lastmod>
+  </url>  <url>
+    <loc>https://lxxstar987.gitee.io/lxx1997.github.io/lxx1997.github.io/2020/09/18/react-study-config/</loc>
+    <lastmod>2020-12-14</lastmod>
+  </url>  <url>
+    <loc>https://lxxstar987.gitee.io/lxx1997.github.io/lxx1997.github.io/2020/12/14/H5%E5%9F%BA%E4%BA%8Ecanvas%E5%AE%9E%E7%8E%B0%E7%94%B5%E5%AD%90%E7%AD%BE%E5%90%8D%E5%B9%B6%E7%94%9F%E6%88%90PDF%E6%96%87%E6%A1%A3/</loc>
+    <lastmod>2020-12-14</lastmod>
+  </url>  <url>
     <loc>https://lxxstar987.gitee.io/lxx1997.github.io/lxx1997.github.io/2014/10/05/history-of-browser-useragent2/</loc>
     <lastmod>2020-12-14</lastmod>
   </url>  <url>
@@ -19,13 +28,13 @@
     <loc>https://lxxstar987.gitee.io/lxx1997.github.io/lxx1997.github.io/2014/10/16/douban-index-for-chrome/</loc>
     <lastmod>2020-12-14</lastmod>
   </url>  <url>
-    <loc>https://lxxstar987.gitee.io/lxx1997.github.io/lxx1997.github.io/2012/12/14/css-jiugongge/</loc>
-    <lastmod>2020-12-14</lastmod>
-  </url>  <url>
     <loc>https://lxxstar987.gitee.io/lxx1997.github.io/lxx1997.github.io/2013/08/11/brief-oauth/</loc>
     <lastmod>2020-12-14</lastmod>
   </url>  <url>
     <loc>https://lxxstar987.gitee.io/lxx1997.github.io/lxx1997.github.io/2012/12/31/css3-animater/</loc>
+    <lastmod>2020-12-14</lastmod>
+  </url>  <url>
+    <loc>https://lxxstar987.gitee.io/lxx1997.github.io/lxx1997.github.io/2012/12/14/css-jiugongge/</loc>
     <lastmod>2020-12-14</lastmod>
   </url>  <url>
     <loc>https://lxxstar987.gitee.io/lxx1997.github.io/lxx1997.github.io/2015/02/21/guide-for-zb/</loc>
@@ -127,16 +136,13 @@
     <loc>https://lxxstar987.gitee.io/lxx1997.github.io/lxx1997.github.io/2020/08/28/react-study/</loc>
     <lastmod>2020-12-14</lastmod>
   </url>  <url>
-    <loc>https://lxxstar987.gitee.io/lxx1997.github.io/lxx1997.github.io/2020/08/28/react-study-router/</loc>
-    <lastmod>2020-12-14</lastmod>
-  </url>  <url>
     <loc>https://lxxstar987.gitee.io/lxx1997.github.io/lxx1997.github.io/2020/09/18/react-study-error/</loc>
     <lastmod>2020-12-14</lastmod>
   </url>  <url>
-    <loc>https://lxxstar987.gitee.io/lxx1997.github.io/lxx1997.github.io/2017/07/09/prevent-spiders/</loc>
+    <loc>https://lxxstar987.gitee.io/lxx1997.github.io/lxx1997.github.io/2020/08/28/react-study-router/</loc>
     <lastmod>2020-12-14</lastmod>
   </url>  <url>
-    <loc>https://lxxstar987.gitee.io/lxx1997.github.io/lxx1997.github.io/2020/12/14/react-study-config/</loc>
+    <loc>https://lxxstar987.gitee.io/lxx1997.github.io/lxx1997.github.io/2017/07/09/prevent-spiders/</loc>
     <lastmod>2020-12-14</lastmod>
   </url>  <url>
     <loc>https://lxxstar987.gitee.io/lxx1997.github.io/lxx1997.github.io/2015/11/03/nginx-in-fe/</loc>
@@ -154,10 +160,10 @@
     <loc>https://lxxstar987.gitee.io/lxx1997.github.io/lxx1997.github.io/2014/08/01/kael-qrcode-info/</loc>
     <lastmod>2020-12-14</lastmod>
   </url>  <url>
-    <loc>https://lxxstar987.gitee.io/lxx1997.github.io/lxx1997.github.io/2020/08/13/html-video-chat-bullet/</loc>
+    <loc>https://lxxstar987.gitee.io/lxx1997.github.io/lxx1997.github.io/2020/08/11/html-label-function/</loc>
     <lastmod>2020-12-14</lastmod>
   </url>  <url>
-    <loc>https://lxxstar987.gitee.io/lxx1997.github.io/lxx1997.github.io/2020/08/11/html-label-function/</loc>
+    <loc>https://lxxstar987.gitee.io/lxx1997.github.io/lxx1997.github.io/2020/08/13/html-video-chat-bullet/</loc>
     <lastmod>2020-12-14</lastmod>
   </url>  <url>
     <loc>https://lxxstar987.gitee.io/lxx1997.github.io/lxx1997.github.io/2015/07/06/hack-in-localstorage/</loc>
@@ -181,10 +187,10 @@
     <loc>https://lxxstar987.gitee.io/lxx1997.github.io/lxx1997.github.io/2020/08/20/electron-study-01/</loc>
     <lastmod>2020-12-14</lastmod>
   </url>  <url>
-    <loc>https://lxxstar987.gitee.io/lxx1997.github.io/lxx1997.github.io/2020/05/26/egg-swagger-ui/</loc>
+    <loc>https://lxxstar987.gitee.io/lxx1997.github.io/lxx1997.github.io/2017/05/22/diary-2017-0521-0527/</loc>
     <lastmod>2020-12-14</lastmod>
   </url>  <url>
-    <loc>https://lxxstar987.gitee.io/lxx1997.github.io/lxx1997.github.io/2017/05/22/diary-2017-0521-0527/</loc>
+    <loc>https://lxxstar987.gitee.io/lxx1997.github.io/lxx1997.github.io/2020/05/26/egg-swagger-ui/</loc>
     <lastmod>2020-12-14</lastmod>
   </url>  <url>
     <loc>https://lxxstar987.gitee.io/lxx1997.github.io/lxx1997.github.io/2017/04/22/diary-2017-0416-0422/</loc>
@@ -271,10 +277,10 @@
     <loc>https://lxxstar987.gitee.io/lxx1997.github.io/lxx1997.github.io/2020/05/05/js-array-method/</loc>
     <lastmod>2020-05-06</lastmod>
   </url>  <url>
-    <loc>https://lxxstar987.gitee.io/lxx1997.github.io/lxx1997.github.io/2020/05/06/js-canvas-bubble/</loc>
+    <loc>https://lxxstar987.gitee.io/lxx1997.github.io/lxx1997.github.io/2020/05/05/js-global-function/</loc>
     <lastmod>2020-05-06</lastmod>
   </url>  <url>
-    <loc>https://lxxstar987.gitee.io/lxx1997.github.io/lxx1997.github.io/2020/05/05/js-global-function/</loc>
+    <loc>https://lxxstar987.gitee.io/lxx1997.github.io/lxx1997.github.io/2020/05/06/js-canvas-bubble/</loc>
     <lastmod>2020-05-06</lastmod>
   </url>  <url>
     <loc>https://lxxstar987.gitee.io/lxx1997.github.io/lxx1997.github.io/2020/05/05/js-arguments-callee/</loc>
