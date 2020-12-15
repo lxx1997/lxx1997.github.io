@@ -6,7 +6,7 @@
   <link href="/lxx1997.github.io/atom.xml" rel="self"/>
   
   <link href="https://lxxstar987.gitee.io/lxx1997.github.io/"/>
-  <updated>2020-12-15T02:03:46.655Z</updated>
+  <updated>2020-12-15T05:59:12.922Z</updated>
   <id>https://lxxstar987.gitee.io/lxx1997.github.io/</id>
   
   <author>
@@ -17,20 +17,20 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>vue-源码解读顺序</title>
+    <title>vue-源码</title>
     <link href="https://lxxstar987.gitee.io/lxx1997.github.io/2020/12/15/vue-%E6%BA%90%E7%A0%81%E8%A7%A3%E8%AF%BB%E9%A1%BA%E5%BA%8F/"/>
     <id>https://lxxstar987.gitee.io/lxx1997.github.io/2020/12/15/vue-源码解读顺序/</id>
     <published>2020-12-15T01:34:37.000Z</published>
-    <updated>2020-12-15T02:03:46.655Z</updated>
+    <updated>2020-12-15T05:59:12.922Z</updated>
     
-    <content type="html"><![CDATA[<p>本片文章只用于引导自己如何对源码进行探索，因为看到源码的时候是一脸懵逼，完全不知道该从那个地方看起，所以用本篇文章记录一下自己的解读顺序，以免自己忘记</p><h2 id="HOW-TO-UNDERSTAND-VUE"><a href="#HOW-TO-UNDERSTAND-VUE" class="headerlink" title="HOW TO UNDERSTAND VUE"></a>HOW TO UNDERSTAND VUE</h2><ul><li>判断浏览器类型<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> inBrowser = <span class="keyword">typeof</span> <span class="built_in">window</span> !== <span class="string">'undefined'</span>;</span><br><span class="line"><span class="keyword">var</span> inWeex = <span class="keyword">typeof</span> WXEnvironment !== <span class="string">'undefined'</span> &amp;&amp; !!WXEnvironment.platform;</span><br><span class="line"><span class="keyword">var</span> weexPlatform = inWeex &amp;&amp; WXEnvironment.platform.toLowerCase();</span><br><span class="line"><span class="keyword">var</span> UA = inBrowser &amp;&amp; <span class="built_in">window</span>.navigator.userAgent.toLowerCase();</span><br><span class="line"><span class="keyword">var</span> isIE = UA &amp;&amp; <span class="regexp">/msie|trident/</span>.test(UA);</span><br><span class="line"><span class="keyword">var</span> isIE9 = UA &amp;&amp; UA.indexOf(<span class="string">'msie 9.0'</span>) &gt; <span class="number">0</span>;</span><br><span class="line"><span class="keyword">var</span> isEdge = UA &amp;&amp; UA.indexOf(<span class="string">'edge/'</span>) &gt; <span class="number">0</span>;</span><br><span class="line"><span class="keyword">var</span> isAndroid = (UA &amp;&amp; UA.indexOf(<span class="string">'android'</span>) &gt; <span class="number">0</span>) || (weexPlatform === <span class="string">'android'</span>);</span><br><span class="line"><span class="comment">// Mozilla/5.0 (iPhone; CPU iPhone OS 13_2_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.0.3 Mobile/15E148 Safari/604.1</span></span><br><span class="line"><span class="keyword">var</span> isIOS = (UA &amp;&amp; <span class="regexp">/iphone|ipad|ipod|ios/</span>.test(UA)) || (weexPlatform === <span class="string">'ios'</span>);</span><br><span class="line"><span class="keyword">var</span> isChrome = UA &amp;&amp; <span class="regexp">/chrome\/\d+/</span>.test(UA) &amp;&amp; !isEdge;</span><br><span class="line"><span class="keyword">var</span> isPhantomJS = UA &amp;&amp; <span class="regexp">/phantomjs/</span>.test(UA);</span><br><span class="line"><span class="keyword">var</span> isFF = UA &amp;&amp; UA.match(<span class="regexp">/firefox\/(\d+)/</span>);</span><br></pre></td></tr></table></figure></li></ul>]]></content>
+    <content type="html"><![CDATA[<p>本片文章只用于引导自己如何对源码进行探索，因为看到源码的时候是一脸懵逼，完全不知道该从那个地方看起，所以用本篇文章记录一下自己的解读顺序，以免自己忘记</p><h3 id="HOW-TO-UNDERSTAND-VUE"><a href="#HOW-TO-UNDERSTAND-VUE" class="headerlink" title="HOW TO UNDERSTAND VUE"></a>HOW TO UNDERSTAND VUE</h3><h3 id="SOME-USERFUL-METHODS"><a href="#SOME-USERFUL-METHODS" class="headerlink" title="SOME USERFUL METHODS"></a>SOME USERFUL METHODS</h3><ul><li><p>判断浏览器类型</p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> inBrowser = <span class="keyword">typeof</span> <span class="built_in">window</span> !== <span class="string">'undefined'</span>;</span><br><span class="line"><span class="keyword">var</span> inWeex = <span class="keyword">typeof</span> WXEnvironment !== <span class="string">'undefined'</span> &amp;&amp; !!WXEnvironment.platform;</span><br><span class="line"><span class="keyword">var</span> weexPlatform = inWeex &amp;&amp; WXEnvironment.platform.toLowerCase();</span><br><span class="line"><span class="keyword">var</span> UA = inBrowser &amp;&amp; <span class="built_in">window</span>.navigator.userAgent.toLowerCase();</span><br><span class="line"><span class="keyword">var</span> isIE = UA &amp;&amp; <span class="regexp">/msie|trident/</span>.test(UA);</span><br><span class="line"><span class="keyword">var</span> isIE9 = UA &amp;&amp; UA.indexOf(<span class="string">'msie 9.0'</span>) &gt; <span class="number">0</span>;</span><br><span class="line"><span class="keyword">var</span> isEdge = UA &amp;&amp; UA.indexOf(<span class="string">'edge/'</span>) &gt; <span class="number">0</span>;</span><br><span class="line"><span class="keyword">var</span> isAndroid = (UA &amp;&amp; UA.indexOf(<span class="string">'android'</span>) &gt; <span class="number">0</span>) || (weexPlatform === <span class="string">'android'</span>);</span><br><span class="line"><span class="comment">// Mozilla/5.0 (iPhone; CPU iPhone OS 13_2_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.0.3 Mobile/15E148 Safari/604.1</span></span><br><span class="line"><span class="keyword">var</span> isIOS = (UA &amp;&amp; <span class="regexp">/iphone|ipad|ipod|ios/</span>.test(UA)) || (weexPlatform === <span class="string">'ios'</span>);</span><br><span class="line"><span class="keyword">var</span> isChrome = UA &amp;&amp; <span class="regexp">/chrome\/\d+/</span>.test(UA) &amp;&amp; !isEdge;</span><br><span class="line"><span class="keyword">var</span> isPhantomJS = UA &amp;&amp; <span class="regexp">/phantomjs/</span>.test(UA);</span><br><span class="line"><span class="keyword">var</span> isFF = UA &amp;&amp; UA.match(<span class="regexp">/firefox\/(\d+)/</span>);</span><br></pre></td></tr></table></figure></li><li><p>创建一个闭包判断函数，判断元素是否存在</p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">makeMap</span> (<span class="params">str, expectsLowerCase</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> map = <span class="built_in">Object</span>.create(<span class="literal">null</span>);</span><br><span class="line">  <span class="keyword">var</span> list = str.split(<span class="string">','</span>);</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; list.length; i++) &#123;</span><br><span class="line">    map[list[i]] = <span class="literal">true</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> expectsLowerCase</span><br><span class="line">    ? <span class="function"><span class="keyword">function</span> (<span class="params">val</span>) </span>&#123; <span class="keyword">return</span> map[val.toLowerCase()]; &#125;</span><br><span class="line">    : <span class="function"><span class="keyword">function</span> (<span class="params">val</span>) </span>&#123; <span class="keyword">return</span> map[val]; &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> isBuiltInTag = makeMap(<span class="string">'slot,component'</span>, <span class="literal">true</span>)</span><br><span class="line">isBuiltInTag(<span class="string">'slot'</span>) <span class="comment">// true</span></span><br></pre></td></tr></table></figure></li></ul>]]></content>
     
     <summary type="html">
     
       
       
         &lt;p&gt;本片文章只用于引导自己如何对源码进行探索，因为看到源码的时候是一脸懵逼，完全不知道该从那个地方看起，所以用本篇文章记录一下自己的解读顺序，以免自己忘记&lt;/p&gt;
-&lt;h2 id=&quot;HOW-TO-UNDERSTAND-VUE&quot;&gt;&lt;a href=&quot;#HOW-TO-UNDERSTAN
+&lt;h3 id=&quot;HOW-TO-UNDERSTAND-VUE&quot;&gt;&lt;a href=&quot;#HOW-TO-UNDERSTAN
       
     
     </summary>
@@ -1561,9 +1561,9 @@
     </summary>
     
     
-      <category term="旧事" scheme="https://lxxstar987.gitee.io/lxx1997.github.io/tags/%E6%97%A7%E4%BA%8B/"/>
-    
       <category term="旅行" scheme="https://lxxstar987.gitee.io/lxx1997.github.io/tags/%E6%97%85%E8%A1%8C/"/>
+    
+      <category term="旧事" scheme="https://lxxstar987.gitee.io/lxx1997.github.io/tags/%E6%97%A7%E4%BA%8B/"/>
     
   </entry>
   
@@ -2298,9 +2298,9 @@
     </summary>
     
     
-      <category term="web" scheme="https://lxxstar987.gitee.io/lxx1997.github.io/tags/web/"/>
-    
       <category term="js" scheme="https://lxxstar987.gitee.io/lxx1997.github.io/tags/js/"/>
+    
+      <category term="web" scheme="https://lxxstar987.gitee.io/lxx1997.github.io/tags/web/"/>
     
   </entry>
   
@@ -2323,9 +2323,9 @@
     </summary>
     
     
-      <category term="web" scheme="https://lxxstar987.gitee.io/lxx1997.github.io/tags/web/"/>
-    
       <category term="html" scheme="https://lxxstar987.gitee.io/lxx1997.github.io/tags/html/"/>
+    
+      <category term="web" scheme="https://lxxstar987.gitee.io/lxx1997.github.io/tags/web/"/>
     
   </entry>
   
@@ -2553,9 +2553,9 @@
     </summary>
     
     
-      <category term="杂谈" scheme="https://lxxstar987.gitee.io/lxx1997.github.io/tags/%E6%9D%82%E8%B0%88/"/>
-    
       <category term="设计" scheme="https://lxxstar987.gitee.io/lxx1997.github.io/tags/%E8%AE%BE%E8%AE%A1/"/>
+    
+      <category term="杂谈" scheme="https://lxxstar987.gitee.io/lxx1997.github.io/tags/%E6%9D%82%E8%B0%88/"/>
     
   </entry>
   

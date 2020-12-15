@@ -3,23 +3,23 @@
 <head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="utf-8">
   
-  <title>vue-源码解读顺序 | SoulReader</title>
+  <title>vue-源码 | SoulReader</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
     <meta name="keywords" content="blog 博客">
   
-  <meta name="description" content="本片文章只用于引导自己如何对源码进行探索，因为看到源码的时候是一脸懵逼，完全不知道该从那个地方看起，所以用本篇文章记录一下自己的解读顺序，以免自己忘记 HOW TO UNDERSTAND VUE 判断浏览器类型12345678910111213var inBrowser = typeof window !== &apos;undefined&apos;;var inWeex = typeof WXEnvironmen">
+  <meta name="description" content="本片文章只用于引导自己如何对源码进行探索，因为看到源码的时候是一脸懵逼，完全不知道该从那个地方看起，所以用本篇文章记录一下自己的解读顺序，以免自己忘记 HOW TO UNDERSTAND VUESOME USERFUL METHODS 判断浏览器类型 12345678910111213var inBrowser = typeof window !== &apos;undefined&apos;;var inWeex">
 <meta name="keywords" content="vue,源码">
 <meta property="og:type" content="article">
-<meta property="og:title" content="vue-源码解读顺序">
+<meta property="og:title" content="vue-源码">
 <meta property="og:url" content="https://lxxstar987.gitee.io/lxx1997.github.io/2020/12/15/vue-源码解读顺序/index.html">
 <meta property="og:site_name" content="SoulReader">
-<meta property="og:description" content="本片文章只用于引导自己如何对源码进行探索，因为看到源码的时候是一脸懵逼，完全不知道该从那个地方看起，所以用本篇文章记录一下自己的解读顺序，以免自己忘记 HOW TO UNDERSTAND VUE 判断浏览器类型12345678910111213var inBrowser = typeof window !== &apos;undefined&apos;;var inWeex = typeof WXEnvironmen">
+<meta property="og:description" content="本片文章只用于引导自己如何对源码进行探索，因为看到源码的时候是一脸懵逼，完全不知道该从那个地方看起，所以用本篇文章记录一下自己的解读顺序，以免自己忘记 HOW TO UNDERSTAND VUESOME USERFUL METHODS 判断浏览器类型 12345678910111213var inBrowser = typeof window !== &apos;undefined&apos;;var inWeex">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-12-15T02:03:46.655Z">
+<meta property="og:updated_time" content="2020-12-15T05:59:12.922Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="vue-源码解读顺序">
-<meta name="twitter:description" content="本片文章只用于引导自己如何对源码进行探索，因为看到源码的时候是一脸懵逼，完全不知道该从那个地方看起，所以用本篇文章记录一下自己的解读顺序，以免自己忘记 HOW TO UNDERSTAND VUE 判断浏览器类型12345678910111213var inBrowser = typeof window !== &apos;undefined&apos;;var inWeex = typeof WXEnvironmen">
+<meta name="twitter:title" content="vue-源码">
+<meta name="twitter:description" content="本片文章只用于引导自己如何对源码进行探索，因为看到源码的时候是一脸懵逼，完全不知道该从那个地方看起，所以用本篇文章记录一下自己的解读顺序，以免自己忘记 HOW TO UNDERSTAND VUESOME USERFUL METHODS 判断浏览器类型 12345678910111213var inBrowser = typeof window !== &apos;undefined&apos;;var inWeex">
   
   
     <link rel="icon" href="/favicon.ico">
@@ -101,7 +101,7 @@
         
   
     <h1 class="post-title" itemprop="name">
-      vue-源码解读顺序
+      vue-源码
     </h1>
     <div class="post-title-bar">
       <ul>
@@ -131,15 +131,19 @@
       
             
             <p>本片文章只用于引导自己如何对源码进行探索，因为看到源码的时候是一脸懵逼，完全不知道该从那个地方看起，所以用本篇文章记录一下自己的解读顺序，以免自己忘记</p>
-<h2 id="HOW-TO-UNDERSTAND-VUE"><a href="#HOW-TO-UNDERSTAND-VUE" class="headerlink" title="HOW TO UNDERSTAND VUE"></a>HOW TO UNDERSTAND VUE</h2><ul>
-<li>判断浏览器类型<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> inBrowser = <span class="keyword">typeof</span> <span class="built_in">window</span> !== <span class="string">'undefined'</span>;</span><br><span class="line"><span class="keyword">var</span> inWeex = <span class="keyword">typeof</span> WXEnvironment !== <span class="string">'undefined'</span> &amp;&amp; !!WXEnvironment.platform;</span><br><span class="line"><span class="keyword">var</span> weexPlatform = inWeex &amp;&amp; WXEnvironment.platform.toLowerCase();</span><br><span class="line"><span class="keyword">var</span> UA = inBrowser &amp;&amp; <span class="built_in">window</span>.navigator.userAgent.toLowerCase();</span><br><span class="line"><span class="keyword">var</span> isIE = UA &amp;&amp; <span class="regexp">/msie|trident/</span>.test(UA);</span><br><span class="line"><span class="keyword">var</span> isIE9 = UA &amp;&amp; UA.indexOf(<span class="string">'msie 9.0'</span>) &gt; <span class="number">0</span>;</span><br><span class="line"><span class="keyword">var</span> isEdge = UA &amp;&amp; UA.indexOf(<span class="string">'edge/'</span>) &gt; <span class="number">0</span>;</span><br><span class="line"><span class="keyword">var</span> isAndroid = (UA &amp;&amp; UA.indexOf(<span class="string">'android'</span>) &gt; <span class="number">0</span>) || (weexPlatform === <span class="string">'android'</span>);</span><br><span class="line"><span class="comment">// Mozilla/5.0 (iPhone; CPU iPhone OS 13_2_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.0.3 Mobile/15E148 Safari/604.1</span></span><br><span class="line"><span class="keyword">var</span> isIOS = (UA &amp;&amp; <span class="regexp">/iphone|ipad|ipod|ios/</span>.test(UA)) || (weexPlatform === <span class="string">'ios'</span>);</span><br><span class="line"><span class="keyword">var</span> isChrome = UA &amp;&amp; <span class="regexp">/chrome\/\d+/</span>.test(UA) &amp;&amp; !isEdge;</span><br><span class="line"><span class="keyword">var</span> isPhantomJS = UA &amp;&amp; <span class="regexp">/phantomjs/</span>.test(UA);</span><br><span class="line"><span class="keyword">var</span> isFF = UA &amp;&amp; UA.match(<span class="regexp">/firefox\/(\d+)/</span>);</span><br></pre></td></tr></table></figure>
+<h3 id="HOW-TO-UNDERSTAND-VUE"><a href="#HOW-TO-UNDERSTAND-VUE" class="headerlink" title="HOW TO UNDERSTAND VUE"></a>HOW TO UNDERSTAND VUE</h3><h3 id="SOME-USERFUL-METHODS"><a href="#SOME-USERFUL-METHODS" class="headerlink" title="SOME USERFUL METHODS"></a>SOME USERFUL METHODS</h3><ul>
+<li><p>判断浏览器类型</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> inBrowser = <span class="keyword">typeof</span> <span class="built_in">window</span> !== <span class="string">'undefined'</span>;</span><br><span class="line"><span class="keyword">var</span> inWeex = <span class="keyword">typeof</span> WXEnvironment !== <span class="string">'undefined'</span> &amp;&amp; !!WXEnvironment.platform;</span><br><span class="line"><span class="keyword">var</span> weexPlatform = inWeex &amp;&amp; WXEnvironment.platform.toLowerCase();</span><br><span class="line"><span class="keyword">var</span> UA = inBrowser &amp;&amp; <span class="built_in">window</span>.navigator.userAgent.toLowerCase();</span><br><span class="line"><span class="keyword">var</span> isIE = UA &amp;&amp; <span class="regexp">/msie|trident/</span>.test(UA);</span><br><span class="line"><span class="keyword">var</span> isIE9 = UA &amp;&amp; UA.indexOf(<span class="string">'msie 9.0'</span>) &gt; <span class="number">0</span>;</span><br><span class="line"><span class="keyword">var</span> isEdge = UA &amp;&amp; UA.indexOf(<span class="string">'edge/'</span>) &gt; <span class="number">0</span>;</span><br><span class="line"><span class="keyword">var</span> isAndroid = (UA &amp;&amp; UA.indexOf(<span class="string">'android'</span>) &gt; <span class="number">0</span>) || (weexPlatform === <span class="string">'android'</span>);</span><br><span class="line"><span class="comment">// Mozilla/5.0 (iPhone; CPU iPhone OS 13_2_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.0.3 Mobile/15E148 Safari/604.1</span></span><br><span class="line"><span class="keyword">var</span> isIOS = (UA &amp;&amp; <span class="regexp">/iphone|ipad|ipod|ios/</span>.test(UA)) || (weexPlatform === <span class="string">'ios'</span>);</span><br><span class="line"><span class="keyword">var</span> isChrome = UA &amp;&amp; <span class="regexp">/chrome\/\d+/</span>.test(UA) &amp;&amp; !isEdge;</span><br><span class="line"><span class="keyword">var</span> isPhantomJS = UA &amp;&amp; <span class="regexp">/phantomjs/</span>.test(UA);</span><br><span class="line"><span class="keyword">var</span> isFF = UA &amp;&amp; UA.match(<span class="regexp">/firefox\/(\d+)/</span>);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>创建一个闭包判断函数，判断元素是否存在</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">makeMap</span> (<span class="params">str, expectsLowerCase</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> map = <span class="built_in">Object</span>.create(<span class="literal">null</span>);</span><br><span class="line">  <span class="keyword">var</span> list = str.split(<span class="string">','</span>);</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; list.length; i++) &#123;</span><br><span class="line">    map[list[i]] = <span class="literal">true</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> expectsLowerCase</span><br><span class="line">    ? <span class="function"><span class="keyword">function</span> (<span class="params">val</span>) </span>&#123; <span class="keyword">return</span> map[val.toLowerCase()]; &#125;</span><br><span class="line">    : <span class="function"><span class="keyword">function</span> (<span class="params">val</span>) </span>&#123; <span class="keyword">return</span> map[val]; &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> isBuiltInTag = makeMap(<span class="string">'slot,component'</span>, <span class="literal">true</span>)</span><br><span class="line">isBuiltInTag(<span class="string">'slot'</span>) <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 
             <div class="post-copyright">
     <div class="content">
-        <p>最后更新： 2020年12月15日 10:03</p>
-        <p>原始链接： <a class="post-url" href="/lxx1997.github.io/2020/12/15/vue-源码解读顺序/" title="vue-源码解读顺序">https://lxxstar987.gitee.io/lxx1997.github.io/2020/12/15/vue-源码解读顺序/</a></p>
+        <p>最后更新： 2020年12月15日 13:59</p>
+        <p>原始链接： <a class="post-url" href="/lxx1997.github.io/2020/12/15/vue-源码解读顺序/" title="vue-源码">https://lxxstar987.gitee.io/lxx1997.github.io/2020/12/15/vue-源码解读顺序/</a></p>
         <footer>
             <a href="https://lxxstar987.gitee.io/lxx1997.github.io">
                 <img src="/lxx1997.github.io/images/-5b0ea040b23a60c6.gif" alt="lxx">
@@ -196,7 +200,7 @@
     <div class="post-share-list" id="share-list">
         <ul class="share-icons">
           <li>
-            <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://lxxstar987.gitee.io/lxx1997.github.io/2020/12/15/vue-源码解读顺序/&title=《vue-源码解读顺序》 — SoulReader&pic=/assets/blogImg/xmas_ico0.jpg" data-title="微博">
+            <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://lxxstar987.gitee.io/lxx1997.github.io/2020/12/15/vue-源码解读顺序/&title=《vue-源码》 — SoulReader&pic=/assets/blogImg/xmas_ico0.jpg" data-title="微博">
               <i class="fa fa-weibo"></i>
             </a>
           </li>
@@ -206,7 +210,7 @@
             </a>
           </li>
           <li>
-            <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://lxxstar987.gitee.io/lxx1997.github.io/2020/12/15/vue-源码解读顺序/&title=《vue-源码解读顺序》 — SoulReader&source=前端小菜鸟,努力深造" data-title="QQ">
+            <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://lxxstar987.gitee.io/lxx1997.github.io/2020/12/15/vue-源码解读顺序/&title=《vue-源码》 — SoulReader&source=前端小菜鸟,努力深造" data-title="QQ">
               <i class="fa fa-qq"></i>
             </a>
           </li>
@@ -216,7 +220,7 @@
             </a>
           </li>
           <li>
-            <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《vue-源码解读顺序》 — SoulReader&url=https://lxxstar987.gitee.io/lxx1997.github.io/2020/12/15/vue-源码解读顺序/&via=https://lxxstar987.gitee.io/lxx1997.github.io" data-title="Twitter">
+            <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《vue-源码》 — SoulReader&url=https://lxxstar987.gitee.io/lxx1997.github.io/2020/12/15/vue-源码解读顺序/&via=https://lxxstar987.gitee.io/lxx1997.github.io" data-title="Twitter">
               <i class="fa fa-twitter"></i>
             </a>
           </li>
@@ -258,7 +262,7 @@
 
     <aside class="post-toc-pos post-toc-top" id="post-toc">
         <nav class="post-toc-wrap">
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#HOW-TO-UNDERSTAND-VUE"><span class="post-toc-text">HOW TO UNDERSTAND VUE</span></a></li></ol>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#HOW-TO-UNDERSTAND-VUE"><span class="post-toc-text">HOW TO UNDERSTAND VUE</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#SOME-USERFUL-METHODS"><span class="post-toc-text">SOME USERFUL METHODS</span></a></li></ol>
         </nav>
     </aside>
     
