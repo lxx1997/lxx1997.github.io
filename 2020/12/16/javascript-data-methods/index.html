@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+  <title>javascript-data-methods | SoulReader</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+    <meta name="keywords" content="blog 博客">
+  
+  <meta name="description" content="全局函数（function） decodeURI()  解码某个编码的URI encodeURI()  把字符串编码为URI decodeURIComponent()   解码一个编码的URI组件 encodeURIComponent()   把字符串编码为URI组件 escape()  对字符串进行编码 eval()   计算javascript字符串并把它作为脚本来执行 isFinite()">
+<meta name="keywords" content="javascript,array,method">
+<meta property="og:type" content="article">
+<meta property="og:title" content="javascript-data-methods">
+<meta property="og:url" content="https://lxxstar987.gitee.io/lxx1997.github.io/2020/12/16/javascript-data-methods/index.html">
+<meta property="og:site_name" content="SoulReader">
+<meta property="og:description" content="全局函数（function） decodeURI()  解码某个编码的URI encodeURI()  把字符串编码为URI decodeURIComponent()   解码一个编码的URI组件 encodeURIComponent()   把字符串编码为URI组件 escape()  对字符串进行编码 eval()   计算javascript字符串并把它作为脚本来执行 isFinite()">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2020-12-16T06:13:40.262Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="javascript-data-methods">
+<meta name="twitter:description" content="全局函数（function） decodeURI()  解码某个编码的URI encodeURI()  把字符串编码为URI decodeURIComponent()   解码一个编码的URI组件 encodeURIComponent()   把字符串编码为URI组件 escape()  对字符串进行编码 eval()   计算javascript字符串并把它作为脚本来执行 isFinite()">
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+  <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/lxx1997.github.io/css/style.css">
+  <script src="/lxx1997.github.io/js/pace.min.js"></script>
+  
+
+  
+  
+
+</head>
+</html>
+<body>
+  <div id="container">
+      <header id="header">
+    <div id="banner"></div>
+    <div id="header-outer">
+        <div id="header-menu" class="header-menu-pos animated">
+            <div class="header-menu-container">
+                <a href="/lxx1997.github.io/" class="left">
+                    <span class="site-title">SoulReader</span>
+                </a>
+                <nav id="header-menu-nav" class="right">
+                    
+                    <a  href="/lxx1997.github.io/">
+                        <i class="fa fa-home"></i>
+                        <span>Home</span>
+                    </a>
+                    
+                </nav>
+                <a class="mobile-header-menu-button">
+                    <i class="fa fa-bars"></i>
+                </a>
+            </div>
+        </div>
+        <div id="header-row">
+            <div id="logo">
+                <a href="/lxx1997.github.io/">
+                    <img src="/lxx1997.github.io/images/-5b0ea040b23a60c6.gif" alt="logo">
+                </a>
+            </div>
+            <div class="header-info">
+                <div id="header-title">
+                    
+                    <h2>
+                        SoulReader
+                    </h2>
+                    
+                </div>
+                <div id="header-description">
+                    
+                    <h3>
+                        前端菜鸟 多多交流学习
+                    </h3>
+                    
+                </div>
+            </div>
+            <nav class="header-nav">
+                <div class="social">
+                    
+                        <a title="MinHow" target="_blank" href="//minhow.com">
+                            <i class="fa fa-home fa-2x"></i></a>
+                    
+                        <a title="Github" target="_blank" href="https://github.com/lxx1997">
+                            <i class="fa fa-github fa-2x"></i></a>
+                    
+                </div>
+            </nav>
+        </div>
+    </div>
+</header>
+      <div class="outer">
+        <section id="main" class="body-wrap"><article id="post-javascript-data-methods" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="post-title" itemprop="name">
+      javascript-data-methods
+    </h1>
+    <div class="post-title-bar">
+      <ul>
+          
+              <li>
+                  <i class="fa fa-book"></i>
+                  
+                      <a href="/lxx1997.github.io/categories/javascript/">javascript</a>
+                  
+              </li>
+          
+        <li>
+          <i class="fa fa-calendar"></i>  2020-12-16
+        </li>
+        <li>
+          <i class="fa fa-eye"></i>
+          <span id="busuanzi_value_page_pv"></span>
+        </li>
+      </ul>
+    </div>
+  
+
+          
+      </header>
+    
+    <div class="article-entry post-content" itemprop="articleBody">
+      
+            
+            <h4 id="全局函数（function）"><a href="#全局函数（function）" class="headerlink" title="全局函数（function）"></a>全局函数（function）</h4><ul>
+<li>decodeURI()  解码某个编码的URI</li>
+<li>encodeURI()  把字符串编码为URI</li>
+<li>decodeURIComponent()   解码一个编码的URI组件</li>
+<li>encodeURIComponent()   把字符串编码为URI组件</li>
+<li>escape()  对字符串进行编码</li>
+<li>eval()   计算javascript字符串并把它作为脚本来执行</li>
+<li>isFinite()  检查某个值是否为有穷大的数</li>
+<li>isNaN()  检查某个值是否是数字</li>
+<li>Number()   把对象的值转化为数字</li>
+<li>parseFloat()   解析一个字符串并返回一个浮点数</li>
+<li>parseInt() 解析一个字符串并返回一个整数</li>
+<li>String()  把对象的值转为字符串</li>
+<li>unescape()  对由escape()编码的字符串进行解码</li>
+</ul>
+<h4 id="数组（Array）"><a href="#数组（Array）" class="headerlink" title="数组（Array）"></a>数组（Array）</h4><ul>
+<li>concat()   连接两个或者更多的数组，并返回结果</li>
+<li>copyWithin(target, start, end)  将数组的指定位置拷贝元素到数组的另一个指定位置中 （target 指的是元素复制的位数， start指的是元素开始复制的位置，end指的是元素结束复制的位数）</li>
+<li>entries()  返回一个数组的迭代对象，包含数组的键值对[index, vlaue]</li>
+<li>every()  检测数组元素的每个元素是否符合条件，如果都满足条件， 返回true，如果不满足返回false</li>
+<li>some() 检测数值中某个元素是否符合条件，如果有一个符合，返回true，如果全不符合，返回false</li>
+<li>fill()  使用一个固定值来填充数组</li>
+<li>filter()  用于筛选数组，返回符合条件的一个新的数组</li>
+<li>find()  返回符合传入测试的数组元素</li>
+<li>findIndex()  返回符合传入测试数组元素的索引</li>
+<li>forEach()  数组的每一个元素都执行一次回调函数</li>
+<li>map() 循环遍历数组中的每一个值，可以用于修改数组</li>
+<li>from()   Array.from() 通过给定的对象创建一个数组</li>
+<li>indexOf() 搜索数组中国的元素，并返回所在位置</li>
+<li>includes() 判断一个数组是否包含一个指定的值</li>
+<li>isArray() 判断对象是否是数组</li>
+<li>join()  把数组中的元素以某个标识拼接为字符串</li>
+<li>keys()   返回数组的可迭代对象，包含原始数组的键(key)</li>
+<li>lastIndexOf()  搜索数组中的元素，并返回它最后出现的位置</li>
+<li>pop()  删除数组中的最后一个元素，并返回删除的元素</li>
+<li>push()   向数组的末尾添加一个或多个元素，并返回新的长度</li>
+<li>reduce() 计算元素，可以用于计算数组，筛选，遍历，从左到右</li>
+<li>reduceRight()  计算元素，可以用于计算数组，筛选，遍历，从右到左</li>
+<li>reverse()   反转数组的元素顺序</li>
+<li>shift()   删除并返回数组的第一个元素</li>
+<li>slice(start, end)  选取数组的一部分，并选取一个新数组</li>
+<li>sort() 对元素数组进行排序， 可以自定义排序规则</li>
+<li>splice(index,  many,  item)   从数组中添加和删除元素</li>
+<li>toString()  将数组转化为字符串，并返回结果</li>
+<li>unshift()  向数组开头添加一个或多个元素，并返回新的长度</li>
+<li>valueOf()  返回数组对象的原始值</li>
+</ul>
+<h4 id="时间对象（Date）"><a href="#时间对象（Date）" class="headerlink" title="时间对象（Date）"></a>时间对象（Date）</h4><h5 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h5><pre><code>* date.Date()   返回当日的日期和事件
+* date.getDate()   从Date对象中返回一个月的某一天
+* date.getDay()    从Date对象中返回一周中的某一天
+* Date.getMonth()   返回Date对象的月份（0-11）真实月份需要加
+* date.getFullYear()   返回四位数字的年份
+* date.getYear()   返回两位数字的年份
+* date.getHours()   返回对象的小时数
+* date.getMinutes()  返回对象的分钟数
+* date.getSeconds()  返回对象的秒数
+* date.getMilliseconds()   返回对象的毫秒数
+* date.getTime()  返回1970年1月1日至今的毫秒数
+* date.getUTCDate()   从Date对象中返回世界时一个月的某一天
+* date.getUTCDay()    从Date对象中返回世界时一周中的某一天
+* date.getUTCMonth()   返回Date对象的世界时月份（0-11）真实月份需要加
+* date.getUTCFullYear()   返回世界时四位数字的年份
+* date.getUTCYear()   返回世界时两位数字的年份
+* date.getUTCHours()   返回对象世界时的小时数
+* date.getUTCMinutes()  返回对象世界时的分钟数
+* date.getUTCSeconds()  返回对象世界时的秒数
+* date.getUTCMilliseconds()   返回对象世界时的毫秒数
+* date.parse()    获取1970年1月1日午夜到制定日期（字符串）的毫秒数
+* date.setDate()   设置某一天
+* date.setFullYear()  设置Date对象的年份
+* date.setMonth()   设置月份
+* date.setHours() 设置日期的小时
+* date.setMillisecoends()   设置毫秒数
+* date.setTime()  以毫秒设置date对象
+* date.setMinutes()   设置分钟
+* date.setSeconds()  设置秒
+* date.toDateString()   把对象的日期部分转化为字符串
+* date.toJSON()  以json数据格式返回日期字符串
+* date.toLocaleDateString()   根据本地时间格式，把Date对象的日期部分转为字符串
+* date.toLocaleTimeString()   根据本地时间格式，把Date对象的日期部分转为字符串
+* date.toLocaleString()   根据本地时间格式，把Date对象转为字符串
+* date.valueOf()    返回date对象的原始值
+</code></pre><h5 id="简单的时间函数"><a href="#简单的时间函数" class="headerlink" title="简单的时间函数"></a>简单的时间函数</h5><pre><code>* 获取当前日期
+
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//  以年月日格式获取时间</span></span><br><span class="line">getNewDate() &#123;</span><br><span class="line">  <span class="keyword">var</span> date = <span class="keyword">new</span> <span class="built_in">Date</span>()</span><br><span class="line">  date.setTime(date.getTime())<span class="comment">// 获取上个月的日期（这一行去掉就是获取今天计算机上的日期了）</span></span><br><span class="line">  <span class="keyword">var</span> now = date</span><br><span class="line">  <span class="keyword">var</span> year = now.getFullYear() <span class="comment">// 年</span></span><br><span class="line">  <span class="keyword">var</span> month = now.getMonth() + <span class="number">1</span> <span class="comment">// 月</span></span><br><span class="line">  <span class="keyword">var</span> day = now.getDate() <span class="comment">// 日</span></span><br><span class="line">  <span class="keyword">var</span> clock = year + <span class="string">'-'</span></span><br><span class="line">  <span class="keyword">if</span> (month &lt; <span class="number">10</span>) &#123; clock += <span class="string">'0'</span> &#125;</span><br><span class="line">  clock += month + <span class="string">'-'</span></span><br><span class="line">  <span class="keyword">if</span> (day &lt; <span class="number">10</span>) &#123; clock += <span class="string">'0'</span> &#125;</span><br><span class="line">  clock += day</span><br><span class="line">  <span class="keyword">return</span> clock</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 以年月日 时分秒获取时间</span></span><br><span class="line"><span class="comment">// fmt 为传入的日期格式 </span></span><br><span class="line"><span class="comment">// yyyy-MM-dd hh:mm:ss  年月日 时分秒</span></span><br><span class="line"><span class="comment">// yyyy-MM-dd  年月日</span></span><br><span class="line">getNowTime(fmt) &#123;</span><br><span class="line">  <span class="keyword">var</span> date = <span class="keyword">new</span> <span class="built_in">Date</span>()</span><br><span class="line">  <span class="keyword">var</span> o = &#123;</span><br><span class="line">    <span class="string">'M+'</span>: date.getMonth() + <span class="number">1</span>, <span class="comment">// 月份</span></span><br><span class="line">    <span class="string">'d+'</span>: date.getDate(), <span class="comment">// 日</span></span><br><span class="line">    <span class="string">'h+'</span>: date.getHours(), <span class="comment">// 小时</span></span><br><span class="line">    <span class="string">'m+'</span>: date.getMinutes(), <span class="comment">// 分</span></span><br><span class="line">    <span class="string">'s+'</span>: date.getSeconds(), <span class="comment">// 秒</span></span><br><span class="line">    <span class="string">'q+'</span>: <span class="built_in">Math</span>.floor((date.getMonth() + <span class="number">3</span>) / <span class="number">3</span>), <span class="comment">// 季度</span></span><br><span class="line">    <span class="string">'S'</span>: date.getMilliseconds() <span class="comment">// 毫秒</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">if</span> (<span class="regexp">/(y+)/</span>.test(fmt)) &#123; fmt = fmt.replace(<span class="built_in">RegExp</span>.$<span class="number">1</span>, (date.getFullYear() + <span class="string">''</span>).substr(<span class="number">4</span> - <span class="built_in">RegExp</span>.$<span class="number">1.</span>length)) &#125;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">var</span> k <span class="keyword">in</span> o) &#123; <span class="keyword">if</span> (<span class="keyword">new</span> <span class="built_in">RegExp</span>(<span class="string">'('</span> + k + <span class="string">')'</span>).test(fmt)) fmt = fmt.replace(<span class="built_in">RegExp</span>.$<span class="number">1</span>, (<span class="built_in">RegExp</span>.$<span class="number">1.</span>length === <span class="number">1</span>) ? (o[k]) : ((<span class="string">'00'</span> + o[k]).substr((<span class="string">''</span> + o[k]).length))) &#125;</span><br><span class="line">  <span class="keyword">return</span> fmt</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+* 获取当前日期之前或者之后一段时间的日期
+
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 通过setTime将时间设置为当前时间100分钟之后，然后获取设置之后的时间</span></span><br><span class="line">getTime() &#123;</span><br><span class="line">  <span class="keyword">var</span> date = <span class="keyword">new</span> <span class="built_in">Date</span>()</span><br><span class="line">  date.setTime(date.getTime + <span class="number">1000</span> * <span class="number">60</span> * <span class="number">100</span>)</span><br><span class="line">  <span class="keyword">var</span> newDate = date.getFullYear() + <span class="string">'-'</span> + (<span class="built_in">Number</span>(date.getMonth()) + <span class="number">1</span>) + <span class="string">'-'</span> + date.getDate() + <span class="string">' '</span> + date.getHours() + <span class="string">':'</span> + date.getMinutes() + <span class="string">':'</span> + date.getSeconds()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+* 比较两个时间的大小
+
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 比较传入的时间大小 时间格式为 yyyy-MM-dd hh:mm:ss</span></span><br><span class="line"><span class="comment">// 通过date.parse()获取传入时间的毫秒数， 通过new Date() 转化为日期格式，在进行大小比较</span></span><br><span class="line">Compare(time1, time2) &#123;</span><br><span class="line">  <span class="keyword">const</span> date1 = <span class="keyword">new</span> <span class="built_in">Date</span>(<span class="built_in">Date</span>.parse(time1.replace(<span class="regexp">/-/g</span>, <span class="string">'/'</span>)))</span><br><span class="line">  <span class="keyword">const</span> date2 = <span class="keyword">new</span> <span class="built_in">Date</span>(<span class="built_in">Date</span>.parse(time2.replace(<span class="regexp">/-/g</span>, <span class="string">'/'</span>)))</span><br><span class="line">  <span class="keyword">if</span> (date1 &gt; date2) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">'时间1 大于 时间2'</span></span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="string">'时间2 大于 时间1'</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+* 计算所选时间是第几周(当前月第几周，当前年份第几周)
+
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">getYearWeek(year,month,date)&#123;</span><br><span class="line">  <span class="comment">/*  </span></span><br><span class="line"><span class="comment">    dateNow是当前日期 </span></span><br><span class="line"><span class="comment">    dateFirst是当年第一天  </span></span><br><span class="line"><span class="comment">    dataNumber是当前日期是今年第多少天  </span></span><br><span class="line"><span class="comment">    用dataNumber + 当前年的第一天的周差距的和在除以7就是本年第几周  </span></span><br><span class="line"><span class="comment">  */</span>      </span><br><span class="line">  <span class="keyword">let</span> dateNow = <span class="keyword">new</span> <span class="built_in">Date</span>(year, <span class="built_in">parseInt</span>(month) - <span class="number">1</span>, date);</span><br><span class="line">  <span class="keyword">let</span> dateFirst = <span class="keyword">new</span> <span class="built_in">Date</span>(year, <span class="number">0</span>, <span class="number">1</span>);</span><br><span class="line">  <span class="keyword">let</span> dataNumber = <span class="built_in">Math</span>.round((dateNow.valueOf() - dateFirst.valueOf()) / <span class="number">86400000</span>);</span><br><span class="line">  <span class="keyword">return</span> <span class="built_in">Math</span>.ceil((dataNumber + ((dateFirst.getDay() + <span class="number">1</span>) - <span class="number">1</span>)) / <span class="number">7</span>);        </span><br><span class="line">&#125;</span><br><span class="line">getMonthWeek(year,month,date)&#123;</span><br><span class="line">  <span class="comment">/*  </span></span><br><span class="line"><span class="comment">    month = 6 - w = 当前周的还有几天过完(不算今天)  </span></span><br><span class="line"><span class="comment">    year + month 的和在除以7 就是当天是当前月份的第几周  </span></span><br><span class="line"><span class="comment">  */</span>      </span><br><span class="line">  <span class="keyword">let</span> dateNow = <span class="keyword">new</span> <span class="built_in">Date</span>(year, <span class="built_in">parseInt</span>(month) - <span class="number">1</span>, date);</span><br><span class="line">  <span class="keyword">let</span> w = dateNow.getDay();<span class="comment">//星期数</span></span><br><span class="line">  <span class="keyword">let</span> d = dateNow.getDate();</span><br><span class="line">  <span class="keyword">return</span> <span class="built_in">Math</span>.ceil((d + <span class="number">6</span> - w) / <span class="number">7</span>);      </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</code></pre><h4 id="数学对象（Math）"><a href="#数学对象（Math）" class="headerlink" title="数学对象（Math）"></a>数学对象（Math）</h4><ul>
+<li>Math.E    返回算术常亮e，即自然对数的底数（约等于2.718）</li>
+<li>Math.LN2   返回2的自然对数（约等于0.693）</li>
+<li>Math.LEN10 返回10的自然对数（约等于2.302）</li>
+<li>Math.LOG2E 返回以2为底的e的对数（约等于1.414）</li>
+<li>Math.LOG10E 返回以10为底的e的对数（约等于0.434）</li>
+<li>Math.PI       返回圆周率（约等于3.14159）</li>
+<li>Math.SQRT1_2  返回 2 的平方根的倒数（约等于 0.707）</li>
+<li>Math.SQRT2  返回 2 的平方根（约等于 1.414）</li>
+<li>Math.abs()   返回数的绝对值</li>
+<li>Math.acos() 返回数的反余弦值</li>
+<li>Math.asin() 返回数的反正弦值</li>
+<li>Math.atan()  以介于 -PI/2 与 PI/2 弧度之间的数值来返回 x 的反正切值</li>
+<li>Math.atan2(y,x)   返回从 x 轴到点 (x,y) 的角度（介于 -PI/2 与 PI/2 弧度之间）</li>
+<li>Math.ceil()   向上取整</li>
+<li>Math.cos()    返回余弦值</li>
+<li>Math.exp()   返回e的指数</li>
+<li>Math.floor()   向下取整</li>
+<li>Math.log()   返回自然数的对数</li>
+<li>Math.max(x, y)  返回最大值</li>
+<li>Math.min(x, y)  返回最小值</li>
+<li>Math.pow(x, y) 返回x的y次幂</li>
+<li>Math.random()  返回0~1之间的随机数</li>
+<li>Math.round()  把数四舍五入为最接近的整数</li>
+<li>Math.sin()   返回数的正弦</li>
+<li>Math.sqrt()   返回数的平方根</li>
+<li>Math.tan()  返回角的正切</li>
+<li>Math.toSource() 返回对象的源代码</li>
+<li>Math.valueOf()   返回Math对象的原始值</li>
+</ul>
+<h4 id="字符串对象（String）"><a href="#字符串对象（String）" class="headerlink" title="字符串对象（String）"></a>字符串对象（String）</h4><ul>
+<li>charAt()   返回指定位置的字符</li>
+<li>charCodeAt()  返回指定位置的字符的Unicode编码</li>
+<li>concat()   连接两个或者更多字符串，并返回新的字符串</li>
+<li>fromCharCode()  将Unicode编码转为字符</li>
+<li>indexOf() 返回某个指定的字符串值在字符串首次出现的位置</li>
+<li>includes() 查找字符串中是否包含指定的字符串</li>
+<li>lastIndexOf() 从后向前搜索字符串，并从起始位置(0)开始返回字符串最后出现的位置</li>
+<li>match()   查找找到一个或者多个正则表达式匹配</li>
+<li>repeat()   复制字符串指定次数，并将它们连接在一起返回</li>
+<li>replace()  在字符串中查找匹配的字符串，并替换与正则表达式匹配的字符串</li>
+<li>search()   查找与正则表达式相匹配的值</li>
+<li>slice()   提取字符串的片段，并在新的字符串中返回被提取的部分</li>
+<li>split()  把字符串分割为字符串数组</li>
+<li>startsWith()   查看字符串是否以指定的子字符串开头</li>
+<li>substr(start, num)  从起始索引号提取字符串中指定数目的字符</li>
+<li>substring(start,end)  提取两个字符串索引之间的字符</li>
+<li>toLowerCase()    将字符串转化为小写</li>
+<li>toUpperCase()    将字符串转化为大写   </li>
+<li>trim()   去除字符串两边的空白</li>
+<li>toLocaleLowerCase()  根据本地主机的语言环境把字符串转化为小写</li>
+<li>toLocaleUpperCase()  根据本地主机的语言环境把字符串转换为大写</li>
+<li>toString()   返回一个字符串</li>
+<li><p>valueOf()   返回某个字符串对象的原始值</p>
+</li>
+<li><p>anchor(text)    创建一个HTML锚  <a name="text"></a></p>
+</li>
+<li>big()  用大号字体显示字符串</li>
+<li>blink()   闪动文本  (不能用于IE,Chrome,或者Safari)</li>
+<li>bold()   使用粗体显示字符串</li>
+<li>fixed()   用打字机文本显示字符串</li>
+<li>fontcolor()   用指定的颜色来显示字符串</li>
+<li>fontsize()   使用指定的尺寸来显示字符串</li>
+<li>italics()   使用斜体显示字符串</li>
+<li>link()    将字符串显示为连接</li>
+<li>small()   使用小字号来显示字符串</li>
+<li>strike()   用于显示加删除线的字符串</li>
+<li>sub()  把字符串显示为下标</li>
+<li>sup()  把字符串显示为上标</li>
+</ul>
+<h4 id="async-await"><a href="#async-await" class="headerlink" title="async await"></a>async await</h4><p>  ​      async用于申明一个function是异步的，而await用于等待一个异步方法执行完成，await只能出现在async之后</p>
+<h5 id="async"><a href="#async" class="headerlink" title="async"></a>async</h5><p>  ​      async 定义的函数是一个promise对象，如果函数中return 一个直接良，async会把这个直接量通过peomise.resolve()封装成Promise对象</p>
+<pre><code>async函数返回的是一个Promise对象，所以最外层不能用await获取其返回值，可以用过原始的.then()链来处理这个Promise对象
+</code></pre><p>  ​      Promise 的特点——无等待，所以在没有 <code>await</code> 的情况下执行 async 函数，它会立即执行，返回一个 Promise 对象，并且，绝不会阻塞后面的语句。这和普通返回 Promise 对象的函数并无二致</p>
+<h5 id="await"><a href="#await" class="headerlink" title="await"></a>await</h5><p>  ​      await是个运算符，用于组成表达式，await表达式的运算结果取决于它等的东西</p>
+<p>  ​      如果它等到的不是一个Promise对象，那await表达式的运算结果就是它等到的东西</p>
+<p>  ​      如果他等到的是一个Promise对象，await会阻塞后面的代码，等着Promise对象resolve 然后得到resolve的值，作为await表达式的运算结果</p>
+<p>  ​      async函数调用不会造成阻塞，它内部所有的阻塞都被封装在一个Promise对象中异步执行</p>
+<h5 id="async-await-帮我们干了啥"><a href="#async-await-帮我们干了啥" class="headerlink" title="async/await 帮我们干了啥"></a>async/await 帮我们干了啥</h5><p>  ​      async会将气候的函数的返回值封装成一个Promise对象，而await会等待这个Promise完成，并将其resolve的结果返回出来</p>
+  <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">takeLongTime</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="params">resolve</span> =&gt;</span> &#123;</span><br><span class="line">      setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> resolve(<span class="string">"long_time_value"</span>), <span class="number">1000</span>);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;</span><br><span class="line">takeLongTime().then(<span class="function"><span class="params">v</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"got"</span>, v);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+  <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">takeLongTime</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="params">resolve</span> =&gt;</span> &#123;</span><br><span class="line">      setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> resolve(<span class="string">"long_time_value"</span>), <span class="number">1000</span>);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> v = <span class="keyword">await</span> takeLongTime();</span><br><span class="line">  <span class="built_in">console</span>.log(v);</span><br><span class="line">&#125;</span><br><span class="line">test();</span><br></pre></td></tr></table></figure>
+<h5 id="async-await的优势在与处理then链"><a href="#async-await的优势在与处理then链" class="headerlink" title="async/await的优势在与处理then链"></a>async/await的优势在与处理then链</h5><p>  ​      单一的Promise并不能发现async/await的优势，如果处理多个Promise组成的then链时，优势就能体现出来了</p>
+<pre><code>假设一个业务分多个步骤完成，每个步骤都是异步的，而且依赖于上一个步骤的结果，如果使用setTimeout来模拟异步操作
+</code></pre>  <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 传入参数 n，表示这个函数执行的时间（毫秒）</span></span><br><span class="line"><span class="comment"> * 执行的结果是 n + 200，这个值将用于下一步骤</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">takeLongTime</span>(<span class="params">n</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="params">resolve</span> =&gt;</span> &#123;</span><br><span class="line">        setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> resolve(n + <span class="number">200</span>), n);</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">step1</span>(<span class="params">n</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">`step1 with <span class="subst">$&#123;n&#125;</span>`</span>);</span><br><span class="line">    <span class="keyword">return</span> takeLongTime(n);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">step2</span>(<span class="params">n</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">`step2 with <span class="subst">$&#123;n&#125;</span>`</span>);</span><br><span class="line">    <span class="keyword">return</span> takeLongTime(n);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">step3</span>(<span class="params">n</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">`step3 with <span class="subst">$&#123;n&#125;</span>`</span>);</span><br><span class="line">    <span class="keyword">return</span> takeLongTime(n);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// setTimeOut</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">doIt</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.time(<span class="string">"doIt"</span>);</span><br><span class="line">  <span class="keyword">const</span> time1 = <span class="number">300</span>;</span><br><span class="line">  step1(time1)</span><br><span class="line">      .then(<span class="function"><span class="params">time2</span> =&gt;</span> step2(time2))</span><br><span class="line">      .then(<span class="function"><span class="params">time3</span> =&gt;</span> step3(time3))</span><br><span class="line">      .then(<span class="function"><span class="params">result</span> =&gt;</span> &#123;</span><br><span class="line">          <span class="built_in">console</span>.log(<span class="string">`result is <span class="subst">$&#123;result&#125;</span>`</span>);</span><br><span class="line">          <span class="built_in">console</span>.timeEnd(<span class="string">"doIt"</span>);</span><br><span class="line">      &#125;);</span><br><span class="line">&#125;</span><br><span class="line">doIt();</span><br><span class="line"><span class="comment">// async/await</span></span><br><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">doIt</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.time(<span class="string">"doIt"</span>);</span><br><span class="line">  <span class="keyword">const</span> time1 = <span class="number">300</span>;</span><br><span class="line">  <span class="keyword">const</span> time2 = <span class="keyword">await</span> step1(time1);</span><br><span class="line">  <span class="keyword">const</span> time3 = <span class="keyword">await</span> step2(time2);</span><br><span class="line">  <span class="keyword">const</span> result = <span class="keyword">await</span> step3(time3);</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">`result is <span class="subst">$&#123;result&#125;</span>`</span>);</span><br><span class="line">  <span class="built_in">console</span>.timeEnd(<span class="string">"doIt"</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">doIt();</span><br></pre></td></tr></table></figure>
+<p>  ​    现在把业务要求改一下，仍然是三个步骤，但每一个步骤都需要之前每个步骤的结果</p>
+  <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">doIt</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.time(<span class="string">"doIt"</span>);</span><br><span class="line">    <span class="keyword">const</span> time1 = <span class="number">300</span>;</span><br><span class="line">    <span class="keyword">const</span> time2 = <span class="keyword">await</span> step1(time1);</span><br><span class="line">    <span class="keyword">const</span> time3 = <span class="keyword">await</span> step2(time1, time2);</span><br><span class="line">    <span class="keyword">const</span> result = <span class="keyword">await</span> step3(time1, time2, time3);</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">`result is <span class="subst">$&#123;result&#125;</span>`</span>);</span><br><span class="line">    <span class="built_in">console</span>.timeEnd(<span class="string">"doIt"</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// setTimeOut</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">doIt</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.time(<span class="string">"doIt"</span>);</span><br><span class="line">  <span class="keyword">const</span> time1 = <span class="number">300</span>;</span><br><span class="line">  step1(time1)</span><br><span class="line">      .then(<span class="function"><span class="params">time2</span> =&gt;</span> &#123;</span><br><span class="line">          <span class="keyword">return</span> step2(time1, time2)</span><br><span class="line">              .then(<span class="function"><span class="params">time3</span> =&gt;</span> [time1, time2, time3]);</span><br><span class="line">      &#125;)</span><br><span class="line">      .then(<span class="function"><span class="params">times</span> =&gt;</span> &#123;</span><br><span class="line">          <span class="keyword">const</span> [time1, time2, time3] = times;</span><br><span class="line">          <span class="keyword">return</span> step3(time1, time2, time3);</span><br><span class="line">      &#125;)</span><br><span class="line">      .then(<span class="function"><span class="params">result</span> =&gt;</span> &#123;</span><br><span class="line">          <span class="built_in">console</span>.log(<span class="string">`result is <span class="subst">$&#123;result&#125;</span>`</span>);</span><br><span class="line">          <span class="built_in">console</span>.timeEnd(<span class="string">"doIt"</span>);</span><br><span class="line">      &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="获取屏幕宽高"><a href="#获取屏幕宽高" class="headerlink" title="获取屏幕宽高"></a>获取屏幕宽高</h4><h5 id="获取屏幕高度方法"><a href="#获取屏幕高度方法" class="headerlink" title="获取屏幕高度方法"></a>获取屏幕高度方法</h5><pre><code>- document.body.clientWidth ==&gt; BODY对象宽度  
+- document.body.clientHeight ==&gt; BODY对象高度  
+- document.documentElement.clientWidth ==&gt; 可见区域宽度  
+- document.documentElement.clientHeight ==&gt; 可见区域高度  
+- 网页可见区域宽： document.body.clientWidth  
+- 网页可见区域高： document.body.clientHeight  
+- 网页可见区域宽： document.body.offsetWidth (包括边线的宽)  
+- 网页可见区域高： document.body.offsetHeight (包括边线的高)  
+- 网页正文全文宽： document.body.scrollWidth  
+- 网页正文全文高： document.body.scrollHeight  
+- 网页被卷去的高： document.body.scrollTop  
+- 网页被卷去的左： document.body.scrollLeft  
+- 网页正文部分上： window.screenTop  
+- 网页正文部分左： window.screenLeft  
+- 屏幕分辨率的高： window.screen.height  
+- 屏幕分辨率的宽： window.screen.width  
+- 屏幕可用工作区高度： window.screen.availHeight  
+- 屏幕可用工作区宽度： window.screen.availWidth  
+</code></pre><h5 id="部分jQuery函数"><a href="#部分jQuery函数" class="headerlink" title="部分jQuery函数"></a>部分jQuery函数</h5><pre><code>- $(window).height() 　//浏览器时下窗口可视区域高度   
+- $(document).height()　　　　//浏览器时下窗口文档的高度   
+- $(document.body).height()　　　　　　//浏览器时下窗口文档body的高度   
+- $(document.body).outerHeight(**true**)　//浏览器时下窗口文档body的总高度 包括border padding margin   
+- $(window).width() 　//浏览器时下窗口可视区域宽度   
+- $(document).width()//浏览器时下窗口文档对于象宽度   
+- $(document.body).width()　　　　　　//浏览器时下窗口文档body的高度   
+- $(document.body).outerWidth(**true**)　//浏览器时下窗口文档body的总宽度 包括border padding  
+</code></pre><h5 id="HTML精确定位-scrollLeft-scrollWidth-clientWidth-offsetWidth"><a href="#HTML精确定位-scrollLeft-scrollWidth-clientWidth-offsetWidth" class="headerlink" title="HTML精确定位:scrollLeft,scrollWidth,clientWidth,offsetWidth"></a>HTML精确定位:scrollLeft,scrollWidth,clientWidth,offsetWidth</h5><pre><code>- scrollHeight: 获取对象的滚动高度。   
+- scrollLeft:设置或获取位于对象左边界和窗口中目前可见内容的最左端之间的距离   
+- scrollTop:设置或获取位于对象最顶端和窗口中可见内容的最顶端之间的距离   
+- scrollWidth:获取对象的滚动宽度   
+- offsetHeight:获取对象相对于版面或由父坐标 offsetParent 属性指定的父坐标的高度   
+- offsetLeft:获取对象相对于版面或由 offsetParent 属性指定的父坐标的计算左侧位置   
+- offsetTop:获取对象相对于版面或由 offsetTop 属性指定的父坐标的计算顶端位置   
+- event.clientX 相对文档的水平座标   
+- event.clientY 相对文档的垂直座标   
+- event.offsetX 相对容器的水平坐标   
+- event.offsetY 相对容器的垂直坐标   
+- document.documentElement.scrollTop 垂直方向滚动的值   
+- event.clientX+document.documentElement.scrollTop 相对文档的水平座标+垂直方向滚动的量 
+</code></pre>
+            <div class="post-copyright">
+    <div class="content">
+        <p>最后更新： 2020年12月16日 14:13</p>
+        <p>原始链接： <a class="post-url" href="/lxx1997.github.io/2020/12/16/javascript-data-methods/" title="javascript-data-methods">https://lxxstar987.gitee.io/lxx1997.github.io/2020/12/16/javascript-data-methods/</a></p>
+        <footer>
+            <a href="https://lxxstar987.gitee.io/lxx1997.github.io">
+                <img src="/lxx1997.github.io/images/-5b0ea040b23a60c6.gif" alt="lxx">
+                lxx
+            </a>
+        </footer>
+    </div>
+</div>
+
+      
+        
+            
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;">赏</a>
+</div>
+
+<div id="reward" class="post-modal reward-lay">
+    <a class="close" href="javascript:;" id="reward-close">×</a>
+    <span class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢大佬打赏
+        <i class="icon icon-quote-right"></i>
+    </span>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/lxx1997.github.io/images/wechat_code.jpg" alt="打赏二维码">
+        </div>
+        <div class="reward-select">
+            
+            <label class="reward-select-item checked" data-id="wechat" data-wechat="/lxx1997.github.io/images/wechat_code.jpg">
+                <img class="reward-select-item-wechat" src="/lxx1997.github.io/images/wechat.png" alt="微信">
+            </label>
+            
+            
+            <label class="reward-select-item" data-id="alipay" data-alipay="/lxx1997.github.io/images/qq_code.jpg">
+                <img class="reward-select-item-alipay" src="/lxx1997.github.io/images/alipay.png" alt="支付宝">
+            </label>
+            
+        </div>
+    </div>
+</div>
+
+
+        
+    </div>
+    <footer class="article-footer">
+        
+        
+<div class="post-share">
+    <a href="javascript:;" id="share-sub" class="post-share-fab">
+        <i class="fa fa-share-alt"></i>
+    </a>
+    <div class="post-share-list" id="share-list">
+        <ul class="share-icons">
+          <li>
+            <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://lxxstar987.gitee.io/lxx1997.github.io/2020/12/16/javascript-data-methods/&title=《javascript-data-methods》 — SoulReader&pic=https://lxxstar987.gitee.io/lxx1997.github.ioimages/-5b0ea040b23a60c6.gif" data-title="微博">
+              <i class="fa fa-weibo"></i>
+            </a>
+          </li>
+          <li>
+            <a class="weixin share-sns" id="wxFab" href="javascript:;" data-title="微信">
+              <i class="fa fa-weixin"></i>
+            </a>
+          </li>
+          <li>
+            <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://lxxstar987.gitee.io/lxx1997.github.io/2020/12/16/javascript-data-methods/&title=《javascript-data-methods》 — SoulReader&source=前端小菜鸟,努力深造" data-title="QQ">
+              <i class="fa fa-qq"></i>
+            </a>
+          </li>
+          <li>
+            <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://lxxstar987.gitee.io/lxx1997.github.io/2020/12/16/javascript-data-methods/" data-title="Facebook">
+              <i class="fa fa-facebook"></i>
+            </a>
+          </li>
+          <li>
+            <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《javascript-data-methods》 — SoulReader&url=https://lxxstar987.gitee.io/lxx1997.github.io/2020/12/16/javascript-data-methods/&via=https://lxxstar987.gitee.io/lxx1997.github.io" data-title="Twitter">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+          <li>
+            <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://lxxstar987.gitee.io/lxx1997.github.io/2020/12/16/javascript-data-methods/" data-title="Google+">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        </ul>
+     </div>
+</div>
+<div class="post-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;" id="wxShare-close">×</a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACtklEQVR42u3awU4DMQwE0P7/T8MVCbXM2Ant4e0JFbS7L0iJO/bjEV9fP67fn/z+fHbP5ImPGxceHh7e4tVfv/Sz3yZLkC/K7D5PFwsPDw/vGu/Zjvr68c+Qs0XZHz94eHh4n8lLHpzjk/snf4+Hh4f3ybw8RLhxtODh4eF9Di8pbffBbr4ob8ha8PDw8GJe3kX6nJ+v9Pfw8PDw1l31A+VsXI63jbfobfHw8PAu8PINNx8XyEemZgFH/Z54eHh4R3ntEFWLzwOIZAnacQQ8PDy8G7xZkykvmttierZYf7wnHh4e3gVe+5h23CppUG3GBaJjDA8PD+8Q71T3bDNQlY8mDA8DPDw8vKO8/At/W84mm3gS5ubhb9EAw8PDw1vwZi2oU6FtGxnXv8XDw8O7wNu80KmW1WbMq0hZ8PDw8I7y8pfYRBg5sh0yiO6Dh4eHd4E3i1M3Tf3NIVEMXeHh4eEd5bXjAi2v3dzbKOTwNAQeHh5ewDvVjtrcIS/ZkztHWTUeHh7empdEDMlj2sZYO8A6+5fg4eHhneUlY6b5l//ZqNb+WU8/x8PDw7vGSwKI2cBTG8sOy+XXM2V4eHh413jtJp4Ux21M3A4Q/HGc4OHh4V3g5Q2tffE9i3fz46dt1+Hh4eFteJsCNy92kzXON/0ojMDDw8N7E68trNtlag+GomjGw8PDu8xrR51msWzLmC0WHh4e3v/z8jGpPHJNDptiu88PLTw8PLyjvK/yygPW2djBMG7Ih67w8PDw1rx282039+Ro2YcXbaiBh4eHt+flEUMeVeRDUZsoJDoY8PDw8K7x9kNX7ZhUEn8cy1rw8PDw3sprFyIfAshDkGJp8PDw8D6AV7TtR+A26sXDw8N7F+/sKFXb1sqXIw+C8fDw8O7x2i/8LaCNa/ODYdXTw8PDw5vwvgHc9+QpcYuj7QAAAABJRU5ErkJggg==" alt="微信分享二维码">
+</div>
+
+<div class="mask"></div>
+
+        
+        <ul class="article-footer-menu">
+            
+            
+  <li class="article-footer-tags">
+    <i class="fa fa-tags"></i>
+      
+    <a href="/lxx1997.github.io/tags/javascript/" class="color1">javascript</a>
+      
+    <a href="/lxx1997.github.io/tags/array/" class="color1">array</a>
+      
+    <a href="/lxx1997.github.io/tags/method/" class="color2">method</a>
+      
+  </li>
+
+        </ul>
+        
+    </footer>
+  </div>
+</article>
+
+
+    <aside class="post-toc-pos post-toc-top" id="post-toc">
+        <nav class="post-toc-wrap">
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#全局函数（function）"><span class="post-toc-text">全局函数（function）</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#数组（Array）"><span class="post-toc-text">数组（Array）</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#时间对象（Date）"><span class="post-toc-text">时间对象（Date）</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#方法"><span class="post-toc-text">方法</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#简单的时间函数"><span class="post-toc-text">简单的时间函数</span></a></li></ol></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#数学对象（Math）"><span class="post-toc-text">数学对象（Math）</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#字符串对象（String）"><span class="post-toc-text">字符串对象（String）</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#async-await"><span class="post-toc-text">async await</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#async"><span class="post-toc-text">async</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#await"><span class="post-toc-text">await</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#async-await-帮我们干了啥"><span class="post-toc-text">async/await 帮我们干了啥</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#async-await的优势在与处理then链"><span class="post-toc-text">async/await的优势在与处理then链</span></a></li></ol></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#获取屏幕宽高"><span class="post-toc-text">获取屏幕宽高</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#获取屏幕高度方法"><span class="post-toc-text">获取屏幕高度方法</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#部分jQuery函数"><span class="post-toc-text">部分jQuery函数</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#HTML精确定位-scrollLeft-scrollWidth-clientWidth-offsetWidth"><span class="post-toc-text">HTML精确定位:scrollLeft,scrollWidth,clientWidth,offsetWidth</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+    
+
+<nav id="article-nav">
+  
+  
+    <a href="/lxx1997.github.io/2020/12/16/vue-VirtualDOM-template/" id="article-nav-older" class="article-nav-link-wrap">
+      <span class="article-nav-title">vue-数据驱动-dom生成</span>
+      <i class="fa fa-hand-o-right" aria-hidden="true"></i>
+    </a>
+  
+</nav>
+
+
+
+    
+</section>
+        
+      </div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+      <p>
+        Powered by  <a href="http://hexo.io/" target="_blank">Hexo</a>
+        Theme <a href="//github.com/wongminho/hexo-theme-miho" target="_blank">MiHo</a>
+      &copy; 2020 lxx<br>
+      </p>
+    </div>
+  </div>
+</footer>
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<script>
+  var mihoConfig = {
+      root: "https://lxxstar987.gitee.io/lxx1997.github.io",
+      animate: true,
+      isHome: false,
+      share: true,
+      reward: 1
+  }
+</script>
+<div class="sidebar">
+    <div id="sidebar-search" title="Search">
+        <i class="fa fa-search"></i>
+    </div>
+    <div id="sidebar-category" title="Categories">
+        <i class="fa fa-book"></i>
+    </div>
+    <div id="sidebar-tag" title="Tags">
+        <i class="fa fa-tags"></i>
+    </div>
+    <div id="sidebar-top">
+        <span class="sidebar-top-icon"><i class="fa fa-angle-up"></i></span>
+    </div>
+</div>
+<div class="sidebar-menu-box" id="sidebar-menu-box">
+    <div class="sidebar-menu-box-container">
+        <div id="sidebar-menu-box-categories">
+            <a class="category-link" href="/lxx1997.github.io/categories/javascript/">javascript</a><a class="category-link" href="/lxx1997.github.io/categories/vue/">vue</a><a class="category-link" href="/lxx1997.github.io/categories/web/">web</a>
+        </div>
+        <div id="sidebar-menu-box-tags">
+            <a href="/lxx1997.github.io/tags/ES6/" style="font-size: 11.11px;">ES6</a> <a href="/lxx1997.github.io/tags/HTML/" style="font-size: 10px;">HTML</a> <a href="/lxx1997.github.io/tags/antd/" style="font-size: 10px;">antd</a> <a href="/lxx1997.github.io/tags/arguments-callee/" style="font-size: 10px;">arguments.callee</a> <a href="/lxx1997.github.io/tags/array/" style="font-size: 11.11px;">array</a> <a href="/lxx1997.github.io/tags/browser/" style="font-size: 10px;">browser</a> <a href="/lxx1997.github.io/tags/canvas/" style="font-size: 12.22px;">canvas</a> <a href="/lxx1997.github.io/tags/chrome/" style="font-size: 10px;">chrome</a> <a href="/lxx1997.github.io/tags/coffeescript/" style="font-size: 11.11px;">coffeescript</a> <a href="/lxx1997.github.io/tags/colorui/" style="font-size: 10px;">colorui</a> <a href="/lxx1997.github.io/tags/css/" style="font-size: 13.33px;">css</a> <a href="/lxx1997.github.io/tags/css3/" style="font-size: 11.11px;">css3</a> <a href="/lxx1997.github.io/tags/customize-cra/" style="font-size: 10px;">customize-cra</a> <a href="/lxx1997.github.io/tags/d3-js/" style="font-size: 10px;">d3.js</a> <a href="/lxx1997.github.io/tags/deepin/" style="font-size: 10px;">deepin</a> <a href="/lxx1997.github.io/tags/deno/" style="font-size: 10px;">deno</a> <a href="/lxx1997.github.io/tags/docker/" style="font-size: 10px;">docker</a> <a href="/lxx1997.github.io/tags/egg-mysql/" style="font-size: 10px;">egg-mysql</a> <a href="/lxx1997.github.io/tags/eggjs/" style="font-size: 14.44px;">eggjs</a> <a href="/lxx1997.github.io/tags/electron/" style="font-size: 10px;">electron</a> <a href="/lxx1997.github.io/tags/es6/" style="font-size: 10px;">es6</a> <a href="/lxx1997.github.io/tags/function/" style="font-size: 10px;">function</a> <a href="/lxx1997.github.io/tags/github/" style="font-size: 10px;">github</a> <a href="/lxx1997.github.io/tags/golang/" style="font-size: 10px;">golang</a> <a href="/lxx1997.github.io/tags/hexo/" style="font-size: 11.11px;">hexo</a> <a href="/lxx1997.github.io/tags/html/" style="font-size: 17.78px;">html</a> <a href="/lxx1997.github.io/tags/indexedDB/" style="font-size: 10px;">indexedDB</a> <a href="/lxx1997.github.io/tags/javascript/" style="font-size: 20px;">javascript</a> <a href="/lxx1997.github.io/tags/jsonwebtoken/" style="font-size: 10px;">jsonwebtoken</a> <a href="/lxx1997.github.io/tags/less/" style="font-size: 10px;">less</a> <a href="/lxx1997.github.io/tags/localStorage/" style="font-size: 10px;">localStorage</a> <a href="/lxx1997.github.io/tags/method/" style="font-size: 11.11px;">method</a> <a href="/lxx1997.github.io/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/lxx1997.github.io/tags/node-js/" style="font-size: 10px;">node.js</a> <a href="/lxx1997.github.io/tags/nodeJs/" style="font-size: 10px;">nodeJs</a> <a href="/lxx1997.github.io/tags/npm/" style="font-size: 10px;">npm</a> <a href="/lxx1997.github.io/tags/octopress/" style="font-size: 11.11px;">octopress</a> <a href="/lxx1997.github.io/tags/promise/" style="font-size: 10px;">promise</a> <a href="/lxx1997.github.io/tags/pygame/" style="font-size: 10px;">pygame</a> <a href="/lxx1997.github.io/tags/python/" style="font-size: 10px;">python</a> <a href="/lxx1997.github.io/tags/react/" style="font-size: 14.44px;">react</a> <a href="/lxx1997.github.io/tags/react-app-rewired/" style="font-size: 10px;">react-app-rewired</a> <a href="/lxx1997.github.io/tags/redis/" style="font-size: 10px;">redis</a> <a href="/lxx1997.github.io/tags/router/" style="font-size: 10px;">router</a> <a href="/lxx1997.github.io/tags/svg/" style="font-size: 11.11px;">svg</a> <a href="/lxx1997.github.io/tags/swagger-ui/" style="font-size: 10px;">swagger-ui</a> <a href="/lxx1997.github.io/tags/symbol/" style="font-size: 10px;">symbol</a> <a href="/lxx1997.github.io/tags/typescript/" style="font-size: 15.56px;">typescript</a> <a href="/lxx1997.github.io/tags/uni-app/" style="font-size: 10px;">uni-app</a> <a href="/lxx1997.github.io/tags/vue/" style="font-size: 13.33px;">vue</a> <a href="/lxx1997.github.io/tags/web/" style="font-size: 16.67px;">web</a> <a href="/lxx1997.github.io/tags/webpack/" style="font-size: 11.11px;">webpack</a> <a href="/lxx1997.github.io/tags/主题/" style="font-size: 12.22px;">主题</a> <a href="/lxx1997.github.io/tags/产品/" style="font-size: 10px;">产品</a> <a href="/lxx1997.github.io/tags/前端/" style="font-size: 13.33px;">前端</a> <a href="/lxx1997.github.io/tags/后台/" style="font-size: 10px;">后台</a> <a href="/lxx1997.github.io/tags/安全/" style="font-size: 11.11px;">安全</a> <a href="/lxx1997.github.io/tags/工具/" style="font-size: 11.11px;">工具</a> <a href="/lxx1997.github.io/tags/性能/" style="font-size: 10px;">性能</a> <a href="/lxx1997.github.io/tags/故事/" style="font-size: 10px;">故事</a> <a href="/lxx1997.github.io/tags/旅行/" style="font-size: 12.22px;">旅行</a> <a href="/lxx1997.github.io/tags/旧事/" style="font-size: 18.89px;">旧事</a> <a href="/lxx1997.github.io/tags/杂谈/" style="font-size: 12.22px;">杂谈</a> <a href="/lxx1997.github.io/tags/模式/" style="font-size: 10px;">模式</a> <a href="/lxx1997.github.io/tags/浏览器/" style="font-size: 11.11px;">浏览器</a> <a href="/lxx1997.github.io/tags/游戏/" style="font-size: 11.11px;">游戏</a> <a href="/lxx1997.github.io/tags/源码/" style="font-size: 10px;">源码</a> <a href="/lxx1997.github.io/tags/生活/" style="font-size: 13.33px;">生活</a> <a href="/lxx1997.github.io/tags/笔记/" style="font-size: 10px;">笔记</a> <a href="/lxx1997.github.io/tags/经验/" style="font-size: 10px;">经验</a> <a href="/lxx1997.github.io/tags/编码/" style="font-size: 10px;">编码</a> <a href="/lxx1997.github.io/tags/药别停/" style="font-size: 11.11px;">药别停</a> <a href="/lxx1997.github.io/tags/设计/" style="font-size: 11.11px;">设计</a> <a href="/lxx1997.github.io/tags/读后感/" style="font-size: 12.22px;">读后感</a> <a href="/lxx1997.github.io/tags/黑科技/" style="font-size: 10px;">黑科技</a>
+        </div>
+    </div>
+    <a href="javascript:;" class="sidebar-menu-box-close">&times;</a>
+</div>
+<div class="mobile-header-menu-nav" id="mobile-header-menu-nav">
+    <div class="mobile-header-menu-container">
+        <span class="title">Menus</span>
+        <ul class="mobile-header-menu-navbar">
+            
+            <li>
+                <a  href="/lxx1997.github.io/">
+                    <i class="fa fa-home"></i><span>Home</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    <div class="mobile-header-tag-container">
+        <span class="title">Tags</span>
+        <div id="mobile-header-container-tags">
+            <a href="/lxx1997.github.io/tags/ES6/" style="font-size: 11.11px;">ES6</a> <a href="/lxx1997.github.io/tags/HTML/" style="font-size: 10px;">HTML</a> <a href="/lxx1997.github.io/tags/antd/" style="font-size: 10px;">antd</a> <a href="/lxx1997.github.io/tags/arguments-callee/" style="font-size: 10px;">arguments.callee</a> <a href="/lxx1997.github.io/tags/array/" style="font-size: 11.11px;">array</a> <a href="/lxx1997.github.io/tags/browser/" style="font-size: 10px;">browser</a> <a href="/lxx1997.github.io/tags/canvas/" style="font-size: 12.22px;">canvas</a> <a href="/lxx1997.github.io/tags/chrome/" style="font-size: 10px;">chrome</a> <a href="/lxx1997.github.io/tags/coffeescript/" style="font-size: 11.11px;">coffeescript</a> <a href="/lxx1997.github.io/tags/colorui/" style="font-size: 10px;">colorui</a> <a href="/lxx1997.github.io/tags/css/" style="font-size: 13.33px;">css</a> <a href="/lxx1997.github.io/tags/css3/" style="font-size: 11.11px;">css3</a> <a href="/lxx1997.github.io/tags/customize-cra/" style="font-size: 10px;">customize-cra</a> <a href="/lxx1997.github.io/tags/d3-js/" style="font-size: 10px;">d3.js</a> <a href="/lxx1997.github.io/tags/deepin/" style="font-size: 10px;">deepin</a> <a href="/lxx1997.github.io/tags/deno/" style="font-size: 10px;">deno</a> <a href="/lxx1997.github.io/tags/docker/" style="font-size: 10px;">docker</a> <a href="/lxx1997.github.io/tags/egg-mysql/" style="font-size: 10px;">egg-mysql</a> <a href="/lxx1997.github.io/tags/eggjs/" style="font-size: 14.44px;">eggjs</a> <a href="/lxx1997.github.io/tags/electron/" style="font-size: 10px;">electron</a> <a href="/lxx1997.github.io/tags/es6/" style="font-size: 10px;">es6</a> <a href="/lxx1997.github.io/tags/function/" style="font-size: 10px;">function</a> <a href="/lxx1997.github.io/tags/github/" style="font-size: 10px;">github</a> <a href="/lxx1997.github.io/tags/golang/" style="font-size: 10px;">golang</a> <a href="/lxx1997.github.io/tags/hexo/" style="font-size: 11.11px;">hexo</a> <a href="/lxx1997.github.io/tags/html/" style="font-size: 17.78px;">html</a> <a href="/lxx1997.github.io/tags/indexedDB/" style="font-size: 10px;">indexedDB</a> <a href="/lxx1997.github.io/tags/javascript/" style="font-size: 20px;">javascript</a> <a href="/lxx1997.github.io/tags/jsonwebtoken/" style="font-size: 10px;">jsonwebtoken</a> <a href="/lxx1997.github.io/tags/less/" style="font-size: 10px;">less</a> <a href="/lxx1997.github.io/tags/localStorage/" style="font-size: 10px;">localStorage</a> <a href="/lxx1997.github.io/tags/method/" style="font-size: 11.11px;">method</a> <a href="/lxx1997.github.io/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/lxx1997.github.io/tags/node-js/" style="font-size: 10px;">node.js</a> <a href="/lxx1997.github.io/tags/nodeJs/" style="font-size: 10px;">nodeJs</a> <a href="/lxx1997.github.io/tags/npm/" style="font-size: 10px;">npm</a> <a href="/lxx1997.github.io/tags/octopress/" style="font-size: 11.11px;">octopress</a> <a href="/lxx1997.github.io/tags/promise/" style="font-size: 10px;">promise</a> <a href="/lxx1997.github.io/tags/pygame/" style="font-size: 10px;">pygame</a> <a href="/lxx1997.github.io/tags/python/" style="font-size: 10px;">python</a> <a href="/lxx1997.github.io/tags/react/" style="font-size: 14.44px;">react</a> <a href="/lxx1997.github.io/tags/react-app-rewired/" style="font-size: 10px;">react-app-rewired</a> <a href="/lxx1997.github.io/tags/redis/" style="font-size: 10px;">redis</a> <a href="/lxx1997.github.io/tags/router/" style="font-size: 10px;">router</a> <a href="/lxx1997.github.io/tags/svg/" style="font-size: 11.11px;">svg</a> <a href="/lxx1997.github.io/tags/swagger-ui/" style="font-size: 10px;">swagger-ui</a> <a href="/lxx1997.github.io/tags/symbol/" style="font-size: 10px;">symbol</a> <a href="/lxx1997.github.io/tags/typescript/" style="font-size: 15.56px;">typescript</a> <a href="/lxx1997.github.io/tags/uni-app/" style="font-size: 10px;">uni-app</a> <a href="/lxx1997.github.io/tags/vue/" style="font-size: 13.33px;">vue</a> <a href="/lxx1997.github.io/tags/web/" style="font-size: 16.67px;">web</a> <a href="/lxx1997.github.io/tags/webpack/" style="font-size: 11.11px;">webpack</a> <a href="/lxx1997.github.io/tags/主题/" style="font-size: 12.22px;">主题</a> <a href="/lxx1997.github.io/tags/产品/" style="font-size: 10px;">产品</a> <a href="/lxx1997.github.io/tags/前端/" style="font-size: 13.33px;">前端</a> <a href="/lxx1997.github.io/tags/后台/" style="font-size: 10px;">后台</a> <a href="/lxx1997.github.io/tags/安全/" style="font-size: 11.11px;">安全</a> <a href="/lxx1997.github.io/tags/工具/" style="font-size: 11.11px;">工具</a> <a href="/lxx1997.github.io/tags/性能/" style="font-size: 10px;">性能</a> <a href="/lxx1997.github.io/tags/故事/" style="font-size: 10px;">故事</a> <a href="/lxx1997.github.io/tags/旅行/" style="font-size: 12.22px;">旅行</a> <a href="/lxx1997.github.io/tags/旧事/" style="font-size: 18.89px;">旧事</a> <a href="/lxx1997.github.io/tags/杂谈/" style="font-size: 12.22px;">杂谈</a> <a href="/lxx1997.github.io/tags/模式/" style="font-size: 10px;">模式</a> <a href="/lxx1997.github.io/tags/浏览器/" style="font-size: 11.11px;">浏览器</a> <a href="/lxx1997.github.io/tags/游戏/" style="font-size: 11.11px;">游戏</a> <a href="/lxx1997.github.io/tags/源码/" style="font-size: 10px;">源码</a> <a href="/lxx1997.github.io/tags/生活/" style="font-size: 13.33px;">生活</a> <a href="/lxx1997.github.io/tags/笔记/" style="font-size: 10px;">笔记</a> <a href="/lxx1997.github.io/tags/经验/" style="font-size: 10px;">经验</a> <a href="/lxx1997.github.io/tags/编码/" style="font-size: 10px;">编码</a> <a href="/lxx1997.github.io/tags/药别停/" style="font-size: 11.11px;">药别停</a> <a href="/lxx1997.github.io/tags/设计/" style="font-size: 11.11px;">设计</a> <a href="/lxx1997.github.io/tags/读后感/" style="font-size: 12.22px;">读后感</a> <a href="/lxx1997.github.io/tags/黑科技/" style="font-size: 10px;">黑科技</a>
+        </div>
+    </div>
+</div>
+<div class="search-wrap">
+    <span class="search-close">&times;</span>
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+            <i class="icon icon-lg icon-chevron-left"></i>
+        </a>
+        <input class="search-field" placeholder="Search..." id="keywords">
+        <a id="search-submit" href="javascript:;">
+            <i class="fa fa-search"></i>
+        </a>
+    <div class="search-container" id="search-container">
+        <ul class="search-result" id="search-result">
+        </ul>
+    </div>
+</div>
+
+<div id="search-tpl">
+    <li class="search-result-item">
+        <a href="{url}" class="search-item-li">
+            <span class="search-item-li-title" title="{title}">{title}</span>
+        </a>
+    </li>
+</div>
+<script src="/lxx1997.github.io/js/search.js"></script>
+<script src="/lxx1997.github.io/js/main.js"></script>
+
+
+  <script src="//cdn.bootcss.com/particles.js/2.0.0/particles.min.js"></script>
+  <div id="particles"></div>
+  <script src="/lxx1997.github.io/js/particles.js"></script>
+
+
+
+
+
+
+
+  <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
+  <script src="//cdn.bootcss.com/scrollReveal.js/3.0.5/scrollreveal.js"></script>
+  <script src="/lxx1997.github.io/js/animate.js"></script>
+
+
+  <script src="/lxx1997.github.io/js/pop-img.js"></script>
+  <script>
+     $(".article-entry p img").popImg();
+  </script>
+
+  </div>
+<script src="/lxx1997.github.io/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/lxx1997.github.io/live2dw/assets/kesyoban.model.json"},"display":{"position":"left","width":300,"height":300},"mobile":{"show":true},"log":false});</script></body>
+</html>
