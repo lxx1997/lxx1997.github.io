@@ -14,7 +14,7 @@ tags:
 不是很理解之余，这个chrome插件[豆瓣首页 for chome](https://chrome.google.com/webstore/detail/%E8%B1%86%E7%93%A3%E9%A6%96%E9%A1%B5/pkciaaffjliomglnmjcjekkinbnnjcah?hl=zh-CN)就诞生了。
 
 但这个问题很有意思。
-<!--more-->
+
 
 进入豆瓣相关页面，在导航条处会有“默认首页”tab，如截图虚线框处所示。点击即可进入。
 

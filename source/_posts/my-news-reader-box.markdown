@@ -4,7 +4,7 @@ title: "网易“聚合阅读”布局的实现"
 date: 2013-05-03 10:55
 comments: true
 tags: 
-	- js
+	- javascript
 ---
 
 ![聚合阅读](/assets/blogImg/myReader0.jpg)   
@@ -13,14 +13,14 @@ tags:
 
 而抛去产品的层面，从前端方向来看，“聚合阅读”也有许多值得学习的地方。这几天研究了一下源码，谈谈它随机布局的实现，以及一些优化的措施。
 
-##**demo**
+## **demo**
 
 点击按钮可以改变布局：
-<!--more-->
+
 
 <iframe id="demoIframe" src="/assets/demo/my_news_reader/index.html" width="600" height="420" scrolling="no"></iframe>
 
-##**一.怎样定义格子对象**
+## **一.怎样定义格子对象**
 
 每个格子对象，都至少应该有这5个属性：   
 
@@ -96,7 +96,7 @@ tags:
 		}]
 	}
 ```
-##**二.递归调用切割函数**
+## **二.递归调用切割函数**
 ```js 
 	function _getGrids(tag) {
 		/*domArr是拥有left,top,width,height,bg等属性的所有dom数组，_getGrids的最终目的就是生成这个数组*/
@@ -118,7 +118,7 @@ tags:
 		return domArr;
 	}
 ```
-##**三.切割函数**
+## **三.切割函数**
 
 切割函数挺有意思的，下次想再用一篇文章来详细写一下，在这里仅贴出参考的源码。
 ```js 
@@ -212,5 +212,5 @@ tags:
 		tag.random === !1 ? tag[cutType1.name].forEach(a) : tag[cutType1.name].randomEach(a)
 	}
 ```
-##**四.最后**
+## **四.最后**
 完成到这一步，我已不记得声明对象时出了多少次错误。各种尖括号，方括号，逗号和分号翩翩起舞时，你一定跟我一样很想念coffee的语法糖…

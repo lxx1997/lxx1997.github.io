@@ -133,7 +133,7 @@ feed:
     limit: 100
 
 jsonContent:
-    meta: false
+    meta: true
     pages: false
     posts:
       title: true
@@ -145,7 +145,7 @@ jsonContent:
       slug: false
       updated: false
       comments: false
-      link: true
+      link: false
       permalink: false
       excerpt: false
       categories: false

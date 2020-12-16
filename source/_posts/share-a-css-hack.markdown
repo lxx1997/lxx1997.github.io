@@ -8,7 +8,7 @@ tags:
 key: "5"
 ---
 
-###一、分享一个IE6，7的css hack bug。    
+### 一、分享一个IE6，7的css hack bug。    
 ![css hack](/assets/blogImg/css_hack.jpg)   
 > IE和我们之间，肯定有一个是傻逼，如果它不是，那我们准是。不然很多事情没法解释…  ——多么痛的领悟 
 
@@ -50,7 +50,7 @@ css:
 * <code>background: #333</code> - 设置background颜色为#333         
 当.box触发hover时，做了一步z-index的改变，这时候在IE6，7中出现bug：因margin-left失效，.box会向左移动10px；而且这时候设置margin-left是不起作用的，hover结束后.box也不会回到原来的位置。
 
-###二、淡定解决异次元的bug
+### 二、淡定解决异次元的bug
 
 诡异的事情最后水落石出：**background属性居然影响了margin**。
 
