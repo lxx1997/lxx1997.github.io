@@ -5,12 +5,12 @@ date: 2013-10-06 10:55
 comments: true
 tags: 
 	- web 
-	- js
+	- javascript
 ---
 
 js编程时经常会用到异步处理，而异步会带了所谓的并发问题。比如，你需要向服务器发出多个ajax请求，然后在返回所有结果后做进一步处理，同时要显示动画。因此我们需要用到以下的方案。
 
-###**【定义函数】**
+### **【定义函数】**
 定义Batch函数。参数为函数组成的数组functions，这里面的函数将稍后执行，以及这些函数完成后的回调completionHandler。          
 ```js
 	function Batch(functions, completionHandler) {
@@ -18,7 +18,7 @@ js编程时经常会用到异步处理，而异步会带了所谓的并发问题
 		this._completionHandler = completionHandler;
 	}
 ```
-###**【启动请求】**
+### **【启动请求】**
 用this._remaining来记录未执行的函数量，然后执行各个函数。    
 ```js  
 	Batch.prototype.execute = function execute() {
@@ -31,7 +31,7 @@ js编程时经常会用到异步处理，而异步会带了所谓的并发问题
 	  	}
 	};
 ```
-###**【让Batch知道函数完成】**
+### **【让Batch知道函数完成】**
 用this._results来记录执行结果，当this._remaining为0时，表示所有函数已执行完毕。
 ```js            
 	Batch.prototype.done = function done(result) {
@@ -46,7 +46,7 @@ js编程时经常会用到异步处理，而异步会带了所谓的并发问题
 ```
 到这里，就完成了Batch这个函数的简单功能了。
 
-###**【使用】**
+### **【使用】**
 将Batch应用到实际上。      
 ```js
 	var urls = [

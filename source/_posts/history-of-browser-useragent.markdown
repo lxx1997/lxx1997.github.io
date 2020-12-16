@@ -22,7 +22,7 @@ reward: true
 
 后来我查阅了很多资料，发现历史非常的精彩。
 
-<!--more-->
+
 
 ### 大事年表
 * 1990年: Nexus(WorldWideWeb)诞生

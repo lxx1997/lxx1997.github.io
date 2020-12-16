@@ -4,7 +4,7 @@ title: "生产者-消费者模型的coffeescript实现"
 date: 2012-12-24 23:51
 comments: true
 tags: 
-	- js 
+	- javascript 
 	- coffeescript 
 ---
 

@@ -21,44 +21,44 @@ tags:
 
 
 
-##一、使用
+## 一、使用
 
-####**1. 安装**
+#### **1. 安装**
 
 ``` bash
 $ git clone https://github.com/litten/hexo-theme-yilia.git themes/yilia
 ```
 
-####**2. 配置**
+#### **2. 配置**
 
 修改hexo根目录下的 `_config.yml` ： `theme: yilia`
 
-####**3. 更新**
+#### **3. 更新**
 
 ``` bash
 cd themes/yilia
 git pull
 ```
 
-##二、外观
+## 二、外观
 
-####**宽屏**
+#### **宽屏**
 ![宽屏](http://littendomo.sinaapp.com/yilia/yilia-pc1.png)        
 
-####**宽屏文字**
+#### **宽屏文字**
 ![宽屏文字](http://littendomo.sinaapp.com/yilia/yilia-pc2.png)   
 
-####**窄屏**
+#### **窄屏**
 ![窄屏](http://littendomo.sinaapp.com/yilia/yilia-pc3.png)     
 
-####**同步instagram**
+#### **同步instagram**
 ![同步instagram](http://littendomo.sinaapp.com/yilia/yilia-pc4.png)
 
-####**移动端**
+#### **移动端**
 ![移动端](http://littendomo.sinaapp.com/yilia/yilia-mobile.png)
 ![移动端](http://littendomo.sinaapp.com/yilia/yilia-mobile2.png)   
 
-##三、配置
+## 三、配置
 
 主题配置文件在主目录下的`_config.yml`：
 

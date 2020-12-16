@@ -7,15 +7,15 @@ tags:
 	- web
 ---
 
-##**一、写在前面**     
+## **一、写在前面**     
 在收集资料时，我查询和学习了许多介绍OAuth的文章，这些文章有好有坏，但大多是从个例出发。因此我想从官方文档出发，结合在stackoverflow上的一些讨论，一并整理一下。整理的内容分为OAuth1.0a和OAuth2两部分。
 > OAuth 1.0a：One Leg ->Two Leg -> Three Legged            
 > OAuth 2:Two Leg ->Three Legged (附：Refresh Token的方式)
 
 这两种模式都是按箭头从左往右安全性递增，其实现也会相对复杂。关于官方的这种leg（腿？）的说法，在中文翻译中比较少有文章提及。下面分别来介绍OAuth的这5种授权流程。
 
-<!--more-->
-##**二、OAuth1.0a**
+
+## **二、OAuth1.0a**
 **2.1 OAuth 1.0a (One Leg)**
 
 1. 应用给服务器发送一个签名请求，附带以下参数：           
@@ -84,7 +84,7 @@ tags:
 8. 服务器返回Access Token和Token Secret                       
 9. 应用通过Access Token和Token Secret利用请求的资源                       
 
-##**三、OAuth2**         
+## **三、OAuth2**         
 
 ** 3.1 OAuth 2 (Two Legged)**
 
@@ -175,7 +175,7 @@ oauth_service/login/oauth/authorize?client_id=3MVG9lKcPoNINVB&redirect_uri=http:
 	* access_token                     
 	* issued_at                     
 
-##**四、stackoverflow上的一些问答**         
+## **四、stackoverflow上的一些问答**         
                 
 **Q**：OpenID和OAuth的区别是什么？                    
 **A**：OpenID是有关身份验证（即证明你是谁），OAuth有关授权（即授予访问权限），推荐博文：[从用户的角度来看OpenID和OAuth](http://cakebaker.42dh.com/2008/04/01/openid-versus-oauth-from-the-users-perspective/)                    

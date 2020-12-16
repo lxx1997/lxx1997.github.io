@@ -6,7 +6,7 @@ comments: true
 tags: 
 	- html
 	- 前端 
-	- js 
+	- javascript 
 	- github
 ---
 

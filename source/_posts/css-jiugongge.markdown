@@ -15,7 +15,7 @@ key: "3"
 
 ![css题目](/assets/blogImg/jiugongge1.jpg)    
 
-<!--more-->
+
 做成九宫格大家都会，但题目的陷阱就在hover上。鼠标hover到格子4，格子5时，其实他们“共用”了一条边。由于是纯css实现的，我们不可能说用js去动态改变dom，因此怎样实现“公用边”就成为了难点。
 
 **尝试的过程：**           
@@ -25,7 +25,7 @@ key: "3"
 + 在table想法的基础上改进；
 + 一种更简便的做法，不需要border，见九宫格(二)                       
 
-##**我的第一个想法**       
+## **我的第一个想法**       
 
 先做做看，尝试永远是第一步。我将9个div都设置了5px的border，排成了九宫格，添加了hover，这时候初始的效果是：     
 ![初始效果](/assets/blogImg/jiugongge2.jpg)      
@@ -86,7 +86,7 @@ key: "3"
 
 ![ie6，7下，hover时负值margin-left不起效](/assets/blogImg/jiugongge4.jpg)      
 
-##**后来的想法**      
+## **后来的想法**      
 
 经过第一次尝试，我得到一个经验：<code>要用一种通用的方法去解决“公用边”</code>，而不是分别设置.lr_indent和.tb_indent。
 随即我想到了表格。作为table，它有个很突出的属性，就是合并border，css里面的设置为<code>border-collapse:collapse;</code>。ok，这就是key point。
@@ -156,7 +156,7 @@ css：
 ![IE7下的情景](/assets/blogImg/jiugongge6.jpg)    
 （ps：作为前端一枚，我已经做好了妥妥的心理准备，但此情此景还是让人喷出一口老血……）
 
-##**改进，改进**         
+## **改进，改进**         
 
 说实话，table和div之争这么多年，大家都在页面中用越来越多的div，而越发的鄙视table，反而对table的熟悉程度反应了前端们的基础是否扎实。吃一堑长一智，这句话特别适用于在table中翻江倒海的亲们。
 

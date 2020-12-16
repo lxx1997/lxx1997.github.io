@@ -11,7 +11,7 @@ tags:
 js是单线程的语言，由于此特性，我们在处理并发时需要用到一些技巧，如setTimeout()，setInterval()，调用XMLHttpRequest等。
 但这里的并发只是非阻塞（参照John Resig的文章[How JavaScript Timers Work](http://ejohn.org/blog/how-javascript-timers-work/)），真正的多线程编程则需要HTML5的web worker。
 
-###**【worker的使用】**
+### **【worker的使用】**
 web worker的使用非常简单，线程之间通讯的api与html5 postmessage或node.js里面的socket.io方法类似。
 
 通讯：      
@@ -25,8 +25,7 @@ web worker的使用非常简单，线程之间通讯的api与html5 postmessage�
 2. 父线程: worker.terminate()
 
 按照目前w3c规范，web worker分为两种：专用worker(Dedicated Worker)和共享worker(Shared Worker)。
-<!--more-->
-###**【专用worker】**
+### **【专用worker】**
 实例化一个web worker对象，异步加载子线程文件worker.js，其中的代码将执行。
 
     var worker = new Worker("worker.js");
@@ -90,7 +89,7 @@ worker.js：
 
 从上面的例子可以看到，一是利用对象参数，进程之间能够较灵活的实现控制；二是当woker执行taskStart()处理大量数据时，只在子进程处理，不会给主页面带来阻塞，通常，处理大量数据会消极影响程序的响应能力，而web worker通过这样的方式，能提供一个更流畅更实时的UI。
 
-###**【共享worker】**
+### **【共享worker】**
 共享worker允许线程在同源中的多个页面间进行共享，例如：同源中所有页面或脚本可以与同一个共享线程通信。它的实例化与事件侦听的写法与专用worker略有不同,主页面：
 
 	var worker = new SharedWorker('shared-worker.js');
@@ -123,7 +122,7 @@ shared-worker.js:
 用两个窗口打开这个页面，第一个显示：**Someone just said "Hello shared worker!" This is message number 1**，第二个也收到一样的信息，
 但是后面是**message number 2**。
 
-###**【安全性和错误检查】**
+### **【安全性和错误检查】**
 出于安全性的考虑，web worker必须遵守同源策略。同时，它的全局对象是worker对象本身，this和self引用的都是worker对象。   
 只能访问：
 
@@ -151,7 +150,7 @@ worker内部出现错误时，可以用worker.onerror侦听到，error的事件�
 		console.log(e.filename+"ERROR on line"+e.lineno+",msg:"+e.message);
 	}
 
-###**【web worker的其他尝试】**
+### **【web worker的其他尝试】**
 对于比较消耗时间的操作，我们可看到web worker能够发挥它的作用。比如：大量数据排序，精确到像素的canvas计算等。而我们又知道，jsonp加载数据时，动态创建script标签，加载和执行这些过程都是阻塞式的，而web worker正好可以异步加载，这会是更快的方式吗？带着这个疑问我做了下面的试验，分别用jsonp和worker的方式去加载文件，计算数据返回时延：
 
 	function tryJsonp(){
