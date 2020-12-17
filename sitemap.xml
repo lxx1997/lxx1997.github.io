@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://lxxstar987.gitee.io/lxx1997.github.io/2020/12/17/fucntion-uncurrying/</loc>
+    
+    <lastmod>2020-12-17T06:49:32.656Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://lxxstar987.gitee.io/lxx1997.github.io/2020/12/17/function-currying/</loc>
+    
+    <lastmod>2020-12-17T02:59:11.897Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://lxxstar987.gitee.io/lxx1997.github.io/2014/05/27/safety-point-of-view-from-front-end/</loc>
     
     <lastmod>2020-12-17T01:20:57.873Z</lastmod>
@@ -26,13 +40,6 @@
     <loc>https://lxxstar987.gitee.io/lxx1997.github.io/2020/05/05/js-arguments-callee/</loc>
     
     <lastmod>2020-12-17T01:17:35.739Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://lxxstar987.gitee.io/lxx1997.github.io/2020/12/17/function-currying/</loc>
-    
-    <lastmod>2020-12-17T01:16:37.939Z</lastmod>
     
   </url>
   
@@ -142,14 +149,14 @@
   </url>
   
   <url>
-    <loc>https://lxxstar987.gitee.io/lxx1997.github.io/2015/04/28/img-lazy-load/</loc>
+    <loc>https://lxxstar987.gitee.io/lxx1997.github.io/2014/03/03/instagram-api-ex/</loc>
     
     <lastmod>2020-12-16T09:48:45.073Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://lxxstar987.gitee.io/lxx1997.github.io/2014/03/03/instagram-api-ex/</loc>
+    <loc>https://lxxstar987.gitee.io/lxx1997.github.io/2015/04/28/img-lazy-load/</loc>
     
     <lastmod>2020-12-16T09:48:45.073Z</lastmod>
     
@@ -485,14 +492,14 @@
   </url>
   
   <url>
-    <loc>https://lxxstar987.gitee.io/lxx1997.github.io/2017/05/22/diary-2017-0521-0527/</loc>
+    <loc>https://lxxstar987.gitee.io/lxx1997.github.io/2020/05/26/egg-swagger-ui/</loc>
     
     <lastmod>2020-12-14T08:31:54.841Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://lxxstar987.gitee.io/lxx1997.github.io/2020/05/26/egg-swagger-ui/</loc>
+    <loc>https://lxxstar987.gitee.io/lxx1997.github.io/2017/05/22/diary-2017-0521-0527/</loc>
     
     <lastmod>2020-12-14T08:31:54.841Z</lastmod>
     
@@ -555,14 +562,14 @@
   </url>
   
   <url>
-    <loc>https://lxxstar987.gitee.io/lxx1997.github.io/2020/05/07/d3-study-20200507/</loc>
+    <loc>https://lxxstar987.gitee.io/lxx1997.github.io/2020/12/09/deep-copy-light-copy/</loc>
     
     <lastmod>2020-12-14T08:31:54.833Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://lxxstar987.gitee.io/lxx1997.github.io/2020/12/09/deep-copy-light-copy/</loc>
+    <loc>https://lxxstar987.gitee.io/lxx1997.github.io/2020/05/07/d3-study-20200507/</loc>
     
     <lastmod>2020-12-14T08:31:54.833Z</lastmod>
     
@@ -793,13 +800,6 @@
   </url>
   
   <url>
-    <loc>https://lxxstar987.gitee.io/lxx1997.github.io/assets/demo/gift/index.html</loc>
-    
-    <lastmod>2020-05-01T18:13:38.000Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://lxxstar987.gitee.io/lxx1997.github.io/assets/demo/mediator/demo.html</loc>
     
     <lastmod>2020-05-01T18:13:38.000Z</lastmod>
@@ -808,6 +808,13 @@
   
   <url>
     <loc>https://lxxstar987.gitee.io/lxx1997.github.io/assets/demo/my_news_reader/index.html</loc>
+    
+    <lastmod>2020-05-01T18:13:38.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://lxxstar987.gitee.io/lxx1997.github.io/assets/demo/gift/index.html</loc>
     
     <lastmod>2020-05-01T18:13:38.000Z</lastmod>
     
