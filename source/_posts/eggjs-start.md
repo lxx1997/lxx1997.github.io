@@ -2,10 +2,11 @@
 layout: post
 title: eggjs-start
 date: 2020-03-25 19:41:08
+categories: eggjs
 comments: true
 tags:
       - eggjs
-      - node.js
+      - nodejs
       - 后台
 ---
 ## eggjs 定义

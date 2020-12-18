@@ -1,9 +1,9 @@
 ---
 title: javascript之arguments.callee
 date: 2020-05-05 10:59:56
+categories: javascript
 tags:
       - javascript
-      - arguments.callee
 ---
 
 arguments.callee 在哪个函数中执行，它就代表哪个函数，通常用于匿名函数中

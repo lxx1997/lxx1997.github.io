@@ -1,9 +1,10 @@
 ---
 title: Deno 学习
 date: 2020-06-16 16:25:19
+categories: nodejs deno
 tags:
     - deno
-    - nodeJs
+    - nodejs
 ---
 
 **首先我们先谈一下nodeJs的无法忽视的问题**
