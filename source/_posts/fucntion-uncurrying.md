@@ -1,8 +1,9 @@
 ---
 title: 函数 - 函数反柯里化（uncurrying）
 date: 2020-12-17 11:00:35
-categories: javascript
+categories: thought
 tags:
+    - thought
     - javascript
     - function
 ---
