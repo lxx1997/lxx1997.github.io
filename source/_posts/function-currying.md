@@ -1,8 +1,9 @@
 ---
 title: 函数 - 函数柯里化（Currying）
 date: 2020-12-17 09:16:37
-categories: javascript
+categories: thought
 tags:
+    - thought
     - javascript
     - function
 ---
@@ -99,8 +100,9 @@ tags:
       return function() {
         if (!arguments.length) {
           var sum = 0;
-          for (var i = 0,
-          c; c = _args[i++];) sum += c
+          for (var i = 0, i< _args.length; i++ {
+            sum += _args[i]
+          }
           return sum
         } else {
           // 通过函数的push方法，存储每一次调用的返回参数到 _args 中
