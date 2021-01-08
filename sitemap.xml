@@ -2,9 +2,86 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://lxxstar987.gitee.io/lxx1997.github.io/2021/01/07/vue-components-transfer-data/</loc>
+    
+    <lastmod>2021-01-07T15:15:46.048Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://lxxstar987.gitee.io/lxx1997.github.io/2021/01/06/%E9%9D%A2%E8%AF%95%E9%A2%98%E8%AF%A6%E8%A7%A3-other-from-internat/</loc>
     
-    <lastmod>2021-01-06T08:17:08.040Z</lastmod>
+    <lastmod>2021-01-07T13:14:22.392Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://lxxstar987.gitee.io/lxx1997.github.io/2020/12/17/vue-template-render/</loc>
+    
+    <lastmod>2021-01-07T13:14:22.392Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://lxxstar987.gitee.io/lxx1997.github.io/2020/12/16/vue-VirtualDOM-template/</loc>
+    
+    <lastmod>2021-01-07T13:14:22.350Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://lxxstar987.gitee.io/lxx1997.github.io/2020/10/22/vue%E4%B8%AD%E4%BD%BF%E7%94%A8typescript/</loc>
+    
+    <lastmod>2021-01-07T13:14:22.350Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://lxxstar987.gitee.io/lxx1997.github.io/2020/12/15/vue-%E6%BA%90%E7%A0%81%E8%A7%A3%E8%AF%BB%E9%A1%BA%E5%BA%8F/</loc>
+    
+    <lastmod>2021-01-07T13:14:22.295Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://lxxstar987.gitee.io/lxx1997.github.io/2020/05/05/vue-webpack-build/</loc>
+    
+    <lastmod>2021-01-07T13:14:22.251Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://lxxstar987.gitee.io/lxx1997.github.io/2020/12/21/vue-template-publish-subscribe/</loc>
+    
+    <lastmod>2021-01-07T13:14:22.186Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://lxxstar987.gitee.io/lxx1997.github.io/2020/12/18/vue-template-responsive/</loc>
+    
+    <lastmod>2021-01-07T13:14:22.186Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://lxxstar987.gitee.io/lxx1997.github.io/2021/01/04/vue-keep-alive/</loc>
+    
+    <lastmod>2021-01-07T13:14:22.167Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://lxxstar987.gitee.io/lxx1997.github.io/2021/01/02/vue-code-part-01/</loc>
+    
+    <lastmod>2021-01-07T13:14:22.136Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://lxxstar987.gitee.io/lxx1997.github.io/2020/12/03/%E4%BD%A0%E4%B8%8D%E7%9F%A5%E9%81%93%E7%9A%84javascript%E4%B8%AD%E5%8D%B7/</loc>
+    
+    <lastmod>2021-01-07T13:09:17.012Z</lastmod>
     
   </url>
   
@@ -16,13 +93,6 @@
   </url>
   
   <url>
-    <loc>https://lxxstar987.gitee.io/lxx1997.github.io/2021/01/04/vue-keep-alive/</loc>
-    
-    <lastmod>2021-01-04T12:45:04.135Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://lxxstar987.gitee.io/lxx1997.github.io/2021/01/04/%E5%8F%91%E5%B8%83%E8%AE%A2%E9%98%85%E6%A8%A1%E5%BC%8F%E5%8F%8A%E8%A7%82%E5%AF%9F%E8%80%85/</loc>
     
     <lastmod>2021-01-04T07:12:09.763Z</lastmod>
@@ -30,42 +100,7 @@
   </url>
   
   <url>
-    <loc>https://lxxstar987.gitee.io/lxx1997.github.io/2020/12/18/vue-template-responsive/</loc>
-    
-    <lastmod>2021-01-04T07:12:09.763Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://lxxstar987.gitee.io/lxx1997.github.io/2020/12/17/vue-template-render/</loc>
-    
-    <lastmod>2021-01-04T07:12:09.763Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://lxxstar987.gitee.io/lxx1997.github.io/2021/01/02/vue-code-part-01/</loc>
-    
-    <lastmod>2021-01-04T07:12:09.762Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://lxxstar987.gitee.io/lxx1997.github.io/2020/12/21/vue-template-publish-subscribe/</loc>
-    
-    <lastmod>2021-01-04T07:12:09.762Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://lxxstar987.gitee.io/lxx1997.github.io/2020/12/17/function-currying/</loc>
-    
-    <lastmod>2021-01-04T07:12:09.761Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://lxxstar987.gitee.io/lxx1997.github.io/2020/12/16/vue-VirtualDOM-template/</loc>
     
     <lastmod>2021-01-04T07:12:09.761Z</lastmod>
     
@@ -110,13 +145,6 @@
     <loc>https://lxxstar987.gitee.io/lxx1997.github.io/2015/02/23/yilia-on-mobile/</loc>
     
     <lastmod>2020-12-16T09:48:45.084Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://lxxstar987.gitee.io/lxx1997.github.io/2020/12/15/vue-%E6%BA%90%E7%A0%81%E8%A7%A3%E8%AF%BB%E9%A1%BA%E5%BA%8F/</loc>
-    
-    <lastmod>2020-12-16T09:48:45.083Z</lastmod>
     
   </url>
   
@@ -331,13 +359,6 @@
   </url>
   
   <url>
-    <loc>https://lxxstar987.gitee.io/lxx1997.github.io/2020/12/03/%E4%BD%A0%E4%B8%8D%E7%9F%A5%E9%81%93%E7%9A%84javascript%E4%B8%AD%E5%8D%B7/</loc>
-    
-    <lastmod>2020-12-14T08:31:54.872Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://lxxstar987.gitee.io/lxx1997.github.io/2020/11/24/%E4%BD%A0%E4%B8%8D%E7%9F%A5%E9%81%93%E7%9A%84javascript%E4%B8%8A%E5%8D%B7/</loc>
     
     <lastmod>2020-12-14T08:31:54.871Z</lastmod>
@@ -348,13 +369,6 @@
     <loc>https://lxxstar987.gitee.io/lxx1997.github.io/2020/11/20/%E3%80%8A%E4%BD%A0%E4%B8%8D%E7%9F%A5%E9%81%93javascript%E3%80%8B%20%E8%AF%BB%E5%90%8E%E6%84%9F/</loc>
     
     <lastmod>2020-12-14T08:31:54.870Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://lxxstar987.gitee.io/lxx1997.github.io/2020/10/22/vue%E4%B8%AD%E4%BD%BF%E7%94%A8typescript/</loc>
-    
-    <lastmod>2020-12-14T08:31:54.869Z</lastmod>
     
   </url>
   
@@ -731,13 +745,6 @@
   
   <url>
     <loc>https://lxxstar987.gitee.io/lxx1997.github.io/2020/05/05/js-img-onload/</loc>
-    
-    <lastmod>2020-05-06T05:29:23.712Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://lxxstar987.gitee.io/lxx1997.github.io/2020/05/05/vue-webpack-build/</loc>
     
     <lastmod>2020-05-06T05:29:23.712Z</lastmod>
     
