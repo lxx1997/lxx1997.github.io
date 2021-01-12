@@ -4,7 +4,7 @@ date: 2020-12-04 15:23:00
 tags:
     - symbol
     - es6
-    - javascript
+    - JavaScript
 ---
 
 ## 定义Symbol

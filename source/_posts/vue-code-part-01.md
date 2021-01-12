@@ -1,9 +1,9 @@
 ---
 title: vue 源码阅读 part 01
 date: 2021-01-02 23:37:19
-categories: vue
+categories: Vue
 tags:
-    - vue
+    - Vue
 ---
 
 ### Vue 源码目录结构

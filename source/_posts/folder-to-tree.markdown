@@ -5,7 +5,7 @@ date: 2014-07-25 08:52
 comments: true
 tags: 
 	- 工具 
-	- javascript
+	- JavaScript
 ---
 
 #folder2tree

@@ -1,10 +1,10 @@
 ---
-title: 01 - vue源码解读-数据驱动-dom生成
+title: 01 - Vue源码解读-数据驱动-dom生成
 date: 2020-12-16 10:54:22
-categories: vue
+categories: Vue
 tags:
-    - vue
-    - javascript
+    - Vue
+    - JavaScript
 ---
 
 本片文章根据bilibili [vue源码分析](https://www.bilibili.com/video/BV1LE411e7HE) 视频练习及知识点记录

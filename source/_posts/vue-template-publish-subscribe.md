@@ -1,10 +1,10 @@
 ---
-title: 03 - vue源码解读-发布订阅模式
+title: 03 - Vue源码解读-发布订阅模式
 date: 2020-12-21 14:06:22
-categories: vue
+categories: Vue
 tags:
-    - vue
-    - javascript
+    - Vue
+    - JavaScript
 ---
 
 #### 发布订阅模式

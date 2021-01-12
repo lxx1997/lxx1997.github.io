@@ -204,50 +204,50 @@ tags:
   * 抽象值操作
     * `toString()` - 负责处理非字符串到字符串的强制类型转换
     * `JSON.stringify()` *`undefined`,`function`, `symbol`,循环引用的对象都不能用`JSON.stringify`进行处理，会被自动忽略，在数组中则会返回null* 
-      如果需要对含有非法JSON值的对象作字符串化，或者对象中的某些值无法被序列化时，需要定义`toJSON()`方法返回一个安全的JSON值
+    如果需要对含有非法JSON值的对象作字符串化，或者对象中的某些值无法被序列化时，需要定义`toJSON()`方法返回一个安全的JSON值
 
-      `toJSON`返回的是一个能够被字符串化的安全的JSON值，然后再由`JSON.stringify`对其进行字符串化
+    `toJSON`返回的是一个能够被字符串化的安全的JSON值，然后再由`JSON.stringify`对其进行字符串化
 
-      我们可以向`JSON.stringify()`传递一个可选参数replacer, 可以是数组或者函数，用来指定对象序列化过程中哪些属性应该被处理，哪些被排除
+    我们可以向`JSON.stringify()`传递一个可选参数replacer, 可以是数组或者函数，用来指定对象序列化过程中哪些属性应该被处理，哪些被排除
 
-      ~~~js
-        var a = {
-          b: 42,
-          c: '42'.
-          d: [1,2,3]
-        }
-        // replacer为数组的话，必须是一个字符串数组
-        JSON.stringify(a, ['b', 'c'])  // "{"b":42,"c":"42"}" 
-        JSON.stringify(a, function(k,v) {
-          if(k!=="c") return v
-        }) // "{"b":42,"d":[1,2,3]}" 
-      ~~~
-      `JSON.stringify` 还有一个可选参数space用来指定输出的缩进格式。space 为正整数时是指定 每一级缩进的字符数，它还可以是字符串
+    ~~~js
+      var a = {
+        b: 42,
+        c: '42'.
+        d: [1,2,3]
+      }
+      // replacer为数组的话，必须是一个字符串数组
+      JSON.stringify(a, ['b', 'c'])  // "{"b":42,"c":"42"}" 
+      JSON.stringify(a, function(k,v) {
+        if(k!=="c") return v
+      }) // "{"b":42,"d":[1,2,3]}" 
+    ~~~
+    `JSON.stringify` 还有一个可选参数space用来指定输出的缩进格式。space 为正整数时是指定 每一级缩进的字符数，它还可以是字符串
 
-      ~~~js
-        var a = {
-          b: 42,   
-          c: "42",  
-          d: [1,2,3]
-        }; 
-        JSON.stringify( a, null, 3 ); 
-        // "{ "b": 42, "c": "42", "d": [  1,         2,        3     ]  }" 
-        JSON.stringify( a, null, "-----" ); // "{ // -----"b": 42, // -----"c": "42", // -----"d": [ // ----------1, // ----------2, // ----------3 // -----] // }"
-      ~~~
+    ~~~js
+      var a = {
+        b: 42,   
+        c: "42",  
+        d: [1,2,3]
+      }; 
+      JSON.stringify( a, null, 3 ); 
+      // "{ "b": 42, "c": "42", "d": [  1,         2,        3     ]  }" 
+      JSON.stringify( a, null, "-----" ); // "{ // -----"b": 42, // -----"c": "42", // -----"d": [ // ----------1, // ----------2, // ----------3 // -----] // }"
+    ~~~
     
-    * `toNumber()`
+  * `toNumber()`
 
-      true转换为1，false转化为0，undefined转化为NaN，null转化为0
+    true转换为1，false转化为0，undefined转化为NaN，null转化为0
 
-      在进行转化时，抽象操作ToPrimitive会首先检查该值是否有valueOf方法，如果有并且返回基本类型值，就使用该值进行强制类型转换，如果没有就使用toString的返回值来强制类型转换，如果都不返回基本值，就会报TypeError
+    在进行转化时，抽象操作ToPrimitive会首先检查该值是否有valueOf方法，如果有并且返回基本类型值，就使用该值进行强制类型转换，如果没有就使用toString的返回值来强制类型转换，如果都不返回基本值，就会报TypeError
 
-    * `toBoolean`
+  * `toBoolean`
 
-      假值包含 undefined，null，false，+0，-0，NaN, "" 会被转换为false
+    假值包含 undefined，null，false，+0，-0，NaN, "" 会被转换为false
 
     * 显示强制类型转换
 
-      String(), Number() a.toString() 一元运算符+
+    String(), Number() a.toString() 一元运算符+
 
       * 日期显示转化为数字  `new Date() or +new Date()  new Date().getTime() Date.now()`
 
@@ -266,19 +266,19 @@ tags:
     * 隐式强制类型转换
 
       * 字符串和数字之间的隐式强制类型转换 
-        如果 + 的其中一个操作数是字符串，则执行字符串拼接，否则执行数字加法
-        **"[]+{} {} + []" => [object Object] 0**
-        *第一个表达式{} 被当做空对象来对待 第二个表达式{}被当做代码块来看待*
-        隐式转换如果有valueOf方法则是会先调用valueOf方法然后通过ToString抽象操作将返回值转为字符串 String直接调用ToString()
+      如果 + 的其中一个操作数是字符串，则执行字符串拼接，否则执行数字加法
+      **"[]+{} {} + []" => [object Object] 0**
+      *第一个表达式{} 被当做空对象来对待 第二个表达式{}被当做代码块来看待*
+      隐式转换如果有valueOf方法则是会先调用valueOf方法然后通过ToString抽象操作将返回值转为字符串 String直接调用ToString()
 
-        ~~~js
-          var a = {
-            valueOf: function() { return 42},
-            toString: function() { return 4 }
-          }
-          a + ''  // '42'
-          String(a)  // '4'
-        ~~~
+      ~~~js
+        var a = {
+          valueOf: function() { return 42},
+          toString: function() { return 4 }
+        }
+        a + ''  // '42'
+        String(a)  // '4'
+      ~~~
 
         - 会将字符串转化为数字
       
@@ -293,67 +293,66 @@ tags:
 
       * 宽松相等 `==` 严格相等 `===`
 
-        ~~~js
-          var x = 1 || '1'
-          var y = true
-          x == y // true
+      ~~~js
+        var x = 1 || '1'
+        var y = true
+        x == y // true
 
-          null == undefined // true
-        ~~~
+        null == undefined // true
+      ~~~
 
-        **对象和非对象之间的比较**，对象会先toString然后才与非对象进行比较
+      **对象和非对象之间的比较**，对象会先toString然后才与非对象进行比较
 
-        满足`a == 2 && a == 3`为true
-        ~~~js
-          var i = 2
+      满足`a == 2 && a == 3`为true
+      ~~~js
+        var i = 2
 
-          Number.prototype.valueOf = function() {
-            return i++
-          }
-          var a = new Number(42)
-          console.log(a + '')  // 2
-          console.log(a + '')  // 3
-        ~~~
+        Number.prototype.valueOf = function() {
+          return i++
+        }
+        var a = new Number(42)
+        console.log(a + '')  // 2
+        console.log(a + '')  // 3
+      ~~~
 
-        ~~~js
-          "0" == null;           // false 
-          "0" == undefined;      // false 
-          "0" == false;          // true -- 晕！ 
-          "0" == NaN;            // false 
-          "0" == 0;              // true 
-          "0" == "";             // false 
-          
-          false == null;         // false 
-          false == undefined;    // false 
-          false == NaN;          // false 
-          false == 0;            // true -- 晕！ 
-          false == "";           // true -- 晕！ 
-          false == [];           // true -- 晕！ 
-          false == {};           // false 
-          
-          "" == null;            // false 
-          "" == undefined;       // false 
-          "" == NaN;             // false 
-          "" == 0;               // true -- 晕！ 
-          "" == [];              // true -- 晕！ 
-          "" == {};              // false 
-          
-          0 == null;             // false 
-          0 == undefined;        // false 
-          0 == NaN;              // false 
-          0 == [];               // true -- 晕！ 
-          0 == {};               // false
-        ~~~
+      ~~~js
+        "0" == null;           // false 
+        "0" == undefined;      // false 
+        "0" == false;          // true -- 晕！ 
+        "0" == NaN;            // false 
+        "0" == 0;              // true 
+        "0" == "";             // false 
+        
+        false == null;         // false 
+        false == undefined;    // false 
+        false == NaN;          // false 
+        false == 0;            // true -- 晕！ 
+        false == "";           // true -- 晕！ 
+        false == [];           // true -- 晕！ 
+        false == {};           // false 
+        
+        "" == null;            // false 
+        "" == undefined;       // false 
+        "" == NaN;             // false 
+        "" == 0;               // true -- 晕！ 
+        "" == [];              // true -- 晕！ 
+        "" == {};              // false 
+        
+        0 == null;             // false 
+        0 == undefined;        // false 
+        0 == NaN;              // false 
+        0 == [];               // true -- 晕！ 
+        0 == {};               // false
+      ~~~
 
-        极端的例子
+      极端的例子
 
-        ~~~js
-          [] == ![]  // true
-          2 == [2]  // true
-          "" == [null]  // true
-          0 == "\n"  // true  "\n"等空字符串被toNumber强制转换成0
-        ~~~~
-      
+      ~~~js
+        [] == ![]  // true
+        2 == [2]  // true
+        "" == [null]  // true
+        0 == "\n"  // true  "\n"等空字符串被toNumber强制转换成0
+      ~~~      
 
   * 抽象关系比较
 
@@ -388,47 +387,42 @@ tags:
 
       * `,`逗号运算符将多个独立的表达式语句串联成一个语句
 
-    * 上下文规则
+  * 上下文规则
 
+    * 大括号 `{}`
 
-      * 大括号 `{}`
-
-        1. 对象常量
-        ~~~js
-          var a = {
-            b: 10
-          }
-        ~~~
-        
-        2. 标签 / 代码块
-          在这里是一个普通的代码块，可以和let块级作用域声明一起使用
-          ~~~js
-            {
-              b: foo()
+      1. 对象常量
+      ~~~js
+        var a = {
+          b: 10
+        }
+      ~~~
+      2. 标签 / 代码块
+      在这里是一个普通的代码块，可以和let块级作用域声明一起使用
+      ~~~js
+        {
+          b: foo()
+        }
+      ~~~
+      标签语句 使用break和continue都可以带标签，实现goto那样的跳转
+      *continue foo 代表执行foo*
+      *break 代表跳出foo函数，从foo结束的位置开始执行* 
+      ~~~js
+        foo: { 
+          other: {
+            console.log(2)
+            bar: {
+              console.log( "Hello" ); 
+              break foo;   
+              console.log( "never runs" );  
             }
-          ~~~
-          标签语句 使用break和continue都可以带标签，实现goto那样的跳转
-          *continue foo 代表执行foo*
-          *break 代表跳出foo函数，从foo结束的位置开始执行* 
-
-          ~~~js
-            foo: { 
-              other: {
-                console.log(2)
-                bar: {
-                  console.log( "Hello" ); 
-                  break foo;   
-                  console.log( "never runs" );  
-                }
-              }
-              console.log( "World" );
-            } 
-          ~~~
-        
-        3. 对象解构
-          `{...obj}` - 赋值 / 命名参数对象解构 
-        
-        4. else if 和可选代码块
+          }
+          console.log( "World" );
+        } 
+      ~~~
+      3. 对象解构
+      `{...obj}` - 赋值 / 命名参数对象解构 
+      4. else if 和可选代码块
 
   * 运算符优先级
 

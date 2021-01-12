@@ -1,9 +1,9 @@
 ---
 title: vue-源码
 date: 2020-12-15 09:34:37
-categories: vue
+categories: Vue
 tags:
-    - vue
+    - Vue
     - 源码
 cover_picture: '/assets/blogImg/xmas_ico0.jpg'
 ---

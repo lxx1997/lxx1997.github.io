@@ -3,7 +3,7 @@ title: 使用canvas绘制碰撞球
 date: 2020-05-06 10:48:06
 tags:
       - canvas
-      - javascript
+      - JavaScript
 ---
 
 **实现步骤**

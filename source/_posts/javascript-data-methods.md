@@ -1,9 +1,9 @@
 ---
 title: javascript-data-methods
 date: 2020-12-16 13:59:28
-categories: javascript
+categories: JavaScript
 tags:
-    - javascript
+    - JavaScript
     - array
     - method
 ---
