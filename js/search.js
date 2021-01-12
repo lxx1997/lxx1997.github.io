@@ -4,7 +4,7 @@ function initSearch() {
         searchContainer = $('#search-container'),
         searchResult = $('#search-result'),
         searchTpl = $('#search-tpl').html(),
-        JSON_DATA = '/content.json?v=' + (+ new Date()),
+        JSON_DATA = '/lxx1997.github.io/content.json?v=' + (+ new Date()),
         searchData;
 
     function loadData(success) {
