@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="SoulReader">
 <meta property="og:description" content="redis 使用安装radislinux环境下安装radis sudo apt-get install redis-server 检查redis服务器系统进程 ps -aux|grep redis 查看redis端口状态 netstat -nlt|grep 6379 123456// 启动/etc/init.d/redis-server start// 停用/etc/init.d/redis-se">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-05-06T05:29:23.703Z">
+<meta property="og:updated_time" content="2021-01-12T09:45:17.515Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="eggjs token验证(redis &amp; jsonwebtoken)">
 <meta name="twitter:description" content="redis 使用安装radislinux环境下安装radis sudo apt-get install redis-server 检查redis服务器系统进程 ps -aux|grep redis 查看redis端口状态 netstat -nlt|grep 6379 123456// 启动/etc/init.d/redis-server start// 停用/etc/init.d/redis-se">
@@ -130,7 +130,6 @@
 <p><strong>查看redis端口状态</strong></p>
 <p>netstat -nlt|grep 6379</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 启动</span></span><br><span class="line">/etc/init.d/redis-server start</span><br><span class="line"><span class="comment">// 停用</span></span><br><span class="line">/etc/init.d/redis-server stop</span><br><span class="line"><span class="comment">// 重启</span></span><br><span class="line">/etc/init.d/redis-server restart</span><br></pre></td></tr></table></figure>
-<a id="more"></a>
 <h3 id="使用docker-安装redis"><a href="#使用docker-安装redis" class="headerlink" title="使用docker 安装redis"></a>使用docker 安装redis</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 下载版本</span></span><br><span class="line">docker pull redis  <span class="comment">// 默认会拉取最新版本的redis</span></span><br><span class="line"> </span><br><span class="line">docker images <span class="comment">// 查看镜像是否安装成功</span></span><br><span class="line"></span><br><span class="line">docker run -itd --name redis-test -p <span class="number">6379</span>:<span class="number">6379</span> redis <span class="comment">// 启动redis容器 端口号为6379</span></span><br><span class="line"></span><br><span class="line">docker start redis-test <span class="comment">// 启动redis</span></span><br><span class="line"></span><br><span class="line">docker stop redis-test <span class="comment">// 关闭redis</span></span><br><span class="line"></span><br><span class="line">docker restart redis-test <span class="comment">// 重启redis</span></span><br></pre></td></tr></table></figure>
 <h3 id="eggjs-环境下使用redis和jsonwebtoken实现token验证"><a href="#eggjs-环境下使用redis和jsonwebtoken实现token验证" class="headerlink" title="eggjs 环境下使用redis和jsonwebtoken实现token验证"></a>eggjs 环境下使用redis和jsonwebtoken实现token验证</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install jsonwebtoken</span><br></pre></td></tr></table></figure>
 <h2 id="middleware中间件"><a href="#middleware中间件" class="headerlink" title="middleware中间件"></a>middleware中间件</h2><p>​    jwt.js</p>
@@ -144,7 +143,7 @@
 
             <div class="post-copyright">
     <div class="content">
-        <p>最后更新： 2020年05月06日 13:29</p>
+        <p>最后更新： 2021年01月12日 17:45</p>
         <p>原始链接： <a class="post-url" href="" title="eggjs token验证(redis &amp; jsonwebtoken)">https://lxxstar987.gitee.io/lxx1997.github.io/2020/04/10/egg-jwt/</a></p>
         <footer>
             <a href="https://lxxstar987.gitee.io/lxx1997.github.io">
@@ -212,9 +211,7 @@
             </a>
           </li>
           <li>
-            <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://lxxstar987.gitee.io/lxx1997.github.io/2020/04/10/egg-jwt/&title=《eggjs token验证(redis & jsonwebtoken)》 — SoulReader&source=redis 使用安装radislinux环境下安装radis
-sudo apt-get install redis-server
-检查redis服务器系统..." data-title="QQ">
+            <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://lxxstar987.gitee.io/lxx1997.github.io/2020/04/10/egg-jwt/&title=《eggjs token验证(redis & jsonwebtoken)》 — SoulReader&source=前端小菜鸟,努力深造" data-title="QQ">
               <i class="fa fa-qq"></i>
             </a>
           </li>

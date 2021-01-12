@@ -120,7 +120,7 @@
         </div>
         <div class="article-feed">
             <p>
-                <h2 id="使用docker-安装mysql-数据库"><a href="#使用docker-安装mysql-数据库" class="headerlink" title="使用docker 安装mysql 数据库"></a>使用docker 安装mysql 数据库</h2><figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">docker pull mysql // 默认拉取最新版本的mysql  mysql:<span class="number">5</span>.<span class="number">7</span>  拉取版本号为<span class="number">5</span>.<span class="number">7</span>的mysql</span><br><span class="line"></span><br><span class="line">docker docker run -p <span class="number">3306</span>:<span class="number">3306</span> --name mysql-test  mysql:<span class="number">5</span>.<span class="number">7</span>  // 创建mysql容器 并启动</span><br><span class="line"></span><br><span class="line">docker <span class="built_in">start</span> mysql-test //开启mysql 服务</span><br><span class="line">docker stop mysql-test // 关闭mysql 服务</span><br><span class="line">docker restart mysql-test // 重启mysql 服务</span><br></pre></td></tr></table></figure>
+                使用docker 安装mysql 数据库1234567docker pull mysql // 默认拉取最新版本的mysql  mysql:5.7  拉取版本号为5.7的mysqldocker docker run -p 3306:3306 --name mysql-test  mysql:5.7  // 创建mysql容器 并启动docker start mysql-t...
             </p>
         </div>
       
@@ -181,13 +181,13 @@
         </div>
         <div class="article-feed">
             <p>
-                <h2 id="redis-使用"><a href="#redis-使用" class="headerlink" title="redis 使用"></a>redis 使用</h2><h3 id="安装radis"><a href="#安装radis" class="headerlink" title="安装radis"></a>安装radis</h3><p><strong>linux环境下安装radis</strong></p>
-<p>sudo apt-get install redis-server</p>
-<p><strong>检查redis服务器系统进程</strong></p>
-<p>ps -aux|grep redis</p>
-<p><strong>查看redis端口状态</strong></p>
-<p>netstat -nlt|grep 6379</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 启动</span></span><br><span class="line">/etc/init.d/redis-server start</span><br><span class="line"><span class="comment">// 停用</span></span><br><span class="line">/etc/init.d/redis-server stop</span><br><span class="line"><span class="comment">// 重启</span></span><br><span class="line">/etc/init.d/redis-server restart</span><br></pre></td></tr></table></figure>
+                redis 使用安装radislinux环境下安装radis
+sudo apt-get install redis-server
+检查redis服务器系统进程
+ps -aux|grep redis
+查看redis端口状态
+netstat -nlt|grep 6379
+123456// 启动/etc/init.d/redis-server start// 停用/etc/in...
             </p>
         </div>
       
@@ -307,16 +307,8 @@ boolean  布尔值
         </div>
         <div class="article-feed">
             <p>
-                <h2 id="eggjs-定义"><a href="#eggjs-定义" class="headerlink" title="eggjs 定义"></a>eggjs 定义</h2><h3 id="设计原则"><a href="#设计原则" class="headerlink" title="设计原则"></a>设计原则</h3><p>​    egg的产检机制有很高的可扩展性，一个插件只做意见事情，egg通过框架聚合这些插件，并根据自己的业务场景定制配置，可以降低应用的开发成本</p>
-<h3 id="其他框架的差异"><a href="#其他框架的差异" class="headerlink" title="其他框架的差异"></a>其他框架的差异</h3><h4 id="express"><a href="#express" class="headerlink" title="express"></a>express</h4><p>​    express是node.js社区广泛使用的框架，简单且扩展性强，适合做个人项目，但框架本身缺少约定，标准的MVC模型会有各种千奇百怪的写法，egg按照约定进行开发，奉行约定优先配置，团队协作成本低</p>
-<h4 id="sails"><a href="#sails" class="headerlink" title="sails"></a>sails</h4><p>​    sails和egg一样奉行【约定优与配置】的框架，扩展性也非常好，但是相比egg，sails支持Blueprint REST API、WhaterLine这样可扩展的ORM、前端集成、websocket等，但是这些功能都是优Sails提供的，但egg不直接提供功能，只是集成各种功能插件，比如实现egg’-blueprint,egg-waterline这样的插件，在使用sails-egg框架整合这些插件</p>
-<h3 id="特性"><a href="#特性" class="headerlink" title="特性"></a>特性</h3><ul>
-<li>提供基于egg定制上层框架的能力</li>
-<li>高度可扩展的插件机制</li>
-<li>内置多进程管理</li>
-<li>基于Koa开发，性能优异</li>
-<li>框架稳定，测试覆盖率高</li>
-<li>渐进式开发
+                eggjs 定义设计原则​    egg的产检机制有很高的可扩展性，一个插件只做意见事情，egg通过框架聚合这些插件，并根据自己的业务场景定制配置，可以降低应用的开发成本
+其他框架的差异express​    express是node.js社区广泛使用的框架，简单且扩展性强，适合做个人项目，但框架本身缺少约定，标准的MVC模型会有各种千奇百怪的写法，egg按照约定进行开发...
             </p>
         </div>
       

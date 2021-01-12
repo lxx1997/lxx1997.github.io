@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="SoulReader">
 <meta property="og:description" content="arguments.callee 在哪个函数中执行，它就代表哪个函数，通常用于匿名函数中在匿名函数中，有时需要自己调用自己，但是由于是匿名函数，没有名字，无法调用，这时可以用arguments.callee来代替匿名的函数 1234567(function(n) =&amp;gt; &amp;#123;    if(n &amp;gt; 1) &amp;#123;        return n * arguments.call">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2021-01-12T09:09:21.495Z">
+<meta property="og:updated_time" content="2021-01-12T09:45:10.845Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="javascript之arguments.callee">
 <meta name="twitter:description" content="arguments.callee 在哪个函数中执行，它就代表哪个函数，通常用于匿名函数中在匿名函数中，有时需要自己调用自己，但是由于是匿名函数，没有名字，无法调用，这时可以用arguments.callee来代替匿名的函数 1234567(function(n) =&amp;gt; &amp;#123;    if(n &amp;gt; 1) &amp;#123;        return n * arguments.call">
@@ -132,13 +132,12 @@
             
             <p>arguments.callee 在哪个函数中执行，它就代表哪个函数，通常用于匿名函数中<br>在匿名函数中，有时需要自己调用自己，但是由于是匿名函数，没有名字，无法调用，这时可以用arguments.callee来代替匿名的函数</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">(<span class="function"><span class="keyword">function</span>(<span class="params">n</span>) =&gt; </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(n &gt; <span class="number">1</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> n * <span class="built_in">arguments</span>.callee(n<span class="number">-1</span>)</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> n</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)()</span><br></pre></td></tr></table></figure>
-<a id="more"></a>
 <p>or<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 也是立执行函数的一种</span></span><br><span class="line">~~<span class="function"><span class="keyword">function</span>(<span class="params">n</span>) =&gt; </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(n &gt; <span class="number">1</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> n * <span class="built_in">arguments</span>.callee(n<span class="number">-1</span>)</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> n</span><br><span class="line">    &#125;</span><br><span class="line">&#125;()</span><br></pre></td></tr></table></figure></p>
 <p>计算n的阶乘</p>
 
             <div class="post-copyright">
     <div class="content">
-        <p>最后更新： 2021年01月12日 17:09</p>
+        <p>最后更新： 2021年01月12日 17:45</p>
         <p>原始链接： <a class="post-url" href="" title="javascript之arguments.callee">https://lxxstar987.gitee.io/lxx1997.github.io/2020/05/05/js-arguments-callee/</a></p>
         <footer>
             <a href="https://lxxstar987.gitee.io/lxx1997.github.io">
@@ -206,7 +205,7 @@
             </a>
           </li>
           <li>
-            <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://lxxstar987.gitee.io/lxx1997.github.io/2020/05/05/js-arguments-callee/&title=《javascript之arguments.callee》 — SoulReader&source=arguments.callee 在哪个函数中执行，它就代表哪个函数，通常用于匿名函数中在匿名函数中，有时需要自己调用自己，但是由于是匿名函数，没有名字，..." data-title="QQ">
+            <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://lxxstar987.gitee.io/lxx1997.github.io/2020/05/05/js-arguments-callee/&title=《javascript之arguments.callee》 — SoulReader&source=前端小菜鸟,努力深造" data-title="QQ">
               <i class="fa fa-qq"></i>
             </a>
           </li>

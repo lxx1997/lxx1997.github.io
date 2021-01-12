@@ -359,17 +359,11 @@ d3.select()  返回单元素选择结果,没...
         </div>
         <div class="article-feed">
             <p>
-                <p><strong>实现步骤</strong></p>
-<ul>
-<li>绘制canvas，并将canvas的宽高设置为品目的宽高<br>  <em>由于canvas是行内元素，行内元素一般都有自己的行高等，所以一般会出现横向滚动条，此时需要将canvas设置为块级元素或者行内块状元素</em></li>
-<li>设置canvas的宽高跟随屏幕大小的变化而变化，使用window.onresize监听屏幕变化</li>
-<li>设置画布属性(canvas.getContext() 2d or 3d)</li>
-<li>填充颜色 (canvas.fillStyle())</li>
-<li>首先绘制出一个圆形，设置圆心位置，半径，和园的角度<br>  <em>canvas.arc(x,y,r,deg1,deg2,true/false) canvas.fillStyle() 填充颜色</em></li>
-<li>将绘制圆形的方法进行封装成一个类，通过调用这个类来循环生成圆形</li>
-<li>绘制圆形的运行轨迹，在封装好的类的基础上添加一个移动方法，然后设置定时器，每隔固定时间清除canvas并重新绘制</li>
-<li>调整圆形运行轨迹，当圆形触边的时候，使圆形发生反弹<br>  <em>触及x轴，y的移动方向相反，触及y轴，x轴的移动方向相反</em></li>
-</ul>
+                实现步骤
+
+绘制canvas，并将canvas的宽高设置为品目的宽高  由于canvas是行内元素，行内元素一般都有自己的行高等，所以一般会出现横向滚动条，此时需要将canvas设置为块级元素或者行内块状元素
+设置canvas的宽高跟随屏幕大小的变化而变化，使用window.onresize监听屏幕变化
+设置画布属性(canvas.getContext() 2d or 3...
             </p>
         </div>
       
@@ -433,8 +427,8 @@ d3.select()  返回单元素选择结果,没...
         </div>
         <div class="article-feed">
             <p>
-                <p>arguments.callee 在哪个函数中执行，它就代表哪个函数，通常用于匿名函数中<br>在匿名函数中，有时需要自己调用自己，但是由于是匿名函数，没有名字，无法调用，这时可以用arguments.callee来代替匿名的函数</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">(<span class="function"><span class="keyword">function</span>(<span class="params">n</span>) =&gt; </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(n &gt; <span class="number">1</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> n * <span class="built_in">arguments</span>.callee(n<span class="number">-1</span>)</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> n</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)()</span><br></pre></td></tr></table></figure>
+                arguments.callee 在哪个函数中执行，它就代表哪个函数，通常用于匿名函数中在匿名函数中，有时需要自己调用自己，但是由于是匿名函数，没有名字，无法调用，这时可以用arguments.callee来代替匿名的函数
+1234567(function(n) =&gt; &#123;    if(n &gt; 1) &#123;        return n * a...
             </p>
         </div>
       
@@ -489,13 +483,10 @@ d3.select()  返回单元素选择结果,没...
         </div>
         <div class="article-feed">
             <p>
-                <p><a href="https://www.cnblogs.com/huanghuali/p/10310691.html" title="js图片处理" target="_blank" rel="noopener">原文网址</a><br>在日常写代码的时候，我们有时候会遇到当图片未加载完成时，会发生高度塌陷，如果这个时候我们获取元素高度的时候获取到的不是元素真正的高度，会造成样式紊乱</p>
-<h4 id="window-onload-和ready的区别"><a href="#window-onload-和ready的区别" class="headerlink" title="window.onload 和ready的区别"></a>window.onload 和ready的区别</h4><p>图片从网络环境下载到本地是需要时间的，当图片灭有下载完的时候，使用js获取到元素的宽高将是0</p>
-<ul>
-<li>jquery中的ready方法只是dom元素结构加载完成，便视为完全加载完成，但是此时图片并未加载完成，此时宽高还是0</li>
-<li>js的window.onload是指dom生成和资源加载出来后才会执行onload函数</li>
-</ul>
-<h4 id="方法一"><a href="#方法一" class="headerlink" title="方法一"></a>方法一</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">'img'</span>).load(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line"></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+                原文网址在日常写代码的时候，我们有时候会遇到当图片未加载完成时，会发生高度塌陷，如果这个时候我们获取元素高度的时候获取到的不是元素真正的高度，会造成样式紊乱
+window.onload 和ready的区别图片从网络环境下载到本地是需要时间的，当图片灭有下载完的时候，使用js获取到元素的宽高将是0
+
+jquery中的ready方法只是dom元素结构加载完成，便视为完全加载完...
             </p>
         </div>
       
@@ -614,17 +605,10 @@ isFinite...
         </div>
         <div class="article-feed">
             <p>
-                <h2 id="Array-对象方法"><a href="#Array-对象方法" class="headerlink" title="Array 对象方法"></a>Array 对象方法</h2><ul>
-<li>concat()   连接两个或者更多的数组，并返回结果</li>
-<li>copyWithin(target, start, end)  将数组的指定位置拷贝元素到数组的另一个指定位置中 （target 指的是元素复制的位数， start指的是元素开始复制的位置，end指的是元素结束复制的位数）</li>
-<li>entries()  返回一个数组的迭代对象，包含数组的键值对[index, vlaue]</li>
-<li>every()  检测数组元素的每个元素是否符合条件，如果都满足条件， 返回true，如果不满足返回false</li>
-<li>some() 检测数值中某个元素是否符合条件，如果有一个符合，返回true，如果全不符合，返回false</li>
-<li>fill()  使用一个固定值来填充数组</li>
-<li>filter()  用于筛选数组，返回符合条件的一个新的数组</li>
-<li>find()  返回符合传入测试的数组元素</li>
-<li>findIndex()  返回符合传入测试数组元素的索引</li>
-</ul>
+                Array 对象方法
+concat()   连接两个或者更多的数组，并返回结果
+copyWithin(target, start, end)  将数组的指定位置拷贝元素到数组的另一个指定位置中 （target 指的是元素复制的位数， start指的是元素开始复制的位置，end指的是元素结束复制的位数）
+entries()  返回一个数组的迭代对象，包含数组的键值对[ind...
             </p>
         </div>
       
@@ -681,8 +665,9 @@ isFinite...
         </div>
         <div class="article-feed">
             <p>
-                <h3 id="初始化-运行环境"><a href="#初始化-运行环境" class="headerlink" title="初始化 运行环境"></a>初始化 运行环境</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm init -y</span><br><span class="line"><span class="comment">// 初始化package.json文件</span></span><br></pre></td></tr></table></figure>
-<h3 id="安装-webpack和webpack-dev-server"><a href="#安装-webpack和webpack-dev-server" class="headerlink" title="安装 (webpack和webpack-dev-server)"></a>安装 (webpack和webpack-dev-server)</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 安装webpack和webpack-dev-server</span></span><br><span class="line">npm install -S webpack webapck-dev-server</span><br></pre></td></tr></table></figure>
+                初始化 运行环境12npm init -y// 初始化package.json文件
+安装 (webpack和webpack-dev-server)12// 安装webpack和webpack-dev-servernpm install -S webpack webapck-dev-server
+配置package.json 和webpack.config.js123456...
             </p>
         </div>
       

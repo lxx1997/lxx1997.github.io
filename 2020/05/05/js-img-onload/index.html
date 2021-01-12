@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="SoulReader">
 <meta property="og:description" content="原文网址在日常写代码的时候，我们有时候会遇到当图片未加载完成时，会发生高度塌陷，如果这个时候我们获取元素高度的时候获取到的不是元素真正的高度，会造成样式紊乱 window.onload 和ready的区别图片从网络环境下载到本地是需要时间的，当图片灭有下载完的时候，使用js获取到元素的宽高将是0  jquery中的ready方法只是dom元素结构加载完成，便视为完全加载完成，但是此时图片并未加载完">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2021-01-12T09:09:21.499Z">
+<meta property="og:updated_time" content="2021-01-12T09:45:42.899Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="js 判断图片是否完全加载完成">
 <meta name="twitter:description" content="原文网址在日常写代码的时候，我们有时候会遇到当图片未加载完成时，会发生高度塌陷，如果这个时候我们获取元素高度的时候获取到的不是元素真正的高度，会造成样式紊乱 window.onload 和ready的区别图片从网络环境下载到本地是需要时间的，当图片灭有下载完的时候，使用js获取到元素的宽高将是0  jquery中的ready方法只是dom元素结构加载完成，便视为完全加载完成，但是此时图片并未加载完">
@@ -130,7 +130,6 @@
 <li>js的window.onload是指dom生成和资源加载出来后才会执行onload函数</li>
 </ul>
 <h4 id="方法一"><a href="#方法一" class="headerlink" title="方法一"></a>方法一</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">'img'</span>).load(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line"></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-<a id="more"></a>
 <p>缺点是每加载一个图片，回调函数就会执行一次</p>
 <h4 id="方法二"><a href="#方法二" class="headerlink" title="方法二"></a>方法二</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> imgNum = $(<span class="string">'img'</span>).length</span><br><span class="line">$(<span class="string">'img'</span>).load(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(imgNum) &#123;</span><br><span class="line">        <span class="comment">// 加载完成执行方法</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
 <p>缺点是由于图片是从缓存文件里面拿，load方法根本不执行，只有请求新图片的时候才会走load</p>
@@ -138,7 +137,7 @@
 
             <div class="post-copyright">
     <div class="content">
-        <p>最后更新： 2021年01月12日 17:09</p>
+        <p>最后更新： 2021年01月12日 17:45</p>
         <p>原始链接： <a class="post-url" href="" title="js 判断图片是否完全加载完成">https://lxxstar987.gitee.io/lxx1997.github.io/2020/05/05/js-img-onload/</a></p>
         <footer>
             <a href="https://lxxstar987.gitee.io/lxx1997.github.io">
@@ -206,7 +205,7 @@
             </a>
           </li>
           <li>
-            <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://lxxstar987.gitee.io/lxx1997.github.io/2020/05/05/js-img-onload/&title=《js 判断图片是否完全加载完成》 — SoulReader&source=原文网址在日常写代码的时候，我们有时候会遇到当图片未加载完成时，会发生高度塌陷，如果这个时候我们获取元素高度的时候获取到的不是元素真正的高度，会造成样式紊..." data-title="QQ">
+            <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://lxxstar987.gitee.io/lxx1997.github.io/2020/05/05/js-img-onload/&title=《js 判断图片是否完全加载完成》 — SoulReader&source=前端小菜鸟,努力深造" data-title="QQ">
               <i class="fa fa-qq"></i>
             </a>
           </li>
