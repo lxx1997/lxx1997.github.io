@@ -60,6 +60,7 @@ function initSearch() {
     }
 
     function search(e) {
+      
         var keywords = this.value.trim().toLowerCase();
         if (! keywords) {
             containerDisplay(false);
