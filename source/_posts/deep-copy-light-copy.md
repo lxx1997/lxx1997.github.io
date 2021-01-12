@@ -2,7 +2,7 @@
 title: 深拷贝、浅拷贝
 date: 2020-12-09 10:58:38
 tags:
-    - javascript
+    - JavaScript
 ---
 
 ## 前言

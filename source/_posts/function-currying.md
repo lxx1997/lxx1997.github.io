@@ -4,7 +4,7 @@ date: 2020-12-17 09:16:37
 categories: thought
 tags:
     - thought
-    - javascript
+    - JavaScript
     - function
 ---
 [参考文章](https://www.cnblogs.com/pigtail/p/3447660.html)

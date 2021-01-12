@@ -4,7 +4,7 @@ date: 2020-12-17 11:00:35
 categories: thought
 tags:
     - thought
-    - javascript
+    - JavaScript
     - function
 ---
 

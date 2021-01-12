@@ -2,7 +2,7 @@
 title: 一些惊艳的字符串处理方法
 date: 2020-09-24 15:49:01
 tags:
-    - javascript
+    - JavaScript
     - method
 ---
 

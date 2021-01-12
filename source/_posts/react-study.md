@@ -3,7 +3,7 @@ title: 重拾 react
 date: 2020-08-28 15:11:36
 tags:
     - react
-    - javascript
+    - JavaScript
 ---
 
   由于最近一段时间一直在使用vue做项目，最近打算重拾react，在此记录react的点滴学习，实时更新

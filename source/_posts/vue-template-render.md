@@ -1,10 +1,10 @@
 ---
-title: 02 - vue源码解读-渲染模型
+title: 02 - Vue源码解读-渲染模型
 date: 2020-12-17 15:01:25
-categories: vue
+categories: Vue
 tags:
-    - vue
-    - javascript
+    - Vue
+    - JavaScript
 ---
 
 1. 判断元素

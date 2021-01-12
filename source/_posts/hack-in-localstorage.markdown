@@ -6,7 +6,7 @@ comments: true
 reward: true
 tags: 
 	- 安全 
-	- javascript
+	- JavaScript
 	- 黑科技
 ---
 

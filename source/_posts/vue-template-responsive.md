@@ -1,10 +1,10 @@
 ---
-title: 03 - vue源码解读-响应式
+title: 03 - Vue源码解读-响应式
 date: 2020-12-18 17:40:59
-categories: vue
+categories: Vue
 tags:
-    - vue
-    - javascript
+    - Vue
+    - JavaScript
 ---
 
 #### 响应式原理
