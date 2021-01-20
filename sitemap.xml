@@ -2,9 +2,16 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://lxxstar987.gitee.io/lxx1997.github.io/2021/01/09/vue-learn-api-with-%E6%BA%90%E7%A0%81/</loc>
+    <loc>https://lxxstar987.gitee.io/lxx1997.github.io/2021/01/20/vue-learn-api-with-%E6%BA%90%E7%A0%81-02/</loc>
     
-    <lastmod>2021-01-20T06:49:58.347Z</lastmod>
+    <lastmod>2021-01-20T09:19:49.635Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://lxxstar987.gitee.io/lxx1997.github.io/2021/01/09/vue-learn-api-with-%E6%BA%90%E7%A0%81-01/</loc>
+    
+    <lastmod>2021-01-20T09:19:43.450Z</lastmod>
     
   </url>
   
@@ -702,7 +709,7 @@
   </url>
   
   <url>
-    <loc>https://lxxstar987.gitee.io/lxx1997.github.io/assets/demo/border1px.html</loc>
+    <loc>https://lxxstar987.gitee.io/lxx1997.github.io/assets/demo/hack_demo.html</loc>
     
     <lastmod>2020-05-01T18:13:38.000Z</lastmod>
     
@@ -716,7 +723,7 @@
   </url>
   
   <url>
-    <loc>https://lxxstar987.gitee.io/lxx1997.github.io/assets/demo/hack_demo.html</loc>
+    <loc>https://lxxstar987.gitee.io/lxx1997.github.io/assets/demo/border1px.html</loc>
     
     <lastmod>2020-05-01T18:13:38.000Z</lastmod>
     
@@ -730,7 +737,14 @@
   </url>
   
   <url>
-    <loc>https://lxxstar987.gitee.io/lxx1997.github.io/assets/demo/mediator/demo.html</loc>
+    <loc>https://lxxstar987.gitee.io/lxx1997.github.io/assets/demo/coffee_pc_demo/pro-con.html</loc>
+    
+    <lastmod>2020-05-01T18:13:38.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://lxxstar987.gitee.io/lxx1997.github.io/assets/demo/gift/index.html</loc>
     
     <lastmod>2020-05-01T18:13:38.000Z</lastmod>
     
@@ -744,13 +758,6 @@
   </url>
   
   <url>
-    <loc>https://lxxstar987.gitee.io/lxx1997.github.io/assets/demo/coffee_pc_demo/pro-con.html</loc>
-    
-    <lastmod>2020-05-01T18:13:38.000Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://lxxstar987.gitee.io/lxx1997.github.io/assets/demo/pre_css3_demo/demo.html</loc>
     
     <lastmod>2020-05-01T18:13:38.000Z</lastmod>
@@ -758,7 +765,7 @@
   </url>
   
   <url>
-    <loc>https://lxxstar987.gitee.io/lxx1997.github.io/assets/demo/gift/index.html</loc>
+    <loc>https://lxxstar987.gitee.io/lxx1997.github.io/assets/demo/mediator/demo.html</loc>
     
     <lastmod>2020-05-01T18:13:38.000Z</lastmod>
     

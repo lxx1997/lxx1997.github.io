@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+  <title>跟着 Vue 源码学习 Vue api 系列 (一) - 全局配置 | SoulReader</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+    <meta name="keywords" content="blog 博客">
+  
+  <meta name="description" content="此篇文章用来记录 Vue 中 Api 在 Vue 源码中的具体实现方法，以便更好的理解 Vue 的各种 Api 的使用方法 全局配置Vue 的全局配置参数是存放在 config 里面的，我们可以通过修改 config 中的 properties 1234567891011121314151617181920212223Config = &amp;#123;  // user  optionMergeStr">
+<meta name="keywords" content="Vue,源码">
+<meta property="og:type" content="article">
+<meta property="og:title" content="跟着 Vue 源码学习 Vue api 系列 (一) - 全局配置">
+<meta property="og:url" content="https://lxxstar987.gitee.io/lxx1997.github.io/2021/01/09/vue-learn-api-with-源码-01/index.html">
+<meta property="og:site_name" content="SoulReader">
+<meta property="og:description" content="此篇文章用来记录 Vue 中 Api 在 Vue 源码中的具体实现方法，以便更好的理解 Vue 的各种 Api 的使用方法 全局配置Vue 的全局配置参数是存放在 config 里面的，我们可以通过修改 config 中的 properties 1234567891011121314151617181920212223Config = &amp;#123;  // user  optionMergeStr">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2021-01-20T09:19:43.450Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="跟着 Vue 源码学习 Vue api 系列 (一) - 全局配置">
+<meta name="twitter:description" content="此篇文章用来记录 Vue 中 Api 在 Vue 源码中的具体实现方法，以便更好的理解 Vue 的各种 Api 的使用方法 全局配置Vue 的全局配置参数是存放在 config 里面的，我们可以通过修改 config 中的 properties 1234567891011121314151617181920212223Config = &amp;#123;  // user  optionMergeStr">
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+  <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="../../../../css/style.css">
+  <script src="../../../../js/pace.min.js"></script>
+  
+
+  
+  
+
+</head>
+</html>
+<body>
+  <div id="container">
+      <header id="header">
+    <div id="banner"></div>
+    <div id="header-outer">
+        <div id="header-menu" class="header-menu-pos animated">
+            <div class="header-menu-container">
+                <a href="../../../../index.html" class="left">
+                    <span class="site-title">SoulReader</span>
+                </a>
+                <nav id="header-menu-nav" class="right">
+                    
+                    <a  href="../../../../index.html">
+                        <i class="fa fa-home"></i>
+                        <span>Home</span>
+                    </a>
+                    
+                </nav>
+                <a class="mobile-header-menu-button">
+                    <i class="fa fa-bars"></i>
+                </a>
+            </div>
+        </div>
+        <div id="header-row">
+            <div id="logo">
+                <a href="../../../../index.html">
+                    <img src="../../../../images/avatar.png" alt="logo">
+                </a>
+            </div>
+            <div class="header-info">
+                <div id="header-title">
+                    
+                    <h2>
+                        SoulReader
+                    </h2>
+                    
+                </div>
+                <div id="header-description">
+                    
+                    <h3>
+                        前端菜鸟 多多交流学习
+                    </h3>
+                    
+                </div>
+            </div>
+            <nav class="header-nav">
+                <div class="social">
+                    
+                        <a title="SoulReader" target="_blank" href="../../../../index.html">
+                            <i class="fa fa-home fa-2x"></i></a>
+                    
+                        <a title="Github" target="_blank" href="https://github.com/lxx1997">
+                            <i class="fa fa-github fa-2x"></i></a>
+                    
+                </div>
+            </nav>
+        </div>
+    </div>
+</header>
+      <div class="outer">
+        <section id="main" class="body-wrap"><article id="post-vue-learn-api-with-源码-01" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="post-title" itemprop="name">
+      跟着 Vue 源码学习 Vue api 系列 (一) - 全局配置
+    </h1>
+    <div class="post-title-bar">
+      <ul>
+          
+              <li>
+                  <i class="fa fa-book"></i>
+                  
+                      <a href="/lxx1997.github.io/categories/Vue源码/">Vue 源码</a>
+                  
+              </li>
+          
+        <li>
+          <i class="fa fa-calendar"></i>  2021-01-09
+        </li>
+        <li>
+          <i class="fa fa-eye"></i>
+          <span id="busuanzi_value_page_pv"></span>
+        </li>
+      </ul>
+    </div>
+  
+
+          
+      </header>
+    
+    <div class="article-entry post-content" itemprop="articleBody">
+      
+            
+            <p>此篇文章用来记录 Vue 中 Api 在 Vue 源码中的具体实现方法，以便更好的理解 Vue 的各种 Api 的使用方法</p>
+<h4 id="全局配置"><a href="#全局配置" class="headerlink" title="全局配置"></a>全局配置</h4><p>Vue 的全局配置参数是存放在 <code>config</code> 里面的，我们可以通过修改 config 中的 properties</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">Config = &#123;</span><br><span class="line">  <span class="comment">// user</span></span><br><span class="line">  optionMergeStrategies: &#123; [key: string]: <span class="built_in">Function</span> &#125;;</span><br><span class="line">  silent: boolean;</span><br><span class="line">  productionTip: boolean;</span><br><span class="line">  performance: boolean;</span><br><span class="line">  devtools: boolean;</span><br><span class="line">  errorHandler: ?<span class="function">(<span class="params">err: <span class="built_in">Error</span>, vm: Component, info: string</span>) =&gt;</span> <span class="keyword">void</span>;</span><br><span class="line">  warnHandler: ?<span class="function">(<span class="params">msg: string, vm: Component, trace: string</span>) =&gt;</span> <span class="keyword">void</span>;</span><br><span class="line">  ignoredElements: <span class="built_in">Array</span>&lt;string | <span class="built_in">RegExp</span>&gt;;</span><br><span class="line">  keyCodes: &#123; [key: string]: number | <span class="built_in">Array</span>&lt;number&gt; &#125;;</span><br><span class="line">  <span class="comment">// platform</span></span><br><span class="line">  isReservedTag: <span class="function">(<span class="params">x?: string</span>) =&gt;</span> boolean;</span><br><span class="line">  isReservedAttr: <span class="function">(<span class="params">x?: string</span>) =&gt;</span> boolean;</span><br><span class="line">  parsePlatformTagName: <span class="function">(<span class="params">x: string</span>) =&gt;</span> string;</span><br><span class="line">  isUnknownElement: <span class="function">(<span class="params">x?: string</span>) =&gt;</span> boolean;</span><br><span class="line">  getTagNamespace: <span class="function">(<span class="params">x?: string</span>) =&gt;</span> string | <span class="keyword">void</span>;</span><br><span class="line">  mustUseProp: <span class="function">(<span class="params">tag: string, type: ?string, name: string</span>) =&gt;</span> boolean;</span><br><span class="line">  <span class="comment">// private</span></span><br><span class="line">  <span class="keyword">async</span>: boolean;</span><br><span class="line">  <span class="comment">// legacy</span></span><br><span class="line">  _lifecycleHooks: <span class="built_in">Array</span>&lt;string&gt;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="1-silent-Boolean"><a href="#1-silent-Boolean" class="headerlink" title="1. silent Boolean"></a>1. silent Boolean</h5><p>  silent 配置 主要用于判断是否输出 Vue 所有的日志和警告</p>
+<ul>
+<li>默认为 false 不取消日志和警告输出</li>
+<li>设置为 true  取消日志和警告输出<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> hasConsole = <span class="keyword">typeof</span> <span class="built_in">console</span> !== <span class="string">'undefined'</span>;</span><br><span class="line"><span class="comment">// hasConsole 用于判断 window对象中 是否包含有 console 这个属性</span></span><br><span class="line"><span class="keyword">if</span> (hasConsole &amp;&amp; (!config.silent)) &#123;</span><br><span class="line">  <span class="built_in">console</span>.error((<span class="string">"[Vue warn]: "</span> + msg + trace));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h5 id="2-optionMergeStrategies-Object"><a href="#2-optionMergeStrategies-Object" class="headerlink" title="2. optionMergeStrategies Object"></a>2. optionMergeStrategies Object</h5><p>  自定义选项合并策略，覆盖已有值</p>
+<p>  主要用于 mixin 和 Vue.extend() 方法时对子组件和父组件 有相同属性时的合并策略</p>
+<p>  <strong>以下的 parentVal，parent 等父参数 只有 Vue.extend 或者 extends 传入对应类型数据时才有数据</strong></p>
+<p>  Vue 源码 自带的属性<br>  <code>el</code>，<code>propsData</code>，<code>provide</code> 子组件和父组件如果有相同的方法，以子组件为主</p>
+<ul>
+<li>el</li>
+<li><p>propsData</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> defaultStrat = <span class="function"><span class="keyword">function</span> (<span class="params">parentVal, childVal</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> childVal === <span class="literal">undefined</span></span><br><span class="line">    ? parentVal</span><br><span class="line">    : childVal</span><br><span class="line">&#125;;</span><br><span class="line">strats.el = strats.propsData = <span class="function"><span class="keyword">function</span> (<span class="params">parent, child, vm, key</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (!vm) &#123;</span><br><span class="line">    warn(</span><br><span class="line">      <span class="string">"option \""</span> + key + <span class="string">"\" can only be used during instance "</span> +</span><br><span class="line">      <span class="string">'creation with the `new` keyword.'</span></span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// 在这里进行了判断，如果 child 存在 就返回 child 否则返回 parent</span></span><br><span class="line">  <span class="comment">// 表明在合并的过程中 el 和 propsData 以子的为准</span></span><br><span class="line">  <span class="keyword">return</span> defaultStrat(parent, child)</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>provide  <code>strats.provide = mergeDataOrFn;</code></p>
+</li>
+<li><p>data</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> (<span class="params">parentVal, childVal, vm </span>) </span>&#123;</span><br><span class="line">  <span class="comment">// childVal 是 组件的 data 函数</span></span><br><span class="line">  <span class="keyword">if</span> (!vm) &#123;</span><br><span class="line">    <span class="comment">// 判断 vue 的 data 对象是一个函数 保证各个组件之间的数据互不影响</span></span><br><span class="line">    <span class="keyword">if</span> (childVal &amp;&amp; <span class="keyword">typeof</span> childVal !== <span class="string">'function'</span>) &#123;</span><br><span class="line">      warn(</span><br><span class="line">        <span class="string">'The "data" option should be a function '</span> +</span><br><span class="line">        <span class="string">'that returns a per-instance value in component '</span> +</span><br><span class="line">        <span class="string">'definitions.'</span>,</span><br><span class="line">        vm</span><br><span class="line">      );</span><br><span class="line">      <span class="comment">// 如果子的值不是函数 返回父的值</span></span><br><span class="line">      <span class="keyword">return</span> parentVal</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> mergeDataOrFn(parentVal, childVal)</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> mergeDataOrFn(parentVal, childVal, vm)</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p><strong>margeDataOrFn 方法</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 合并数据</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">mergeDataOrFn</span> (<span class="params">parentVal, childVal, vm</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (!vm) &#123;</span><br><span class="line">    <span class="comment">// in a Vue.extend merge, both should be functions</span></span><br><span class="line">    <span class="keyword">if</span> (!childVal) &#123;</span><br><span class="line">      <span class="keyword">return</span> parentVal</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (!parentVal) &#123;</span><br><span class="line">      <span class="keyword">return</span> childVal</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// when parentVal &amp; childVal are both present,</span></span><br><span class="line">    <span class="comment">// we need to return a function that returns the</span></span><br><span class="line">    <span class="comment">// merged result of both functions... no need to</span></span><br><span class="line">    <span class="comment">// check if parentVal is a function here because</span></span><br><span class="line">    <span class="comment">// it has to be a function to pass previous merges.</span></span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span> <span class="title">mergedDataFn</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">      <span class="keyword">return</span> mergeData(</span><br><span class="line">        <span class="keyword">typeof</span> childVal === <span class="string">'function'</span> ? childVal.call(<span class="keyword">this</span>, <span class="keyword">this</span>) : childVal,</span><br><span class="line">        <span class="keyword">typeof</span> parentVal === <span class="string">'function'</span> ? parentVal.call(<span class="keyword">this</span>, <span class="keyword">this</span>) : parentVal</span><br><span class="line">      )</span><br><span class="line">    &#125;</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span> <span class="title">mergedInstanceDataFn</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">      <span class="comment">// instance merge</span></span><br><span class="line">      <span class="keyword">var</span> instanceData = <span class="keyword">typeof</span> childVal === <span class="string">'function'</span></span><br><span class="line">        ? childVal.call(vm, vm)</span><br><span class="line">        : childVal;</span><br><span class="line">      <span class="keyword">var</span> defaultData = <span class="keyword">typeof</span> parentVal === <span class="string">'function'</span></span><br><span class="line">        ? parentVal.call(vm, vm)</span><br><span class="line">        : parentVal;</span><br><span class="line">      <span class="keyword">if</span> (instanceData) &#123;</span><br><span class="line">        <span class="keyword">return</span> mergeData(instanceData, defaultData)</span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> defaultData</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>margeData 方法</strong><br><a href="/lxx1997.github.io/2020/12/15/vue-源码常用方法/#set">set方法详解</a></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">mergeData</span> (<span class="params">to, from</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (!<span class="keyword">from</span>) &#123; <span class="keyword">return</span> to &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">var</span> key, toVal, fromVal;</span><br><span class="line">  <span class="comment">// 判断是否有 Symbol 数据类型，避免合并数据的时候遗漏 Symbol 类型属性</span></span><br><span class="line">  <span class="comment">// Reflect.ownKeys(obj) 可以遍历出 Symbol 类型属性</span></span><br><span class="line">  <span class="comment">// Object.keys,Object.values 无法遍历出 Symbol 类型属性</span></span><br><span class="line">  <span class="keyword">var</span> keys = hasSymbol</span><br><span class="line">    ? <span class="built_in">Reflect</span>.ownKeys(<span class="keyword">from</span>)</span><br><span class="line">    : <span class="built_in">Object</span>.keys(<span class="keyword">from</span>);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; keys.length; i++) &#123;</span><br><span class="line">    key = keys[i];</span><br><span class="line">    <span class="comment">// in case the object is already observed...</span></span><br><span class="line">    <span class="keyword">if</span> (key === <span class="string">'__ob__'</span>) &#123; <span class="keyword">continue</span> &#125;</span><br><span class="line">    toVal = to[key];</span><br><span class="line">    fromVal = <span class="keyword">from</span>[key];</span><br><span class="line">    <span class="keyword">if</span> (!hasOwn(to, key)) &#123;</span><br><span class="line">      <span class="keyword">set</span>(to, key, fromVal);</span><br><span class="line">    &#125; else if (</span><br><span class="line">      toVal !== fromVal &amp;&amp;</span><br><span class="line">      isPlainObject(toVal) &amp;&amp;</span><br><span class="line">      isPlainObject(fromVal)</span><br><span class="line">    ) &#123;</span><br><span class="line">      mergeData(toVal, fromVal);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> to</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>watch</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> (<span class="params">parentVal, childVal, vm, key</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// work around Firefox's Object.prototype.watch...</span></span><br><span class="line">  <span class="keyword">if</span> (parentVal === nativeWatch) &#123; parentVal = <span class="literal">undefined</span>; &#125;</span><br><span class="line">  <span class="keyword">if</span> (childVal === nativeWatch) &#123; childVal = <span class="literal">undefined</span>; &#125;</span><br><span class="line">  <span class="comment">/* istanbul ignore if */</span></span><br><span class="line">  <span class="keyword">if</span> (!childVal) &#123; <span class="keyword">return</span> <span class="built_in">Object</span>.create(parentVal || <span class="literal">null</span>) &#125;</span><br><span class="line">  &#123;</span><br><span class="line">    assertObjectType(key, childVal, vm);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">if</span> (!parentVal) &#123; <span class="keyword">return</span> childVal &#125;</span><br><span class="line">  <span class="keyword">var</span> ret = &#123;&#125;;</span><br><span class="line">  extend(ret, parentVal);</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">var</span> key$<span class="number">1</span> <span class="keyword">in</span> childVal) &#123;</span><br><span class="line">    <span class="keyword">var</span> parent = ret[key$<span class="number">1</span>];</span><br><span class="line">    <span class="keyword">var</span> child = childVal[key$<span class="number">1</span>];</span><br><span class="line">    <span class="keyword">if</span> (parent &amp;&amp; !<span class="built_in">Array</span>.isArray(parent)) &#123;</span><br><span class="line">      parent = [parent];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// parent 存在 则和 child 合并，否则判断 child 是否是数组，返回 数组</span></span><br><span class="line">    ret[key$<span class="number">1</span>] = parent</span><br><span class="line">      ? parent.concat(child)</span><br><span class="line">      : <span class="built_in">Array</span>.isArray(child) ? child : [child];</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> ret</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p><code>hooks</code>，<code>watch</code> 会把子组件和父组件相同的钩子函数合并到一个数组上，父组件的钩子函数先执行</p>
+</li>
+<li><p>声明周期函数(在此不一一列举了)</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> LIFECYCLE_HOOKS = [</span><br><span class="line">  <span class="string">'beforeCreate'</span>,</span><br><span class="line">  <span class="string">'created'</span>,</span><br><span class="line">  <span class="string">'beforeMount'</span>,</span><br><span class="line">  <span class="string">'mounted'</span>,</span><br><span class="line">  <span class="string">'beforeUpdate'</span>,</span><br><span class="line">  <span class="string">'updated'</span>,</span><br><span class="line">  <span class="string">'beforeDestroy'</span>,</span><br><span class="line">  <span class="string">'destroyed'</span>,</span><br><span class="line">  <span class="string">'activated'</span>,</span><br><span class="line">  <span class="string">'deactivated'</span>,</span><br><span class="line">  <span class="string">'errorCaptured'</span>,</span><br><span class="line">  <span class="string">'serverPrefetch'</span></span><br><span class="line">];</span><br><span class="line">LIFECYCLE_HOOKS.forEach(<span class="function"><span class="keyword">function</span> (<span class="params">hook</span>) </span>&#123;</span><br><span class="line">  strats[hook] = mergeHook;</span><br><span class="line">&#125;);</span><br><span class="line"><span class="comment">// 使用方法</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">mergeHook</span> (<span class="params">parentVal, childVal</span>) </span>&#123;</span><br><span class="line">  <span class="comment">/**</span></span><br><span class="line"><span class="comment">    * 下面这个三目表达式可以拆分成下列样式</span></span><br><span class="line"><span class="comment">    * var test1 = Array.isArray(childVal) ? childVal : [childVal]</span></span><br><span class="line"><span class="comment">    * var test2 = parentVal ? parentVal.concat(childVal) : test1</span></span><br><span class="line"><span class="comment">    * var test3 = childVal ? test2 : parentVal</span></span><br><span class="line"><span class="comment">    * 如果 childVal 存在，就执行 test2 语句 不存在 则取 parentVal</span></span><br><span class="line"><span class="comment">    * test2 语句中 如果 parentVal 存在， 则与 childVal 连接成一个新数组 否则执行 test1 语句</span></span><br><span class="line"><span class="comment">    * test1 语句中 如果 childVal 是数组 就取 childVal 否则就转成数组</span></span><br><span class="line"><span class="comment">  */</span></span><br><span class="line">  <span class="keyword">var</span> res = childVal</span><br><span class="line">    ? parentVal</span><br><span class="line">      ? parentVal.concat(childVal)</span><br><span class="line">      : <span class="built_in">Array</span>.isArray(childVal)</span><br><span class="line">        ? childVal</span><br><span class="line">        : [childVal]</span><br><span class="line">    : parentVal;</span><br><span class="line">  <span class="comment">// 对 获得的 res 进行去重</span></span><br><span class="line">  <span class="keyword">return</span> res</span><br><span class="line">    ? dedupeHooks(res)</span><br><span class="line">    : res</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">dedupeHooks</span> (<span class="params">hooks</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> res = [];</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; hooks.length; i++) &#123;</span><br><span class="line">    <span class="comment">// 如果 res 数组中不存在 hooks[i],就插入 hooks[i] 否则略过</span></span><br><span class="line">    <span class="keyword">if</span> (res.indexOf(hooks[i]) === <span class="number">-1</span>) &#123;</span><br><span class="line">      res.push(hooks[i]);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> res</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>component</p>
+</li>
+<li>directive</li>
+<li><p>filter</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">mergeAssets</span> (<span class="params">parentVal, childVal, vm, key</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// 以 parentVal 为原型 创建对象 res.prototype === parentVal</span></span><br><span class="line">  <span class="keyword">var</span> res = <span class="built_in">Object</span>.create(parentVal || <span class="literal">null</span>);</span><br><span class="line">  <span class="keyword">if</span> (childVal) &#123;</span><br><span class="line">    <span class="comment">//判断 childVal 的类型</span></span><br><span class="line">    assertObjectType(key, childVal, vm);</span><br><span class="line">    <span class="comment">// 通过 extend  方法将 childVal 的属性复制到 res 上 并覆盖相同属性的数据</span></span><br><span class="line">    <span class="keyword">return</span> extend(res, childVal)</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> res</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><code>components</code>，<code>directives</code>，<code>filters</code> 使用了原型继承，返回合并后的新对象</p>
+</li>
+<li>props</li>
+<li>methods</li>
+<li>inject</li>
+<li><p>computed</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> (<span class="params">parentVal, childVal, vm, key</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (childVal &amp;&amp; <span class="string">"development"</span> !== <span class="string">'production'</span>) &#123;</span><br><span class="line">    assertObjectType(key, childVal, vm);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">if</span> (!parentVal) &#123; <span class="keyword">return</span> childVal &#125;</span><br><span class="line">  <span class="keyword">var</span> ret = <span class="built_in">Object</span>.create(<span class="literal">null</span>);</span><br><span class="line">  <span class="comment">// 合并 parentVal 和 childVal</span></span><br><span class="line">  extend(ret, parentVal);</span><br><span class="line">  <span class="keyword">if</span> (childVal) &#123; extend(ret, childVal); &#125;</span><br><span class="line">  <span class="keyword">return</span> ret</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p><code>props</code>，<code>methods</code>，<code>computed</code>，<code>inject</code> 采用对象合并的方法，先合并父组件，在合并子组件，如果父组件和子组件有相同的属性，子组件会覆盖父组件的属性</p>
+<p>简单的使用示例</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">Vue.config.optionMergeStrategies._myOptions = <span class="function">(<span class="params">parntVal, childVal, vm</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(parntVal, childVal, vm)</span><br><span class="line">    <span class="keyword">return</span> parntVal ? childVal ? childVal + parntVal : <span class="number">0</span> : childVal</span><br><span class="line">  &#125;</span><br><span class="line"><span class="keyword">const</span> B = &#123;</span><br><span class="line">  _myOptions: <span class="number">3</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> C = &#123;</span><br><span class="line">  _myOptions: <span class="number">3</span></span><br><span class="line">&#125;</span><br><span class="line">Vue.component(<span class="string">'test'</span>, &#123;</span><br><span class="line">  mixins: [B,C],</span><br><span class="line">  data() &#123;</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">      test: <span class="number">1</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  _myOptions: <span class="number">2</span>,</span><br><span class="line">  mounted() &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>.$options._myOptions) <span class="comment">// 8</span></span><br><span class="line">  &#125;,</span><br><span class="line">  template: <span class="string">`&lt;div&gt; children &lt;/div&gt;`</span></span><br><span class="line">&#125;)</span><br><span class="line"><span class="keyword">const</span> app = <span class="keyword">new</span> Vue(&#123;</span><br><span class="line">  el: <span class="string">'#app'</span>,</span><br><span class="line">  template: <span class="string">`</span></span><br><span class="line"><span class="string">  &lt;div&gt;</span></span><br><span class="line"><span class="string">    test</span></span><br><span class="line"><span class="string">    &lt;test&gt;&lt;/test&gt;</span></span><br><span class="line"><span class="string">  &lt;/div&gt;</span></span><br><span class="line"><span class="string">  `</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="devtools"><a href="#devtools" class="headerlink" title="devtools"></a>devtools</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// detect devtools</span></span><br><span class="line"><span class="keyword">var</span> devtools = inBrowser &amp;&amp; <span class="built_in">window</span>.__VUE_DEVTOOLS_GLOBAL_HOOK__;</span><br></pre></td></tr></table></figure>
+<h4 id="errorHandler"><a href="#errorHandler" class="headerlink" title="errorHandler"></a>errorHandler</h4><p>  默认是 <code>undefined</code> 指定组件的渲染和观察期间未捕获错误的处理函数。这个处理函数被调用时，可获取错误信息和 Vue 实例。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Vue.config.errorHandler = <span class="function">(<span class="params">err, vm, info</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.error(<span class="string">' 错误拦截:'</span>, err, vm, info)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="warnHandler"><a href="#warnHandler" class="headerlink" title="warnHandler"></a>warnHandler</h4><p>  默认值是 <code>undefined</code>，只会在开发环境下生效，生产环境下会被忽略</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Vue.config.warnHandler = <span class="function">(<span class="params">msg, vm, trace</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.error(<span class="string">' 错误拦截:'</span>, msg, vm, trace)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="ignoredElements-Array"><a href="#ignoredElements-Array" class="headerlink" title="ignoredElements  Array"></a>ignoredElements  Array<string | regexp></string></h4><p>  默认是一个空字符串，是一个由 字符串或者正则表达式组成的数组</p>
+<p>  作用是为了屏蔽 Vue 的组件验证的时候，自定义组件(<a href="http://www.ruanyifeng.com/blog/2019/08/web_components.html" target="_blank" rel="noopener">Web Components API</a>)报错提示功能，匹配到数组里面的组件名称的时候，会过滤掉提示</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Vue.config.ignoredElements = [</span><br><span class="line">  <span class="string">'my-custom-web-component'</span>,</span><br><span class="line">  <span class="string">'another-web-component'</span>,</span><br><span class="line">  <span class="comment">// 用一个 `RegExp` 忽略所有“ion-”开头的元素</span></span><br><span class="line">  <span class="comment">// 仅在 2.5+ 支持</span></span><br><span class="line">  /^ion-<span class="regexp">/</span></span><br><span class="line"><span class="regexp">]</span></span><br></pre></td></tr></table></figure>
+<h4 id="keyCodes-key-string-number-Array"><a href="#keyCodes-key-string-number-Array" class="headerlink" title="keyCodes   {[key: string]: number | Array}"></a>keyCodes   {[key: string]: number | Array<number>}</number></h4><p>  给 <code>v-on</code> 自定义键位别名<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Vue.config.keyCodes = &#123;</span><br><span class="line">  v: <span class="number">86</span>,</span><br><span class="line">  f1: <span class="number">112</span>,</span><br><span class="line">  <span class="comment">// camelCase 不可用</span></span><br><span class="line">  mediaPlayPause: <span class="number">179</span>,</span><br><span class="line">  <span class="comment">// 取而代之的是 kebab-case 且用双引号括起来</span></span><br><span class="line">  <span class="string">"media-play-pause"</span>: <span class="number">179</span>,</span><br><span class="line">  up: [<span class="number">38</span>, <span class="number">87</span>]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> @<span class="attr">keyup.media-play-pause</span>=<span class="string">"method"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> @<span class="attr">keyup.179</span>=<span class="string">"method"</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 以上两种方法等效 --&gt;</span></span><br></pre></td></tr></table></figure>
+<h4 id="performance-boolean"><a href="#performance-boolean" class="headerlink" title="performance  boolean"></a>performance  boolean</h4><p>  默认为 false 设置为 true 以在浏览器开发工具的性能/时间线面板中启用对组件初始化、编译、渲染和打补丁的性能追踪</p>
+<h4 id="productionTip-boolean"><a href="#productionTip-boolean" class="headerlink" title="productionTip boolean"></a>productionTip boolean</h4><p>  默认为 true， 设置为 false 阻止 vue 在启动时生成生产提示信息</p>
+
+            <div class="post-copyright">
+    <div class="content">
+        <p>最后更新： 2021年01月20日 17:19</p>
+        <p>原始链接： <a class="post-url" href="" title="跟着 Vue 源码学习 Vue api 系列 (一) - 全局配置">https://lxxstar987.gitee.io/lxx1997.github.io/2021/01/09/vue-learn-api-with-源码-01/</a></p>
+        <footer>
+            <a href="https://lxxstar987.gitee.io/lxx1997.github.io">
+                <img src="../../../../images/avatar.png" alt="lxx">
+                lxx
+            </a>
+        </footer>
+    </div>
+</div>
+
+      
+        
+            
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;">赏</a>
+</div>
+
+<div id="reward" class="post-modal reward-lay">
+    <a class="close" href="javascript:;" id="reward-close">×</a>
+    <span class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢大佬打赏
+        <i class="icon icon-quote-right"></i>
+    </span>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="../../../../images/wechat_code.jpg" alt="打赏二维码">
+        </div>
+        <div class="reward-select">
+            
+            <label class="reward-select-item checked" data-id="wechat" data-wechat="../../../../images/wechat_code.jpg">
+                <img class="reward-select-item-wechat" src="../../../../images/wechat.png" alt="微信">
+            </label>
+            
+            
+            <label class="reward-select-item" data-id="alipay" data-alipay="../../../../images/qq_code.jpg">
+                <img class="reward-select-item-alipay" src="../../../../images/alipay.png" alt="支付宝">
+            </label>
+            
+        </div>
+    </div>
+</div>
+
+
+        
+    </div>
+    <footer class="article-footer">
+        
+        
+<div class="post-share">
+    <a href="javascript:;" id="share-sub" class="post-share-fab">
+        <i class="fa fa-share-alt"></i>
+    </a>
+    <div class="post-share-list" id="share-list">
+        <ul class="share-icons">
+          <li>
+            <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://lxxstar987.gitee.io/lxx1997.github.io/2021/01/09/vue-learn-api-with-源码-01/&title=《跟着 Vue 源码学习 Vue api 系列 (一) - 全局配置》 — SoulReader&pic=https://lxxstar987.gitee.io/lxx1997.github.ioimages/avatar.png" data-title="微博">
+              <i class="fa fa-weibo"></i>
+            </a>
+          </li>
+          <li>
+            <a class="weixin share-sns" id="wxFab" href="javascript:;" data-title="微信">
+              <i class="fa fa-weixin"></i>
+            </a>
+          </li>
+          <li>
+            <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://lxxstar987.gitee.io/lxx1997.github.io/2021/01/09/vue-learn-api-with-源码-01/&title=《跟着 Vue 源码学习 Vue api 系列 (一) - 全局配置》 — SoulReader&source=前端小菜鸟,努力深造" data-title="QQ">
+              <i class="fa fa-qq"></i>
+            </a>
+          </li>
+          <li>
+            <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://lxxstar987.gitee.io/lxx1997.github.io/2021/01/09/vue-learn-api-with-源码-01/" data-title="Facebook">
+              <i class="fa fa-facebook"></i>
+            </a>
+          </li>
+          <li>
+            <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《跟着 Vue 源码学习 Vue api 系列 (一) - 全局配置》 — SoulReader&url=https://lxxstar987.gitee.io/lxx1997.github.io/2021/01/09/vue-learn-api-with-源码-01/&via=https://lxxstar987.gitee.io/lxx1997.github.io" data-title="Twitter">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+          <li>
+            <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://lxxstar987.gitee.io/lxx1997.github.io/2021/01/09/vue-learn-api-with-源码-01/" data-title="Google+">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        </ul>
+     </div>
+</div>
+<div class="post-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;" id="wxShare-close">×</a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPYAAAD2CAAAAADAeSUUAAADMklEQVR42u3ay3LiUAwE0Pn/n2aqZjWLYLol8vDN8YoiweaIhUrq++dPfD3+XcnrZ+/M3v//r8l3e/OFjY2NfRP24/K6pj67T/6pTYmvS/+ifNjY2NjHsZPH57A9Pill+5NgY2NjY7ft6nrYmJU4eQcbGxsbO18YXRfiXbudtmTY2NjYv5OdLJXeVaAc05I+ZZeGjY2N/ePZX7Oy/5rX35ZvY2NjY38T+1FebcvZRA55IFErsLGxsQ9iJ9Fpu9bZt8D2cM9wEMLGxsY+lJ1HsLMV0n7d3/5IT9/BxsbGPoi9aSSzBVAeGMzGlWLxhI2NjX1z9uygzOwoT97AZgd6kk9hY2Njn8fOG8x1OWYRQo6ZHdx5MZxgY2NjH8RuQ9O2EPko0j4lX4S94fgONjY29o9kJ8uauiXEd/6MGCC6PzY2NvZx7LylbY7OvPdAT94gn+7SsLGxsY9gt8doNqufvARtCDEbe7CxsbHPYM+awazJbaKI5FlFUbCxsbGPY++P0bSrn1lrnMUGH3wKGxsb+yD2bImTkNplUHvlw8lwj4WNjY19Q/bX8DaLp30I/TTlxsbGxj6O3S59ki8xG0vyQtdtDBsbG/sI9iZMzVtRW5R8VdQ+5YNdGjY2NvYR7Da+zf//Mbpmg01RJmxsbOyD2Pk4kQexLaMdafJmNhxLsLGxsW/Fbtf9eTA8i5BnMXC9CMPGxsY+lN0+cjZU5MPM7PtE4Qc2Njb2cex2tTRcyi/WQLMl19OWho2NjX0oe9auZtFs3jjzshZ3wMbGxj6O/a5gdRMMt40tv/+LeAAbGxv75ux8nZSPJW3hkhaYjBxtXIGNjY19Brtl5CXYDCFJ02q3Q9jY2Nhns9uHDZfywaoob3ht9PtBx8bGxsY+iJ1fOTgZKvZ/bRsqNjY29nns/MqXTfuxIY+B8zB4WAhsbGzsm7DbpjVbQrXRbDsC5aECNjY29qnsfSPJkZugd1MgbGxsbOx2IZWPB5smlzewp9kINjY29i9jtwdxrv8nX/q3hX7R6rCxsbGPY8++aH5kZxMh7KOFVTyAjY2N/ePZ+6B31pbaxVM7GrUxMDY2NvYN2X8B1jP9YZ3tzbgAAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+<div class="mask"></div>
+
+        
+        <ul class="article-footer-menu">
+            
+            
+  <li class="article-footer-tags">
+    <i class="fa fa-tags"></i>
+      
+    <a href="/lxx1997.github.io/tags/Vue/" class="color4">Vue</a>
+      
+    <a href="/lxx1997.github.io/tags/源码/" class="color3">源码</a>
+      
+  </li>
+
+        </ul>
+        
+    </footer>
+  </div>
+</article>
+
+
+    <aside class="post-toc-pos post-toc-top" id="post-toc">
+        <nav class="post-toc-wrap">
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#全局配置"><span class="post-toc-text">全局配置</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#1-silent-Boolean"><span class="post-toc-text">1. silent Boolean</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#2-optionMergeStrategies-Object"><span class="post-toc-text">2. optionMergeStrategies Object</span></a></li></ol></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#devtools"><span class="post-toc-text">devtools</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#errorHandler"><span class="post-toc-text">errorHandler</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#warnHandler"><span class="post-toc-text">warnHandler</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#ignoredElements-Array"><span class="post-toc-text">ignoredElements  Array</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#keyCodes-key-string-number-Array"><span class="post-toc-text">keyCodes   {[key: string]: number | Array}</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#performance-boolean"><span class="post-toc-text">performance  boolean</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#productionTip-boolean"><span class="post-toc-text">productionTip boolean</span></a></li></ol>
+        </nav>
+    </aside>
+    
+
+<nav id="article-nav">
+  
+    <a href="../../11/js-this-point/" id="article-nav-newer" class="article-nav-link-wrap">
+
+      <span class="article-nav-title">
+        <i class="fa fa-hand-o-left" aria-hidden="true"></i>
+        
+          JavaScript - this 指向问题
+        
+      </span>
+    </a>
+  
+  
+    <a href="../../07/vue-components-transfer-data/" id="article-nav-older" class="article-nav-link-wrap">
+      <span class="article-nav-title">Vue 组件之间通讯的各种情况</span>
+      <i class="fa fa-hand-o-right" aria-hidden="true"></i>
+    </a>
+  
+</nav>
+
+
+
+    
+</section>
+        
+      </div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+      <p>
+        Powered by  <a href="http://hexo.io/" target="_blank">Hexo</a>
+        Theme <a href="//github.com/wongminho/hexo-theme-miho" target="_blank">MiHo</a>
+      &copy; 2021 lxx<br>
+      </p>
+    </div>
+  </div>
+</footer>
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<script>
+  var mihoConfig = {
+      root: "https://lxxstar987.gitee.io/lxx1997.github.io",
+      animate: true,
+      isHome: false,
+      share: true,
+      reward: 1
+  }
+</script>
+<div class="sidebar">
+    <div id="sidebar-search" title="Search">
+        <i class="fa fa-search"></i>
+    </div>
+    <div id="sidebar-category" title="Categories">
+        <i class="fa fa-book"></i>
+    </div>
+    <div id="sidebar-tag" title="Tags">
+        <i class="fa fa-tags"></i>
+    </div>
+    <div id="sidebar-top">
+        <span class="sidebar-top-icon"><i class="fa fa-angle-up"></i></span>
+    </div>
+</div>
+<div class="sidebar-menu-box" id="sidebar-menu-box">
+    <div class="sidebar-menu-box-container">
+        <div id="sidebar-menu-box-categories">
+            <a class="category-link" href="../../../../categories/JavaScript/">JavaScript</a><a class="category-link" href="../../../../categories/Vue/">Vue</a><a class="category-link" href="../../../../categories/Vue-源码/">Vue 源码</a><a class="category-link" href="../../../../categories/eggjs/">eggjs</a><a class="category-link" href="../../../../categories/nodejs-deno/">nodejs deno</a><a class="category-link" href="../../../../categories/thought/">thought</a><a class="category-link" href="../../../../categories/vue3-vite-ts/">vue3 vite ts</a><a class="category-link" href="../../../../categories/web/">web</a><a class="category-link" href="../../../../categories/面试/">面试</a>
+        </div>
+        <div id="sidebar-menu-box-tags">
+            <a href="../../../../tags/Components/" style="font-size: 10px;">Components</a> <a href="../../../../tags/ES6/" style="font-size: 11.25px;">ES6</a> <a href="../../../../tags/HTML/" style="font-size: 10px;">HTML</a> <a href="../../../../tags/JavaScript/" style="font-size: 20px;">JavaScript</a> <a href="../../../../tags/TypeScript/" style="font-size: 11.25px;">TypeScript</a> <a href="../../../../tags/Vue/" style="font-size: 18.75px;">Vue</a> <a href="../../../../tags/Vue3/" style="font-size: 11.25px;">Vue3</a> <a href="../../../../tags/antd/" style="font-size: 10px;">antd</a> <a href="../../../../tags/array/" style="font-size: 11.25px;">array</a> <a href="../../../../tags/browser/" style="font-size: 10px;">browser</a> <a href="../../../../tags/canvas/" style="font-size: 12.5px;">canvas</a> <a href="../../../../tags/chrome/" style="font-size: 10px;">chrome</a> <a href="../../../../tags/coffeescript/" style="font-size: 11.25px;">coffeescript</a> <a href="../../../../tags/colorui/" style="font-size: 10px;">colorui</a> <a href="../../../../tags/css/" style="font-size: 13.75px;">css</a> <a href="../../../../tags/css3/" style="font-size: 11.25px;">css3</a> <a href="../../../../tags/customize-cra/" style="font-size: 10px;">customize-cra</a> <a href="../../../../tags/d3-js/" style="font-size: 10px;">d3.js</a> <a href="../../../../tags/deepin/" style="font-size: 10px;">deepin</a> <a href="../../../../tags/deno/" style="font-size: 10px;">deno</a> <a href="../../../../tags/docker/" style="font-size: 10px;">docker</a> <a href="../../../../tags/egg-mysql/" style="font-size: 10px;">egg-mysql</a> <a href="../../../../tags/eggjs/" style="font-size: 15px;">eggjs</a> <a href="../../../../tags/electron/" style="font-size: 10px;">electron</a> <a href="../../../../tags/es6/" style="font-size: 10px;">es6</a> <a href="../../../../tags/function/" style="font-size: 13.75px;">function</a> <a href="../../../../tags/github/" style="font-size: 10px;">github</a> <a href="../../../../tags/golang/" style="font-size: 10px;">golang</a> <a href="../../../../tags/html/" style="font-size: 17.5px;">html</a> <a href="../../../../tags/http/" style="font-size: 10px;">http</a> <a href="../../../../tags/indexedDB/" style="font-size: 10px;">indexedDB</a> <a href="../../../../tags/jsonwebtoken/" style="font-size: 10px;">jsonwebtoken</a> <a href="../../../../tags/less/" style="font-size: 10px;">less</a> <a href="../../../../tags/localStorage/" style="font-size: 10px;">localStorage</a> <a href="../../../../tags/method/" style="font-size: 11.25px;">method</a> <a href="../../../../tags/mysql/" style="font-size: 10px;">mysql</a> <a href="../../../../tags/node/" style="font-size: 10px;">node</a> <a href="../../../../tags/nodejs/" style="font-size: 11.25px;">nodejs</a> <a href="../../../../tags/npm/" style="font-size: 10px;">npm</a> <a href="../../../../tags/promise/" style="font-size: 10px;">promise</a> <a href="../../../../tags/prototype/" style="font-size: 10px;">prototype</a> <a href="../../../../tags/pygame/" style="font-size: 10px;">pygame</a> <a href="../../../../tags/python/" style="font-size: 10px;">python</a> <a href="../../../../tags/react/" style="font-size: 16.25px;">react</a> <a href="../../../../tags/react-app-rewired/" style="font-size: 10px;">react-app-rewired</a> <a href="../../../../tags/redis/" style="font-size: 10px;">redis</a> <a href="../../../../tags/router/" style="font-size: 10px;">router</a> <a href="../../../../tags/svg/" style="font-size: 11.25px;">svg</a> <a href="../../../../tags/swagger-ui/" style="font-size: 10px;">swagger-ui</a> <a href="../../../../tags/symbol/" style="font-size: 10px;">symbol</a> <a href="../../../../tags/this/" style="font-size: 10px;">this</a> <a href="../../../../tags/thought/" style="font-size: 12.5px;">thought</a> <a href="../../../../tags/typescript/" style="font-size: 16.25px;">typescript</a> <a href="../../../../tags/uni-app/" style="font-size: 10px;">uni-app</a> <a href="../../../../tags/vite/" style="font-size: 11.25px;">vite</a> <a href="../../../../tags/web/" style="font-size: 17.5px;">web</a> <a href="../../../../tags/webpack/" style="font-size: 11.25px;">webpack</a> <a href="../../../../tags/产品/" style="font-size: 10px;">产品</a> <a href="../../../../tags/前端/" style="font-size: 13.75px;">前端</a> <a href="../../../../tags/后台/" style="font-size: 10px;">后台</a> <a href="../../../../tags/安全/" style="font-size: 11.25px;">安全</a> <a href="../../../../tags/工具/" style="font-size: 11.25px;">工具</a> <a href="../../../../tags/性能/" style="font-size: 10px;">性能</a> <a href="../../../../tags/旧事/" style="font-size: 15px;">旧事</a> <a href="../../../../tags/模式/" style="font-size: 10px;">模式</a> <a href="../../../../tags/浏览器/" style="font-size: 11.25px;">浏览器</a> <a href="../../../../tags/源码/" style="font-size: 12.5px;">源码</a> <a href="../../../../tags/生活/" style="font-size: 13.75px;">生活</a> <a href="../../../../tags/经验/" style="font-size: 10px;">经验</a> <a href="../../../../tags/编码/" style="font-size: 10px;">编码</a> <a href="../../../../tags/药别停/" style="font-size: 10px;">药别停</a> <a href="../../../../tags/读后感/" style="font-size: 12.5px;">读后感</a> <a href="../../../../tags/面试/" style="font-size: 10px;">面试</a> <a href="../../../../tags/黑科技/" style="font-size: 10px;">黑科技</a>
+        </div>
+    </div>
+    <a href="javascript:;" class="sidebar-menu-box-close">&times;</a>
+</div>
+<div class="mobile-header-menu-nav" id="mobile-header-menu-nav">
+    <div class="mobile-header-menu-container">
+        <span class="title">Menus</span>
+        <ul class="mobile-header-menu-navbar">
+            
+            <li>
+                <a  href="../../../../index.html">
+                    <i class="fa fa-home"></i><span>Home</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    <div class="mobile-header-tag-container">
+        <span class="title">Tags</span>
+        <div id="mobile-header-container-tags">
+            <a href="../../../../tags/Components/" style="font-size: 10px;">Components</a> <a href="../../../../tags/ES6/" style="font-size: 11.25px;">ES6</a> <a href="../../../../tags/HTML/" style="font-size: 10px;">HTML</a> <a href="../../../../tags/JavaScript/" style="font-size: 20px;">JavaScript</a> <a href="../../../../tags/TypeScript/" style="font-size: 11.25px;">TypeScript</a> <a href="../../../../tags/Vue/" style="font-size: 18.75px;">Vue</a> <a href="../../../../tags/Vue3/" style="font-size: 11.25px;">Vue3</a> <a href="../../../../tags/antd/" style="font-size: 10px;">antd</a> <a href="../../../../tags/array/" style="font-size: 11.25px;">array</a> <a href="../../../../tags/browser/" style="font-size: 10px;">browser</a> <a href="../../../../tags/canvas/" style="font-size: 12.5px;">canvas</a> <a href="../../../../tags/chrome/" style="font-size: 10px;">chrome</a> <a href="../../../../tags/coffeescript/" style="font-size: 11.25px;">coffeescript</a> <a href="../../../../tags/colorui/" style="font-size: 10px;">colorui</a> <a href="../../../../tags/css/" style="font-size: 13.75px;">css</a> <a href="../../../../tags/css3/" style="font-size: 11.25px;">css3</a> <a href="../../../../tags/customize-cra/" style="font-size: 10px;">customize-cra</a> <a href="../../../../tags/d3-js/" style="font-size: 10px;">d3.js</a> <a href="../../../../tags/deepin/" style="font-size: 10px;">deepin</a> <a href="../../../../tags/deno/" style="font-size: 10px;">deno</a> <a href="../../../../tags/docker/" style="font-size: 10px;">docker</a> <a href="../../../../tags/egg-mysql/" style="font-size: 10px;">egg-mysql</a> <a href="../../../../tags/eggjs/" style="font-size: 15px;">eggjs</a> <a href="../../../../tags/electron/" style="font-size: 10px;">electron</a> <a href="../../../../tags/es6/" style="font-size: 10px;">es6</a> <a href="../../../../tags/function/" style="font-size: 13.75px;">function</a> <a href="../../../../tags/github/" style="font-size: 10px;">github</a> <a href="../../../../tags/golang/" style="font-size: 10px;">golang</a> <a href="../../../../tags/html/" style="font-size: 17.5px;">html</a> <a href="../../../../tags/http/" style="font-size: 10px;">http</a> <a href="../../../../tags/indexedDB/" style="font-size: 10px;">indexedDB</a> <a href="../../../../tags/jsonwebtoken/" style="font-size: 10px;">jsonwebtoken</a> <a href="../../../../tags/less/" style="font-size: 10px;">less</a> <a href="../../../../tags/localStorage/" style="font-size: 10px;">localStorage</a> <a href="../../../../tags/method/" style="font-size: 11.25px;">method</a> <a href="../../../../tags/mysql/" style="font-size: 10px;">mysql</a> <a href="../../../../tags/node/" style="font-size: 10px;">node</a> <a href="../../../../tags/nodejs/" style="font-size: 11.25px;">nodejs</a> <a href="../../../../tags/npm/" style="font-size: 10px;">npm</a> <a href="../../../../tags/promise/" style="font-size: 10px;">promise</a> <a href="../../../../tags/prototype/" style="font-size: 10px;">prototype</a> <a href="../../../../tags/pygame/" style="font-size: 10px;">pygame</a> <a href="../../../../tags/python/" style="font-size: 10px;">python</a> <a href="../../../../tags/react/" style="font-size: 16.25px;">react</a> <a href="../../../../tags/react-app-rewired/" style="font-size: 10px;">react-app-rewired</a> <a href="../../../../tags/redis/" style="font-size: 10px;">redis</a> <a href="../../../../tags/router/" style="font-size: 10px;">router</a> <a href="../../../../tags/svg/" style="font-size: 11.25px;">svg</a> <a href="../../../../tags/swagger-ui/" style="font-size: 10px;">swagger-ui</a> <a href="../../../../tags/symbol/" style="font-size: 10px;">symbol</a> <a href="../../../../tags/this/" style="font-size: 10px;">this</a> <a href="../../../../tags/thought/" style="font-size: 12.5px;">thought</a> <a href="../../../../tags/typescript/" style="font-size: 16.25px;">typescript</a> <a href="../../../../tags/uni-app/" style="font-size: 10px;">uni-app</a> <a href="../../../../tags/vite/" style="font-size: 11.25px;">vite</a> <a href="../../../../tags/web/" style="font-size: 17.5px;">web</a> <a href="../../../../tags/webpack/" style="font-size: 11.25px;">webpack</a> <a href="../../../../tags/产品/" style="font-size: 10px;">产品</a> <a href="../../../../tags/前端/" style="font-size: 13.75px;">前端</a> <a href="../../../../tags/后台/" style="font-size: 10px;">后台</a> <a href="../../../../tags/安全/" style="font-size: 11.25px;">安全</a> <a href="../../../../tags/工具/" style="font-size: 11.25px;">工具</a> <a href="../../../../tags/性能/" style="font-size: 10px;">性能</a> <a href="../../../../tags/旧事/" style="font-size: 15px;">旧事</a> <a href="../../../../tags/模式/" style="font-size: 10px;">模式</a> <a href="../../../../tags/浏览器/" style="font-size: 11.25px;">浏览器</a> <a href="../../../../tags/源码/" style="font-size: 12.5px;">源码</a> <a href="../../../../tags/生活/" style="font-size: 13.75px;">生活</a> <a href="../../../../tags/经验/" style="font-size: 10px;">经验</a> <a href="../../../../tags/编码/" style="font-size: 10px;">编码</a> <a href="../../../../tags/药别停/" style="font-size: 10px;">药别停</a> <a href="../../../../tags/读后感/" style="font-size: 12.5px;">读后感</a> <a href="../../../../tags/面试/" style="font-size: 10px;">面试</a> <a href="../../../../tags/黑科技/" style="font-size: 10px;">黑科技</a>
+        </div>
+    </div>
+</div>
+<div class="search-wrap">
+    <span class="search-close">&times;</span>
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+            <i class="icon icon-lg icon-chevron-left"></i>
+        </a>
+        <input class="search-field" placeholder="Search..." id="keywords">
+        <a id="search-submit" href="javascript:;">
+            <i class="fa fa-search"></i>
+        </a>
+    <div class="search-container" id="search-container">
+        <ul class="search-result" id="search-result">
+        </ul>
+    </div>
+</div>
+
+<div id="search-tpl">
+    <li class="search-result-item">
+        <a href="{url}" class="search-item-li">
+            <span class="search-item-li-title" title="{title}">{title}</span>
+        </a>
+    </li>
+</div>
+<script src="../../../../js/search.js"></script>
+<script src="../../../../js/main.js"></script>
+
+
+  <script src="//cdn.bootcss.com/particles.js/2.0.0/particles.min.js"></script>
+  <div id="particles"></div>
+  <script src="../../../../js/particles.js"></script>
+
+
+
+
+
+
+
+  <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
+  <script src="//cdn.bootcss.com/scrollReveal.js/3.0.5/scrollreveal.js"></script>
+  <script src="../../../../js/animate.js"></script>
+
+
+  <script src="../../../../js/pop-img.js"></script>
+  <script>
+     $(".article-entry p img").popImg();
+  </script>
+
+  </div>
+<script src="/lxx1997.github.io/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/lxx1997.github.io/live2dw/assets/kesyoban.model.json"},"display":{"position":"left","width":300,"height":300},"mobile":{"show":true},"log":false});</script></body>
+</html>

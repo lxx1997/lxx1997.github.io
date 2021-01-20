@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://lxxstar987.gitee.io/lxx1997.github.io/lxx1997.github.io/2021/01/09/vue-learn-api-with-%E6%BA%90%E7%A0%81/</loc>
+    <loc>https://lxxstar987.gitee.io/lxx1997.github.io/lxx1997.github.io/2021/01/20/vue-learn-api-with-%E6%BA%90%E7%A0%81-02/</loc>
+    <lastmod>2021-01-20</lastmod>
+  </url>  <url>
+    <loc>https://lxxstar987.gitee.io/lxx1997.github.io/lxx1997.github.io/2021/01/09/vue-learn-api-with-%E6%BA%90%E7%A0%81-01/</loc>
     <lastmod>2021-01-20</lastmod>
   </url>  <url>
     <loc>https://lxxstar987.gitee.io/lxx1997.github.io/lxx1997.github.io/2021/01/14/js-prototype-chain/</loc>
@@ -124,19 +127,19 @@
     <loc>https://lxxstar987.gitee.io/lxx1997.github.io/lxx1997.github.io/2020/12/17/function-currying/</loc>
     <lastmod>2021-01-12</lastmod>
   </url>  <url>
-    <loc>https://lxxstar987.gitee.io/lxx1997.github.io/lxx1997.github.io/2020/12/17/fucntion-uncurrying/</loc>
+    <loc>https://lxxstar987.gitee.io/lxx1997.github.io/lxx1997.github.io/2014/07/25/folder-to-tree/</loc>
     <lastmod>2021-01-12</lastmod>
   </url>  <url>
-    <loc>https://lxxstar987.gitee.io/lxx1997.github.io/lxx1997.github.io/2014/07/25/folder-to-tree/</loc>
+    <loc>https://lxxstar987.gitee.io/lxx1997.github.io/lxx1997.github.io/2020/12/17/fucntion-uncurrying/</loc>
     <lastmod>2021-01-12</lastmod>
   </url>  <url>
     <loc>https://lxxstar987.gitee.io/lxx1997.github.io/lxx1997.github.io/2020/08/20/electron-study-01/</loc>
     <lastmod>2021-01-12</lastmod>
   </url>  <url>
-    <loc>https://lxxstar987.gitee.io/lxx1997.github.io/lxx1997.github.io/2021/01/04/deferent-in-new-Object-object-create/</loc>
+    <loc>https://lxxstar987.gitee.io/lxx1997.github.io/lxx1997.github.io/2020/12/09/deep-copy-light-copy/</loc>
     <lastmod>2021-01-12</lastmod>
   </url>  <url>
-    <loc>https://lxxstar987.gitee.io/lxx1997.github.io/lxx1997.github.io/2020/12/09/deep-copy-light-copy/</loc>
+    <loc>https://lxxstar987.gitee.io/lxx1997.github.io/lxx1997.github.io/2021/01/04/deferent-in-new-Object-object-create/</loc>
     <lastmod>2021-01-12</lastmod>
   </url>  <url>
     <loc>https://lxxstar987.gitee.io/lxx1997.github.io/lxx1997.github.io/2020/05/07/d3-study-20200507/</loc>
