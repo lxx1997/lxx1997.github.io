@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+  <title>JavaScript 原型链 | SoulReader</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+    <meta name="keywords" content="blog 博客">
+  
+  <meta name="description" content="当我们定义了一个函数或者对象的时候，自带有属性中有一个属性 __proto__，这个属性又被称作原型链，指向构造当前函数的 prototype 1234567function Test() &amp;#123;  this.a = 1&amp;#125;const test = new Test()console.log(test.__proto__)  // &amp;#123;constructor: f&amp;#125;">
+<meta name="keywords" content="JavaScript,prototype">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JavaScript 原型链">
+<meta property="og:url" content="https://lxxstar987.gitee.io/lxx1997.github.io/2021/01/14/js-prototype-chain/index.html">
+<meta property="og:site_name" content="SoulReader">
+<meta property="og:description" content="当我们定义了一个函数或者对象的时候，自带有属性中有一个属性 __proto__，这个属性又被称作原型链，指向构造当前函数的 prototype 1234567function Test() &amp;#123;  this.a = 1&amp;#125;const test = new Test()console.log(test.__proto__)  // &amp;#123;constructor: f&amp;#125;">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2021-01-17T16:13:30.534Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JavaScript 原型链">
+<meta name="twitter:description" content="当我们定义了一个函数或者对象的时候，自带有属性中有一个属性 __proto__，这个属性又被称作原型链，指向构造当前函数的 prototype 1234567function Test() &amp;#123;  this.a = 1&amp;#125;const test = new Test()console.log(test.__proto__)  // &amp;#123;constructor: f&amp;#125;">
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+  <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="../../../../css/style.css">
+  <script src="../../../../js/pace.min.js"></script>
+  
+
+  
+  
+
+</head>
+</html>
+<body>
+  <div id="container">
+      <header id="header">
+    <div id="banner"></div>
+    <div id="header-outer">
+        <div id="header-menu" class="header-menu-pos animated">
+            <div class="header-menu-container">
+                <a href="../../../../index.html" class="left">
+                    <span class="site-title">SoulReader</span>
+                </a>
+                <nav id="header-menu-nav" class="right">
+                    
+                    <a  href="../../../../index.html">
+                        <i class="fa fa-home"></i>
+                        <span>Home</span>
+                    </a>
+                    
+                </nav>
+                <a class="mobile-header-menu-button">
+                    <i class="fa fa-bars"></i>
+                </a>
+            </div>
+        </div>
+        <div id="header-row">
+            <div id="logo">
+                <a href="../../../../index.html">
+                    <img src="../../../../images/avatar.png" alt="logo">
+                </a>
+            </div>
+            <div class="header-info">
+                <div id="header-title">
+                    
+                    <h2>
+                        SoulReader
+                    </h2>
+                    
+                </div>
+                <div id="header-description">
+                    
+                    <h3>
+                        前端菜鸟 多多交流学习
+                    </h3>
+                    
+                </div>
+            </div>
+            <nav class="header-nav">
+                <div class="social">
+                    
+                        <a title="SoulReader" target="_blank" href="../../../../index.html">
+                            <i class="fa fa-home fa-2x"></i></a>
+                    
+                        <a title="Github" target="_blank" href="https://github.com/lxx1997">
+                            <i class="fa fa-github fa-2x"></i></a>
+                    
+                </div>
+            </nav>
+        </div>
+    </div>
+</header>
+      <div class="outer">
+        <section id="main" class="body-wrap"><article id="post-js-prototype-chain" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="post-title" itemprop="name">
+      JavaScript 原型链
+    </h1>
+    <div class="post-title-bar">
+      <ul>
+          
+              <li>
+                  <i class="fa fa-book"></i>
+                  
+                      <a href="/lxx1997.github.io/categories/JavaScript/">JavaScript</a>
+                  
+              </li>
+          
+        <li>
+          <i class="fa fa-calendar"></i>  2021-01-14
+        </li>
+        <li>
+          <i class="fa fa-eye"></i>
+          <span id="busuanzi_value_page_pv"></span>
+        </li>
+      </ul>
+    </div>
+  
+
+          
+      </header>
+    
+    <div class="article-entry post-content" itemprop="articleBody">
+      
+            
+            <p>当我们定义了一个函数或者对象的时候，自带有属性中有一个属性 <code>__proto__</code>，这个属性又被称作原型链，指向构造当前函数的 <code>prototype</code></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Test</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.a = <span class="number">1</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> test = <span class="keyword">new</span> Test()</span><br><span class="line"><span class="built_in">console</span>.log(test.__proto__)  <span class="comment">// &#123;constructor: f&#125;</span></span><br><span class="line"><span class="built_in">console</span>.log(Test.prototype)  <span class="comment">// &#123;constructor: f&#125;</span></span><br><span class="line"><span class="built_in">console</span>.log(test.__proto__ === Test.prototype)  <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+<p>当我们继续打印 <code>Test.prototype.__proto__</code> 的时候会发现 Test 的构造函数是 Object，即</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(Test.prototype.__proto__ === <span class="built_in">Object</span>.prototype)  <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+<p>这个时候就会发现有些特殊的事情，当我们在 Test 的 prototype 属性上添加一些属性或者 Object 的 prototype 上添加一些属性，这时通过 new 构造出来的实例能不能访问到这些属性或者方法呢，接下来让我们尝试一下</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">Test</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.a = <span class="number">1</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">const</span> test = <span class="keyword">new</span> Test()</span><br><span class="line">  Test.prototype.b = <span class="number">3</span></span><br><span class="line">  <span class="built_in">Object</span>.prototype.c = <span class="number">4</span></span><br><span class="line"></span><br><span class="line">  <span class="built_in">console</span>.log(test.a)   <span class="comment">// 1</span></span><br><span class="line">  <span class="built_in">console</span>.log(test.b)   <span class="comment">// 3</span></span><br><span class="line">  <span class="built_in">console</span>.log(test.c)   <span class="comment">// 4</span></span><br><span class="line">~</span><br></pre></td></tr></table></figure>
+<p>这个时候如果我们在 test 实例上新增一个属性 b 并赋值，这时侯打印出来的 test.b 的值是多少呢<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Test</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.a = <span class="number">1</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> test = <span class="keyword">new</span> Test()</span><br><span class="line">Test.prototype.b = <span class="number">3</span></span><br><span class="line"><span class="built_in">Object</span>.prototype.c = <span class="number">4</span></span><br><span class="line">test.b = <span class="number">5</span></span><br><span class="line"><span class="built_in">console</span>.log(test.b)   <span class="comment">// b</span></span><br></pre></td></tr></table></figure></p>
+<p>这是因为 使用 new 构造函数的时候，会自动继承构造函数上的所有方法及属性，当我们在访问实例的某个属性的时候，会现在实例对象上查找是否包含有这个属性，如果包含就直接返回，不包含的话就会在实例的原型链 <code>__proto__</code> 上继续查找，如果仍未找到，则会继续通过 <code>__proto__</code>一级一级的向上查找，直到找到 原型链的最后一级 <code>Object</code>,如果仍未找到就返回 <code>undefined</code></p>
+<p><strong>constructor</strong></p>
+<p>在实例的自身属性及 <code>__proto__</code> 属性上有一个 <code>contructor</code> 属性，该属性指向 构造当前实例的 构造函数</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Test</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.a = <span class="number">1</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> test = <span class="keyword">new</span> Test()</span><br><span class="line"><span class="comment">// 这是因为 使用 new  构造函数的时候 把 Test 的所有属性都赋予了 test</span></span><br><span class="line">test.__proto__.constructor  <span class="comment">// f Test() &#123;this.a = 1&#125;</span></span><br><span class="line">test.constructor  <span class="comment">// f Test() &#123;this.a = 1&#125;</span></span><br></pre></td></tr></table></figure>
+<p><strong>判断是否包含属性</strong></p>
+<p>如何判断 实例的属性 是在实例自身身上还是在原型链上呢，这时候可以通过 <code>Object.hasOwnProperty</code></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Test</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.a = <span class="number">1</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> test = <span class="keyword">new</span> Test()</span><br><span class="line">Test.prototype.b = <span class="number">3</span></span><br><span class="line"><span class="built_in">Object</span>.prototype.c = <span class="number">4</span></span><br><span class="line"><span class="built_in">console</span>.log(test.hasOwnProperty(<span class="string">'a'</span>)) <span class="comment">// true</span></span><br><span class="line"><span class="built_in">console</span>.log(test.hasOwnProperty(<span class="string">'b'</span>)) <span class="comment">// false</span></span><br><span class="line"><span class="built_in">console</span>.log(test.hasOwnProperty(<span class="string">'c'</span>)) <span class="comment">// false</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'a'</span> <span class="keyword">in</span> test) <span class="comment">// true</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'b'</span> <span class="keyword">in</span> test) <span class="comment">// true</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'v'</span> <span class="keyword">in</span> test) <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+<p>属性 b 和 c 是挂载到 test 的原型链上的属性，并不属于 test 自身，所以通过 <code>Object.hasOwnProperty</code> 访问的时候返回为 false</p>
+<p><strong>特殊的原型 Object 和 Function</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Function</span>.__proto__ === <span class="built_in">Function</span>.prototype   <span class="comment">// true</span></span><br><span class="line"><span class="built_in">Object</span>.__proto__ === <span class="built_in">Function</span>.prototype   <span class="comment">// true</span></span><br><span class="line"><span class="built_in">Object</span>.__proto__ === <span class="built_in">Function</span>.__proto__   <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+            <div class="post-copyright">
+    <div class="content">
+        <p>最后更新： 2021年01月18日 00:13</p>
+        <p>原始链接： <a class="post-url" href="" title="JavaScript 原型链">https://lxxstar987.gitee.io/lxx1997.github.io/2021/01/14/js-prototype-chain/</a></p>
+        <footer>
+            <a href="https://lxxstar987.gitee.io/lxx1997.github.io">
+                <img src="../../../../images/avatar.png" alt="lxx">
+                lxx
+            </a>
+        </footer>
+    </div>
+</div>
+
+      
+        
+            
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;">赏</a>
+</div>
+
+<div id="reward" class="post-modal reward-lay">
+    <a class="close" href="javascript:;" id="reward-close">×</a>
+    <span class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢大佬打赏
+        <i class="icon icon-quote-right"></i>
+    </span>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="../../../../images/wechat_code.jpg" alt="打赏二维码">
+        </div>
+        <div class="reward-select">
+            
+            <label class="reward-select-item checked" data-id="wechat" data-wechat="../../../../images/wechat_code.jpg">
+                <img class="reward-select-item-wechat" src="../../../../images/wechat.png" alt="微信">
+            </label>
+            
+            
+            <label class="reward-select-item" data-id="alipay" data-alipay="../../../../images/qq_code.jpg">
+                <img class="reward-select-item-alipay" src="../../../../images/alipay.png" alt="支付宝">
+            </label>
+            
+        </div>
+    </div>
+</div>
+
+
+        
+    </div>
+    <footer class="article-footer">
+        
+        
+<div class="post-share">
+    <a href="javascript:;" id="share-sub" class="post-share-fab">
+        <i class="fa fa-share-alt"></i>
+    </a>
+    <div class="post-share-list" id="share-list">
+        <ul class="share-icons">
+          <li>
+            <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://lxxstar987.gitee.io/lxx1997.github.io/2021/01/14/js-prototype-chain/&title=《JavaScript 原型链》 — SoulReader&pic=https://lxxstar987.gitee.io/lxx1997.github.ioimages/avatar.png" data-title="微博">
+              <i class="fa fa-weibo"></i>
+            </a>
+          </li>
+          <li>
+            <a class="weixin share-sns" id="wxFab" href="javascript:;" data-title="微信">
+              <i class="fa fa-weixin"></i>
+            </a>
+          </li>
+          <li>
+            <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://lxxstar987.gitee.io/lxx1997.github.io/2021/01/14/js-prototype-chain/&title=《JavaScript 原型链》 — SoulReader&source=前端小菜鸟,努力深造" data-title="QQ">
+              <i class="fa fa-qq"></i>
+            </a>
+          </li>
+          <li>
+            <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://lxxstar987.gitee.io/lxx1997.github.io/2021/01/14/js-prototype-chain/" data-title="Facebook">
+              <i class="fa fa-facebook"></i>
+            </a>
+          </li>
+          <li>
+            <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《JavaScript 原型链》 — SoulReader&url=https://lxxstar987.gitee.io/lxx1997.github.io/2021/01/14/js-prototype-chain/&via=https://lxxstar987.gitee.io/lxx1997.github.io" data-title="Twitter">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+          <li>
+            <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://lxxstar987.gitee.io/lxx1997.github.io/2021/01/14/js-prototype-chain/" data-title="Google+">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        </ul>
+     </div>
+</div>
+<div class="post-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;" id="wxShare-close">×</a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACp0lEQVR42u3aQW4jMQwEQP//08l1gWCSblE0vED5FAT2DEsHiWjx9Yo/X8Hn5/eT5/z+q3//8/TMCx88PDy8q6X//E7+st9/9fT8/O3JQuPh4eHt8Z6Kyzfo9vDIlyBfXDw8PLzP5J01x1EpR4cKHh4e3v/Cyw+G9pj5iIMBDw8PL+DlxbWwp40+B7wpa8HDw8PrMoHoFulz/l6538PDw8O7NBCQhLDzK7Hk6quuFg8PD2+BNykriQ/m/0ne/kedeHh4eFd5Z+HsfFHOAog2+MDDw8Pb4LWYtiFun9weQnVIgYeHh3eJNy+rPQDaxPVsSAsPDw9vg5c0tXn8Go1AxRHw5Ml4eHh427xbV035lf/ZN9ua8fDw8N7DazfuZLNO2uK7x8xrssZ4eHh4Me/s6itnT2KLPC7Bw8PD2+adBRPtMdA27ndDEzw8PLwNXnu5NRnASoo+W6DHd+Hh4eFd5Y1WJW6g8819PrBVX4Dh4eHhlbw2CGhb5Alj0qzj4eHh7fHyIiZLMB+raocP/hgdwMPDw7vKO2uR85C3feaoHjw8PLwF3iRyPRsySJbjLHRIomQ8PDy8W7w2Sthoo/MxgrZ+PDw8vA1e25K22/Te8EExEIaHh4d3lZc3uMkSTK678gOjCCPw8PDw1nj5a9pDIh+6alvnIlnBw8PDeyMvIU1GstrRrtFMGR4eHt5VXh6/tm1uvojFdn8rjMDDw8MreRtFt+1yfqlWD2Ph4eHhLfDazfdsIfImuz1IzkINPDw8vDlvozluh6LOoo3oYMDDw8Nb4yXNbjsC1V6bzcOIKMbFw8PDezsv36zzaDg/QtrhBjw8PLzP4bWXZJPhrbzhjtYVDw8P7xJvXlZ+eJzFHIcLhIeHh7fAmww2TYKGvJR2CfDw8PDWeN8iTF/0K3/AsgAAAABJRU5ErkJggg==" alt="微信分享二维码">
+</div>
+
+<div class="mask"></div>
+
+        
+        <ul class="article-footer-menu">
+            
+            
+  <li class="article-footer-tags">
+    <i class="fa fa-tags"></i>
+      
+    <a href="/lxx1997.github.io/tags/JavaScript/" class="color1">JavaScript</a>
+      
+    <a href="/lxx1997.github.io/tags/prototype/" class="color5">prototype</a>
+      
+  </li>
+
+        </ul>
+        
+    </footer>
+  </div>
+</article>
+
+
+
+<nav id="article-nav">
+  
+    <a href="../../15/vue3-vite-typescript-01/" id="article-nav-newer" class="article-nav-link-wrap">
+
+      <span class="article-nav-title">
+        <i class="fa fa-hand-o-left" aria-hidden="true"></i>
+        
+          Vue3 + Vite + TypeScript 项目实战 -----（一）搭建项目
+        
+      </span>
+    </a>
+  
+  
+    <a href="../../11/js-this-point/" id="article-nav-older" class="article-nav-link-wrap">
+      <span class="article-nav-title">JavaScript - this 指向问题</span>
+      <i class="fa fa-hand-o-right" aria-hidden="true"></i>
+    </a>
+  
+</nav>
+
+
+
+    
+</section>
+        
+      </div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+      <p>
+        Powered by  <a href="http://hexo.io/" target="_blank">Hexo</a>
+        Theme <a href="//github.com/wongminho/hexo-theme-miho" target="_blank">MiHo</a>
+      &copy; 2021 lxx<br>
+      </p>
+    </div>
+  </div>
+</footer>
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<script>
+  var mihoConfig = {
+      root: "https://lxxstar987.gitee.io/lxx1997.github.io",
+      animate: true,
+      isHome: false,
+      share: true,
+      reward: 1
+  }
+</script>
+<div class="sidebar">
+    <div id="sidebar-search" title="Search">
+        <i class="fa fa-search"></i>
+    </div>
+    <div id="sidebar-category" title="Categories">
+        <i class="fa fa-book"></i>
+    </div>
+    <div id="sidebar-tag" title="Tags">
+        <i class="fa fa-tags"></i>
+    </div>
+    <div id="sidebar-top">
+        <span class="sidebar-top-icon"><i class="fa fa-angle-up"></i></span>
+    </div>
+</div>
+<div class="sidebar-menu-box" id="sidebar-menu-box">
+    <div class="sidebar-menu-box-container">
+        <div id="sidebar-menu-box-categories">
+            <a class="category-link" href="../../../../categories/JavaScript/">JavaScript</a><a class="category-link" href="../../../../categories/Vue/">Vue</a><a class="category-link" href="../../../../categories/eggjs/">eggjs</a><a class="category-link" href="../../../../categories/nodejs-deno/">nodejs deno</a><a class="category-link" href="../../../../categories/thought/">thought</a><a class="category-link" href="../../../../categories/vue3-vite-ts/">vue3 vite ts</a><a class="category-link" href="../../../../categories/web/">web</a><a class="category-link" href="../../../../categories/面试/">面试</a>
+        </div>
+        <div id="sidebar-menu-box-tags">
+            <a href="../../../../tags/Api/" style="font-size: 10px;">Api</a> <a href="../../../../tags/Components/" style="font-size: 10px;">Components</a> <a href="../../../../tags/ES6/" style="font-size: 11.25px;">ES6</a> <a href="../../../../tags/HTML/" style="font-size: 10px;">HTML</a> <a href="../../../../tags/JavaScript/" style="font-size: 20px;">JavaScript</a> <a href="../../../../tags/TypeScript/" style="font-size: 11.25px;">TypeScript</a> <a href="../../../../tags/Vue/" style="font-size: 18.75px;">Vue</a> <a href="../../../../tags/Vue3/" style="font-size: 11.25px;">Vue3</a> <a href="../../../../tags/antd/" style="font-size: 10px;">antd</a> <a href="../../../../tags/array/" style="font-size: 11.25px;">array</a> <a href="../../../../tags/browser/" style="font-size: 10px;">browser</a> <a href="../../../../tags/canvas/" style="font-size: 12.5px;">canvas</a> <a href="../../../../tags/chrome/" style="font-size: 10px;">chrome</a> <a href="../../../../tags/coffeescript/" style="font-size: 11.25px;">coffeescript</a> <a href="../../../../tags/colorui/" style="font-size: 10px;">colorui</a> <a href="../../../../tags/css/" style="font-size: 13.75px;">css</a> <a href="../../../../tags/css3/" style="font-size: 11.25px;">css3</a> <a href="../../../../tags/customize-cra/" style="font-size: 10px;">customize-cra</a> <a href="../../../../tags/d3-js/" style="font-size: 10px;">d3.js</a> <a href="../../../../tags/deepin/" style="font-size: 10px;">deepin</a> <a href="../../../../tags/deno/" style="font-size: 10px;">deno</a> <a href="../../../../tags/docker/" style="font-size: 10px;">docker</a> <a href="../../../../tags/egg-mysql/" style="font-size: 10px;">egg-mysql</a> <a href="../../../../tags/eggjs/" style="font-size: 15px;">eggjs</a> <a href="../../../../tags/electron/" style="font-size: 10px;">electron</a> <a href="../../../../tags/es6/" style="font-size: 10px;">es6</a> <a href="../../../../tags/function/" style="font-size: 13.75px;">function</a> <a href="../../../../tags/github/" style="font-size: 10px;">github</a> <a href="../../../../tags/golang/" style="font-size: 10px;">golang</a> <a href="../../../../tags/html/" style="font-size: 17.5px;">html</a> <a href="../../../../tags/http/" style="font-size: 10px;">http</a> <a href="../../../../tags/indexedDB/" style="font-size: 10px;">indexedDB</a> <a href="../../../../tags/jsonwebtoken/" style="font-size: 10px;">jsonwebtoken</a> <a href="../../../../tags/less/" style="font-size: 10px;">less</a> <a href="../../../../tags/localStorage/" style="font-size: 10px;">localStorage</a> <a href="../../../../tags/method/" style="font-size: 11.25px;">method</a> <a href="../../../../tags/mysql/" style="font-size: 10px;">mysql</a> <a href="../../../../tags/node/" style="font-size: 10px;">node</a> <a href="../../../../tags/nodejs/" style="font-size: 11.25px;">nodejs</a> <a href="../../../../tags/npm/" style="font-size: 10px;">npm</a> <a href="../../../../tags/promise/" style="font-size: 10px;">promise</a> <a href="../../../../tags/prototype/" style="font-size: 10px;">prototype</a> <a href="../../../../tags/pygame/" style="font-size: 10px;">pygame</a> <a href="../../../../tags/python/" style="font-size: 10px;">python</a> <a href="../../../../tags/react/" style="font-size: 16.25px;">react</a> <a href="../../../../tags/react-app-rewired/" style="font-size: 10px;">react-app-rewired</a> <a href="../../../../tags/redis/" style="font-size: 10px;">redis</a> <a href="../../../../tags/router/" style="font-size: 10px;">router</a> <a href="../../../../tags/svg/" style="font-size: 11.25px;">svg</a> <a href="../../../../tags/swagger-ui/" style="font-size: 10px;">swagger-ui</a> <a href="../../../../tags/symbol/" style="font-size: 10px;">symbol</a> <a href="../../../../tags/this/" style="font-size: 10px;">this</a> <a href="../../../../tags/thought/" style="font-size: 12.5px;">thought</a> <a href="../../../../tags/typescript/" style="font-size: 16.25px;">typescript</a> <a href="../../../../tags/uni-app/" style="font-size: 10px;">uni-app</a> <a href="../../../../tags/vite/" style="font-size: 11.25px;">vite</a> <a href="../../../../tags/web/" style="font-size: 17.5px;">web</a> <a href="../../../../tags/webpack/" style="font-size: 11.25px;">webpack</a> <a href="../../../../tags/产品/" style="font-size: 10px;">产品</a> <a href="../../../../tags/前端/" style="font-size: 13.75px;">前端</a> <a href="../../../../tags/后台/" style="font-size: 10px;">后台</a> <a href="../../../../tags/安全/" style="font-size: 11.25px;">安全</a> <a href="../../../../tags/工具/" style="font-size: 11.25px;">工具</a> <a href="../../../../tags/性能/" style="font-size: 10px;">性能</a> <a href="../../../../tags/旧事/" style="font-size: 15px;">旧事</a> <a href="../../../../tags/模式/" style="font-size: 10px;">模式</a> <a href="../../../../tags/浏览器/" style="font-size: 11.25px;">浏览器</a> <a href="../../../../tags/源码/" style="font-size: 10px;">源码</a> <a href="../../../../tags/生活/" style="font-size: 13.75px;">生活</a> <a href="../../../../tags/经验/" style="font-size: 10px;">经验</a> <a href="../../../../tags/编码/" style="font-size: 10px;">编码</a> <a href="../../../../tags/药别停/" style="font-size: 10px;">药别停</a> <a href="../../../../tags/读后感/" style="font-size: 12.5px;">读后感</a> <a href="../../../../tags/面试/" style="font-size: 10px;">面试</a> <a href="../../../../tags/黑科技/" style="font-size: 10px;">黑科技</a>
+        </div>
+    </div>
+    <a href="javascript:;" class="sidebar-menu-box-close">&times;</a>
+</div>
+<div class="mobile-header-menu-nav" id="mobile-header-menu-nav">
+    <div class="mobile-header-menu-container">
+        <span class="title">Menus</span>
+        <ul class="mobile-header-menu-navbar">
+            
+            <li>
+                <a  href="../../../../index.html">
+                    <i class="fa fa-home"></i><span>Home</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    <div class="mobile-header-tag-container">
+        <span class="title">Tags</span>
+        <div id="mobile-header-container-tags">
+            <a href="../../../../tags/Api/" style="font-size: 10px;">Api</a> <a href="../../../../tags/Components/" style="font-size: 10px;">Components</a> <a href="../../../../tags/ES6/" style="font-size: 11.25px;">ES6</a> <a href="../../../../tags/HTML/" style="font-size: 10px;">HTML</a> <a href="../../../../tags/JavaScript/" style="font-size: 20px;">JavaScript</a> <a href="../../../../tags/TypeScript/" style="font-size: 11.25px;">TypeScript</a> <a href="../../../../tags/Vue/" style="font-size: 18.75px;">Vue</a> <a href="../../../../tags/Vue3/" style="font-size: 11.25px;">Vue3</a> <a href="../../../../tags/antd/" style="font-size: 10px;">antd</a> <a href="../../../../tags/array/" style="font-size: 11.25px;">array</a> <a href="../../../../tags/browser/" style="font-size: 10px;">browser</a> <a href="../../../../tags/canvas/" style="font-size: 12.5px;">canvas</a> <a href="../../../../tags/chrome/" style="font-size: 10px;">chrome</a> <a href="../../../../tags/coffeescript/" style="font-size: 11.25px;">coffeescript</a> <a href="../../../../tags/colorui/" style="font-size: 10px;">colorui</a> <a href="../../../../tags/css/" style="font-size: 13.75px;">css</a> <a href="../../../../tags/css3/" style="font-size: 11.25px;">css3</a> <a href="../../../../tags/customize-cra/" style="font-size: 10px;">customize-cra</a> <a href="../../../../tags/d3-js/" style="font-size: 10px;">d3.js</a> <a href="../../../../tags/deepin/" style="font-size: 10px;">deepin</a> <a href="../../../../tags/deno/" style="font-size: 10px;">deno</a> <a href="../../../../tags/docker/" style="font-size: 10px;">docker</a> <a href="../../../../tags/egg-mysql/" style="font-size: 10px;">egg-mysql</a> <a href="../../../../tags/eggjs/" style="font-size: 15px;">eggjs</a> <a href="../../../../tags/electron/" style="font-size: 10px;">electron</a> <a href="../../../../tags/es6/" style="font-size: 10px;">es6</a> <a href="../../../../tags/function/" style="font-size: 13.75px;">function</a> <a href="../../../../tags/github/" style="font-size: 10px;">github</a> <a href="../../../../tags/golang/" style="font-size: 10px;">golang</a> <a href="../../../../tags/html/" style="font-size: 17.5px;">html</a> <a href="../../../../tags/http/" style="font-size: 10px;">http</a> <a href="../../../../tags/indexedDB/" style="font-size: 10px;">indexedDB</a> <a href="../../../../tags/jsonwebtoken/" style="font-size: 10px;">jsonwebtoken</a> <a href="../../../../tags/less/" style="font-size: 10px;">less</a> <a href="../../../../tags/localStorage/" style="font-size: 10px;">localStorage</a> <a href="../../../../tags/method/" style="font-size: 11.25px;">method</a> <a href="../../../../tags/mysql/" style="font-size: 10px;">mysql</a> <a href="../../../../tags/node/" style="font-size: 10px;">node</a> <a href="../../../../tags/nodejs/" style="font-size: 11.25px;">nodejs</a> <a href="../../../../tags/npm/" style="font-size: 10px;">npm</a> <a href="../../../../tags/promise/" style="font-size: 10px;">promise</a> <a href="../../../../tags/prototype/" style="font-size: 10px;">prototype</a> <a href="../../../../tags/pygame/" style="font-size: 10px;">pygame</a> <a href="../../../../tags/python/" style="font-size: 10px;">python</a> <a href="../../../../tags/react/" style="font-size: 16.25px;">react</a> <a href="../../../../tags/react-app-rewired/" style="font-size: 10px;">react-app-rewired</a> <a href="../../../../tags/redis/" style="font-size: 10px;">redis</a> <a href="../../../../tags/router/" style="font-size: 10px;">router</a> <a href="../../../../tags/svg/" style="font-size: 11.25px;">svg</a> <a href="../../../../tags/swagger-ui/" style="font-size: 10px;">swagger-ui</a> <a href="../../../../tags/symbol/" style="font-size: 10px;">symbol</a> <a href="../../../../tags/this/" style="font-size: 10px;">this</a> <a href="../../../../tags/thought/" style="font-size: 12.5px;">thought</a> <a href="../../../../tags/typescript/" style="font-size: 16.25px;">typescript</a> <a href="../../../../tags/uni-app/" style="font-size: 10px;">uni-app</a> <a href="../../../../tags/vite/" style="font-size: 11.25px;">vite</a> <a href="../../../../tags/web/" style="font-size: 17.5px;">web</a> <a href="../../../../tags/webpack/" style="font-size: 11.25px;">webpack</a> <a href="../../../../tags/产品/" style="font-size: 10px;">产品</a> <a href="../../../../tags/前端/" style="font-size: 13.75px;">前端</a> <a href="../../../../tags/后台/" style="font-size: 10px;">后台</a> <a href="../../../../tags/安全/" style="font-size: 11.25px;">安全</a> <a href="../../../../tags/工具/" style="font-size: 11.25px;">工具</a> <a href="../../../../tags/性能/" style="font-size: 10px;">性能</a> <a href="../../../../tags/旧事/" style="font-size: 15px;">旧事</a> <a href="../../../../tags/模式/" style="font-size: 10px;">模式</a> <a href="../../../../tags/浏览器/" style="font-size: 11.25px;">浏览器</a> <a href="../../../../tags/源码/" style="font-size: 10px;">源码</a> <a href="../../../../tags/生活/" style="font-size: 13.75px;">生活</a> <a href="../../../../tags/经验/" style="font-size: 10px;">经验</a> <a href="../../../../tags/编码/" style="font-size: 10px;">编码</a> <a href="../../../../tags/药别停/" style="font-size: 10px;">药别停</a> <a href="../../../../tags/读后感/" style="font-size: 12.5px;">读后感</a> <a href="../../../../tags/面试/" style="font-size: 10px;">面试</a> <a href="../../../../tags/黑科技/" style="font-size: 10px;">黑科技</a>
+        </div>
+    </div>
+</div>
+<div class="search-wrap">
+    <span class="search-close">&times;</span>
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+            <i class="icon icon-lg icon-chevron-left"></i>
+        </a>
+        <input class="search-field" placeholder="Search..." id="keywords">
+        <a id="search-submit" href="javascript:;">
+            <i class="fa fa-search"></i>
+        </a>
+    <div class="search-container" id="search-container">
+        <ul class="search-result" id="search-result">
+        </ul>
+    </div>
+</div>
+
+<div id="search-tpl">
+    <li class="search-result-item">
+        <a href="{url}" class="search-item-li">
+            <span class="search-item-li-title" title="{title}">{title}</span>
+        </a>
+    </li>
+</div>
+<script src="../../../../js/search.js"></script>
+<script src="../../../../js/main.js"></script>
+
+
+  <script src="//cdn.bootcss.com/particles.js/2.0.0/particles.min.js"></script>
+  <div id="particles"></div>
+  <script src="../../../../js/particles.js"></script>
+
+
+
+
+
+
+
+  <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
+  <script src="//cdn.bootcss.com/scrollReveal.js/3.0.5/scrollreveal.js"></script>
+  <script src="../../../../js/animate.js"></script>
+
+
+  <script src="../../../../js/pop-img.js"></script>
+  <script>
+     $(".article-entry p img").popImg();
+  </script>
+
+  </div>
+<script src="/lxx1997.github.io/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/lxx1997.github.io/live2dw/assets/kesyoban.model.json"},"display":{"position":"left","width":300,"height":300},"mobile":{"show":true},"log":false});</script></body>
+</html>

@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+  <title>Vue3 + Vite + TypeScript 项目实战 -----（二）使用 Vue3 新特性 | SoulReader</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+    <meta name="keywords" content="blog 博客">
+  
+  <meta name="description" content="Vue3 新特性全局 Vue Api 实例修改旧版 Vue 没有全局 api 实例，通过 new Vue 创建，创建全局组件或者指令通常采用一下方式 1234567Vue.component(&apos;componentName&apos;, &amp;#123;  data: () =&amp;gt; &amp;#123;return &amp;#123;&amp;#125;&amp;#125;,  create() &amp;#123;&amp;#125;&amp;#125;Vu">
+<meta name="keywords" content="Vue3,vite,TypeScript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Vue3 + Vite + TypeScript 项目实战 -----（二）使用 Vue3 新特性">
+<meta property="og:url" content="https://lxxstar987.gitee.io/lxx1997.github.io/2021/01/17/vue3-vite-typescript-02/index.html">
+<meta property="og:site_name" content="SoulReader">
+<meta property="og:description" content="Vue3 新特性全局 Vue Api 实例修改旧版 Vue 没有全局 api 实例，通过 new Vue 创建，创建全局组件或者指令通常采用一下方式 1234567Vue.component(&apos;componentName&apos;, &amp;#123;  data: () =&amp;gt; &amp;#123;return &amp;#123;&amp;#125;&amp;#125;,  create() &amp;#123;&amp;#125;&amp;#125;Vu">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2021-01-17T14:40:46.847Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Vue3 + Vite + TypeScript 项目实战 -----（二）使用 Vue3 新特性">
+<meta name="twitter:description" content="Vue3 新特性全局 Vue Api 实例修改旧版 Vue 没有全局 api 实例，通过 new Vue 创建，创建全局组件或者指令通常采用一下方式 1234567Vue.component(&apos;componentName&apos;, &amp;#123;  data: () =&amp;gt; &amp;#123;return &amp;#123;&amp;#125;&amp;#125;,  create() &amp;#123;&amp;#125;&amp;#125;Vu">
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+  <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="../../../../css/style.css">
+  <script src="../../../../js/pace.min.js"></script>
+  
+
+  
+  
+
+</head>
+</html>
+<body>
+  <div id="container">
+      <header id="header">
+    <div id="banner"></div>
+    <div id="header-outer">
+        <div id="header-menu" class="header-menu-pos animated">
+            <div class="header-menu-container">
+                <a href="../../../../index.html" class="left">
+                    <span class="site-title">SoulReader</span>
+                </a>
+                <nav id="header-menu-nav" class="right">
+                    
+                    <a  href="../../../../index.html">
+                        <i class="fa fa-home"></i>
+                        <span>Home</span>
+                    </a>
+                    
+                </nav>
+                <a class="mobile-header-menu-button">
+                    <i class="fa fa-bars"></i>
+                </a>
+            </div>
+        </div>
+        <div id="header-row">
+            <div id="logo">
+                <a href="../../../../index.html">
+                    <img src="../../../../images/avatar.png" alt="logo">
+                </a>
+            </div>
+            <div class="header-info">
+                <div id="header-title">
+                    
+                    <h2>
+                        SoulReader
+                    </h2>
+                    
+                </div>
+                <div id="header-description">
+                    
+                    <h3>
+                        前端菜鸟 多多交流学习
+                    </h3>
+                    
+                </div>
+            </div>
+            <nav class="header-nav">
+                <div class="social">
+                    
+                        <a title="SoulReader" target="_blank" href="../../../../index.html">
+                            <i class="fa fa-home fa-2x"></i></a>
+                    
+                        <a title="Github" target="_blank" href="https://github.com/lxx1997">
+                            <i class="fa fa-github fa-2x"></i></a>
+                    
+                </div>
+            </nav>
+        </div>
+    </div>
+</header>
+      <div class="outer">
+        <section id="main" class="body-wrap"><article id="post-vue3-vite-typescript-02" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="post-title" itemprop="name">
+      Vue3 + Vite + TypeScript 项目实战 -----（二）使用 Vue3 新特性
+    </h1>
+    <div class="post-title-bar">
+      <ul>
+          
+              <li>
+                  <i class="fa fa-book"></i>
+                  
+                      <a href="/lxx1997.github.io/categories/vue3vitets/">vue3 vite ts</a>
+                  
+              </li>
+          
+        <li>
+          <i class="fa fa-calendar"></i>  2021-01-17
+        </li>
+        <li>
+          <i class="fa fa-eye"></i>
+          <span id="busuanzi_value_page_pv"></span>
+        </li>
+      </ul>
+    </div>
+  
+
+          
+      </header>
+    
+    <div class="article-entry post-content" itemprop="articleBody">
+      
+            
+            <hr>
+<h4 id="Vue3-新特性"><a href="#Vue3-新特性" class="headerlink" title="Vue3 新特性"></a>Vue3 新特性</h4><h5 id="全局-Vue-Api-实例修改"><a href="#全局-Vue-Api-实例修改" class="headerlink" title="全局 Vue Api 实例修改"></a>全局 Vue Api 实例修改</h5><p>旧版 Vue 没有全局 api 实例，通过 new Vue 创建，创建全局组件或者指令通常采用一下方式</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Vue.component(<span class="string">'componentName'</span>, &#123;</span><br><span class="line">  data: <span class="function"><span class="params">()</span> =&gt;</span> &#123;<span class="keyword">return</span> &#123;&#125;&#125;,</span><br><span class="line">  create() &#123;&#125;</span><br><span class="line">&#125;</span><br><span class="line">Vue.directive(<span class="string">'focus'</span>, &#123;</span><br><span class="line">  inserted: <span class="function"><span class="params">el</span> =&gt;</span> el.focus()</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>Vue3.0 新增了 createApp 方法，该方法返回一个 Vue 实例，使我们可以创建多个 Vue 实例</p>
+<h5 id="生命周期函数-hooks"><a href="#生命周期函数-hooks" class="headerlink" title="生命周期函数 hooks"></a>生命周期函数 hooks</h5><ul>
+<li>onBeforeMount  取代 <del>beforeMount</del></li>
+<li>onMounted  取代 <del>mounted</del></li>
+<li>onBeforeUpdate  取代 <del>beforeUpdate</del></li>
+<li>onUpdated  取代 <del>updated</del></li>
+<li>onBeforeUnmount  取代 <del>beforeUnmount</del></li>
+<li>onUnmounted  取代 <del>unmounted</del></li>
+<li>onRenderTriggered  取代</li>
+<li>onRenderTracked  取代</li>
+<li>onErrorCaptured   取代 <del>errorCaptured</del></li>
+</ul>
+
+            <div class="post-copyright">
+    <div class="content">
+        <p>最后更新： 2021年01月17日 22:40</p>
+        <p>原始链接： <a class="post-url" href="" title="Vue3 + Vite + TypeScript 项目实战 -----（二）使用 Vue3 新特性">https://lxxstar987.gitee.io/lxx1997.github.io/2021/01/17/vue3-vite-typescript-02/</a></p>
+        <footer>
+            <a href="https://lxxstar987.gitee.io/lxx1997.github.io">
+                <img src="../../../../images/avatar.png" alt="lxx">
+                lxx
+            </a>
+        </footer>
+    </div>
+</div>
+
+      
+        
+            
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;">赏</a>
+</div>
+
+<div id="reward" class="post-modal reward-lay">
+    <a class="close" href="javascript:;" id="reward-close">×</a>
+    <span class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢大佬打赏
+        <i class="icon icon-quote-right"></i>
+    </span>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="../../../../images/wechat_code.jpg" alt="打赏二维码">
+        </div>
+        <div class="reward-select">
+            
+            <label class="reward-select-item checked" data-id="wechat" data-wechat="../../../../images/wechat_code.jpg">
+                <img class="reward-select-item-wechat" src="../../../../images/wechat.png" alt="微信">
+            </label>
+            
+            
+            <label class="reward-select-item" data-id="alipay" data-alipay="../../../../images/qq_code.jpg">
+                <img class="reward-select-item-alipay" src="../../../../images/alipay.png" alt="支付宝">
+            </label>
+            
+        </div>
+    </div>
+</div>
+
+
+        
+    </div>
+    <footer class="article-footer">
+        
+        
+<div class="post-share">
+    <a href="javascript:;" id="share-sub" class="post-share-fab">
+        <i class="fa fa-share-alt"></i>
+    </a>
+    <div class="post-share-list" id="share-list">
+        <ul class="share-icons">
+          <li>
+            <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://lxxstar987.gitee.io/lxx1997.github.io/2021/01/17/vue3-vite-typescript-02/&title=《Vue3 + Vite + TypeScript 项目实战 -----（二）使用 Vue3 新特性》 — SoulReader&pic=https://lxxstar987.gitee.io/lxx1997.github.ioimages/avatar.png" data-title="微博">
+              <i class="fa fa-weibo"></i>
+            </a>
+          </li>
+          <li>
+            <a class="weixin share-sns" id="wxFab" href="javascript:;" data-title="微信">
+              <i class="fa fa-weixin"></i>
+            </a>
+          </li>
+          <li>
+            <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://lxxstar987.gitee.io/lxx1997.github.io/2021/01/17/vue3-vite-typescript-02/&title=《Vue3 + Vite + TypeScript 项目实战 -----（二）使用 Vue3 新特性》 — SoulReader&source=前端小菜鸟,努力深造" data-title="QQ">
+              <i class="fa fa-qq"></i>
+            </a>
+          </li>
+          <li>
+            <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://lxxstar987.gitee.io/lxx1997.github.io/2021/01/17/vue3-vite-typescript-02/" data-title="Facebook">
+              <i class="fa fa-facebook"></i>
+            </a>
+          </li>
+          <li>
+            <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Vue3 + Vite + TypeScript 项目实战 -----（二）使用 Vue3 新特性》 — SoulReader&url=https://lxxstar987.gitee.io/lxx1997.github.io/2021/01/17/vue3-vite-typescript-02/&via=https://lxxstar987.gitee.io/lxx1997.github.io" data-title="Twitter">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+          <li>
+            <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://lxxstar987.gitee.io/lxx1997.github.io/2021/01/17/vue3-vite-typescript-02/" data-title="Google+">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        </ul>
+     </div>
+</div>
+<div class="post-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;" id="wxShare-close">×</a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACvElEQVR42u3aQXIbMQwEQP3/087VKVvyDEDaOvSeUlqZYvNAIAAej/j5+PR8/fzZNz+/zf/22Sdf3x578PDw8BZbf725/O3rLW7Wz/eMh4eHd5v37EZNtpgEgA0sDxJ4eHh478lrr/hZijz7Wzw8PLz35+WpeX7F5yk4Hh4e3t/y7qW2PxQL4nByvdaCh4eHF/PyLtL7/PtKfw8PDw9v3VXPywqzILEp8ka7xcPDw7vAyy/cWVEgL9Tme6iHw/Dw8PCO8vJNJGWCorQaN8DaQYT/VsbDw8O7wNv8/CyEtG2zdqTgcep08fDw8IJ9zsaqNgWFTROuTuLx8PDwDvHyq78tK+yLEbM0fRjZ8PDw8Mp8OC/Fvk5nZ5d4EnLyoyzCAx4eHt6aN0t5Z4XXduU2OD02W8fDw8N7+TZZbt/+nx3fgX3i4eHhXeBt2v/5hZ4n00nqnKTyP6TUeHh4eEd5+dWftPBn3980275ZGQ8PD+8orx2NmuWr+XhBHlTqZBoPDw/vEK9tgLUlifywEnYeMPDw8PBu89r0t01w8+T47H7w8PDwbvCSH2trG/tRrVmr7JvP8fDw8C7wTo0I5C3/Wfmj3eHhCQg8PDy8srU/bNgfbWht9oyHh4d3m5cPOSUH0QabdtSg/SYeHh7eKd6shNoOY83WSZ6oGIGHh4f3i7x8uKotOswCSZ124+Hh4V3j7RPoGWyzwus18fDw8G7z8oCRLLpHtmXcpyvg4eHhHeV9lM8sKZ8NJRTlhmdv8fDw8C7wZu35dliqLenmwwrtUeLh4eGd4s3KDW0JeHYoBwIDHh4e3jVem+wmjau8VLF5DtRa8PDw8C7z8sLrrIQx+91VAwwPDw/vMq9o2184piTpx8PDw/sdXlKMmJUk2tLGvhCMh4eHd5vX/oc/OZQ2XZ4FhlVPDw8PD2/C+weuZ32CTTH1VwAAAABJRU5ErkJggg==" alt="微信分享二维码">
+</div>
+
+<div class="mask"></div>
+
+        
+        <ul class="article-footer-menu">
+            
+            
+  <li class="article-footer-tags">
+    <i class="fa fa-tags"></i>
+      
+    <a href="/lxx1997.github.io/tags/Vue3/" class="color5">Vue3</a>
+      
+    <a href="/lxx1997.github.io/tags/vite/" class="color5">vite</a>
+      
+    <a href="/lxx1997.github.io/tags/TypeScript/" class="color1">TypeScript</a>
+      
+  </li>
+
+        </ul>
+        
+    </footer>
+  </div>
+</article>
+
+
+    <aside class="post-toc-pos post-toc-top" id="post-toc">
+        <nav class="post-toc-wrap">
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Vue3-新特性"><span class="post-toc-text">Vue3 新特性</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#全局-Vue-Api-实例修改"><span class="post-toc-text">全局 Vue Api 实例修改</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#生命周期函数-hooks"><span class="post-toc-text">生命周期函数 hooks</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+    
+
+<nav id="article-nav">
+  
+  
+    <a href="../../15/vue3-vite-typescript-01/" id="article-nav-older" class="article-nav-link-wrap">
+      <span class="article-nav-title">Vue3 + Vite + TypeScript 项目实战 -----（一）搭建项目</span>
+      <i class="fa fa-hand-o-right" aria-hidden="true"></i>
+    </a>
+  
+</nav>
+
+
+
+    
+</section>
+        
+      </div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+      <p>
+        Powered by  <a href="http://hexo.io/" target="_blank">Hexo</a>
+        Theme <a href="//github.com/wongminho/hexo-theme-miho" target="_blank">MiHo</a>
+      &copy; 2021 lxx<br>
+      </p>
+    </div>
+  </div>
+</footer>
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<script>
+  var mihoConfig = {
+      root: "https://lxxstar987.gitee.io/lxx1997.github.io",
+      animate: true,
+      isHome: false,
+      share: true,
+      reward: 1
+  }
+</script>
+<div class="sidebar">
+    <div id="sidebar-search" title="Search">
+        <i class="fa fa-search"></i>
+    </div>
+    <div id="sidebar-category" title="Categories">
+        <i class="fa fa-book"></i>
+    </div>
+    <div id="sidebar-tag" title="Tags">
+        <i class="fa fa-tags"></i>
+    </div>
+    <div id="sidebar-top">
+        <span class="sidebar-top-icon"><i class="fa fa-angle-up"></i></span>
+    </div>
+</div>
+<div class="sidebar-menu-box" id="sidebar-menu-box">
+    <div class="sidebar-menu-box-container">
+        <div id="sidebar-menu-box-categories">
+            <a class="category-link" href="../../../../categories/JavaScript/">JavaScript</a><a class="category-link" href="../../../../categories/Vue/">Vue</a><a class="category-link" href="../../../../categories/eggjs/">eggjs</a><a class="category-link" href="../../../../categories/nodejs-deno/">nodejs deno</a><a class="category-link" href="../../../../categories/thought/">thought</a><a class="category-link" href="../../../../categories/vue3-vite-ts/">vue3 vite ts</a><a class="category-link" href="../../../../categories/web/">web</a><a class="category-link" href="../../../../categories/面试/">面试</a>
+        </div>
+        <div id="sidebar-menu-box-tags">
+            <a href="../../../../tags/Api/" style="font-size: 10px;">Api</a> <a href="../../../../tags/Components/" style="font-size: 10px;">Components</a> <a href="../../../../tags/ES6/" style="font-size: 11.25px;">ES6</a> <a href="../../../../tags/HTML/" style="font-size: 10px;">HTML</a> <a href="../../../../tags/JavaScript/" style="font-size: 20px;">JavaScript</a> <a href="../../../../tags/TypeScript/" style="font-size: 11.25px;">TypeScript</a> <a href="../../../../tags/Vue/" style="font-size: 18.75px;">Vue</a> <a href="../../../../tags/Vue3/" style="font-size: 11.25px;">Vue3</a> <a href="../../../../tags/antd/" style="font-size: 10px;">antd</a> <a href="../../../../tags/array/" style="font-size: 11.25px;">array</a> <a href="../../../../tags/browser/" style="font-size: 10px;">browser</a> <a href="../../../../tags/canvas/" style="font-size: 12.5px;">canvas</a> <a href="../../../../tags/chrome/" style="font-size: 10px;">chrome</a> <a href="../../../../tags/coffeescript/" style="font-size: 11.25px;">coffeescript</a> <a href="../../../../tags/colorui/" style="font-size: 10px;">colorui</a> <a href="../../../../tags/css/" style="font-size: 13.75px;">css</a> <a href="../../../../tags/css3/" style="font-size: 11.25px;">css3</a> <a href="../../../../tags/customize-cra/" style="font-size: 10px;">customize-cra</a> <a href="../../../../tags/d3-js/" style="font-size: 10px;">d3.js</a> <a href="../../../../tags/deepin/" style="font-size: 10px;">deepin</a> <a href="../../../../tags/deno/" style="font-size: 10px;">deno</a> <a href="../../../../tags/docker/" style="font-size: 10px;">docker</a> <a href="../../../../tags/egg-mysql/" style="font-size: 10px;">egg-mysql</a> <a href="../../../../tags/eggjs/" style="font-size: 15px;">eggjs</a> <a href="../../../../tags/electron/" style="font-size: 10px;">electron</a> <a href="../../../../tags/es6/" style="font-size: 10px;">es6</a> <a href="../../../../tags/function/" style="font-size: 13.75px;">function</a> <a href="../../../../tags/github/" style="font-size: 10px;">github</a> <a href="../../../../tags/golang/" style="font-size: 10px;">golang</a> <a href="../../../../tags/html/" style="font-size: 17.5px;">html</a> <a href="../../../../tags/http/" style="font-size: 10px;">http</a> <a href="../../../../tags/indexedDB/" style="font-size: 10px;">indexedDB</a> <a href="../../../../tags/jsonwebtoken/" style="font-size: 10px;">jsonwebtoken</a> <a href="../../../../tags/less/" style="font-size: 10px;">less</a> <a href="../../../../tags/localStorage/" style="font-size: 10px;">localStorage</a> <a href="../../../../tags/method/" style="font-size: 11.25px;">method</a> <a href="../../../../tags/mysql/" style="font-size: 10px;">mysql</a> <a href="../../../../tags/node/" style="font-size: 10px;">node</a> <a href="../../../../tags/nodejs/" style="font-size: 11.25px;">nodejs</a> <a href="../../../../tags/npm/" style="font-size: 10px;">npm</a> <a href="../../../../tags/promise/" style="font-size: 10px;">promise</a> <a href="../../../../tags/prototype/" style="font-size: 10px;">prototype</a> <a href="../../../../tags/pygame/" style="font-size: 10px;">pygame</a> <a href="../../../../tags/python/" style="font-size: 10px;">python</a> <a href="../../../../tags/react/" style="font-size: 16.25px;">react</a> <a href="../../../../tags/react-app-rewired/" style="font-size: 10px;">react-app-rewired</a> <a href="../../../../tags/redis/" style="font-size: 10px;">redis</a> <a href="../../../../tags/router/" style="font-size: 10px;">router</a> <a href="../../../../tags/svg/" style="font-size: 11.25px;">svg</a> <a href="../../../../tags/swagger-ui/" style="font-size: 10px;">swagger-ui</a> <a href="../../../../tags/symbol/" style="font-size: 10px;">symbol</a> <a href="../../../../tags/this/" style="font-size: 10px;">this</a> <a href="../../../../tags/thought/" style="font-size: 12.5px;">thought</a> <a href="../../../../tags/typescript/" style="font-size: 16.25px;">typescript</a> <a href="../../../../tags/uni-app/" style="font-size: 10px;">uni-app</a> <a href="../../../../tags/vite/" style="font-size: 11.25px;">vite</a> <a href="../../../../tags/web/" style="font-size: 17.5px;">web</a> <a href="../../../../tags/webpack/" style="font-size: 11.25px;">webpack</a> <a href="../../../../tags/产品/" style="font-size: 10px;">产品</a> <a href="../../../../tags/前端/" style="font-size: 13.75px;">前端</a> <a href="../../../../tags/后台/" style="font-size: 10px;">后台</a> <a href="../../../../tags/安全/" style="font-size: 11.25px;">安全</a> <a href="../../../../tags/工具/" style="font-size: 11.25px;">工具</a> <a href="../../../../tags/性能/" style="font-size: 10px;">性能</a> <a href="../../../../tags/旧事/" style="font-size: 15px;">旧事</a> <a href="../../../../tags/模式/" style="font-size: 10px;">模式</a> <a href="../../../../tags/浏览器/" style="font-size: 11.25px;">浏览器</a> <a href="../../../../tags/源码/" style="font-size: 10px;">源码</a> <a href="../../../../tags/生活/" style="font-size: 13.75px;">生活</a> <a href="../../../../tags/经验/" style="font-size: 10px;">经验</a> <a href="../../../../tags/编码/" style="font-size: 10px;">编码</a> <a href="../../../../tags/药别停/" style="font-size: 10px;">药别停</a> <a href="../../../../tags/读后感/" style="font-size: 12.5px;">读后感</a> <a href="../../../../tags/面试/" style="font-size: 10px;">面试</a> <a href="../../../../tags/黑科技/" style="font-size: 10px;">黑科技</a>
+        </div>
+    </div>
+    <a href="javascript:;" class="sidebar-menu-box-close">&times;</a>
+</div>
+<div class="mobile-header-menu-nav" id="mobile-header-menu-nav">
+    <div class="mobile-header-menu-container">
+        <span class="title">Menus</span>
+        <ul class="mobile-header-menu-navbar">
+            
+            <li>
+                <a  href="../../../../index.html">
+                    <i class="fa fa-home"></i><span>Home</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    <div class="mobile-header-tag-container">
+        <span class="title">Tags</span>
+        <div id="mobile-header-container-tags">
+            <a href="../../../../tags/Api/" style="font-size: 10px;">Api</a> <a href="../../../../tags/Components/" style="font-size: 10px;">Components</a> <a href="../../../../tags/ES6/" style="font-size: 11.25px;">ES6</a> <a href="../../../../tags/HTML/" style="font-size: 10px;">HTML</a> <a href="../../../../tags/JavaScript/" style="font-size: 20px;">JavaScript</a> <a href="../../../../tags/TypeScript/" style="font-size: 11.25px;">TypeScript</a> <a href="../../../../tags/Vue/" style="font-size: 18.75px;">Vue</a> <a href="../../../../tags/Vue3/" style="font-size: 11.25px;">Vue3</a> <a href="../../../../tags/antd/" style="font-size: 10px;">antd</a> <a href="../../../../tags/array/" style="font-size: 11.25px;">array</a> <a href="../../../../tags/browser/" style="font-size: 10px;">browser</a> <a href="../../../../tags/canvas/" style="font-size: 12.5px;">canvas</a> <a href="../../../../tags/chrome/" style="font-size: 10px;">chrome</a> <a href="../../../../tags/coffeescript/" style="font-size: 11.25px;">coffeescript</a> <a href="../../../../tags/colorui/" style="font-size: 10px;">colorui</a> <a href="../../../../tags/css/" style="font-size: 13.75px;">css</a> <a href="../../../../tags/css3/" style="font-size: 11.25px;">css3</a> <a href="../../../../tags/customize-cra/" style="font-size: 10px;">customize-cra</a> <a href="../../../../tags/d3-js/" style="font-size: 10px;">d3.js</a> <a href="../../../../tags/deepin/" style="font-size: 10px;">deepin</a> <a href="../../../../tags/deno/" style="font-size: 10px;">deno</a> <a href="../../../../tags/docker/" style="font-size: 10px;">docker</a> <a href="../../../../tags/egg-mysql/" style="font-size: 10px;">egg-mysql</a> <a href="../../../../tags/eggjs/" style="font-size: 15px;">eggjs</a> <a href="../../../../tags/electron/" style="font-size: 10px;">electron</a> <a href="../../../../tags/es6/" style="font-size: 10px;">es6</a> <a href="../../../../tags/function/" style="font-size: 13.75px;">function</a> <a href="../../../../tags/github/" style="font-size: 10px;">github</a> <a href="../../../../tags/golang/" style="font-size: 10px;">golang</a> <a href="../../../../tags/html/" style="font-size: 17.5px;">html</a> <a href="../../../../tags/http/" style="font-size: 10px;">http</a> <a href="../../../../tags/indexedDB/" style="font-size: 10px;">indexedDB</a> <a href="../../../../tags/jsonwebtoken/" style="font-size: 10px;">jsonwebtoken</a> <a href="../../../../tags/less/" style="font-size: 10px;">less</a> <a href="../../../../tags/localStorage/" style="font-size: 10px;">localStorage</a> <a href="../../../../tags/method/" style="font-size: 11.25px;">method</a> <a href="../../../../tags/mysql/" style="font-size: 10px;">mysql</a> <a href="../../../../tags/node/" style="font-size: 10px;">node</a> <a href="../../../../tags/nodejs/" style="font-size: 11.25px;">nodejs</a> <a href="../../../../tags/npm/" style="font-size: 10px;">npm</a> <a href="../../../../tags/promise/" style="font-size: 10px;">promise</a> <a href="../../../../tags/prototype/" style="font-size: 10px;">prototype</a> <a href="../../../../tags/pygame/" style="font-size: 10px;">pygame</a> <a href="../../../../tags/python/" style="font-size: 10px;">python</a> <a href="../../../../tags/react/" style="font-size: 16.25px;">react</a> <a href="../../../../tags/react-app-rewired/" style="font-size: 10px;">react-app-rewired</a> <a href="../../../../tags/redis/" style="font-size: 10px;">redis</a> <a href="../../../../tags/router/" style="font-size: 10px;">router</a> <a href="../../../../tags/svg/" style="font-size: 11.25px;">svg</a> <a href="../../../../tags/swagger-ui/" style="font-size: 10px;">swagger-ui</a> <a href="../../../../tags/symbol/" style="font-size: 10px;">symbol</a> <a href="../../../../tags/this/" style="font-size: 10px;">this</a> <a href="../../../../tags/thought/" style="font-size: 12.5px;">thought</a> <a href="../../../../tags/typescript/" style="font-size: 16.25px;">typescript</a> <a href="../../../../tags/uni-app/" style="font-size: 10px;">uni-app</a> <a href="../../../../tags/vite/" style="font-size: 11.25px;">vite</a> <a href="../../../../tags/web/" style="font-size: 17.5px;">web</a> <a href="../../../../tags/webpack/" style="font-size: 11.25px;">webpack</a> <a href="../../../../tags/产品/" style="font-size: 10px;">产品</a> <a href="../../../../tags/前端/" style="font-size: 13.75px;">前端</a> <a href="../../../../tags/后台/" style="font-size: 10px;">后台</a> <a href="../../../../tags/安全/" style="font-size: 11.25px;">安全</a> <a href="../../../../tags/工具/" style="font-size: 11.25px;">工具</a> <a href="../../../../tags/性能/" style="font-size: 10px;">性能</a> <a href="../../../../tags/旧事/" style="font-size: 15px;">旧事</a> <a href="../../../../tags/模式/" style="font-size: 10px;">模式</a> <a href="../../../../tags/浏览器/" style="font-size: 11.25px;">浏览器</a> <a href="../../../../tags/源码/" style="font-size: 10px;">源码</a> <a href="../../../../tags/生活/" style="font-size: 13.75px;">生活</a> <a href="../../../../tags/经验/" style="font-size: 10px;">经验</a> <a href="../../../../tags/编码/" style="font-size: 10px;">编码</a> <a href="../../../../tags/药别停/" style="font-size: 10px;">药别停</a> <a href="../../../../tags/读后感/" style="font-size: 12.5px;">读后感</a> <a href="../../../../tags/面试/" style="font-size: 10px;">面试</a> <a href="../../../../tags/黑科技/" style="font-size: 10px;">黑科技</a>
+        </div>
+    </div>
+</div>
+<div class="search-wrap">
+    <span class="search-close">&times;</span>
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+            <i class="icon icon-lg icon-chevron-left"></i>
+        </a>
+        <input class="search-field" placeholder="Search..." id="keywords">
+        <a id="search-submit" href="javascript:;">
+            <i class="fa fa-search"></i>
+        </a>
+    <div class="search-container" id="search-container">
+        <ul class="search-result" id="search-result">
+        </ul>
+    </div>
+</div>
+
+<div id="search-tpl">
+    <li class="search-result-item">
+        <a href="{url}" class="search-item-li">
+            <span class="search-item-li-title" title="{title}">{title}</span>
+        </a>
+    </li>
+</div>
+<script src="../../../../js/search.js"></script>
+<script src="../../../../js/main.js"></script>
+
+
+  <script src="//cdn.bootcss.com/particles.js/2.0.0/particles.min.js"></script>
+  <div id="particles"></div>
+  <script src="../../../../js/particles.js"></script>
+
+
+
+
+
+
+
+  <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
+  <script src="//cdn.bootcss.com/scrollReveal.js/3.0.5/scrollreveal.js"></script>
+  <script src="../../../../js/animate.js"></script>
+
+
+  <script src="../../../../js/pop-img.js"></script>
+  <script>
+     $(".article-entry p img").popImg();
+  </script>
+
+  </div>
+<script src="/lxx1997.github.io/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/lxx1997.github.io/live2dw/assets/kesyoban.model.json"},"display":{"position":"left","width":300,"height":300},"mobile":{"show":true},"log":false});</script></body>
+</html>

@@ -1,10 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://lxxstar987.gitee.io/lxx1997.github.io/lxx1997.github.io/2021/01/11/js-this-point/</loc>
-    <lastmod>2021-01-14</lastmod>
-  </url>  <url>
     <loc>https://lxxstar987.gitee.io/lxx1997.github.io/lxx1997.github.io/2021/01/09/vue-learn-api-with-%E6%BA%90%E7%A0%81/</loc>
+    <lastmod>2021-01-20</lastmod>
+  </url>  <url>
+    <loc>https://lxxstar987.gitee.io/lxx1997.github.io/lxx1997.github.io/2021/01/14/js-prototype-chain/</loc>
+    <lastmod>2021-01-17</lastmod>
+  </url>  <url>
+    <loc>https://lxxstar987.gitee.io/lxx1997.github.io/lxx1997.github.io/2021/01/17/vue3-vite-typescript-02/</loc>
+    <lastmod>2021-01-17</lastmod>
+  </url>  <url>
+    <loc>https://lxxstar987.gitee.io/lxx1997.github.io/lxx1997.github.io/2021/01/15/vue3-vite-typescript-01/</loc>
+    <lastmod>2021-01-17</lastmod>
+  </url>  <url>
+    <loc>https://lxxstar987.gitee.io/lxx1997.github.io/lxx1997.github.io/2021/01/11/js-this-point/</loc>
     <lastmod>2021-01-14</lastmod>
   </url>  <url>
     <loc>https://lxxstar987.gitee.io/lxx1997.github.io/lxx1997.github.io/2020/12/15/vue-%E6%BA%90%E7%A0%81%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95/</loc>
@@ -61,10 +70,10 @@
     <loc>https://lxxstar987.gitee.io/lxx1997.github.io/lxx1997.github.io/2020/12/21/vue-template-publish-subscribe/</loc>
     <lastmod>2021-01-12</lastmod>
   </url>  <url>
-    <loc>https://lxxstar987.gitee.io/lxx1997.github.io/lxx1997.github.io/2021/01/07/vue-components-transfer-data/</loc>
+    <loc>https://lxxstar987.gitee.io/lxx1997.github.io/lxx1997.github.io/2021/01/04/vue-keep-alive/</loc>
     <lastmod>2021-01-12</lastmod>
   </url>  <url>
-    <loc>https://lxxstar987.gitee.io/lxx1997.github.io/lxx1997.github.io/2021/01/04/vue-keep-alive/</loc>
+    <loc>https://lxxstar987.gitee.io/lxx1997.github.io/lxx1997.github.io/2021/01/07/vue-components-transfer-data/</loc>
     <lastmod>2021-01-12</lastmod>
   </url>  <url>
     <loc>https://lxxstar987.gitee.io/lxx1997.github.io/lxx1997.github.io/2021/01/02/vue-code-part-01/</loc>
@@ -103,10 +112,10 @@
     <loc>https://lxxstar987.gitee.io/lxx1997.github.io/lxx1997.github.io/2015/04/28/img-lazy-load/</loc>
     <lastmod>2021-01-12</lastmod>
   </url>  <url>
-    <loc>https://lxxstar987.gitee.io/lxx1997.github.io/lxx1997.github.io/2020/08/13/html-video-chat-bullet/</loc>
+    <loc>https://lxxstar987.gitee.io/lxx1997.github.io/lxx1997.github.io/2013/10/06/handling-asynchronous-js/</loc>
     <lastmod>2021-01-12</lastmod>
   </url>  <url>
-    <loc>https://lxxstar987.gitee.io/lxx1997.github.io/lxx1997.github.io/2013/10/06/handling-asynchronous-js/</loc>
+    <loc>https://lxxstar987.gitee.io/lxx1997.github.io/lxx1997.github.io/2020/08/13/html-video-chat-bullet/</loc>
     <lastmod>2021-01-12</lastmod>
   </url>  <url>
     <loc>https://lxxstar987.gitee.io/lxx1997.github.io/lxx1997.github.io/2015/07/06/hack-in-localstorage/</loc>
@@ -115,10 +124,10 @@
     <loc>https://lxxstar987.gitee.io/lxx1997.github.io/lxx1997.github.io/2020/12/17/function-currying/</loc>
     <lastmod>2021-01-12</lastmod>
   </url>  <url>
-    <loc>https://lxxstar987.gitee.io/lxx1997.github.io/lxx1997.github.io/2014/07/25/folder-to-tree/</loc>
+    <loc>https://lxxstar987.gitee.io/lxx1997.github.io/lxx1997.github.io/2020/12/17/fucntion-uncurrying/</loc>
     <lastmod>2021-01-12</lastmod>
   </url>  <url>
-    <loc>https://lxxstar987.gitee.io/lxx1997.github.io/lxx1997.github.io/2020/12/17/fucntion-uncurrying/</loc>
+    <loc>https://lxxstar987.gitee.io/lxx1997.github.io/lxx1997.github.io/2014/07/25/folder-to-tree/</loc>
     <lastmod>2021-01-12</lastmod>
   </url>  <url>
     <loc>https://lxxstar987.gitee.io/lxx1997.github.io/lxx1997.github.io/2020/08/20/electron-study-01/</loc>

@@ -2,16 +2,37 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://lxxstar987.gitee.io/lxx1997.github.io/2021/01/11/js-this-point/</loc>
+    <loc>https://lxxstar987.gitee.io/lxx1997.github.io/2021/01/09/vue-learn-api-with-%E6%BA%90%E7%A0%81/</loc>
     
-    <lastmod>2021-01-14T14:54:01.736Z</lastmod>
+    <lastmod>2021-01-20T06:49:58.347Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://lxxstar987.gitee.io/lxx1997.github.io/2021/01/09/vue-learn-api-with-%E6%BA%90%E7%A0%81/</loc>
+    <loc>https://lxxstar987.gitee.io/lxx1997.github.io/2021/01/14/js-prototype-chain/</loc>
     
-    <lastmod>2021-01-14T03:49:56.447Z</lastmod>
+    <lastmod>2021-01-17T16:13:30.534Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://lxxstar987.gitee.io/lxx1997.github.io/2021/01/17/vue3-vite-typescript-02/</loc>
+    
+    <lastmod>2021-01-17T14:40:46.847Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://lxxstar987.gitee.io/lxx1997.github.io/2021/01/15/vue3-vite-typescript-01/</loc>
+    
+    <lastmod>2021-01-17T14:25:20.789Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://lxxstar987.gitee.io/lxx1997.github.io/2021/01/11/js-this-point/</loc>
+    
+    <lastmod>2021-01-14T14:58:20.062Z</lastmod>
     
   </url>
   
@@ -688,13 +709,6 @@
   </url>
   
   <url>
-    <loc>https://lxxstar987.gitee.io/lxx1997.github.io/assets/demo/hack_demo.html</loc>
-    
-    <lastmod>2020-05-01T18:13:38.000Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://lxxstar987.gitee.io/lxx1997.github.io/assets/demo/jiugongge_demo.html</loc>
     
     <lastmod>2020-05-01T18:13:38.000Z</lastmod>
@@ -702,21 +716,14 @@
   </url>
   
   <url>
+    <loc>https://lxxstar987.gitee.io/lxx1997.github.io/assets/demo/hack_demo.html</loc>
+    
+    <lastmod>2020-05-01T18:13:38.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://lxxstar987.gitee.io/lxx1997.github.io/assets/demo/jiugongge_demo2.html</loc>
-    
-    <lastmod>2020-05-01T18:13:38.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://lxxstar987.gitee.io/lxx1997.github.io/assets/demo/coffee_pc_demo/pro-con.html</loc>
-    
-    <lastmod>2020-05-01T18:13:38.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://lxxstar987.gitee.io/lxx1997.github.io/assets/demo/gift/index.html</loc>
     
     <lastmod>2020-05-01T18:13:38.000Z</lastmod>
     
@@ -737,7 +744,21 @@
   </url>
   
   <url>
+    <loc>https://lxxstar987.gitee.io/lxx1997.github.io/assets/demo/coffee_pc_demo/pro-con.html</loc>
+    
+    <lastmod>2020-05-01T18:13:38.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://lxxstar987.gitee.io/lxx1997.github.io/assets/demo/pre_css3_demo/demo.html</loc>
+    
+    <lastmod>2020-05-01T18:13:38.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://lxxstar987.gitee.io/lxx1997.github.io/assets/demo/gift/index.html</loc>
     
     <lastmod>2020-05-01T18:13:38.000Z</lastmod>
     
