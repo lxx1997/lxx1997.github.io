@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://lxxstar987.gitee.io/lxx1997.github.io/lxx1997.github.io/2021/01/09/vue-learn-api-with-%E6%BA%90%E7%A0%81-01/</loc>
-    <lastmod>2021-01-20</lastmod>
-  </url>  <url>
     <loc>https://lxxstar987.gitee.io/lxx1997.github.io/lxx1997.github.io/2021/01/20/vue-learn-api-with-%E6%BA%90%E7%A0%81-02/</loc>
+    <lastmod>2021-01-21</lastmod>
+  </url>  <url>
+    <loc>https://lxxstar987.gitee.io/lxx1997.github.io/lxx1997.github.io/2021/01/09/vue-learn-api-with-%E6%BA%90%E7%A0%81-01/</loc>
     <lastmod>2021-01-20</lastmod>
   </url>  <url>
     <loc>https://lxxstar987.gitee.io/lxx1997.github.io/lxx1997.github.io/2021/01/14/js-prototype-chain/</loc>
