@@ -34,7 +34,6 @@ netstat -nlt|grep 6379
 /etc/init.d/redis-server restart
 ~~~
 
-<!--- more---->
 ### 使用docker 安装redis
 
 ~~~js
