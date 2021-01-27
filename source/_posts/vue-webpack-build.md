@@ -19,8 +19,6 @@ npm init -y
 npm install -S webpack webapck-dev-server
 ~~~
 
-<!---more--->
-
 
 ### 配置package.json 和webpack.config.js
 

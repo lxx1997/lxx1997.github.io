@@ -21,7 +21,6 @@ docker stop mysql-test // 关闭mysql 服务
 docker restart mysql-test // 重启mysql 服务
 ~~~
 
-<!--- more --->
 ## eggjs 使用mysql
 
 ** 安装mysql插件 **
