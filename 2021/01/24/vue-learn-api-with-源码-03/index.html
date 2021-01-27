@@ -8,18 +8,18 @@
   
     <meta name="keywords" content="blog 博客">
   
-  <meta name="description" content="前端小菜鸟,努力深造">
+  <meta name="description" content="data在 data 中的数据 在 vue2 中会使用 Object.defineProperty 方法监听数据变化（vue3 采用 proxy）当数据发生变化的时候，会带动页面发生变化 在使用data的时候推介使用 返回一个初始对象的函数的方法，如果 data 是一个纯粹的对象，会造成 Vue 所有实例共享同一个引用数据对象 源码123456789101112131415161718192021">
 <meta name="keywords" content="Vue,源码">
 <meta property="og:type" content="article">
 <meta property="og:title" content="跟着 Vue 源码学习 Vue api 系列 (二) - 选项 &#x2F; 数据">
 <meta property="og:url" content="https://lxxstar987.gitee.io/lxx1997.github.io/2021/01/24/vue-learn-api-with-源码-03/index.html">
 <meta property="og:site_name" content="SoulReader">
-<meta property="og:description" content="前端小菜鸟,努力深造">
+<meta property="og:description" content="data在 data 中的数据 在 vue2 中会使用 Object.defineProperty 方法监听数据变化（vue3 采用 proxy）当数据发生变化的时候，会带动页面发生变化 在使用data的时候推介使用 返回一个初始对象的函数的方法，如果 data 是一个纯粹的对象，会造成 Vue 所有实例共享同一个引用数据对象 源码123456789101112131415161718192021">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2021-01-24T14:39:16.032Z">
+<meta property="og:updated_time" content="2021-01-27T06:05:12.201Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="跟着 Vue 源码学习 Vue api 系列 (二) - 选项 &#x2F; 数据">
-<meta name="twitter:description" content="前端小菜鸟,努力深造">
+<meta name="twitter:description" content="data在 data 中的数据 在 vue2 中会使用 Object.defineProperty 方法监听数据变化（vue3 采用 proxy）当数据发生变化的时候，会带动页面发生变化 在使用data的时候推介使用 返回一个初始对象的函数的方法，如果 data 是一个纯粹的对象，会造成 Vue 所有实例共享同一个引用数据对象 源码123456789101112131415161718192021">
   
   
     <link rel="icon" href="/favicon.ico">
@@ -130,10 +130,16 @@
     <div class="article-entry post-content" itemprop="articleBody">
       
             
-            
+            <h4 id="data"><a href="#data" class="headerlink" title="data"></a>data</h4><p>在 data 中的数据 在 vue2 中会使用 Object.defineProperty 方法监听数据变化（vue3 采用 proxy）当数据发生变化的时候，会带动页面发生变化</p>
+<p>在使用data的时候推介使用 返回一个初始对象的函数的方法，如果 data 是一个纯粹的对象，会造成 Vue 所有实例共享同一个引用数据对象</p>
+<h5 id="源码"><a href="#源码" class="headerlink" title="源码"></a>源码</h5><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">initData</span> (<span class="params">vm</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> data = vm.$options.data;</span><br><span class="line">  data = vm._data = <span class="keyword">typeof</span> data === <span class="string">'function'</span></span><br><span class="line">    ? getData(data, vm)</span><br><span class="line">    : data || &#123;&#125;;</span><br><span class="line">  <span class="keyword">if</span> (!isPlainObject(data)) &#123;</span><br><span class="line">    data = &#123;&#125;;</span><br><span class="line">    warn(</span><br><span class="line">      <span class="string">'data functions should return an object:\n'</span> +</span><br><span class="line">      <span class="string">'https://vuejs.org/v2/guide/components.html#data-Must-Be-a-Function'</span>,</span><br><span class="line">      vm</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// proxy data on instance</span></span><br><span class="line">  <span class="keyword">var</span> keys = <span class="built_in">Object</span>.keys(data);</span><br><span class="line">  <span class="keyword">var</span> props = vm.$options.props;</span><br><span class="line">  <span class="keyword">var</span> methods = vm.$options.methods;</span><br><span class="line">  <span class="keyword">var</span> i = keys.length;</span><br><span class="line">  <span class="keyword">while</span> (i--) &#123;</span><br><span class="line">    <span class="keyword">var</span> key = keys[i];</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="keyword">if</span> (methods &amp;&amp; hasOwn(methods, key)) &#123;</span><br><span class="line">        warn(</span><br><span class="line">          (<span class="string">"Method \""</span> + key + <span class="string">"\" has already been defined as a data property."</span>),</span><br><span class="line">          vm</span><br><span class="line">        );</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (props &amp;&amp; hasOwn(props, key)) &#123;</span><br><span class="line">      warn(</span><br><span class="line">        <span class="string">"The data property \""</span> + key + <span class="string">"\" is already declared as a prop. "</span> +</span><br><span class="line">        <span class="string">"Use prop default value instead."</span>,</span><br><span class="line">        vm</span><br><span class="line">      );</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (!isReserved(key)) &#123;</span><br><span class="line">      proxy(vm, <span class="string">"_data"</span>, key);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// observe data</span></span><br><span class="line">  observe(data, <span class="literal">true</span> <span class="comment">/* asRootData */</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>上述源码 主要是判断一下 data 的 类型以及判断 data 定义的变量名是否在 props 及 methods 中是否也存在，之后调用 observe 方法给 data 对象添加数据监听</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getData</span> (<span class="params">data, vm</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// #7573 disable dep collection when invoking data getters</span></span><br><span class="line">  pushTarget();</span><br><span class="line">  <span class="keyword">try</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> data.call(vm, vm)</span><br><span class="line">  &#125; <span class="keyword">catch</span> (e) &#123;</span><br><span class="line">    handleError(e, vm, <span class="string">"data()"</span>);</span><br><span class="line">    <span class="keyword">return</span> &#123;&#125;</span><br><span class="line">  &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">    popTarget();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>数据映射，将 data 的数据映射到 Vue 实例上，这样我们通过 Vue.property 的方法也能访问到 data 上的数据</p>
+
             <div class="post-copyright">
     <div class="content">
-        <p>最后更新： 2021年01月24日 22:39</p>
+        <p>最后更新： 2021年01月27日 14:05</p>
         <p>原始链接： <a class="post-url" href="/lxx1997.github.io/2021/01/24/vue-learn-api-with-源码-03/" title="跟着 Vue 源码学习 Vue api 系列 (二) - 选项 / 数据">https://lxxstar987.gitee.io/lxx1997.github.io/2021/01/24/vue-learn-api-with-源码-03/</a></p>
         <footer>
             <a href="https://lxxstar987.gitee.io/lxx1997.github.io">
@@ -251,6 +257,12 @@
 </article>
 
 
+    <aside class="post-toc-pos post-toc-top" id="post-toc">
+        <nav class="post-toc-wrap">
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#data"><span class="post-toc-text">data</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#源码"><span class="post-toc-text">源码</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+    
 
 <nav id="article-nav">
   

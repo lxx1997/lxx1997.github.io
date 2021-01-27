@@ -2,16 +2,37 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://lxxstar987.gitee.io/lxx1997.github.io/2021/01/17/vue3-vite-typescript-02/</loc>
+    
+    <lastmod>2021-01-27T06:05:12.203Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://lxxstar987.gitee.io/lxx1997.github.io/2021/01/15/vue3-vite-typescript-01/</loc>
+    
+    <lastmod>2021-01-27T06:05:12.203Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://lxxstar987.gitee.io/lxx1997.github.io/2021/01/24/vue-learn-api-with-%E6%BA%90%E7%A0%81-03/</loc>
     
-    <lastmod>2021-01-24T14:39:16.032Z</lastmod>
+    <lastmod>2021-01-27T06:05:12.201Z</lastmod>
     
   </url>
   
   <url>
     <loc>https://lxxstar987.gitee.io/lxx1997.github.io/2021/01/20/vue-learn-api-with-%E6%BA%90%E7%A0%81-02/</loc>
     
-    <lastmod>2021-01-24T08:27:35.694Z</lastmod>
+    <lastmod>2021-01-27T06:05:12.201Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://lxxstar987.gitee.io/lxx1997.github.io/2021/01/14/js-prototype-chain/</loc>
+    
+    <lastmod>2021-01-27T06:05:12.200Z</lastmod>
     
   </url>
   
@@ -19,27 +40,6 @@
     <loc>https://lxxstar987.gitee.io/lxx1997.github.io/2021/01/09/vue-learn-api-with-%E6%BA%90%E7%A0%81-01/</loc>
     
     <lastmod>2021-01-20T09:42:54.381Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://lxxstar987.gitee.io/lxx1997.github.io/2021/01/14/js-prototype-chain/</loc>
-    
-    <lastmod>2021-01-17T16:13:30.534Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://lxxstar987.gitee.io/lxx1997.github.io/2021/01/17/vue3-vite-typescript-02/</loc>
-    
-    <lastmod>2021-01-17T14:40:46.847Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://lxxstar987.gitee.io/lxx1997.github.io/2021/01/15/vue3-vite-typescript-01/</loc>
-    
-    <lastmod>2021-01-17T14:25:20.789Z</lastmod>
     
   </url>
   

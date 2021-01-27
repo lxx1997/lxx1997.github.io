@@ -127,7 +127,9 @@
         </div>
         <div class="article-feed">
             <p>
-                
+                data在 data 中的数据 在 vue2 中会使用 Object.defineProperty 方法监听数据变化（vue3 采用 proxy）当数据发生变化的时候，会带动页面发生变化
+在使用data的时候推介使用 返回一个初始对象的函数的方法，如果 data 是一个纯粹的对象，会造成 Vue 所有实例共享同一个引用数据对象
+源码12345678910111213141...
             </p>
         </div>
       
