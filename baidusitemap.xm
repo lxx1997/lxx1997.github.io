@@ -1,53 +1,59 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://lxxstar987.gitee.io/lxx1997.github.io/lxx1997.github.io/2021/01/27/vue-learn-api-with-%E6%BA%90%E7%A0%81-04/</loc>
+    <lastmod>2021-01-28</lastmod>
+  </url>  <url>
+    <loc>https://lxxstar987.gitee.io/lxx1997.github.io/lxx1997.github.io/2021/01/24/vue-learn-api-with-%E6%BA%90%E7%A0%81-03/</loc>
+    <lastmod>2021-01-27</lastmod>
+  </url>  <url>
+    <loc>https://lxxstar987.gitee.io/lxx1997.github.io/lxx1997.github.io/2021/01/27/vue-learn-api-with-%E6%BA%90%E7%A0%81-watcher/</loc>
+    <lastmod>2021-01-27</lastmod>
+  </url>  <url>
+    <loc>https://lxxstar987.gitee.io/lxx1997.github.io/lxx1997.github.io/2020/12/15/vue-%E6%BA%90%E7%A0%81%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95/</loc>
+    <lastmod>2021-01-27</lastmod>
+  </url>  <url>
     <loc>https://lxxstar987.gitee.io/lxx1997.github.io/lxx1997.github.io/2021/01/15/vue3-vite-typescript-01/</loc>
     <lastmod>2021-01-27</lastmod>
   </url>  <url>
     <loc>https://lxxstar987.gitee.io/lxx1997.github.io/lxx1997.github.io/2021/01/17/vue3-vite-typescript-02/</loc>
     <lastmod>2021-01-27</lastmod>
   </url>  <url>
+    <loc>https://lxxstar987.gitee.io/lxx1997.github.io/lxx1997.github.io/2020/05/05/vue-webpack-build/</loc>
+    <lastmod>2021-01-27</lastmod>
+  </url>  <url>
     <loc>https://lxxstar987.gitee.io/lxx1997.github.io/lxx1997.github.io/2021/01/20/vue-learn-api-with-%E6%BA%90%E7%A0%81-02/</loc>
     <lastmod>2021-01-27</lastmod>
   </url>  <url>
-    <loc>https://lxxstar987.gitee.io/lxx1997.github.io/lxx1997.github.io/2021/01/24/vue-learn-api-with-%E6%BA%90%E7%A0%81-03/</loc>
+    <loc>https://lxxstar987.gitee.io/lxx1997.github.io/lxx1997.github.io/2021/01/11/js-this-point/</loc>
     <lastmod>2021-01-27</lastmod>
   </url>  <url>
     <loc>https://lxxstar987.gitee.io/lxx1997.github.io/lxx1997.github.io/2021/01/14/js-prototype-chain/</loc>
     <lastmod>2021-01-27</lastmod>
   </url>  <url>
     <loc>https://lxxstar987.gitee.io/lxx1997.github.io/lxx1997.github.io/2021/01/09/vue-learn-api-with-%E6%BA%90%E7%A0%81-01/</loc>
-    <lastmod>2021-01-20</lastmod>
-  </url>  <url>
-    <loc>https://lxxstar987.gitee.io/lxx1997.github.io/lxx1997.github.io/2021/01/11/js-this-point/</loc>
-    <lastmod>2021-01-14</lastmod>
-  </url>  <url>
-    <loc>https://lxxstar987.gitee.io/lxx1997.github.io/lxx1997.github.io/2020/12/15/vue-%E6%BA%90%E7%A0%81%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95/</loc>
-    <lastmod>2021-01-13</lastmod>
+    <lastmod>2021-01-27</lastmod>
   </url>  <url>
     <loc>https://lxxstar987.gitee.io/lxx1997.github.io/lxx1997.github.io/2020/05/05/js-img-onload/</loc>
-    <lastmod>2021-01-12</lastmod>
-  </url>  <url>
-    <loc>https://lxxstar987.gitee.io/lxx1997.github.io/lxx1997.github.io/2020/05/05/vue-webpack-build/</loc>
-    <lastmod>2021-01-12</lastmod>
+    <lastmod>2021-01-27</lastmod>
   </url>  <url>
     <loc>https://lxxstar987.gitee.io/lxx1997.github.io/lxx1997.github.io/2020/05/06/js-canvas-bubble/</loc>
-    <lastmod>2021-01-12</lastmod>
-  </url>  <url>
-    <loc>https://lxxstar987.gitee.io/lxx1997.github.io/lxx1997.github.io/2020/05/05/js-array-method/</loc>
-    <lastmod>2021-01-12</lastmod>
-  </url>  <url>
-    <loc>https://lxxstar987.gitee.io/lxx1997.github.io/lxx1997.github.io/2020/03/25/eggjs-start/</loc>
-    <lastmod>2021-01-12</lastmod>
-  </url>  <url>
-    <loc>https://lxxstar987.gitee.io/lxx1997.github.io/lxx1997.github.io/2020/04/12/eggjs-mysql/</loc>
-    <lastmod>2021-01-12</lastmod>
-  </url>  <url>
-    <loc>https://lxxstar987.gitee.io/lxx1997.github.io/lxx1997.github.io/2020/04/10/egg-jwt/</loc>
-    <lastmod>2021-01-12</lastmod>
+    <lastmod>2021-01-27</lastmod>
   </url>  <url>
     <loc>https://lxxstar987.gitee.io/lxx1997.github.io/lxx1997.github.io/2020/05/05/js-arguments-callee/</loc>
-    <lastmod>2021-01-12</lastmod>
+    <lastmod>2021-01-27</lastmod>
+  </url>  <url>
+    <loc>https://lxxstar987.gitee.io/lxx1997.github.io/lxx1997.github.io/2020/05/05/js-array-method/</loc>
+    <lastmod>2021-01-27</lastmod>
+  </url>  <url>
+    <loc>https://lxxstar987.gitee.io/lxx1997.github.io/lxx1997.github.io/2020/04/12/eggjs-mysql/</loc>
+    <lastmod>2021-01-27</lastmod>
+  </url>  <url>
+    <loc>https://lxxstar987.gitee.io/lxx1997.github.io/lxx1997.github.io/2020/03/25/eggjs-start/</loc>
+    <lastmod>2021-01-27</lastmod>
+  </url>  <url>
+    <loc>https://lxxstar987.gitee.io/lxx1997.github.io/lxx1997.github.io/2020/04/10/egg-jwt/</loc>
+    <lastmod>2021-01-27</lastmod>
   </url>  <url>
     <loc>https://lxxstar987.gitee.io/lxx1997.github.io/lxx1997.github.io/2014/03/30/volunteer-activities/</loc>
     <lastmod>2021-01-12</lastmod>
@@ -139,10 +145,10 @@
     <loc>https://lxxstar987.gitee.io/lxx1997.github.io/lxx1997.github.io/2020/08/20/electron-study-01/</loc>
     <lastmod>2021-01-12</lastmod>
   </url>  <url>
-    <loc>https://lxxstar987.gitee.io/lxx1997.github.io/lxx1997.github.io/2021/01/04/deferent-in-new-Object-object-create/</loc>
+    <loc>https://lxxstar987.gitee.io/lxx1997.github.io/lxx1997.github.io/2020/12/09/deep-copy-light-copy/</loc>
     <lastmod>2021-01-12</lastmod>
   </url>  <url>
-    <loc>https://lxxstar987.gitee.io/lxx1997.github.io/lxx1997.github.io/2020/12/09/deep-copy-light-copy/</loc>
+    <loc>https://lxxstar987.gitee.io/lxx1997.github.io/lxx1997.github.io/2021/01/04/deferent-in-new-Object-object-create/</loc>
     <lastmod>2021-01-12</lastmod>
   </url>  <url>
     <loc>https://lxxstar987.gitee.io/lxx1997.github.io/lxx1997.github.io/2020/05/07/d3-study-20200507/</loc>
@@ -235,10 +241,10 @@
     <loc>https://lxxstar987.gitee.io/lxx1997.github.io/lxx1997.github.io/2020/06/29/typescript-study-05/</loc>
     <lastmod>2020-12-14</lastmod>
   </url>  <url>
-    <loc>https://lxxstar987.gitee.io/lxx1997.github.io/lxx1997.github.io/2020/06/22/typescript-study-03/</loc>
+    <loc>https://lxxstar987.gitee.io/lxx1997.github.io/lxx1997.github.io/2020/06/10/typescript-study-02/</loc>
     <lastmod>2020-12-14</lastmod>
   </url>  <url>
-    <loc>https://lxxstar987.gitee.io/lxx1997.github.io/lxx1997.github.io/2020/06/10/typescript-study-02/</loc>
+    <loc>https://lxxstar987.gitee.io/lxx1997.github.io/lxx1997.github.io/2020/06/22/typescript-study-03/</loc>
     <lastmod>2020-12-14</lastmod>
   </url>  <url>
     <loc>https://lxxstar987.gitee.io/lxx1997.github.io/lxx1997.github.io/2020/04/08/typescript-study-01/</loc>

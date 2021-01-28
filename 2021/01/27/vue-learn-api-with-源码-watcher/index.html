@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+  <title>跟着 Vue 源码学习 Vue api 系列 (三) - Watcher 方法详解 | SoulReader</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+    <meta name="keywords" content="blog 博客">
+  
+  <meta name="description" content="12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273747576777879808182838485868788899091929394959697989910010110210">
+<meta name="keywords" content="Vue,源码">
+<meta property="og:type" content="article">
+<meta property="og:title" content="跟着 Vue 源码学习 Vue api 系列 (三) - Watcher 方法详解">
+<meta property="og:url" content="https://lxxstar987.gitee.io/lxx1997.github.io/2021/01/27/vue-learn-api-with-源码-watcher/index.html">
+<meta property="og:site_name" content="SoulReader">
+<meta property="og:description" content="12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273747576777879808182838485868788899091929394959697989910010110210">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2021-01-27T14:03:56.137Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="跟着 Vue 源码学习 Vue api 系列 (三) - Watcher 方法详解">
+<meta name="twitter:description" content="12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273747576777879808182838485868788899091929394959697989910010110210">
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+  <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/lxx1997.github.io/css/style.css">
+  <script src="/lxx1997.github.io/js/pace.min.js"></script>
+  
+
+  
+  
+
+</head>
+</html>
+<body>
+  <div id="container">
+      <header id="header">
+    <div id="banner"></div>
+    <div id="header-outer">
+        <div id="header-menu" class="header-menu-pos animated">
+            <div class="header-menu-container">
+                <a href="/lxx1997.github.io/" class="left">
+                    <span class="site-title">SoulReader</span>
+                </a>
+                <nav id="header-menu-nav" class="right">
+                    
+                    <a  href="/lxx1997.github.io/">
+                        <i class="fa fa-home"></i>
+                        <span>Home</span>
+                    </a>
+                    
+                </nav>
+                <a class="mobile-header-menu-button">
+                    <i class="fa fa-bars"></i>
+                </a>
+            </div>
+        </div>
+        <div id="header-row">
+            <div id="logo">
+                <a href="/lxx1997.github.io/">
+                    <img src="/lxx1997.github.io/images/avatar.png" alt="logo">
+                </a>
+            </div>
+            <div class="header-info">
+                <div id="header-title">
+                    
+                    <h2>
+                        SoulReader
+                    </h2>
+                    
+                </div>
+                <div id="header-description">
+                    
+                    <h3>
+                        前端菜鸟 多多交流学习
+                    </h3>
+                    
+                </div>
+            </div>
+            <nav class="header-nav">
+                <div class="social">
+                    
+                        <a title="SoulReader" target="_blank" href="/lxx1997.github.io/">
+                            <i class="fa fa-home fa-2x"></i></a>
+                    
+                        <a title="Github" target="_blank" href="https://github.com/lxx1997">
+                            <i class="fa fa-github fa-2x"></i></a>
+                    
+                </div>
+            </nav>
+        </div>
+    </div>
+</header>
+      <div class="outer">
+        <section id="main" class="body-wrap"><article id="post-vue-learn-api-with-源码-watcher" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="post-title" itemprop="name">
+      跟着 Vue 源码学习 Vue api 系列 (三) - Watcher 方法详解
+    </h1>
+    <div class="post-title-bar">
+      <ul>
+          
+              <li>
+                  <i class="fa fa-book"></i>
+                  
+                      <a href="/lxx1997.github.io/categories/Vue源码/">Vue 源码</a>
+                  
+              </li>
+          
+        <li>
+          <i class="fa fa-calendar"></i>  2021-01-27
+        </li>
+        <li>
+          <i class="fa fa-eye"></i>
+          <span id="busuanzi_value_page_pv"></span>
+        </li>
+      </ul>
+    </div>
+  
+
+          
+      </header>
+    
+    <div class="article-entry post-content" itemprop="articleBody">
+      
+            
+            <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> Watcher = <span class="function"><span class="keyword">function</span> <span class="title">Watcher</span> (<span class="params"></span></span></span><br><span class="line"><span class="function"><span class="params">  vm, <span class="regexp">//</span> Vue 实例</span></span></span><br><span class="line"><span class="function"><span class="params">  expOrFn,  <span class="regexp">//</span> key值，watch 的属性</span></span></span><br><span class="line"><span class="function"><span class="params">  cb,   <span class="regexp">//</span> 回调函数</span></span></span><br><span class="line"><span class="function"><span class="params">  options,  <span class="regexp">//</span> 配置 &#123;lazy: true&#125;</span></span></span><br><span class="line"><span class="function"><span class="params">  isRenderWatcher <span class="regexp">//</span> 是否 在 Vue 实例上记载 Watcher </span></span></span><br><span class="line"><span class="function"><span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.vm = vm;</span><br><span class="line">  <span class="keyword">if</span> (isRenderWatcher) &#123;</span><br><span class="line">    vm._watcher = <span class="keyword">this</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  vm._watchers.push(<span class="keyword">this</span>);</span><br><span class="line">  <span class="comment">// options</span></span><br><span class="line">  <span class="keyword">if</span> (options) &#123;</span><br><span class="line">    <span class="keyword">this</span>.deep = !!options.deep; <span class="comment">// 深度监听 针对 对象</span></span><br><span class="line">    <span class="keyword">this</span>.user = !!options.user;</span><br><span class="line">    <span class="keyword">this</span>.lazy = !!options.lazy;</span><br><span class="line">    <span class="keyword">this</span>.sync = !!options.sync;</span><br><span class="line">    <span class="keyword">this</span>.before = options.before;</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="keyword">this</span>.deep = <span class="keyword">this</span>.user = <span class="keyword">this</span>.lazy = <span class="keyword">this</span>.sync = <span class="literal">false</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">this</span>.cb = cb;</span><br><span class="line">  <span class="keyword">this</span>.id = ++uid$<span class="number">2</span>; <span class="comment">// uid for batching</span></span><br><span class="line">  <span class="keyword">this</span>.active = <span class="literal">true</span>;</span><br><span class="line">  <span class="keyword">this</span>.dirty = <span class="keyword">this</span>.lazy; <span class="comment">// for lazy watchers</span></span><br><span class="line">  <span class="keyword">this</span>.deps = [];</span><br><span class="line">  <span class="keyword">this</span>.newDeps = [];</span><br><span class="line">  <span class="keyword">this</span>.depIds = <span class="keyword">new</span> _Set();</span><br><span class="line">  <span class="keyword">this</span>.newDepIds = <span class="keyword">new</span> _Set();</span><br><span class="line">  <span class="keyword">this</span>.expression = expOrFn.toString();</span><br><span class="line">  <span class="comment">// parse expression for getter</span></span><br><span class="line">  <span class="keyword">if</span> (<span class="keyword">typeof</span> expOrFn === <span class="string">'function'</span>) &#123; <span class="comment">// 判断 传入的 watch 函数 是否是函数，如果是函数，直接设置为 getter 函数</span></span><br><span class="line">    <span class="keyword">this</span>.getter = expOrFn;</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;  <span class="comment">// 如果是对象，提取 函数</span></span><br><span class="line">    <span class="keyword">this</span>.getter = parsePath(expOrFn);</span><br><span class="line">    <span class="keyword">if</span> (!<span class="keyword">this</span>.getter) &#123;</span><br><span class="line">      <span class="keyword">this</span>.getter = noop;</span><br><span class="line">      warn(</span><br><span class="line">        <span class="string">"Failed watching path: \""</span> + expOrFn + <span class="string">"\" "</span> +</span><br><span class="line">        <span class="string">'Watcher only accepts simple dot-delimited paths. '</span> +</span><br><span class="line">        <span class="string">'For full control, use a function instead.'</span>,</span><br><span class="line">        vm</span><br><span class="line">      );</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">this</span>.value = <span class="keyword">this</span>.lazy</span><br><span class="line">    ? <span class="literal">undefined</span></span><br><span class="line">    : <span class="keyword">this</span>.get();</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Evaluate the getter, and re-collect dependencies.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line">Watcher.prototype.get = <span class="function"><span class="keyword">function</span> <span class="title">get</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  pushTarget(<span class="keyword">this</span>); <span class="comment">// 设置 Dep 构造函数的 target 为当前 Watcher 实例</span></span><br><span class="line">  <span class="keyword">var</span> value;</span><br><span class="line">  <span class="keyword">var</span> vm = <span class="keyword">this</span>.vm;</span><br><span class="line">  <span class="keyword">try</span> &#123;</span><br><span class="line">    value = <span class="keyword">this</span>.getter.call(vm, vm); <span class="comment">// 调用 getter 函数，并将 vue 实例作为参数传进去</span></span><br><span class="line">  &#125; <span class="keyword">catch</span> (e) &#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">this</span>.user) &#123;</span><br><span class="line">      handleError(e, vm, (<span class="string">"getter for watcher \""</span> + (<span class="keyword">this</span>.expression) + <span class="string">"\""</span>));</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="keyword">throw</span> e</span><br><span class="line">    &#125;</span><br><span class="line">  &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">    <span class="comment">// "touch" every property so they are all tracked as</span></span><br><span class="line">    <span class="comment">// dependencies for deep watching</span></span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">this</span>.deep) &#123;</span><br><span class="line">      traverse(value);</span><br><span class="line">    &#125;</span><br><span class="line">    popTarget();</span><br><span class="line">    <span class="keyword">this</span>.cleanupDeps();</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> value</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Add a dependency to this directive.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="comment">// 此处 添加发布订阅模式，将 发布订阅模式 与 watcher 关联起来</span></span><br><span class="line">Watcher.prototype.addDep = <span class="function"><span class="keyword">function</span> <span class="title">addDep</span> (<span class="params">dep</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> id = dep.id;</span><br><span class="line">  <span class="keyword">if</span> (!<span class="keyword">this</span>.newDepIds.has(id)) &#123;</span><br><span class="line">    <span class="keyword">this</span>.newDepIds.add(id);</span><br><span class="line">    <span class="keyword">this</span>.newDeps.push(dep);</span><br><span class="line">    <span class="keyword">if</span> (!<span class="keyword">this</span>.depIds.has(id)) &#123;</span><br><span class="line">      dep.addSub(<span class="keyword">this</span>);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Clean up for dependency collection.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line">Watcher.prototype.cleanupDeps = <span class="function"><span class="keyword">function</span> <span class="title">cleanupDeps</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> i = <span class="keyword">this</span>.deps.length;</span><br><span class="line">  <span class="keyword">while</span> (i--) &#123;</span><br><span class="line">    <span class="keyword">var</span> dep = <span class="keyword">this</span>.deps[i];</span><br><span class="line">    <span class="keyword">if</span> (!<span class="keyword">this</span>.newDepIds.has(dep.id)) &#123;</span><br><span class="line">      dep.removeSub(<span class="keyword">this</span>);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">var</span> tmp = <span class="keyword">this</span>.depIds;</span><br><span class="line">  <span class="keyword">this</span>.depIds = <span class="keyword">this</span>.newDepIds;</span><br><span class="line">  <span class="keyword">this</span>.newDepIds = tmp;</span><br><span class="line">  <span class="keyword">this</span>.newDepIds.clear();</span><br><span class="line">  tmp = <span class="keyword">this</span>.deps;</span><br><span class="line">  <span class="keyword">this</span>.deps = <span class="keyword">this</span>.newDeps;</span><br><span class="line">  <span class="keyword">this</span>.newDeps = tmp;</span><br><span class="line">  <span class="keyword">this</span>.newDeps.length = <span class="number">0</span>;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Subscriber interface.</span></span><br><span class="line"><span class="comment"> * Will be called when a dependency changes.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line">Watcher.prototype.update = <span class="function"><span class="keyword">function</span> <span class="title">update</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="comment">/* istanbul ignore else */</span></span><br><span class="line">  <span class="keyword">if</span> (<span class="keyword">this</span>.lazy) &#123;</span><br><span class="line">    <span class="keyword">this</span>.dirty = <span class="literal">true</span>;</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (<span class="keyword">this</span>.sync) &#123;</span><br><span class="line">    <span class="keyword">this</span>.run();</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    queueWatcher(<span class="keyword">this</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Scheduler job interface.</span></span><br><span class="line"><span class="comment"> * Will be called by the scheduler.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line">Watcher.prototype.run = <span class="function"><span class="keyword">function</span> <span class="title">run</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (<span class="keyword">this</span>.active) &#123;</span><br><span class="line">    <span class="keyword">var</span> value = <span class="keyword">this</span>.get();</span><br><span class="line">    <span class="keyword">if</span> (</span><br><span class="line">      value !== <span class="keyword">this</span>.value ||</span><br><span class="line">      <span class="comment">// Deep watchers and watchers on Object/Arrays should fire even</span></span><br><span class="line">      <span class="comment">// when the value is the same, because the value may</span></span><br><span class="line">      <span class="comment">// have mutated.</span></span><br><span class="line">      isObject(value) ||</span><br><span class="line">      <span class="keyword">this</span>.deep</span><br><span class="line">    ) &#123;</span><br><span class="line">      <span class="comment">// set new value</span></span><br><span class="line">      <span class="keyword">var</span> oldValue = <span class="keyword">this</span>.value;</span><br><span class="line">      <span class="keyword">this</span>.value = value;</span><br><span class="line">      <span class="keyword">if</span> (<span class="keyword">this</span>.user) &#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">          <span class="keyword">this</span>.cb.call(<span class="keyword">this</span>.vm, value, oldValue);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (e) &#123;</span><br><span class="line">          handleError(e, <span class="keyword">this</span>.vm, (<span class="string">"callback for watcher \""</span> + (<span class="keyword">this</span>.expression) + <span class="string">"\""</span>));</span><br><span class="line">        &#125;</span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">this</span>.cb.call(<span class="keyword">this</span>.vm, value, oldValue);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Evaluate the value of the watcher.</span></span><br><span class="line"><span class="comment"> * This only gets called for lazy watchers.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line">Watcher.prototype.evaluate = <span class="function"><span class="keyword">function</span> <span class="title">evaluate</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.value = <span class="keyword">this</span>.get();</span><br><span class="line">  <span class="keyword">this</span>.dirty = <span class="literal">false</span>;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Depend on all deps collected by this watcher.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line">Watcher.prototype.depend = <span class="function"><span class="keyword">function</span> <span class="title">depend</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> i = <span class="keyword">this</span>.deps.length;</span><br><span class="line">  <span class="keyword">while</span> (i--) &#123;</span><br><span class="line">    <span class="keyword">this</span>.deps[i].depend();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Remove self from all dependencies' subscriber list.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line">Watcher.prototype.teardown = <span class="function"><span class="keyword">function</span> <span class="title">teardown</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (<span class="keyword">this</span>.active) &#123;</span><br><span class="line">    <span class="comment">// remove self from vm's watcher list</span></span><br><span class="line">    <span class="comment">// this is a somewhat expensive operation so we skip it</span></span><br><span class="line">    <span class="comment">// if the vm is being destroyed.</span></span><br><span class="line">    <span class="keyword">if</span> (!<span class="keyword">this</span>.vm._isBeingDestroyed) &#123;</span><br><span class="line">      remove(<span class="keyword">this</span>.vm._watchers, <span class="keyword">this</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">var</span> i = <span class="keyword">this</span>.deps.length;</span><br><span class="line">    <span class="keyword">while</span> (i--) &#123;</span><br><span class="line">      <span class="keyword">this</span>.deps[i].removeSub(<span class="keyword">this</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">this</span>.active = <span class="literal">false</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+            <div class="post-copyright">
+    <div class="content">
+        <p>最后更新： 2021年01月27日 22:03</p>
+        <p>原始链接： <a class="post-url" href="/lxx1997.github.io/2021/01/27/vue-learn-api-with-源码-watcher/" title="跟着 Vue 源码学习 Vue api 系列 (三) - Watcher 方法详解">https://lxxstar987.gitee.io/lxx1997.github.io/2021/01/27/vue-learn-api-with-源码-watcher/</a></p>
+        <footer>
+            <a href="https://lxxstar987.gitee.io/lxx1997.github.io">
+                <img src="/lxx1997.github.io/images/avatar.png" alt="lxx">
+                lxx
+            </a>
+        </footer>
+    </div>
+</div>
+
+      
+        
+            
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;">赏</a>
+</div>
+
+<div id="reward" class="post-modal reward-lay">
+    <a class="close" href="javascript:;" id="reward-close">×</a>
+    <span class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢大佬打赏
+        <i class="icon icon-quote-right"></i>
+    </span>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/lxx1997.github.io/images/wechat_code.jpg" alt="打赏二维码">
+        </div>
+        <div class="reward-select">
+            
+            <label class="reward-select-item checked" data-id="wechat" data-wechat="/lxx1997.github.io/images/wechat_code.jpg">
+                <img class="reward-select-item-wechat" src="/lxx1997.github.io/images/wechat.png" alt="微信">
+            </label>
+            
+            
+            <label class="reward-select-item" data-id="alipay" data-alipay="/lxx1997.github.io/images/qq_code.jpg">
+                <img class="reward-select-item-alipay" src="/lxx1997.github.io/images/alipay.png" alt="支付宝">
+            </label>
+            
+        </div>
+    </div>
+</div>
+
+
+        
+    </div>
+    <footer class="article-footer">
+        
+        
+<div class="post-share">
+    <a href="javascript:;" id="share-sub" class="post-share-fab">
+        <i class="fa fa-share-alt"></i>
+    </a>
+    <div class="post-share-list" id="share-list">
+        <ul class="share-icons">
+          <li>
+            <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://lxxstar987.gitee.io/lxx1997.github.io/2021/01/27/vue-learn-api-with-源码-watcher/&title=《跟着 Vue 源码学习 Vue api 系列 (三) - Watcher 方法详解》 — SoulReader&pic=https://lxxstar987.gitee.io/lxx1997.github.ioimages/avatar.png" data-title="微博">
+              <i class="fa fa-weibo"></i>
+            </a>
+          </li>
+          <li>
+            <a class="weixin share-sns" id="wxFab" href="javascript:;" data-title="微信">
+              <i class="fa fa-weixin"></i>
+            </a>
+          </li>
+          <li>
+            <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://lxxstar987.gitee.io/lxx1997.github.io/2021/01/27/vue-learn-api-with-源码-watcher/&title=《跟着 Vue 源码学习 Vue api 系列 (三) - Watcher 方法详解》 — SoulReader&source=前端小菜鸟,努力深造" data-title="QQ">
+              <i class="fa fa-qq"></i>
+            </a>
+          </li>
+          <li>
+            <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://lxxstar987.gitee.io/lxx1997.github.io/2021/01/27/vue-learn-api-with-源码-watcher/" data-title="Facebook">
+              <i class="fa fa-facebook"></i>
+            </a>
+          </li>
+          <li>
+            <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《跟着 Vue 源码学习 Vue api 系列 (三) - Watcher 方法详解》 — SoulReader&url=https://lxxstar987.gitee.io/lxx1997.github.io/2021/01/27/vue-learn-api-with-源码-watcher/&via=https://lxxstar987.gitee.io/lxx1997.github.io" data-title="Twitter">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+          <li>
+            <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://lxxstar987.gitee.io/lxx1997.github.io/2021/01/27/vue-learn-api-with-源码-watcher/" data-title="Google+">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        </ul>
+     </div>
+</div>
+<div class="post-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;" id="wxShare-close">×</a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPYAAAD2CAAAAADAeSUUAAADNklEQVR42u3awVIjMQwEUP7/p9krW0tCt2yqEu2bE5UMM37mIKT2x0d8fX65vn7y6M5bP7dvvHxhY2Njvwn78+n16J7nC/13KbPfOl/nwydjY2Njr2Pnpej5ss7L5KOn5VsfrQ0bGxv7P2bn97clJ8dfaFewsbGxsR+8uC1FScuBjY2NjZ2wkzLTPrp9ZjsqagsnNjY29lb2ybjn1X7+lXwbGxsb+4XZn+V10oqcPy1vXX5QYGNjYy9ityFu8voc0L432cT8OdjY2Ng72Ploph3Htx1BGy208cZfn2BjY2MvYs/i0jwGaI/mzMLdYTCAjY2NvYI9W9yMmrQNeasz+61vZmnY2NjYK9gn455kWXlsMIuc2wKMjY2NvYndPvrWPW2pq0tUC8bGxsZex25L12z0//yTfGyUbM0FPDY2NvZbsZMxUxvQ5qWoHf3PVouNjY29g30SxOYDnVmgm2xostqHh3WwsbGxV7CfF4k2rM0XkTch7XvzYomNjY29g50PdPLNOhnrz4piXrS+ybexsbGxV7CTW2dFZRbunjQe0TqxsbGx17HzKPRk6N8GycnmJq3UD7M0bGxs7Ddn38K0x2UujPUPYmNsbGzsTexbbUC7xPyozd1vvxkqYWNjY785Oylm50UlH+7nwXDSrhTNDDY2NvbbsmfBalt+2oUmDVIeDNSnk7CxsbHfkJ2M3fMS0g73c3xbSutgABsbG3sFezZgar9ti1nS6hSDJGxsbOxF7PywS33AcdSi5KVxVmixsbGx97FnY52T4zK/ES3Xm4uNjY29iN3+69+WsZPykzcnRxc2Njb2Cna+rFlYmx/ZyZuQ2fZFB3ewsbGx35w9o86amXa4f2tEhY2Njb2bPStgd+PhNtYdtlvY2NjYK9gnmFu7fhIw5GHztb8hNjY29ouxZ7P0WYE52cSk/ZhtIjY2NvYO9t1x/Mn2tcX1KGbGxsbGXsfOSUk8kI+B8uZhtsXDM0rY2NjYq9l3i1N73Gf2h7lQwLCxsbEXsfMRTx7x5mOpdvT/K60INjY29kuyz8PdZKCTHwyaZRpFeICNjY29iJ0HvXnxuBXZtrFB2yZhY2Njvzn7D0GgU++bNzXTAAAAAElFTkSuQmCC" alt="微信分享二维码">
+</div>
+
+<div class="mask"></div>
+
+        
+        <ul class="article-footer-menu">
+            
+            
+  <li class="article-footer-tags">
+    <i class="fa fa-tags"></i>
+      
+    <a href="/lxx1997.github.io/tags/Vue/" class="color4">Vue</a>
+      
+    <a href="/lxx1997.github.io/tags/源码/" class="color3">源码</a>
+      
+  </li>
+
+        </ul>
+        
+    </footer>
+  </div>
+</article>
+
+
+
+<nav id="article-nav">
+  
+    <a href="/lxx1997.github.io/2021/01/27/vue-learn-api-with-源码-04/" id="article-nav-newer" class="article-nav-link-wrap">
+
+      <span class="article-nav-title">
+        <i class="fa fa-hand-o-left" aria-hidden="true"></i>
+        
+          跟着 Vue 源码学习 Vue api 系列 (三) - 选项 / DOM 及 生命周期函数
+        
+      </span>
+    </a>
+  
+  
+    <a href="/lxx1997.github.io/2021/01/24/vue-learn-api-with-源码-03/" id="article-nav-older" class="article-nav-link-wrap">
+      <span class="article-nav-title">跟着 Vue 源码学习 Vue api 系列 (三) - 选项 / 数据</span>
+      <i class="fa fa-hand-o-right" aria-hidden="true"></i>
+    </a>
+  
+</nav>
+
+
+
+    
+</section>
+        
+      </div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+      <p>
+        Powered by  <a href="http://hexo.io/" target="_blank">Hexo</a>
+        Theme <a href="//github.com/wongminho/hexo-theme-miho" target="_blank">MiHo</a>
+      &copy; 2021 lxx<br>
+      </p>
+    </div>
+  </div>
+</footer>
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<script>
+  var mihoConfig = {
+      root: "https://lxxstar987.gitee.io/lxx1997.github.io",
+      animate: true,
+      isHome: false,
+      share: true,
+      reward: 1
+  }
+</script>
+<div class="sidebar">
+    <div id="sidebar-search" title="Search">
+        <i class="fa fa-search"></i>
+    </div>
+    <div id="sidebar-category" title="Categories">
+        <i class="fa fa-book"></i>
+    </div>
+    <div id="sidebar-tag" title="Tags">
+        <i class="fa fa-tags"></i>
+    </div>
+    <div id="sidebar-top">
+        <span class="sidebar-top-icon"><i class="fa fa-angle-up"></i></span>
+    </div>
+</div>
+<div class="sidebar-menu-box" id="sidebar-menu-box">
+    <div class="sidebar-menu-box-container">
+        <div id="sidebar-menu-box-categories">
+            <a class="category-link" href="/lxx1997.github.io/categories/JavaScript/">JavaScript</a><a class="category-link" href="/lxx1997.github.io/categories/Vue/">Vue</a><a class="category-link" href="/lxx1997.github.io/categories/Vue-源码/">Vue 源码</a><a class="category-link" href="/lxx1997.github.io/categories/eggjs/">eggjs</a><a class="category-link" href="/lxx1997.github.io/categories/nodejs-deno/">nodejs deno</a><a class="category-link" href="/lxx1997.github.io/categories/thought/">thought</a><a class="category-link" href="/lxx1997.github.io/categories/vue3-vite-ts/">vue3 vite ts</a><a class="category-link" href="/lxx1997.github.io/categories/web/">web</a><a class="category-link" href="/lxx1997.github.io/categories/面试/">面试</a>
+        </div>
+        <div id="sidebar-menu-box-tags">
+            <a href="/lxx1997.github.io/tags/Components/" style="font-size: 10px;">Components</a> <a href="/lxx1997.github.io/tags/ES6/" style="font-size: 11.25px;">ES6</a> <a href="/lxx1997.github.io/tags/HTML/" style="font-size: 10px;">HTML</a> <a href="/lxx1997.github.io/tags/JavaScript/" style="font-size: 20px;">JavaScript</a> <a href="/lxx1997.github.io/tags/TypeScript/" style="font-size: 11.25px;">TypeScript</a> <a href="/lxx1997.github.io/tags/Vue/" style="font-size: 18.75px;">Vue</a> <a href="/lxx1997.github.io/tags/Vue3/" style="font-size: 11.25px;">Vue3</a> <a href="/lxx1997.github.io/tags/antd/" style="font-size: 10px;">antd</a> <a href="/lxx1997.github.io/tags/array/" style="font-size: 11.25px;">array</a> <a href="/lxx1997.github.io/tags/browser/" style="font-size: 10px;">browser</a> <a href="/lxx1997.github.io/tags/canvas/" style="font-size: 12.5px;">canvas</a> <a href="/lxx1997.github.io/tags/chrome/" style="font-size: 10px;">chrome</a> <a href="/lxx1997.github.io/tags/coffeescript/" style="font-size: 11.25px;">coffeescript</a> <a href="/lxx1997.github.io/tags/colorui/" style="font-size: 10px;">colorui</a> <a href="/lxx1997.github.io/tags/css/" style="font-size: 13.75px;">css</a> <a href="/lxx1997.github.io/tags/css3/" style="font-size: 11.25px;">css3</a> <a href="/lxx1997.github.io/tags/customize-cra/" style="font-size: 10px;">customize-cra</a> <a href="/lxx1997.github.io/tags/d3-js/" style="font-size: 10px;">d3.js</a> <a href="/lxx1997.github.io/tags/deepin/" style="font-size: 10px;">deepin</a> <a href="/lxx1997.github.io/tags/deno/" style="font-size: 10px;">deno</a> <a href="/lxx1997.github.io/tags/docker/" style="font-size: 10px;">docker</a> <a href="/lxx1997.github.io/tags/egg-mysql/" style="font-size: 10px;">egg-mysql</a> <a href="/lxx1997.github.io/tags/eggjs/" style="font-size: 15px;">eggjs</a> <a href="/lxx1997.github.io/tags/electron/" style="font-size: 10px;">electron</a> <a href="/lxx1997.github.io/tags/es6/" style="font-size: 10px;">es6</a> <a href="/lxx1997.github.io/tags/function/" style="font-size: 13.75px;">function</a> <a href="/lxx1997.github.io/tags/github/" style="font-size: 10px;">github</a> <a href="/lxx1997.github.io/tags/golang/" style="font-size: 10px;">golang</a> <a href="/lxx1997.github.io/tags/html/" style="font-size: 17.5px;">html</a> <a href="/lxx1997.github.io/tags/http/" style="font-size: 10px;">http</a> <a href="/lxx1997.github.io/tags/indexedDB/" style="font-size: 10px;">indexedDB</a> <a href="/lxx1997.github.io/tags/jsonwebtoken/" style="font-size: 10px;">jsonwebtoken</a> <a href="/lxx1997.github.io/tags/less/" style="font-size: 10px;">less</a> <a href="/lxx1997.github.io/tags/localStorage/" style="font-size: 10px;">localStorage</a> <a href="/lxx1997.github.io/tags/method/" style="font-size: 11.25px;">method</a> <a href="/lxx1997.github.io/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/lxx1997.github.io/tags/node/" style="font-size: 10px;">node</a> <a href="/lxx1997.github.io/tags/nodejs/" style="font-size: 11.25px;">nodejs</a> <a href="/lxx1997.github.io/tags/npm/" style="font-size: 10px;">npm</a> <a href="/lxx1997.github.io/tags/promise/" style="font-size: 10px;">promise</a> <a href="/lxx1997.github.io/tags/prototype/" style="font-size: 10px;">prototype</a> <a href="/lxx1997.github.io/tags/pygame/" style="font-size: 10px;">pygame</a> <a href="/lxx1997.github.io/tags/python/" style="font-size: 10px;">python</a> <a href="/lxx1997.github.io/tags/react/" style="font-size: 16.25px;">react</a> <a href="/lxx1997.github.io/tags/react-app-rewired/" style="font-size: 10px;">react-app-rewired</a> <a href="/lxx1997.github.io/tags/redis/" style="font-size: 10px;">redis</a> <a href="/lxx1997.github.io/tags/router/" style="font-size: 10px;">router</a> <a href="/lxx1997.github.io/tags/svg/" style="font-size: 11.25px;">svg</a> <a href="/lxx1997.github.io/tags/swagger-ui/" style="font-size: 10px;">swagger-ui</a> <a href="/lxx1997.github.io/tags/symbol/" style="font-size: 10px;">symbol</a> <a href="/lxx1997.github.io/tags/this/" style="font-size: 10px;">this</a> <a href="/lxx1997.github.io/tags/thought/" style="font-size: 12.5px;">thought</a> <a href="/lxx1997.github.io/tags/typescript/" style="font-size: 16.25px;">typescript</a> <a href="/lxx1997.github.io/tags/uni-app/" style="font-size: 10px;">uni-app</a> <a href="/lxx1997.github.io/tags/vite/" style="font-size: 11.25px;">vite</a> <a href="/lxx1997.github.io/tags/web/" style="font-size: 17.5px;">web</a> <a href="/lxx1997.github.io/tags/webpack/" style="font-size: 11.25px;">webpack</a> <a href="/lxx1997.github.io/tags/产品/" style="font-size: 10px;">产品</a> <a href="/lxx1997.github.io/tags/前端/" style="font-size: 13.75px;">前端</a> <a href="/lxx1997.github.io/tags/后台/" style="font-size: 10px;">后台</a> <a href="/lxx1997.github.io/tags/安全/" style="font-size: 11.25px;">安全</a> <a href="/lxx1997.github.io/tags/工具/" style="font-size: 11.25px;">工具</a> <a href="/lxx1997.github.io/tags/性能/" style="font-size: 10px;">性能</a> <a href="/lxx1997.github.io/tags/旧事/" style="font-size: 15px;">旧事</a> <a href="/lxx1997.github.io/tags/模式/" style="font-size: 10px;">模式</a> <a href="/lxx1997.github.io/tags/浏览器/" style="font-size: 11.25px;">浏览器</a> <a href="/lxx1997.github.io/tags/源码/" style="font-size: 15px;">源码</a> <a href="/lxx1997.github.io/tags/生活/" style="font-size: 13.75px;">生活</a> <a href="/lxx1997.github.io/tags/经验/" style="font-size: 10px;">经验</a> <a href="/lxx1997.github.io/tags/编码/" style="font-size: 10px;">编码</a> <a href="/lxx1997.github.io/tags/药别停/" style="font-size: 10px;">药别停</a> <a href="/lxx1997.github.io/tags/读后感/" style="font-size: 12.5px;">读后感</a> <a href="/lxx1997.github.io/tags/面试/" style="font-size: 10px;">面试</a> <a href="/lxx1997.github.io/tags/黑科技/" style="font-size: 10px;">黑科技</a>
+        </div>
+    </div>
+    <a href="javascript:;" class="sidebar-menu-box-close">&times;</a>
+</div>
+<div class="mobile-header-menu-nav" id="mobile-header-menu-nav">
+    <div class="mobile-header-menu-container">
+        <span class="title">Menus</span>
+        <ul class="mobile-header-menu-navbar">
+            
+            <li>
+                <a  href="/lxx1997.github.io/">
+                    <i class="fa fa-home"></i><span>Home</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    <div class="mobile-header-tag-container">
+        <span class="title">Tags</span>
+        <div id="mobile-header-container-tags">
+            <a href="/lxx1997.github.io/tags/Components/" style="font-size: 10px;">Components</a> <a href="/lxx1997.github.io/tags/ES6/" style="font-size: 11.25px;">ES6</a> <a href="/lxx1997.github.io/tags/HTML/" style="font-size: 10px;">HTML</a> <a href="/lxx1997.github.io/tags/JavaScript/" style="font-size: 20px;">JavaScript</a> <a href="/lxx1997.github.io/tags/TypeScript/" style="font-size: 11.25px;">TypeScript</a> <a href="/lxx1997.github.io/tags/Vue/" style="font-size: 18.75px;">Vue</a> <a href="/lxx1997.github.io/tags/Vue3/" style="font-size: 11.25px;">Vue3</a> <a href="/lxx1997.github.io/tags/antd/" style="font-size: 10px;">antd</a> <a href="/lxx1997.github.io/tags/array/" style="font-size: 11.25px;">array</a> <a href="/lxx1997.github.io/tags/browser/" style="font-size: 10px;">browser</a> <a href="/lxx1997.github.io/tags/canvas/" style="font-size: 12.5px;">canvas</a> <a href="/lxx1997.github.io/tags/chrome/" style="font-size: 10px;">chrome</a> <a href="/lxx1997.github.io/tags/coffeescript/" style="font-size: 11.25px;">coffeescript</a> <a href="/lxx1997.github.io/tags/colorui/" style="font-size: 10px;">colorui</a> <a href="/lxx1997.github.io/tags/css/" style="font-size: 13.75px;">css</a> <a href="/lxx1997.github.io/tags/css3/" style="font-size: 11.25px;">css3</a> <a href="/lxx1997.github.io/tags/customize-cra/" style="font-size: 10px;">customize-cra</a> <a href="/lxx1997.github.io/tags/d3-js/" style="font-size: 10px;">d3.js</a> <a href="/lxx1997.github.io/tags/deepin/" style="font-size: 10px;">deepin</a> <a href="/lxx1997.github.io/tags/deno/" style="font-size: 10px;">deno</a> <a href="/lxx1997.github.io/tags/docker/" style="font-size: 10px;">docker</a> <a href="/lxx1997.github.io/tags/egg-mysql/" style="font-size: 10px;">egg-mysql</a> <a href="/lxx1997.github.io/tags/eggjs/" style="font-size: 15px;">eggjs</a> <a href="/lxx1997.github.io/tags/electron/" style="font-size: 10px;">electron</a> <a href="/lxx1997.github.io/tags/es6/" style="font-size: 10px;">es6</a> <a href="/lxx1997.github.io/tags/function/" style="font-size: 13.75px;">function</a> <a href="/lxx1997.github.io/tags/github/" style="font-size: 10px;">github</a> <a href="/lxx1997.github.io/tags/golang/" style="font-size: 10px;">golang</a> <a href="/lxx1997.github.io/tags/html/" style="font-size: 17.5px;">html</a> <a href="/lxx1997.github.io/tags/http/" style="font-size: 10px;">http</a> <a href="/lxx1997.github.io/tags/indexedDB/" style="font-size: 10px;">indexedDB</a> <a href="/lxx1997.github.io/tags/jsonwebtoken/" style="font-size: 10px;">jsonwebtoken</a> <a href="/lxx1997.github.io/tags/less/" style="font-size: 10px;">less</a> <a href="/lxx1997.github.io/tags/localStorage/" style="font-size: 10px;">localStorage</a> <a href="/lxx1997.github.io/tags/method/" style="font-size: 11.25px;">method</a> <a href="/lxx1997.github.io/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/lxx1997.github.io/tags/node/" style="font-size: 10px;">node</a> <a href="/lxx1997.github.io/tags/nodejs/" style="font-size: 11.25px;">nodejs</a> <a href="/lxx1997.github.io/tags/npm/" style="font-size: 10px;">npm</a> <a href="/lxx1997.github.io/tags/promise/" style="font-size: 10px;">promise</a> <a href="/lxx1997.github.io/tags/prototype/" style="font-size: 10px;">prototype</a> <a href="/lxx1997.github.io/tags/pygame/" style="font-size: 10px;">pygame</a> <a href="/lxx1997.github.io/tags/python/" style="font-size: 10px;">python</a> <a href="/lxx1997.github.io/tags/react/" style="font-size: 16.25px;">react</a> <a href="/lxx1997.github.io/tags/react-app-rewired/" style="font-size: 10px;">react-app-rewired</a> <a href="/lxx1997.github.io/tags/redis/" style="font-size: 10px;">redis</a> <a href="/lxx1997.github.io/tags/router/" style="font-size: 10px;">router</a> <a href="/lxx1997.github.io/tags/svg/" style="font-size: 11.25px;">svg</a> <a href="/lxx1997.github.io/tags/swagger-ui/" style="font-size: 10px;">swagger-ui</a> <a href="/lxx1997.github.io/tags/symbol/" style="font-size: 10px;">symbol</a> <a href="/lxx1997.github.io/tags/this/" style="font-size: 10px;">this</a> <a href="/lxx1997.github.io/tags/thought/" style="font-size: 12.5px;">thought</a> <a href="/lxx1997.github.io/tags/typescript/" style="font-size: 16.25px;">typescript</a> <a href="/lxx1997.github.io/tags/uni-app/" style="font-size: 10px;">uni-app</a> <a href="/lxx1997.github.io/tags/vite/" style="font-size: 11.25px;">vite</a> <a href="/lxx1997.github.io/tags/web/" style="font-size: 17.5px;">web</a> <a href="/lxx1997.github.io/tags/webpack/" style="font-size: 11.25px;">webpack</a> <a href="/lxx1997.github.io/tags/产品/" style="font-size: 10px;">产品</a> <a href="/lxx1997.github.io/tags/前端/" style="font-size: 13.75px;">前端</a> <a href="/lxx1997.github.io/tags/后台/" style="font-size: 10px;">后台</a> <a href="/lxx1997.github.io/tags/安全/" style="font-size: 11.25px;">安全</a> <a href="/lxx1997.github.io/tags/工具/" style="font-size: 11.25px;">工具</a> <a href="/lxx1997.github.io/tags/性能/" style="font-size: 10px;">性能</a> <a href="/lxx1997.github.io/tags/旧事/" style="font-size: 15px;">旧事</a> <a href="/lxx1997.github.io/tags/模式/" style="font-size: 10px;">模式</a> <a href="/lxx1997.github.io/tags/浏览器/" style="font-size: 11.25px;">浏览器</a> <a href="/lxx1997.github.io/tags/源码/" style="font-size: 15px;">源码</a> <a href="/lxx1997.github.io/tags/生活/" style="font-size: 13.75px;">生活</a> <a href="/lxx1997.github.io/tags/经验/" style="font-size: 10px;">经验</a> <a href="/lxx1997.github.io/tags/编码/" style="font-size: 10px;">编码</a> <a href="/lxx1997.github.io/tags/药别停/" style="font-size: 10px;">药别停</a> <a href="/lxx1997.github.io/tags/读后感/" style="font-size: 12.5px;">读后感</a> <a href="/lxx1997.github.io/tags/面试/" style="font-size: 10px;">面试</a> <a href="/lxx1997.github.io/tags/黑科技/" style="font-size: 10px;">黑科技</a>
+        </div>
+    </div>
+</div>
+<div class="search-wrap">
+    <span class="search-close">&times;</span>
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+            <i class="icon icon-lg icon-chevron-left"></i>
+        </a>
+        <input class="search-field" placeholder="Search..." id="keywords">
+        <a id="search-submit" href="javascript:;">
+            <i class="fa fa-search"></i>
+        </a>
+    <div class="search-container" id="search-container">
+        <ul class="search-result" id="search-result">
+        </ul>
+    </div>
+</div>
+
+<div id="search-tpl">
+    <li class="search-result-item">
+        <a href="{url}" class="search-item-li">
+            <span class="search-item-li-title" title="{title}">{title}</span>
+        </a>
+    </li>
+</div>
+<script src="/lxx1997.github.io/js/search.js"></script>
+<script src="/lxx1997.github.io/js/main.js"></script>
+
+
+  <script src="//cdn.bootcss.com/particles.js/2.0.0/particles.min.js"></script>
+  <div id="particles"></div>
+  <script src="/lxx1997.github.io/js/particles.js"></script>
+
+
+
+
+
+
+
+  <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
+  <script src="//cdn.bootcss.com/scrollReveal.js/3.0.5/scrollreveal.js"></script>
+  <script src="/lxx1997.github.io/js/animate.js"></script>
+
+
+  <script src="/lxx1997.github.io/js/pop-img.js"></script>
+  <script>
+     $(".article-entry p img").popImg();
+  </script>
+
+  </div>
+<script src="/lxx1997.github.io/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/lxx1997.github.io/live2dw/assets/kesyoban.model.json"},"display":{"position":"left","width":300,"height":300},"mobile":{"show":false},"log":false});</script></body>
+</html>
