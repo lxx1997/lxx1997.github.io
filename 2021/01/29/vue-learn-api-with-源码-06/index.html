@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+  <title>跟着 Vue源码学习 Vue api 系列 (六) - 实例 property | SoulReader</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+    <meta name="keywords" content="blog 博客">
+  
+  <meta name="description" content="$data源码12dataDef.get = function () &amp;#123; return this._data &amp;#125;;Object.defineProperty(Vue.prototype, &apos;$data&apos;, dataDef); 通过 Object.defineProperty 方法对 Vue 原型上的 $data 设置监听方法，访问 $data 属性的时候 直接返回 Vue 的">
+<meta name="keywords" content="Vue,源码">
+<meta property="og:type" content="article">
+<meta property="og:title" content="跟着 Vue源码学习 Vue api 系列 (六) - 实例 property">
+<meta property="og:url" content="https://lxxstar987.gitee.io/lxx1997.github.io/2021/01/29/vue-learn-api-with-源码-06/index.html">
+<meta property="og:site_name" content="SoulReader">
+<meta property="og:description" content="$data源码12dataDef.get = function () &amp;#123; return this._data &amp;#125;;Object.defineProperty(Vue.prototype, &apos;$data&apos;, dataDef); 通过 Object.defineProperty 方法对 Vue 原型上的 $data 设置监听方法，访问 $data 属性的时候 直接返回 Vue 的">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2021-02-01T07:25:54.289Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="跟着 Vue源码学习 Vue api 系列 (六) - 实例 property">
+<meta name="twitter:description" content="$data源码12dataDef.get = function () &amp;#123; return this._data &amp;#125;;Object.defineProperty(Vue.prototype, &apos;$data&apos;, dataDef); 通过 Object.defineProperty 方法对 Vue 原型上的 $data 设置监听方法，访问 $data 属性的时候 直接返回 Vue 的">
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+  <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/lxx1997.github.io/css/style.css">
+  <script src="/lxx1997.github.io/js/pace.min.js"></script>
+  
+
+  
+  
+
+</head>
+</html>
+<body>
+  <div id="container">
+      <header id="header">
+    <div id="banner"></div>
+    <div id="header-outer">
+        <div id="header-menu" class="header-menu-pos animated">
+            <div class="header-menu-container">
+                <a href="/lxx1997.github.io/" class="left">
+                    <span class="site-title">SoulReader</span>
+                </a>
+                <nav id="header-menu-nav" class="right">
+                    
+                    <a  href="/lxx1997.github.io/">
+                        <i class="fa fa-home"></i>
+                        <span>Home</span>
+                    </a>
+                    
+                </nav>
+                <a class="mobile-header-menu-button">
+                    <i class="fa fa-bars"></i>
+                </a>
+            </div>
+        </div>
+        <div id="header-row">
+            <div id="logo">
+                <a href="/lxx1997.github.io/">
+                    <img src="/lxx1997.github.io/images/avatar.png" alt="logo">
+                </a>
+            </div>
+            <div class="header-info">
+                <div id="header-title">
+                    
+                    <h2>
+                        SoulReader
+                    </h2>
+                    
+                </div>
+                <div id="header-description">
+                    
+                    <h3>
+                        前端菜鸟 多多交流学习
+                    </h3>
+                    
+                </div>
+            </div>
+            <nav class="header-nav">
+                <div class="social">
+                    
+                        <a title="SoulReader" target="_blank" href="/lxx1997.github.io/">
+                            <i class="fa fa-home fa-2x"></i></a>
+                    
+                        <a title="Github" target="_blank" href="https://github.com/lxx1997">
+                            <i class="fa fa-github fa-2x"></i></a>
+                    
+                </div>
+            </nav>
+        </div>
+    </div>
+</header>
+      <div class="outer">
+        <section id="main" class="body-wrap"><article id="post-vue-learn-api-with-源码-06" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="post-title" itemprop="name">
+      跟着 Vue源码学习 Vue api 系列 (六) - 实例 property
+    </h1>
+    <div class="post-title-bar">
+      <ul>
+          
+              <li>
+                  <i class="fa fa-book"></i>
+                  
+                      <a href="/lxx1997.github.io/categories/Vue源码/">Vue源码</a>
+                  
+              </li>
+          
+        <li>
+          <i class="fa fa-calendar"></i>  2021-01-29
+        </li>
+        <li>
+          <i class="fa fa-eye"></i>
+          <span id="busuanzi_value_page_pv"></span>
+        </li>
+      </ul>
+    </div>
+  
+
+          
+      </header>
+    
+    <div class="article-entry post-content" itemprop="articleBody">
+      
+            
+            <h4 id="data"><a href="#data" class="headerlink" title="$data"></a>$data</h4><h5 id="源码"><a href="#源码" class="headerlink" title="源码"></a>源码</h5><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">dataDef.get = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123; <span class="keyword">return</span> <span class="keyword">this</span>._data &#125;;</span><br><span class="line"><span class="built_in">Object</span>.defineProperty(Vue.prototype, <span class="string">'$data'</span>, dataDef);</span><br></pre></td></tr></table></figure>
+<p>通过 Object.defineProperty 方法对 Vue 原型上的 $data 设置监听方法，访问 $data 属性的时候 直接返回 Vue 的 _data 数据</p>
+<p>不推介使用 $data 来访问 Vue 中 data 中的数据，因为 Vue 在内部已经做了映射，直接把 data 中的属性 映射到 Vue 实例上</p>
+<h4 id="props"><a href="#props" class="headerlink" title="$props"></a>$props</h4><h5 id="源码-1"><a href="#源码-1" class="headerlink" title="源码"></a>源码</h5><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">propsDef.get = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123; <span class="keyword">return</span> <span class="keyword">this</span>._props &#125;;</span><br><span class="line"><span class="built_in">Object</span>.defineProperty(Vue.prototype, <span class="string">'$props'</span>, propsDef);</span><br></pre></td></tr></table></figure>
+<p>通过 Object.defineProperty 方法对 Vue 原型上的 $props 设置监听方法，访问 $props 属性的时候 直接返回 Vue 的 _props 数据</p>
+<p>不推介使用 $props 来访问 Vue 中 props 中的数据，因为 Vue 在内部已经做了映射，直接把 props 中的属性 映射到 Vue 实例上</p>
+<h4 id="el"><a href="#el" class="headerlink" title="$el"></a>$el</h4><h5 id="源码-2"><a href="#源码-2" class="headerlink" title="源码"></a>源码</h5><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// $mount</span></span><br><span class="line">  el = el &amp;&amp; inBrowser ? query(el) : <span class="literal">undefined</span>;</span><br><span class="line"><span class="comment">// mountComponent</span></span><br><span class="line">  vm.$el = el;</span><br></pre></td></tr></table></figure>
+<p>  存储了 Vue 实例的根元素</p>
+<h4 id="options"><a href="#options" class="headerlink" title="$options"></a>$options</h4><h5 id="源码-3"><a href="#源码-3" class="headerlink" title="源码"></a>源码</h5><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 初始化实例的时候传入 options 参数</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Vue</span> (<span class="params">options</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (!(<span class="keyword">this</span> <span class="keyword">instanceof</span> Vue)</span><br><span class="line">  ) &#123;</span><br><span class="line">    warn(<span class="string">'Vue is a constructor and should be called with the `new` keyword'</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">this</span>._init(options);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// _init 方法</span></span><br><span class="line"><span class="keyword">if</span> (options &amp;&amp; options._isComponent) &#123;</span><br><span class="line">    <span class="comment">// optimize internal component instantiation</span></span><br><span class="line">    <span class="comment">// since dynamic options merging is pretty slow, and none of the</span></span><br><span class="line">    <span class="comment">// internal component options needs special treatment.</span></span><br><span class="line">    initInternalComponent(vm, options);</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    vm.$options = mergeOptions(</span><br><span class="line">      resolveConstructorOptions(vm.constructor),</span><br><span class="line">      options || &#123;&#125;,</span><br><span class="line">      vm</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+<h5 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h5><p>Vue 也支持我们自定义 property 特性，可以通过 optionMergeStrategies 配置自定义特性的合并规则</p>
+<p>访问的时候通过 this.$options.property 来访问</p>
+<h4 id="parnet"><a href="#parnet" class="headerlink" title="$parnet"></a>$parnet</h4><p>  指向当前组件的 父实例，如果没有父组件实例，则为 null</p>
+<h4 id="children"><a href="#children" class="headerlink" title="$children"></a>$children</h4><p>  指向组件的子组件 是一个数组</p>
+<h4 id="root"><a href="#root" class="headerlink" title="$root"></a>$root</h4><p>  指向 Vue 实例的根组件，如果没有父组件，即指向自身<br>  <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">vm.$parent = parent;</span><br><span class="line">vm.$root = parent ? parent.$root : vm;</span><br><span class="line">vm.$children = [];</span><br></pre></td></tr></table></figure></p>
+<h4 id="slots"><a href="#slots" class="headerlink" title="$slots"></a>$slots</h4><p>  <code>[name]: Array&lt;VNode&gt;</code><br>  用来访问插槽</p>
+<h5 id="源码-4"><a href="#源码-4" class="headerlink" title="源码"></a>源码</h5><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// initRender</span></span><br><span class="line">vm.$slots = resolveSlots(options._renderChildren, renderContext);</span><br><span class="line"></span><br><span class="line"><span class="comment">// resolveSlots</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">resolveSlots</span> (<span class="params"></span></span></span><br><span class="line"><span class="function"><span class="params">  children,</span></span></span><br><span class="line"><span class="function"><span class="params">  context</span></span></span><br><span class="line"><span class="function"><span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (!children || !children.length) &#123;</span><br><span class="line">    <span class="keyword">return</span> &#123;&#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">var</span> slots = &#123;&#125;;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>, l = children.length; i &lt; l; i++) &#123;</span><br><span class="line">    <span class="keyword">var</span> child = children[i];</span><br><span class="line">    <span class="keyword">var</span> data = child.data;</span><br><span class="line">    <span class="comment">// remove slot attribute if the node is resolved as a Vue slot node</span></span><br><span class="line">    <span class="keyword">if</span> (data &amp;&amp; data.attrs &amp;&amp; data.attrs.slot) &#123;</span><br><span class="line">      <span class="keyword">delete</span> data.attrs.slot;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// named slots should only be respected if the vnode was rendered in the</span></span><br><span class="line">    <span class="comment">// same context.</span></span><br><span class="line">    <span class="keyword">if</span> ((child.context === context || child.fnContext === context) &amp;&amp;</span><br><span class="line">      data &amp;&amp; data.slot != <span class="literal">null</span></span><br><span class="line">    ) &#123;</span><br><span class="line">      <span class="keyword">var</span> name = data.slot;</span><br><span class="line">      <span class="keyword">var</span> slot = (slots[name] || (slots[name] = []));</span><br><span class="line">      <span class="keyword">if</span> (child.tag === <span class="string">'template'</span>) &#123;</span><br><span class="line">        slot.push.apply(slot, child.children || []);</span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        slot.push(child);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      (slots.default || (slots.default = [])).push(child);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// ignore slots that contains only whitespace</span></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">var</span> name$<span class="number">1</span> <span class="keyword">in</span> slots) &#123;</span><br><span class="line">    <span class="keyword">if</span> (slots[name$<span class="number">1</span>].every(isWhitespace)) &#123;</span><br><span class="line">      <span class="keyword">delete</span> slots[name$<span class="number">1</span>];</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> slots</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在初始化渲染的时候，解析 DOM 树，通过 resolveSlots 方法 提取出 slots 对象</p>
+<p>resolveSlots 方法 判断 slot 属性是否为空，然后将同一个 slot 下的 node 节点 合并成一个 slot 数组,最后通过 delete 方法删除 slot 为空的数组</p>
+<h5 id="使用-1"><a href="#使用-1" class="headerlink" title="使用"></a>使用</h5><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">blog-post</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">template</span> <span class="attr">v-slot:header</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">h1</span>&gt;</span>About Me<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br><span class="line"></span><br><span class="line">  <span class="tag">&lt;<span class="name">p</span>&gt;</span>Here's some page content, which will be included in vm.$slots.default, because it's not inside a named slot.<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"></span><br><span class="line">  <span class="tag">&lt;<span class="name">template</span> <span class="attr">v-slot:footer</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>Copyright 2016 Evan You<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br><span class="line"></span><br><span class="line">  <span class="tag">&lt;<span class="name">p</span>&gt;</span>If I have some content down here, it will also be included in vm.$slots.default.<span class="tag">&lt;/<span class="name">p</span>&gt;</span>.</span><br><span class="line"><span class="tag">&lt;/<span class="name">blog-post</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="actionscript">  Vue.component(<span class="string">'blog-post'</span>, &#123;</span></span><br><span class="line"><span class="actionscript">    render: <span class="function"><span class="keyword">function</span> <span class="params">(createElement)</span> </span>&#123;</span></span><br><span class="line"><span class="actionscript">      <span class="keyword">var</span> header = <span class="keyword">this</span>.$slots.header</span></span><br><span class="line"><span class="actionscript">      <span class="keyword">var</span> body   = <span class="keyword">this</span>.$slots.default</span></span><br><span class="line"><span class="actionscript">      <span class="keyword">var</span> footer = <span class="keyword">this</span>.$slots.footer</span></span><br><span class="line"><span class="actionscript">      <span class="keyword">return</span> createElement(<span class="string">'div'</span>, [</span></span><br><span class="line"><span class="actionscript">        createElement(<span class="string">'header'</span>, header),</span></span><br><span class="line"><span class="actionscript">        createElement(<span class="string">'main'</span>, body),</span></span><br><span class="line"><span class="actionscript">        createElement(<span class="string">'footer'</span>, footer)</span></span><br><span class="line">      ])</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;)</span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h4 id="scopedSlots"><a href="#scopedSlots" class="headerlink" title="$scopedSlots"></a>$scopedSlots</h4><p>  <code>{ [name: string]: props =&gt; Array&lt;VNode&gt; | undefined }</code></p>
+<p>  用来访问作用域插槽。对于包括 默认 slot 在内的每一个插槽，该对象都包含一个返回相应 VNode 的函数。</p>
+<h5 id="源码-5"><a href="#源码-5" class="headerlink" title="源码"></a>源码</h5><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Vue.prototype._render</span></span><br><span class="line"><span class="keyword">this</span>.$scopedSlots = normalizeScopedSlots(data.scopedSlots, <span class="keyword">this</span>。$slots);</span><br><span class="line"><span class="comment">// 函数 normalizeScopedSlots</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">normalizeScopedSlots</span> (<span class="params"></span></span></span><br><span class="line"><span class="function"><span class="params">  slots,</span></span></span><br><span class="line"><span class="function"><span class="params">  normalSlots,</span></span></span><br><span class="line"><span class="function"><span class="params">  prevSlots</span></span></span><br><span class="line"><span class="function"><span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> res;</span><br><span class="line">  <span class="keyword">var</span> hasNormalSlots = <span class="built_in">Object</span>.keys(normalSlots).length &gt; <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">var</span> isStable = slots ? !!slots.$stable : !hasNormalSlots;</span><br><span class="line">  <span class="keyword">var</span> key = slots &amp;&amp; slots.$key;</span><br><span class="line">  <span class="keyword">if</span> (!slots) &#123;</span><br><span class="line">    res = &#123;&#125;;</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (slots._normalized) &#123;</span><br><span class="line">    <span class="comment">// fast path 1: child component re-render only, parent did not change</span></span><br><span class="line">    <span class="keyword">return</span> slots._normalized</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (</span><br><span class="line">    isStable &amp;&amp;</span><br><span class="line">    prevSlots &amp;&amp;</span><br><span class="line">    prevSlots !== emptyObject &amp;&amp;</span><br><span class="line">    key === prevSlots.$key &amp;&amp;</span><br><span class="line">    !hasNormalSlots &amp;&amp;</span><br><span class="line">    !prevSlots.$hasNormal</span><br><span class="line">  ) &#123;</span><br><span class="line">    <span class="comment">// fast path 2: stable scoped slots w/ no normal slots to proxy,</span></span><br><span class="line">    <span class="comment">// only need to normalize once</span></span><br><span class="line">    <span class="keyword">return</span> prevSlots</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    res = &#123;&#125;;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> key$<span class="number">1</span> <span class="keyword">in</span> slots) &#123;</span><br><span class="line">      <span class="keyword">if</span> (slots[key$<span class="number">1</span>] &amp;&amp; key$<span class="number">1</span>[<span class="number">0</span>] !== <span class="string">'$'</span>) &#123;</span><br><span class="line">        res[key$<span class="number">1</span>] = normalizeScopedSlot(normalSlots, key$<span class="number">1</span>, slots[key$<span class="number">1</span>]);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// expose normal slots on scopedSlots</span></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">var</span> key$<span class="number">2</span> <span class="keyword">in</span> normalSlots) &#123;</span><br><span class="line">    <span class="keyword">if</span> (!(key$<span class="number">2</span> <span class="keyword">in</span> res)) &#123;</span><br><span class="line">      res[key$<span class="number">2</span>] = proxyNormalSlot(normalSlots, key$<span class="number">2</span>);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// avoriaz seems to mock a non-extensible $scopedSlots object</span></span><br><span class="line">  <span class="comment">// and when that is passed down this would cause an error</span></span><br><span class="line">  <span class="keyword">if</span> (slots &amp;&amp; <span class="built_in">Object</span>.isExtensible(slots)) &#123;</span><br><span class="line">    (slots)._normalized = res;</span><br><span class="line">  &#125;</span><br><span class="line">  def(res, <span class="string">'$stable'</span>, isStable);</span><br><span class="line">  def(res, <span class="string">'$key'</span>, key);</span><br><span class="line">  def(res, <span class="string">'$hasNormal'</span>, hasNormalSlots);</span><br><span class="line">  <span class="keyword">return</span> res</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="refs"><a href="#refs" class="headerlink" title="$refs"></a>$refs</h4><h5 id="源码-6"><a href="#源码-6" class="headerlink" title="源码"></a>源码</h5><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> ref = &#123;</span><br><span class="line">  create: <span class="function"><span class="keyword">function</span> <span class="title">create</span> (<span class="params">_, vnode</span>) </span>&#123;</span><br><span class="line">    registerRef(vnode);</span><br><span class="line">  &#125;,</span><br><span class="line">  update: <span class="function"><span class="keyword">function</span> <span class="title">update</span> (<span class="params">oldVnode, vnode</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (oldVnode.data.ref !== vnode.data.ref) &#123;</span><br><span class="line">      registerRef(oldVnode, <span class="literal">true</span>);</span><br><span class="line">      registerRef(vnode);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  destroy: <span class="function"><span class="keyword">function</span> <span class="title">destroy</span> (<span class="params">vnode</span>) </span>&#123;</span><br><span class="line">    registerRef(vnode, <span class="literal">true</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">registerRef</span> (<span class="params">vnode, isRemoval</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> key = vnode.data.ref;</span><br><span class="line">  <span class="keyword">if</span> (!isDef(key)) &#123; <span class="keyword">return</span> &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">var</span> vm = vnode.context;</span><br><span class="line">  <span class="keyword">var</span> ref = vnode.componentInstance || vnode.elm;</span><br><span class="line">  <span class="keyword">var</span> refs = vm.$refs;</span><br><span class="line">  <span class="keyword">if</span> (isRemoval) &#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">Array</span>.isArray(refs[key])) &#123;</span><br><span class="line">      remove(refs[key], ref);</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (refs[key] === ref) &#123;</span><br><span class="line">      refs[key] = <span class="literal">undefined</span>;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (vnode.data.refInFor) &#123;</span><br><span class="line">      <span class="keyword">if</span> (!<span class="built_in">Array</span>.isArray(refs[key])) &#123;</span><br><span class="line">        refs[key] = [ref];</span><br><span class="line">      &#125; <span class="keyword">else</span> <span class="keyword">if</span> (refs[key].indexOf(ref) &lt; <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="comment">// $flow-disable-line</span></span><br><span class="line">        refs[key].push(ref);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      refs[key] = ref;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>通过 registerRef 方法 注册和移除旧的 VNode</p>
+<h5 id="使用-2"><a href="#使用-2" class="headerlink" title="使用"></a>使用</h5><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">my-component</span> <span class="attr">ref</span>=<span class="string">"myComponent"</span>&gt;</span><span class="tag">&lt;/<span class="name">my-component</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="javascript">  <span class="keyword">export</span> <span class="keyword">default</span> &#123;</span></span><br><span class="line">    mounted() &#123;</span><br><span class="line"><span class="javascript">      <span class="built_in">console</span>.log(<span class="keyword">this</span>.$refs[<span class="string">'myComponent'</span>])</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h4 id="isServer"><a href="#isServer" class="headerlink" title="$isServer"></a>$isServer</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> isServerRendering = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (_isServer === <span class="literal">undefined</span>) &#123;</span><br><span class="line">    <span class="comment">/* istanbul ignore if */</span></span><br><span class="line">    <span class="keyword">if</span> (!inBrowser &amp;&amp; !inWeex &amp;&amp; <span class="keyword">typeof</span> global !== <span class="string">'undefined'</span>) &#123;</span><br><span class="line">      <span class="comment">// detect presence of vue-server-renderer and avoid</span></span><br><span class="line">      <span class="comment">// Webpack shimming the process</span></span><br><span class="line">      _isServer = global[<span class="string">'process'</span>] &amp;&amp; global[<span class="string">'process'</span>].env.VUE_ENV === <span class="string">'server'</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      _isServer = <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> _isServer</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>判断 代码运行环境是否是服务端渲染,开启对应渲染和优化方法</p>
+<h4 id="attrs"><a href="#attrs" class="headerlink" title="$attrs"></a>$attrs</h4><p>  包含了父作用域中不作为 prop 被识别且获取的 attribute 绑定(除开 class 和 style)，当一个组件没有声明任何props时，这里会包含所有父作用域的绑定，并且可以通过 <code>v-bind=&quot;$attrs&quot;</code> 传入内部组件</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// function updateChildComponent</span></span><br><span class="line">vm.$attrs = parentVnode.data.attrs || emptyObject;</span><br></pre></td></tr></table></figure>
+<h4 id="listeners"><a href="#listeners" class="headerlink" title="$listeners"></a>$listeners</h4><p>  包含了父作用域中的 <code>v-on</code>(不包含 <code>.natvie</code> 修饰器) 事件监听器，可以通过 <code>v-on=&quot;$listeners&quot;</code> 传入内部组件</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">vm.$listeners = listeners || emptyObject;</span><br></pre></td></tr></table></figure>
+<h4 id="watch"><a href="#watch" class="headerlink" title="$watch"></a>$watch</h4><h5 id="源码-7"><a href="#源码-7" class="headerlink" title="源码"></a>源码</h5><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">Vue.prototype.$watch = <span class="function"><span class="keyword">function</span> (<span class="params"></span></span></span><br><span class="line"><span class="function"><span class="params">  expOrFn,</span></span></span><br><span class="line"><span class="function"><span class="params">  cb,</span></span></span><br><span class="line"><span class="function"><span class="params">  options</span></span></span><br><span class="line"><span class="function"><span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> vm = <span class="keyword">this</span>;</span><br><span class="line">  <span class="keyword">if</span> (isPlainObject(cb)) &#123;</span><br><span class="line">    <span class="keyword">return</span> createWatcher(vm, expOrFn, cb, options)</span><br><span class="line">  &#125;</span><br><span class="line">  options = options || &#123;&#125;;</span><br><span class="line">  options.user = <span class="literal">true</span>;</span><br><span class="line">  <span class="keyword">var</span> watcher = <span class="keyword">new</span> Watcher(vm, expOrFn, cb, options);</span><br><span class="line">  <span class="keyword">if</span> (options.immediate) &#123;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">      cb.call(vm, watcher.value);</span><br><span class="line">    &#125; <span class="keyword">catch</span> (error) &#123;</span><br><span class="line">      handleError(error, vm, (<span class="string">"callback for immediate watcher \""</span> + (watcher.expression) + <span class="string">"\""</span>));</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="function"><span class="keyword">function</span> <span class="title">unwatchFn</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    watcher.teardown();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>  主要是通过 Watcher 构造函数及 createWatcher 方法对 Vue 实例的属性进行监控，然后返回一个取消观察的函数，用来停止触发回调</p>
+<h5 id="使用-3"><a href="#使用-3" class="headerlink" title="使用"></a>使用</h5><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 第一种使用</span></span><br><span class="line"><span class="keyword">this</span>.$watch(<span class="string">'property'</span>, cb)</span><br><span class="line"><span class="comment">// 第二种使用</span></span><br><span class="line"><span class="keyword">this</span>.$watch(<span class="string">'property'</span>, cb, &#123;</span><br><span class="line">  deep: <span class="literal">true</span>,</span><br><span class="line">  immediate: <span class="literal">true</span></span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">// 第三种使用</span></span><br><span class="line"><span class="keyword">this</span>.$watch(<span class="string">'property'</span>, &#123;</span><br><span class="line">  handler: cb,</span><br><span class="line">  deep: <span class="literal">true</span>,</span><br><span class="line">  immediate: <span class="literal">true</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>$watch 方法会返回一个取消侦听函数，但是如果包含 immediate 选项时，不能在第一次回调时取消侦听给定的 <code>property</code></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// bad example</span></span><br><span class="line"><span class="keyword">const</span> unwatch = <span class="keyword">this</span>.$watch(<span class="string">'property'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  unwatch()</span><br><span class="line">&#125;, &#123;</span><br><span class="line">  deep: <span class="literal">true</span>,</span><br><span class="line">  immediate: <span class="literal">true</span></span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">// good example</span></span><br><span class="line"><span class="keyword">const</span> unwatch = <span class="keyword">this</span>.$watch(<span class="string">'property'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span>(unwatch) &#123;</span><br><span class="line">    unwatch()</span><br><span class="line">  &#125;</span><br><span class="line">&#125;, &#123;</span><br><span class="line">  deep: <span class="literal">true</span>,</span><br><span class="line">  immediate: <span class="literal">true</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h4 id="set"><a href="#set" class="headerlink" title="$set"></a>$set</h4><p>  参考<a href="/lxx1997.github.io/2021/01/20/vue-learn-api-with-源码-02/#Vue-set-target-Object-Array-index-Number-string-value-any">Vue.set</a></p>
+<h4 id="delete"><a href="#delete" class="headerlink" title="$delete"></a>$delete</h4><p>  参考<a href="/lxx1997.github.io/2021/01/20/vue-learn-api-with-源码-02/#Vue-delete-target-Object-Array-index-Number-string">Vue.delete</a></p>
+
+            <div class="post-copyright">
+    <div class="content">
+        <p>最后更新： 2021年02月01日 15:25</p>
+        <p>原始链接： <a class="post-url" href="/lxx1997.github.io/2021/01/29/vue-learn-api-with-源码-06/" title="跟着 Vue源码学习 Vue api 系列 (六) - 实例 property">https://lxxstar987.gitee.io/lxx1997.github.io/2021/01/29/vue-learn-api-with-源码-06/</a></p>
+        <footer>
+            <a href="https://lxxstar987.gitee.io/lxx1997.github.io">
+                <img src="/lxx1997.github.io/images/avatar.png" alt="lxx">
+                lxx
+            </a>
+        </footer>
+    </div>
+</div>
+
+      
+        
+            
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;">赏</a>
+</div>
+
+<div id="reward" class="post-modal reward-lay">
+    <a class="close" href="javascript:;" id="reward-close">×</a>
+    <span class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢大佬打赏
+        <i class="icon icon-quote-right"></i>
+    </span>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/lxx1997.github.io/images/wechat_code.jpg" alt="打赏二维码">
+        </div>
+        <div class="reward-select">
+            
+            <label class="reward-select-item checked" data-id="wechat" data-wechat="/lxx1997.github.io/images/wechat_code.jpg">
+                <img class="reward-select-item-wechat" src="/lxx1997.github.io/images/wechat.png" alt="微信">
+            </label>
+            
+            
+            <label class="reward-select-item" data-id="alipay" data-alipay="/lxx1997.github.io/images/qq_code.jpg">
+                <img class="reward-select-item-alipay" src="/lxx1997.github.io/images/alipay.png" alt="支付宝">
+            </label>
+            
+        </div>
+    </div>
+</div>
+
+
+        
+    </div>
+    <footer class="article-footer">
+        
+        
+<div class="post-share">
+    <a href="javascript:;" id="share-sub" class="post-share-fab">
+        <i class="fa fa-share-alt"></i>
+    </a>
+    <div class="post-share-list" id="share-list">
+        <ul class="share-icons">
+          <li>
+            <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://lxxstar987.gitee.io/lxx1997.github.io/2021/01/29/vue-learn-api-with-源码-06/&title=《跟着 Vue源码学习 Vue api 系列 (六) - 实例 property》 — SoulReader&pic=https://lxxstar987.gitee.io/lxx1997.github.ioimages/avatar.png" data-title="微博">
+              <i class="fa fa-weibo"></i>
+            </a>
+          </li>
+          <li>
+            <a class="weixin share-sns" id="wxFab" href="javascript:;" data-title="微信">
+              <i class="fa fa-weixin"></i>
+            </a>
+          </li>
+          <li>
+            <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://lxxstar987.gitee.io/lxx1997.github.io/2021/01/29/vue-learn-api-with-源码-06/&title=《跟着 Vue源码学习 Vue api 系列 (六) - 实例 property》 — SoulReader&source=前端小菜鸟,努力深造" data-title="QQ">
+              <i class="fa fa-qq"></i>
+            </a>
+          </li>
+          <li>
+            <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://lxxstar987.gitee.io/lxx1997.github.io/2021/01/29/vue-learn-api-with-源码-06/" data-title="Facebook">
+              <i class="fa fa-facebook"></i>
+            </a>
+          </li>
+          <li>
+            <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《跟着 Vue源码学习 Vue api 系列 (六) - 实例 property》 — SoulReader&url=https://lxxstar987.gitee.io/lxx1997.github.io/2021/01/29/vue-learn-api-with-源码-06/&via=https://lxxstar987.gitee.io/lxx1997.github.io" data-title="Twitter">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+          <li>
+            <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://lxxstar987.gitee.io/lxx1997.github.io/2021/01/29/vue-learn-api-with-源码-06/" data-title="Google+">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        </ul>
+     </div>
+</div>
+<div class="post-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;" id="wxShare-close">×</a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPYAAAD2CAAAAADAeSUUAAADJElEQVR42u3awW7rMAwEwP7/T/td+w5NdkUHqNnRqXAVS6MAZUnq6yse17fx/Uky/6fPJs9fr5LsZDSwsbGxH8K+Xo58Tr6tCfi2fWJjY2OvY7/e7k+vbjH5/Pwok7CKjY2NjZ1sOjmg9lPt27CxsbGx2wD2eouTwNaWrrCxsbGxJ4yzUlE7c/IebGxs7N3svCv6+3/+SH8bGxsb+xezr3K0DdfJzKSAdajAxsbGXsTOA0BSvmkBk3Xn78HGxsbewU4+dlb6bzOCtsHctjf+e4KNjY29iN0GsOT6TpIw5Nd0ztrGUXjDxsbGXsFOFp5cxGnThuTgbmhsYGNjY69jnzVQ80s2bSm/DZ/1HGxsbOx17OQVeSmnTSHOVmx3FZWTsLGxsR/IzjedhIqzTVyDkacxBR4bGxv7Uew22UjKSV9How1so71hY2NjL2W3F3Ha0JI0fduZh/vHxsbGXsQ+Sw+SxKNYOD6gtmAUhVVsbGzsh7PvqkjliUSe8CRh7GwONjY29j52u2Rb1j8LNm0Skj/HxsbG3sdOQlcetNpMKE9p8rD65rixsbGxF7E/UU5q27pJUDwrXb05LGxsbOwV7HubtRPSpHGb7Py/32JjY2P/AXbOmJTy87A0CbRFAMPGxsZ+LHueYLSbyGFt4hQ1G7CxsbEXsdsk4axNe+8FoLwt8WYONjY29lJ2W0g6K99/4nLPm0ISNjY29h9gt+WbSfLQBr+z1kVRWsLGxsZ+LLst+iRh74bv4egQi8PFxsbGXsTOE4+8oHPF464LPW0zAxsbG3sfu20AJFtv27eTIldb0sLGxsbezc7/zudXZ/Li/qTZXLecsbGxsZeyz0r/eaEnB0xCYJRuYWNjY69gX+VoKzN5CWnyzrbshY2Njb2JfVZLz59Mko22iZs3ObCxsbH3sZOglTdWr8HIr/XMjxIbGxt7H7u95timCpNgeRaB38zBxsbGxo5D2rwx3LYNovIWNjY29h9mJ5h8zllxKg+Nt6Ui2NjY2L+enRR62jJ9nsDkSUh7uefHPWNjY2MvYueFnvwf/U8cXP4l5QeKjY2N/XD2P4bMaQT7Q8OMAAAAAElFTkSuQmCC" alt="微信分享二维码">
+</div>
+
+<div class="mask"></div>
+
+        
+        <ul class="article-footer-menu">
+            
+            
+  <li class="article-footer-tags">
+    <i class="fa fa-tags"></i>
+      
+    <a href="/lxx1997.github.io/tags/Vue/" class="color4">Vue</a>
+      
+    <a href="/lxx1997.github.io/tags/源码/" class="color3">源码</a>
+      
+  </li>
+
+        </ul>
+        
+    </footer>
+  </div>
+</article>
+
+
+    <aside class="post-toc-pos post-toc-top" id="post-toc">
+        <nav class="post-toc-wrap">
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#data"><span class="post-toc-text">$data</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#源码"><span class="post-toc-text">源码</span></a></li></ol></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#props"><span class="post-toc-text">$props</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#源码-1"><span class="post-toc-text">源码</span></a></li></ol></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#el"><span class="post-toc-text">$el</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#源码-2"><span class="post-toc-text">源码</span></a></li></ol></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#options"><span class="post-toc-text">$options</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#源码-3"><span class="post-toc-text">源码</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#使用"><span class="post-toc-text">使用</span></a></li></ol></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#parnet"><span class="post-toc-text">$parnet</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#children"><span class="post-toc-text">$children</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#root"><span class="post-toc-text">$root</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#slots"><span class="post-toc-text">$slots</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#源码-4"><span class="post-toc-text">源码</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#使用-1"><span class="post-toc-text">使用</span></a></li></ol></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#scopedSlots"><span class="post-toc-text">$scopedSlots</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#源码-5"><span class="post-toc-text">源码</span></a></li></ol></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#refs"><span class="post-toc-text">$refs</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#源码-6"><span class="post-toc-text">源码</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#使用-2"><span class="post-toc-text">使用</span></a></li></ol></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#isServer"><span class="post-toc-text">$isServer</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#attrs"><span class="post-toc-text">$attrs</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#listeners"><span class="post-toc-text">$listeners</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#watch"><span class="post-toc-text">$watch</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#源码-7"><span class="post-toc-text">源码</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#使用-3"><span class="post-toc-text">使用</span></a></li></ol></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#set"><span class="post-toc-text">$set</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#delete"><span class="post-toc-text">$delete</span></a></li></ol>
+        </nav>
+    </aside>
+    
+
+<nav id="article-nav">
+  
+    <a href="/lxx1997.github.io/2021/01/31/vue3-vite-config/" id="article-nav-newer" class="article-nav-link-wrap">
+
+      <span class="article-nav-title">
+        <i class="fa fa-hand-o-left" aria-hidden="true"></i>
+        
+          Vue3.0 + Vite 配置
+        
+      </span>
+    </a>
+  
+  
+    <a href="/lxx1997.github.io/2021/01/28/vue-learn-api-with-源码-05/" id="article-nav-older" class="article-nav-link-wrap">
+      <span class="article-nav-title">跟着 Vue源码学习 Vue api 系列 (五) - 选项 / 组合 &amp; 其他</span>
+      <i class="fa fa-hand-o-right" aria-hidden="true"></i>
+    </a>
+  
+</nav>
+
+
+
+    
+</section>
+        
+      </div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+      <p>
+        Powered by  <a href="http://hexo.io/" target="_blank">Hexo</a>
+        Theme <a href="//github.com/wongminho/hexo-theme-miho" target="_blank">MiHo</a>
+      &copy; 2021 lxx<br>
+      </p>
+    </div>
+  </div>
+</footer>
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<script>
+  var mihoConfig = {
+      root: "https://lxxstar987.gitee.io/lxx1997.github.io",
+      animate: true,
+      isHome: false,
+      share: true,
+      reward: 1
+  }
+</script>
+<div class="sidebar">
+    <div id="sidebar-search" title="Search">
+        <i class="fa fa-search"></i>
+    </div>
+    <div id="sidebar-category" title="Categories">
+        <i class="fa fa-book"></i>
+    </div>
+    <div id="sidebar-tag" title="Tags">
+        <i class="fa fa-tags"></i>
+    </div>
+    <div id="sidebar-top">
+        <span class="sidebar-top-icon"><i class="fa fa-angle-up"></i></span>
+    </div>
+</div>
+<div class="sidebar-menu-box" id="sidebar-menu-box">
+    <div class="sidebar-menu-box-container">
+        <div id="sidebar-menu-box-categories">
+            <a class="category-link" href="/lxx1997.github.io/categories/JavaScript/">JavaScript</a><a class="category-link" href="/lxx1997.github.io/categories/Vue/">Vue</a><a class="category-link" href="/lxx1997.github.io/categories/Vue源码/">Vue源码</a><a class="category-link" href="/lxx1997.github.io/categories/eggjs/">eggjs</a><a class="category-link" href="/lxx1997.github.io/categories/nodejs-deno/">nodejs deno</a><a class="category-link" href="/lxx1997.github.io/categories/thought/">thought</a><a class="category-link" href="/lxx1997.github.io/categories/vue3-vite-ts/">vue3 vite ts</a><a class="category-link" href="/lxx1997.github.io/categories/web/">web</a><a class="category-link" href="/lxx1997.github.io/categories/面试/">面试</a>
+        </div>
+        <div id="sidebar-menu-box-tags">
+            <a href="/lxx1997.github.io/tags/Components/" style="font-size: 10px;">Components</a> <a href="/lxx1997.github.io/tags/ES6/" style="font-size: 11.25px;">ES6</a> <a href="/lxx1997.github.io/tags/HTML/" style="font-size: 10px;">HTML</a> <a href="/lxx1997.github.io/tags/JavaScript/" style="font-size: 20px;">JavaScript</a> <a href="/lxx1997.github.io/tags/TypeScript/" style="font-size: 11.25px;">TypeScript</a> <a href="/lxx1997.github.io/tags/Vue/" style="font-size: 18.75px;">Vue</a> <a href="/lxx1997.github.io/tags/Vue3/" style="font-size: 12.5px;">Vue3</a> <a href="/lxx1997.github.io/tags/antd/" style="font-size: 10px;">antd</a> <a href="/lxx1997.github.io/tags/array/" style="font-size: 11.25px;">array</a> <a href="/lxx1997.github.io/tags/browser/" style="font-size: 10px;">browser</a> <a href="/lxx1997.github.io/tags/canvas/" style="font-size: 12.5px;">canvas</a> <a href="/lxx1997.github.io/tags/chrome/" style="font-size: 10px;">chrome</a> <a href="/lxx1997.github.io/tags/coffeescript/" style="font-size: 11.25px;">coffeescript</a> <a href="/lxx1997.github.io/tags/colorui/" style="font-size: 10px;">colorui</a> <a href="/lxx1997.github.io/tags/css/" style="font-size: 13.75px;">css</a> <a href="/lxx1997.github.io/tags/css3/" style="font-size: 11.25px;">css3</a> <a href="/lxx1997.github.io/tags/customize-cra/" style="font-size: 10px;">customize-cra</a> <a href="/lxx1997.github.io/tags/d3-js/" style="font-size: 10px;">d3.js</a> <a href="/lxx1997.github.io/tags/deepin/" style="font-size: 10px;">deepin</a> <a href="/lxx1997.github.io/tags/deno/" style="font-size: 10px;">deno</a> <a href="/lxx1997.github.io/tags/docker/" style="font-size: 10px;">docker</a> <a href="/lxx1997.github.io/tags/egg-mysql/" style="font-size: 10px;">egg-mysql</a> <a href="/lxx1997.github.io/tags/eggjs/" style="font-size: 15px;">eggjs</a> <a href="/lxx1997.github.io/tags/electron/" style="font-size: 10px;">electron</a> <a href="/lxx1997.github.io/tags/es6/" style="font-size: 10px;">es6</a> <a href="/lxx1997.github.io/tags/function/" style="font-size: 13.75px;">function</a> <a href="/lxx1997.github.io/tags/github/" style="font-size: 10px;">github</a> <a href="/lxx1997.github.io/tags/golang/" style="font-size: 10px;">golang</a> <a href="/lxx1997.github.io/tags/html/" style="font-size: 17.5px;">html</a> <a href="/lxx1997.github.io/tags/http/" style="font-size: 10px;">http</a> <a href="/lxx1997.github.io/tags/indexedDB/" style="font-size: 10px;">indexedDB</a> <a href="/lxx1997.github.io/tags/jsonwebtoken/" style="font-size: 10px;">jsonwebtoken</a> <a href="/lxx1997.github.io/tags/less/" style="font-size: 10px;">less</a> <a href="/lxx1997.github.io/tags/localStorage/" style="font-size: 10px;">localStorage</a> <a href="/lxx1997.github.io/tags/method/" style="font-size: 11.25px;">method</a> <a href="/lxx1997.github.io/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/lxx1997.github.io/tags/node/" style="font-size: 10px;">node</a> <a href="/lxx1997.github.io/tags/nodejs/" style="font-size: 11.25px;">nodejs</a> <a href="/lxx1997.github.io/tags/npm/" style="font-size: 10px;">npm</a> <a href="/lxx1997.github.io/tags/promise/" style="font-size: 10px;">promise</a> <a href="/lxx1997.github.io/tags/prototype/" style="font-size: 10px;">prototype</a> <a href="/lxx1997.github.io/tags/pygame/" style="font-size: 10px;">pygame</a> <a href="/lxx1997.github.io/tags/python/" style="font-size: 10px;">python</a> <a href="/lxx1997.github.io/tags/react/" style="font-size: 16.25px;">react</a> <a href="/lxx1997.github.io/tags/react-app-rewired/" style="font-size: 10px;">react-app-rewired</a> <a href="/lxx1997.github.io/tags/redis/" style="font-size: 10px;">redis</a> <a href="/lxx1997.github.io/tags/router/" style="font-size: 10px;">router</a> <a href="/lxx1997.github.io/tags/svg/" style="font-size: 11.25px;">svg</a> <a href="/lxx1997.github.io/tags/swagger-ui/" style="font-size: 10px;">swagger-ui</a> <a href="/lxx1997.github.io/tags/symbol/" style="font-size: 10px;">symbol</a> <a href="/lxx1997.github.io/tags/this/" style="font-size: 10px;">this</a> <a href="/lxx1997.github.io/tags/thought/" style="font-size: 12.5px;">thought</a> <a href="/lxx1997.github.io/tags/typescript/" style="font-size: 16.25px;">typescript</a> <a href="/lxx1997.github.io/tags/uni-app/" style="font-size: 10px;">uni-app</a> <a href="/lxx1997.github.io/tags/vite/" style="font-size: 12.5px;">vite</a> <a href="/lxx1997.github.io/tags/web/" style="font-size: 17.5px;">web</a> <a href="/lxx1997.github.io/tags/webpack/" style="font-size: 11.25px;">webpack</a> <a href="/lxx1997.github.io/tags/产品/" style="font-size: 10px;">产品</a> <a href="/lxx1997.github.io/tags/前端/" style="font-size: 13.75px;">前端</a> <a href="/lxx1997.github.io/tags/后台/" style="font-size: 10px;">后台</a> <a href="/lxx1997.github.io/tags/安全/" style="font-size: 11.25px;">安全</a> <a href="/lxx1997.github.io/tags/工具/" style="font-size: 11.25px;">工具</a> <a href="/lxx1997.github.io/tags/性能/" style="font-size: 10px;">性能</a> <a href="/lxx1997.github.io/tags/旧事/" style="font-size: 15px;">旧事</a> <a href="/lxx1997.github.io/tags/模式/" style="font-size: 10px;">模式</a> <a href="/lxx1997.github.io/tags/浏览器/" style="font-size: 11.25px;">浏览器</a> <a href="/lxx1997.github.io/tags/源码/" style="font-size: 17.5px;">源码</a> <a href="/lxx1997.github.io/tags/生活/" style="font-size: 13.75px;">生活</a> <a href="/lxx1997.github.io/tags/经验/" style="font-size: 10px;">经验</a> <a href="/lxx1997.github.io/tags/编码/" style="font-size: 10px;">编码</a> <a href="/lxx1997.github.io/tags/药别停/" style="font-size: 10px;">药别停</a> <a href="/lxx1997.github.io/tags/读后感/" style="font-size: 12.5px;">读后感</a> <a href="/lxx1997.github.io/tags/面试/" style="font-size: 10px;">面试</a> <a href="/lxx1997.github.io/tags/黑科技/" style="font-size: 10px;">黑科技</a>
+        </div>
+    </div>
+    <a href="javascript:;" class="sidebar-menu-box-close">&times;</a>
+</div>
+<div class="mobile-header-menu-nav" id="mobile-header-menu-nav">
+    <div class="mobile-header-menu-container">
+        <span class="title">Menus</span>
+        <ul class="mobile-header-menu-navbar">
+            
+            <li>
+                <a  href="/lxx1997.github.io/">
+                    <i class="fa fa-home"></i><span>Home</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    <div class="mobile-header-tag-container">
+        <span class="title">Tags</span>
+        <div id="mobile-header-container-tags">
+            <a href="/lxx1997.github.io/tags/Components/" style="font-size: 10px;">Components</a> <a href="/lxx1997.github.io/tags/ES6/" style="font-size: 11.25px;">ES6</a> <a href="/lxx1997.github.io/tags/HTML/" style="font-size: 10px;">HTML</a> <a href="/lxx1997.github.io/tags/JavaScript/" style="font-size: 20px;">JavaScript</a> <a href="/lxx1997.github.io/tags/TypeScript/" style="font-size: 11.25px;">TypeScript</a> <a href="/lxx1997.github.io/tags/Vue/" style="font-size: 18.75px;">Vue</a> <a href="/lxx1997.github.io/tags/Vue3/" style="font-size: 12.5px;">Vue3</a> <a href="/lxx1997.github.io/tags/antd/" style="font-size: 10px;">antd</a> <a href="/lxx1997.github.io/tags/array/" style="font-size: 11.25px;">array</a> <a href="/lxx1997.github.io/tags/browser/" style="font-size: 10px;">browser</a> <a href="/lxx1997.github.io/tags/canvas/" style="font-size: 12.5px;">canvas</a> <a href="/lxx1997.github.io/tags/chrome/" style="font-size: 10px;">chrome</a> <a href="/lxx1997.github.io/tags/coffeescript/" style="font-size: 11.25px;">coffeescript</a> <a href="/lxx1997.github.io/tags/colorui/" style="font-size: 10px;">colorui</a> <a href="/lxx1997.github.io/tags/css/" style="font-size: 13.75px;">css</a> <a href="/lxx1997.github.io/tags/css3/" style="font-size: 11.25px;">css3</a> <a href="/lxx1997.github.io/tags/customize-cra/" style="font-size: 10px;">customize-cra</a> <a href="/lxx1997.github.io/tags/d3-js/" style="font-size: 10px;">d3.js</a> <a href="/lxx1997.github.io/tags/deepin/" style="font-size: 10px;">deepin</a> <a href="/lxx1997.github.io/tags/deno/" style="font-size: 10px;">deno</a> <a href="/lxx1997.github.io/tags/docker/" style="font-size: 10px;">docker</a> <a href="/lxx1997.github.io/tags/egg-mysql/" style="font-size: 10px;">egg-mysql</a> <a href="/lxx1997.github.io/tags/eggjs/" style="font-size: 15px;">eggjs</a> <a href="/lxx1997.github.io/tags/electron/" style="font-size: 10px;">electron</a> <a href="/lxx1997.github.io/tags/es6/" style="font-size: 10px;">es6</a> <a href="/lxx1997.github.io/tags/function/" style="font-size: 13.75px;">function</a> <a href="/lxx1997.github.io/tags/github/" style="font-size: 10px;">github</a> <a href="/lxx1997.github.io/tags/golang/" style="font-size: 10px;">golang</a> <a href="/lxx1997.github.io/tags/html/" style="font-size: 17.5px;">html</a> <a href="/lxx1997.github.io/tags/http/" style="font-size: 10px;">http</a> <a href="/lxx1997.github.io/tags/indexedDB/" style="font-size: 10px;">indexedDB</a> <a href="/lxx1997.github.io/tags/jsonwebtoken/" style="font-size: 10px;">jsonwebtoken</a> <a href="/lxx1997.github.io/tags/less/" style="font-size: 10px;">less</a> <a href="/lxx1997.github.io/tags/localStorage/" style="font-size: 10px;">localStorage</a> <a href="/lxx1997.github.io/tags/method/" style="font-size: 11.25px;">method</a> <a href="/lxx1997.github.io/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/lxx1997.github.io/tags/node/" style="font-size: 10px;">node</a> <a href="/lxx1997.github.io/tags/nodejs/" style="font-size: 11.25px;">nodejs</a> <a href="/lxx1997.github.io/tags/npm/" style="font-size: 10px;">npm</a> <a href="/lxx1997.github.io/tags/promise/" style="font-size: 10px;">promise</a> <a href="/lxx1997.github.io/tags/prototype/" style="font-size: 10px;">prototype</a> <a href="/lxx1997.github.io/tags/pygame/" style="font-size: 10px;">pygame</a> <a href="/lxx1997.github.io/tags/python/" style="font-size: 10px;">python</a> <a href="/lxx1997.github.io/tags/react/" style="font-size: 16.25px;">react</a> <a href="/lxx1997.github.io/tags/react-app-rewired/" style="font-size: 10px;">react-app-rewired</a> <a href="/lxx1997.github.io/tags/redis/" style="font-size: 10px;">redis</a> <a href="/lxx1997.github.io/tags/router/" style="font-size: 10px;">router</a> <a href="/lxx1997.github.io/tags/svg/" style="font-size: 11.25px;">svg</a> <a href="/lxx1997.github.io/tags/swagger-ui/" style="font-size: 10px;">swagger-ui</a> <a href="/lxx1997.github.io/tags/symbol/" style="font-size: 10px;">symbol</a> <a href="/lxx1997.github.io/tags/this/" style="font-size: 10px;">this</a> <a href="/lxx1997.github.io/tags/thought/" style="font-size: 12.5px;">thought</a> <a href="/lxx1997.github.io/tags/typescript/" style="font-size: 16.25px;">typescript</a> <a href="/lxx1997.github.io/tags/uni-app/" style="font-size: 10px;">uni-app</a> <a href="/lxx1997.github.io/tags/vite/" style="font-size: 12.5px;">vite</a> <a href="/lxx1997.github.io/tags/web/" style="font-size: 17.5px;">web</a> <a href="/lxx1997.github.io/tags/webpack/" style="font-size: 11.25px;">webpack</a> <a href="/lxx1997.github.io/tags/产品/" style="font-size: 10px;">产品</a> <a href="/lxx1997.github.io/tags/前端/" style="font-size: 13.75px;">前端</a> <a href="/lxx1997.github.io/tags/后台/" style="font-size: 10px;">后台</a> <a href="/lxx1997.github.io/tags/安全/" style="font-size: 11.25px;">安全</a> <a href="/lxx1997.github.io/tags/工具/" style="font-size: 11.25px;">工具</a> <a href="/lxx1997.github.io/tags/性能/" style="font-size: 10px;">性能</a> <a href="/lxx1997.github.io/tags/旧事/" style="font-size: 15px;">旧事</a> <a href="/lxx1997.github.io/tags/模式/" style="font-size: 10px;">模式</a> <a href="/lxx1997.github.io/tags/浏览器/" style="font-size: 11.25px;">浏览器</a> <a href="/lxx1997.github.io/tags/源码/" style="font-size: 17.5px;">源码</a> <a href="/lxx1997.github.io/tags/生活/" style="font-size: 13.75px;">生活</a> <a href="/lxx1997.github.io/tags/经验/" style="font-size: 10px;">经验</a> <a href="/lxx1997.github.io/tags/编码/" style="font-size: 10px;">编码</a> <a href="/lxx1997.github.io/tags/药别停/" style="font-size: 10px;">药别停</a> <a href="/lxx1997.github.io/tags/读后感/" style="font-size: 12.5px;">读后感</a> <a href="/lxx1997.github.io/tags/面试/" style="font-size: 10px;">面试</a> <a href="/lxx1997.github.io/tags/黑科技/" style="font-size: 10px;">黑科技</a>
+        </div>
+    </div>
+</div>
+<div class="search-wrap">
+    <span class="search-close">&times;</span>
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+            <i class="icon icon-lg icon-chevron-left"></i>
+        </a>
+        <input class="search-field" placeholder="Search..." id="keywords">
+        <a id="search-submit" href="javascript:;">
+            <i class="fa fa-search"></i>
+        </a>
+    <div class="search-container" id="search-container">
+        <ul class="search-result" id="search-result">
+        </ul>
+    </div>
+</div>
+
+<div id="search-tpl">
+    <li class="search-result-item">
+        <a href="{url}" class="search-item-li">
+            <span class="search-item-li-title" title="{title}">{title}</span>
+        </a>
+    </li>
+</div>
+<script src="/lxx1997.github.io/js/search.js"></script>
+<script src="/lxx1997.github.io/js/main.js"></script>
+
+
+  <script src="//cdn.bootcss.com/particles.js/2.0.0/particles.min.js"></script>
+  <div id="particles"></div>
+  <script src="/lxx1997.github.io/js/particles.js"></script>
+
+
+
+
+
+
+
+  <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
+  <script src="//cdn.bootcss.com/scrollReveal.js/3.0.5/scrollreveal.js"></script>
+  <script src="/lxx1997.github.io/js/animate.js"></script>
+
+
+  <script src="/lxx1997.github.io/js/pop-img.js"></script>
+  <script>
+     $(".article-entry p img").popImg();
+  </script>
+
+  </div>
+<script src="/lxx1997.github.io/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/lxx1997.github.io/live2dw/assets/kesyoban.model.json"},"display":{"position":"left","width":300,"height":300},"mobile":{"show":false},"log":false});</script></body>
+</html>

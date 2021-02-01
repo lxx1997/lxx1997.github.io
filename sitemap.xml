@@ -2,23 +2,93 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://lxxstar987.gitee.io/lxx1997.github.io/2021/01/27/vue-learn-api-with-%E6%BA%90%E7%A0%81-04/</loc>
+    <loc>https://lxxstar987.gitee.io/lxx1997.github.io/2021/02/01/vue-learn-api-with-%E6%BA%90%E7%A0%81-07/</loc>
     
-    <lastmod>2021-01-28T03:04:56.565Z</lastmod>
+    <lastmod>2021-02-01T07:26:19.747Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://lxxstar987.gitee.io/lxx1997.github.io/2021/01/24/vue-learn-api-with-%E6%BA%90%E7%A0%81-03/</loc>
+    <loc>https://lxxstar987.gitee.io/lxx1997.github.io/2021/01/29/vue-learn-api-with-%E6%BA%90%E7%A0%81-06/</loc>
     
-    <lastmod>2021-01-27T14:16:33.499Z</lastmod>
+    <lastmod>2021-02-01T07:25:54.289Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://lxxstar987.gitee.io/lxx1997.github.io/2021/01/31/vue3-vite-config/</loc>
+    
+    <lastmod>2021-02-01T01:29:47.522Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://lxxstar987.gitee.io/lxx1997.github.io/2021/01/28/vue-learn-api-with-%E6%BA%90%E7%A0%81-05/</loc>
+    
+    <lastmod>2021-01-29T09:15:48.683Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://lxxstar987.gitee.io/lxx1997.github.io/2021/01/07/vue-components-transfer-data/</loc>
+    
+    <lastmod>2021-01-29T06:23:12.280Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://lxxstar987.gitee.io/lxx1997.github.io/2021/01/27/vue-learn-api-with-%E6%BA%90%E7%A0%81-04/</loc>
+    
+    <lastmod>2021-01-29T06:21:10.054Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://lxxstar987.gitee.io/lxx1997.github.io/2021/01/09/vue-learn-api-with-%E6%BA%90%E7%A0%81-01/</loc>
+    
+    <lastmod>2021-01-28T05:36:51.813Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://lxxstar987.gitee.io/lxx1997.github.io/2020/12/17/vue-template-render/</loc>
+    
+    <lastmod>2021-01-28T05:36:51.703Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://lxxstar987.gitee.io/lxx1997.github.io/2020/12/16/vue-VirtualDOM-template/</loc>
+    
+    <lastmod>2021-01-28T05:36:51.703Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://lxxstar987.gitee.io/lxx1997.github.io/2021/01/02/vue-code-part-01/</loc>
+    
+    <lastmod>2021-01-28T05:36:51.701Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://lxxstar987.gitee.io/lxx1997.github.io/2021/01/20/vue-learn-api-with-%E6%BA%90%E7%A0%81-02/</loc>
+    
+    <lastmod>2021-01-28T05:36:51.502Z</lastmod>
     
   </url>
   
   <url>
     <loc>https://lxxstar987.gitee.io/lxx1997.github.io/2021/01/27/vue-learn-api-with-%E6%BA%90%E7%A0%81-watcher/</loc>
     
-    <lastmod>2021-01-27T14:03:56.137Z</lastmod>
+    <lastmod>2021-01-28T05:36:51.501Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://lxxstar987.gitee.io/lxx1997.github.io/2021/01/24/vue-learn-api-with-%E6%BA%90%E7%A0%81-03/</loc>
+    
+    <lastmod>2021-01-28T05:36:51.501Z</lastmod>
     
   </url>
   
@@ -51,13 +121,6 @@
   </url>
   
   <url>
-    <loc>https://lxxstar987.gitee.io/lxx1997.github.io/2021/01/20/vue-learn-api-with-%E6%BA%90%E7%A0%81-02/</loc>
-    
-    <lastmod>2021-01-27T06:05:12.201Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://lxxstar987.gitee.io/lxx1997.github.io/2021/01/14/js-prototype-chain/</loc>
     
     <lastmod>2021-01-27T06:05:12.200Z</lastmod>
@@ -66,13 +129,6 @@
   
   <url>
     <loc>https://lxxstar987.gitee.io/lxx1997.github.io/2021/01/11/js-this-point/</loc>
-    
-    <lastmod>2021-01-27T06:05:12.200Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://lxxstar987.gitee.io/lxx1997.github.io/2021/01/09/vue-learn-api-with-%E6%BA%90%E7%A0%81-01/</loc>
     
     <lastmod>2021-01-27T06:05:12.200Z</lastmod>
     
@@ -177,13 +233,6 @@
   </url>
   
   <url>
-    <loc>https://lxxstar987.gitee.io/lxx1997.github.io/2020/12/17/vue-template-render/</loc>
-    
-    <lastmod>2021-01-12T09:09:21.509Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://lxxstar987.gitee.io/lxx1997.github.io/2020/12/21/vue-template-publish-subscribe/</loc>
     
     <lastmod>2021-01-12T09:09:21.508Z</lastmod>
@@ -191,30 +240,9 @@
   </url>
   
   <url>
-    <loc>https://lxxstar987.gitee.io/lxx1997.github.io/2021/01/07/vue-components-transfer-data/</loc>
-    
-    <lastmod>2021-01-12T09:09:21.506Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://lxxstar987.gitee.io/lxx1997.github.io/2021/01/04/vue-keep-alive/</loc>
     
     <lastmod>2021-01-12T09:09:21.506Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://lxxstar987.gitee.io/lxx1997.github.io/2021/01/02/vue-code-part-01/</loc>
-    
-    <lastmod>2021-01-12T09:09:21.505Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://lxxstar987.gitee.io/lxx1997.github.io/2020/12/16/vue-VirtualDOM-template/</loc>
-    
-    <lastmod>2021-01-12T09:09:21.504Z</lastmod>
     
   </url>
   
@@ -737,13 +765,6 @@
   </url>
   
   <url>
-    <loc>https://lxxstar987.gitee.io/lxx1997.github.io/assets/demo/jiugongge_demo.html</loc>
-    
-    <lastmod>2020-05-01T18:13:38.000Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://lxxstar987.gitee.io/lxx1997.github.io/assets/demo/hack_demo.html</loc>
     
     <lastmod>2020-05-01T18:13:38.000Z</lastmod>
@@ -758,14 +779,21 @@
   </url>
   
   <url>
-    <loc>https://lxxstar987.gitee.io/lxx1997.github.io/assets/demo/coffee_pc_demo/pro-con.html</loc>
+    <loc>https://lxxstar987.gitee.io/lxx1997.github.io/assets/demo/jiugongge_demo.html</loc>
     
     <lastmod>2020-05-01T18:13:38.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://lxxstar987.gitee.io/lxx1997.github.io/assets/demo/my_news_reader/index.html</loc>
+    <loc>https://lxxstar987.gitee.io/lxx1997.github.io/assets/demo/gift/index.html</loc>
+    
+    <lastmod>2020-05-01T18:13:38.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://lxxstar987.gitee.io/lxx1997.github.io/assets/demo/coffee_pc_demo/pro-con.html</loc>
     
     <lastmod>2020-05-01T18:13:38.000Z</lastmod>
     
@@ -779,14 +807,14 @@
   </url>
   
   <url>
-    <loc>https://lxxstar987.gitee.io/lxx1997.github.io/assets/demo/pre_css3_demo/demo.html</loc>
+    <loc>https://lxxstar987.gitee.io/lxx1997.github.io/assets/demo/my_news_reader/index.html</loc>
     
     <lastmod>2020-05-01T18:13:38.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://lxxstar987.gitee.io/lxx1997.github.io/assets/demo/gift/index.html</loc>
+    <loc>https://lxxstar987.gitee.io/lxx1997.github.io/assets/demo/pre_css3_demo/demo.html</loc>
     
     <lastmod>2020-05-01T18:13:38.000Z</lastmod>
     

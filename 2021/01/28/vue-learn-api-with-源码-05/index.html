@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+  <title>跟着 Vue源码学习 Vue api 系列 (五) - 选项 / 组合 &amp; 其他 | SoulReader</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+    <meta name="keywords" content="blog 博客">
+  
+  <meta name="description" content="parent主要用来存储 Vue 组件的父组件 mixins混入，主要用来开发 Vue组件中的可复用的功能 源码12345if (child.mixins) &amp;#123;  for (var i = 0, l = child.mixins.length; i &amp;lt; l; i++) &amp;#123;    parent = mergeOptions(parent, child.mixins[i],">
+<meta name="keywords" content="Vue,源码">
+<meta property="og:type" content="article">
+<meta property="og:title" content="跟着 Vue源码学习 Vue api 系列 (五) - 选项 &#x2F; 组合 &amp; 其他">
+<meta property="og:url" content="https://lxxstar987.gitee.io/lxx1997.github.io/2021/01/28/vue-learn-api-with-源码-05/index.html">
+<meta property="og:site_name" content="SoulReader">
+<meta property="og:description" content="parent主要用来存储 Vue 组件的父组件 mixins混入，主要用来开发 Vue组件中的可复用的功能 源码12345if (child.mixins) &amp;#123;  for (var i = 0, l = child.mixins.length; i &amp;lt; l; i++) &amp;#123;    parent = mergeOptions(parent, child.mixins[i],">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2021-01-29T09:15:48.683Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="跟着 Vue源码学习 Vue api 系列 (五) - 选项 &#x2F; 组合 &amp; 其他">
+<meta name="twitter:description" content="parent主要用来存储 Vue 组件的父组件 mixins混入，主要用来开发 Vue组件中的可复用的功能 源码12345if (child.mixins) &amp;#123;  for (var i = 0, l = child.mixins.length; i &amp;lt; l; i++) &amp;#123;    parent = mergeOptions(parent, child.mixins[i],">
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+  <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/lxx1997.github.io/css/style.css">
+  <script src="/lxx1997.github.io/js/pace.min.js"></script>
+  
+
+  
+  
+
+</head>
+</html>
+<body>
+  <div id="container">
+      <header id="header">
+    <div id="banner"></div>
+    <div id="header-outer">
+        <div id="header-menu" class="header-menu-pos animated">
+            <div class="header-menu-container">
+                <a href="/lxx1997.github.io/" class="left">
+                    <span class="site-title">SoulReader</span>
+                </a>
+                <nav id="header-menu-nav" class="right">
+                    
+                    <a  href="/lxx1997.github.io/">
+                        <i class="fa fa-home"></i>
+                        <span>Home</span>
+                    </a>
+                    
+                </nav>
+                <a class="mobile-header-menu-button">
+                    <i class="fa fa-bars"></i>
+                </a>
+            </div>
+        </div>
+        <div id="header-row">
+            <div id="logo">
+                <a href="/lxx1997.github.io/">
+                    <img src="/lxx1997.github.io/images/avatar.png" alt="logo">
+                </a>
+            </div>
+            <div class="header-info">
+                <div id="header-title">
+                    
+                    <h2>
+                        SoulReader
+                    </h2>
+                    
+                </div>
+                <div id="header-description">
+                    
+                    <h3>
+                        前端菜鸟 多多交流学习
+                    </h3>
+                    
+                </div>
+            </div>
+            <nav class="header-nav">
+                <div class="social">
+                    
+                        <a title="SoulReader" target="_blank" href="/lxx1997.github.io/">
+                            <i class="fa fa-home fa-2x"></i></a>
+                    
+                        <a title="Github" target="_blank" href="https://github.com/lxx1997">
+                            <i class="fa fa-github fa-2x"></i></a>
+                    
+                </div>
+            </nav>
+        </div>
+    </div>
+</header>
+      <div class="outer">
+        <section id="main" class="body-wrap"><article id="post-vue-learn-api-with-源码-05" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="post-title" itemprop="name">
+      跟着 Vue源码学习 Vue api 系列 (五) - 选项 / 组合 &amp; 其他
+    </h1>
+    <div class="post-title-bar">
+      <ul>
+          
+              <li>
+                  <i class="fa fa-book"></i>
+                  
+                      <a href="/lxx1997.github.io/categories/Vue源码/">Vue源码</a>
+                  
+              </li>
+          
+        <li>
+          <i class="fa fa-calendar"></i>  2021-01-28
+        </li>
+        <li>
+          <i class="fa fa-eye"></i>
+          <span id="busuanzi_value_page_pv"></span>
+        </li>
+      </ul>
+    </div>
+  
+
+          
+      </header>
+    
+    <div class="article-entry post-content" itemprop="articleBody">
+      
+            
+            <h4 id="parent"><a href="#parent" class="headerlink" title="parent"></a>parent</h4><p>主要用来存储 Vue 组件的父组件</p>
+<h4 id="mixins"><a href="#mixins" class="headerlink" title="mixins"></a>mixins</h4><p>混入，主要用来开发 Vue组件中的可复用的功能</p>
+<h5 id="源码"><a href="#源码" class="headerlink" title="源码"></a>源码</h5><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (child.mixins) &#123;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>, l = child.mixins.length; i &lt; l; i++) &#123;</span><br><span class="line">    parent = mergeOptions(parent, child.mixins[i], vm);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Vue 在合并选项的时候 判断力 mixins 属性是否存在，如果存在，通过递归调用的方法合并到当前组件上</p>
+<h5 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h5><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> mixin = &#123;</span><br><span class="line">  create() &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'create'</span>)</span><br><span class="line">  &#125;,</span><br><span class="line">  methods: &#123;</span><br><span class="line">    getInfo() &#123;</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="string">'getInfo'</span>)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">  mixins: [mixin]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="extends"><a href="#extends" class="headerlink" title="extends"></a>extends</h4><h5 id="源码-1"><a href="#源码-1" class="headerlink" title="源码"></a>源码</h5><p>具体理解可以参考 <a href="/lxx1997.github.io/2021/01/20/vue-learn-api-with-源码-02/#Vue-extend">Vue.extend</a><br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (child.extends) &#123;</span><br><span class="line">  parent = mergeOptions(parent, child.extends, vm);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h5 id="使用-1"><a href="#使用-1" class="headerlink" title="使用"></a>使用</h5><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> extend = &#123;</span><br><span class="line">  create() &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'create'</span>)</span><br><span class="line">  &#125;,</span><br><span class="line">  methods: &#123;</span><br><span class="line">    getInfo() &#123;</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="string">'getInfo'</span>)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">  extends: extend</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="provide-inject"><a href="#provide-inject" class="headerlink" title="provide/inject"></a>provide/inject</h4><ul>
+<li><code>provide</code>   <code>Object | () =&gt; Object</code></li>
+<li><code>inject</code>    <code>Array&lt;string&gt; | [key:string]: string | Symbol | Object</code></li>
+</ul>
+<p>父组件通过 provide 提供依赖，子孙组件通过 inject 将依赖注入到当前组件</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 在 mergeOptionStract 配置中， provide 通过mergeData方法从父组件中绑定到子组件</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">initProvide</span> (<span class="params">vm</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> provide = vm.$options.provide;</span><br><span class="line">  <span class="keyword">if</span> (provide) &#123;</span><br><span class="line">    vm._provided = <span class="keyword">typeof</span> provide === <span class="string">'function'</span></span><br><span class="line">      ? provide.call(vm)</span><br><span class="line">      : provide;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">initInjections</span> (<span class="params">vm</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> result = resolveInject(vm.$options.inject, vm);</span><br><span class="line">  <span class="keyword">if</span> (result) &#123;</span><br><span class="line">    toggleObserving(<span class="literal">false</span>);</span><br><span class="line">    <span class="built_in">Object</span>.keys(result).forEach(<span class="function"><span class="keyword">function</span> (<span class="params">key</span>) </span>&#123;</span><br><span class="line">      <span class="comment">/* istanbul ignore else */</span></span><br><span class="line">      &#123;</span><br><span class="line">        defineReactive$$<span class="number">1</span>(vm, key, result[key], <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">          warn(</span><br><span class="line">            <span class="string">"Avoid mutating an injected value directly since the changes will be "</span> +</span><br><span class="line">            <span class="string">"overwritten whenever the provided component re-renders. "</span> +</span><br><span class="line">            <span class="string">"injection being mutated: \""</span> + key + <span class="string">"\""</span>,</span><br><span class="line">            vm</span><br><span class="line">          );</span><br><span class="line">        &#125;);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">    toggleObserving(<span class="literal">true</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 处理实例上的 inject 方法 返回处理之后的对象</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">resolveInject</span> (<span class="params">inject, vm</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (inject) &#123;</span><br><span class="line">    <span class="comment">// inject is :any because flow is not smart enough to figure out cached</span></span><br><span class="line">    <span class="keyword">var</span> result = <span class="built_in">Object</span>.create(<span class="literal">null</span>);</span><br><span class="line">    <span class="keyword">var</span> keys = hasSymbol</span><br><span class="line">      ? <span class="built_in">Reflect</span>.ownKeys(inject)</span><br><span class="line">      : <span class="built_in">Object</span>.keys(inject);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; keys.length; i++) &#123;</span><br><span class="line">      <span class="keyword">var</span> key = keys[i];</span><br><span class="line">      <span class="comment">// #6574 in case the inject object is observed...</span></span><br><span class="line">      <span class="keyword">if</span> (key === <span class="string">'__ob__'</span>) &#123; <span class="keyword">continue</span> &#125;</span><br><span class="line">      <span class="keyword">var</span> provideKey = inject[key].from;</span><br><span class="line">      <span class="keyword">var</span> source = vm;</span><br><span class="line">      <span class="keyword">while</span> (source) &#123;</span><br><span class="line">        <span class="keyword">if</span> (source._provided &amp;&amp; hasOwn(source._provided, provideKey)) &#123;</span><br><span class="line">          result[key] = source._provided[provideKey];</span><br><span class="line">          <span class="keyword">break</span></span><br><span class="line">        &#125;</span><br><span class="line">        source = source.$parent;</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">if</span> (!source) &#123;</span><br><span class="line">        <span class="keyword">if</span> (<span class="string">'default'</span> <span class="keyword">in</span> inject[key]) &#123;</span><br><span class="line">          <span class="keyword">var</span> provideDefault = inject[key].default;</span><br><span class="line">          result[key] = <span class="keyword">typeof</span> provideDefault === <span class="string">'function'</span></span><br><span class="line">            ? provideDefault.call(vm)</span><br><span class="line">            : provideDefault;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">          warn((<span class="string">"Injection \""</span> + key + <span class="string">"\" not found"</span>), vm);</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> result</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="使用-2"><a href="#使用-2" class="headerlink" title="使用"></a>使用</h5><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//  父组件</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">  data() &#123;</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">      bar: <span class="number">342</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  provide: &#123;</span><br><span class="line">    foo: <span class="string">'bar'</span>,</span><br><span class="line">    bar: <span class="keyword">this</span>.bar</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 子组件</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">  inject:[<span class="string">'foo'</span>,<span class="string">'bar'</span>]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="高级使用技巧"><a href="#高级使用技巧" class="headerlink" title="高级使用技巧"></a>高级使用技巧</h5><p>利用 Symbol 传递</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> s = <span class="built_in">Symbol</span>()</span><br><span class="line"><span class="keyword">const</span> Provider = &#123;</span><br><span class="line">  provide() &#123;</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">      [s]: <span class="string">'foo'</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> Child = &#123;</span><br><span class="line">  inject:&#123;</span><br><span class="line">    s</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>inject 的值作为 props 和 data 的初始值</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> child = &#123;</span><br><span class="line">  inject: [<span class="string">'foo'</span>],</span><br><span class="line">  props: &#123;</span><br><span class="line">    prop: &#123;</span><br><span class="line">      <span class="keyword">default</span>: <span class="keyword">this</span>.foo</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  data() &#123;</span><br><span class="line">    bar: <span class="keyword">this</span>.foo</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="name"><a href="#name" class="headerlink" title="name"></a>name</h4><p>  name 属性允许组件模板递归调用自身</p>
+<h4 id="delimiters"><a href="#delimiters" class="headerlink" title="delimiters"></a>delimiters</h4><p>  改变 纯文本插入分隔符 默认为[‘,‘]</p>
+<h5 id="源码-2"><a href="#源码-2" class="headerlink" title="源码"></a>源码</h5><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> defaultTagRE = <span class="regexp">/\&#123;\&#123;((?:.|\r?\n)+?)\&#125;\&#125;/g</span>;</span><br><span class="line"><span class="keyword">var</span> regexEscapeRE = <span class="regexp">/[-.*+?^$&#123;&#125;()|[\]\/\\]/g</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> buildRegex = cached(<span class="function"><span class="keyword">function</span> (<span class="params">delimiters</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> open = delimiters[<span class="number">0</span>].replace(regexEscapeRE, <span class="string">'\\$&amp;'</span>);</span><br><span class="line">  <span class="keyword">var</span> close = delimiters[<span class="number">1</span>].replace(regexEscapeRE, <span class="string">'\\$&amp;'</span>);</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">RegExp</span>(open + <span class="string">'((?:.|\\n)+?)'</span> + close, <span class="string">'g'</span>)</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h5 id="使用-3"><a href="#使用-3" class="headerlink" title="使用"></a>使用</h5><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> Vue(&#123;</span><br><span class="line">  delimiters: [<span class="string">'$&#123;'</span>,<span class="string">'&#125;'</span>]  <span class="comment">// Vue 进行字符串切割替换的时候将会仿照 es6 的模板字符串</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h4 id="functional"><a href="#functional" class="headerlink" title="functional"></a>functional</h4><p>函数元组件  无状态(data)，无上下文(this)，没有响应式数据，相当于只是一个渲染组件，渲染之后就不会发生变化</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">createFunctionalComponent</span> (<span class="params">Ctor,propsData,data,contextVm,children</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> options = Ctor.options;</span><br><span class="line">  <span class="keyword">var</span> props = &#123;&#125;;</span><br><span class="line">  <span class="keyword">var</span> propOptions = options.props;</span><br><span class="line">  <span class="keyword">if</span> (isDef(propOptions)) &#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> key <span class="keyword">in</span> propOptions) &#123;</span><br><span class="line">      props[key] = validateProp(key, propOptions, propsData || emptyObject);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (isDef(data.attrs)) &#123; mergeProps(props, data.attrs); &#125;</span><br><span class="line">    <span class="keyword">if</span> (isDef(data.props)) &#123; mergeProps(props, data.props); &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">var</span> renderContext = <span class="keyword">new</span> FunctionalRenderContext(</span><br><span class="line">    data,</span><br><span class="line">    props,</span><br><span class="line">    children,</span><br><span class="line">    contextVm,</span><br><span class="line">    Ctor</span><br><span class="line">  );</span><br><span class="line"></span><br><span class="line">  <span class="keyword">var</span> vnode = options.render.call(<span class="literal">null</span>, renderContext._c, renderContext);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (vnode <span class="keyword">instanceof</span> VNode) &#123;</span><br><span class="line">    <span class="keyword">return</span> cloneAndMarkFunctionalResult(vnode, data, renderContext.parent, options, renderContext)</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (<span class="built_in">Array</span>.isArray(vnode)) &#123;</span><br><span class="line">    <span class="keyword">var</span> vnodes = normalizeChildren(vnode) || [];</span><br><span class="line">    <span class="keyword">var</span> res = <span class="keyword">new</span> <span class="built_in">Array</span>(vnodes.length);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i =</span><br><span class="line">     <span class="number">0</span>; i &lt; vnodes.length; i++) &#123;</span><br><span class="line">      res[i] = cloneAndMarkFunctionalResult(vnodes[i], data, renderContext.parent, options, renderContext);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="使用-4"><a href="#使用-4" class="headerlink" title="使用"></a>使用</h5><p>  <code>context</code> 参数 字段详解</p>
+<ul>
+<li><code>props</code> 提供所有 props 对象</li>
+<li><code>children</code> VNode 子节点的数组</li>
+<li><code>slots</code> 一个函数，返回了包含所有插槽的对象</li>
+<li><code>scopedSlots</code> 一个暴露传入的作用域插槽的对象，也已函数形式暴露普通插槽</li>
+<li><code>data</code> 传给组件的整个数据对象，作为 createElement 函数的第二个参数传入组件</li>
+<li><code>parent</code> 对父组件的引用</li>
+<li><code>listeners</code> 一个包含了所有父组件为当前组件注册的时间监听器对象，这是data.on的一个别名</li>
+<li><code>injection</code> 注入的 <code>property</code></li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"app"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span>&gt;</span>this is test for directive<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">function-component</span> <span class="attr">:list</span>=<span class="string">"list"</span> <span class="attr">other</span>=<span class="string">"other"</span>&gt;</span></span><br><span class="line">      this is a slot &#123;&#123;list.name&#125;&#125;</span><br><span class="line">      <span class="tag">&lt;<span class="name">div</span> <span class="attr">slot</span>=<span class="string">"default"</span>&gt;</span></span><br><span class="line">        this is slot default</span><br><span class="line">      <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">function-component</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">  Vue.component(<span class="string">'function-component'</span>, &#123;</span><br><span class="line">    functional: <span class="literal">true</span>,</span><br><span class="line">    props: &#123;</span><br><span class="line">      list: &#123;</span><br><span class="line">        type: <span class="built_in">Object</span>,</span><br><span class="line">        <span class="keyword">default</span>: <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">          <span class="keyword">return</span> &#123;&#125;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    render: <span class="function"><span class="keyword">function</span> (<span class="params">createElement, context</span>) </span>&#123;</span><br><span class="line">      <span class="keyword">const</span> header = context.scopedSlots.default()</span><br><span class="line">      <span class="keyword">return</span> createElement(</span><br><span class="line">        <span class="string">'div'</span>, [</span><br><span class="line">          createElement(<span class="string">'div'</span>, [header[<span class="number">0</span>]]),</span><br><span class="line">          createElement(<span class="string">'div'</span>, [header[<span class="number">1</span>]])</span><br><span class="line">        ] </span><br><span class="line">      )</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;)</span><br><span class="line">  <span class="keyword">var</span> app = <span class="keyword">new</span> Vue(&#123;</span><br><span class="line">    el: <span class="string">"#app"</span>,</span><br><span class="line">    data: <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">      <span class="keyword">return</span> &#123;</span><br><span class="line">        test3: <span class="number">4</span>,</span><br><span class="line">        testChild: <span class="number">5</span>,</span><br><span class="line">        hide: <span class="literal">true</span>,</span><br><span class="line">        list: &#123;</span><br><span class="line">          name: <span class="string">'listName'</span>,</span><br><span class="line">          value: <span class="string">'listValue'</span></span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    computed: &#123;</span><br><span class="line">      test() &#123;</span><br><span class="line">        <span class="keyword">return</span> &#123;</span><br><span class="line">          test1: <span class="number">4</span></span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;)</span><br><span class="line">&lt;<span class="regexp">/script&gt;</span></span><br></pre></td></tr></table></figure>
+<h4 id="model"><a href="#model" class="headerlink" title="model"></a>model</h4><ul>
+<li>prop(可选) String</li>
+<li><p>event(可选) String</p>
+<p>允许一个自定义组件在使用 <code>v-model</code> 时定制定制 prop 和 event，默认情况下，一个组件上的 <code>v-model</code> 会把 value 用作 prop 且把 input 用作 event，一些复杂的输入框可以使用 model 选项回避这些情况产生的冲突</p>
+</li>
+</ul>
+<h5 id="源码-3"><a href="#源码-3" class="headerlink" title="源码"></a>源码</h5><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">transformModel</span> (<span class="params">options, data</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> prop = (options.model &amp;&amp; options.model.prop) || <span class="string">'value'</span>;</span><br><span class="line">  <span class="keyword">var</span> event = (options.model &amp;&amp; options.model.event) || <span class="string">'input'</span></span><br><span class="line">  ;(data.attrs || (data.attrs = &#123;&#125;))[prop] = data.model.value;</span><br><span class="line">  <span class="keyword">var</span> on = data.on || (data.on = &#123;&#125;);</span><br><span class="line">  <span class="keyword">var</span> existing = on[event];</span><br><span class="line">  <span class="keyword">var</span> callback = data.model.callback;</span><br><span class="line">  <span class="keyword">if</span> (isDef(existing)) &#123;</span><br><span class="line">    <span class="keyword">if</span> (</span><br><span class="line">      <span class="built_in">Array</span>.isArray(existing)</span><br><span class="line">        ? existing.indexOf(callback) === <span class="number">-1</span></span><br><span class="line">        : existing !== callback</span><br><span class="line">    ) &#123;</span><br><span class="line">      on[event] = [callback].concat(existing);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    on[event] = callback;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在设置值的时候通过一个 <code>||</code>(或) 来判断 model 是否赋值，否则取默认设置的 value 及 input</p>
+<h5 id="使用-5"><a href="#使用-5" class="headerlink" title="使用"></a>使用</h5><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">v-model</span>=<span class="string">"inputValue"</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- input 组件内部 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="javascript">  <span class="keyword">export</span> <span class="keyword">default</span> &#123;</span></span><br><span class="line">    model: &#123;</span><br><span class="line"><span class="actionscript">      prop: <span class="string">'text'</span></span></span><br><span class="line"><span class="actionscript">      event: <span class="string">'change'</span></span></span><br><span class="line">    &#125;,</span><br><span class="line">    props: &#123;</span><br><span class="line"><span class="javascript">      text: <span class="built_in">String</span></span></span><br><span class="line">    &#125;,</span><br><span class="line">    methods: &#123;</span><br><span class="line">      handleChange(value) &#123;</span><br><span class="line"><span class="actionscript">        <span class="keyword">this</span>.$emit(<span class="string">'change'</span>, value)</span></span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h4 id="inheritAttrs"><a href="#inheritAttrs" class="headerlink" title="inheritAttrs"></a>inheritAttrs</h4><p>  默认情况下父作用域的不被认作 props 的 attribute 绑定 (attribute bindings) 将会“回退”且作为普通的 HTML attribute 应用在子组件的根元素上。当撰写包裹一个目标元素或另一个组件的组件时，这可能不会总是符合预期行为。通过设置 inheritAttrs 到 false，这些默认行为将会被去掉。而通过 (同样是 2.4 新增的) 实例 property $attrs 可以让这些 attribute 生效，且可以通过 v-bind 显性的绑定到非根元素上</p>
+<h5 id="源码-4"><a href="#源码-4" class="headerlink" title="源码"></a>源码</h5><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">updateAttrs</span> (<span class="params">oldVnode, vnode</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> opts = vnode.componentOptions;</span><br><span class="line">  <span class="keyword">if</span> (isDef(opts) &amp;&amp; opts.Ctor.options.inheritAttrs === <span class="literal">false</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">if</span> (isUndef(oldVnode.data.attrs) &amp;&amp; isUndef(vnode.data.attrs)) &#123;</span><br><span class="line">    <span class="keyword">return</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">var</span> key, cur, old;</span><br><span class="line">  <span class="keyword">var</span> elm = vnode.elm;</span><br><span class="line">  <span class="keyword">var</span> oldAttrs = oldVnode.data.attrs || &#123;&#125;;</span><br><span class="line">  <span class="keyword">var</span> attrs = vnode.data.attrs || &#123;&#125;;</span><br><span class="line">  <span class="comment">// clone observed objects, as the user probably wants to mutate it</span></span><br><span class="line">  <span class="keyword">if</span> (isDef(attrs.__ob__)) &#123;</span><br><span class="line">    attrs = vnode.data.attrs = extend(&#123;&#125;, attrs);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">for</span> (key <span class="keyword">in</span> attrs) &#123;</span><br><span class="line">    cur = attrs[key];</span><br><span class="line">    old = oldAttrs[key];</span><br><span class="line">    <span class="keyword">if</span> (old !== cur) &#123;</span><br><span class="line">      setAttr(elm, key, cur);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// #4391: in IE9, setting type can reset value for input[type=radio]</span></span><br><span class="line">  <span class="comment">// #6666: IE/Edge forces progress value down to 1 before setting a max</span></span><br><span class="line">  <span class="comment">/* istanbul ignore if */</span></span><br><span class="line">  <span class="keyword">if</span> ((isIE || isEdge) &amp;&amp; attrs.value !== oldAttrs.value) &#123;</span><br><span class="line">    setAttr(elm, <span class="string">'value'</span>, attrs.value);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">for</span> (key <span class="keyword">in</span> oldAttrs) &#123;</span><br><span class="line">    <span class="keyword">if</span> (isUndef(attrs[key])) &#123;</span><br><span class="line">      <span class="keyword">if</span> (isXlink(key)) &#123;</span><br><span class="line">        elm.removeAttributeNS(xlinkNS, getXlinkProp(key));</span><br><span class="line">      &#125; <span class="keyword">else</span> <span class="keyword">if</span> (!isEnumeratedAttr(key)) &#123;</span><br><span class="line">        elm.removeAttribute(key);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在更新的时候 判断一下 inheritAttrs 的值，如果为 false 直接返回</p>
+<h5 id="使用-6"><a href="#使用-6" class="headerlink" title="使用"></a>使用</h5><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 子组件</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">  inheritAttrs: <span class="literal">false</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="comments"><a href="#comments" class="headerlink" title="comments"></a>comments</h4><p>  主要作用是 是否保留渲染模板中的 HTML 注释</p>
+
+            <div class="post-copyright">
+    <div class="content">
+        <p>最后更新： 2021年01月29日 17:15</p>
+        <p>原始链接： <a class="post-url" href="/lxx1997.github.io/2021/01/28/vue-learn-api-with-源码-05/" title="跟着 Vue源码学习 Vue api 系列 (五) - 选项 / 组合 &amp; 其他">https://lxxstar987.gitee.io/lxx1997.github.io/2021/01/28/vue-learn-api-with-源码-05/</a></p>
+        <footer>
+            <a href="https://lxxstar987.gitee.io/lxx1997.github.io">
+                <img src="/lxx1997.github.io/images/avatar.png" alt="lxx">
+                lxx
+            </a>
+        </footer>
+    </div>
+</div>
+
+      
+        
+            
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;">赏</a>
+</div>
+
+<div id="reward" class="post-modal reward-lay">
+    <a class="close" href="javascript:;" id="reward-close">×</a>
+    <span class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢大佬打赏
+        <i class="icon icon-quote-right"></i>
+    </span>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/lxx1997.github.io/images/wechat_code.jpg" alt="打赏二维码">
+        </div>
+        <div class="reward-select">
+            
+            <label class="reward-select-item checked" data-id="wechat" data-wechat="/lxx1997.github.io/images/wechat_code.jpg">
+                <img class="reward-select-item-wechat" src="/lxx1997.github.io/images/wechat.png" alt="微信">
+            </label>
+            
+            
+            <label class="reward-select-item" data-id="alipay" data-alipay="/lxx1997.github.io/images/qq_code.jpg">
+                <img class="reward-select-item-alipay" src="/lxx1997.github.io/images/alipay.png" alt="支付宝">
+            </label>
+            
+        </div>
+    </div>
+</div>
+
+
+        
+    </div>
+    <footer class="article-footer">
+        
+        
+<div class="post-share">
+    <a href="javascript:;" id="share-sub" class="post-share-fab">
+        <i class="fa fa-share-alt"></i>
+    </a>
+    <div class="post-share-list" id="share-list">
+        <ul class="share-icons">
+          <li>
+            <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://lxxstar987.gitee.io/lxx1997.github.io/2021/01/28/vue-learn-api-with-源码-05/&title=《跟着 Vue源码学习 Vue api 系列 (五) - 选项 / 组合 & 其他》 — SoulReader&pic=https://lxxstar987.gitee.io/lxx1997.github.ioimages/avatar.png" data-title="微博">
+              <i class="fa fa-weibo"></i>
+            </a>
+          </li>
+          <li>
+            <a class="weixin share-sns" id="wxFab" href="javascript:;" data-title="微信">
+              <i class="fa fa-weixin"></i>
+            </a>
+          </li>
+          <li>
+            <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://lxxstar987.gitee.io/lxx1997.github.io/2021/01/28/vue-learn-api-with-源码-05/&title=《跟着 Vue源码学习 Vue api 系列 (五) - 选项 / 组合 & 其他》 — SoulReader&source=前端小菜鸟,努力深造" data-title="QQ">
+              <i class="fa fa-qq"></i>
+            </a>
+          </li>
+          <li>
+            <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://lxxstar987.gitee.io/lxx1997.github.io/2021/01/28/vue-learn-api-with-源码-05/" data-title="Facebook">
+              <i class="fa fa-facebook"></i>
+            </a>
+          </li>
+          <li>
+            <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《跟着 Vue源码学习 Vue api 系列 (五) - 选项 / 组合 & 其他》 — SoulReader&url=https://lxxstar987.gitee.io/lxx1997.github.io/2021/01/28/vue-learn-api-with-源码-05/&via=https://lxxstar987.gitee.io/lxx1997.github.io" data-title="Twitter">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+          <li>
+            <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://lxxstar987.gitee.io/lxx1997.github.io/2021/01/28/vue-learn-api-with-源码-05/" data-title="Google+">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        </ul>
+     </div>
+</div>
+<div class="post-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;" id="wxShare-close">×</a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPYAAAD2CAAAAADAeSUUAAADI0lEQVR42u3aQXLCQAwEQP7/afKAFM6MBFV403uiiLG35YMiaR+PeD1/rc2v8u+TZ+X7qRc2Njb2TdjPy/X7mutvrj8nd7sG5/v8427Y2NjYx7GvE0NLukbmoUyS1vV+Xn6PjY2NjR1vKIG1hUqSRLGxsbGxr9nJyguP5LnXZQk2NjY2drL1TWmR3/MT98HGxsY+m51PRb//80fm29jY2NhfzH6Wqx24bq5MBgxDBTY2NvZB7DwBJO2bFrB57v4+2NjY2GewNwOAtkEfvYHFkaBkJICNjY19HjtPCclW8oIhP6bTHgMq0hs2Njb2QexNmmkff72JJHCbXxUhwMbGxr4Je5ZC2oTUtvJnb6y4BhsbG/s49myImzfl8zC1zaZhgwkbGxv7IHa+6Vlzvw3Hu44QzUTY2NjYd2TnsKRo2TTl28TWDp6LM0rY2NjYt2Xvy4Y8qeTlTRv06CARNjY29kHsTXmwGR7kxU87PGiLE2xsbOy7szetmVmhkhc8bRDza7CxsbHPY7ePnPHaZLNvZr3UYWNjYx/HTlLXbEPtndumVTJgiHpp2NjY2Ldlz4YE+fBgk8aSBlY7JMDGxsY+jz0DJyXKphW14UUlEzY2NvZB7PxY5KzdnxcGbUCTIXRNxcbGxr4te5OuZpvIYe3RomL/2NjY2Eew2xbSbEzbjn5nBUnRwMLGxsY+iD1beZmRh3LWnLrew6oCw8bGxr4he9Oab4uHNvm1AfrglBsbGxv7y9gb0iw3to2q9vVEwcXGxsY+iD1r/e9HAkkQ23ZSXWlhY2NjH8re4Nv/89vXsC9CXiYwbGxs7IPYLThPhHlQ9mPj6LfY2NjYh7I3TaV3HQBqBwyzETU2Njb2GexnuWat/3a0kP+1TbGPfJKMjY2NfRP2ZoSQJ6dZsdGm0nZX2NjY2Cex85Ft3r5/jta7noWNjY39P9ltKydPM222nJUo+fFNbGxsbOxkJDxrOSWHcmY7fEMCw8bGxj6InWDya5JvZkGJjuxgY2NjH8SeHcGZ8doUuB82RyeVsLGxsW/Lzhs9bYPpvYHLX1JbJmFjY2Pflv0DmrXPqxt7BQ0AAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+<div class="mask"></div>
+
+        
+        <ul class="article-footer-menu">
+            
+            
+  <li class="article-footer-tags">
+    <i class="fa fa-tags"></i>
+      
+    <a href="/lxx1997.github.io/tags/Vue/" class="color4">Vue</a>
+      
+    <a href="/lxx1997.github.io/tags/源码/" class="color3">源码</a>
+      
+  </li>
+
+        </ul>
+        
+    </footer>
+  </div>
+</article>
+
+
+    <aside class="post-toc-pos post-toc-top" id="post-toc">
+        <nav class="post-toc-wrap">
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#parent"><span class="post-toc-text">parent</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#mixins"><span class="post-toc-text">mixins</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#源码"><span class="post-toc-text">源码</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#使用"><span class="post-toc-text">使用</span></a></li></ol></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#extends"><span class="post-toc-text">extends</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#源码-1"><span class="post-toc-text">源码</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#使用-1"><span class="post-toc-text">使用</span></a></li></ol></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#provide-inject"><span class="post-toc-text">provide/inject</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#使用-2"><span class="post-toc-text">使用</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#高级使用技巧"><span class="post-toc-text">高级使用技巧</span></a></li></ol></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#name"><span class="post-toc-text">name</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#delimiters"><span class="post-toc-text">delimiters</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#源码-2"><span class="post-toc-text">源码</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#使用-3"><span class="post-toc-text">使用</span></a></li></ol></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#functional"><span class="post-toc-text">functional</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#使用-4"><span class="post-toc-text">使用</span></a></li></ol></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#model"><span class="post-toc-text">model</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#源码-3"><span class="post-toc-text">源码</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#使用-5"><span class="post-toc-text">使用</span></a></li></ol></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#inheritAttrs"><span class="post-toc-text">inheritAttrs</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#源码-4"><span class="post-toc-text">源码</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#使用-6"><span class="post-toc-text">使用</span></a></li></ol></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#comments"><span class="post-toc-text">comments</span></a></li></ol>
+        </nav>
+    </aside>
+    
+
+<nav id="article-nav">
+  
+    <a href="/lxx1997.github.io/2021/01/29/vue-learn-api-with-源码-06/" id="article-nav-newer" class="article-nav-link-wrap">
+
+      <span class="article-nav-title">
+        <i class="fa fa-hand-o-left" aria-hidden="true"></i>
+        
+          跟着 Vue源码学习 Vue api 系列 (六) - 实例 property
+        
+      </span>
+    </a>
+  
+  
+    <a href="/lxx1997.github.io/2021/01/27/vue-learn-api-with-源码-04/" id="article-nav-older" class="article-nav-link-wrap">
+      <span class="article-nav-title">跟着 Vue源码学习 Vue api 系列 (四) - 选项 / DOM 及 生命周期函数、filters,directives,components</span>
+      <i class="fa fa-hand-o-right" aria-hidden="true"></i>
+    </a>
+  
+</nav>
+
+
+
+    
+</section>
+        
+      </div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+      <p>
+        Powered by  <a href="http://hexo.io/" target="_blank">Hexo</a>
+        Theme <a href="//github.com/wongminho/hexo-theme-miho" target="_blank">MiHo</a>
+      &copy; 2021 lxx<br>
+      </p>
+    </div>
+  </div>
+</footer>
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<script>
+  var mihoConfig = {
+      root: "https://lxxstar987.gitee.io/lxx1997.github.io",
+      animate: true,
+      isHome: false,
+      share: true,
+      reward: 1
+  }
+</script>
+<div class="sidebar">
+    <div id="sidebar-search" title="Search">
+        <i class="fa fa-search"></i>
+    </div>
+    <div id="sidebar-category" title="Categories">
+        <i class="fa fa-book"></i>
+    </div>
+    <div id="sidebar-tag" title="Tags">
+        <i class="fa fa-tags"></i>
+    </div>
+    <div id="sidebar-top">
+        <span class="sidebar-top-icon"><i class="fa fa-angle-up"></i></span>
+    </div>
+</div>
+<div class="sidebar-menu-box" id="sidebar-menu-box">
+    <div class="sidebar-menu-box-container">
+        <div id="sidebar-menu-box-categories">
+            <a class="category-link" href="/lxx1997.github.io/categories/JavaScript/">JavaScript</a><a class="category-link" href="/lxx1997.github.io/categories/Vue/">Vue</a><a class="category-link" href="/lxx1997.github.io/categories/Vue源码/">Vue源码</a><a class="category-link" href="/lxx1997.github.io/categories/eggjs/">eggjs</a><a class="category-link" href="/lxx1997.github.io/categories/nodejs-deno/">nodejs deno</a><a class="category-link" href="/lxx1997.github.io/categories/thought/">thought</a><a class="category-link" href="/lxx1997.github.io/categories/vue3-vite-ts/">vue3 vite ts</a><a class="category-link" href="/lxx1997.github.io/categories/web/">web</a><a class="category-link" href="/lxx1997.github.io/categories/面试/">面试</a>
+        </div>
+        <div id="sidebar-menu-box-tags">
+            <a href="/lxx1997.github.io/tags/Components/" style="font-size: 10px;">Components</a> <a href="/lxx1997.github.io/tags/ES6/" style="font-size: 11.25px;">ES6</a> <a href="/lxx1997.github.io/tags/HTML/" style="font-size: 10px;">HTML</a> <a href="/lxx1997.github.io/tags/JavaScript/" style="font-size: 20px;">JavaScript</a> <a href="/lxx1997.github.io/tags/TypeScript/" style="font-size: 11.25px;">TypeScript</a> <a href="/lxx1997.github.io/tags/Vue/" style="font-size: 18.75px;">Vue</a> <a href="/lxx1997.github.io/tags/Vue3/" style="font-size: 12.5px;">Vue3</a> <a href="/lxx1997.github.io/tags/antd/" style="font-size: 10px;">antd</a> <a href="/lxx1997.github.io/tags/array/" style="font-size: 11.25px;">array</a> <a href="/lxx1997.github.io/tags/browser/" style="font-size: 10px;">browser</a> <a href="/lxx1997.github.io/tags/canvas/" style="font-size: 12.5px;">canvas</a> <a href="/lxx1997.github.io/tags/chrome/" style="font-size: 10px;">chrome</a> <a href="/lxx1997.github.io/tags/coffeescript/" style="font-size: 11.25px;">coffeescript</a> <a href="/lxx1997.github.io/tags/colorui/" style="font-size: 10px;">colorui</a> <a href="/lxx1997.github.io/tags/css/" style="font-size: 13.75px;">css</a> <a href="/lxx1997.github.io/tags/css3/" style="font-size: 11.25px;">css3</a> <a href="/lxx1997.github.io/tags/customize-cra/" style="font-size: 10px;">customize-cra</a> <a href="/lxx1997.github.io/tags/d3-js/" style="font-size: 10px;">d3.js</a> <a href="/lxx1997.github.io/tags/deepin/" style="font-size: 10px;">deepin</a> <a href="/lxx1997.github.io/tags/deno/" style="font-size: 10px;">deno</a> <a href="/lxx1997.github.io/tags/docker/" style="font-size: 10px;">docker</a> <a href="/lxx1997.github.io/tags/egg-mysql/" style="font-size: 10px;">egg-mysql</a> <a href="/lxx1997.github.io/tags/eggjs/" style="font-size: 15px;">eggjs</a> <a href="/lxx1997.github.io/tags/electron/" style="font-size: 10px;">electron</a> <a href="/lxx1997.github.io/tags/es6/" style="font-size: 10px;">es6</a> <a href="/lxx1997.github.io/tags/function/" style="font-size: 13.75px;">function</a> <a href="/lxx1997.github.io/tags/github/" style="font-size: 10px;">github</a> <a href="/lxx1997.github.io/tags/golang/" style="font-size: 10px;">golang</a> <a href="/lxx1997.github.io/tags/html/" style="font-size: 17.5px;">html</a> <a href="/lxx1997.github.io/tags/http/" style="font-size: 10px;">http</a> <a href="/lxx1997.github.io/tags/indexedDB/" style="font-size: 10px;">indexedDB</a> <a href="/lxx1997.github.io/tags/jsonwebtoken/" style="font-size: 10px;">jsonwebtoken</a> <a href="/lxx1997.github.io/tags/less/" style="font-size: 10px;">less</a> <a href="/lxx1997.github.io/tags/localStorage/" style="font-size: 10px;">localStorage</a> <a href="/lxx1997.github.io/tags/method/" style="font-size: 11.25px;">method</a> <a href="/lxx1997.github.io/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/lxx1997.github.io/tags/node/" style="font-size: 10px;">node</a> <a href="/lxx1997.github.io/tags/nodejs/" style="font-size: 11.25px;">nodejs</a> <a href="/lxx1997.github.io/tags/npm/" style="font-size: 10px;">npm</a> <a href="/lxx1997.github.io/tags/promise/" style="font-size: 10px;">promise</a> <a href="/lxx1997.github.io/tags/prototype/" style="font-size: 10px;">prototype</a> <a href="/lxx1997.github.io/tags/pygame/" style="font-size: 10px;">pygame</a> <a href="/lxx1997.github.io/tags/python/" style="font-size: 10px;">python</a> <a href="/lxx1997.github.io/tags/react/" style="font-size: 16.25px;">react</a> <a href="/lxx1997.github.io/tags/react-app-rewired/" style="font-size: 10px;">react-app-rewired</a> <a href="/lxx1997.github.io/tags/redis/" style="font-size: 10px;">redis</a> <a href="/lxx1997.github.io/tags/router/" style="font-size: 10px;">router</a> <a href="/lxx1997.github.io/tags/svg/" style="font-size: 11.25px;">svg</a> <a href="/lxx1997.github.io/tags/swagger-ui/" style="font-size: 10px;">swagger-ui</a> <a href="/lxx1997.github.io/tags/symbol/" style="font-size: 10px;">symbol</a> <a href="/lxx1997.github.io/tags/this/" style="font-size: 10px;">this</a> <a href="/lxx1997.github.io/tags/thought/" style="font-size: 12.5px;">thought</a> <a href="/lxx1997.github.io/tags/typescript/" style="font-size: 16.25px;">typescript</a> <a href="/lxx1997.github.io/tags/uni-app/" style="font-size: 10px;">uni-app</a> <a href="/lxx1997.github.io/tags/vite/" style="font-size: 12.5px;">vite</a> <a href="/lxx1997.github.io/tags/web/" style="font-size: 17.5px;">web</a> <a href="/lxx1997.github.io/tags/webpack/" style="font-size: 11.25px;">webpack</a> <a href="/lxx1997.github.io/tags/产品/" style="font-size: 10px;">产品</a> <a href="/lxx1997.github.io/tags/前端/" style="font-size: 13.75px;">前端</a> <a href="/lxx1997.github.io/tags/后台/" style="font-size: 10px;">后台</a> <a href="/lxx1997.github.io/tags/安全/" style="font-size: 11.25px;">安全</a> <a href="/lxx1997.github.io/tags/工具/" style="font-size: 11.25px;">工具</a> <a href="/lxx1997.github.io/tags/性能/" style="font-size: 10px;">性能</a> <a href="/lxx1997.github.io/tags/旧事/" style="font-size: 15px;">旧事</a> <a href="/lxx1997.github.io/tags/模式/" style="font-size: 10px;">模式</a> <a href="/lxx1997.github.io/tags/浏览器/" style="font-size: 11.25px;">浏览器</a> <a href="/lxx1997.github.io/tags/源码/" style="font-size: 17.5px;">源码</a> <a href="/lxx1997.github.io/tags/生活/" style="font-size: 13.75px;">生活</a> <a href="/lxx1997.github.io/tags/经验/" style="font-size: 10px;">经验</a> <a href="/lxx1997.github.io/tags/编码/" style="font-size: 10px;">编码</a> <a href="/lxx1997.github.io/tags/药别停/" style="font-size: 10px;">药别停</a> <a href="/lxx1997.github.io/tags/读后感/" style="font-size: 12.5px;">读后感</a> <a href="/lxx1997.github.io/tags/面试/" style="font-size: 10px;">面试</a> <a href="/lxx1997.github.io/tags/黑科技/" style="font-size: 10px;">黑科技</a>
+        </div>
+    </div>
+    <a href="javascript:;" class="sidebar-menu-box-close">&times;</a>
+</div>
+<div class="mobile-header-menu-nav" id="mobile-header-menu-nav">
+    <div class="mobile-header-menu-container">
+        <span class="title">Menus</span>
+        <ul class="mobile-header-menu-navbar">
+            
+            <li>
+                <a  href="/lxx1997.github.io/">
+                    <i class="fa fa-home"></i><span>Home</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    <div class="mobile-header-tag-container">
+        <span class="title">Tags</span>
+        <div id="mobile-header-container-tags">
+            <a href="/lxx1997.github.io/tags/Components/" style="font-size: 10px;">Components</a> <a href="/lxx1997.github.io/tags/ES6/" style="font-size: 11.25px;">ES6</a> <a href="/lxx1997.github.io/tags/HTML/" style="font-size: 10px;">HTML</a> <a href="/lxx1997.github.io/tags/JavaScript/" style="font-size: 20px;">JavaScript</a> <a href="/lxx1997.github.io/tags/TypeScript/" style="font-size: 11.25px;">TypeScript</a> <a href="/lxx1997.github.io/tags/Vue/" style="font-size: 18.75px;">Vue</a> <a href="/lxx1997.github.io/tags/Vue3/" style="font-size: 12.5px;">Vue3</a> <a href="/lxx1997.github.io/tags/antd/" style="font-size: 10px;">antd</a> <a href="/lxx1997.github.io/tags/array/" style="font-size: 11.25px;">array</a> <a href="/lxx1997.github.io/tags/browser/" style="font-size: 10px;">browser</a> <a href="/lxx1997.github.io/tags/canvas/" style="font-size: 12.5px;">canvas</a> <a href="/lxx1997.github.io/tags/chrome/" style="font-size: 10px;">chrome</a> <a href="/lxx1997.github.io/tags/coffeescript/" style="font-size: 11.25px;">coffeescript</a> <a href="/lxx1997.github.io/tags/colorui/" style="font-size: 10px;">colorui</a> <a href="/lxx1997.github.io/tags/css/" style="font-size: 13.75px;">css</a> <a href="/lxx1997.github.io/tags/css3/" style="font-size: 11.25px;">css3</a> <a href="/lxx1997.github.io/tags/customize-cra/" style="font-size: 10px;">customize-cra</a> <a href="/lxx1997.github.io/tags/d3-js/" style="font-size: 10px;">d3.js</a> <a href="/lxx1997.github.io/tags/deepin/" style="font-size: 10px;">deepin</a> <a href="/lxx1997.github.io/tags/deno/" style="font-size: 10px;">deno</a> <a href="/lxx1997.github.io/tags/docker/" style="font-size: 10px;">docker</a> <a href="/lxx1997.github.io/tags/egg-mysql/" style="font-size: 10px;">egg-mysql</a> <a href="/lxx1997.github.io/tags/eggjs/" style="font-size: 15px;">eggjs</a> <a href="/lxx1997.github.io/tags/electron/" style="font-size: 10px;">electron</a> <a href="/lxx1997.github.io/tags/es6/" style="font-size: 10px;">es6</a> <a href="/lxx1997.github.io/tags/function/" style="font-size: 13.75px;">function</a> <a href="/lxx1997.github.io/tags/github/" style="font-size: 10px;">github</a> <a href="/lxx1997.github.io/tags/golang/" style="font-size: 10px;">golang</a> <a href="/lxx1997.github.io/tags/html/" style="font-size: 17.5px;">html</a> <a href="/lxx1997.github.io/tags/http/" style="font-size: 10px;">http</a> <a href="/lxx1997.github.io/tags/indexedDB/" style="font-size: 10px;">indexedDB</a> <a href="/lxx1997.github.io/tags/jsonwebtoken/" style="font-size: 10px;">jsonwebtoken</a> <a href="/lxx1997.github.io/tags/less/" style="font-size: 10px;">less</a> <a href="/lxx1997.github.io/tags/localStorage/" style="font-size: 10px;">localStorage</a> <a href="/lxx1997.github.io/tags/method/" style="font-size: 11.25px;">method</a> <a href="/lxx1997.github.io/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/lxx1997.github.io/tags/node/" style="font-size: 10px;">node</a> <a href="/lxx1997.github.io/tags/nodejs/" style="font-size: 11.25px;">nodejs</a> <a href="/lxx1997.github.io/tags/npm/" style="font-size: 10px;">npm</a> <a href="/lxx1997.github.io/tags/promise/" style="font-size: 10px;">promise</a> <a href="/lxx1997.github.io/tags/prototype/" style="font-size: 10px;">prototype</a> <a href="/lxx1997.github.io/tags/pygame/" style="font-size: 10px;">pygame</a> <a href="/lxx1997.github.io/tags/python/" style="font-size: 10px;">python</a> <a href="/lxx1997.github.io/tags/react/" style="font-size: 16.25px;">react</a> <a href="/lxx1997.github.io/tags/react-app-rewired/" style="font-size: 10px;">react-app-rewired</a> <a href="/lxx1997.github.io/tags/redis/" style="font-size: 10px;">redis</a> <a href="/lxx1997.github.io/tags/router/" style="font-size: 10px;">router</a> <a href="/lxx1997.github.io/tags/svg/" style="font-size: 11.25px;">svg</a> <a href="/lxx1997.github.io/tags/swagger-ui/" style="font-size: 10px;">swagger-ui</a> <a href="/lxx1997.github.io/tags/symbol/" style="font-size: 10px;">symbol</a> <a href="/lxx1997.github.io/tags/this/" style="font-size: 10px;">this</a> <a href="/lxx1997.github.io/tags/thought/" style="font-size: 12.5px;">thought</a> <a href="/lxx1997.github.io/tags/typescript/" style="font-size: 16.25px;">typescript</a> <a href="/lxx1997.github.io/tags/uni-app/" style="font-size: 10px;">uni-app</a> <a href="/lxx1997.github.io/tags/vite/" style="font-size: 12.5px;">vite</a> <a href="/lxx1997.github.io/tags/web/" style="font-size: 17.5px;">web</a> <a href="/lxx1997.github.io/tags/webpack/" style="font-size: 11.25px;">webpack</a> <a href="/lxx1997.github.io/tags/产品/" style="font-size: 10px;">产品</a> <a href="/lxx1997.github.io/tags/前端/" style="font-size: 13.75px;">前端</a> <a href="/lxx1997.github.io/tags/后台/" style="font-size: 10px;">后台</a> <a href="/lxx1997.github.io/tags/安全/" style="font-size: 11.25px;">安全</a> <a href="/lxx1997.github.io/tags/工具/" style="font-size: 11.25px;">工具</a> <a href="/lxx1997.github.io/tags/性能/" style="font-size: 10px;">性能</a> <a href="/lxx1997.github.io/tags/旧事/" style="font-size: 15px;">旧事</a> <a href="/lxx1997.github.io/tags/模式/" style="font-size: 10px;">模式</a> <a href="/lxx1997.github.io/tags/浏览器/" style="font-size: 11.25px;">浏览器</a> <a href="/lxx1997.github.io/tags/源码/" style="font-size: 17.5px;">源码</a> <a href="/lxx1997.github.io/tags/生活/" style="font-size: 13.75px;">生活</a> <a href="/lxx1997.github.io/tags/经验/" style="font-size: 10px;">经验</a> <a href="/lxx1997.github.io/tags/编码/" style="font-size: 10px;">编码</a> <a href="/lxx1997.github.io/tags/药别停/" style="font-size: 10px;">药别停</a> <a href="/lxx1997.github.io/tags/读后感/" style="font-size: 12.5px;">读后感</a> <a href="/lxx1997.github.io/tags/面试/" style="font-size: 10px;">面试</a> <a href="/lxx1997.github.io/tags/黑科技/" style="font-size: 10px;">黑科技</a>
+        </div>
+    </div>
+</div>
+<div class="search-wrap">
+    <span class="search-close">&times;</span>
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+            <i class="icon icon-lg icon-chevron-left"></i>
+        </a>
+        <input class="search-field" placeholder="Search..." id="keywords">
+        <a id="search-submit" href="javascript:;">
+            <i class="fa fa-search"></i>
+        </a>
+    <div class="search-container" id="search-container">
+        <ul class="search-result" id="search-result">
+        </ul>
+    </div>
+</div>
+
+<div id="search-tpl">
+    <li class="search-result-item">
+        <a href="{url}" class="search-item-li">
+            <span class="search-item-li-title" title="{title}">{title}</span>
+        </a>
+    </li>
+</div>
+<script src="/lxx1997.github.io/js/search.js"></script>
+<script src="/lxx1997.github.io/js/main.js"></script>
+
+
+  <script src="//cdn.bootcss.com/particles.js/2.0.0/particles.min.js"></script>
+  <div id="particles"></div>
+  <script src="/lxx1997.github.io/js/particles.js"></script>
+
+
+
+
+
+
+
+  <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
+  <script src="//cdn.bootcss.com/scrollReveal.js/3.0.5/scrollreveal.js"></script>
+  <script src="/lxx1997.github.io/js/animate.js"></script>
+
+
+  <script src="/lxx1997.github.io/js/pop-img.js"></script>
+  <script>
+     $(".article-entry p img").popImg();
+  </script>
+
+  </div>
+<script src="/lxx1997.github.io/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/lxx1997.github.io/live2dw/assets/kesyoban.model.json"},"display":{"position":"left","width":300,"height":300},"mobile":{"show":false},"log":false});</script></body>
+</html>
