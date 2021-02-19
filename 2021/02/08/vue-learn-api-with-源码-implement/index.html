@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+  <title>浅浅的剖析一下 Vue 的执行顺序 | SoulReader</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+    <meta name="keywords" content="blog 博客">
+  
+  <meta name="description" content="定义 Vue 构造函数1234567891011121314151617181920212223import &amp;#123; initMixin &amp;#125; from &apos;./init&apos;import &amp;#123; stateMixin &amp;#125; from &apos;./state&apos;import &amp;#123; renderMixin &amp;#125; from &apos;./render&apos;import &amp;#123;">
+<meta name="keywords" content="Vue,源码">
+<meta property="og:type" content="article">
+<meta property="og:title" content="浅浅的剖析一下 Vue 的执行顺序">
+<meta property="og:url" content="https://lxxstar987.gitee.io/lxx1997.github.io/2021/02/08/vue-learn-api-with-源码-implement/index.html">
+<meta property="og:site_name" content="SoulReader">
+<meta property="og:description" content="定义 Vue 构造函数1234567891011121314151617181920212223import &amp;#123; initMixin &amp;#125; from &apos;./init&apos;import &amp;#123; stateMixin &amp;#125; from &apos;./state&apos;import &amp;#123; renderMixin &amp;#125; from &apos;./render&apos;import &amp;#123;">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2021-02-10T09:30:08.538Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="浅浅的剖析一下 Vue 的执行顺序">
+<meta name="twitter:description" content="定义 Vue 构造函数1234567891011121314151617181920212223import &amp;#123; initMixin &amp;#125; from &apos;./init&apos;import &amp;#123; stateMixin &amp;#125; from &apos;./state&apos;import &amp;#123; renderMixin &amp;#125; from &apos;./render&apos;import &amp;#123;">
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+  <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/lxx1997.github.io/css/style.css">
+  <script src="/lxx1997.github.io/js/pace.min.js"></script>
+  
+
+  
+  
+
+</head>
+</html>
+<body>
+  <div id="container">
+      <header id="header">
+    <div id="banner"></div>
+    <div id="header-outer">
+        <div id="header-menu" class="header-menu-pos animated">
+            <div class="header-menu-container">
+                <a href="/lxx1997.github.io/" class="left">
+                    <span class="site-title">SoulReader</span>
+                </a>
+                <nav id="header-menu-nav" class="right">
+                    
+                    <a  href="/lxx1997.github.io/">
+                        <i class="fa fa-home"></i>
+                        <span>Home</span>
+                    </a>
+                    
+                </nav>
+                <a class="mobile-header-menu-button">
+                    <i class="fa fa-bars"></i>
+                </a>
+            </div>
+        </div>
+        <div id="header-row">
+            <div id="logo">
+                <a href="/lxx1997.github.io/">
+                    <img src="/lxx1997.github.io/images/avatar.png" alt="logo">
+                </a>
+            </div>
+            <div class="header-info">
+                <div id="header-title">
+                    
+                    <h2>
+                        SoulReader
+                    </h2>
+                    
+                </div>
+                <div id="header-description">
+                    
+                    <h3>
+                        前端菜鸟 多多交流学习
+                    </h3>
+                    
+                </div>
+            </div>
+            <nav class="header-nav">
+                <div class="social">
+                    
+                        <a title="SoulReader" target="_blank" href="/lxx1997.github.io/">
+                            <i class="fa fa-home fa-2x"></i></a>
+                    
+                        <a title="Github" target="_blank" href="https://github.com/lxx1997">
+                            <i class="fa fa-github fa-2x"></i></a>
+                    
+                </div>
+            </nav>
+        </div>
+    </div>
+</header>
+      <div class="outer">
+        <section id="main" class="body-wrap"><article id="post-vue-learn-api-with-源码-implement" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="post-title" itemprop="name">
+      浅浅的剖析一下 Vue 的执行顺序
+    </h1>
+    <div class="post-title-bar">
+      <ul>
+          
+              <li>
+                  <i class="fa fa-book"></i>
+                  
+                      <a href="/lxx1997.github.io/categories/Vue源码/">Vue源码</a>
+                  
+              </li>
+          
+        <li>
+          <i class="fa fa-calendar"></i>  2021-02-08
+        </li>
+        <li>
+          <i class="fa fa-eye"></i>
+          <span id="busuanzi_value_page_pv"></span>
+        </li>
+      </ul>
+    </div>
+  
+
+          
+      </header>
+    
+    <div class="article-entry post-content" itemprop="articleBody">
+      
+            
+            <h4 id="定义-Vue-构造函数"><a href="#定义-Vue-构造函数" class="headerlink" title="定义 Vue 构造函数"></a>定义 Vue 构造函数</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; initMixin &#125; <span class="keyword">from</span> <span class="string">'./init'</span></span><br><span class="line"><span class="keyword">import</span> &#123; stateMixin &#125; <span class="keyword">from</span> <span class="string">'./state'</span></span><br><span class="line"><span class="keyword">import</span> &#123; renderMixin &#125; <span class="keyword">from</span> <span class="string">'./render'</span></span><br><span class="line"><span class="keyword">import</span> &#123; eventsMixin &#125; <span class="keyword">from</span> <span class="string">'./events'</span></span><br><span class="line"><span class="keyword">import</span> &#123; lifecycleMixin &#125; <span class="keyword">from</span> <span class="string">'./lifecycle'</span></span><br><span class="line"><span class="keyword">import</span> &#123; warn &#125; <span class="keyword">from</span> <span class="string">'../util/index'</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Vue</span> (<span class="params">options</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (process.env.NODE_ENV !== <span class="string">'production'</span> &amp;&amp;</span><br><span class="line">    !(<span class="keyword">this</span> <span class="keyword">instanceof</span> Vue)</span><br><span class="line">  ) &#123;</span><br><span class="line">    warn(<span class="string">'Vue is a constructor and should be called with the `new` keyword'</span>)</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">this</span>._init(options)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">initMixin(Vue)</span><br><span class="line">stateMixin(Vue)</span><br><span class="line">eventsMixin(Vue) </span><br><span class="line">lifecycleMixin(Vue)</span><br><span class="line">renderMixin(Vue)</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> Vue</span><br></pre></td></tr></table></figure>
+<p>定义了 一个 Vue 构造函数，这个构造函数传入的参数是 options，使用的时候通过 new 关键字来创建实例，然后调用了 <code>_init</code> 方法 根据传入的 <code>options</code> 配置来初始化 Vue 实例</p>
+<h4 id="初始化-initMixin"><a href="#初始化-initMixin" class="headerlink" title="初始化 initMixin"></a>初始化 initMixin</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> uid$<span class="number">3</span> = <span class="number">0</span>;</span><br><span class="line">Vue.prototype._init = <span class="function"><span class="keyword">function</span> (<span class="params">options</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> vm = <span class="keyword">this</span>;</span><br><span class="line">  vm._uid = uid$<span class="number">3</span>++;</span><br><span class="line">  <span class="keyword">var</span> startTag, endTag;</span><br><span class="line">  <span class="comment">// 是否记录 性能</span></span><br><span class="line">  <span class="keyword">if</span> (config.performance &amp;&amp; mark) &#123;</span><br><span class="line">    startTag = <span class="string">"vue-perf-start:"</span> + (vm._uid);</span><br><span class="line">    endTag = <span class="string">"vue-perf-end:"</span> + (vm._uid);</span><br><span class="line">    mark(startTag);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  vm._isVue = <span class="literal">true</span>;</span><br><span class="line">  <span class="keyword">if</span> (options &amp;&amp; options._isComponent) &#123;</span><br><span class="line">    initInternalComponent(vm, options);</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    vm.$options = mergeOptions(</span><br><span class="line">      resolveConstructorOptions(vm.constructor),</span><br><span class="line">      options || &#123;&#125;,</span><br><span class="line">      vm</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">  &#123;</span><br><span class="line">    initProxy(vm);</span><br><span class="line">  &#125;</span><br><span class="line">  vm._self = vm;</span><br><span class="line">  initLifecycle(vm);</span><br><span class="line">  initEvents(vm);</span><br><span class="line">  initRender(vm);</span><br><span class="line">  callHook(vm, <span class="string">'beforeCreate'</span>);</span><br><span class="line">  initInjections(vm); <span class="comment">// resolve injections before data/props</span></span><br><span class="line">  initState(vm);</span><br><span class="line">  initProvide(vm); <span class="comment">// resolve provide after data/props</span></span><br><span class="line">  callHook(vm, <span class="string">'created'</span>);</span><br><span class="line">  <span class="keyword">if</span> (config.performance &amp;&amp; mark) &#123;</span><br><span class="line">    vm._name = formatComponentName(vm, <span class="literal">false</span>);</span><br><span class="line">    mark(endTag);</span><br><span class="line">    measure((<span class="string">"vue "</span> + (vm._name) + <span class="string">" init"</span>), startTag, endTag);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (vm.$options.el) &#123;</span><br><span class="line">    vm.$mount(vm.$options.el);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>通过上述代码，我们可以看到 Vue 在初始化的时候主要做了以下几件事</p>
+<ul>
+<li>创建 Vue 实例 唯一标识符 <code>_uid</code></li>
+<li>根据 config 配置判断是否开启 性能监控 <code>performance</code></li>
+<li>设置 Vue 标识符 <code>_isVue</code> 为 <code>true</code> 代表当前实例是 Vue 实例</li>
+<li>通过 option 的 <code>_isComponents</code> 属性判断当前 Vue 实例是否是组件，如果是组件就调用 <code>initInternalComponent</code> 函数，不是组件就调用 <code>mergeOptions</code> 方法，并将返回的参数赋予 Vue 实例的 $options 属性</li>
+<li>调用 <code>initProxy</code> 方法，判断 proxy 代理是否存在，如果存在，使用 proxy 对 Vue 实例进行响应式监控和代理</li>
+<li>设置 Vue 的 _self 属性 为自身实例</li>
+<li>调用 initLifecycle 函数 初始化生命周期</li>
+<li>调用 initEvents 方法 初始化事件对象</li>
+<li>调用 initRender 方法 初始化渲染使用的方法 <code>slot, scopedSlots, createElement, _c</code>方法，并对 <code>$attrs,$listeners</code> 方法进行进行数据响应式处理</li>
+<li>调用 <code>beforeCreate</code> 生命周期，由于此时 还没有任何数据或者方法挂载到 Vue 实例上，所以 无法访问</li>
+<li>调用 initInjections 方法 初始化 <code>inject</code> 属性</li>
+<li>调用 initState 方法 初始化 <code>data,props,methods,computed,watch</code> 属性，设置数据响应式处理，及将属性挂载到 Vue 实例上</li>
+<li>调用 initProvide 方法 初始化 <code>provide</code> 属性</li>
+<li>调用 <code>created</code> 生命周期，此时可以访问到 <code>inject,data,props,methods,computed</code>上属性的值</li>
+<li>调用 <code>$mount</code> 方法 获取 元素节点 <code>el</code></li>
+<li>判断是否传入 <code>render</code> 函数，没有就初始化一个空 DOM 节点</li>
+<li>调用 <code>beforeMount</code> 生命周期</li>
+<li>设置 组件变化的监听方法，监听组件是否更新</li>
+<li>设置 Vue 实例挂载状态为 true</li>
+<li>调用 <code>mounted</code> 生命周期</li>
+</ul>
+<h4 id="stateMixin"><a href="#stateMixin" class="headerlink" title="stateMixin"></a>stateMixin</h4><p>该函数主要针对 实例 <code>$data</code>, <code>$props</code> 进行数据响应式处理，不允许更新<br>并且初始化实例 <code>$set</code>, <code>$delete</code>, <code>$watch</code>(并返回一个 撤销监听的方法)</p>
+<h4 id="eventMixin"><a href="#eventMixin" class="headerlink" title="eventMixin"></a>eventMixin</h4><p>初始化事件方法  <code>$once</code>, <code>$on</code>, <code>$off</code>, <code>$emit</code></p>
+<h4 id="lifecycleMixin"><a href="#lifecycleMixin" class="headerlink" title="lifecycleMixin"></a>lifecycleMixin</h4><p>初始化 <code>_update</code>, <code>forceUpdate</code>, <code>destory</code></p>
+<p>当组件发生更新操作或者卸载的时候会触发这些生命周期<br><code>beforeUpdate</code>,  <code>updated</code>,  <code>beforeDestory</code>,  <code>destoryed</code></p>
+<h4 id="renderMixin"><a href="#renderMixin" class="headerlink" title="renderMixin"></a>renderMixin</h4><p>在这个函数中 首先通过 installRenderHelpers 方法在 Vue 实例上注册了 协助渲染的函数</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">installRenderHelpers</span> (<span class="params">target</span>) </span>&#123;</span><br><span class="line">  target._o = markOnce;   <span class="comment">// 定义静态节点 只渲染一次, v-once 指令</span></span><br><span class="line">  target._n = toNumber;   <span class="comment">// 转化为整型</span></span><br><span class="line">  target._s = toString;   <span class="comment">// 字符串转化</span></span><br><span class="line">  target._l = renderList; <span class="comment">// 渲染 v-for 循环</span></span><br><span class="line">  target._t = renderSlot; <span class="comment">// 渲染 slot</span></span><br><span class="line">  target._q = looseEqual; <span class="comment">// 判断 对象是否相等</span></span><br><span class="line">  target._i = looseIndexOf;   <span class="comment">// 获取 元素 在 数组中的位置</span></span><br><span class="line">  target._m = renderStatic;   <span class="comment">// 定义静态节点 只渲染一次, v-once 指令</span></span><br><span class="line">  target._f = resolveFilter;  <span class="comment">// 调用 filter 方法</span></span><br><span class="line">  target._k = checkKeyCodes;  <span class="comment">// 检查键盘事件</span></span><br><span class="line">  target._b = bindObjectProps;  <span class="comment">// 读取 元素的 attr 属性绑定到 props 上面</span></span><br><span class="line">  target._v = createTextVNode;  <span class="comment">// 创建 文本node 节点</span></span><br><span class="line">  target._e = createEmptyVNode; <span class="comment">// 创建空节点</span></span><br><span class="line">  target._u = resolveScopedSlots;   <span class="comment">// 渲染 ScopedSlot</span></span><br><span class="line">  target._g = bindObjectListeners;  <span class="comment">// 绑定事件函数到 on 方法上去</span></span><br><span class="line">  target._d = bindDynamicKeys;  <span class="comment">// 渲染传入 变量 的 attrs 属性</span></span><br><span class="line">  target._p = prependModifier;  <span class="comment">// 设置前置修饰符</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>然后初始化 <code>$nextTick</code> <code>_render</code></p>
+<h4 id="解析-dom-元素并渲染-patch"><a href="#解析-dom-元素并渲染-patch" class="headerlink" title="解析 dom 元素并渲染(patch)"></a>解析 dom 元素并渲染(patch)</h4><p>Vue 再渲染 DOM 的时候即 <code>mountComponent</code> 方法中 会调用 <code>_update</code> 方法，并将 Vue 的 <code>_render</code> 函数的返回值 (一个 VNode 对象) 作为参数传入,第二个参数 <code>hydrating</code> 为 undefined</p>
+<p>然后在 _update 方法中 通过 <code>__patch__</code> 即 <code>patch/createPatchFunction</code> 方法渲染页面</p>
+<p>我们来看一下 <code>patch</code> 方法做了哪些东西</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//  vm.$el, vnode</span></span><br><span class="line"><span class="keyword">var</span> patch = createPatchFunction(&#123; <span class="attr">nodeOps</span>: nodeOps, <span class="attr">modules</span>: modules &#125;)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>首先创造了 几个生命周期<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> hooks = [<span class="string">'create'</span>, <span class="string">'activate'</span>, <span class="string">'update'</span>, <span class="string">'remove'</span>, <span class="string">'destroy'</span>];</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+
+            <div class="post-copyright">
+    <div class="content">
+        <p>最后更新： 2021年02月10日 17:30</p>
+        <p>原始链接： <a class="post-url" href="/lxx1997.github.io/2021/02/08/vue-learn-api-with-源码-implement/" title="浅浅的剖析一下 Vue 的执行顺序">https://lxxstar987.gitee.io/lxx1997.github.io/2021/02/08/vue-learn-api-with-源码-implement/</a></p>
+        <footer>
+            <a href="https://lxxstar987.gitee.io/lxx1997.github.io">
+                <img src="/lxx1997.github.io/images/avatar.png" alt="lxx">
+                lxx
+            </a>
+        </footer>
+    </div>
+</div>
+
+      
+        
+            
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;">赏</a>
+</div>
+
+<div id="reward" class="post-modal reward-lay">
+    <a class="close" href="javascript:;" id="reward-close">×</a>
+    <span class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢大佬打赏
+        <i class="icon icon-quote-right"></i>
+    </span>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/lxx1997.github.io/images/wechat_code.jpg" alt="打赏二维码">
+        </div>
+        <div class="reward-select">
+            
+            <label class="reward-select-item checked" data-id="wechat" data-wechat="/lxx1997.github.io/images/wechat_code.jpg">
+                <img class="reward-select-item-wechat" src="/lxx1997.github.io/images/wechat.png" alt="微信">
+            </label>
+            
+            
+            <label class="reward-select-item" data-id="alipay" data-alipay="/lxx1997.github.io/images/qq_code.jpg">
+                <img class="reward-select-item-alipay" src="/lxx1997.github.io/images/alipay.png" alt="支付宝">
+            </label>
+            
+        </div>
+    </div>
+</div>
+
+
+        
+    </div>
+    <footer class="article-footer">
+        
+        
+<div class="post-share">
+    <a href="javascript:;" id="share-sub" class="post-share-fab">
+        <i class="fa fa-share-alt"></i>
+    </a>
+    <div class="post-share-list" id="share-list">
+        <ul class="share-icons">
+          <li>
+            <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://lxxstar987.gitee.io/lxx1997.github.io/2021/02/08/vue-learn-api-with-源码-implement/&title=《浅浅的剖析一下 Vue 的执行顺序》 — SoulReader&pic=https://lxxstar987.gitee.io/lxx1997.github.ioimages/avatar.png" data-title="微博">
+              <i class="fa fa-weibo"></i>
+            </a>
+          </li>
+          <li>
+            <a class="weixin share-sns" id="wxFab" href="javascript:;" data-title="微信">
+              <i class="fa fa-weixin"></i>
+            </a>
+          </li>
+          <li>
+            <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://lxxstar987.gitee.io/lxx1997.github.io/2021/02/08/vue-learn-api-with-源码-implement/&title=《浅浅的剖析一下 Vue 的执行顺序》 — SoulReader&source=前端小菜鸟,努力深造" data-title="QQ">
+              <i class="fa fa-qq"></i>
+            </a>
+          </li>
+          <li>
+            <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://lxxstar987.gitee.io/lxx1997.github.io/2021/02/08/vue-learn-api-with-源码-implement/" data-title="Facebook">
+              <i class="fa fa-facebook"></i>
+            </a>
+          </li>
+          <li>
+            <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《浅浅的剖析一下 Vue 的执行顺序》 — SoulReader&url=https://lxxstar987.gitee.io/lxx1997.github.io/2021/02/08/vue-learn-api-with-源码-implement/&via=https://lxxstar987.gitee.io/lxx1997.github.io" data-title="Twitter">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+          <li>
+            <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://lxxstar987.gitee.io/lxx1997.github.io/2021/02/08/vue-learn-api-with-源码-implement/" data-title="Google+">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        </ul>
+     </div>
+</div>
+<div class="post-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;" id="wxShare-close">×</a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPYAAAD2CAAAAADAeSUUAAADG0lEQVR42u3aQW7CQAwFUO5/abqtVEi/7UQi5mVVoWTIGxau/efxiK/nr+vv5+/umf/99xvfvdvjigsbGxv7Juzn4XV8T7JOzjsGTN7zxcrY2NjY69jHhSFBVgvPud+YW7CxsbGxqy+Xl5x8/eRZbGxsbOxeOak+m7Qc+agLGxsb+5vZvZHQ8dLVNXsjrctnadjY2Ngfz56Mez7t70vybWxsbOwPZj+LV69g9FabtC7/vBU2Njb2InZeACZHanoDo+Ox0XwdbGxs7H3sSTQ7aW960UI13njxCTY2NvYidvXoTN6WVNfPN6IXM5SzYmxsbOybsHsHaPJIdXIEJy9UyVNv6zY2Njb2zdmTcc/kk+p25CsUNg4bGxt7BTspOdX2oBoeTMZYo98ZGxsbewV7PtY/d2Tfa2mqhRAbGxt7N7tabM56uV6EkIQH0e+MjY2NfXN29eFJKJs8W10hD4OxsbGx97GrR16qh3KuQM4DYGxsbOwd7Copbx6qI/tJeFB+E2xsbOx17N6Q6DpMb6hUKH7Y2NjY69jl9CAIEqI51iCcSJ56W4CxsbGxF7GrR2TySCApbKM0oxUbY2NjY38DuxcJnFWWetuR40d9GDY2NvZt2dUWJSlCSQnM76le2NjY2N/Azl+3CruipWmGzdjY2NiL2GcN+vMGplrMeiOn6B5sbGzsRezeQH8yPCpHs4NGBRsbG3sre/5vfdK69O7JN6ha9rCxsbE3scvHXE5qM5JWp3rEp7q52NjY2PvYV7xi3g/12pUTLmxsbOwV7DwYmMe3ky2eHOt58b3Y2NjYS9m9cjIpOZMtzld7VG/FxsbGvi27V4TysU7v8E31mE7UbmFjY2OvYD+L1wnngGJGUsaqIUHUe2FjY2Pfij2ZpVebkMkmVktjXpixsbGxd7DzolUdA1XL0iRmzn8SbGxs7K3sScPQayryGDhfLV8HGxsbG3v+QtUIIWk8knKIjY2Njd1rKvI2prdydRyGjY2NvY+dh7v5F1TXycPdvL94++NhY2NjL2LnQW+vkag2DPkWJNFydeOwsbGxb8X+AWOokc036OvJAAAAAElFTkSuQmCC" alt="微信分享二维码">
+</div>
+
+<div class="mask"></div>
+
+        
+        <ul class="article-footer-menu">
+            
+            
+  <li class="article-footer-tags">
+    <i class="fa fa-tags"></i>
+      
+    <a href="/lxx1997.github.io/tags/Vue/" class="color4">Vue</a>
+      
+    <a href="/lxx1997.github.io/tags/源码/" class="color3">源码</a>
+      
+  </li>
+
+        </ul>
+        
+    </footer>
+  </div>
+</article>
+
+
+    <aside class="post-toc-pos post-toc-top" id="post-toc">
+        <nav class="post-toc-wrap">
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#定义-Vue-构造函数"><span class="post-toc-text">定义 Vue 构造函数</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#初始化-initMixin"><span class="post-toc-text">初始化 initMixin</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#stateMixin"><span class="post-toc-text">stateMixin</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#eventMixin"><span class="post-toc-text">eventMixin</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#lifecycleMixin"><span class="post-toc-text">lifecycleMixin</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#renderMixin"><span class="post-toc-text">renderMixin</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#解析-dom-元素并渲染-patch"><span class="post-toc-text">解析 dom 元素并渲染(patch)</span></a></li></ol>
+        </nav>
+    </aside>
+    
+
+<nav id="article-nav">
+  
+  
+    <a href="/lxx1997.github.io/2021/02/01/vue-learn-api-with-源码-08/" id="article-nav-older" class="article-nav-link-wrap">
+      <span class="article-nav-title">跟着 Vue源码学习 Vue api 系列 (八) - 指令</span>
+      <i class="fa fa-hand-o-right" aria-hidden="true"></i>
+    </a>
+  
+</nav>
+
+
+
+    
+</section>
+        
+      </div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+      <p>
+        Powered by  <a href="http://hexo.io/" target="_blank">Hexo</a>
+        Theme <a href="//github.com/wongminho/hexo-theme-miho" target="_blank">MiHo</a>
+      &copy; 2021 lxx<br>
+      </p>
+    </div>
+  </div>
+</footer>
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<script>
+  var mihoConfig = {
+      root: "https://lxxstar987.gitee.io/lxx1997.github.io",
+      animate: true,
+      isHome: false,
+      share: true,
+      reward: 1
+  }
+</script>
+<div class="sidebar">
+    <div id="sidebar-search" title="Search">
+        <i class="fa fa-search"></i>
+    </div>
+    <div id="sidebar-category" title="Categories">
+        <i class="fa fa-book"></i>
+    </div>
+    <div id="sidebar-tag" title="Tags">
+        <i class="fa fa-tags"></i>
+    </div>
+    <div id="sidebar-top">
+        <span class="sidebar-top-icon"><i class="fa fa-angle-up"></i></span>
+    </div>
+</div>
+<div class="sidebar-menu-box" id="sidebar-menu-box">
+    <div class="sidebar-menu-box-container">
+        <div id="sidebar-menu-box-categories">
+            <a class="category-link" href="/lxx1997.github.io/categories/JavaScript/">JavaScript</a><a class="category-link" href="/lxx1997.github.io/categories/Vue/">Vue</a><a class="category-link" href="/lxx1997.github.io/categories/Vue源码/">Vue源码</a><a class="category-link" href="/lxx1997.github.io/categories/eggjs/">eggjs</a><a class="category-link" href="/lxx1997.github.io/categories/nodejs-deno/">nodejs deno</a><a class="category-link" href="/lxx1997.github.io/categories/thought/">thought</a><a class="category-link" href="/lxx1997.github.io/categories/vue3-vite-ts/">vue3 vite ts</a><a class="category-link" href="/lxx1997.github.io/categories/web/">web</a><a class="category-link" href="/lxx1997.github.io/categories/面试/">面试</a>
+        </div>
+        <div id="sidebar-menu-box-tags">
+            <a href="/lxx1997.github.io/tags/Components/" style="font-size: 10px;">Components</a> <a href="/lxx1997.github.io/tags/ES6/" style="font-size: 11.11px;">ES6</a> <a href="/lxx1997.github.io/tags/HTML/" style="font-size: 10px;">HTML</a> <a href="/lxx1997.github.io/tags/JavaScript/" style="font-size: 20px;">JavaScript</a> <a href="/lxx1997.github.io/tags/TypeScript/" style="font-size: 11.11px;">TypeScript</a> <a href="/lxx1997.github.io/tags/Vue/" style="font-size: 18.89px;">Vue</a> <a href="/lxx1997.github.io/tags/Vue3/" style="font-size: 11.11px;">Vue3</a> <a href="/lxx1997.github.io/tags/antd/" style="font-size: 10px;">antd</a> <a href="/lxx1997.github.io/tags/array/" style="font-size: 11.11px;">array</a> <a href="/lxx1997.github.io/tags/browser/" style="font-size: 10px;">browser</a> <a href="/lxx1997.github.io/tags/canvas/" style="font-size: 12.22px;">canvas</a> <a href="/lxx1997.github.io/tags/chrome/" style="font-size: 10px;">chrome</a> <a href="/lxx1997.github.io/tags/coffeescript/" style="font-size: 11.11px;">coffeescript</a> <a href="/lxx1997.github.io/tags/colorui/" style="font-size: 10px;">colorui</a> <a href="/lxx1997.github.io/tags/css/" style="font-size: 13.33px;">css</a> <a href="/lxx1997.github.io/tags/css3/" style="font-size: 11.11px;">css3</a> <a href="/lxx1997.github.io/tags/customize-cra/" style="font-size: 10px;">customize-cra</a> <a href="/lxx1997.github.io/tags/d3-js/" style="font-size: 10px;">d3.js</a> <a href="/lxx1997.github.io/tags/deepin/" style="font-size: 10px;">deepin</a> <a href="/lxx1997.github.io/tags/deno/" style="font-size: 10px;">deno</a> <a href="/lxx1997.github.io/tags/docker/" style="font-size: 10px;">docker</a> <a href="/lxx1997.github.io/tags/egg-mysql/" style="font-size: 10px;">egg-mysql</a> <a href="/lxx1997.github.io/tags/eggjs/" style="font-size: 14.44px;">eggjs</a> <a href="/lxx1997.github.io/tags/electron/" style="font-size: 10px;">electron</a> <a href="/lxx1997.github.io/tags/es6/" style="font-size: 10px;">es6</a> <a href="/lxx1997.github.io/tags/function/" style="font-size: 13.33px;">function</a> <a href="/lxx1997.github.io/tags/github/" style="font-size: 10px;">github</a> <a href="/lxx1997.github.io/tags/golang/" style="font-size: 10px;">golang</a> <a href="/lxx1997.github.io/tags/html/" style="font-size: 16.67px;">html</a> <a href="/lxx1997.github.io/tags/http/" style="font-size: 10px;">http</a> <a href="/lxx1997.github.io/tags/indexedDB/" style="font-size: 10px;">indexedDB</a> <a href="/lxx1997.github.io/tags/jsonwebtoken/" style="font-size: 10px;">jsonwebtoken</a> <a href="/lxx1997.github.io/tags/less/" style="font-size: 10px;">less</a> <a href="/lxx1997.github.io/tags/localStorage/" style="font-size: 10px;">localStorage</a> <a href="/lxx1997.github.io/tags/method/" style="font-size: 11.11px;">method</a> <a href="/lxx1997.github.io/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/lxx1997.github.io/tags/node/" style="font-size: 10px;">node</a> <a href="/lxx1997.github.io/tags/nodejs/" style="font-size: 11.11px;">nodejs</a> <a href="/lxx1997.github.io/tags/npm/" style="font-size: 10px;">npm</a> <a href="/lxx1997.github.io/tags/prototype/" style="font-size: 10px;">prototype</a> <a href="/lxx1997.github.io/tags/pygame/" style="font-size: 10px;">pygame</a> <a href="/lxx1997.github.io/tags/python/" style="font-size: 10px;">python</a> <a href="/lxx1997.github.io/tags/react/" style="font-size: 15.56px;">react</a> <a href="/lxx1997.github.io/tags/react-app-rewired/" style="font-size: 10px;">react-app-rewired</a> <a href="/lxx1997.github.io/tags/redis/" style="font-size: 10px;">redis</a> <a href="/lxx1997.github.io/tags/router/" style="font-size: 10px;">router</a> <a href="/lxx1997.github.io/tags/svg/" style="font-size: 11.11px;">svg</a> <a href="/lxx1997.github.io/tags/swagger-ui/" style="font-size: 10px;">swagger-ui</a> <a href="/lxx1997.github.io/tags/symbol/" style="font-size: 10px;">symbol</a> <a href="/lxx1997.github.io/tags/this/" style="font-size: 10px;">this</a> <a href="/lxx1997.github.io/tags/thought/" style="font-size: 12.22px;">thought</a> <a href="/lxx1997.github.io/tags/typescript/" style="font-size: 15.56px;">typescript</a> <a href="/lxx1997.github.io/tags/uni-app/" style="font-size: 10px;">uni-app</a> <a href="/lxx1997.github.io/tags/vite/" style="font-size: 11.11px;">vite</a> <a href="/lxx1997.github.io/tags/web/" style="font-size: 16.67px;">web</a> <a href="/lxx1997.github.io/tags/webpack/" style="font-size: 11.11px;">webpack</a> <a href="/lxx1997.github.io/tags/产品/" style="font-size: 10px;">产品</a> <a href="/lxx1997.github.io/tags/前端/" style="font-size: 13.33px;">前端</a> <a href="/lxx1997.github.io/tags/后台/" style="font-size: 10px;">后台</a> <a href="/lxx1997.github.io/tags/安全/" style="font-size: 11.11px;">安全</a> <a href="/lxx1997.github.io/tags/工具/" style="font-size: 11.11px;">工具</a> <a href="/lxx1997.github.io/tags/性能/" style="font-size: 10px;">性能</a> <a href="/lxx1997.github.io/tags/旧事/" style="font-size: 14.44px;">旧事</a> <a href="/lxx1997.github.io/tags/模式/" style="font-size: 10px;">模式</a> <a href="/lxx1997.github.io/tags/浏览器/" style="font-size: 11.11px;">浏览器</a> <a href="/lxx1997.github.io/tags/源码/" style="font-size: 17.78px;">源码</a> <a href="/lxx1997.github.io/tags/生活/" style="font-size: 13.33px;">生活</a> <a href="/lxx1997.github.io/tags/经验/" style="font-size: 10px;">经验</a> <a href="/lxx1997.github.io/tags/编码/" style="font-size: 10px;">编码</a> <a href="/lxx1997.github.io/tags/药别停/" style="font-size: 10px;">药别停</a> <a href="/lxx1997.github.io/tags/读后感/" style="font-size: 12.22px;">读后感</a> <a href="/lxx1997.github.io/tags/面试/" style="font-size: 10px;">面试</a> <a href="/lxx1997.github.io/tags/黑科技/" style="font-size: 10px;">黑科技</a>
+        </div>
+    </div>
+    <a href="javascript:;" class="sidebar-menu-box-close">&times;</a>
+</div>
+<div class="mobile-header-menu-nav" id="mobile-header-menu-nav">
+    <div class="mobile-header-menu-container">
+        <span class="title">Menus</span>
+        <ul class="mobile-header-menu-navbar">
+            
+            <li>
+                <a  href="/lxx1997.github.io/">
+                    <i class="fa fa-home"></i><span>Home</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    <div class="mobile-header-tag-container">
+        <span class="title">Tags</span>
+        <div id="mobile-header-container-tags">
+            <a href="/lxx1997.github.io/tags/Components/" style="font-size: 10px;">Components</a> <a href="/lxx1997.github.io/tags/ES6/" style="font-size: 11.11px;">ES6</a> <a href="/lxx1997.github.io/tags/HTML/" style="font-size: 10px;">HTML</a> <a href="/lxx1997.github.io/tags/JavaScript/" style="font-size: 20px;">JavaScript</a> <a href="/lxx1997.github.io/tags/TypeScript/" style="font-size: 11.11px;">TypeScript</a> <a href="/lxx1997.github.io/tags/Vue/" style="font-size: 18.89px;">Vue</a> <a href="/lxx1997.github.io/tags/Vue3/" style="font-size: 11.11px;">Vue3</a> <a href="/lxx1997.github.io/tags/antd/" style="font-size: 10px;">antd</a> <a href="/lxx1997.github.io/tags/array/" style="font-size: 11.11px;">array</a> <a href="/lxx1997.github.io/tags/browser/" style="font-size: 10px;">browser</a> <a href="/lxx1997.github.io/tags/canvas/" style="font-size: 12.22px;">canvas</a> <a href="/lxx1997.github.io/tags/chrome/" style="font-size: 10px;">chrome</a> <a href="/lxx1997.github.io/tags/coffeescript/" style="font-size: 11.11px;">coffeescript</a> <a href="/lxx1997.github.io/tags/colorui/" style="font-size: 10px;">colorui</a> <a href="/lxx1997.github.io/tags/css/" style="font-size: 13.33px;">css</a> <a href="/lxx1997.github.io/tags/css3/" style="font-size: 11.11px;">css3</a> <a href="/lxx1997.github.io/tags/customize-cra/" style="font-size: 10px;">customize-cra</a> <a href="/lxx1997.github.io/tags/d3-js/" style="font-size: 10px;">d3.js</a> <a href="/lxx1997.github.io/tags/deepin/" style="font-size: 10px;">deepin</a> <a href="/lxx1997.github.io/tags/deno/" style="font-size: 10px;">deno</a> <a href="/lxx1997.github.io/tags/docker/" style="font-size: 10px;">docker</a> <a href="/lxx1997.github.io/tags/egg-mysql/" style="font-size: 10px;">egg-mysql</a> <a href="/lxx1997.github.io/tags/eggjs/" style="font-size: 14.44px;">eggjs</a> <a href="/lxx1997.github.io/tags/electron/" style="font-size: 10px;">electron</a> <a href="/lxx1997.github.io/tags/es6/" style="font-size: 10px;">es6</a> <a href="/lxx1997.github.io/tags/function/" style="font-size: 13.33px;">function</a> <a href="/lxx1997.github.io/tags/github/" style="font-size: 10px;">github</a> <a href="/lxx1997.github.io/tags/golang/" style="font-size: 10px;">golang</a> <a href="/lxx1997.github.io/tags/html/" style="font-size: 16.67px;">html</a> <a href="/lxx1997.github.io/tags/http/" style="font-size: 10px;">http</a> <a href="/lxx1997.github.io/tags/indexedDB/" style="font-size: 10px;">indexedDB</a> <a href="/lxx1997.github.io/tags/jsonwebtoken/" style="font-size: 10px;">jsonwebtoken</a> <a href="/lxx1997.github.io/tags/less/" style="font-size: 10px;">less</a> <a href="/lxx1997.github.io/tags/localStorage/" style="font-size: 10px;">localStorage</a> <a href="/lxx1997.github.io/tags/method/" style="font-size: 11.11px;">method</a> <a href="/lxx1997.github.io/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/lxx1997.github.io/tags/node/" style="font-size: 10px;">node</a> <a href="/lxx1997.github.io/tags/nodejs/" style="font-size: 11.11px;">nodejs</a> <a href="/lxx1997.github.io/tags/npm/" style="font-size: 10px;">npm</a> <a href="/lxx1997.github.io/tags/prototype/" style="font-size: 10px;">prototype</a> <a href="/lxx1997.github.io/tags/pygame/" style="font-size: 10px;">pygame</a> <a href="/lxx1997.github.io/tags/python/" style="font-size: 10px;">python</a> <a href="/lxx1997.github.io/tags/react/" style="font-size: 15.56px;">react</a> <a href="/lxx1997.github.io/tags/react-app-rewired/" style="font-size: 10px;">react-app-rewired</a> <a href="/lxx1997.github.io/tags/redis/" style="font-size: 10px;">redis</a> <a href="/lxx1997.github.io/tags/router/" style="font-size: 10px;">router</a> <a href="/lxx1997.github.io/tags/svg/" style="font-size: 11.11px;">svg</a> <a href="/lxx1997.github.io/tags/swagger-ui/" style="font-size: 10px;">swagger-ui</a> <a href="/lxx1997.github.io/tags/symbol/" style="font-size: 10px;">symbol</a> <a href="/lxx1997.github.io/tags/this/" style="font-size: 10px;">this</a> <a href="/lxx1997.github.io/tags/thought/" style="font-size: 12.22px;">thought</a> <a href="/lxx1997.github.io/tags/typescript/" style="font-size: 15.56px;">typescript</a> <a href="/lxx1997.github.io/tags/uni-app/" style="font-size: 10px;">uni-app</a> <a href="/lxx1997.github.io/tags/vite/" style="font-size: 11.11px;">vite</a> <a href="/lxx1997.github.io/tags/web/" style="font-size: 16.67px;">web</a> <a href="/lxx1997.github.io/tags/webpack/" style="font-size: 11.11px;">webpack</a> <a href="/lxx1997.github.io/tags/产品/" style="font-size: 10px;">产品</a> <a href="/lxx1997.github.io/tags/前端/" style="font-size: 13.33px;">前端</a> <a href="/lxx1997.github.io/tags/后台/" style="font-size: 10px;">后台</a> <a href="/lxx1997.github.io/tags/安全/" style="font-size: 11.11px;">安全</a> <a href="/lxx1997.github.io/tags/工具/" style="font-size: 11.11px;">工具</a> <a href="/lxx1997.github.io/tags/性能/" style="font-size: 10px;">性能</a> <a href="/lxx1997.github.io/tags/旧事/" style="font-size: 14.44px;">旧事</a> <a href="/lxx1997.github.io/tags/模式/" style="font-size: 10px;">模式</a> <a href="/lxx1997.github.io/tags/浏览器/" style="font-size: 11.11px;">浏览器</a> <a href="/lxx1997.github.io/tags/源码/" style="font-size: 17.78px;">源码</a> <a href="/lxx1997.github.io/tags/生活/" style="font-size: 13.33px;">生活</a> <a href="/lxx1997.github.io/tags/经验/" style="font-size: 10px;">经验</a> <a href="/lxx1997.github.io/tags/编码/" style="font-size: 10px;">编码</a> <a href="/lxx1997.github.io/tags/药别停/" style="font-size: 10px;">药别停</a> <a href="/lxx1997.github.io/tags/读后感/" style="font-size: 12.22px;">读后感</a> <a href="/lxx1997.github.io/tags/面试/" style="font-size: 10px;">面试</a> <a href="/lxx1997.github.io/tags/黑科技/" style="font-size: 10px;">黑科技</a>
+        </div>
+    </div>
+</div>
+<div class="search-wrap">
+    <span class="search-close">&times;</span>
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+            <i class="icon icon-lg icon-chevron-left"></i>
+        </a>
+        <input class="search-field" placeholder="Search..." id="keywords">
+        <a id="search-submit" href="javascript:;">
+            <i class="fa fa-search"></i>
+        </a>
+    <div class="search-container" id="search-container">
+        <ul class="search-result" id="search-result">
+        </ul>
+    </div>
+</div>
+
+<div id="search-tpl">
+    <li class="search-result-item">
+        <a href="{url}" class="search-item-li">
+            <span class="search-item-li-title" title="{title}">{title}</span>
+        </a>
+    </li>
+</div>
+<script src="/lxx1997.github.io/js/search.js"></script>
+<script src="/lxx1997.github.io/js/main.js"></script>
+
+
+  <script src="//cdn.bootcss.com/particles.js/2.0.0/particles.min.js"></script>
+  <div id="particles"></div>
+  <script src="/lxx1997.github.io/js/particles.js"></script>
+
+
+
+
+
+
+
+  <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
+  <script src="//cdn.bootcss.com/scrollReveal.js/3.0.5/scrollreveal.js"></script>
+  <script src="/lxx1997.github.io/js/animate.js"></script>
+
+
+  <script src="/lxx1997.github.io/js/pop-img.js"></script>
+  <script>
+     $(".article-entry p img").popImg();
+  </script>
+
+  </div>
+<script src="/lxx1997.github.io/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/lxx1997.github.io/live2dw/assets/kesyoban.model.json"},"display":{"position":"right","width":300,"height":300},"mobile":{"show":false},"log":false});</script></body>
+</html>
