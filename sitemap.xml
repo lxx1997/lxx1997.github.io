@@ -2,128 +2,135 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://lxxstar987.gitee.io/lxx1997.github.io/2021/03/18/js-promise/</loc>
+    
+    <lastmod>2021-03-18T09:57:38.833Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://lxxstar987.gitee.io/lxx1997.github.io/2021/01/17/vue3-vite-typescript-02/</loc>
     
-    <lastmod>2021-02-14T13:42:16.957Z</lastmod>
+    <lastmod>2021-02-26T09:38:54.221Z</lastmod>
     
   </url>
   
   <url>
     <loc>https://lxxstar987.gitee.io/lxx1997.github.io/2021/01/15/vue3-vite-typescript-01/</loc>
     
-    <lastmod>2021-02-13T14:16:14.393Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://lxxstar987.gitee.io/lxx1997.github.io/2020/12/09/deep-copy-light-copy/</loc>
-    
-    <lastmod>2021-02-12T14:16:49.984Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://lxxstar987.gitee.io/lxx1997.github.io/2021/01/04/deferent-in-new-Object-object-create/</loc>
-    
-    <lastmod>2021-02-12T14:08:07.270Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://lxxstar987.gitee.io/lxx1997.github.io/2021/02/08/vue-learn-api-with-%E6%BA%90%E7%A0%81-implement/</loc>
-    
-    <lastmod>2021-02-10T09:30:08.538Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://lxxstar987.gitee.io/lxx1997.github.io/2021/02/01/vue-learn-api-with-%E6%BA%90%E7%A0%81-08/</loc>
-    
-    <lastmod>2021-02-02T09:09:03.510Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://lxxstar987.gitee.io/lxx1997.github.io/2021/02/01/vue-learn-api-with-%E6%BA%90%E7%A0%81-07/</loc>
-    
-    <lastmod>2021-02-01T09:45:10.826Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://lxxstar987.gitee.io/lxx1997.github.io/2021/01/29/vue-learn-api-with-%E6%BA%90%E7%A0%81-06/</loc>
-    
-    <lastmod>2021-02-01T07:25:54.289Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://lxxstar987.gitee.io/lxx1997.github.io/2021/01/28/vue-learn-api-with-%E6%BA%90%E7%A0%81-05/</loc>
-    
-    <lastmod>2021-01-29T09:15:48.683Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://lxxstar987.gitee.io/lxx1997.github.io/2021/01/07/vue-components-transfer-data/</loc>
-    
-    <lastmod>2021-01-29T06:23:12.280Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://lxxstar987.gitee.io/lxx1997.github.io/2021/01/27/vue-learn-api-with-%E6%BA%90%E7%A0%81-04/</loc>
-    
-    <lastmod>2021-01-29T06:21:10.054Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://lxxstar987.gitee.io/lxx1997.github.io/2021/01/09/vue-learn-api-with-%E6%BA%90%E7%A0%81-01/</loc>
-    
-    <lastmod>2021-01-28T05:36:51.813Z</lastmod>
+    <lastmod>2021-02-26T09:38:54.221Z</lastmod>
     
   </url>
   
   <url>
     <loc>https://lxxstar987.gitee.io/lxx1997.github.io/2020/12/17/vue-template-render/</loc>
     
-    <lastmod>2021-01-28T05:36:51.703Z</lastmod>
+    <lastmod>2021-02-26T09:38:54.220Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://lxxstar987.gitee.io/lxx1997.github.io/2020/12/16/vue-VirtualDOM-template/</loc>
+    <loc>https://lxxstar987.gitee.io/lxx1997.github.io/2021/02/08/vue-learn-api-with-%E6%BA%90%E7%A0%81-implement/</loc>
     
-    <lastmod>2021-01-28T05:36:51.703Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://lxxstar987.gitee.io/lxx1997.github.io/2021/01/02/vue-code-part-01/</loc>
-    
-    <lastmod>2021-01-28T05:36:51.701Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://lxxstar987.gitee.io/lxx1997.github.io/2021/01/20/vue-learn-api-with-%E6%BA%90%E7%A0%81-02/</loc>
-    
-    <lastmod>2021-01-28T05:36:51.502Z</lastmod>
+    <lastmod>2021-02-26T09:38:54.219Z</lastmod>
     
   </url>
   
   <url>
     <loc>https://lxxstar987.gitee.io/lxx1997.github.io/2021/01/27/vue-learn-api-with-%E6%BA%90%E7%A0%81-watcher/</loc>
     
-    <lastmod>2021-01-28T05:36:51.501Z</lastmod>
+    <lastmod>2021-02-26T09:38:54.219Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://lxxstar987.gitee.io/lxx1997.github.io/2021/02/01/vue-learn-api-with-%E6%BA%90%E7%A0%81-08/</loc>
+    
+    <lastmod>2021-02-26T09:38:54.218Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://lxxstar987.gitee.io/lxx1997.github.io/2021/02/01/vue-learn-api-with-%E6%BA%90%E7%A0%81-07/</loc>
+    
+    <lastmod>2021-02-26T09:38:54.217Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://lxxstar987.gitee.io/lxx1997.github.io/2021/01/29/vue-learn-api-with-%E6%BA%90%E7%A0%81-06/</loc>
+    
+    <lastmod>2021-02-26T09:38:54.217Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://lxxstar987.gitee.io/lxx1997.github.io/2021/01/28/vue-learn-api-with-%E6%BA%90%E7%A0%81-05/</loc>
+    
+    <lastmod>2021-02-26T09:38:54.216Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://lxxstar987.gitee.io/lxx1997.github.io/2021/01/27/vue-learn-api-with-%E6%BA%90%E7%A0%81-04/</loc>
+    
+    <lastmod>2021-02-26T09:38:54.216Z</lastmod>
     
   </url>
   
   <url>
     <loc>https://lxxstar987.gitee.io/lxx1997.github.io/2021/01/24/vue-learn-api-with-%E6%BA%90%E7%A0%81-03/</loc>
     
-    <lastmod>2021-01-28T05:36:51.501Z</lastmod>
+    <lastmod>2021-02-26T09:38:54.215Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://lxxstar987.gitee.io/lxx1997.github.io/2021/01/20/vue-learn-api-with-%E6%BA%90%E7%A0%81-02/</loc>
+    
+    <lastmod>2021-02-26T09:38:54.214Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://lxxstar987.gitee.io/lxx1997.github.io/2021/01/09/vue-learn-api-with-%E6%BA%90%E7%A0%81-01/</loc>
+    
+    <lastmod>2021-02-26T09:38:54.213Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://lxxstar987.gitee.io/lxx1997.github.io/2021/01/07/vue-components-transfer-data/</loc>
+    
+    <lastmod>2021-02-26T09:38:54.212Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://lxxstar987.gitee.io/lxx1997.github.io/2021/01/02/vue-code-part-01/</loc>
+    
+    <lastmod>2021-02-26T09:38:54.212Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://lxxstar987.gitee.io/lxx1997.github.io/2020/12/16/vue-VirtualDOM-template/</loc>
+    
+    <lastmod>2021-02-26T09:38:54.211Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://lxxstar987.gitee.io/lxx1997.github.io/2021/01/04/deferent-in-new-Object-object-create/</loc>
+    
+    <lastmod>2021-02-26T09:38:54.210Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://lxxstar987.gitee.io/lxx1997.github.io/2020/12/09/deep-copy-light-copy/</loc>
+    
+    <lastmod>2021-02-26T09:38:54.209Z</lastmod>
     
   </url>
   
@@ -751,20 +758,6 @@
   </url>
   
   <url>
-    <loc>https://lxxstar987.gitee.io/lxx1997.github.io/assets/demo/hack_demo.html</loc>
-    
-    <lastmod>2020-05-01T18:13:38.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://lxxstar987.gitee.io/lxx1997.github.io/assets/demo/border1px.html</loc>
-    
-    <lastmod>2020-05-01T18:13:38.000Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://lxxstar987.gitee.io/lxx1997.github.io/assets/demo/jiugongge_demo.html</loc>
     
     <lastmod>2020-05-01T18:13:38.000Z</lastmod>
@@ -773,6 +766,20 @@
   
   <url>
     <loc>https://lxxstar987.gitee.io/lxx1997.github.io/assets/demo/jiugongge_demo2.html</loc>
+    
+    <lastmod>2020-05-01T18:13:38.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://lxxstar987.gitee.io/lxx1997.github.io/assets/demo/hack_demo.html</loc>
+    
+    <lastmod>2020-05-01T18:13:38.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://lxxstar987.gitee.io/lxx1997.github.io/assets/demo/border1px.html</loc>
     
     <lastmod>2020-05-01T18:13:38.000Z</lastmod>
     
