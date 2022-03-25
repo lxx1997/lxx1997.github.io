@@ -202,6 +202,8 @@ Vue 的组件根据其在页面上的位置，我认为大致可以分为以下�
 
   这种方法所采用的办法就是将祖父组件的 传给 父组件的 属性和监听事件传递给孙组件
 
+  **默认情况下父作用域的不被认作 props 的 attribute 绑定 (attribute bindings) 将会“回退”且作为普通的 HTML attribute 应用在子组件的根元素上**
+
   ~~~html
   <!-- 函数我就不写了，只是做一个简略的展示 -->
     <!-- grandfather 组件 -->
@@ -211,10 +213,11 @@ Vue 的组件根据其在页面上的位置，我认为大致可以分为以下�
 
     <!-- parent 组件 -->
     <a-parent>
-      <b-children v-bind="attrs" v-on="$listeners"></b-children>
+      <b-children v-bind="$attrs" v-on="$listeners"></b-children>
     </a-parent>
     <script>
       ...
+      // 默认情况下父作用域的不被认作 props 的 attribute 绑定 (attribute bindings) 将会“回退”且作为普通的 HTML attribute 应用在子组件的根元素上
       props:[] // 注意如果在此处使用了props接收了参数， 则通过 v-bind 传递给子组件的 $attrs 中就会缺失对应参数
       mounted() {
         console.log(this.$attrs)  // {a: 4444, b: 55555}

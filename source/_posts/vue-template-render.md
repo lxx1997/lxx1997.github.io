@@ -125,7 +125,7 @@ tags:
     }
     // node 为页面中真实的 DOM 节点
     // 使用递归的方法提取出 DOM 节点中所有的子孙节点
-    // Vue 源码中使用 栈 的方式
+    // Vue源码中使用 栈 的方式
     // 由HTML DOM -> VNode， 将这个函数当做compiler函数
     function getVnode(node) {
       let nodeType = node.nodeType

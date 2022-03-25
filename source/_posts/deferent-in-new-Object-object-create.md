@@ -47,9 +47,9 @@ tags:
   3. 使用 `Object.create({}, {p: {value: 42}})` 创建的对象访问时，p的值不可修改，不可枚举
 
   ~~~js
-      var c = Object.create({}, {p: {value: 42}})  // 此时有数据，不多描述
-      console.log(c)            // {p: 42}
-      c = Object.create({}, {p: 42})      // 此时会报错 VM587:1 Uncaught TypeError: Property description must be an object: 42  要求我们 p 的值 42，要放在一个对象中
-      Object.keys(c)            // []
-    ~~~
+    var c = Object.create({}, {p: {value: 42}})  // 此时有数据，不多描述
+    console.log(c)            // {p: 42}
+    c = Object.create({}, {p: 42})      // 此时会报错 VM587:1 Uncaught TypeError: Property description must be an object: 42  要求我们 p 的值 42，要放在一个对象中
+    Object.keys(c)            // []
+  ~~~
 

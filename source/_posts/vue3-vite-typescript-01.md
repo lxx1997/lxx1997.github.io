@@ -148,3 +148,31 @@ Vue3 新版出来了这么久，虽然之前也有联系过搭建，但是并没
     // 使用时 在 style 后加 lang="scss"
   ~~~
 
+如果想要对 Vite 构建的 Vue3.0应用进行新的配置，首先需要在根目录创建一个 `vite.config.js` 文件
+#### 配置路径别名
+
+~~~js
+  const path = require("path")
+
+  function resolve(dir) {
+    return path.join(__dirname, dir)
+  }
+
+  module.export = {
+    alias: {
+      '/@/': resolve('src')
+    }
+  }
+~~~
+
+此时访问 src 目录下的文件就可以通过 `/@/`来进行访问
+
+~~~js
+  // 访问 src 目录下的 component 目录下的 index 文件
+  import Component from '/@/component'
+~~~
+
+为什么要使用 `/@/` 而不是直接 `@/` 呢，在这里 Vite 的[官方配置](https://vitejs.dev/config/#alias)给我们做了解释
+
+_当别名为文件系统路径的时候，请使用绝对路径，相对别名值将按原样使用，并不会解析为文件路径_，所有要使用 `/@/` 来代表绝对路径
+

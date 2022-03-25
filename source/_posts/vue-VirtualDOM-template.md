@@ -95,7 +95,7 @@ tags:
 ~~~
 ~~~js
   /*
-    * vue 源码习惯
+    * Vue源码习惯
     * 1 内部的数据使用 _ 开头
     * 2 只读数据用 $ 开头
   */
@@ -251,7 +251,7 @@ tags:
     }
     // node 为页面中真实的 DOM 节点
     // 使用递归的方法提取出 DOM 节点中所有的子孙节点
-    // Vue 源码中使用 栈 的方式
+    // Vue源码中使用 栈 的方式
     function getVnode(node) {
       let nodeType = node.nodeType
       let _vnode = null

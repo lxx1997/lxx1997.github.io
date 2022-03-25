@@ -1,13 +1,13 @@
 ---
-title: 跟着 Vue 源码学习 Vue api 系列 (一) - 全局配置
+title: 跟着 Vue源码学习 Vue api 系列 (一) - 全局配置
 date: 2021-01-09 22:17:53
-categories: Vue 源码
+categories: Vue源码
 tags:
     - Vue
     - 源码
 ---
 
-此篇文章用来记录 Vue 中 Api 在 Vue 源码中的具体实现方法，以便更好的理解 Vue 的各种 Api 的使用方法
+此篇文章用来记录 Vue 中 Api 在 Vue源码中的具体实现方法，以便更好的理解 Vue 的各种 Api 的使用方法
 
 #### 全局配置
 
@@ -60,7 +60,7 @@ Vue 的全局配置参数是存放在 `config` 里面的，我们可以通过修
 
   **以下的 parentVal，parent 等父参数 只有 Vue.extend 或者 extends 传入对应类型数据时才有数据**
 
-  Vue 源码 自带的属性
+  Vue源码 自带的属性
   `el`，`propsData`，`provide` 子组件和父组件如果有相同的方法，以子组件为主
   * el
   * propsData

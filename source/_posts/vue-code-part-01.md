@@ -1,12 +1,12 @@
 ---
-title: vue 源码阅读 part 01
+title: Vue源码阅读 part 01
 date: 2021-01-02 23:37:19
 categories: Vue
 tags:
     - Vue
 ---
 
-### Vue 源码目录结构
+### Vue源码目录结构
 
 > `compiler`          **编译**
 >  - Vue 使用**字符串**作为模板

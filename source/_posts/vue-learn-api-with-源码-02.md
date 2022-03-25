@@ -1,7 +1,7 @@
 ---
-title: 跟着 Vue 源码学习 Vue api 系列 (二) - 全局 api
+title: 跟着 Vue源码学习 Vue api 系列 (二) - 全局 api
 date: 2021-01-20 17:18:54
-categories: Vue 源码
+categories: Vue源码
 tags:
     - Vue
     - 源码
