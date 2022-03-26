@@ -4,6 +4,7 @@ date: 2020-09-24 15:49:01
 tags:
     - JavaScript
     - method
+cover: '/assets/cover/20200225A1295.jpg'
 ---
 
 ### 数字格式化

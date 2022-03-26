@@ -4,6 +4,7 @@ date: 2020-12-14 17:15:09
 tags:
     - JavaScript
     - canvas
+cover: '/assets/cover/20200225A1295.jpg'
 ---
 
 转载[前端大全](https://mp.weixin.qq.com/s/OTFufemlMW7XhjS2zIrHhw)

@@ -4,6 +4,7 @@ date: 2020-05-06 10:48:06
 tags:
       - canvas
       - JavaScript
+cover: '/assets/cover/20200225A1295.jpg'
 ---
 
 **实现步骤**

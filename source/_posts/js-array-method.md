@@ -4,7 +4,7 @@ date: 2020-05-05 00:36:09
 tags:
       - array
       - JavaScript
-      - 
+cover: '/assets/cover/20200225A1295.jpg'
 ---
 ## Array 对象方法
 

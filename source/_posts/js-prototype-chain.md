@@ -5,6 +5,7 @@ categories: JavaScript
 tags:
     - JavaScript
     - prototype
+cover: '/assets/cover/20200225A1295.jpg'
 ---
 
 

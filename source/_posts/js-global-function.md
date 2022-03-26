@@ -4,6 +4,7 @@ date: 2020-05-05 00:38:13
 tags:
       - JavaScript
       - 编码
+cover: '/assets/cover/20200225A1295.jpg'
 ---
 
 #### 全局函数

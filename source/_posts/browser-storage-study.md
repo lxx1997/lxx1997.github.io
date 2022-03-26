@@ -5,6 +5,7 @@ tags:
       - browser
       - localStorage
       - indexedDB
+cover: '/assets/cover/20200225A1295.jpg'
 ---
 
 #### 浏览器存储方式

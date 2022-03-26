@@ -4,6 +4,7 @@ date: 2021-01-02 23:37:19
 categories: Vue
 tags:
     - Vue
+cover: '/assets/cover/20200225A1295.jpg'
 ---
 
 ### Vue源码目录结构

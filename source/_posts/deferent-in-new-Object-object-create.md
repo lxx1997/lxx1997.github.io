@@ -4,6 +4,7 @@ date: 2021-01-04 20:46:00
 categories: JavaScript
 tags:
     - JavaScript
+cover: '/assets/cover/20200225A1295.jpg'
 ---
 
   今天我们来谈一谈通过 `new Object()` 和 `Object.create()` 创造的对象有什么区别

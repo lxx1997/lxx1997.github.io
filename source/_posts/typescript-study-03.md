@@ -4,6 +4,7 @@ date: 2020-06-22 16:31:39
 tags:
     - typescript
     - ES6
+cover: '/assets/cover/20200225A1295.jpg'
 ---
 
 #### 类和接口

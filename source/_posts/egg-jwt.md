@@ -6,6 +6,7 @@ tags:
       - jsonwebtoken
       - redis
       - deepin
+cover: '/assets/cover/20200225A1295.jpg'
 ---
 
 

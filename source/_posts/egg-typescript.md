@@ -4,6 +4,7 @@ date: 2020-05-27 09:41:28
 tags:
       - typescript
       - eggjs
+cover: '/assets/cover/20200225A1295.jpg'
 ---
 
 由于用javasript的某种限制和不足，所以决定使用typescript来写eggjs

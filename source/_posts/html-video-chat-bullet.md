@@ -4,6 +4,7 @@ date: 2020-08-13 15:21:48
 tags:
     - HTML
     - JavaScript
+cover: '/assets/cover/20200225A1295.jpg'
 ---
 
   闲来无事，对于bili上面的弹幕感兴趣，于是自己打算尝试制作一个简单的弹幕系统

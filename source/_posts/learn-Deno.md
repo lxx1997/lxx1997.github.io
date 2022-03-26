@@ -5,6 +5,7 @@ categories: nodejs deno
 tags:
     - deno
     - nodejs
+cover: '/assets/cover/20200225A1295.jpg'
 ---
 
 **首先我们先谈一下nodeJs的无法忽视的问题**

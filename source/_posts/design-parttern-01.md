@@ -3,6 +3,7 @@ title: JavaScript 设计模式联系  -  创建型设计模式
 date: 2021-06-14 18:25:20
 tags:
     - JavaScript
+cover: '/assets/cover/20200225A1295.jpg'
 ---
 
 

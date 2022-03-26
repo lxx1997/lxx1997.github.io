@@ -5,6 +5,7 @@ categories: Vue
 tags:
     - Vue
     - Components
+cover: '/assets/cover/20200225A1295.jpg'
 ---
 
 我们都知道 Vue 的两大核心是**组件化**和**数据驱动**，在 Vue 中，组件之间的值传递是一种十分常见的事情，那么你到底知道多少种组件的值传递的方法呢，接下来由我来带领大家了解一下

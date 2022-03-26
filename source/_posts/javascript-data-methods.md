@@ -6,6 +6,7 @@ tags:
     - JavaScript
     - array
     - method
+cover: '/assets/cover/20200225A1295.jpg'
 ---
 
 #### 全局函数（function）

@@ -5,6 +5,7 @@ categories: Vue
 tags:
     - Vue
     - JavaScript
+cover: '/assets/cover/20200225A1295.jpg'
 ---
 
 本片文章根据bilibili [vue源码分析](https://www.bilibili.com/video/BV1LE411e7HE) 视频练习及知识点记录

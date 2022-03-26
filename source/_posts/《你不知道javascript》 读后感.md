@@ -3,6 +3,7 @@ title: 《你不知道javascript》 知识点摘录
 date: 2020-11-20 09:44:55
 tags:
     - 读后感
+cover: '/assets/cover/20200225A1295.jpg'
 ---
 
 #### 第一部分  类型和语法

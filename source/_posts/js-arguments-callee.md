@@ -4,6 +4,7 @@ date: 2020-05-05 10:59:56
 categories: JavaScript
 tags:
       - JavaScript
+cover: '/assets/cover/20200225A1295.jpg'
 ---
 
 arguments.callee 在哪个函数中执行，它就代表哪个函数，通常用于匿名函数中

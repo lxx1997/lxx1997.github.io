@@ -4,6 +4,7 @@ date: 2020-06-10 10:57:48
 tags:
     - typescript
     - ES6
+cover: '/assets/cover/20200225A1295.jpg'
 ---
 
 #### 类型别名

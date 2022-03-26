@@ -6,6 +6,7 @@ tags:
     - thought
     - JavaScript
     - function
+cover: '/assets/cover/20200225A1295.jpg'
 ---
 [参考文章](https://www.cnblogs.com/pigtail/p/3447660.html)
 > [函数反柯里化](/lxx1997.github.io/2020/12/17/fucntion-uncurrying/)

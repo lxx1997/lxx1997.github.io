@@ -3,6 +3,7 @@ title: react-学习之路-配置
 date: 2020-09-18 09:53:38
 tags:
     - react
+cover: '/assets/cover/20200225A1295.jpg'
 ---
 
 Q: 如何配置路径别名

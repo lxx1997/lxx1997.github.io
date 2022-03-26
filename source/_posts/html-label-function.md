@@ -4,6 +4,7 @@ date: 2020-08-11 10:09:34
 tags:
     - html
     - function
+cover: '/assets/cover/20200225A1295.jpg'
 ---
 
 #### HTML全局属性

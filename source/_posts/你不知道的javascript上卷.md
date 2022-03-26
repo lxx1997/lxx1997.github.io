@@ -3,6 +3,7 @@ title: 《你不知道的javascript上卷》 知识点摘录
 date: 2020-11-24 13:50:50
 tags:
     - 读后感
+cover: '/assets/cover/20200225A1295.jpg'
 ---
 
 #### 第一章  作用域和闭包

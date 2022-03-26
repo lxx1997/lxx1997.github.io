@@ -5,6 +5,7 @@ categories: Vue
 tags:
     - Vue
     - JavaScript
+cover: '/assets/cover/20200225A1295.jpg'
 ---
 
 #### 响应式原理

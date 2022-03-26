@@ -3,6 +3,7 @@ title: js 判断图片是否完全加载完成
 date: 2020-05-05 10:01:12
 tags:
       - JavaScript
+cover: '/assets/cover/20200225A1295.jpg'
 ---
 [原文网址](https://www.cnblogs.com/huanghuali/p/10310691.html "js图片处理")
 在日常写代码的时候，我们有时候会遇到当图片未加载完成时，会发生高度塌陷，如果这个时候我们获取元素高度的时候获取到的不是元素真正的高度，会造成样式紊乱

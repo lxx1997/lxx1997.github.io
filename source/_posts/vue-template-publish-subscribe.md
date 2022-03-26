@@ -5,6 +5,7 @@ categories: Vue
 tags:
     - Vue
     - JavaScript
+cover: '/assets/cover/20200225A1295.jpg'
 ---
 
 #### 发布订阅模式

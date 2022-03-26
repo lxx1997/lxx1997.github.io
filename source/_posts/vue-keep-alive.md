@@ -4,6 +4,7 @@ date: 2021-01-04 17:35:02
 categories: Vue
 tags:
     - Vue
+cover: '/assets/cover/20200225A1295.jpg'
 ---
 
   这段时间做项目时，老板要求要缓存一些页面的表单数据，于是想到了 vue 的 keep-alive ，在使用时，自己也犯了一些错误，在此记录一下

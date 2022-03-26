@@ -6,6 +6,7 @@ tags:
     - JavaScript
     - html
     - css
+cover: '/assets/cover/20200225A1295.jpg'
 ---
 
   在[electron官网](https://www.electronjs.org/)根据文档指示，下载了一个electron模板并安装依赖成功运行

@@ -5,6 +5,7 @@ tags:
     - symbol
     - es6
     - JavaScript
+cover: '/assets/cover/20200225A1295.jpg'
 ---
 
 ## 定义Symbol

@@ -3,6 +3,7 @@ title: JavaScript - 手写一个 Promise 方法
 date: 2021-03-18 13:15:52
 tags:
     - JavaScript
+cover: '/assets/cover/20200225A1295.jpg'
 ---
 
 

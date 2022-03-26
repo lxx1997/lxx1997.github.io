@@ -5,7 +5,7 @@ categories: Vue
 tags:
     - Vue
     - 源码
-cover_picture: '/assets/blogImg/xmas_ico0.jpg'
+cover: '/assets/cover/20200225A1295.jpg'
 ---
 
 本片文章只用于引导自己如何对源码进行探索，因为看到源码的时候是一脸懵逼，完全不知道该从那个地方看起，所以用本篇文章记录一下自己的解读顺序，以免自己忘记

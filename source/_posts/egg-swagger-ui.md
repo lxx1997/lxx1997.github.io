@@ -4,6 +4,7 @@ date: 2020-05-26 10:00:40
 tags:
       - eggjs
       - swagger-ui
+cover: '/assets/cover/20200225A1295.jpg'
 ---
 
 如何在eggjs中搭建一个swagger-ui接口预览文档?下面这篇文章将会教你如何搭建swagger-ui
