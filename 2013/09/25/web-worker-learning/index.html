@@ -1,0 +1,284 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>web worker简易入门 | SoulReader</title><meta name="keywords" content="html,web"><meta name="author" content="lxx,1987607597@qq.com"><meta name="copyright" content="lxx"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="js是单线程的语言，由于此特性，我们在处理并发时需要用到一些技巧，如setTimeout()，setInterval()，调用XMLHttpRequest等。但这里的并发只是非阻塞（参照John Resig的文章How JavaScript Timers Work），真正的多线程编程则需要HTML5的web worker。 【worker的使用】web worker的使用非常简单，线程之间通讯的a">
+<meta property="og:type" content="article">
+<meta property="og:title" content="web worker简易入门">
+<meta property="og:url" content="https://lxxstar987.gitee.io/lxx1997.github.io/2013/09/25/web-worker-learning/index.html">
+<meta property="og:site_name" content="SoulReader">
+<meta property="og:description" content="js是单线程的语言，由于此特性，我们在处理并发时需要用到一些技巧，如setTimeout()，setInterval()，调用XMLHttpRequest等。但这里的并发只是非阻塞（参照John Resig的文章How JavaScript Timers Work），真正的多线程编程则需要HTML5的web worker。 【worker的使用】web worker的使用非常简单，线程之间通讯的a">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7">
+<meta property="article:published_time" content="2013-09-25T02:55:00.000Z">
+<meta property="article:modified_time" content="2020-12-16T09:48:45.083Z">
+<meta property="article:author" content="lxx">
+<meta property="article:tag" content="html">
+<meta property="article:tag" content="web">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"><link rel="shortcut icon" href="/lxx1997.github.io/img/favicon.png"><link rel="canonical" href="https://lxxstar987.gitee.io/lxx1997.github.io/2013/09/25/web-worker-learning/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/lxx1997.github.io/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/lxx1997.github.io/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":200},
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: 'Just',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'web worker简易入门',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2020-12-16 17:48:45'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.1.0"><link rel="alternate" href="/lxx1997.github.io/atom.xml" title="SoulReader" type="application/atom+xml">
+</head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/lxx1997.github.io/img/avatar.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/lxx1997.github.io/archives/"><div class="headline">Articles</div><div class="length-num">114</div></a><a href="/lxx1997.github.io/tags/"><div class="headline">Tags</div><div class="length-num">79</div></a><a href="/lxx1997.github.io/categories/"><div class="headline">Categories</div><div class="length-num">9</div></a></div><hr/></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/lxx1997.github.io/">SoulReader</a></span><div id="menus"><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">web worker简易入门</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2013-09-25T02:55:00.000Z" title="Created 2013-09-25 10:55:00">2013-09-25</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2020-12-16T09:48:45.083Z" title="Updated 2020-12-16 17:48:45">2020-12-16</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="web worker简易入门"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post View:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><p>js是单线程的语言，由于此特性，我们在处理并发时需要用到一些技巧，如setTimeout()，setInterval()，调用XMLHttpRequest等。<br>但这里的并发只是非阻塞（参照John Resig的文章<a target="_blank" rel="noopener" href="http://ejohn.org/blog/how-javascript-timers-work/">How JavaScript Timers Work</a>），真正的多线程编程则需要HTML5的web worker。</p>
+<h3 id="【worker的使用】"><a href="#【worker的使用】" class="headerlink" title="【worker的使用】"></a><strong>【worker的使用】</strong></h3><p>web worker的使用非常简单，线程之间通讯的api与html5 postmessage或node.js里面的socket.io方法类似。</p>
+<p>通讯：      </p>
+<ol>
+<li>发送方：postMessage(data)      </li>
+<li>接收方：onmessage(event)</li>
+</ol>
+<p>终止web worker:        </p>
+<ol>
+<li>子线程: self.close()</li>
+<li>父线程: worker.terminate()</li>
+</ol>
+<p>按照目前w3c规范，web worker分为两种：专用worker(Dedicated Worker)和共享worker(Shared Worker)。</p>
+<h3 id="【专用worker】"><a href="#【专用worker】" class="headerlink" title="【专用worker】"></a><strong>【专用worker】</strong></h3><p>实例化一个web worker对象，异步加载子线程文件worker.js，其中的代码将执行。</p>
+<pre><code>var worker = new Worker(&quot;worker.js&quot;);
+</code></pre><p>给worker增加侦听</p>
+<pre><code>worker.onmessage = function (event) &#123;
+    alert(event.data);
+&#125;;
+</code></pre><p>在worker.js里，发送消息给父线程     </p>
+<pre><code>postMessage(&apos;hello，imweb&apos;);
+</code></pre><p>在父线程页面就能看到发送过来的信息了。</p>
+<p>同时，在web worker标准中，是支持对象参数的，也就是说我们能够传递json数据。再看一个稍微复杂点的例子，父线程：</p>
+<pre><code>var worker = new Worker(&quot;worker.js&quot;);
+worker.onmessage = function (event) &#123;
+    document.getElementById(&quot;result&quot;).innerHTML=event.data;
+&#125;;
+
+function start()&#123;
+    worker.postMessage(&#123;&apos;cmd&apos;: &apos;start&apos;, &apos;msg&apos;: &apos;start&apos;&#125;);
+&#125;
+
+function pause()&#123;
+    worker.postMessage(&#123;&apos;cmd&apos;: &apos;pause&apos;, &apos;msg&apos;: &apos;pause&apos;&#125;);
+&#125;
+
+function stop()&#123;
+    worker.postMessage(&#123;&apos;cmd&apos;: &apos;stop&apos;, &apos;msg&apos;: &apos;stop&apos;&#125;);
+&#125;
+
+function msg()&#123;
+    worker.postMessage(&#123;&apos;msg&apos;: &apos;hello imweb&apos;&#125;);
+&#125;
+</code></pre><p>worker.js：</p>
+<pre><code>self.onmessage = function (e) &#123;
+    var data = e.data;
+      switch (data.cmd) &#123;
+    case &apos;start&apos;:
+        taskStart(); //大量数据处理
+          postMessage(&apos;WORKER DO: &apos; + data.msg);
+          break;
+    case &apos;pause&apos;:
+        taskPause();
+          postMessage(&apos;WORKER DO: &apos; + data.msg);
+          break;
+    case &apos;stop&apos;:
+          postMessage(&apos;WORKER DO: &apos; + data.msg);
+          self.close(); //终止web worker
+          break;
+    default:
+          postMessage(&apos;MESSAGE: &apos; + data.msg);
+      &#125;;
+&#125;;
+</code></pre><p>从上面的例子可以看到，一是利用对象参数，进程之间能够较灵活的实现控制；二是当woker执行taskStart()处理大量数据时，只在子进程处理，不会给主页面带来阻塞，通常，处理大量数据会消极影响程序的响应能力，而web worker通过这样的方式，能提供一个更流畅更实时的UI。</p>
+<h3 id="【共享worker】"><a href="#【共享worker】" class="headerlink" title="【共享worker】"></a><strong>【共享worker】</strong></h3><p>共享worker允许线程在同源中的多个页面间进行共享，例如：同源中所有页面或脚本可以与同一个共享线程通信。它的实例化与事件侦听的写法与专用worker略有不同,主页面：</p>
+<pre><code>var worker = new SharedWorker(&apos;shared-worker.js&apos;);
+worker.port.onmessage = function(e) &#123;
+    msg = &apos;Someone just said &quot;&apos; + e.data.message + &apos;&quot;. That is message number &apos; + e.data.counter;
+    console.log(msg);
+&#125;;
+worker.port.postMessage(&apos;hello shared worker!&apos;);
+</code></pre><p>shared-worker.js:        </p>
+<pre><code>var counter = 0;
+var connections = [];
+onconnect = function(eConn) &#123;
+       var port = eConn.ports[0]; // 此连接的特有port
+
+   //当有消息的时候通知所有的连接
+   port.onmessage = function(eMsg) &#123; 
+       counter++;
+       for (var i=0; i &lt; connections.length; i++) &#123;
+           connections[i].postMessage(&#123;
+               message: eMsg.data,
+               counter: counter
+           &#125;);
+       &#125;
+   &#125;
+   port.start();
+   connections.push(port);
+</code></pre><p>用两个窗口打开这个页面，第一个显示：<strong>Someone just said “Hello shared worker!” This is message number 1</strong>，第二个也收到一样的信息，<br>但是后面是<strong>message number 2</strong>。</p>
+<h3 id="【安全性和错误检查】"><a href="#【安全性和错误检查】" class="headerlink" title="【安全性和错误检查】"></a><strong>【安全性和错误检查】</strong></h3><p>出于安全性的考虑，web worker必须遵守同源策略。同时，它的全局对象是worker对象本身，this和self引用的都是worker对象。<br>只能访问：</p>
+<ol>
+<li>navigator 对象（仅限appName, appVersion, platform, userAgent）</li>
+<li>location 对象（只读）</li>
+<li>XMLHttpRequest</li>
+<li>setTimeout(), setInterval(), clearTimeout()和clearInterval()方法</li>
+</ol>
+<p>不能访问：</p>
+<ol>
+<li>DOM(不是线程安全的)</li>
+<li>window 对象</li>
+<li>document 对象</li>
+<li>parent 对象</li>
+</ol>
+<p>worker内部出现错误时，可以用worker.onerror侦听到，error的事件有三个属性：      </p>
+<ol>
+<li>filename: 发生错误的文件名</li>
+<li>lineno: 代码行号</li>
+<li>message: 完整的错误信息</li>
+</ol>
+<p>如：</p>
+<pre><code>worker.onerror = function(e) &#123;
+    console.log(e.filename+&quot;ERROR on line&quot;+e.lineno+&quot;,msg:&quot;+e.message);
+&#125;
+</code></pre><h3 id="【web-worker的其他尝试】"><a href="#【web-worker的其他尝试】" class="headerlink" title="【web worker的其他尝试】"></a><strong>【web worker的其他尝试】</strong></h3><p>对于比较消耗时间的操作，我们可看到web worker能够发挥它的作用。比如：大量数据排序，精确到像素的canvas计算等。而我们又知道，jsonp加载数据时，动态创建script标签，加载和执行这些过程都是阻塞式的，而web worker正好可以异步加载，这会是更快的方式吗？带着这个疑问我做了下面的试验，分别用jsonp和worker的方式去加载文件，计算数据返回时延：</p>
+<pre><code>function tryJsonp()&#123;
+    var d = (new Date()).valueOf();
+    var jsonp=document.createElement(&quot;script&quot;);  
+    jsonp.type=&quot;text/javascript&quot;;  
+    jsonp.src=&quot;worker.js?_=&quot;+d;  
+    document.getElementsByTagName(&quot;head&quot;)[0].appendChild(jsonp);
+    jsonp.onload = jsonp.onreadystatechange = function()&#123;  
+           if(!this.readyState||this.readyState==&apos;loaded&apos;||this.readyState==&apos;complete&apos;)&#123;  
+               console.log(&apos;jsonp: &apos;+ ((new Date()).valueOf() - d));
+        &#125;  
+    &#125;
+&#125;
+function tryWorker()&#123;
+    var d = (new Date()).valueOf();
+    var worker = new Worker(&quot;worker.js&quot;);
+    worker.postMessage(&#123;&apos;cmd&apos;: &apos;start&apos;, &apos;msg&apos;: &apos;start&apos;&#125;);
+    worker.onmessage = function (event) &#123;
+        console.log(&apos;web worker: &apos;+ ((new Date()).valueOf() - d));
+    &#125;;
+&#125;
+</code></pre><p>第一次加载是一份1k大小的文件，每个方法重复5次，返回结果为:<br><img src="/assets/blogImg/web_worker1.png" alt="1k文件重复5次"><br>第二次加载1800k大小的文件，返回结果为：<br><img src="/assets/blogImg/web_worker2.png" alt="1800k文件重复5次"><br>可以看到对于较小的数据，jsonp还是比web worker要快，这可能是实例化worker对象时带来的影响；而数据偏大时，web worker的加载将会更优，而且它可以异步加载。</p>
+<p>THE END.</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">Author: </span><span class="post-copyright-info"><a href="https://lxxstar987.gitee.io/lxx1997.github.io">lxx</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">Link: </span><span class="post-copyright-info"><a href="https://lxxstar987.gitee.io/lxx1997.github.io/2013/09/25/web-worker-learning/">https://lxxstar987.gitee.io/lxx1997.github.io/2013/09/25/web-worker-learning/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/lxx1997.github.io/tags/html/">html</a><a class="post-meta__tags" href="/lxx1997.github.io/tags/web/">web</a></div><div class="post_share"><div class="social-share" data-image="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/gh/overtrue/share.js@master/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/lxx1997.github.io/2013/10/06/handling-asynchronous-js/"><img class="prev-cover" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="onerror=null;src='/lxx1997.github.io/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">Previous Post</div><div class="prev_info">统一处理异步的js回调</div></div></a></div><div class="next-post pull-right"><a href="/lxx1997.github.io/2013/08/20/oauth-rabbit/"><img class="next-cover" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="onerror=null;src='/lxx1997.github.io/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">Next Post</div><div class="next_info">兔子，胡萝卜与OAuth的故事</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>Related Articles</span></div><div class="relatedPosts-list"><div><a href="/lxx1997.github.io/2020/12/11/%E5%89%8D%E7%AB%AF%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/" title="前端性能优化 - 转载"><img class="cover" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2020-12-11</div><div class="title">前端性能优化 - 转载</div></div></a></div><div><a href="/lxx1997.github.io/2020/08/20/electron-study-01/" title="electron - 使用javascript编写pc应用 - 01"><img class="cover" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2020-08-20</div><div class="title">electron - 使用javascript编写pc应用 - 01</div></div></a></div><div><a href="/lxx1997.github.io/2020/08/11/html-label-function/" title="HTML 标签及函数"><img class="cover" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2020-08-11</div><div class="title">HTML 标签及函数</div></div></a></div><div><a href="/lxx1997.github.io/2020/05/07/d3-study-20200507/" title="D3.js的学习之路"><img class="cover" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2020-05-07</div><div class="title">D3.js的学习之路</div></div></a></div><div><a href="/lxx1997.github.io/2014/08/14/reduce-http-requests/" title="再议减少HTTP请求"><img class="cover" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2014-08-14</div><div class="title">再议减少HTTP请求</div></div></a></div><div><a href="/lxx1997.github.io/2014/08/01/kael-qrcode-info/" title="爱上一匹二维马可我家里没有草原…"><img class="cover" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2014-08-01</div><div class="title">爱上一匹二维马可我家里没有草原…</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/lxx1997.github.io/img/avatar.png" onerror="this.onerror=null;this.src='/lxx1997.github.io/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">lxx</div><div class="author-info__description">前端小菜鸟,努力深造</div></div><div class="card-info-data site-data is-center"><a href="/lxx1997.github.io/archives/"><div class="headline">Articles</div><div class="length-num">114</div></a><a href="/lxx1997.github.io/tags/"><div class="headline">Tags</div><div class="length-num">79</div></a><a href="/lxx1997.github.io/categories/"><div class="headline">Categories</div><div class="length-num">9</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>Announcement</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>Catalog</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E3%80%90worker%E7%9A%84%E4%BD%BF%E7%94%A8%E3%80%91"><span class="toc-number">1.</span> <span class="toc-text">【worker的使用】</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E3%80%90%E4%B8%93%E7%94%A8worker%E3%80%91"><span class="toc-number">2.</span> <span class="toc-text">【专用worker】</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E3%80%90%E5%85%B1%E4%BA%ABworker%E3%80%91"><span class="toc-number">3.</span> <span class="toc-text">【共享worker】</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E3%80%90%E5%AE%89%E5%85%A8%E6%80%A7%E5%92%8C%E9%94%99%E8%AF%AF%E6%A3%80%E6%9F%A5%E3%80%91"><span class="toc-number">4.</span> <span class="toc-text">【安全性和错误检查】</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E3%80%90web-worker%E7%9A%84%E5%85%B6%E4%BB%96%E5%B0%9D%E8%AF%95%E3%80%91"><span class="toc-number">5.</span> <span class="toc-text">【web worker的其他尝试】</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Post</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/lxx1997.github.io/2021/09/14/ssr-nextjs-01/" title="服务端 渲染 - nextjs"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/lxx1997.github.io/img/404.jpg'" alt="服务端 渲染 - nextjs"/></a><div class="content"><a class="title" href="/lxx1997.github.io/2021/09/14/ssr-nextjs-01/" title="服务端 渲染 - nextjs">服务端 渲染 - nextjs</a><time datetime="2021-09-14T14:31:56.000Z" title="Created 2021-09-14 22:31:56">2021-09-14</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/lxx1997.github.io/2021/08/15/threeJs-study-api/" title="threeJs 学习之路 - API 及 参数传递"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/lxx1997.github.io/img/404.jpg'" alt="threeJs 学习之路 - API 及 参数传递"/></a><div class="content"><a class="title" href="/lxx1997.github.io/2021/08/15/threeJs-study-api/" title="threeJs 学习之路 - API 及 参数传递">threeJs 学习之路 - API 及 参数传递</a><time datetime="2021-08-15T01:53:24.000Z" title="Created 2021-08-15 09:53:24">2021-08-15</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/lxx1997.github.io/2021/08/15/threeJs-study-01/" title="threeJs 学习之路 - 创建画布及绘制图形"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/lxx1997.github.io/img/404.jpg'" alt="threeJs 学习之路 - 创建画布及绘制图形"/></a><div class="content"><a class="title" href="/lxx1997.github.io/2021/08/15/threeJs-study-01/" title="threeJs 学习之路 - 创建画布及绘制图形">threeJs 学习之路 - 创建画布及绘制图形</a><time datetime="2021-08-15T01:38:18.000Z" title="Created 2021-08-15 09:38:18">2021-08-15</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/lxx1997.github.io/2021/06/14/design-parttern-01/" title="JavaScript 设计模式联系  -  创建型设计模式"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/lxx1997.github.io/img/404.jpg'" alt="JavaScript 设计模式联系  -  创建型设计模式"/></a><div class="content"><a class="title" href="/lxx1997.github.io/2021/06/14/design-parttern-01/" title="JavaScript 设计模式联系  -  创建型设计模式">JavaScript 设计模式联系  -  创建型设计模式</a><time datetime="2021-06-14T10:25:20.000Z" title="Created 2021-06-14 18:25:20">2021-06-14</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/lxx1997.github.io/2021/05/04/window-postMessage%E8%B7%A8%E5%9F%9F%E7%9A%84%E4%BD%BF%E7%94%A8%E6%96%B9%E5%BC%8F/" title="window.postMessage跨域的使用方式"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/lxx1997.github.io/img/404.jpg'" alt="window.postMessage跨域的使用方式"/></a><div class="content"><a class="title" href="/lxx1997.github.io/2021/05/04/window-postMessage%E8%B7%A8%E5%9F%9F%E7%9A%84%E4%BD%BF%E7%94%A8%E6%96%B9%E5%BC%8F/" title="window.postMessage跨域的使用方式">window.postMessage跨域的使用方式</a><time datetime="2021-05-04T15:23:18.000Z" title="Created 2021-05-04 23:23:18">2021-05-04</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2022 By lxx</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Read Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Switch Between Light And Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle between single-column and double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="Setting"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table Of Contents"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="Back To Top"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/lxx1997.github.io/js/utils.js"></script><script src="/lxx1997.github.io/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><script src="/lxx1997.github.io/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/lxx1997.github.io/live2dw/assets/kesyoban.model.json"},"display":{"position":"left","width":300,"height":300},"mobile":{"show":false},"log":false});</script></body></html>

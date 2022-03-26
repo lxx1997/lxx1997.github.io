@@ -1,0 +1,276 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>SoulReader - 勤劳刻苦</title><meta name="keywords" content="前端,js,jquery,javascript,html5,开发者,程序猿,程序媛,极客,编程,代码,开源,IT网站,Developer,Programmer,Coder,Geek,html,css,css3,用户体验"><meta name="author" content="lxx,1987607597@qq.com"><meta name="copyright" content="lxx"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="前端小菜鸟,努力深造">
+<meta property="og:type" content="website">
+<meta property="og:title" content="SoulReader">
+<meta property="og:url" content="https://lxxstar987.gitee.io/lxx1997.github.io/index.html">
+<meta property="og:site_name" content="SoulReader">
+<meta property="og:description" content="前端小菜鸟,努力深造">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://lxxstar987.gitee.io/lxx1997.github.io/img/avatar.png">
+<meta property="article:author" content="lxx">
+<meta property="article:tag" content="前端,js,jquery,javascript,html5,开发者,程序猿,程序媛,极客,编程,代码,开源,IT网站,Developer,Programmer,Coder,Geek,html,css,css3,用户体验">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://lxxstar987.gitee.io/lxx1997.github.io/img/avatar.png"><link rel="shortcut icon" href="/lxx1997.github.io/img/favicon.png"><link rel="canonical" href="https://lxxstar987.gitee.io/lxx1997.github.io/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/lxx1997.github.io/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/lxx1997.github.io/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":200},
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: 'Just',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'SoulReader',
+  isPost: false,
+  isHome: true,
+  isHighlightShrink: false,
+  isToc: false,
+  postUpdate: '2022-03-26 21:30:33'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.1.0"><link rel="alternate" href="/lxx1997.github.io/atom.xml" title="SoulReader" type="application/atom+xml">
+</head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/lxx1997.github.io/img/avatar.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/lxx1997.github.io/archives/"><div class="headline">Articles</div><div class="length-num">114</div></a><a href="/lxx1997.github.io/tags/"><div class="headline">Tags</div><div class="length-num">79</div></a><a href="/lxx1997.github.io/categories/"><div class="headline">Categories</div><div class="length-num">9</div></a></div><hr/></div></div><div class="page" id="body-wrap"><header class="full_page" id="page-header" style="background-image: url('/lxx1997.github.io/image/1609953908536.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/lxx1997.github.io/">SoulReader</a></span><div id="menus"><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="site-info"><h1 id="site-title">SoulReader</h1></div><div id="scroll-down"><i class="fas fa-angle-down scroll-down-effects"></i></div></header><main class="layout" id="content-inner"><div class="recent-posts" id="recent-posts"><div class="recent-post-item"><div class="post_cover left"><a href="/lxx1997.github.io/2021/09/14/ssr-nextjs-01/" title="服务端 渲染 - nextjs"><img class="post_bg" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/lxx1997.github.io/img/404.jpg'" alt="服务端 渲染 - nextjs"></a></div><div class="recent-post-info"><a class="article-title" href="/lxx1997.github.io/2021/09/14/ssr-nextjs-01/" title="服务端 渲染 - nextjs">服务端 渲染 - nextjs</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2021-09-14T14:31:56.000Z" title="Created 2021-09-14 22:31:56">2021-09-14</time></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/lxx1997.github.io/tags/JavaScript/">JavaScript</a><span class="article-meta-link">•</span><a class="article-meta__tags" href="/lxx1997.github.io/tags/SSR/">SSR</a><span class="article-meta-link">•</span><a class="article-meta__tags" href="/lxx1997.github.io/tags/nextJs/">nextJs</a><span class="article-meta-link">•</span><a class="article-meta__tags" href="/lxx1997.github.io/tags/React/">React</a></span></div><div class="content">初始化项目123npx create-next-app# oryarn create next-app
+如果想要添加特殊配置有以下选择
+
+--ts，--typescript 使用TypeScript
+-e，--example [name][github-url]使用样例
+--example-path
+--use-npm
+
+应用页面路由 Routernextjs 路由匹配规则
+
+/pages/example.js | /pages/example/index.js 匹配路由 /example
+
+/pages/example/[id].js 匹配路由 /example/1
+
+/pages/example/[...args].js 匹配路由 /example/1/2.../n
+
+/pages/example/[[...args]].js 匹配路由 /example/.../n
+
+
+12345678// /example/[id].js// 路由为 /example/1import &#123; useRouter &#125; from &quot;next/dist/client/rout ...</div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/lxx1997.github.io/2021/08/15/threeJs-study-api/" title="threeJs 学习之路 - API 及 参数传递"><img class="post_bg" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/lxx1997.github.io/img/404.jpg'" alt="threeJs 学习之路 - API 及 参数传递"></a></div><div class="recent-post-info"><a class="article-title" href="/lxx1997.github.io/2021/08/15/threeJs-study-api/" title="threeJs 学习之路 - API 及 参数传递">threeJs 学习之路 - API 及 参数传递</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2021-08-15T01:53:24.000Z" title="Created 2021-08-15 09:53:24">2021-08-15</time></span></div><div class="content">
+THREE.Scene() 创建场景对象方法
+
+add 添加物体，会被添加到坐标为 (0, 0, 0)的位置上
+
+
+THREE.PerspectiveCamera()
+这个对象是 threeJs 中相机的其中一种 透视摄像机参数有四个
+
+视野角度 表示在显示器上看到的场景的范围，值是一个角度（值会 mod 360）
+长宽比 长宽比的值会影响我们渲染物体的是否是正常的还是拉伸的，压扁的
+远剪切面 
+近剪切面 物体所在的位置比摄像机的远剪切面远或者所在位置比近剪切面近的时候，该物体超出的部分将不会被渲染到场景中，根据我们渲染的物体的z轴的值和摄像机的z轴位置来决定的
+
+
+
+
+THREE.WebGLRenderer()
+创建一个渲染器实例属性
+
+domElement 渲染器生成的dom元素，通过 appendChild 方法插入到页面中
+setSize(width, height, updateStyle) 第二个参数决定是否以较低的分辨率来渲染
+render(scene, camera)  渲染场景和摄像机
+
+
+
+</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/lxx1997.github.io/2021/08/15/threeJs-study-01/" title="threeJs 学习之路 - 创建画布及绘制图形"><img class="post_bg" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/lxx1997.github.io/img/404.jpg'" alt="threeJs 学习之路 - 创建画布及绘制图形"></a></div><div class="recent-post-info"><a class="article-title" href="/lxx1997.github.io/2021/08/15/threeJs-study-01/" title="threeJs 学习之路 - 创建画布及绘制图形">threeJs 学习之路 - 创建画布及绘制图形</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2021-08-15T01:38:18.000Z" title="Created 2021-08-15 09:38:18">2021-08-15</time></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/lxx1997.github.io/tags/JavaScript/">JavaScript</a><span class="article-meta-link">•</span><a class="article-meta__tags" href="/lxx1997.github.io/tags/threeJs/">threeJs</a><span class="article-meta-link">•</span><a class="article-meta__tags" href="/lxx1997.github.io/tags/webgl/">webgl</a></span></div><div class="content">
+因为threeJs 版本在不断更新，所以本文可能部分 api 被替换，如果出现问题，请百度或者查找官方文档对应api
+
+初始化引入引入的话可以采用 npm 引入 或者直接通过 CDN 方式引入
+
+npm 引入
+123456npm install three// 引入const THREE = require(&quot;three&quot;)import THREE from &quot;three&quot;
+
+CDN 方式引入
+CDN地址
+1&lt;script src=&quot;https://cdn.bootcdn.net/ajax/libs/three.js/r128/three.js&quot;&gt;&lt;/script&gt;
+
+
+创建画布  12345678910// 创建场景const scene = new THREE.Scene()// 创建一个摄像机const camera = new THREE.PerspectiveCamera(50, window.innerWidth/window.innerHeight, 1, 1000)// 实例化渲染器c ...</div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/lxx1997.github.io/2021/06/14/design-parttern-01/" title="JavaScript 设计模式联系  -  创建型设计模式"><img class="post_bg" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/lxx1997.github.io/img/404.jpg'" alt="JavaScript 设计模式联系  -  创建型设计模式"></a></div><div class="recent-post-info"><a class="article-title" href="/lxx1997.github.io/2021/06/14/design-parttern-01/" title="JavaScript 设计模式联系  -  创建型设计模式">JavaScript 设计模式联系  -  创建型设计模式</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2021-06-14T10:25:20.000Z" title="Created 2021-06-14 18:25:20">2021-06-14</time></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/lxx1997.github.io/tags/JavaScript/">JavaScript</a></span></div><div class="content">简单工厂模式
+简单工厂模式(Simple Factory) 又叫静态工厂模式，由一个工厂对象决定创建摸一种产品对象类的实例
+
+
+简单工厂模式的理念就是创建对象，提取多个类似需求中相同部分，针对不同的地方进行特殊处理
+
+1234567891011121314151617181920function factory(object) &#123;  const Factory = new Object()  // 相同的部分  Factory.name = object.name  Factory.age = object.name  // 不同的部分  switch(object.type) &#123;    case &#x27;type1&#x27;:      // 特殊处理      break;    case &#x27;type2&#x27;:      // 特殊处理      break;    default:      break;  &#125;  return Factory&#125;
+工厂方法模式
+工厂方法模式(Factory Methods) 通过对产品类 ...</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/lxx1997.github.io/2021/05/04/window-postMessage%E8%B7%A8%E5%9F%9F%E7%9A%84%E4%BD%BF%E7%94%A8%E6%96%B9%E5%BC%8F/" title="window.postMessage跨域的使用方式"><img class="post_bg" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/lxx1997.github.io/img/404.jpg'" alt="window.postMessage跨域的使用方式"></a></div><div class="recent-post-info"><a class="article-title" href="/lxx1997.github.io/2021/05/04/window-postMessage%E8%B7%A8%E5%9F%9F%E7%9A%84%E4%BD%BF%E7%94%A8%E6%96%B9%E5%BC%8F/" title="window.postMessage跨域的使用方式">window.postMessage跨域的使用方式</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2021-05-04T15:23:18.000Z" title="Created 2021-05-04 23:23:18">2021-05-04</time></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/lxx1997.github.io/tags/JavaScript/">JavaScript</a></span></div><div class="content">最近忙着工作的事情，好久没有更新博客了，正好最近要做的一个功能，最后决定使用 postMessage 进行解决
+具体的使用场景是我这边打开新的窗口的时候需要向新的窗口传递一些数据
+首先从网上摘取一些针对 postMessage 介绍
+
+window.postMessage() 方法可以安全地实现跨源通信。通常，对于两个不同页面的脚本，只有当执行它们的页面位于具有相同的协议（通常为https），端口号（443为https的默认值），以及主机  (两个页面的模数 Document.domain设置为相同的值) 时，这两个脚本才能相互通信。window.postMessage() 方法提供了一种受控机制来规避此限制，只要正确的使用，这种方法就很安全。
+
+父窗口如何传递参数打开窗口的方式有一下几种 iframe的contentWindow属性、执行window.open返回的窗口对象、或者是命名过或数值索引的window.frames,此处暂时先介绍 window.open()
+父窗口获取打开新窗口对象
+1const open = window.open(&#x27;http://www.ba ...</div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/lxx1997.github.io/2021/04/01/%E9%9D%A2%E8%AF%95-%E9%A2%98%E8%A7%A3/" title="记一次在面试过程中遇到的 promise 编程题"><img class="post_bg" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/lxx1997.github.io/img/404.jpg'" alt="记一次在面试过程中遇到的 promise 编程题"></a></div><div class="recent-post-info"><a class="article-title" href="/lxx1997.github.io/2021/04/01/%E9%9D%A2%E8%AF%95-%E9%A2%98%E8%A7%A3/" title="记一次在面试过程中遇到的 promise 编程题">记一次在面试过程中遇到的 promise 编程题</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2021-04-01T08:25:13.000Z" title="Created 2021-04-01 16:25:13">2021-04-01</time></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/lxx1997.github.io/tags/promise/">promise</a><span class="article-meta-link">•</span><a class="article-meta__tags" href="/lxx1997.github.io/tags/%E9%9D%A2%E8%AF%95/">面试</a></span></div><div class="content">当时面试的时候遇到了这两个函数编程题，但是该死的是完全没有思路(悲伤)
+
+利用 Promise 完成一个队列，队列中的任务数满了的话，后续任务不执行，当队列中的任务有完成的状态，才会添加新的任务进入队列
+
+利用 Promise 完成一个 retry 函数，传入一个执行函数和一个计数器，在一定次数范围内，如果函数执行失败的话会再次尝试执行该函数，直到执行成功
+
+
+面试结束之后，我上网上搜索了一下类似的问题，接下来是我总结之后的思路，以及最后成功的代码
+Promise 队列  这个问题有以下几个重点
+
+队列： 存放未执行的任务队列
+计数器： 存放当前正在执行的任务数量
+任务执行最大数量
+添加任务函数
+执行任务函数
+接下根据我们上述描述的重点来创建一个任务队列执行类
+1234567891011121314class Scheduler &#123;  // 初始化任务队列，以及根据传入的数量来限制最大执行数量  constructor(maxCount) &#123;    this.maxCount = count    this.list = []    this.count = 0   ...</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/lxx1997.github.io/2021/03/18/js-promise/" title="JavaScript - 手写一个 Promise 方法"><img class="post_bg" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/lxx1997.github.io/img/404.jpg'" alt="JavaScript - 手写一个 Promise 方法"></a></div><div class="recent-post-info"><a class="article-title" href="/lxx1997.github.io/2021/03/18/js-promise/" title="JavaScript - 手写一个 Promise 方法">JavaScript - 手写一个 Promise 方法</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2021-03-18T05:15:52.000Z" title="Created 2021-03-18 13:15:52">2021-03-18</time></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/lxx1997.github.io/tags/JavaScript/">JavaScript</a></span></div><div class="content">ES6新增了一个用于处理异步操作数据的一个原生API，能够解决回调地狱的产生
+常用的方法
+Promise.resolve()
+Promise.reject()
+Promise.then()
+Promise.catch()
+Promise.finally()
+Promise.all()
+Promise.race()
+Promise.allSettled()
+Promise.any()
+
+接下来我们来使用代码来实现这些操作
+实现Promise  首先我们在创建 Promise 实例，会传入两个函数用来表示成功的回调以及失败的回调，然后我们可以设计 Promise 类中的内容大概是这个样子的
+12345678910111213141516171819202122232425262728293031const PANDING = &#x27;panding&#x27;const FULFILLED = &#x27;fulfilled&#x27;const REJECTED = &#x27;rejected&#x27;class Promise &#123;  constructor(fn) & ...</div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/lxx1997.github.io/2021/02/08/vue-learn-api-with-%E6%BA%90%E7%A0%81-implement/" title="浅浅的剖析一下 Vue 的执行顺序"><img class="post_bg" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/lxx1997.github.io/img/404.jpg'" alt="浅浅的剖析一下 Vue 的执行顺序"></a></div><div class="recent-post-info"><a class="article-title" href="/lxx1997.github.io/2021/02/08/vue-learn-api-with-%E6%BA%90%E7%A0%81-implement/" title="浅浅的剖析一下 Vue 的执行顺序">浅浅的剖析一下 Vue 的执行顺序</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2021-02-08T03:02:00.000Z" title="Created 2021-02-08 11:02:00">2021-02-08</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/lxx1997.github.io/categories/Vue%E6%BA%90%E7%A0%81/">Vue源码</a></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/lxx1997.github.io/tags/Vue/">Vue</a><span class="article-meta-link">•</span><a class="article-meta__tags" href="/lxx1997.github.io/tags/%E6%BA%90%E7%A0%81/">源码</a></span></div><div class="content">定义 Vue 构造函数1234567891011121314151617181920212223import &#123; initMixin &#125; from &#x27;./init&#x27;import &#123; stateMixin &#125; from &#x27;./state&#x27;import &#123; renderMixin &#125; from &#x27;./render&#x27;import &#123; eventsMixin &#125; from &#x27;./events&#x27;import &#123; lifecycleMixin &#125; from &#x27;./lifecycle&#x27;import &#123; warn &#125; from &#x27;../util/index&#x27;function Vue (options) &#123;  if (process.env.NODE_ENV !== &#x27;production&#x27; &amp;&amp;    !(this in ...</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/lxx1997.github.io/2021/02/01/vue-learn-api-with-%E6%BA%90%E7%A0%81-08/" title="跟着 Vue源码学习 Vue api 系列 (八) - 指令"><img class="post_bg" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/lxx1997.github.io/img/404.jpg'" alt="跟着 Vue源码学习 Vue api 系列 (八) - 指令"></a></div><div class="recent-post-info"><a class="article-title" href="/lxx1997.github.io/2021/02/01/vue-learn-api-with-%E6%BA%90%E7%A0%81-08/" title="跟着 Vue源码学习 Vue api 系列 (八) - 指令">跟着 Vue源码学习 Vue api 系列 (八) - 指令</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2021-02-01T09:29:54.000Z" title="Created 2021-02-01 17:29:54">2021-02-01</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/lxx1997.github.io/categories/Vue%E6%BA%90%E7%A0%81/">Vue源码</a></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/lxx1997.github.io/tags/Vue/">Vue</a><span class="article-meta-link">•</span><a class="article-meta__tags" href="/lxx1997.github.io/tags/%E6%BA%90%E7%A0%81/">源码</a></span></div><div class="content">内置指令Vue 内置了以下几种指令
+
+v-text
+v-html
+v-show
+v-if
+v-else
+v-else-if
+v-for
+v-on
+v-bind
+v-model
+v-slot
+v-pre
+v-cloak
+v-once
+
+在源码中分为以下几种
+1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465// v-html v-text v-modelvar directives$1 = &#123;  model: model,  text: text,  html: html&#125;// v-on v-bind v-clockvar baseDirectives = &#123;  on: on,  bind: bind$1,  cloak: noop&#125;;// v-if v-else v-else-iffunction processIf (el) &#123;  var exp ...</div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/lxx1997.github.io/2021/02/01/vue-learn-api-with-%E6%BA%90%E7%A0%81-07/" title="跟着 Vue源码学习 Vue api 系列 (七) - 实例 property"><img class="post_bg" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/lxx1997.github.io/img/404.jpg'" alt="跟着 Vue源码学习 Vue api 系列 (七) - 实例 property"></a></div><div class="recent-post-info"><a class="article-title" href="/lxx1997.github.io/2021/02/01/vue-learn-api-with-%E6%BA%90%E7%A0%81-07/" title="跟着 Vue源码学习 Vue api 系列 (七) - 实例 property">跟着 Vue源码学习 Vue api 系列 (七) - 实例 property</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2021-02-01T07:25:46.000Z" title="Created 2021-02-01 15:25:46">2021-02-01</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/lxx1997.github.io/categories/Vue%E6%BA%90%E7%A0%81/">Vue源码</a></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/lxx1997.github.io/tags/Vue/">Vue</a><span class="article-meta-link">•</span><a class="article-meta__tags" href="/lxx1997.github.io/tags/%E6%BA%90%E7%A0%81/">源码</a></span></div><div class="content">$on $emit监听 Vue.$emit 发送的事件，回调函数会接收所有传入参数的参数
+源码123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566// $on 监听事件Vue.prototype.$on = function (event, fn) &#123;  var vm = this;  if (Array.isArray(event)) &#123;    for (var i = 0, l = event.length; i &lt; l; i++) &#123;      vm.$on(event[i], fn);    &#125;  &#125; else &#123;    (vm._events[event] || (vm._events[event] = [])).push(fn);    // optimize hook:event cost by using a bo ...</div></div></div><nav id="pagination"><div class="pagination"><span class="page-number current">1</span><a class="page-number" href="/lxx1997.github.io/page/2/#content-inner">2</a><span class="space">&hellip;</span><a class="page-number" href="/lxx1997.github.io/page/12/#content-inner">12</a><a class="extend next" rel="next" href="/lxx1997.github.io/page/2/#content-inner"><i class="fas fa-chevron-right fa-fw"></i></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/lxx1997.github.io/img/avatar.png" onerror="this.onerror=null;this.src='/lxx1997.github.io/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">lxx</div><div class="author-info__description">前端小菜鸟,努力深造</div></div><div class="card-info-data site-data is-center"><a href="/lxx1997.github.io/archives/"><div class="headline">Articles</div><div class="length-num">114</div></a><a href="/lxx1997.github.io/tags/"><div class="headline">Tags</div><div class="length-num">79</div></a><a href="/lxx1997.github.io/categories/"><div class="headline">Categories</div><div class="length-num">9</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>Announcement</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Post</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/lxx1997.github.io/2021/09/14/ssr-nextjs-01/" title="服务端 渲染 - nextjs"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/lxx1997.github.io/img/404.jpg'" alt="服务端 渲染 - nextjs"/></a><div class="content"><a class="title" href="/lxx1997.github.io/2021/09/14/ssr-nextjs-01/" title="服务端 渲染 - nextjs">服务端 渲染 - nextjs</a><time datetime="2021-09-14T14:31:56.000Z" title="Created 2021-09-14 22:31:56">2021-09-14</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/lxx1997.github.io/2021/08/15/threeJs-study-api/" title="threeJs 学习之路 - API 及 参数传递"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/lxx1997.github.io/img/404.jpg'" alt="threeJs 学习之路 - API 及 参数传递"/></a><div class="content"><a class="title" href="/lxx1997.github.io/2021/08/15/threeJs-study-api/" title="threeJs 学习之路 - API 及 参数传递">threeJs 学习之路 - API 及 参数传递</a><time datetime="2021-08-15T01:53:24.000Z" title="Created 2021-08-15 09:53:24">2021-08-15</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/lxx1997.github.io/2021/08/15/threeJs-study-01/" title="threeJs 学习之路 - 创建画布及绘制图形"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/lxx1997.github.io/img/404.jpg'" alt="threeJs 学习之路 - 创建画布及绘制图形"/></a><div class="content"><a class="title" href="/lxx1997.github.io/2021/08/15/threeJs-study-01/" title="threeJs 学习之路 - 创建画布及绘制图形">threeJs 学习之路 - 创建画布及绘制图形</a><time datetime="2021-08-15T01:38:18.000Z" title="Created 2021-08-15 09:38:18">2021-08-15</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/lxx1997.github.io/2021/06/14/design-parttern-01/" title="JavaScript 设计模式联系  -  创建型设计模式"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/lxx1997.github.io/img/404.jpg'" alt="JavaScript 设计模式联系  -  创建型设计模式"/></a><div class="content"><a class="title" href="/lxx1997.github.io/2021/06/14/design-parttern-01/" title="JavaScript 设计模式联系  -  创建型设计模式">JavaScript 设计模式联系  -  创建型设计模式</a><time datetime="2021-06-14T10:25:20.000Z" title="Created 2021-06-14 18:25:20">2021-06-14</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/lxx1997.github.io/2021/05/04/window-postMessage%E8%B7%A8%E5%9F%9F%E7%9A%84%E4%BD%BF%E7%94%A8%E6%96%B9%E5%BC%8F/" title="window.postMessage跨域的使用方式"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/lxx1997.github.io/img/404.jpg'" alt="window.postMessage跨域的使用方式"/></a><div class="content"><a class="title" href="/lxx1997.github.io/2021/05/04/window-postMessage%E8%B7%A8%E5%9F%9F%E7%9A%84%E4%BD%BF%E7%94%A8%E6%96%B9%E5%BC%8F/" title="window.postMessage跨域的使用方式">window.postMessage跨域的使用方式</a><time datetime="2021-05-04T15:23:18.000Z" title="Created 2021-05-04 23:23:18">2021-05-04</time></div></div></div></div><div class="card-widget card-categories"><div class="item-headline">
+            <i class="fas fa-folder-open"></i>
+            <span>Categories</span>
+            <a class="card-more-btn" href="/lxx1997.github.io/categories/" title="More">
+    <i class="fas fa-angle-right"></i></a>
+            </div>
+            <ul class="card-category-list" id="aside-cat-list">
+            <li class="card-category-list-item "><a class="card-category-list-link" href="/lxx1997.github.io/categories/JavaScript/"><span class="card-category-list-name">JavaScript</span><span class="card-category-list-count">5</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/lxx1997.github.io/categories/Vue/"><span class="card-category-list-name">Vue</span><span class="card-category-list-count">8</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/lxx1997.github.io/categories/Vue%E6%BA%90%E7%A0%81/"><span class="card-category-list-name">Vue源码</span><span class="card-category-list-count">10</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/lxx1997.github.io/categories/eggjs/"><span class="card-category-list-name">eggjs</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/lxx1997.github.io/categories/nodejs-deno/"><span class="card-category-list-name">nodejs deno</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/lxx1997.github.io/categories/thought/"><span class="card-category-list-name">thought</span><span class="card-category-list-count">3</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/lxx1997.github.io/categories/vue3-vite-ts/"><span class="card-category-list-name">vue3 vite ts</span><span class="card-category-list-count">2</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/lxx1997.github.io/categories/web/"><span class="card-category-list-name">web</span><span class="card-category-list-count">1</span></a></li>
+            </ul></div><div class="card-widget card-tags"><div class="item-headline"><i class="fas fa-tags"></i><span>Tags</span></div><div class="card-tag-cloud"><a href="/lxx1997.github.io/tags/Components/" style="font-size: 1.1em; color: #999">Components</a> <a href="/lxx1997.github.io/tags/ES6/" style="font-size: 1.16em; color: #999b9e">ES6</a> <a href="/lxx1997.github.io/tags/HTML/" style="font-size: 1.1em; color: #999">HTML</a> <a href="/lxx1997.github.io/tags/JavaScript/" style="font-size: 1.5em; color: #99a9bf">JavaScript</a> <a href="/lxx1997.github.io/tags/React/" style="font-size: 1.1em; color: #999">React</a> <a href="/lxx1997.github.io/tags/SSR/" style="font-size: 1.1em; color: #999">SSR</a> <a href="/lxx1997.github.io/tags/TypeScript/" style="font-size: 1.16em; color: #999b9e">TypeScript</a> <a href="/lxx1997.github.io/tags/Vue/" style="font-size: 1.44em; color: #99a7ba">Vue</a> <a href="/lxx1997.github.io/tags/Vue3/" style="font-size: 1.16em; color: #999b9e">Vue3</a> <a href="/lxx1997.github.io/tags/antd/" style="font-size: 1.1em; color: #999">antd</a> <a href="/lxx1997.github.io/tags/array/" style="font-size: 1.16em; color: #999b9e">array</a> <a href="/lxx1997.github.io/tags/browser/" style="font-size: 1.1em; color: #999">browser</a> <a href="/lxx1997.github.io/tags/canvas/" style="font-size: 1.21em; color: #999ea4">canvas</a> <a href="/lxx1997.github.io/tags/chrome/" style="font-size: 1.1em; color: #999">chrome</a> <a href="/lxx1997.github.io/tags/coffeescript/" style="font-size: 1.16em; color: #999b9e">coffeescript</a> <a href="/lxx1997.github.io/tags/colorui/" style="font-size: 1.1em; color: #999">colorui</a> <a href="/lxx1997.github.io/tags/css/" style="font-size: 1.27em; color: #99a0a9">css</a> <a href="/lxx1997.github.io/tags/css3/" style="font-size: 1.16em; color: #999b9e">css3</a> <a href="/lxx1997.github.io/tags/customize-cra/" style="font-size: 1.1em; color: #999">customize-cra</a> <a href="/lxx1997.github.io/tags/d3-js/" style="font-size: 1.1em; color: #999">d3.js</a> <a href="/lxx1997.github.io/tags/deepin/" style="font-size: 1.1em; color: #999">deepin</a> <a href="/lxx1997.github.io/tags/deno/" style="font-size: 1.1em; color: #999">deno</a> <a href="/lxx1997.github.io/tags/docker/" style="font-size: 1.1em; color: #999">docker</a> <a href="/lxx1997.github.io/tags/egg-mysql/" style="font-size: 1.1em; color: #999">egg-mysql</a> <a href="/lxx1997.github.io/tags/eggjs/" style="font-size: 1.33em; color: #99a2af">eggjs</a> <a href="/lxx1997.github.io/tags/electron/" style="font-size: 1.1em; color: #999">electron</a> <a href="/lxx1997.github.io/tags/es6/" style="font-size: 1.1em; color: #999">es6</a> <a href="/lxx1997.github.io/tags/function/" style="font-size: 1.27em; color: #99a0a9">function</a> <a href="/lxx1997.github.io/tags/github/" style="font-size: 1.1em; color: #999">github</a> <a href="/lxx1997.github.io/tags/golang/" style="font-size: 1.1em; color: #999">golang</a> <a href="/lxx1997.github.io/tags/html/" style="font-size: 1.39em; color: #99a4b4">html</a> <a href="/lxx1997.github.io/tags/http/" style="font-size: 1.1em; color: #999">http</a> <a href="/lxx1997.github.io/tags/indexedDB/" style="font-size: 1.1em; color: #999">indexedDB</a> <a href="/lxx1997.github.io/tags/jsonwebtoken/" style="font-size: 1.1em; color: #999">jsonwebtoken</a> <a href="/lxx1997.github.io/tags/less/" style="font-size: 1.1em; color: #999">less</a> <a href="/lxx1997.github.io/tags/localStorage/" style="font-size: 1.1em; color: #999">localStorage</a> <a href="/lxx1997.github.io/tags/method/" style="font-size: 1.16em; color: #999b9e">method</a> <a href="/lxx1997.github.io/tags/mysql/" style="font-size: 1.1em; color: #999">mysql</a> <a href="/lxx1997.github.io/tags/nextJs/" style="font-size: 1.1em; color: #999">nextJs</a> <a href="/lxx1997.github.io/tags/node/" style="font-size: 1.1em; color: #999">node</a></div></div><div class="card-widget card-archives"><div class="item-headline"><i class="fas fa-archive"></i><span>Archives</span><a class="card-more-btn" href="/lxx1997.github.io/archives/" title="More">
+    <i class="fas fa-angle-right"></i></a></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/lxx1997.github.io/archives/2021/09/"><span class="card-archive-list-date">September 2021</span><span class="card-archive-list-count">1</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/lxx1997.github.io/archives/2021/08/"><span class="card-archive-list-date">August 2021</span><span class="card-archive-list-count">2</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/lxx1997.github.io/archives/2021/06/"><span class="card-archive-list-date">June 2021</span><span class="card-archive-list-count">1</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/lxx1997.github.io/archives/2021/05/"><span class="card-archive-list-date">May 2021</span><span class="card-archive-list-count">1</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/lxx1997.github.io/archives/2021/04/"><span class="card-archive-list-date">April 2021</span><span class="card-archive-list-count">1</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/lxx1997.github.io/archives/2021/03/"><span class="card-archive-list-date">March 2021</span><span class="card-archive-list-count">1</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/lxx1997.github.io/archives/2021/02/"><span class="card-archive-list-date">February 2021</span><span class="card-archive-list-count">3</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/lxx1997.github.io/archives/2021/01/"><span class="card-archive-list-date">January 2021</span><span class="card-archive-list-count">17</span></a></li></ul></div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>Info</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">Article :</div><div class="item-count">114</div></div><div class="webinfo-item"><div class="item-name">UV :</div><div class="item-count" id="busuanzi_value_site_uv"></div></div><div class="webinfo-item"><div class="item-name">PV :</div><div class="item-count" id="busuanzi_value_site_pv"></div></div><div class="webinfo-item"><div class="item-name">Last Push :</div><div class="item-count" id="last-push-date" data-lastPushDate="2022-03-26T13:30:33.107Z"></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2022 By lxx</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="Switch Between Light And Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle between single-column and double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="Setting"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="Back To Top"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/lxx1997.github.io/js/utils.js"></script><script src="/lxx1997.github.io/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><script src="/lxx1997.github.io/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/lxx1997.github.io/live2dw/assets/kesyoban.model.json"},"display":{"position":"left","width":300,"height":300},"mobile":{"show":false},"log":false});</script></body></html>

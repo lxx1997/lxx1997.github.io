@@ -1,0 +1,183 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>面试题解析 - other people | SoulReader</title><meta name="keywords" content="JavaScript,web,react,Vue,面试,node,http"><meta name="author" content="lxx,1987607597@qq.com"><meta name="copyright" content="lxx"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="在公众号看到了一位大佬分享的自己的多家大公司的面试经历，看了一遍面试问题，深感自己在各方面的不足，所以诞生了这篇文章，分析一下大佬的面试题以及答案   公众号原文转载地址  掘金原文地址  原生js怎么实现拖放 answer:   首先给要实现的拖拽的元素的 draggable 属性设置为true 使用时间监听 addEventListener 监听元素的 dragstart, dragend">
+<meta property="og:type" content="article">
+<meta property="og:title" content="面试题解析 - other people">
+<meta property="og:url" content="https://lxxstar987.gitee.io/lxx1997.github.io/2021/01/06/%E9%9D%A2%E8%AF%95%E9%A2%98%E8%AF%A6%E8%A7%A3-other-from-internat/index.html">
+<meta property="og:site_name" content="SoulReader">
+<meta property="og:description" content="在公众号看到了一位大佬分享的自己的多家大公司的面试经历，看了一遍面试问题，深感自己在各方面的不足，所以诞生了这篇文章，分析一下大佬的面试题以及答案   公众号原文转载地址  掘金原文地址  原生js怎么实现拖放 answer:   首先给要实现的拖拽的元素的 draggable 属性设置为true 使用时间监听 addEventListener 监听元素的 dragstart, dragend">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7">
+<meta property="article:published_time" content="2021-01-06T02:44:55.000Z">
+<meta property="article:modified_time" content="2021-01-12T09:09:21.516Z">
+<meta property="article:author" content="lxx">
+<meta property="article:tag" content="JavaScript">
+<meta property="article:tag" content="web">
+<meta property="article:tag" content="react">
+<meta property="article:tag" content="Vue">
+<meta property="article:tag" content="面试">
+<meta property="article:tag" content="node">
+<meta property="article:tag" content="http">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"><link rel="shortcut icon" href="/lxx1997.github.io/img/favicon.png"><link rel="canonical" href="https://lxxstar987.gitee.io/lxx1997.github.io/2021/01/06/%E9%9D%A2%E8%AF%95%E9%A2%98%E8%AF%A6%E8%A7%A3-other-from-internat/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/lxx1997.github.io/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/lxx1997.github.io/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":200},
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: 'Just',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '面试题解析 - other people',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2021-01-12 17:09:21'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.1.0"><link rel="alternate" href="/lxx1997.github.io/atom.xml" title="SoulReader" type="application/atom+xml">
+</head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/lxx1997.github.io/img/avatar.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/lxx1997.github.io/archives/"><div class="headline">Articles</div><div class="length-num">114</div></a><a href="/lxx1997.github.io/tags/"><div class="headline">Tags</div><div class="length-num">79</div></a><a href="/lxx1997.github.io/categories/"><div class="headline">Categories</div><div class="length-num">9</div></a></div><hr/></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/lxx1997.github.io/">SoulReader</a></span><div id="menus"><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">面试题解析 - other people</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2021-01-06T02:44:55.000Z" title="Created 2021-01-06 10:44:55">2021-01-06</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2021-01-12T09:09:21.516Z" title="Updated 2021-01-12 17:09:21">2021-01-12</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/lxx1997.github.io/categories/%E9%9D%A2%E8%AF%95/">面试</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="面试题解析 - other people"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post View:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><p>  在公众号看到了一位大佬分享的自己的多家大公司的面试经历，看了一遍面试问题，深感自己在各方面的不足，所以诞生了这篇文章，分析一下大佬的面试题以及答案</p>
+<p>  <a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/bjD9_tNJX1fVuzZEHWRRNw">公众号原文转载地址</a><br>  <a target="_blank" rel="noopener" href="https://juejin.cn/post/6912268021381726221">掘金原文地址</a></p>
+<ol>
+<li><p>原生js怎么实现拖放</p>
+<p><strong>answer:</strong> </p>
+<ul>
+<li>首先给要实现的拖拽的元素的 <code>draggable</code> 属性设置为true</li>
+<li>使用时间监听 <code>addEventListener</code> 监听元素的 <code>dragstart</code>, <code>dragend</code>, <code>dragover</code>, <code>dragleave</code>, <code>dragenter</code>, <code>drop</code> 等事件<ul>
+<li>dragstart 被拖动的元素，开始拖放触发</li>
+<li>dragend   拖放的对象元素，拖放操作结束</li>
+<li>dragover  拖放过程中鼠标经过的元素，被拖放的元素正在本元素范围内移动(一直)</li>
+<li>dragleave  拖放过程中鼠标经过的元素，被拖放的元素离开本元素范围</li>
+<li>dragenter  拖放过程中鼠标经过的元素，被拖放的元素“开始”进入其它元素范围内（刚进入）</li>
+<li>drag  被拖放的元素，拖放过程中</li>
+<li>drop  拖放的目标元素，其他元素被拖放到本元素中<br><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_45761317/article/details/103430200">参考示例</a><br><strong>优化：</strong> 卡顿的话可以添加 css 属性，来使元素移动更加流畅 <code>transition: tranform, opacity 0.5s,0.5s ease,ease</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>react-dnd拖放的核心API<br><a target="_blank" rel="noopener" href="https://blog.csdn.net/sinat_17775997/article/details/88727672">参考文章</a><br><strong>未完待续</strong></p>
+</li>
+<li><p>如何实现路由监听（vue）</p>
+<ul>
+<li>组件内可以使用 <code>watch</code>  监听 <code>$route</code> 对象</li>
+<li>全局监听路由 <code>beforeEach</code>, <code>afterEach</code></li>
+<li>组件内部监听路由变化 <code>beforeRouteEnter</code>, <code>beforeRouteLeave</code>, <code>beforeRouteUpdate</code></li>
+<li>路由的独享钩子函数 <code>beforeEnter</code><h4 id="相关书籍连接"><a href="#相关书籍连接" class="headerlink" title="相关书籍连接"></a>相关书籍连接</h4></li>
+</ul>
+<p><a target="_blank" rel="noopener" href="https://www.ituring.com.cn/book/2472">红宝书第四版</a><br><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903974378668039">js灵魂之问(上)</a><br><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903986479251464">js灵魂之问(中)</a><br><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844904004007247880">js灵魂之问(下)</a><br><a target="_blank" rel="noopener" href="https://www.cssworld.cn/">css世界</a><br><a target="_blank" rel="noopener" href="http://flexboxfroggy.com/">flex小青蛙</a><br><a target="_blank" rel="noopener" href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html">flex阮一峰博客</a><br><a target="_blank" rel="noopener" href="https://react.iamkasong.com/">卡颂的react技术揭秘</a><br><a target="_blank" rel="noopener" href="https://juejin.cn/user/1415826704971918/posts">若川的源码系列</a><br><a target="_blank" rel="noopener" href="https://nlrx-wjc.github.io/Learn-Vue-Source-Code/">难凉热血的vue源码分析</a><br><a target="_blank" rel="noopener" href="https://time.geekbang.org/column/intro/100017301">数据结构与算法之美</a><br><a target="_blank" rel="noopener" href="https://101.zoo.team/">政采云团队的博客–算法篇</a><br><a target="_blank" rel="noopener" href="https://juejin.cn/post/6900698814093459463">天天的前端算法总结</a><br><a target="_blank" rel="noopener" href="https://juejin.cn/post/6847009772500156429">ssh的前端算法进阶指南</a><br><a target="_blank" rel="noopener" href="https://juejin.cn/book/6844733800300150797">修言算法小册</a><br><a target="_blank" rel="noopener" href="https://item.jd.com/12219883.html">谢希仁的计算机网络</a><br><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844904100035821575">神三元的http灵魂之问</a><br><a target="_blank" rel="noopener" href="https://time.geekbang.org/column/intro/100033601">浏览器专栏</a><br><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_42813491/article/details/103117799?ops_request_misc=%25257B%252522request%25255Fid%252522%25253A%252522160938095216780302981460%252522%25252C%252522scm%252522%25253A%25252220140713.130102334.pc%25255Fblog.%252522%25257D&amp;request_id=160938095216780302981460&amp;biz_id=0&amp;utm_medium=distribute.pc_search_result.none-task-blog-2~blog~first_rank_v2~rank_v29-1-103117799.pc_v2_rank_blog_default&amp;utm_term=nginx">nginx笔记</a><br><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_42813491/article/details/88379799">linux笔记</a></p>
+</li>
+</ol>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">Author: </span><span class="post-copyright-info"><a href="https://lxxstar987.gitee.io/lxx1997.github.io">lxx</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">Link: </span><span class="post-copyright-info"><a href="https://lxxstar987.gitee.io/lxx1997.github.io/2021/01/06/%E9%9D%A2%E8%AF%95%E9%A2%98%E8%AF%A6%E8%A7%A3-other-from-internat/">https://lxxstar987.gitee.io/lxx1997.github.io/2021/01/06/%E9%9D%A2%E8%AF%95%E9%A2%98%E8%AF%A6%E8%A7%A3-other-from-internat/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/lxx1997.github.io/tags/JavaScript/">JavaScript</a><a class="post-meta__tags" href="/lxx1997.github.io/tags/web/">web</a><a class="post-meta__tags" href="/lxx1997.github.io/tags/react/">react</a><a class="post-meta__tags" href="/lxx1997.github.io/tags/Vue/">Vue</a><a class="post-meta__tags" href="/lxx1997.github.io/tags/%E9%9D%A2%E8%AF%95/">面试</a><a class="post-meta__tags" href="/lxx1997.github.io/tags/node/">node</a><a class="post-meta__tags" href="/lxx1997.github.io/tags/http/">http</a></div><div class="post_share"><div class="social-share" data-image="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/gh/overtrue/share.js@master/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/lxx1997.github.io/2021/01/07/vue-components-transfer-data/"><img class="prev-cover" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="onerror=null;src='/lxx1997.github.io/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">Previous Post</div><div class="prev_info">Vue 组件之间通讯的各种情况</div></div></a></div><div class="next-post pull-right"><a href="/lxx1997.github.io/2021/01/04/deferent-in-new-Object-object-create/"><img class="next-cover" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="onerror=null;src='/lxx1997.github.io/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">Next Post</div><div class="next_info">new Object() 和 Object.create() 的区别</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>Related Articles</span></div><div class="relatedPosts-list"><div><a href="/lxx1997.github.io/2020/12/21/vue-template-publish-subscribe/" title="03 - Vue源码解读-发布订阅模式"><img class="cover" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2020-12-21</div><div class="title">03 - Vue源码解读-发布订阅模式</div></div></a></div><div><a href="/lxx1997.github.io/2020/12/18/vue-template-responsive/" title="03 - Vue源码解读-响应式"><img class="cover" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2020-12-18</div><div class="title">03 - Vue源码解读-响应式</div></div></a></div><div><a href="/lxx1997.github.io/2020/12/17/vue-template-render/" title="02 - Vue源码解读-渲染模型"><img class="cover" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2020-12-17</div><div class="title">02 - Vue源码解读-渲染模型</div></div></a></div><div><a href="/lxx1997.github.io/2020/12/16/vue-VirtualDOM-template/" title="01 - Vue源码解读-数据驱动-dom生成"><img class="cover" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2020-12-16</div><div class="title">01 - Vue源码解读-数据驱动-dom生成</div></div></a></div><div><a href="/lxx1997.github.io/2020/08/28/react-study/" title="重拾 react"><img class="cover" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2020-08-28</div><div class="title">重拾 react</div></div></a></div><div><a href="/lxx1997.github.io/2020/08/28/react-study-antd/" title="重拾 react - React模板 antd"><img class="cover" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2020-08-28</div><div class="title">重拾 react - React模板 antd</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/lxx1997.github.io/img/avatar.png" onerror="this.onerror=null;this.src='/lxx1997.github.io/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">lxx</div><div class="author-info__description">前端小菜鸟,努力深造</div></div><div class="card-info-data site-data is-center"><a href="/lxx1997.github.io/archives/"><div class="headline">Articles</div><div class="length-num">114</div></a><a href="/lxx1997.github.io/tags/"><div class="headline">Tags</div><div class="length-num">79</div></a><a href="/lxx1997.github.io/categories/"><div class="headline">Categories</div><div class="length-num">9</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>Announcement</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>Catalog</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%9B%B8%E5%85%B3%E4%B9%A6%E7%B1%8D%E8%BF%9E%E6%8E%A5"><span class="toc-number">1.</span> <span class="toc-text">相关书籍连接</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Post</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/lxx1997.github.io/2021/09/14/ssr-nextjs-01/" title="服务端 渲染 - nextjs"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/lxx1997.github.io/img/404.jpg'" alt="服务端 渲染 - nextjs"/></a><div class="content"><a class="title" href="/lxx1997.github.io/2021/09/14/ssr-nextjs-01/" title="服务端 渲染 - nextjs">服务端 渲染 - nextjs</a><time datetime="2021-09-14T14:31:56.000Z" title="Created 2021-09-14 22:31:56">2021-09-14</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/lxx1997.github.io/2021/08/15/threeJs-study-api/" title="threeJs 学习之路 - API 及 参数传递"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/lxx1997.github.io/img/404.jpg'" alt="threeJs 学习之路 - API 及 参数传递"/></a><div class="content"><a class="title" href="/lxx1997.github.io/2021/08/15/threeJs-study-api/" title="threeJs 学习之路 - API 及 参数传递">threeJs 学习之路 - API 及 参数传递</a><time datetime="2021-08-15T01:53:24.000Z" title="Created 2021-08-15 09:53:24">2021-08-15</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/lxx1997.github.io/2021/08/15/threeJs-study-01/" title="threeJs 学习之路 - 创建画布及绘制图形"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/lxx1997.github.io/img/404.jpg'" alt="threeJs 学习之路 - 创建画布及绘制图形"/></a><div class="content"><a class="title" href="/lxx1997.github.io/2021/08/15/threeJs-study-01/" title="threeJs 学习之路 - 创建画布及绘制图形">threeJs 学习之路 - 创建画布及绘制图形</a><time datetime="2021-08-15T01:38:18.000Z" title="Created 2021-08-15 09:38:18">2021-08-15</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/lxx1997.github.io/2021/06/14/design-parttern-01/" title="JavaScript 设计模式联系  -  创建型设计模式"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/lxx1997.github.io/img/404.jpg'" alt="JavaScript 设计模式联系  -  创建型设计模式"/></a><div class="content"><a class="title" href="/lxx1997.github.io/2021/06/14/design-parttern-01/" title="JavaScript 设计模式联系  -  创建型设计模式">JavaScript 设计模式联系  -  创建型设计模式</a><time datetime="2021-06-14T10:25:20.000Z" title="Created 2021-06-14 18:25:20">2021-06-14</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/lxx1997.github.io/2021/05/04/window-postMessage%E8%B7%A8%E5%9F%9F%E7%9A%84%E4%BD%BF%E7%94%A8%E6%96%B9%E5%BC%8F/" title="window.postMessage跨域的使用方式"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/lxx1997.github.io/img/404.jpg'" alt="window.postMessage跨域的使用方式"/></a><div class="content"><a class="title" href="/lxx1997.github.io/2021/05/04/window-postMessage%E8%B7%A8%E5%9F%9F%E7%9A%84%E4%BD%BF%E7%94%A8%E6%96%B9%E5%BC%8F/" title="window.postMessage跨域的使用方式">window.postMessage跨域的使用方式</a><time datetime="2021-05-04T15:23:18.000Z" title="Created 2021-05-04 23:23:18">2021-05-04</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2022 By lxx</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Read Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Switch Between Light And Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle between single-column and double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="Setting"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table Of Contents"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="Back To Top"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/lxx1997.github.io/js/utils.js"></script><script src="/lxx1997.github.io/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><script src="/lxx1997.github.io/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/lxx1997.github.io/live2dw/assets/kesyoban.model.json"},"display":{"position":"left","width":300,"height":300},"mobile":{"show":false},"log":false});</script></body></html>

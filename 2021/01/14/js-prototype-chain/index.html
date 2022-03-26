@@ -1,0 +1,162 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>JavaScript 原型链 | SoulReader</title><meta name="keywords" content="JavaScript,prototype"><meta name="author" content="lxx,1987607597@qq.com"><meta name="copyright" content="lxx"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="当我们定义了一个函数或者对象的时候，自带有属性中有一个属性 __proto__，这个属性又被称作原型链，指向构造当前函数的 prototype 1234567function Test() &amp;#123;  this.a &#x3D; 1&amp;#125;const test &#x3D; new Test()console.log(test.__proto__)  &#x2F;&#x2F; &amp;#123;constructor: f&amp;#125;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JavaScript 原型链">
+<meta property="og:url" content="https://lxxstar987.gitee.io/lxx1997.github.io/2021/01/14/js-prototype-chain/index.html">
+<meta property="og:site_name" content="SoulReader">
+<meta property="og:description" content="当我们定义了一个函数或者对象的时候，自带有属性中有一个属性 __proto__，这个属性又被称作原型链，指向构造当前函数的 prototype 1234567function Test() &amp;#123;  this.a &#x3D; 1&amp;#125;const test &#x3D; new Test()console.log(test.__proto__)  &#x2F;&#x2F; &amp;#123;constructor: f&amp;#125;">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7">
+<meta property="article:published_time" content="2021-01-14T14:57:43.000Z">
+<meta property="article:modified_time" content="2021-01-27T06:05:12.200Z">
+<meta property="article:author" content="lxx">
+<meta property="article:tag" content="JavaScript">
+<meta property="article:tag" content="prototype">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"><link rel="shortcut icon" href="/lxx1997.github.io/img/favicon.png"><link rel="canonical" href="https://lxxstar987.gitee.io/lxx1997.github.io/2021/01/14/js-prototype-chain/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/lxx1997.github.io/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/lxx1997.github.io/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":200},
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: 'Just',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'JavaScript 原型链',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: false,
+  postUpdate: '2021-01-27 14:05:12'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.1.0"><link rel="alternate" href="/lxx1997.github.io/atom.xml" title="SoulReader" type="application/atom+xml">
+</head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/lxx1997.github.io/img/avatar.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/lxx1997.github.io/archives/"><div class="headline">Articles</div><div class="length-num">114</div></a><a href="/lxx1997.github.io/tags/"><div class="headline">Tags</div><div class="length-num">79</div></a><a href="/lxx1997.github.io/categories/"><div class="headline">Categories</div><div class="length-num">9</div></a></div><hr/></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/lxx1997.github.io/">SoulReader</a></span><div id="menus"><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">JavaScript 原型链</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2021-01-14T14:57:43.000Z" title="Created 2021-01-14 22:57:43">2021-01-14</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2021-01-27T06:05:12.200Z" title="Updated 2021-01-27 14:05:12">2021-01-27</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/lxx1997.github.io/categories/JavaScript/">JavaScript</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="JavaScript 原型链"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post View:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><p>当我们定义了一个函数或者对象的时候，自带有属性中有一个属性 <code>__proto__</code>，这个属性又被称作原型链，指向构造当前函数的 <code>prototype</code></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">Test</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="variable language_">this</span>.<span class="property">a</span> = <span class="number">1</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> test = <span class="keyword">new</span> <span class="title class_">Test</span>()</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(test.<span class="property">__proto__</span>)  <span class="comment">// &#123;constructor: f&#125;</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">Test</span>.<span class="property"><span class="keyword">prototype</span></span>)  <span class="comment">// &#123;constructor: f&#125;</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(test.<span class="property">__proto__</span> === <span class="title class_">Test</span>.<span class="property"><span class="keyword">prototype</span></span>)  <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+<p>当我们继续打印 <code>Test.prototype.__proto__</code> 的时候会发现 Test 的构造函数是 Object，即</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">Test</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">__proto__</span> === <span class="title class_">Object</span>.<span class="property"><span class="keyword">prototype</span></span>)  <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+<p>这个时候就会发现有些特殊的事情，当我们在 Test 的 prototype 属性上添加一些属性或者 Object 的 prototype 上添加一些属性，这时通过 new 构造出来的实例能不能访问到这些属性或者方法呢，接下来让我们尝试一下</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">  <span class="keyword">function</span> <span class="title function_">Test</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">a</span> = <span class="number">1</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">const</span> test = <span class="keyword">new</span> <span class="title class_">Test</span>()</span><br><span class="line">  <span class="title class_">Test</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">b</span> = <span class="number">3</span></span><br><span class="line">  <span class="title class_">Object</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">c</span> = <span class="number">4</span></span><br><span class="line"></span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(test.<span class="property">a</span>)   <span class="comment">// 1</span></span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(test.<span class="property">b</span>)   <span class="comment">// 3</span></span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(test.<span class="property">c</span>)   <span class="comment">// 4</span></span><br><span class="line">~~~~</span><br><span class="line"></span><br><span class="line">这个时候如果我们在 test 实例上新增一个属性 b 并赋值，这时侯打印出来的 test.<span class="property">b</span> 的值是多少呢</span><br><span class="line">~~~js</span><br><span class="line">  <span class="keyword">function</span> <span class="title function_">Test</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">a</span> = <span class="number">1</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">const</span> test = <span class="keyword">new</span> <span class="title class_">Test</span>()</span><br><span class="line">  <span class="title class_">Test</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">b</span> = <span class="number">3</span></span><br><span class="line">  <span class="title class_">Object</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">c</span> = <span class="number">4</span></span><br><span class="line">  test.<span class="property">b</span> = <span class="number">5</span></span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(test.<span class="property">b</span>)   <span class="comment">// b</span></span><br></pre></td></tr></table></figure>
+<p>这是因为 使用 new 构造函数的时候，会自动继承构造函数上的所有方法及属性，当我们在访问实例的某个属性的时候，会现在实例对象上查找是否包含有这个属性，如果包含就直接返回，不包含的话就会在实例的原型链 <code>__proto__</code> 上继续查找，如果仍未找到，则会继续通过 <code>__proto__</code>一级一级的向上查找，直到找到 原型链的最后一级 <code>Object</code>,如果仍未找到就返回 <code>undefined</code></p>
+<p><strong>constructor</strong></p>
+<p>在实例的自身属性及 <code>__proto__</code> 属性上有一个 <code>contructor</code> 属性，该属性指向 构造当前实例的 构造函数</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">Test</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="variable language_">this</span>.<span class="property">a</span> = <span class="number">1</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> test = <span class="keyword">new</span> <span class="title class_">Test</span>()</span><br><span class="line"><span class="comment">// 这是因为 使用 new  构造函数的时候 把 Test 的所有属性都赋予了 test</span></span><br><span class="line">test.<span class="property">__proto__</span>.<span class="property">constructor</span>  <span class="comment">// f Test() &#123;this.a = 1&#125;</span></span><br><span class="line">test.<span class="property">constructor</span>  <span class="comment">// f Test() &#123;this.a = 1&#125;</span></span><br></pre></td></tr></table></figure>
+<p><strong>判断是否包含属性</strong></p>
+<p>如何判断 实例的属性 是在实例自身身上还是在原型链上呢，这时候可以通过 <code>Object.hasOwnProperty</code></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">Test</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="variable language_">this</span>.<span class="property">a</span> = <span class="number">1</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> test = <span class="keyword">new</span> <span class="title class_">Test</span>()</span><br><span class="line"><span class="title class_">Test</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">b</span> = <span class="number">3</span></span><br><span class="line"><span class="title class_">Object</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">c</span> = <span class="number">4</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(test.<span class="title function_">hasOwnProperty</span>(<span class="string">&#x27;a&#x27;</span>)) <span class="comment">// true</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(test.<span class="title function_">hasOwnProperty</span>(<span class="string">&#x27;b&#x27;</span>)) <span class="comment">// false</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(test.<span class="title function_">hasOwnProperty</span>(<span class="string">&#x27;c&#x27;</span>)) <span class="comment">// false</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;a&#x27;</span> <span class="keyword">in</span> test) <span class="comment">// true</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;b&#x27;</span> <span class="keyword">in</span> test) <span class="comment">// true</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;v&#x27;</span> <span class="keyword">in</span> test) <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+<p>属性 b 和 c 是挂载到 test 的原型链上的属性，并不属于 test 自身，所以通过 <code>Object.hasOwnProperty</code> 访问的时候返回为 false</p>
+<p><strong>特殊的原型 Object 和 Function</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Function</span>.<span class="property">__proto__</span> === <span class="title class_">Function</span>.<span class="property"><span class="keyword">prototype</span></span>   <span class="comment">// true</span></span><br><span class="line"><span class="title class_">Object</span>.<span class="property">__proto__</span> === <span class="title class_">Function</span>.<span class="property"><span class="keyword">prototype</span></span>   <span class="comment">// true</span></span><br><span class="line"><span class="title class_">Object</span>.<span class="property">__proto__</span> === <span class="title class_">Function</span>.<span class="property">__proto__</span>   <span class="comment">// true</span></span><br></pre></td></tr></table></figure></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">Author: </span><span class="post-copyright-info"><a href="https://lxxstar987.gitee.io/lxx1997.github.io">lxx</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">Link: </span><span class="post-copyright-info"><a href="https://lxxstar987.gitee.io/lxx1997.github.io/2021/01/14/js-prototype-chain/">https://lxxstar987.gitee.io/lxx1997.github.io/2021/01/14/js-prototype-chain/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/lxx1997.github.io/tags/JavaScript/">JavaScript</a><a class="post-meta__tags" href="/lxx1997.github.io/tags/prototype/">prototype</a></div><div class="post_share"><div class="social-share" data-image="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/gh/overtrue/share.js@master/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/lxx1997.github.io/2021/01/15/vue3-vite-typescript-01/"><img class="prev-cover" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="onerror=null;src='/lxx1997.github.io/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">Previous Post</div><div class="prev_info">Vue3 + Vite + TypeScript 项目实战 -----（一）搭建项目</div></div></a></div><div class="next-post pull-right"><a href="/lxx1997.github.io/2021/01/11/js-this-point/"><img class="next-cover" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="onerror=null;src='/lxx1997.github.io/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">Next Post</div><div class="next_info">JavaScript - this 指向问题</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>Related Articles</span></div><div class="relatedPosts-list"><div><a href="/lxx1997.github.io/2021/09/14/ssr-nextjs-01/" title="服务端 渲染 - nextjs"><img class="cover" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-09-14</div><div class="title">服务端 渲染 - nextjs</div></div></a></div><div><a href="/lxx1997.github.io/2021/08/15/threeJs-study-01/" title="threeJs 学习之路 - 创建画布及绘制图形"><img class="cover" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-08-15</div><div class="title">threeJs 学习之路 - 创建画布及绘制图形</div></div></a></div><div><a href="/lxx1997.github.io/2021/06/14/design-parttern-01/" title="JavaScript 设计模式联系  -  创建型设计模式"><img class="cover" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-06-14</div><div class="title">JavaScript 设计模式联系  -  创建型设计模式</div></div></a></div><div><a href="/lxx1997.github.io/2021/05/04/window-postMessage%E8%B7%A8%E5%9F%9F%E7%9A%84%E4%BD%BF%E7%94%A8%E6%96%B9%E5%BC%8F/" title="window.postMessage跨域的使用方式"><img class="cover" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-05-04</div><div class="title">window.postMessage跨域的使用方式</div></div></a></div><div><a href="/lxx1997.github.io/2021/03/18/js-promise/" title="JavaScript - 手写一个 Promise 方法"><img class="cover" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-03-18</div><div class="title">JavaScript - 手写一个 Promise 方法</div></div></a></div><div><a href="/lxx1997.github.io/2021/01/11/js-this-point/" title="JavaScript - this 指向问题"><img class="cover" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-01-11</div><div class="title">JavaScript - this 指向问题</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/lxx1997.github.io/img/avatar.png" onerror="this.onerror=null;this.src='/lxx1997.github.io/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">lxx</div><div class="author-info__description">前端小菜鸟,努力深造</div></div><div class="card-info-data site-data is-center"><a href="/lxx1997.github.io/archives/"><div class="headline">Articles</div><div class="length-num">114</div></a><a href="/lxx1997.github.io/tags/"><div class="headline">Tags</div><div class="length-num">79</div></a><a href="/lxx1997.github.io/categories/"><div class="headline">Categories</div><div class="length-num">9</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>Announcement</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Post</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/lxx1997.github.io/2021/09/14/ssr-nextjs-01/" title="服务端 渲染 - nextjs"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/lxx1997.github.io/img/404.jpg'" alt="服务端 渲染 - nextjs"/></a><div class="content"><a class="title" href="/lxx1997.github.io/2021/09/14/ssr-nextjs-01/" title="服务端 渲染 - nextjs">服务端 渲染 - nextjs</a><time datetime="2021-09-14T14:31:56.000Z" title="Created 2021-09-14 22:31:56">2021-09-14</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/lxx1997.github.io/2021/08/15/threeJs-study-api/" title="threeJs 学习之路 - API 及 参数传递"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/lxx1997.github.io/img/404.jpg'" alt="threeJs 学习之路 - API 及 参数传递"/></a><div class="content"><a class="title" href="/lxx1997.github.io/2021/08/15/threeJs-study-api/" title="threeJs 学习之路 - API 及 参数传递">threeJs 学习之路 - API 及 参数传递</a><time datetime="2021-08-15T01:53:24.000Z" title="Created 2021-08-15 09:53:24">2021-08-15</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/lxx1997.github.io/2021/08/15/threeJs-study-01/" title="threeJs 学习之路 - 创建画布及绘制图形"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/lxx1997.github.io/img/404.jpg'" alt="threeJs 学习之路 - 创建画布及绘制图形"/></a><div class="content"><a class="title" href="/lxx1997.github.io/2021/08/15/threeJs-study-01/" title="threeJs 学习之路 - 创建画布及绘制图形">threeJs 学习之路 - 创建画布及绘制图形</a><time datetime="2021-08-15T01:38:18.000Z" title="Created 2021-08-15 09:38:18">2021-08-15</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/lxx1997.github.io/2021/06/14/design-parttern-01/" title="JavaScript 设计模式联系  -  创建型设计模式"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/lxx1997.github.io/img/404.jpg'" alt="JavaScript 设计模式联系  -  创建型设计模式"/></a><div class="content"><a class="title" href="/lxx1997.github.io/2021/06/14/design-parttern-01/" title="JavaScript 设计模式联系  -  创建型设计模式">JavaScript 设计模式联系  -  创建型设计模式</a><time datetime="2021-06-14T10:25:20.000Z" title="Created 2021-06-14 18:25:20">2021-06-14</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/lxx1997.github.io/2021/05/04/window-postMessage%E8%B7%A8%E5%9F%9F%E7%9A%84%E4%BD%BF%E7%94%A8%E6%96%B9%E5%BC%8F/" title="window.postMessage跨域的使用方式"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/lxx1997.github.io/img/404.jpg'" alt="window.postMessage跨域的使用方式"/></a><div class="content"><a class="title" href="/lxx1997.github.io/2021/05/04/window-postMessage%E8%B7%A8%E5%9F%9F%E7%9A%84%E4%BD%BF%E7%94%A8%E6%96%B9%E5%BC%8F/" title="window.postMessage跨域的使用方式">window.postMessage跨域的使用方式</a><time datetime="2021-05-04T15:23:18.000Z" title="Created 2021-05-04 23:23:18">2021-05-04</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2022 By lxx</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Read Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Switch Between Light And Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle between single-column and double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="Setting"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="Back To Top"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/lxx1997.github.io/js/utils.js"></script><script src="/lxx1997.github.io/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><script src="/lxx1997.github.io/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/lxx1997.github.io/live2dw/assets/kesyoban.model.json"},"display":{"position":"left","width":300,"height":300},"mobile":{"show":false},"log":false});</script></body></html>

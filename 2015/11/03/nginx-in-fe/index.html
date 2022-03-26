@@ -1,0 +1,223 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>Nginx能为前端开发带来什么？ | SoulReader</title><meta name="keywords" content="前端"><meta name="author" content="lxx,1987607597@qq.com"><meta name="copyright" content="lxx"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="Nginx那么好，我想去看看。接连逛了两个书城后，我发现并没有Nginx相关的书籍。这就很奇怪！  Nginx，一名网红（网络服务器红人…），就算没有自传和回忆录，争着介绍它的花边新闻也该有吧。 后来找到仅有的一两本书籍，也直接深入到“源码剖析”的阶段。写得并不十分满意，况且我还不需要这些。后来发现了原因，大概是因为“使用太简单了，都不值得出书”。是的，Nginx把纷繁复杂的功能，浓缩成一份简单的">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Nginx能为前端开发带来什么？">
+<meta property="og:url" content="https://lxxstar987.gitee.io/lxx1997.github.io/2015/11/03/nginx-in-fe/index.html">
+<meta property="og:site_name" content="SoulReader">
+<meta property="og:description" content="Nginx那么好，我想去看看。接连逛了两个书城后，我发现并没有Nginx相关的书籍。这就很奇怪！  Nginx，一名网红（网络服务器红人…），就算没有自传和回忆录，争着介绍它的花边新闻也该有吧。 后来找到仅有的一两本书籍，也直接深入到“源码剖析”的阶段。写得并不十分满意，况且我还不需要这些。后来发现了原因，大概是因为“使用太简单了，都不值得出书”。是的，Nginx把纷繁复杂的功能，浓缩成一份简单的">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7">
+<meta property="article:published_time" content="2015-11-03T13:30:00.000Z">
+<meta property="article:modified_time" content="2020-12-14T08:31:54.855Z">
+<meta property="article:author" content="lxx">
+<meta property="article:tag" content="前端">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"><link rel="shortcut icon" href="/lxx1997.github.io/img/favicon.png"><link rel="canonical" href="https://lxxstar987.gitee.io/lxx1997.github.io/2015/11/03/nginx-in-fe/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/lxx1997.github.io/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/lxx1997.github.io/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":200},
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: 'Just',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Nginx能为前端开发带来什么？',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2020-12-14 16:31:54'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.1.0"><link rel="alternate" href="/lxx1997.github.io/atom.xml" title="SoulReader" type="application/atom+xml">
+</head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/lxx1997.github.io/img/avatar.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/lxx1997.github.io/archives/"><div class="headline">Articles</div><div class="length-num">114</div></a><a href="/lxx1997.github.io/tags/"><div class="headline">Tags</div><div class="length-num">79</div></a><a href="/lxx1997.github.io/categories/"><div class="headline">Categories</div><div class="length-num">9</div></a></div><hr/></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/lxx1997.github.io/">SoulReader</a></span><div id="menus"><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Nginx能为前端开发带来什么？</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2015-11-03T13:30:00.000Z" title="Created 2015-11-03 21:30:00">2015-11-03</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2020-12-14T08:31:54.855Z" title="Updated 2020-12-14 16:31:54">2020-12-14</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="Nginx能为前端开发带来什么？"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post View:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><p>Nginx那么好，我想去看看。<br>接连逛了两个书城后，我发现并没有Nginx相关的书籍。<br>这就很奇怪！</p>
+<p><img src="/assets/blogImg/nginx0.jpg" alt=""></p>
+<p>Nginx，一名<strong>网红</strong>（网络服务器红人…），就算没有自传和回忆录，争着介绍它的花边新闻也该有吧。</p>
+<p>后来找到仅有的一两本书籍，也直接深入到“源码剖析”的阶段。写得并不十分满意，况且我还不需要这些。<br>后来发现了原因，大概是因为<strong>“使用太简单了，都不值得出书”</strong>。<br>是的，Nginx把纷繁复杂的功能，浓缩成一份简单的配置，极易上手。<br>当它呈现到你面前时，感觉独具匠心。</p>
+<h3 id="Nginx与NodeJs"><a href="#Nginx与NodeJs" class="headerlink" title="Nginx与NodeJs"></a>Nginx与NodeJs</h3><p>（这里的标题有点歧义。此处的NodeJs，皆引申为NodeJs所搭建的服务器。）</p>
+<p>有人说，作为一名前端，<strong>我的真爱是NodeJs</strong>。<br>同时也认同，抛去性能之类的比较，单纯从实现的角度，NodeJs编写的服务器也能实现Nginx的各种功能。                </p>
+<p>这些我都赞成，但使用Nginx并不意味着抛弃NodeJs。事实上，它们并不冲突，还可以在一起愉快的玩耍。              </p>
+<p>在业内，这样的模型已很常见：资源转发，反向代理，静态资源处理，负载均衡，这些事情扔给Nginx来处理，只是几行配置的事情；同时在上游，让NodeJs去处理它最擅长的I/O等事情。               </p>
+<p>合理分配各自<strong>擅长</strong>的事情，这样的思路，同样可以运用于前端开发中。                </p>
+<p>以前用NodeJs几百行实现的服务器功能，在npm与github的海洋里花尽心思去寻找的模块，也许在Nginx里是一条成熟的配置。它能帮其分担很多事情，节约了成本。                  </p>
+<h3 id="场景一：环境切换"><a href="#场景一：环境切换" class="headerlink" title="场景一：环境切换"></a>场景一：环境切换</h3><p>前端开发中，经常面临多个部署环境切换的问题。<br>我们通常用配hosts的方式去实现。更优化些，我们将机器的服务绑定了不同的域名：比如正式环境是a.qq.com，测试环境是test.a.qq.com。 </p>
+<p>然而在拓展性和易用性方面，还不足够好。<br>而Nginx作为反向代理，就很容易处理资源转发的问题。                 </p>
+<p>思路很简单：</p>
+<blockquote>
+<ol>
+<li>读取请求里的cookie，如果键名host_id有值，则代理到这个IP地址；</li>
+<li>如果没有，则代理到默认的正式环境（此处举例为1.1.1.1）;</li>
+</ol>
+</blockquote>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">set</span> <span class="variable">$env_id</span> <span class="string">&quot;1.1.1.1&quot;</span>;</span><br><span class="line"><span class="keyword">if</span> ( <span class="variable">$http_cookie</span> ~* <span class="string">&quot;host_id=(\S+)(;.*|<span class="variable">$</span>)&quot;</span>) &#123;</span><br><span class="line">    <span class="built_in">set</span> <span class="variable">$env_id</span> <span class="variable">$1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">location / &#123;</span><br><span class="line">    proxy_set_header Host <span class="variable">$host</span>;</span><br><span class="line">    proxy_pass   http://<span class="variable">$env_id:80</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>那接下来的事情，就是<strong>怎样用最简便的方式，把IP种在cookie里？</strong><br>我们应用了nginx-http-footer-filter模块，html文件经过代理时，都注入了一小段js代码。</p>
+<p>这段代码，会帮我们展示小菜单，点击某个环境时，则将IP种到cookie里，同时刷新页面，让Nginx完成环境切换。<br><img src="/assets/blogImg/nginx1.jpg" alt=""></p>
+<p>切换环境，如今只需点击一次。</p>
+<h3 id="场景二：SourceMap"><a href="#场景二：SourceMap" class="headerlink" title="场景二：SourceMap"></a>场景二：SourceMap</h3><p>在线上环境调试Js代码是件麻烦的事情，因为目前合格的前端部署，代码都应经过压缩。性能问题是优化了，debug可不怎么方便。</p>
+<p>而SourceMap正好可以解决此问题。</p>
+<p>在最新的各版本浏览器里，如果满足：</p>
+<ol>
+<li>压缩后的js文件后面有<code>//# sourceMappingURL=xxx.map</code>格式的注释</li>
+<li>浏览器能正常访问到sourceMappingURL</li>
+</ol>
+<p>那么，就能把压缩过的代码还原。<br>要实现这样的功能，就必须：</p>
+<ol>
+<li>现网环境不带以上形式的注释，同时访问不到sourceMap（安全性考虑）</li>
+<li>测试环境带注释，能访问sourceMap</li>
+</ol>
+<p>这样的模型，用<code>反向代理+内容纂改</code>的思路再合适不过。<br>每次构建编译时，我们会把sourceMap文件存放到一台机器（举例为1.1.1.1），命名为js文件名后加<code>.map</code>后缀。随后，使用Nginx，通过这几行配置就能把此功能实现：</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">location</span> <span class="regexp">~ \.js$</span> &#123;</span><br><span class="line">    <span class="attribute">footer</span> <span class="string">&quot;\n//# sourceMappingURL=<span class="variable">$request_uri</span>.map&quot;</span>;</span><br><span class="line">    <span class="attribute">footer_types</span> <span class="string">&quot;*&quot;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>只要经过代理，在chrome里，我们能看到每份被压缩过的js文件，都有一个对应的源码文件。<br>你可以直接使用它来做打断点之类的操作，大大的提升了调试质量。<br><img src="/assets/blogImg/nginx2.jpg" alt=""></p>
+<h3 id="场景三：内容纂改"><a href="#场景三：内容纂改" class="headerlink" title="场景三：内容纂改"></a>场景三：内容纂改</h3><p>其实在以上两个场景里，都涉及了“内容纂改”。<br>无论是说“纂改”还是“劫持”，大家的印象都不是什么好事情，但另一方面，他们又可以让事情有趣起来。</p>
+<p>统一介绍下，Nginx涉及纂改的模块有：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://m.oschina.net/blog/156826">nginx_http_footer_filter</a>：往文件的底部添加文字，可包含Nginx的内置变量；</li>
+<li><a target="_blank" rel="noopener" href="http://nginx.org/en/docs/http/ngx_http_addition_module.html">nginx_http_addition_module</a>：从一个url去读取内容，将之添加到文件的头部或顶部；</li>
+<li><a target="_blank" rel="noopener" href="http://nginx.org/en/docs/http/ngx_http_sub_module.html">nginx_http_sub_module</a>：替换字符</li>
+</ul>
+<p>除去上面两种场景，合理运用这些模块对应的配置，可以做出许多小工具，这是很有想象力的事情。<br>单单针对移动web前端开发，就可以实现： </p>
+<blockquote>
+<ol>
+<li>将<a target="_blank" rel="noopener" href="http://people.apache.org/~pmuellr/weinre-docs/latest/">weinre</a>脚本插入到html里，让移动web调试更加便捷。</li>
+<li>移动web经常用到localStorage优化首屏，但debug时又会受到干扰，通过一个按钮很方便的清除本地缓存。</li>
+<li>手机APP内嵌页面，很难将其网址分享给另一个人。通过一个按钮就能生成url对应的二维码等</li>
+</ol>
+</blockquote>
+<h3 id="场景四：本地映射"><a href="#场景四：本地映射" class="headerlink" title="场景四：本地映射"></a>场景四：本地映射</h3><p>在Windows下的前端抓包调试，Fiddler+Willow的能力毋庸置疑。<br>而脱离了.NET体系的Linux和Mac，即使有一些代替工具，但某些方面还是略显不足。   </p>
+<p>比如：<strong>线上接口映射到本地文件</strong>。<br>想到Fiddler的本质也是一个代理，而开启一个有这样能力的Nginx服务，并不是太难的事情。           </p>
+<p>而且，我们可以做得更灵活，比如：</p>
+<ul>
+<li>同时支持慢速调试</li>
+<li>同时支持目录层级映射</li>
+<li>同时支持正则匹配</li>
+<li>JSON返回的数据有可能是变化的（比如分页时候），同时支持动态数据</li>
+</ul>
+<p>这些场景，只运用到Nginx里的“<a target="_blank" rel="noopener" href="http://www.linuxidc.com/Linux/2014-01/95493.htm">rewrite规则</a>”。<br>从参考的文档可以大致看到，rewrite规则非常灵活，能完成各种场景的转发。 </p>
+<p>最简单的模型中，我们把所有带<code>cgi-bin</code>路径的请求，rewite到本地的一个服务，同时带上请求的所有参数，<br>仅需这三行配置即可：<br><figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">location ~ <span class="regexp">/cgi-bin/</span>* &#123;</span><br><span class="line">    rewrite ^(.*)$ http:<span class="regexp">//</span><span class="number">127.0</span>.<span class="number">0.1</span>:<span class="number">8080</span><span class="regexp">/cgi-bin/</span> last;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><br>后续的事情，可以在本地创建一个cgi-bin文件夹，在里面放置需要映射的文本，并开启服务到8080端口即可。 </p>
+<h3 id="场景五：移动侧调试"><a href="#场景五：移动侧调试" class="headerlink" title="场景五：移动侧调试"></a>场景五：移动侧调试</h3><p><code>Fiddler</code> 有一个勾选项 <code>Allow remote computers to connect</code>，并可以指定 <code>listen port</code> 可以使得手机/其它终端通过将本机设为代理而访问本机环境，与 <code>hosts</code> 配合会很实用。</p>
+<p>这个功能，用Nginx也很容易做到。<br>通过 <code>default_server</code> 作为代理，手机终端通过设置网络代理为本机IP和相应的 <code>listen port</code>，从而可以访问本机的 Web 服务。</p>
+<p>其中也是用到了<a target="_blank" rel="noopener" href="http://nginx.org/en/docs/http/ngx_http_proxy_module.html">ngx_http_proxy_module</a>模块的配置：<br><figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"> <span class="section">server</span> &#123;</span><br><span class="line">    <span class="attribute">listen</span>  <span class="number">80</span> default_server;</span><br><span class="line">    <span class="attribute">server_name</span>  localhost;</span><br><span class="line">    <span class="attribute">resolver</span> <span class="number">8.8.8.8</span>;</span><br><span class="line">    <span class="section">location</span> / &#123;</span><br><span class="line">        <span class="attribute">proxy_set_header</span> Host <span class="variable">$host</span>;</span><br><span class="line">        <span class="attribute">proxy_set_header</span> X-Real-Ip <span class="variable">$remote_addr</span>;</span><br><span class="line">        <span class="attribute">proxy_set_header</span> X-Forwarded-For <span class="variable">$remote_addr</span>;</span><br><span class="line">        <span class="attribute">proxy_pass</span> http://<span class="variable">$host</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="section">server</span> &#123;</span><br><span class="line">    <span class="attribute">listen</span>  <span class="number">80</span>;</span><br><span class="line">    <span class="attribute">server_name</span>  ke.qq.com;</span><br><span class="line">    <span class="section">location</span> / &#123;</span><br><span class="line">        <span class="attribute">proxy_set_header</span> Host <span class="variable">$host</span>;</span><br><span class="line">        <span class="attribute">proxy_set_header</span> X-Real-Ip <span class="variable">$remote_addr</span>;</span><br><span class="line">        <span class="attribute">proxy_set_header</span> X-Forwarded-For <span class="variable">$remote_addr</span>;</span><br><span class="line">        <span class="attribute">proxy_pass</span> http://127.0.0.1:9091/;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="边角料"><a href="#边角料" class="headerlink" title="边角料"></a>边角料</h3><p>除去特定场景，Nginx的一些配置也跟前端息息相关。以下简单罗列，作为边角材料。</p>
+<p>1.<a target="_blank" rel="noopener" href="https://github.com/alibaba/nginx-http-concat">nginx_http_concat</a><br>资源合并，处理CDN combo。例如通过这样的方式<code>http://example.com/??style1.css,style2.css,foo/style3.css</code>访问合并后的资源。</p>
+<p>2.<a target="_blank" rel="noopener" href="http://nginx.org/en/docs/http/ngx_http_image_filter_module.html">ngx_http_image_filter_module</a><br>图片处理。提供图片缩放，jpg压缩，旋转等特性。</p>
+<p>3.适配PC与移动web<br>总体可运用<a target="_blank" rel="noopener" href="http://nginx.org/en/docs/http/ngx_http_proxy_module.html">ngx_http_proxy_module</a>，去实现路径转发。判断平台类型的Nginx配置，在开源项目<a target="_blank" rel="noopener" href="http://detectmobilebrowsers.com/">detectmobilebrowsers</a>中可以找到。</p>
+<h3 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h3><p>学习Nginx，我本身只是出于开开眼界的目的。而的确发现了一些很有启发性的特质。<br>于前端开发，无论线上线下，熟练掌握基本配置，可以做出许多提高效率的工具。<br><strong>但既然是工具，熟手就好</strong>。 </p>
+<p>比如Fiddler直观，但Nginx更底层，更灵活，应当按照实际选择即可。</p>
+<p>话说回来，后来心情有些惆怅。<br>想起之前，我用NodeJs写过一个八百行的本地调试服务，如今更习惯用Nginx的几行配置。<br>不过我又想，<strong>既然我已经花了时间去写，为什么还要花时间去用？！</strong> </p>
+<p>心情又好起来了。（等等有什么不对，管它呢…）</p>
+<hr>
+<p>END.<br>15.11.03 Litten.</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">Author: </span><span class="post-copyright-info"><a href="https://lxxstar987.gitee.io/lxx1997.github.io">lxx</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">Link: </span><span class="post-copyright-info"><a href="https://lxxstar987.gitee.io/lxx1997.github.io/2015/11/03/nginx-in-fe/">https://lxxstar987.gitee.io/lxx1997.github.io/2015/11/03/nginx-in-fe/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/lxx1997.github.io/tags/%E5%89%8D%E7%AB%AF/">前端</a></div><div class="post_share"><div class="social-share" data-image="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/gh/overtrue/share.js@master/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/lxx1997.github.io/2017/07/09/prevent-spiders/"><img class="prev-cover" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="onerror=null;src='/lxx1997.github.io/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">Previous Post</div><div class="prev_info">反击爬虫，前端工程师的脑洞可以有多大？</div></div></a></div><div class="next-post pull-right"><a href="/lxx1997.github.io/2015/07/06/hack-in-localstorage/"><img class="next-cover" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="onerror=null;src='/lxx1997.github.io/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">Next Post</div><div class="next_info">作为一个前端，可以如何机智地弄坏一台电脑？</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>Related Articles</span></div><div class="relatedPosts-list"><div><a href="/lxx1997.github.io/2017/07/09/prevent-spiders/" title="反击爬虫，前端工程师的脑洞可以有多大？"><img class="cover" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2017-07-09</div><div class="title">反击爬虫，前端工程师的脑洞可以有多大？</div></div></a></div><div><a href="/lxx1997.github.io/2014/08/14/reduce-http-requests/" title="再议减少HTTP请求"><img class="cover" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2014-08-14</div><div class="title">再议减少HTTP请求</div></div></a></div><div><a href="/lxx1997.github.io/2014/08/01/kael-qrcode-info/" title="爱上一匹二维马可我家里没有草原…"><img class="cover" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2014-08-01</div><div class="title">爱上一匹二维马可我家里没有草原…</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/lxx1997.github.io/img/avatar.png" onerror="this.onerror=null;this.src='/lxx1997.github.io/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">lxx</div><div class="author-info__description">前端小菜鸟,努力深造</div></div><div class="card-info-data site-data is-center"><a href="/lxx1997.github.io/archives/"><div class="headline">Articles</div><div class="length-num">114</div></a><a href="/lxx1997.github.io/tags/"><div class="headline">Tags</div><div class="length-num">79</div></a><a href="/lxx1997.github.io/categories/"><div class="headline">Categories</div><div class="length-num">9</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>Announcement</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>Catalog</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Nginx%E4%B8%8ENodeJs"><span class="toc-number">1.</span> <span class="toc-text">Nginx与NodeJs</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9C%BA%E6%99%AF%E4%B8%80%EF%BC%9A%E7%8E%AF%E5%A2%83%E5%88%87%E6%8D%A2"><span class="toc-number">2.</span> <span class="toc-text">场景一：环境切换</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9C%BA%E6%99%AF%E4%BA%8C%EF%BC%9ASourceMap"><span class="toc-number">3.</span> <span class="toc-text">场景二：SourceMap</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9C%BA%E6%99%AF%E4%B8%89%EF%BC%9A%E5%86%85%E5%AE%B9%E7%BA%82%E6%94%B9"><span class="toc-number">4.</span> <span class="toc-text">场景三：内容纂改</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9C%BA%E6%99%AF%E5%9B%9B%EF%BC%9A%E6%9C%AC%E5%9C%B0%E6%98%A0%E5%B0%84"><span class="toc-number">5.</span> <span class="toc-text">场景四：本地映射</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9C%BA%E6%99%AF%E4%BA%94%EF%BC%9A%E7%A7%BB%E5%8A%A8%E4%BE%A7%E8%B0%83%E8%AF%95"><span class="toc-number">6.</span> <span class="toc-text">场景五：移动侧调试</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BE%B9%E8%A7%92%E6%96%99"><span class="toc-number">7.</span> <span class="toc-text">边角料</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%90%8E%E8%AE%B0"><span class="toc-number">8.</span> <span class="toc-text">后记</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Post</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/lxx1997.github.io/2021/09/14/ssr-nextjs-01/" title="服务端 渲染 - nextjs"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/lxx1997.github.io/img/404.jpg'" alt="服务端 渲染 - nextjs"/></a><div class="content"><a class="title" href="/lxx1997.github.io/2021/09/14/ssr-nextjs-01/" title="服务端 渲染 - nextjs">服务端 渲染 - nextjs</a><time datetime="2021-09-14T14:31:56.000Z" title="Created 2021-09-14 22:31:56">2021-09-14</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/lxx1997.github.io/2021/08/15/threeJs-study-api/" title="threeJs 学习之路 - API 及 参数传递"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/lxx1997.github.io/img/404.jpg'" alt="threeJs 学习之路 - API 及 参数传递"/></a><div class="content"><a class="title" href="/lxx1997.github.io/2021/08/15/threeJs-study-api/" title="threeJs 学习之路 - API 及 参数传递">threeJs 学习之路 - API 及 参数传递</a><time datetime="2021-08-15T01:53:24.000Z" title="Created 2021-08-15 09:53:24">2021-08-15</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/lxx1997.github.io/2021/08/15/threeJs-study-01/" title="threeJs 学习之路 - 创建画布及绘制图形"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/lxx1997.github.io/img/404.jpg'" alt="threeJs 学习之路 - 创建画布及绘制图形"/></a><div class="content"><a class="title" href="/lxx1997.github.io/2021/08/15/threeJs-study-01/" title="threeJs 学习之路 - 创建画布及绘制图形">threeJs 学习之路 - 创建画布及绘制图形</a><time datetime="2021-08-15T01:38:18.000Z" title="Created 2021-08-15 09:38:18">2021-08-15</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/lxx1997.github.io/2021/06/14/design-parttern-01/" title="JavaScript 设计模式联系  -  创建型设计模式"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/lxx1997.github.io/img/404.jpg'" alt="JavaScript 设计模式联系  -  创建型设计模式"/></a><div class="content"><a class="title" href="/lxx1997.github.io/2021/06/14/design-parttern-01/" title="JavaScript 设计模式联系  -  创建型设计模式">JavaScript 设计模式联系  -  创建型设计模式</a><time datetime="2021-06-14T10:25:20.000Z" title="Created 2021-06-14 18:25:20">2021-06-14</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/lxx1997.github.io/2021/05/04/window-postMessage%E8%B7%A8%E5%9F%9F%E7%9A%84%E4%BD%BF%E7%94%A8%E6%96%B9%E5%BC%8F/" title="window.postMessage跨域的使用方式"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/lxx1997.github.io/img/404.jpg'" alt="window.postMessage跨域的使用方式"/></a><div class="content"><a class="title" href="/lxx1997.github.io/2021/05/04/window-postMessage%E8%B7%A8%E5%9F%9F%E7%9A%84%E4%BD%BF%E7%94%A8%E6%96%B9%E5%BC%8F/" title="window.postMessage跨域的使用方式">window.postMessage跨域的使用方式</a><time datetime="2021-05-04T15:23:18.000Z" title="Created 2021-05-04 23:23:18">2021-05-04</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2022 By lxx</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Read Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Switch Between Light And Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle between single-column and double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="Setting"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table Of Contents"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="Back To Top"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/lxx1997.github.io/js/utils.js"></script><script src="/lxx1997.github.io/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><script src="/lxx1997.github.io/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/lxx1997.github.io/live2dw/assets/kesyoban.model.json"},"display":{"position":"left","width":300,"height":300},"mobile":{"show":false},"log":false});</script></body></html>

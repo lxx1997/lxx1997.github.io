@@ -1,0 +1,279 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>浏览器存储方式学习  cookie, session, localstorage, indexedDB | SoulReader</title><meta name="keywords" content="browser,localStorage,indexedDB"><meta name="author" content="lxx,1987607597@qq.com"><meta name="copyright" content="lxx"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="浏览器存储方式 cookie： cookie相当于客户端和服务器之间进行信息交互的一个标识，每次客户端访问服务器的时候都会携带上cookie，这样服务器就可以知道是谁来访问了。  Storage: Storage 是专门为浏览器存储提供的数据存储机制，分为localStorage和sessionStorage, 保存的数据以键值对的形式存在，并且以文本格式保存  indexedDB: indexe">
+<meta property="og:type" content="article">
+<meta property="og:title" content="浏览器存储方式学习  cookie, session, localstorage, indexedDB">
+<meta property="og:url" content="https://lxxstar987.gitee.io/lxx1997.github.io/2020/07/22/browser-storage-study/index.html">
+<meta property="og:site_name" content="SoulReader">
+<meta property="og:description" content="浏览器存储方式 cookie： cookie相当于客户端和服务器之间进行信息交互的一个标识，每次客户端访问服务器的时候都会携带上cookie，这样服务器就可以知道是谁来访问了。  Storage: Storage 是专门为浏览器存储提供的数据存储机制，分为localStorage和sessionStorage, 保存的数据以键值对的形式存在，并且以文本格式保存  indexedDB: indexe">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7">
+<meta property="article:published_time" content="2020-07-22T07:27:33.000Z">
+<meta property="article:modified_time" content="2021-01-12T09:07:43.251Z">
+<meta property="article:author" content="lxx">
+<meta property="article:tag" content="browser">
+<meta property="article:tag" content="localStorage">
+<meta property="article:tag" content="indexedDB">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"><link rel="shortcut icon" href="/lxx1997.github.io/img/favicon.png"><link rel="canonical" href="https://lxxstar987.gitee.io/lxx1997.github.io/2020/07/22/browser-storage-study/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/lxx1997.github.io/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/lxx1997.github.io/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":200},
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: 'Just',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '浏览器存储方式学习  cookie, session, localstorage, indexedDB',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2021-01-12 17:07:43'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.1.0"><link rel="alternate" href="/lxx1997.github.io/atom.xml" title="SoulReader" type="application/atom+xml">
+</head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/lxx1997.github.io/img/avatar.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/lxx1997.github.io/archives/"><div class="headline">Articles</div><div class="length-num">114</div></a><a href="/lxx1997.github.io/tags/"><div class="headline">Tags</div><div class="length-num">79</div></a><a href="/lxx1997.github.io/categories/"><div class="headline">Categories</div><div class="length-num">9</div></a></div><hr/></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/lxx1997.github.io/">SoulReader</a></span><div id="menus"><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">浏览器存储方式学习  cookie, session, localstorage, indexedDB</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2020-07-22T07:27:33.000Z" title="Created 2020-07-22 15:27:33">2020-07-22</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2021-01-12T09:07:43.251Z" title="Updated 2021-01-12 17:07:43">2021-01-12</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="浏览器存储方式学习  cookie, session, localstorage, indexedDB"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post View:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h4 id="浏览器存储方式"><a href="#浏览器存储方式" class="headerlink" title="浏览器存储方式"></a>浏览器存储方式</h4><ul>
+<li><p>cookie： cookie相当于客户端和服务器之间进行信息交互的一个标识，每次客户端访问服务器的时候都会携带上cookie，这样服务器就可以知道是谁来访问了。</p>
+</li>
+<li><p>Storage: Storage 是专门为浏览器存储提供的数据存储机制，分为localStorage和sessionStorage, 保存的数据以键值对的形式存在，并且以文本格式保存</p>
+</li>
+<li><p>indexedDB: indexedDB是运行在浏览器上的非关系型数据库, 一般来说是没有存储上限的, 不仅可以存储字符串, 还可以存储二进制数据</p>
+</li>
+</ul>
+<h4 id="Cookie"><a href="#Cookie" class="headerlink" title="Cookie"></a>Cookie</h4><p>  cookie的本职工作并非本地存储,而是维持状态，它是浏览器存储在用户机器上的一个小文本，大小不能超过4K</p>
+<p>  cookie根据过期时间分为两类：会话cookie和持久cookie</p>
+<ul>
+<li><p>会话cookie是一种临时cookie，当用户退出浏览器，会话cookie就会被删除</p>
+</li>
+<li><p>持久cookie则会存储在硬盘中，保存时间更长，浏览器关闭并不会删除cookie，通常持久性cookie会维护某一个用户周期性访问服务器配置文件或者登陆信息</p>
+<p><strong>访问方式</strong></p>
+<p>通过<code>document.cookie</code>来设置或获取cookie的值</p>
+<p>产生Cookie的服务器可以向set-Coolie响应首部添加一个domain属性来控制那些站点可以看到这个cookie</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Set</span>-<span class="title class_">Cookie</span>:name=<span class="string">&quot;losstie&quot;</span>domain=<span class="string">&quot;m.baidu.com&quot;</span></span><br></pre></td></tr></table></figure>
+<p><strong>属性</strong></p>
+</li>
+<li><p>path参数告诉浏览器cokie的路径，默认情况下，cookie属于当前页面</p>
+</li>
+<li><p>secure 设置里secure，cookie只有在https协议加密的情况下才会发送给服务端</p>
+</li>
+<li><p>HttpOnly 禁止javascript操作cookie（避免跨域脚本xss攻击，通过javascript的document.cookie 无法访问带有HttpOnly标记的cookie）</p>
+<p><strong>第三方cookie</strong></p>
+<p>第三方cookie就是cookie的域和地址栏中的域，这种cookie通常悲痛在第三方广告网站，用于跟踪用户的浏览记录，并根据手机的用户浏览习惯，给用户推送相关广告</p>
+<p><strong>劣势</strong></p>
+</li>
+<li><p>cookie 存储信息少，不能超过4K，当cookie超过4KB是，会面临被裁剪的命运</p>
+</li>
+<li><p>每次请求都会携带在http头中，过量的cookie会损耗性能</p>
+</li>
+<li><p>cookie会紧跟域名，同一个域名下的所有请求都会携带cookie</p>
+</li>
+<li><p>不安全，服务器没法分辨用户和攻击者，攻击者可以读取网络上其他用户信息，包含HTTP Cookie的所有内容，以便进行中间攻击，使用跨站点脚本技术可以窃取cookie</p>
+</li>
+</ul>
+<h4 id="Web-Storage"><a href="#Web-Storage" class="headerlink" title="Web Storage"></a>Web Storage</h4><p>  <strong>localStorage</strong></p>
+<p>  localStorage是持久化的本地存储，存储在其中的数据永远不会过期，只能手动删除，遵循同源策略</p>
+<p>  <strong>sessionStorage</strong></p>
+<p>  sessionStorage是临时性的本地存储，会话级别，当页面或者会话结束时，存储内容也随之被释放，遵循同源策略，但是要保证在同一个窗口，否则无法共享内容</p>
+  <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// localStorage</span></span><br><span class="line">保存数据：<span class="variable language_">localStorage</span>.<span class="title function_">setItem</span>(key, value)</span><br><span class="line">读取数据：<span class="variable language_">localStorage</span>.<span class="title function_">getItem</span>(key)</span><br><span class="line">移除数据：<span class="variable language_">localStorage</span>.<span class="title function_">removeItem</span>(key)</span><br><span class="line">清除所有数据：<span class="variable language_">localStorage</span>.<span class="title function_">clear</span>()</span><br><span class="line">得到某个索引的key：<span class="variable language_">localStorage</span>.<span class="title function_">key</span>(index)</span><br><span class="line"></span><br><span class="line"><span class="comment">// sessionStorage</span></span><br><span class="line">保存数据：sessionStorage.<span class="title function_">setItem</span>(key, value)</span><br><span class="line">读取数据：sessionStorage.<span class="title function_">getItem</span>(key)</span><br><span class="line">移除数据：sessionStorage.<span class="title function_">removeItem</span>(key)</span><br><span class="line">清除所有数据：sessionStorage.<span class="title function_">clear</span>()</span><br><span class="line">得到某个索引的key：sessionStorage.<span class="title function_">key</span>(index)</span><br></pre></td></tr></table></figure>
+<p>  web storage 存储容量大，根据浏览器的不同，存储容量乐意达到5~10M之间 chrome，Firefox，edge都是5M，而且仅位于浏览器端，不与服务端发生通信</p>
+<h4 id="indexedDB"><a href="#indexedDB" class="headerlink" title="indexedDB"></a>indexedDB</h4><p>  indexedDB是一个运行在浏览器上的非关系型数据库，一般来说是没有存储上限的，不仅可以存储字符串，还可以存储二进制数据</p>
+<p>  indexedDB 允许存入大量数据，提供查找接口，还能建立索引，就数据库类型而言，indexedDB 不属于关系型数据库（不支持sql查询语句），更接近NoSQL数据</p>
+<p>  <strong>特点</strong></p>
+<ul>
+<li><p>键值对储存， indexedDB内部采用对象仓库（object store）存放数据</p>
+</li>
+<li><p>异步，indexedDb操作时不会锁死浏览器，用户依然可以进行其他操作</p>
+</li>
+<li><p>支持事务，只要有一步失败，整个事务就都取消，数据库回滚到事务发生之前的状态，不存在之改写一部分数据的情况</p>
+</li>
+<li><p>同源限制，每一个数据库对应创建他的域名，网页只能访问自身域名下的数据库，而不能访问跨域的数据库</p>
+</li>
+<li><p>存储空间大</p>
+</li>
+<li><p>支持二进制存储</p>
+<p><strong>操作</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 建立打开 indexedDB</span></span><br><span class="line"></span><br><span class="line"><span class="variable language_">window</span>.<span class="property">indexedDB</span>.<span class="title function_">open</span>(<span class="string">&#x27;testDB&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 关闭indexedDB </span></span><br><span class="line"></span><br><span class="line">indexdb.<span class="title function_">close</span>()</span><br><span class="line"></span><br><span class="line"><span class="comment">// 删除indexedDB</span></span><br><span class="line"> </span><br><span class="line"> indexedDB.<span class="title function_">deleteDatabase</span>(indexdb)</span><br></pre></td></tr></table></figure>
+<p><strong>基本概念</strong></p>
+<p>indexedDB是一个比较复杂的API,涉及不少概念，它把不同的实体，抽象成一个个对象接口</p>
+</li>
+<li><p><strong>数据库</strong>  数据库是一系列相关的容器，每个域名（协议+端口+域名）都可以新建任意多个数据库， 同时indexedDB数据库有版本的概念，同一时刻只能有一个版本的数据库存在，如果要修改数据库结构，只能通过升级数据库版本完成</p>
+</li>
+<li><p><strong>对象仓库</strong>  每个数据库包含若干个对象仓库， 类似于关系型数据库的表格</p>
+</li>
+<li><p><strong>数据记录</strong>  对象仓库保存的数据记录，每个记录类似于关系型数据库的行，但是只有逐渐和数据体两部分，主键用来建立默认索引，必须是不同的</p>
+</li>
+<li><p><strong>索引</strong>  为了加速数据的检索，可以在对象仓库里面，为不同的属性建立索引</p>
+</li>
+<li><p><strong>事务</strong>  数据记录的读写和删改都要通过事务完成。事务对象提供<code>error</code>,<code>about</code>和<code>complete</code>三个事件，用来监听操作结果</p>
+<p><strong>操作流程</strong></p>
+</li>
+<li><p>打开数据库</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 打开数据库</span></span><br><span class="line"><span class="keyword">var</span> request = <span class="variable language_">window</span>.<span class="property">indexedDB</span>.<span class="title function_">open</span>(databaseName, version)</span><br><span class="line"><span class="comment">// 改方法接受两个参数，第一个参数是字符串，表示数据库的名字，如果指定的数据不存在，就会创建新的数据库，第二个是整数，表示数据库版本，如果省略，</span></span><br><span class="line"><span class="comment">// indexedDB.open()返回一个IDBRequest对象。这个对象通过三个事件error,success,upgradeneeded 处理数据库的操作结果</span></span><br><span class="line"><span class="comment">// error 事件表示打开数据库失败</span></span><br><span class="line">request.<span class="property">onerror</span> = <span class="keyword">function</span>(<span class="params">event</span>) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;数据库打开失败&#x27;</span>)</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// success 事件表示成功打开的数据</span></span><br><span class="line"><span class="keyword">var</span> db</span><br><span class="line">request.<span class="property">onsuccess</span> = <span class="keyword">function</span>(<span class="params">event</span>) &#123;</span><br><span class="line">  db.<span class="property">request</span>.<span class="property">result</span></span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;数据库打开成功&#x27;</span>)</span><br><span class="line">&#125; </span><br><span class="line"><span class="comment">// success 事件表示成功打开的数据 此时通过request对象的result属性拿到数据库对象</span></span><br><span class="line"><span class="keyword">var</span> db</span><br><span class="line">request.<span class="property">onsuccess</span> = <span class="keyword">function</span>(<span class="params">event</span>) &#123;</span><br><span class="line">  db.<span class="property">request</span>.<span class="property">result</span></span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;数据库打开成功&#x27;</span>)</span><br><span class="line">&#125; </span><br><span class="line"><span class="comment">// upgradeneeded 事件如果指定的版本号大于数据的实际版本号，就会发生数据库升级事件 此时通过request对象的result属性拿到数据库对象</span></span><br><span class="line"><span class="keyword">var</span> db;</span><br><span class="line">request.<span class="property">onupgradeneeded</span> = <span class="keyword">function</span> (<span class="params">event</span>) &#123;</span><br><span class="line">  db = event.<span class="property">target</span>.<span class="property">result</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>新建数据库</p>
+<p>新建数据库和打开数据库是同一个操作，如果指定的数据库不存在就会创建，后续的操作主要是在<code>upgradeneeded</code>事件的监听函数里面完成，因为这时版本从无到有，所以会触发这个事件</p>
+<p>通常新建数据库之后，第一件事是新建对象仓库（即新建表）</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">request.<span class="property">onupgradeneeded</span> = <span class="keyword">function</span>(<span class="params">event</span>) &#123;</span><br><span class="line">  db = event.<span class="property">target</span>.<span class="property">result</span></span><br><span class="line">  <span class="keyword">var</span> objectStore = db.<span class="title function_">createObjectStore</span>(<span class="string">&#x27;person&#x27;</span>, &#123;<span class="attr">keyPath</span>: <span class="string">&#x27;id&#x27;</span>&#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>上述代码，数据库新建成功之后，新增一张叫做person的表格，主键是id</p>
+<p>更好的写法是先判断一下这张表格是否存在，如果不存在再新建</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">request.<span class="property">onupgradeneeded</span> = <span class="keyword">function</span> (<span class="params">event</span>) &#123;</span><br><span class="line">  db = event.<span class="property">target</span>.<span class="property">result</span></span><br><span class="line">  <span class="keyword">var</span> objectStore;</span><br><span class="line">  <span class="keyword">if</span>(!db.<span class="property">objectStoreNames</span>.<span class="title function_">contains</span>(<span class="string">&#x27;person&#x27;</span>)) &#123;</span><br><span class="line">    objectStore = db.<span class="title function_">createObjectStore</span>(<span class="string">&#x27;person&#x27;</span>, &#123;<span class="attr">keyPath</span>: <span class="string">&#x27;id&#x27;</span>&#125;)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>如果数据记录里面没有适合主键的属性，那么可以让indexedDB自动生成主键</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> objectStore = db.<span class="title function_">createObjectStore</span>(<span class="string">&#x27;person&#x27;</span>, &#123;<span class="attr">autoIncrement</span>: <span class="literal">true</span>&#125;)</span><br></pre></td></tr></table></figure>
+<p>新建对象仓库之后，可以新建索引</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">request.<span class="property">onupgradeneeded</span> = <span class="keyword">function</span>(<span class="params">event</span>) &#123;</span><br><span class="line">  db = event.<span class="property">target</span>.<span class="property">result</span></span><br><span class="line">  <span class="keyword">var</span> objectStore = db.<span class="title function_">createObejctStore</span>(<span class="string">&#x27;person&#x27;</span>, &#123;<span class="attr">keyPath</span>: <span class="string">&#x27;id&#x27;</span>&#125;)</span><br><span class="line">  objectStore.<span class="title function_">createIndex</span>(<span class="string">&#x27;name&#x27;</span>, <span class="string">&#x27;name&#x27;</span>, &#123;<span class="attr">unique</span>: <span class="literal">false</span>&#125;)</span><br><span class="line">  objectStore.<span class="title function_">createIndex</span>(<span class="string">&#x27;email&#x27;</span>, <span class="string">&#x27;email&#x27;</span>, &#123;<span class="attr">unique</span>: <span class="literal">false</span>&#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>新增数据</p>
+<p>新增数据指的是向对象仓库写入数据记录，这需要通过事务完成</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">add</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">var</span> request = db.<span class="title function_">transaction</span>([<span class="string">&#x27;person&#x27;</span>], <span class="string">&#x27;readwrite&#x27;</span>)</span><br><span class="line">    .<span class="title function_">objectStore</span>(<span class="string">&#x27;person&#x27;</span>).<span class="title function_">add</span>(&#123;<span class="attr">id</span>: <span class="number">1</span>, <span class="attr">name</span>: <span class="string">&#x27;张三&#x27;</span>, <span class="string">&#x27;age&#x27;</span>: <span class="number">24</span>, <span class="attr">email</span>: <span class="string">&#x27;zhangsan@example.com&#x27;</span>&#125;)</span><br><span class="line"></span><br><span class="line">  request.<span class="property">onsuccess</span> = <span class="keyword">function</span> (<span class="params">event</span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;数据写入成功&quot;</span>)</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  request.<span class="property">onerror</span> = <span class="keyword">function</span>(<span class="params">event</span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;数据写入失败&quot;</span>)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="title function_">add</span>()</span><br></pre></td></tr></table></figure>
+<p>写入数据需要新建一个事务，新建事务时必须指定表格名称和操作模式(“只读”,”读写”)，新建事务后，通过<code>IDBTransaction.objectStore(name)</code>方法拿到IDBObjectStore对象，在通过表格对象的add()方法，向表格写入一条数据</p>
+<p>写入是一个异步操作，通过监听连接对象的<code>success</code>事件和<code>error</code>事件，了解事件是否写入成功</p>
+</li>
+<li><p>读取数据</p>
+<p>读取数据也是通过事务完成</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">read</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">var</span> transaction = db.<span class="title function_">transaction</span>([<span class="string">&#x27;person&#x27;</span>])</span><br><span class="line">  <span class="keyword">var</span> objectStore = transaction.<span class="title function_">objectStore</span>(<span class="string">&#x27;person&#x27;</span>)</span><br><span class="line">  <span class="comment">// objectStore.get(1) 参数是主键的值</span></span><br><span class="line">  <span class="keyword">var</span> request  = objectStore.<span class="title function_">get</span>(<span class="number">1</span>)</span><br><span class="line"></span><br><span class="line">  request.<span class="property">onerror</span> = <span class="keyword">function</span>(<span class="params">event</span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;事务失败&quot;</span>)</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  request.<span class="property">onsuccess</span> = <span class="keyword">function</span>(<span class="params">event</span>) [</span><br><span class="line">    <span class="keyword">if</span>(request.<span class="property">result</span>) &#123;</span><br><span class="line">      <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;name:&#x27;</span> + request.<span class="property">result</span>.<span class="property">name</span>)</span><br><span class="line">      <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;age:&#x27;</span> + request.<span class="property">result</span>.<span class="property">age</span>)</span><br><span class="line">      <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;email:&#x27;</span> + request.<span class="property">result</span>.<span class="property">email</span>)</span><br><span class="line">    &#125; <span class="keyword">else</span>  &#123;</span><br><span class="line">      <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;没有获取到数据&#x27;</span>)</span><br><span class="line">    &#125;</span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li><p>遍历数据</p>
+<p>遍历数据表格的所有记录，要使用指针对象IDBCursor</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">readAll</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">var</span> objectStore = db.<span class="title function_">transaction</span>(<span class="string">&#x27;person&#x27;</span>).<span class="title function_">objectStore</span>(<span class="string">&#x27;person&#x27;</span>)</span><br><span class="line"></span><br><span class="line">  objectStore.<span class="title function_">openCursor</span>().<span class="property">onsuccess</span> = <span class="keyword">function</span>(<span class="params">event</span>) &#123;</span><br><span class="line">    <span class="keyword">var</span> cursor = event.<span class="property">target</span>.<span class="property">result</span></span><br><span class="line">    <span class="keyword">if</span>(cursor) &#123;</span><br><span class="line">      <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;Id: &#x27;</span> + cursor.<span class="property">key</span>);</span><br><span class="line">      <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;Name: &#x27;</span> + cursor.<span class="property">value</span>.<span class="property">name</span>);</span><br><span class="line">      <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;Age: &#x27;</span> + cursor.<span class="property">value</span>.<span class="property">age</span>);</span><br><span class="line">      <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;Email: &#x27;</span> + cursor.<span class="property">value</span>.<span class="property">email</span>)</span><br><span class="line">      cusor.<span class="title function_">continue</span>()</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;没有更多数据了！&#x27;</span>)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_">readAll</span>()</span><br></pre></td></tr></table></figure>
+<p>上述代码中，新建指针对象的openCursor()方法是一个异步操作，所以要监听success时间</p>
+</li>
+<li><p>更新数据</p>
+<p>更新数据用IDBObject.put()方法</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">update</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">var</span> request = db.<span class="title function_">transaction</span>([<span class="string">&#x27;person&#x27;</span>], <span class="string">&#x27;readwrite&#x27;</span>)</span><br><span class="line">    .<span class="title function_">objectStore</span>(<span class="string">&#x27;person&#x27;</span>)</span><br><span class="line">    .<span class="title function_">put</span>(&#123;<span class="attr">id</span>: <span class="number">1</span>, <span class="attr">name</span>: <span class="string">&#x27;李四&#x27;</span>， <span class="attr">age</span>: <span class="number">35</span>, <span class="attr">email</span>: <span class="string">&#x27;lisi@example.com&#x27;</span>&#125;)</span><br><span class="line"></span><br><span class="line">  request.<span class="property">onsuccess</span> = <span class="keyword">function</span> (<span class="params">event</span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;数据更新成功&#x27;</span>)</span><br><span class="line">  &#125;</span><br><span class="line">  request.<span class="property">onerror</span> = <span class="keyword">function</span>(<span class="params">event</span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;数据更新失败&#x27;</span>)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="title function_">update</span>()</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>删除数据</p>
+<p>IDBOjectStore.delete()方法用于删除记录</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">remove</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">var</span> request = db.<span class="title function_">transaction</span>([<span class="string">&#x27;person&#x27;</span>], <span class="string">&#x27;readwrite&#x27;</span>)</span><br><span class="line">    .<span class="title function_">objectStore</span>(<span class="string">&#x27;person&#x27;</span>)</span><br><span class="line">    .<span class="title function_">delete</span>(<span class="number">1</span>)</span><br><span class="line">  request.<span class="property">onsuccess</span> = <span class="keyword">function</span> (<span class="params">event</span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;数据删除成功&#x27;</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_">remove</span>()</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使用索引<br>索引的意义在于，可以让你搜索任意字段，也就是说从任意字段拿到数据记录。如果不建立索引，默认只能搜索主键（即从主键取值）</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">objectStore.<span class="title function_">createIndex</span>(<span class="string">&#x27;name&#x27;</span>, <span class="string">&#x27;name&#x27;</span>, &#123; <span class="attr">unique</span>: <span class="literal">false</span> &#125;);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> transaction = db.<span class="title function_">transaction</span>([<span class="string">&#x27;person&#x27;</span>], <span class="string">&#x27;readonly&#x27;</span>);</span><br><span class="line"><span class="keyword">var</span> store = transaction.<span class="title function_">objectStore</span>(<span class="string">&#x27;person&#x27;</span>);</span><br><span class="line"><span class="keyword">var</span> index = store.<span class="title function_">index</span>(<span class="string">&#x27;name&#x27;</span>);</span><br><span class="line"><span class="keyword">var</span> request = index.<span class="title function_">get</span>(<span class="string">&#x27;李四&#x27;</span>);</span><br><span class="line"></span><br><span class="line">request.<span class="property">onsuccess</span> = <span class="keyword">function</span> (<span class="params">e</span>) &#123;</span><br><span class="line">  <span class="keyword">var</span> result = e.<span class="property">target</span>.<span class="property">result</span>;</span><br><span class="line">  <span class="keyword">if</span> (result) &#123;</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>myself understand</strong></p>
+<ul>
+<li><p>使用 <code>window.indexedDB.open(databaseName, version)</code> 创建数据库的时候如果数据库不存在，会触发 <code>onupgradeneeded</code> 方法</p>
+</li>
+<li><p>如果 创建数据库的时候数据库已存在, 会触发 <code>onsuccess</code>方法</p>
+</li>
+<li><p>在实际应用中，我们应该先触发一次<code>onupgradeneeded</code>来创建数据库和我们所需要的表</p>
+</li>
+<li><p>然后在<code>onsuccess</code>方法中实现自己想要实现的方法</p>
+</li>
+<li><p>表格的增删一般在数据库版本变更的时候操作 即在<code>onupgradeneeded</code>方法中</p>
+</li>
+<li><p>数据的增删查等操作一般在<code>onsuccess</code>方法中实现，此时不能涉及到数据库版本变更，否则会报错</p>
+</li>
+</ul>
+</li>
+</ul>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">Author: </span><span class="post-copyright-info"><a href="https://lxxstar987.gitee.io/lxx1997.github.io">lxx</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">Link: </span><span class="post-copyright-info"><a href="https://lxxstar987.gitee.io/lxx1997.github.io/2020/07/22/browser-storage-study/">https://lxxstar987.gitee.io/lxx1997.github.io/2020/07/22/browser-storage-study/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/lxx1997.github.io/tags/browser/">browser</a><a class="post-meta__tags" href="/lxx1997.github.io/tags/localStorage/">localStorage</a><a class="post-meta__tags" href="/lxx1997.github.io/tags/indexedDB/">indexedDB</a></div><div class="post_share"><div class="social-share" data-image="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/gh/overtrue/share.js@master/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/lxx1997.github.io/2020/07/29/svg-study-01/"><img class="prev-cover" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="onerror=null;src='/lxx1997.github.io/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">Previous Post</div><div class="prev_info">矢量图形 SVG 学习之路 --- 基础版</div></div></a></div><div class="next-post pull-right"><a href="/lxx1997.github.io/2020/06/29/typescript-study-05/"><img class="next-cover" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="onerror=null;src='/lxx1997.github.io/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">Next Post</div><div class="next_info">TypeScript 学习之路进阶版 - 扩展</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/lxx1997.github.io/img/avatar.png" onerror="this.onerror=null;this.src='/lxx1997.github.io/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">lxx</div><div class="author-info__description">前端小菜鸟,努力深造</div></div><div class="card-info-data site-data is-center"><a href="/lxx1997.github.io/archives/"><div class="headline">Articles</div><div class="length-num">114</div></a><a href="/lxx1997.github.io/tags/"><div class="headline">Tags</div><div class="length-num">79</div></a><a href="/lxx1997.github.io/categories/"><div class="headline">Categories</div><div class="length-num">9</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>Announcement</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>Catalog</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B5%8F%E8%A7%88%E5%99%A8%E5%AD%98%E5%82%A8%E6%96%B9%E5%BC%8F"><span class="toc-number">1.</span> <span class="toc-text">浏览器存储方式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Cookie"><span class="toc-number">2.</span> <span class="toc-text">Cookie</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Web-Storage"><span class="toc-number">3.</span> <span class="toc-text">Web Storage</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#indexedDB"><span class="toc-number">4.</span> <span class="toc-text">indexedDB</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Post</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/lxx1997.github.io/2021/09/14/ssr-nextjs-01/" title="服务端 渲染 - nextjs"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/lxx1997.github.io/img/404.jpg'" alt="服务端 渲染 - nextjs"/></a><div class="content"><a class="title" href="/lxx1997.github.io/2021/09/14/ssr-nextjs-01/" title="服务端 渲染 - nextjs">服务端 渲染 - nextjs</a><time datetime="2021-09-14T14:31:56.000Z" title="Created 2021-09-14 22:31:56">2021-09-14</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/lxx1997.github.io/2021/08/15/threeJs-study-api/" title="threeJs 学习之路 - API 及 参数传递"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/lxx1997.github.io/img/404.jpg'" alt="threeJs 学习之路 - API 及 参数传递"/></a><div class="content"><a class="title" href="/lxx1997.github.io/2021/08/15/threeJs-study-api/" title="threeJs 学习之路 - API 及 参数传递">threeJs 学习之路 - API 及 参数传递</a><time datetime="2021-08-15T01:53:24.000Z" title="Created 2021-08-15 09:53:24">2021-08-15</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/lxx1997.github.io/2021/08/15/threeJs-study-01/" title="threeJs 学习之路 - 创建画布及绘制图形"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/lxx1997.github.io/img/404.jpg'" alt="threeJs 学习之路 - 创建画布及绘制图形"/></a><div class="content"><a class="title" href="/lxx1997.github.io/2021/08/15/threeJs-study-01/" title="threeJs 学习之路 - 创建画布及绘制图形">threeJs 学习之路 - 创建画布及绘制图形</a><time datetime="2021-08-15T01:38:18.000Z" title="Created 2021-08-15 09:38:18">2021-08-15</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/lxx1997.github.io/2021/06/14/design-parttern-01/" title="JavaScript 设计模式联系  -  创建型设计模式"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/lxx1997.github.io/img/404.jpg'" alt="JavaScript 设计模式联系  -  创建型设计模式"/></a><div class="content"><a class="title" href="/lxx1997.github.io/2021/06/14/design-parttern-01/" title="JavaScript 设计模式联系  -  创建型设计模式">JavaScript 设计模式联系  -  创建型设计模式</a><time datetime="2021-06-14T10:25:20.000Z" title="Created 2021-06-14 18:25:20">2021-06-14</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/lxx1997.github.io/2021/05/04/window-postMessage%E8%B7%A8%E5%9F%9F%E7%9A%84%E4%BD%BF%E7%94%A8%E6%96%B9%E5%BC%8F/" title="window.postMessage跨域的使用方式"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/lxx1997.github.io/img/404.jpg'" alt="window.postMessage跨域的使用方式"/></a><div class="content"><a class="title" href="/lxx1997.github.io/2021/05/04/window-postMessage%E8%B7%A8%E5%9F%9F%E7%9A%84%E4%BD%BF%E7%94%A8%E6%96%B9%E5%BC%8F/" title="window.postMessage跨域的使用方式">window.postMessage跨域的使用方式</a><time datetime="2021-05-04T15:23:18.000Z" title="Created 2021-05-04 23:23:18">2021-05-04</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2022 By lxx</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Read Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Switch Between Light And Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle between single-column and double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="Setting"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table Of Contents"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="Back To Top"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/lxx1997.github.io/js/utils.js"></script><script src="/lxx1997.github.io/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><script src="/lxx1997.github.io/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/lxx1997.github.io/live2dw/assets/kesyoban.model.json"},"display":{"position":"left","width":300,"height":300},"mobile":{"show":false},"log":false});</script></body></html>

