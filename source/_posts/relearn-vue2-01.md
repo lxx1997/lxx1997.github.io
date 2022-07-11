@@ -43,3 +43,13 @@ export default {
 5. v-for 遍历对象时 `v-for="(value, name, index) in obj"` 三个值 分别为 值，键，和 索引
 
 6. vue 中可以使用 template 标签，该标签类似 react 中的`<></>`和`React.Fragment`,在实际渲染中并不会被渲染出来
+
+7. 如果我们想要在点击事件中访问原始的 dom 时间，可以将特殊的变量 `$event` 传到方法中
+
+8. 事件修饰符
+  * `.stop`  阻止事件冒泡
+  * `.prevent`  阻止默认事件
+  * `.capture`  事件捕获的时候触发，如果点击的是子元素，会先于子元素事件触发
+  * `.self`  只有当 `event.target` 是元素自身时触发，点击子元素时不会触发
+  * `.once`  只会触发一次
+  * `.passive`  和 `.prevent` 相反，不会阻止默认事件触发
