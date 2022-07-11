@@ -66,7 +66,8 @@ echo changed arguments in react-snap
     ],
     "puppeteerArgs": [
       "--no-sandbox",
-      "--disable-setuid-sandbox"
+      "--disable-setuid-sandbox",
+      "--disable-web-security" // 允许 接口跨域进行请求
     ],
     "viewport": { // 预渲染的页面宽高，可以控制移动端适配和web端适配
       "width": 1400,

@@ -53,3 +53,29 @@ export default {
   * `.self`  只有当 `event.target` 是元素自身时触发，点击子元素时不会触发
   * `.once`  只会触发一次
   * `.passive`  和 `.prevent` 相反，不会阻止默认事件触发
+
+  **使用修饰符的时候，顺序很重要，代码会以同样的顺序产生，例如`v-on:click.prevent.self` 会阻止所有点击，而 `v-on:click.slef.prevent` 只会阻止元素对自身的点击**
+
+8. 按键修饰符
+  * .enter
+  * .tab
+  * .delete (捕获“删除”和“退格”键)
+  * .esc
+  * .space
+  * .up
+  * .down
+  * .left
+  * .right
+  * 支持按键码
+  * 可以通过全局的 `config.keyCodes` 自定义按键修饰符别名
+  ~~~js
+    Vue.config.keyCodes.f1 = 112
+  ~~~
+
+9. 系统修饰键 (_修饰键在和其他事件一起使用的时候，需要同时触发才行，否则并不会单独触发修饰键_)
+  * .ctrl
+  * .alt
+  * .shift
+  * .meta
+
+10. `.exact` 精确修饰符，允许我们控制精确的系统修饰符组合触发的事件
