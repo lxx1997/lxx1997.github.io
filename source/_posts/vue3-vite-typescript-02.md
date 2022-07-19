@@ -149,9 +149,9 @@ __传参__
       }
       </script>
     ~~~
-  ![vue3-toRefs-code](/lxx1997.github.io/assets/vue3/vue3-toRefs-code.png)
+  ![vue3-toRefs-code](/assets/vue3/vue3-toRefs-code.png)
   使用 toRefs 解构 props 的时候 如果想要直接访问 需要访问其 value 属性，下面是打印出来的解构出来的值,最后需要使用 return 抛出需要渲染和使用的变量及方法
-  ![vue3-toRefs-props](/lxx1997.github.io/assets/vue3/vue3-toRefs-props.png)
+  ![vue3-toRefs-props](/assets/vue3/vue3-toRefs-props.png)
 
   2. __context__ 暴露了三个组件的 `property` (`attrs`, `slots`, `emit`) 
 
@@ -183,7 +183,7 @@ __传参__
         },
       </script>
     ~~~
-  ![vue3-toRefs-context](/lxx1997.github.io/assets/vue3/vue3-toRefs-context.png)
+  ![vue3-toRefs-context](/assets/vue3/vue3-toRefs-context.png)
 
 因此在执行 `setup` 的时候组件实例还未被创建，只能访问 `props`, `attrs`, `slots`, `emit`实例，无法访问 `data`, `computed`, `methods`
 

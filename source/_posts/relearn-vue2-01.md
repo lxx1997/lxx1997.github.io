@@ -1,12 +1,13 @@
 ---
 title: 重新学习vue2 - 发现隐藏其中的细节 - part1
-cover: /assets/cover/20200225A1295.jpg
+cover: /assets/cover/1625533619134.jpg
 date: 2022-07-07 15:56:07
 updated: 2022-07-07 15:56:07
 categories:
 tags:
   - vue
   - JavaScript
+  - relearn
 ---
 1. computed 属性默认是只有 getter 属性的，也就是说我们只能获取到computed 属性的值，但是无法修改它，但是我们可以手动的设置 setter 属性，这样就可以手动赋值了
     ~~~js
@@ -176,3 +177,177 @@ export default {
         </template>
         ~~~
 
+24. 子组件可以通过 `$root` 来访问和修改根组件的实例及方法
+
+25. `provide`, `inject`
+
+    **`provide`** 选项允许和指定提供给后代组件的数据和方法
+
+    ~~~js
+      provide: function() {
+        return {
+          a: function() {},
+          b: 0
+        }
+      }
+    ~~~
+
+    **`inject`** 允许子元素接受 `provide` 提供的 `provide`
+
+    ~~~js
+      inject: ['a', 'b']
+    ~~~
+
+    但是出于设计考虑， 这些数据不是响应式的，而且会对重构及代码复用有很大的影响
+
+26. `X-Template` `x-template` 需要定义在 Vue 所属的 DOM 元素外。
+    ~~~html
+      <script type="text/x-template" id="hello-world-template">
+        <p>Hello hello hello</p>
+      </script>
+    ~~~
+    ~~~js
+      Vue.component('hello-world', {
+        template: '#hello-world-template'
+      })
+    ~~~
+
+27. `transition` 过渡动画
+    * `v-enter` 定义进入过渡的开始状态。在元素被插入之前生效，在元素被插入之后的下一帧移除
+    * `v-enter-active` 定义进入过渡生效时的状态。在整个进入过渡的阶段中应用，在元素被插入之前生效，在过渡/动画完成之后移除。这个类可以被用来定义进入过渡的过程时间，延迟和曲线函数。
+    * `v-enter-to` 定义进入过渡的结束状态。在元素被插入之后下一帧生效 (与此同时 v-enter 被移除)，在过渡/动画完成之后移除。
+    * `v-leave` 定义离开过渡的开始状态。在离开过渡被触发时立刻生效，下一帧被移除。
+    * `v-leave-active` 定义离开过渡生效时的状态。在整个离开过渡的阶段中应用，在离开过渡被触发时立刻生效，在过渡/动画完成之后移除。这个类可以被用来定义离开过渡的过程时间，延迟和曲线函数。
+    * `v-leave-to` 定义离开过渡的结束状态。在离开过渡被触发之后下一帧生效 (与此同时 v-leave 被删除)，在过渡/动画完成之后移除。
+
+    ![vue-transition](/assets/blogImg/vue-transition.png "vue-transition")
+
+    **自定义动画类名**
+
+    * `enter-class`
+    * `enter-active-class`
+    * `enter-to-class`
+    * `leave-class`
+    * `leave-active-class`
+    * `leave-to-class`
+
+    **显性的过渡持续时间**
+
+    `<transition :duration="1000" />`
+    
+    `<transition :duration="{enter: 500, leave: 800}" />`
+
+    **JavaScript 钩子**
+
+    ~~~html
+      <transition
+        v-on:before-enter="beforeEnter"
+        v-on:enter="enter"
+        v-on:after-enter="afterEnter"
+        v-on:enter-cancelled="enterCancelled"
+
+        v-on:before-leave="beforeLeave"
+        v-on:leave="leave"
+        v-on:after-leave="afterLeave"
+        v-on:leave-cancelled="leaveCancelled"
+      >
+      </transition>
+    ~~~
+    ~~~js
+      // ...
+      methods: {
+        // --------
+        // 进入中
+        // --------
+
+        beforeEnter: function (el) {
+          // ...
+        },
+        // 当与 CSS 结合使用时
+        // 回调函数 done 是可选的
+        enter: function (el, done) {
+          // ...
+          done()
+        },
+        afterEnter: function (el) {
+          // ...
+        },
+        enterCancelled: function (el) {
+          // ...
+        },
+
+        // --------
+        // 离开时
+        // --------
+
+        beforeLeave: function (el) {
+          // ...
+        },
+        // 当与 CSS 结合使用时
+        // 回调函数 done 是可选的
+        leave: function (el, done) {
+          // ...
+          done()
+        },
+        afterLeave: function (el) {
+          // ...
+        },
+        // leaveCancelled 只用于 v-show 中
+        leaveCancelled: function (el) {
+          // ...
+        }
+      }
+    ~~~
+
+
+28. `mixins` 混入选项合并
+    * 数组对象会在内部进行合并，例如 `data`,属性名发生冲突时，以组件内属性优先
+    * 钩子函数合并成数组，都会被调用，混入对象的钩子函数优先于组件内钩子函数调用
+    * 值为对象时,将会被合并成为一个对象，且组件对象的键值对优先级更高
+
+    **Vue.config.optionMergeStrategies** 可以通过次宣讲自定义逻辑合并逻辑
+
+29. 自定义指令
+    ~~~js
+      directives: {
+        focus: {
+          inserted: function(el) {
+            el.focus()
+          }
+        }
+      }
+    ~~~
+    ~~~html
+      <input v-focus />
+    ~~~
+
+    **钩子函数**
+    * bind 绑定时调用，只调用一次
+    * inserted 被绑定元素插入父节点时调用
+    * update  所在组件更新时调用，**可能发生在子组件更新之前**
+    * componentUpdated 所在组件和子组件全部更新后调用
+    * unbind 指令与元素解绑时调用
+
+    **钩子函数参数**
+    * el 绑定的元素，可以用来操作 DOM
+    * binding
+        * name 指令名
+        * value 指令绑定的值
+        * oldValue  制定绑定的前一个值
+        * expression 字符串形式的指令表达式 `="1 + 1"`
+        * arg 传给指令的参数 `:foo`
+        * modifiers 指令修饰符 `.foo`
+    * vnode 当前虚拟节点
+    * oldVnode 上一个虚拟节点
+
+30. `functional` 函数式组件
+    函数式组件没有响应式数据，也没有实例（没有 this 上下文）
+    相反会有一个 `context` 参数 包含如下字段
+    * props
+    * children
+    * slots
+    * scopedSlots
+    * data
+    * parent
+    * listeners
+    * injections

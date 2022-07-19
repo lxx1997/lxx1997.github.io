@@ -181,7 +181,7 @@ $emit 触发 $once 监听事件
 
 ##### 源码
 
-[参考地址](/lxx1997.github.io/2021/01/27/vue-learn-api-with-源码-04/#el，template-render)
+[参考地址](/2021/01/27/vue-learn-api-with-源码-04/#el，template-render)
 
 
 ##### 使用
@@ -210,7 +210,7 @@ $emit 触发 $once 监听事件
 
 #### $nextTick
 
-  [Vue.nextTick](/lxx1997.github.io/2021/01/20/vue-learn-api-with-源码-02/#Vue-nextTick-callback-Function-context-Object)
+  [Vue.nextTick](/2021/01/20/vue-learn-api-with-源码-02/#Vue-nextTick-callback-Function-context-Object)
 
 #### $destroy
 

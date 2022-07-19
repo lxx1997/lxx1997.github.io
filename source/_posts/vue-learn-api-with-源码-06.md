@@ -422,8 +422,8 @@ $watch 方法会返回一个取消侦听函数，但是如果包含 immediate �
  
 
 #### $set
-  参考[Vue.set](/lxx1997.github.io/2021/01/20/vue-learn-api-with-源码-02/#Vue-set-target-Object-Array-index-Number-string-value-any)
+  参考[Vue.set](/2021/01/20/vue-learn-api-with-源码-02/#Vue-set-target-Object-Array-index-Number-string-value-any)
 
 #### $delete
 
-  参考[Vue.delete](/lxx1997.github.io/2021/01/20/vue-learn-api-with-源码-02/#Vue-delete-target-Object-Array-index-Number-string)
+  参考[Vue.delete](/2021/01/20/vue-learn-api-with-源码-02/#Vue-delete-target-Object-Array-index-Number-string)

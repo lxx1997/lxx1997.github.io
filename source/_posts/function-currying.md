@@ -9,7 +9,7 @@ tags:
 cover: '/assets/cover/20200225A1295.jpg'
 ---
 [参考文章](https://www.cnblogs.com/pigtail/p/3447660.html)
-> [函数反柯里化](/lxx1997.github.io/2020/12/17/fucntion-uncurrying/)
+> [函数反柯里化](/2020/12/17/fucntion-uncurrying/)
 
 函数柯里化其实本身是固定一个可以预期的参数，并返回一个特定的函数，处理批特定的需求，增加了函数的适用性，降低了函数的适用范围
 

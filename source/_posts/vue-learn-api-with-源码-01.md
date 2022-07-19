@@ -147,7 +147,7 @@ Vue 的全局配置参数是存放在 `config` 里面的，我们可以通过修
       }
     ~~~
     **margeData 方法**
-    [set方法详解](/lxx1997.github.io/2020/12/15/vue-源码常用方法/#set)
+    [set方法详解](/2020/12/15/vue-源码常用方法/#set)
     ~~~js
       function mergeData (to, from) {
         if (!from) { return to }

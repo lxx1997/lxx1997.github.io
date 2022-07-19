@@ -49,7 +49,7 @@ Vue 在合并选项的时候 判断力 mixins 属性是否存在，如果存在�
 #### extends
 
 ##### 源码
-具体理解可以参考 [Vue.extend](/lxx1997.github.io/2021/01/20/vue-learn-api-with-源码-02/#Vue-extend)
+具体理解可以参考 [Vue.extend](/2021/01/20/vue-learn-api-with-源码-02/#Vue-extend)
 ~~~js
   if (child.extends) {
     parent = mergeOptions(parent, child.extends, vm);

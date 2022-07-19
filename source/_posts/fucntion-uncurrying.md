@@ -11,7 +11,7 @@ cover: '/assets/cover/20200225A1295.jpg'
 
 [参考链接](https://segmentfault.com/a/1190000012912503)
 
-> [函数柯里化](/lxx1997.github.io/2020/12/17/fucntion-currying/)
+> [函数柯里化](/2020/12/17/fucntion-currying/)
 
 #### 含义
 

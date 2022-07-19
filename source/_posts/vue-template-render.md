@@ -47,7 +47,7 @@ cover: '/assets/cover/20200225A1295.jpg'
     htmlMap('img') // false
   ~~~
 
-  > [函数柯里化](/lxx1997.github.io/2020/12/17/fucntion-currying/)
+  > [函数柯里化](/2020/12/17/fucntion-currying/)
 
 2. 虚拟 DOM 的 render 方法
 

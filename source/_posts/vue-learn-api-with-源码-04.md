@@ -208,7 +208,7 @@ new Vue({
 #### directives
 
 ##### 源码
-请参照 [Vue.directive](/lxx1997.github.io/2021/01/20/vue-learn-api-with-%E6%BA%90%E7%A0%81-02/#Vue-directive-id-string-definition-Function-Object)
+请参照 [Vue.directive](/2021/01/20/vue-learn-api-with-%E6%BA%90%E7%A0%81-02/#Vue-directive-id-string-definition-Function-Object)
 
 ##### 使用
 
@@ -226,7 +226,7 @@ export default {
 #### filters
 
 ##### 源码
-请参照 [Vue.filter](/lxx1997.github.io/2021/01/20/vue-learn-api-with-%E6%BA%90%E7%A0%81-02/#Vue-filter-id-string-definition-Function)
+请参照 [Vue.filter](/2021/01/20/vue-learn-api-with-%E6%BA%90%E7%A0%81-02/#Vue-filter-id-string-definition-Function)
 
 ##### 使用
 
@@ -242,7 +242,7 @@ export default {
 #### components
 
 ##### 源码
-请参照 [Vue.component](/lxx1997.github.io/2021/01/20/vue-learn-api-with-%E6%BA%90%E7%A0%81-02/#Vue-component-id-string-definition-Function-Object)
+请参照 [Vue.component](/2021/01/20/vue-learn-api-with-%E6%BA%90%E7%A0%81-02/#Vue-component-id-string-definition-Function-Object)
 
 ##### 使用
 

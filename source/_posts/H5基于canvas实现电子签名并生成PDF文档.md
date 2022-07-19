@@ -72,7 +72,7 @@ cover: '/assets/cover/20200225A1295.jpg'
 移动端的每个触摸事件对象中都包括了touches这个属性，它用于描述位于屏幕上的所有手指的一个列表，获取当前事件对象我们习惯性的使用event = event.touches[0],而在PC端则不需要这么操作。
 offsetLeft值跟offsetTop值跟父级元素没关系，而是跟其上一级的定位元素(除position:static外的所有定位如fixed,relative,absolute元素)有关系。若上一级定位元素都没有除position:staice外的定位，则这个偏移量是相对于body而言的。
 需要理清移动端事件对象的几个属性，⏬
-![图片](/lxx1997.github.io/assets/blogImg/h5-canvas-electric-sign2pdf-2.jpg)
+![图片](/assets/blogImg/h5-canvas-electric-sign2pdf-2.jpg)
 clientX/clientY: 触摸位置距离当前body可视区域的x,y坐标;
 pageX/pageY: 对于整个页面来说，触摸位置距离body左上角的x,y坐标，包括被scrollTop和scrollLeft的值；
 screenX/screenY: 触摸位置距离显示器左边和顶部的x,y距离。
@@ -80,9 +80,9 @@ screenX/screenY: 触摸位置距离显示器左边和顶部的x,y距离。
 
 
 在签名（touchmove）这个动作过程中，我们需要不断的更新起点位置，否则画出来是这样🔽
-![图片](/lxx1997.github.io/assets/blogImg/h5-canvas-electric-sign2pdf1.jpg)
+![图片](/assets/blogImg/h5-canvas-electric-sign2pdf1.jpg)
 图片其实这个原理和微积分很相似，线段本质上就是由无穷多个小线段组成，宏观一点来看可以把线段当成一个个长度很小的小线段首尾相连构成。所以我一直觉得编程编到最后就是考验一个人的数学能力，交并集、逻辑思维、算法等都能看到数学的身影。最后生成签名如下：图片
-![图片](/lxx1997.github.io/assets/blogImg/h5-canvas-electric-sign2pdf.png)
+![图片](/assets/blogImg/h5-canvas-electric-sign2pdf.png)
 
 生成PDF文档
 html2canvas是一款将HTML代码转换成Canvas的插件，因此需要用一个div包裹住需要打印的内容区域，获得这个dom节点。
@@ -135,7 +135,7 @@ const print = () => {
 选择分页位置
 
 按照上述步骤生成了一份PDF文档，但是当PDF页数有很多的时候，会有这样的问题
-![图片](/lxx1997.github.io/assets/blogImg/h5-canvas-electric-sign2pdf3.png)
+![图片](/assets/blogImg/h5-canvas-electric-sign2pdf3.png)
 可以看到，分页的时候从这段文字这里懒腰截断了。这显然不是我们想要看到的效果，如何解决这个问题呢？🤔
 
 PDF文档页数较少的情况
