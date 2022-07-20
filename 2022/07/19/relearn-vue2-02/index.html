@@ -1,0 +1,155 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>重新学习vue2 - 发现隐藏其中的细节 - part2 | SoulReader</title><meta name="keywords" content="JavaScript,vue,relearn"><meta name="author" content="lxx,1987607597@qq.com"><meta name="copyright" content="lxx"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="filter(过滤器)  12&lt;p&gt;&amp;#123;&amp;#123; message | capitalize &amp;#125;&amp;#125;&lt;&#x2F;p&gt;&lt;div v-bind:id&#x3D;&quot;rawId | formatId&quot;&gt;&lt;&#x2F;div&gt;  12345filter: &amp;#123;  capitalize: function(val) &amp;#123;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="重新学习vue2 - 发现隐藏其中的细节 - part2">
+<meta property="og:url" content="https://lxx1997.github.io/2022/07/19/relearn-vue2-02/index.html">
+<meta property="og:site_name" content="SoulReader">
+<meta property="og:description" content="filter(过滤器)  12&lt;p&gt;&amp;#123;&amp;#123; message | capitalize &amp;#125;&amp;#125;&lt;&#x2F;p&gt;&lt;div v-bind:id&#x3D;&quot;rawId | formatId&quot;&gt;&lt;&#x2F;div&gt;  12345filter: &amp;#123;  capitalize: function(val) &amp;#123;">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://lxx1997.github.io/assets/cover/1625533619134.jpg">
+<meta property="article:published_time" content="2022-07-19T07:04:48.000Z">
+<meta property="article:modified_time" content="2022-07-19T07:04:48.000Z">
+<meta property="article:author" content="lxx">
+<meta property="article:tag" content="JavaScript">
+<meta property="article:tag" content="vue">
+<meta property="article:tag" content="relearn">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://lxx1997.github.io/assets/cover/1625533619134.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://lxx1997.github.io/2022/07/19/relearn-vue2-02/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":200},
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: 'Just',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '重新学习vue2 - 发现隐藏其中的细节 - part2',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: false,
+  postUpdate: '2022-07-19 15:04:48'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.1.0"><link rel="alternate" href="/atom.xml" title="SoulReader" type="application/atom+xml">
+</head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/image/avatar.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">98</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">73</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">10</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/assets/cover/1625533619134.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">SoulReader</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">重新学习vue2 - 发现隐藏其中的细节 - part2</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2022-07-19T07:04:48.000Z" title="Created 2022-07-19 15:04:48">2022-07-19</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2022-07-19T07:04:48.000Z" title="Updated 2022-07-19 15:04:48">2022-07-19</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="重新学习vue2 - 发现隐藏其中的细节 - part2"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post View:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><ol>
+<li><p><strong>filter(过滤器)</strong></p>
+ <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>&#123;&#123; message | capitalize &#125;&#125;<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">v-bind:id</span>=<span class="string">&quot;rawId | formatId&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+ <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">filter</span>: &#123;</span><br><span class="line">  <span class="attr">capitalize</span>: <span class="keyword">function</span>(<span class="params">val</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> val</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p> <strong>过滤器可以串联，值从左向右传递</strong></p>
+</li>
+</ol>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">Author: </span><span class="post-copyright-info"><a href="https://lxx1997.github.io">lxx</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">Link: </span><span class="post-copyright-info"><a href="https://lxx1997.github.io/2022/07/19/relearn-vue2-02/">https://lxx1997.github.io/2022/07/19/relearn-vue2-02/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/JavaScript/">JavaScript</a><a class="post-meta__tags" href="/tags/vue/">vue</a><a class="post-meta__tags" href="/tags/relearn/">relearn</a></div><div class="post_share"><div class="social-share" data-image="/assets/cover/1625533619134.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/gh/overtrue/share.js@master/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2022/07/19/handredday/leetcode/day-01-731/"><img class="prev-cover" src="/assets/cover/20200225A1295.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">Previous Post</div><div class="prev_info">leetcode 百天解题 - day 01 - 731 我的日程安排表 II</div></div></a></div><div class="next-post pull-right"><a href="/2022/07/13/html-webpack-plugin/"><img class="next-cover" src="/assets/cover/20200225A1295.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">Next Post</div><div class="next_info">html-webpack-plugin 的使用与进阶</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>Related Articles</span></div><div class="relatedPosts-list"><div><a href="/2022/07/07/relearn-vue2-01/" title="重新学习vue2 - 发现隐藏其中的细节 - part1"><img class="cover" src="/assets/cover/1625533619134.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-07-07</div><div class="title">重新学习vue2 - 发现隐藏其中的细节 - part1</div></div></a></div><div><a href="/2022/07/19/handredday/leetcode/day-01-731/" title="leetcode 百天解题 - day 01 - 731 我的日程安排表 II"><img class="cover" src="/assets/cover/20200225A1295.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-07-19</div><div class="title">leetcode 百天解题 - day 01 - 731 我的日程安排表 II</div></div></a></div><div><a href="/2022/07/13/html-webpack-plugin/" title="html-webpack-plugin 的使用与进阶"><img class="cover" src="/assets/cover/20200225A1295.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-07-13</div><div class="title">html-webpack-plugin 的使用与进阶</div></div></a></div><div><a href="/2022/06/24/how-to-make-pagespeed-fast/" title="最全的页面性能优化"><img class="cover" src="/assets/cover/20200225A1295.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-06-24</div><div class="title">最全的页面性能优化</div></div></a></div><div><a href="/2022/04/05/window-IntersectionObserver/" title="window.IntersectionObserver"><img class="cover" src="/assets/cover/20200225A1295.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-04-05</div><div class="title">window.IntersectionObserver</div></div></a></div><div><a href="/2021/09/14/ssr-nextjs-01/" title="服务端 渲染 - nextjs"><img class="cover" src="/assets/cover/20200225A1295.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-09-14</div><div class="title">服务端 渲染 - nextjs</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/image/avatar.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">lxx</div><div class="author-info__description">前端小菜鸟,努力深造</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">98</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">73</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">10</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>Announcement</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Post</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2022/07/19/handredday/leetcode/day-01-731/" title="leetcode 百天解题 - day 01 - 731 我的日程安排表 II"><img src="/assets/cover/20200225A1295.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="leetcode 百天解题 - day 01 - 731 我的日程安排表 II"/></a><div class="content"><a class="title" href="/2022/07/19/handredday/leetcode/day-01-731/" title="leetcode 百天解题 - day 01 - 731 我的日程安排表 II">leetcode 百天解题 - day 01 - 731 我的日程安排表 II</a><time datetime="2022-07-19T13:31:34.000Z" title="Created 2022-07-19 21:31:34">2022-07-19</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/07/19/relearn-vue2-02/" title="重新学习vue2 - 发现隐藏其中的细节 - part2"><img src="/assets/cover/1625533619134.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="重新学习vue2 - 发现隐藏其中的细节 - part2"/></a><div class="content"><a class="title" href="/2022/07/19/relearn-vue2-02/" title="重新学习vue2 - 发现隐藏其中的细节 - part2">重新学习vue2 - 发现隐藏其中的细节 - part2</a><time datetime="2022-07-19T07:04:48.000Z" title="Created 2022-07-19 15:04:48">2022-07-19</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/07/13/html-webpack-plugin/" title="html-webpack-plugin 的使用与进阶"><img src="/assets/cover/20200225A1295.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="html-webpack-plugin 的使用与进阶"/></a><div class="content"><a class="title" href="/2022/07/13/html-webpack-plugin/" title="html-webpack-plugin 的使用与进阶">html-webpack-plugin 的使用与进阶</a><time datetime="2022-07-13T03:19:44.000Z" title="Created 2022-07-13 11:19:44">2022-07-13</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/07/12/web-animation-package/" title="常用的前端动画库"><img src="/assets/cover/20200225A1295.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="常用的前端动画库"/></a><div class="content"><a class="title" href="/2022/07/12/web-animation-package/" title="常用的前端动画库">常用的前端动画库</a><time datetime="2022-07-12T08:58:08.000Z" title="Created 2022-07-12 16:58:08">2022-07-12</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/07/12/2022-second-half-year-task/" title="2022-下半年目标"><img src="/assets/cover/20200225A1295.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="2022-下半年目标"/></a><div class="content"><a class="title" href="/2022/07/12/2022-second-half-year-task/" title="2022-下半年目标">2022-下半年目标</a><time datetime="2022-07-12T02:02:10.000Z" title="Created 2022-07-12 10:02:10">2022-07-12</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2022 By lxx</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Read Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Switch Between Light And Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle between single-column and double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="Setting"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="Back To Top"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/kesyoban.model.json"},"display":{"position":"left","width":300,"height":300},"mobile":{"show":false},"log":false});</script></body></html>
