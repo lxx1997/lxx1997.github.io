@@ -1,0 +1,18 @@
+# 1. 確保你使用 Butterfly 主題
+# 2. 確保你的網站是 https
+# 3. 修改 source/_data/link.yml
+# 4. 按要求新增內容
+#     - name: 博客名
+#       link: 博客地址
+#       avatar: 博客頭像
+#       descr: 博客描述
+# 5. 發起 Pull requests ，合併到 butterfly.js.org 倉庫
+
+
+- class_name: '<i class="fas fa-fan" style="color:#00cccc;padding-right: 0.4rem"></i>示例'
+  class_desc: '<span style="font-style: italic;">最可愛的朋友在這裏</span>'
+  link_list:
+    - name: fanghaimao
+      link: https://fanghaimao.github.io/
+      avatar: https://fanghaimao.github.io/image/header_avatar.jpeg
+      descr: fanghaimao
