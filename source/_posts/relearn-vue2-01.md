@@ -3,6 +3,7 @@ title: 重新学习vue2 - 发现隐藏其中的细节 - part1
 cover: /assets/cover/1625533619134.jpg
 date: 2022-07-07 15:56:07
 updated: 2022-07-07 15:56:07
+comments: true
 categories:
 tags:
   - vue
