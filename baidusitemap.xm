@@ -1,6 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://lxx1997.github.io/2022/07/24/handredday/leetcode/day-05-1184/</loc>
+    <lastmod>2022-07-24</lastmod>
+  </url>
+  <url>
+    <loc>https://lxx1997.github.io/2022/07/23/handredday/leetcode/day-05-13/</loc>
+    <lastmod>2022-07-23</lastmod>
+  </url>
+  <url>
+    <loc>https://lxx1997.github.io/2022/07/22/handredday/leetcode/day-04-8/</loc>
+    <lastmod>2022-07-22</lastmod>
+  </url>
+  <url>
+    <loc>https://lxx1997.github.io/2022/07/21/handredday/leetcode/day-03-814/</loc>
+    <lastmod>2022-07-21</lastmod>
+  </url>
+  <url>
+    <loc>https://lxx1997.github.io/2022/07/20/handredday/leetcode/day-02-1260/</loc>
+    <lastmod>2022-07-20</lastmod>
+  </url>
+  <url>
+    <loc>https://lxx1997.github.io/2022/07/20/hexo-create-categories-pages/</loc>
+    <lastmod>2022-07-20</lastmod>
+  </url>
+  <url>
     <loc>https://lxx1997.github.io/2022/07/19/handredday/leetcode/day-01-731/</loc>
     <lastmod>2022-07-19</lastmod>
   </url>
