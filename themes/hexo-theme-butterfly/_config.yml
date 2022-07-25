@@ -4,7 +4,7 @@
 
 menu:
   Home: / || fas fa-home
-  # Archives: /archives/ || fas fa-archive
+  Archives: /archives/ || fas fa-archive
   Tags: /tags/ || fas fa-tags
   Categories: /categories/ || fas fa-folder-open
   Joy ||fas fa-list:
