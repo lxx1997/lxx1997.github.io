@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://lxx1997.github.io/2022/07/24/handredday/leetcode/day-05-1184/</loc>
+    <loc>https://lxx1997.github.io/2022/07/25/handredday/leetcode/day-07-919/</loc>
+    <lastmod>2022-07-25</lastmod>
+  </url>
+  <url>
+    <loc>https://lxx1997.github.io/2022/07/24/handredday/leetcode/day-06-1184/</loc>
     <lastmod>2022-07-24</lastmod>
   </url>
   <url>
@@ -395,10 +399,6 @@
   <url>
     <loc>https://lxx1997.github.io/2020/12/09/deep-copy-light-copy/</loc>
     <lastmod>2022-03-26</lastmod>
-  </url>
-  <url>
-    <loc>https://lxx1997.github.io/2020/05/14/uni-app-life-cycle/</loc>
-    <lastmod>2022-03-25</lastmod>
   </url>
   <url>
     <loc>https://lxx1997.github.io/2020/05/07/d3-study-20200507/</loc>

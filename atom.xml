@@ -6,7 +6,7 @@
   <link href="https://lxx1997.github.io/atom.xml" rel="self"/>
   
   <link href="https://lxx1997.github.io/"/>
-  <updated>2022-07-24T11:34:47.000Z</updated>
+  <updated>2022-07-25T14:44:26.000Z</updated>
   <id>https://lxx1997.github.io/</id>
   
   <author>
@@ -17,9 +17,36 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>leetcode 百天解题 - day 05 - 1184. 公交站间的距离</title>
-    <link href="https://lxx1997.github.io/2022/07/24/handredday/leetcode/day-05-1184/"/>
-    <id>https://lxx1997.github.io/2022/07/24/handredday/leetcode/day-05-1184/</id>
+    <title>leetcode 百天解题 - day 06 - 919. 完全二叉树插入器</title>
+    <link href="https://lxx1997.github.io/2022/07/25/handredday/leetcode/day-07-919/"/>
+    <id>https://lxx1997.github.io/2022/07/25/handredday/leetcode/day-07-919/</id>
+    <published>2022-07-25T14:44:26.000Z</published>
+    <updated>2022-07-25T14:44:26.000Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="题目名称"><a href="#题目名称" class="headerlink" title="题目名称"></a>题目名称</h2><p>完全二叉树 是每一层（除最后一层外）都是完全填充（即，节点数达到最大）的，并且所有的节点都尽可能地集中在左侧。</p><p>设计一种算法，将一个新节点插入到一个完整的二叉树中，并在插入后保持其完整。</p><p>实现 CBTInserter 类:</p><p>CBTInserter(TreeNode root) 使用头节点为 root 的给定树初始化该数据结构；</p><p>CBTInserter.insert(int v)  向树中插入一个值为 Node.val == val的新节点 TreeNode。使树保持完全二叉树的状态，并返回插入节点 TreeNode 的父节点的值；</p><p>CBTInserter.get_root() 将返回树的头节点。</p><h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><p>输入<br>[“CBTInserter”, “insert”, “insert”, “get_root”]<br>[[[1, 2]], [3], [4], []]</p><p>输出<br>[null, 1, 2, [1, 2, 3, 4]]</p><h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>这道题主要考察树的 <code>广度优先遍历（bfs）</code></p><p>我们需要从树中取出非完全二叉树的节点，所以最重要的就是如何取出这个节点，这里采用的是 广度优先遍历的方法，首先将树根据节点顺序转化成为一个数组，然后在数组中找出第一个不完全二叉树节点</p><p>但是目前由于需要操作的步骤过多，性能较差，有待优化</p><h2 id="答案"><a href="#答案" class="headerlink" title="答案"></a>答案</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> <span class="title class_">CBTInserter</span> = <span class="keyword">function</span>(<span class="params">root</span>) &#123;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">root</span> = root</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">incompleteNode</span> = <span class="title function_">getFirstIncompleteTree</span>(root)</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="title class_">CBTInserter</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">insert</span> = <span class="keyword">function</span>(<span class="params">val</span>) &#123;</span><br><span class="line">    <span class="keyword">if</span>(!<span class="variable language_">this</span>.<span class="property">incompleteNode</span>.<span class="property">left</span>) &#123;</span><br><span class="line">        <span class="variable language_">this</span>.<span class="property">incompleteNode</span>.<span class="property">left</span> = &#123;</span><br><span class="line">            <span class="attr">val</span>: val</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span>(!<span class="variable language_">this</span>.<span class="property">incompleteNode</span>.<span class="property">right</span>) &#123;</span><br><span class="line">        <span class="variable language_">this</span>.<span class="property">incompleteNode</span>.<span class="property">right</span> = &#123;</span><br><span class="line">            <span class="attr">val</span>: val</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">let</span> parent = <span class="variable language_">this</span>.<span class="property">incompleteNode</span></span><br><span class="line">    <span class="keyword">if</span>(<span class="variable language_">this</span>.<span class="property">incompleteNode</span>.<span class="property">left</span> &amp;&amp; <span class="variable language_">this</span>.<span class="property">incompleteNode</span>.<span class="property">right</span>) &#123;</span><br><span class="line">        <span class="variable language_">this</span>.<span class="property">incompleteNode</span> = <span class="title function_">getFirstIncompleteTree</span>(<span class="variable language_">this</span>.<span class="property">root</span>)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> parent.<span class="property">val</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">getFirstIncompleteTree</span>(<span class="params">root</span>) &#123;</span><br><span class="line">    <span class="keyword">let</span> nodeList = <span class="title function_">getTreeNodes</span>([root])</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; nodeList.<span class="property">length</span>; i++) &#123;</span><br><span class="line">        <span class="keyword">let</span> node = <span class="title function_">checkIncompleteTree</span>(nodeList[i])</span><br><span class="line">        <span class="keyword">if</span>(node) <span class="keyword">return</span> nodeList[i]</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">null</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">getTreeNodes</span>(<span class="params">arr = [root]</span>) &#123;</span><br><span class="line">    <span class="keyword">let</span> newArr = [...arr]</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; arr.<span class="property">length</span>; i++) &#123;</span><br><span class="line">        <span class="keyword">let</span> root = arr[i]</span><br><span class="line">        root.<span class="property">left</span> &amp;&amp; newArr.<span class="title function_">push</span>(root.<span class="property">left</span>)</span><br><span class="line">        root.<span class="property">right</span> &amp;&amp; newArr.<span class="title function_">push</span>(root.<span class="property">right</span>)</span><br><span class="line">        <span class="keyword">if</span>(!root.<span class="property">left</span> || !root.<span class="property">right</span>) <span class="keyword">return</span> newArr</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="title function_">getTreeNodes</span>(newArr)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">checkIncompleteTree</span>(<span class="params">node</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> !node.<span class="property">left</span> || !node.<span class="property">right</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="title class_">CBTInserter</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">get_root</span> = <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="variable language_">this</span>.<span class="property">root</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h2 id=&quot;题目名称&quot;&gt;&lt;a href=&quot;#题目名称&quot; class=&quot;headerlink&quot; title=&quot;题目名称&quot;&gt;&lt;/a&gt;题目名称&lt;/h2&gt;&lt;p&gt;完全二叉树 是每一层（除最后一层外）都是完全填充（即，节点数达到最大）的，并且所有的节点都尽可能地集中在左侧。&lt;/p&gt;
+&lt;p</summary>
+      
+    
+    
+    
+    <category term="leetcode" scheme="https://lxx1997.github.io/categories/leetcode/"/>
+    
+    
+    <category term="JavaScript" scheme="https://lxx1997.github.io/tags/JavaScript/"/>
+    
+    <category term="leetcode" scheme="https://lxx1997.github.io/tags/leetcode/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>leetcode 百天解题 - day 06 - 1184. 公交站间的距离</title>
+    <link href="https://lxx1997.github.io/2022/07/24/handredday/leetcode/day-06-1184/"/>
+    <id>https://lxx1997.github.io/2022/07/24/handredday/leetcode/day-06-1184/</id>
     <published>2022-07-24T11:34:47.000Z</published>
     <updated>2022-07-24T11:34:47.000Z</updated>
     
@@ -2312,19 +2339,6 @@
     <category term="uni-app" scheme="https://lxx1997.github.io/tags/uni-app/"/>
     
     <category term="colorui" scheme="https://lxx1997.github.io/tags/colorui/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>uni-app-life-cycle</title>
-    <link href="https://lxx1997.github.io/2020/05/14/uni-app-life-cycle/"/>
-    <id>https://lxx1997.github.io/2020/05/14/uni-app-life-cycle/</id>
-    <published>2020-05-14T02:14:53.000Z</published>
-    <updated>2022-03-25T13:27:13.790Z</updated>
-    
-    
-    
-    
     
   </entry>
   
