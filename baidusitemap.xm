@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://lxx1997.github.io/2022/07/27/handredday/leetcode/day-09-592/</loc>
+    <lastmod>2022-07-27</lastmod>
+  </url>
+  <url>
+    <loc>https://lxx1997.github.io/2022/07/26/handredday/leetcode/day-08-14/</loc>
+    <lastmod>2022-07-26</lastmod>
+  </url>
+  <url>
     <loc>https://lxx1997.github.io/2022/07/25/handredday/leetcode/day-07-919/</loc>
     <lastmod>2022-07-25</lastmod>
   </url>
@@ -403,17 +411,5 @@
   <url>
     <loc>https://lxx1997.github.io/2020/05/07/d3-study-20200507/</loc>
     <lastmod>2021-01-12</lastmod>
-  </url>
-  <url>
-    <loc>https://lxx1997.github.io/2013/09/25/web-worker-learning/</loc>
-    <lastmod>2020-12-16</lastmod>
-  </url>
-  <url>
-    <loc>https://lxx1997.github.io/2014/02/22/thinner-than-1px-border/</loc>
-    <lastmod>2020-12-16</lastmod>
-  </url>
-  <url>
-    <loc>https://lxx1997.github.io/2014/08/14/reduce-http-requests/</loc>
-    <lastmod>2020-12-14</lastmod>
   </url>
 </urlset> 
