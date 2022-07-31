@@ -1,6 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://lxx1997.github.io/2022/07/31/handredday/leetcode/day-13-1161/</loc>
+    <lastmod>2022-07-31</lastmod>
+  </url>
+  <url>
+    <loc>https://lxx1997.github.io/2022/07/30/handredday/leetcode/day-12-15/</loc>
+    <lastmod>2022-07-30</lastmod>
+  </url>
+  <url>
+    <loc>https://lxx1997.github.io/2022/07/29/handredday/leetcode/day-11-593/</loc>
+    <lastmod>2022-07-29</lastmod>
+  </url>
+  <url>
+    <loc>https://lxx1997.github.io/2022/07/28/handredday/leetcode/day-10-1331/</loc>
+    <lastmod>2022-07-28</lastmod>
+  </url>
+  <url>
     <loc>https://lxx1997.github.io/2022/07/27/handredday/leetcode/day-09-592/</loc>
     <lastmod>2022-07-27</lastmod>
   </url>
@@ -94,10 +110,6 @@
   </url>
   <url>
     <loc>https://lxx1997.github.io/2022/07/12/web-animation-package/</loc>
-    <lastmod>2022-07-12</lastmod>
-  </url>
-  <url>
-    <loc>https://lxx1997.github.io/2022/07/12/2022-second-half-year-task/</loc>
     <lastmod>2022-07-12</lastmod>
   </url>
   <url>
