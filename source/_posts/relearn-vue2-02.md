@@ -4,10 +4,11 @@ cover: /assets/cover/1625533619134.jpg
 date: 2022-07-19 15:04:48
 updated: 2022-07-19 15:04:48
 categories:
+    - vue
 tags:
-  - vue
-  - JavaScript
-  - relearn
+    - vue
+    - JavaScript
+    - relearn
 ---
 
 1. **filter(过滤器)**

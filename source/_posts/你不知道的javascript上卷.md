@@ -1,8 +1,10 @@
 ---
 title: 《你不知道的javascript上卷》 知识点摘录
 date: 2020-11-24 13:50:50
+categories:
+    - reading
 tags:
-    - 读后感
+    - reading
 cover: '/assets/cover/20200225A1295.jpg'
 ---
 

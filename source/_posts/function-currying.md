@@ -1,9 +1,10 @@
 ---
 title: 函数 - 函数柯里化（Currying）
 date: 2020-12-17 09:16:37
-categories: thought
+categories:
+    - design-pattern
 tags:
-    - thought
+    - design-pattern
     - JavaScript
     - function
 cover: '/assets/cover/20200225A1295.jpg'

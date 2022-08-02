@@ -1,10 +1,11 @@
 ---
 title: Vue 组件之间通讯的各种情况
 date: 2021-01-07 21:11:23
-categories: Vue
+categories:
+    - Vue
 tags:
     - Vue
-    - Components
+    - component
 cover: '/assets/cover/20200225A1295.jpg'
 ---
 

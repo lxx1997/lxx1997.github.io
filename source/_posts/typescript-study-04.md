@@ -2,7 +2,7 @@
 title: TypeScript 学习之路进阶版 - 泛型
 date: 2020-06-28 09:17:07
 tags:
-    - typescript
+    - TypeScript
 cover: '/assets/cover/20200225A1295.jpg'
 ---
 

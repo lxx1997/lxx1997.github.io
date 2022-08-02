@@ -1,7 +1,8 @@
 ---
 title: 03 - Vue源码解读-发布订阅模式
 date: 2020-12-21 14:06:22
-categories: Vue
+categories:
+    - Vue
 tags:
     - Vue
     - JavaScript

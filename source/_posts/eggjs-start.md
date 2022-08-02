@@ -2,12 +2,13 @@
 layout: post
 title: eggjs-start
 date: 2020-03-25 19:41:08
-categories: eggjs
+categories:
+    - eggjs
 comments: true
 tags:
-      - eggjs
-      - nodejs
-      - 后台
+    - eggjs
+    - nodejs
+    - backEnd
 cover: '/assets/cover/20200225A1295.jpg'
 ---
 ## eggjs 定义

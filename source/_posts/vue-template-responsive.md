@@ -1,7 +1,8 @@
 ---
 title: 03 - Vue源码解读-响应式
 date: 2020-12-18 17:40:59
-categories: Vue
+categories:
+    - Vue
 tags:
     - Vue
     - JavaScript

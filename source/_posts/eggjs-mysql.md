@@ -5,7 +5,6 @@ tags:
       - eggjs
       - mysql
       - docker
-      - egg-mysql
 cover: '/assets/cover/20200225A1295.jpg'
 ---
 

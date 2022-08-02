@@ -1,9 +1,10 @@
 ---
 title: javascript之arguments.callee
 date: 2020-05-05 10:59:56
-categories: JavaScript
+categories:
+    - JavaScript
 tags:
-      - JavaScript
+    - JavaScript
 cover: '/assets/cover/20200225A1295.jpg'
 ---
 

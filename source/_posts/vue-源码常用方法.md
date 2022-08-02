@@ -1,10 +1,11 @@
 ---
 title: vue-源码
 date: 2020-12-15 09:34:37
-categories: Vue
+categories:
+    - Vue
 tags:
     - Vue
-    - 源码
+    - SourceCode
 cover: '/assets/cover/20200225A1295.jpg'
 ---
 
