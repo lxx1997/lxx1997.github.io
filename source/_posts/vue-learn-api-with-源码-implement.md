@@ -1,10 +1,12 @@
 ---
 title: 浅浅的剖析一下 Vue 的执行顺序
 date: 2021-02-08 11:02:00
-categories: Vue源码
+categories: 
+    - Vue
+    - SourceCode
 tags:
     - Vue
-    - 源码
+    - SourceCode
 cover: '/assets/cover/20200225A1295.jpg'
 ---
 

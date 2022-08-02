@@ -5,7 +5,7 @@ toc: true
 tags:
       - uni-app
       - eggjs
-      - typescript
+      - TypeScript
       - colorui
 cover: '/assets/cover/20200225A1295.jpg'
 ---

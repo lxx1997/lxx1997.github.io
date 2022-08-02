@@ -2,7 +2,7 @@
 title: Symbol详解
 date: 2020-12-04 15:23:00
 tags:
-    - symbol
+    - Symbol
     - es6
     - JavaScript
 cover: '/assets/cover/20200225A1295.jpg'

@@ -1,9 +1,10 @@
 ---
 title: 函数 - 函数反柯里化（uncurrying）
 date: 2020-12-17 11:00:35
-categories: thought
+categories:
+    - design-pattern
 tags:
-    - thought
+    - design-pattern
     - JavaScript
     - function
 cover: '/assets/cover/20200225A1295.jpg'

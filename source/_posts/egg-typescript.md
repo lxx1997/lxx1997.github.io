@@ -2,7 +2,7 @@
 title: 用typescript来写eggjs
 date: 2020-05-27 09:41:28
 tags:
-      - typescript
+      - TypeScript
       - eggjs
 cover: '/assets/cover/20200225A1295.jpg'
 ---

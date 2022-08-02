@@ -3,7 +3,7 @@ title: vue中使用typescript
 date: 2020-10-22 15:45:24
 tags:
     - Vue
-    - typescript
+    - TypeScript
 cover: '/assets/cover/20200225A1295.jpg'
 ---
 

@@ -1,10 +1,12 @@
 ---
 title: 跟着 Vue源码学习 Vue api 系列 (二) - 全局 api
 date: 2021-01-20 17:18:54
-categories: Vue源码
+categories: 
+    - Vue
+    - SourceCode
 tags:
     - Vue
-    - 源码
+    - SourceCode
 cover: '/assets/cover/20200225A1295.jpg'
 ---
 

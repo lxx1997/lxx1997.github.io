@@ -1,8 +1,10 @@
 ---
 title: 高性能JavaScript
 date: 2022-03-26 22:21:26
+categories:
+    - reading
 tag:
-    - 读后感
+    - reading
 cover:  '/assets/cover/1579266842725.jpg'
 ---
 

@@ -4,7 +4,7 @@ date: 2021-01-07 21:11:23
 categories: Vue
 tags:
     - Vue
-    - Components
+    - component
 cover: '/assets/cover/20200225A1295.jpg'
 ---
 
