@@ -1,7 +1,8 @@
 ---
 title: JavaScript 原型链
 date: 2021-01-14 22:57:43
-categories: JavaScript
+categories:
+    - JavaScript
 tags:
     - JavaScript
     - prototype

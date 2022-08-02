@@ -5,10 +5,11 @@ date: 2022-07-07 15:56:07
 updated: 2022-07-07 15:56:07
 comments: true
 categories:
+    - vue
 tags:
-  - vue
-  - JavaScript
-  - relearn
+    - vue
+    - JavaScript
+    - relearn
 ---
 1. computed 属性默认是只有 getter 属性的，也就是说我们只能获取到computed 属性的值，但是无法修改它，但是我们可以手动的设置 setter 属性，这样就可以手动赋值了
     ~~~js

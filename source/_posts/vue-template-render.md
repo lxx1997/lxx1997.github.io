@@ -1,7 +1,8 @@
 ---
 title: 02 - Vue源码解读-渲染模型
 date: 2020-12-17 15:01:25
-categories: Vue
+categories:
+    - Vue
 tags:
     - Vue
     - JavaScript

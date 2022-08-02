@@ -2,9 +2,9 @@
 title: Vue3 + Vite + TypeScript 项目实战 -----（一）搭建项目
 date: 2021-01-15 22:56:10
 categories:
-    - Vue3
-    - vite
-    - TypeScript
+    - [Vue3]
+    - [vite]
+    - [TypeScript]
 tags:
     - Vue3
     - vite
