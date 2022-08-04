@@ -48,12 +48,15 @@ Q: 在日常发版过程中通常会采用自动化发版，我们公司采用�
 
 A: 虚拟环境的话，可以采用 puppeteer 来模拟浏览器环境
 puppeteer 是 Node.js 的一个库可以用来模拟 chrome 环境
-~~~js
+~~~yml
 // gitlab-ci.yml
 apt-get install -yq gconf-service libasound2 libatk1.0-0 libc6 libcairo2 libcups2 libdbus-1-3 libexpat1 libfontconfig1 libgcc1 libgconf-2-4 libgdk-pixbuf2.0-0 libglib2.0-0 libgtk-3-0 libnspr4 libpango-1.0-0 libpangocairo-1.0-0 libstdc++6 libx11-6 libx11-xcb1 libxcb1 libxcomposite1 libxcursor1 libxdamage1 libxext6 libxfixes3 libxi6 libxrandr2 libxrender1 libxss1 libxtst6 ca-certificates fonts-liberation libappindicator1 libnss3 lsb-release xdg-utils wget #install dependencies for puppeteer, which is a dependency for react-snap
+
+sh ./bash.sh #運行自定義腳本以更改 react-snap 上的選項以使其工作
 ~~~
 運行自定義腳本以更改 react-snap 上的選項以使其工作
 ~~~sh
+# bash.sh
 # modifies react-snap defaultOptions to add the --no-sandbox and --disable-setuid-sandbox flags so that puppeteer/chromium can run in the codebuild standard image
 sed -i "s/puppeteerArgs: \[\],/puppeteerArgs: \[\"--no-sandbox\", \"--disable-setuid-sandbox\"\],/" ./node_modules/react-snap/index.js
 echo changed arguments in react-snap
