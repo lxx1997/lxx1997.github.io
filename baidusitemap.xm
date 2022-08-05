@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://lxx1997.github.io/2020/12/18/vue-template-responsive/</loc>
+    <lastmod>2022-08-05</lastmod>
+  </url>
+  <url>
     <loc>https://lxx1997.github.io/2022/04/23/SPA-prerender/</loc>
     <lastmod>2022-08-04</lastmod>
   </url>
@@ -54,10 +58,6 @@
   </url>
   <url>
     <loc>https://lxx1997.github.io/2021/01/17/vue3-vite-typescript-02/</loc>
-    <lastmod>2022-08-02</lastmod>
-  </url>
-  <url>
-    <loc>https://lxx1997.github.io/2020/12/18/vue-template-responsive/</loc>
     <lastmod>2022-08-02</lastmod>
   </url>
   <url>
@@ -374,10 +374,6 @@
   </url>
   <url>
     <loc>https://lxx1997.github.io/2020/11/26/Object%E7%9A%84%E6%96%B9%E6%B3%95/</loc>
-    <lastmod>2022-03-26</lastmod>
-  </url>
-  <url>
-    <loc>https://lxx1997.github.io/2020/08/03/promise-source-code/</loc>
     <lastmod>2022-03-26</lastmod>
   </url>
   <url>
