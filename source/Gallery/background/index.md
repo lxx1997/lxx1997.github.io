@@ -10,4 +10,5 @@ type: galleryGroup
 ![material-1.png](/assets/cover/20200225A1295.jpg)
 ![material-8.png](/assets/cover/1579266842725.jpg)
 ![material-6.png](/assets/cover/1625533619134.jpg)
+![material-1.png](/assets/cover/·_61032635_p2.png)
 {% endgallery %}
