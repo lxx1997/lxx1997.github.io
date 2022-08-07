@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://lxx1997.github.io/2022/08/07/handredday/leetcode/day-20-636/</loc>
+    <lastmod>2022-08-07</lastmod>
+  </url>
+  <url>
+    <loc>https://lxx1997.github.io/2022/08/06/handredday/leetcode/day-19-1408/</loc>
+    <lastmod>2022-08-06</lastmod>
+  </url>
+  <url>
     <loc>https://lxx1997.github.io/2022/08/05/handredday/leetcode/day-18-623/</loc>
     <lastmod>2022-08-05</lastmod>
   </url>
