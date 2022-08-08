@@ -380,3 +380,34 @@ setup(props, context) {
   provide("age", count)
 }
 ~~~
+
+#### 模板引用(ref="")
+
+~~~html
+<template> 
+  <div :ref="root">This is a root element</div>
+</template>
+
+<script>
+  import { ref, onMounted } from 'vue'
+
+  export default {
+    setup() {
+      const root = ref(null)
+
+      onMounted(() => {
+        // DOM 元素将在初始渲染后分配给 ref
+        console.log(root.value) // <div>This is a root element</div>
+      })
+
+      return {
+        root
+      }
+    }
+  }
+</script>
+~~~
+
+当页面加载完成后，会自动将 div 绑定给 root
+
+如果需要使用 v-for 绑定多个标签，可以创建响应式数组或者响应式对象来实现
