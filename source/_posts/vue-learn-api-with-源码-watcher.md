@@ -2,8 +2,8 @@
 title: 跟着 Vue源码学习 Vue api 系列 (三) - Watcher 方法详解
 date: 2021-01-27 21:45:28
 categories: 
-    - Vue
-    - SourceCode
+    - [Vue]
+    - [SourceCode]
 tags:
     - Vue
     - SourceCode

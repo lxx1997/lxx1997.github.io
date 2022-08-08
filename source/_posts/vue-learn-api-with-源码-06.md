@@ -2,8 +2,8 @@
 title: 跟着 Vue源码学习 Vue api 系列 (六) - 实例 property
 date: 2021-01-29 14:34:56
 categories: 
-    - Vue
-    - SourceCode
+    - [Vue]
+    - [SourceCode]
 tags:
     - Vue
     - SourceCode

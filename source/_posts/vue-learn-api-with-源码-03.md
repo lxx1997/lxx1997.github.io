@@ -2,8 +2,8 @@
 title: 跟着 Vue源码学习 Vue api 系列 (三) - 选项 / 数据
 date: 2021-01-24 22:38:26
 categories: 
-    - Vue
-    - SourceCode
+    - [Vue]
+    - [SourceCode]
 tags:
     - Vue
     - SourceCode

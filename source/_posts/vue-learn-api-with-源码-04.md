@@ -2,8 +2,8 @@
 title: 跟着 Vue源码学习 Vue api 系列 (四) - 选项 / DOM 及 生命周期函数、filters,directives,components
 date: 2021-01-27 22:16:53
 categories: 
-    - Vue
-    - SourceCode
+    - [Vue]
+    - [SourceCode]
 tags:
     - Vue
     - SourceCode

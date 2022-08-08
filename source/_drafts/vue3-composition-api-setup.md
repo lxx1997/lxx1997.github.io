@@ -30,6 +30,127 @@ tags:
 
 怎么保证 setup 返回的变量是响应式的呢？ `vue3` 提供了一些 hooks，可以让我们创建响应式的变量
 
+## 参数
+
+#### props
+
+setup 接受两个参数，第一个参数是props，且是响应式的，传入新的props 时，会被一起更新 **因为是响应式的，所以无法直接使用解构赋值，会失去响应式**
+
+~~~js
+// 父组件
+/**
+ * 父组件向子组件传递一个 props title 属性，并且这个属性会在 3s 后发生变化
+ */
+export default {
+  setup() {
+    const title = ref("hhhhhh")
+    setTimeout(() => {
+      title.value = "this is new title"
+    }, 3000);
+    watch(title, (n, o) => {
+      console.log(n, o)
+    })
+    return { title }
+  }
+}
+// 子组件
+/**
+ * 子组件这里必须要在props 属性上添加需要接受的属性，否则setup 中的 props 无法接受到
+ * 当props 属性发生变化时，使用 watch 监听可以再次被触发，但是页面上内容不会发生变化，这是因为我们直接取的 props 里面的属性值，不具备响应式
+ */
+export default {
+  props: {
+    title: {
+      type: String,
+      default: ""
+    }
+  },
+  setup(props, context) {
+    console.log(props.title)
+    watch(props, (n, o) => {
+      console.log(props.title)
+    })
+    let { title } = props
+    return {
+      title: props.title,
+      computedTitle: title
+    }
+  }
+}
+~~~
+
+如果我们想要对 props 进行解构操作，可以使用 `toRefs` 函数来完成此操作
+
+下面代码我们会发现当 props 中的 title 属性发生变化后， 组件内 title 并不会跟随变化，而 computedTitle 则会跟随props 中的 title 属性发生变化
+
+~~~js
+export default {
+  props: {
+    title: {
+      type: String,
+      default: ""
+    }
+  },
+  setup(props, context) {
+    console.log(props.title)
+    watch(props, (n, o) => {
+      console.log(props.title)
+    })
+    let { title } = toRefs(props)
+    return {
+      title: props.title,
+      computedTitle: title
+    }
+  }
+}
+~~~
+如果 title 是可选的 prop，则传入的 props 中可能没有 title 。在这种情况下，toRefs 将不会为 title 创建一个 ref 。你需要使用 toRef 替代它
+
+toRef 的作用相当于把 对象中的属性转化为 ref 类的属性，且与对象相关联，当对象中对应属性发生变化时, toRef 中的内容会同步发生改变
+
+~~~js
+  setup(props, context) {
+    let name = toRef(props, "name") // name 会跟随 props 中的 name 属性变化而同步更新
+    return {
+      name: name 
+    }
+  }
+~~~
+
+#### context
+
+context 是一个普通 JavaScript 对象，不是响应式的，因此可以使用 解构操作
+
+暴露了其它可能在 setup 中有用的值：
+
+* attrs 类似于 $attrs
+* slots 类似于 $slots
+* emit 类似于 $emit
+* expose 公共property
+
+slots 和 attrs 是有状态的对象，跟随组件本身的更新而更新，避免使用解构赋值，如果想要根据 attrs 和 solts 更改应用富足用，应该在 onBeforeUpdate 钩子中执行操作
+
+#### return
+
+setup return 出来的值可以在模板和组件中直接使用
+
+如果父组件想要访问子组件 setup 中的 property，可以使用 expose 方法暴露出去
+
+~~~js
+export default {
+  setup(props, { expose }){
+    let count = ref(0)
+    const changeCount = () => ++count.value
+    expose({
+      changeCount
+    })
+    return {
+      count
+    }
+  }
+}
+~~~
+
 ## hooks
 
 #### setup 内部的钩子函数
@@ -46,6 +167,8 @@ tags:
   * onDeactivated  // keep-alive 缓存的组件失活时调用
 
   这些钩子函数的触发时机和在组件内部触发时机一致
+
+  这些钩子函数接受一个回调函数，当钩子函数被调用时，将会被执行
 
 #### 带 ref 的响应式变量
 
@@ -157,3 +280,102 @@ watch hooks 还可以通过回调函数的第三个参数来清除副作用，�
 #### watchEffect
 
 在使用 watchEffect 的时候，会自动执行传入的函数，并且响应式的追踪依赖，并且在依赖发生变更操作时，重新运行传入的函数
+
+~~~js
+export default {
+  setup(props, context) {
+    const title = ref("setup component")
+
+    setTimeout(() => {
+      title.value = "setup component changed"
+    }, 3000)
+
+    watch(title, (n, o) => {
+      console.log(n, o)
+    })
+
+    watchEffect(() => {
+      console.log(title.value)
+    })
+    return {
+      title
+    }
+  }
+}
+~~~
+
+上述代码执行完成后，我们会发现在控制台会首先输出  `setup component`， 然后 3s 过程会同时输出 `setup component changed`，这个是因为 `watchEffect` 会立即执行，但是因为依赖没有变更，所以就是初始值，3s 后，依赖发生了变更，这时 `watch` 和 `watchEffect` 同时触发
+
+watchEffect 在执行完成后，会有一个返回值，我们可以通过这个返回值来停止监听,但是需要注意的是，watchEffect 还是会立即执行，只是当依赖方式变化时，不会再次触发
+
+~~~js
+export default {
+  setup(props, context) {
+    const title = ref("setup component")
+
+    setTimeout(() => {
+      title.value = "setup component changed"
+    }, 3000)
+
+    const stop = watchEffect(() => {
+      console.log(title.value)
+    })
+    stop()
+    return {
+      title
+    }
+  }
+}
+~~~
+
+#### computed 计算属性
+
+~~~js
+setup(props, context) {
+  const title = ref("setup component")
+
+  setTimeout(() => {
+    title.value = "setup component changed"
+  }, 3000)
+
+  let computedTitle = computed(() => title.value + "abcd")
+
+  return {
+    title,
+    computedTitle
+  }
+}
+~~~
+
+访问 computed 值的时候和 访问响应式变量的值一样，都是通过 `.value` 来获取到
+
+#### provide && inject
+
+vue3 暴露出了两个方法 `provide` 和 `inject` 两个方法，这两个方法和 组件内的 provide和inject 方法等同
+
+provide 传入两个参数，第一个参数是属性名，第二个参数是属性值
+~~~js
+setup(props, context) {
+  provide("name", "lxx")
+  provide("age", 26)
+}
+~~~
+
+inject 传入两个参数，第一个参数是属性名，第二个参数是默认值
+~~~js
+setup(props, context) {
+  inject("name", "lxx")
+  inject("age")
+}
+~~~
+
+但是通过上述创建的 provide 和 inject 之间不是响应式的，也就是说如果provide 的值改变并不会触发 inject 的值变化，
+provide 可以使用 ref 和 reactive 方法创建响应式的 provide
+
+~~~js
+setup(props, context) {
+  const count = ref(0)
+  provide("name", "lxx")
+  provide("age", count)
+}
+~~~
