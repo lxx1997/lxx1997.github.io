@@ -1,14 +1,15 @@
 ---
 title: vue3 组合式Api setup
+categories:
+  - Vue3
+tags:
+  - Vue3
+  - JavaScript
 cover: /assets/cover/20200225A1295.jpg
 date: 2022-08-02 15:03:31
-updated: 2022-08-02 15:03:31
-categories:
-    - Vue3
-tags:
-    - Vue3
-    - JavaScript
+updated: 2022-08-08 15:03:31
 ---
+
 
 ## 什么是组合式API
 
