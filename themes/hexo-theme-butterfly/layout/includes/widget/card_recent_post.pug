@@ -7,7 +7,7 @@ if theme.aside.card_recent_post.enable
       - let postLimit = theme.aside.card_recent_post.limit === 0 ? site.posts.length : theme.aside.card_recent_post.limit || 5
       - let sort = theme.aside.card_recent_post.sort === 'updated' ? 'updated' : 'date'
       - site.posts.sort(sort, -1).limit(postLimit).each(function(article){
-        - let link = config.url + "/" + (article.link || article.path)
+        - let link = article.link || article.path
         - let title = article.title || _p('no_title')
         - let no_cover = article.cover === false || !theme.cover.aside_enable ? 'no-cover' : ''
         - let post_cover = article.cover
