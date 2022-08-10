@@ -1,8 +1,8 @@
 ---
 title: React Hooks - 自定义hooks
 categories:
-  - - react
-  - - hooks
+  - [react]
+  - [hooks]
 tags:
   - react
   - hooks
