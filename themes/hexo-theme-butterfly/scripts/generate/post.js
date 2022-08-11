@@ -5,14 +5,14 @@
  * @Description: 
  */
 
-'use strict'
+// 'use strict'
 
-var pagination = require('hexo-pagination');
+// var pagination = require('hexo-pagination');
 
-hexo.extend.generator.register('handredday', function(locals){
-  return pagination('handredday', locals.hide_posts, {
-    perPage: 20,
-    layout: ['handredday', 'index'],
-    data: {__index: "handredday"}
-  });
-});
+// hexo.extend.generator.register('handredday', function(locals){
+//   return pagination('handredday', locals.hide_posts, {
+//     perPage: 20,
+//     layout: ['handredday', 'index'],
+//     data: {__index: "handredday"}
+//   });
+// });
