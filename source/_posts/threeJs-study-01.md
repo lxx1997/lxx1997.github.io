@@ -107,6 +107,6 @@ cover: '/assets/cover/20200225A1295.jpg'
     const geometry = new THREE.BufferGeometry().setFromPoints(points)
     // 创建线条治理
     const line = new THREE.Line(geometry, material)
-  ~~·
+  ~~~
 
   

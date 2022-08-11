@@ -4,12 +4,13 @@
 
 menu:
   Home: / || fas fa-home
+  Media ||fas fa-list:
+    Photo: /Gallery/ || fas fa-image
+  Extension ||fas fa-list:
+    Handredday: /handredday/ || fas fa-flag
   Archives: /archives/ || fas fa-archive
   Tags: /tags/ || fas fa-tags
   Categories: /categories/ || fas fa-folder-open
-  Joy ||fas fa-list:
-    # Music: /music/ || fas fa-music
-    Photo: /Gallery/ || fas fa-image
   # Link: /link/ || fas fa-link
   # About: /about/ || fas fa-heart
 
