@@ -1,0 +1,271 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>Vue3 + Vite + TypeScript 项目实战 -----（二）Vue3 生命周期 | SoulReader</title><meta name="keywords" content="TypeScript,Vue3,vite"><meta name="author" content="lxx,1987607597@qq.com"><meta name="copyright" content="lxx"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="Vue3 继承了 Vue2 的所有生命周期函数，所以 Vue2 的生命周期的应用方式同样适用于 Vue3。同时 Vue3 还新增了一些新的生命周期。 原有的生命周期函数我们这边不做过多的赘述，我们来讲解一下 Vue3 相对于 Vue2 变更了和新增了哪些生命周期函数  beforeUnmount unmounted  这两个生命周期替代了 Vue2 的 beforeDestory 和 desto">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Vue3 + Vite + TypeScript 项目实战 -----（二）Vue3 生命周期">
+<meta property="og:url" content="https://lxx1997.github.io/2021/01/17/vue/vue3-vite-typescript-02/index.html">
+<meta property="og:site_name" content="SoulReader">
+<meta property="og:description" content="Vue3 继承了 Vue2 的所有生命周期函数，所以 Vue2 的生命周期的应用方式同样适用于 Vue3。同时 Vue3 还新增了一些新的生命周期。 原有的生命周期函数我们这边不做过多的赘述，我们来讲解一下 Vue3 相对于 Vue2 变更了和新增了哪些生命周期函数  beforeUnmount unmounted  这两个生命周期替代了 Vue2 的 beforeDestory 和 desto">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://lxx1997.github.io/assets/cover/20200225A1295.jpg">
+<meta property="article:published_time" content="2021-01-17T14:24:46.000Z">
+<meta property="article:modified_time" content="2022-08-11T11:54:14.699Z">
+<meta property="article:author" content="lxx">
+<meta property="article:tag" content="TypeScript">
+<meta property="article:tag" content="Vue3">
+<meta property="article:tag" content="vite">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://lxx1997.github.io/assets/cover/20200225A1295.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://lxx1997.github.io/2021/01/17/vue/vue3-vite-typescript-02/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//www.google-analytics.com" crossorigin=""/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css" media="print" onload="this.media='all'"><script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-ZH8W8N71EH"></script><script>window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-ZH8W8N71EH');
+</script><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":200},
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: 'Just',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Vue3 + Vite + TypeScript 项目实战 -----（二）Vue3 生命周期',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: false,
+  postUpdate: '2022-08-11 19:54:14'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.1.0"><link rel="alternate" href="/atom.xml" title="SoulReader" type="application/atom+xml">
+</head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/image/%E7%BB%8F%E9%AA%8C+2_81189542_p1.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">93</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">67</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">21</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> Media</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-image"></i><span> Photo</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> Extension</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/categories/handredday/leetcode/"><i class="fa-fw fas fa-flag"></i><span> leetcode百天挑战</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/assets/cover/20200225A1295.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">SoulReader</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> Media</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-image"></i><span> Photo</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> Extension</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/categories/handredday/leetcode/"><i class="fa-fw fas fa-flag"></i><span> leetcode百天挑战</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Vue3 + Vite + TypeScript 项目实战 -----（二）Vue3 生命周期</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2021-01-17T14:24:46.000Z" title="Created 2021-01-17 22:24:46">2021-01-17</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2022-08-11T11:54:14.699Z" title="Updated 2022-08-11 19:54:14">2022-08-11</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Vue3/">Vue3</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/vite/">vite</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/TypeScript/">TypeScript</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="Vue3 + Vite + TypeScript 项目实战 -----（二）Vue3 生命周期"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post View:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><hr>
+<p>Vue3 继承了 Vue2 的所有生命周期函数，所以 Vue2 的生命周期的应用方式同样适用于 Vue3。同时 Vue3 还新增了一些新的生命周期。</p>
+<p>原有的生命周期函数我们这边不做过多的赘述，我们来讲解一下 Vue3 相对于 Vue2 变更了和新增了哪些生命周期函数</p>
+<ul>
+<li><code>beforeUnmount</code> <code>unmounted</code></li>
+</ul>
+<p>这两个生命周期替代了 Vue2 的 <code>beforeDestory</code> 和 <code>destoryed</code>生命周期，两者的作用是一致的，都是在组件卸载的时候调用的，在 Vue3 还可以使用 <code>unmout</code> API 来卸载应用</p>
+<ul>
+<li><p><code>renderTracked</code></p>
+<p>跟踪 虚拟DOM 渲染时候调用，接收 <code>debugger event</code> 作为参数<br><em>组件第一次渲染的时候调用，数据发生改变不会调用</em></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>Cart: &#123;&#123;cart&#125;&#125;<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">  <span class="keyword">export</span> <span class="keyword">default</span> &#123;</span></span><br><span class="line"><span class="language-javascript">    <span class="title function_">data</span>(<span class="params"></span>) &#123;</span></span><br><span class="line"><span class="language-javascript">      <span class="keyword">return</span> &#123;</span></span><br><span class="line"><span class="language-javascript">        <span class="attr">cart</span>: <span class="number">1</span></span></span><br><span class="line"><span class="language-javascript">      &#125;</span></span><br><span class="line"><span class="language-javascript">    &#125;,</span></span><br><span class="line"><span class="language-javascript">    <span class="comment">// key: 渲染的属性的键名</span></span></span><br><span class="line"><span class="language-javascript">    <span class="comment">// target: 渲染属性的键值对</span></span></span><br><span class="line"><span class="language-javascript">    <span class="comment">// type: 对当前属性的操作</span></span></span><br><span class="line"><span class="language-javascript">    <span class="title function_">renderTracked</span>(<span class="params">&#123;key, target, type&#125;</span>) &#123;</span></span><br><span class="line"><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">    &#125;</span></span><br><span class="line"><span class="language-javascript">  &#125;</span></span><br><span class="line"><span class="language-javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>renderTriggered</code></p>
+<p>当虚拟 DOM 重新渲染为 triggered.Similarly 为renderTracked，接收 debugger event 作为参数。此事件告诉你是什么操作触发了重新渲染，以及该操作的目标对象和键<br><em>触发属性值的变更的时候触发</em></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>Cart: &#123;&#123;cart&#125;&#125;<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">  <span class="keyword">export</span> <span class="keyword">default</span> &#123;</span></span><br><span class="line"><span class="language-javascript">    <span class="title function_">data</span>(<span class="params"></span>) &#123;</span></span><br><span class="line"><span class="language-javascript">      <span class="keyword">return</span> &#123;</span></span><br><span class="line"><span class="language-javascript">        <span class="attr">cart</span>: <span class="number">1</span></span></span><br><span class="line"><span class="language-javascript">      &#125;</span></span><br><span class="line"><span class="language-javascript">    &#125;,</span></span><br><span class="line"><span class="language-javascript">    <span class="comment">// key: 渲染的属性的键名</span></span></span><br><span class="line"><span class="language-javascript">    <span class="comment">// target: 渲染属性的键值对,值是修改之后的值</span></span></span><br><span class="line"><span class="language-javascript">    <span class="comment">// type: 对当前属性的操作</span></span></span><br><span class="line"><span class="language-javascript">    <span class="title function_">renderTracked</span>(<span class="params">&#123;key, target, type&#125;</span>) &#123;</span></span><br><span class="line"><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">    &#125;</span></span><br><span class="line"><span class="language-javascript">    <span class="title function_">mounted</span>(<span class="params"></span>) &#123;</span></span><br><span class="line"><span class="language-javascript">      <span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;<span class="variable language_">this</span>.<span class="property">cart</span>++&#125;, <span class="number">10000</span>)</span></span><br><span class="line"><span class="language-javascript">    &#125;</span></span><br><span class="line"><span class="language-javascript">  &#125;</span></span><br><span class="line"><span class="language-javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 创建应用</span></span><br><span class="line"><span class="keyword">const</span> app = <span class="title function_">createApp</span>(&#123;&#125;)</span><br><span class="line">app.<span class="title function_">mount</span>(<span class="string">&quot;#app&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 卸载应用</span></span><br><span class="line">app.<span class="title function_">unmount</span>(<span class="string">&quot;#app&quot;</span>)</span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>setup</code>  -&gt; <code>created</code> 和 <code>beforeCreate</code></li>
+</ul>
+<p><code>setup</code> 在 创建组件之前执行，作为组合式 API 的入口点,return 的返回值可以渲染到页面上</p>
+<p><strong>传参</strong></p>
+<ol>
+<li><p><strong>props</strong> 父组件传入的 props 对象，是响应式的，prop 发生变化时会同时发生更新</p>
+<p><em>注意不能使用结构赋值，否则会失去响应式的特性，如果想要解构出 <code>props</code> 中的属性可以选择使用 <code>toRefs</code> 来完成此操作</em></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">template</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 记录 Vue3 生命周期的相关使用方法 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">setup-hook</span> <span class="attr">:time</span>=<span class="string">&quot;time&quot;</span> <span class="attr">other</span>=<span class="string">&quot;other&quot;</span> <span class="attr">:other-time</span>=<span class="string">&quot;time&quot;</span> @<span class="attr">success</span>=<span class="string">&quot;handleSuccess&quot;</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">span</span>&gt;</span> 23123<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">template</span> <span class="attr">v-slot:title</span>&gt;</span> 23123<span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">template</span> <span class="attr">v-slot:bottom</span>&gt;</span> 23123<span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">setup-hook</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span>&gt;</span>test text<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">lang</span>=<span class="string">&quot;ts&quot;</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript"><span class="keyword">import</span> components <span class="keyword">from</span> <span class="string">&#x27;./components/index&#x27;</span></span></span><br><span class="line"><span class="language-javascript"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span></span><br><span class="line"><span class="language-javascript">  <span class="attr">components</span>: &#123;</span></span><br><span class="line"><span class="language-javascript">    ...components</span></span><br><span class="line"><span class="language-javascript">  &#125;,</span></span><br><span class="line"><span class="language-javascript">  <span class="title function_">data</span>(<span class="params"></span>) &#123;</span></span><br><span class="line"><span class="language-javascript">    <span class="keyword">return</span> &#123;</span></span><br><span class="line"><span class="language-javascript">      <span class="attr">time</span>: <span class="number">1000</span></span></span><br><span class="line"><span class="language-javascript">    &#125;</span></span><br><span class="line"><span class="language-javascript">  &#125;,</span></span><br><span class="line"><span class="language-javascript">  <span class="title function_">mounted</span>(<span class="params"></span>) &#123;</span></span><br><span class="line"><span class="language-javascript">    <span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span></span><br><span class="line"><span class="language-javascript">      <span class="variable language_">this</span>.<span class="property">time</span> += <span class="number">1000</span></span></span><br><span class="line"><span class="language-javascript">    &#125;, <span class="number">1000</span>)</span></span><br><span class="line"><span class="language-javascript">  &#125;,</span></span><br><span class="line"><span class="language-javascript">  <span class="attr">methods</span>: &#123;</span></span><br><span class="line"><span class="language-javascript">    <span class="title function_">handleSuccess</span>(<span class="params"></span>) &#123;</span></span><br><span class="line"><span class="language-javascript">      <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;success&#x27;</span>)</span></span><br><span class="line"><span class="language-javascript">    &#125;</span></span><br><span class="line"><span class="language-javascript">  &#125;,</span></span><br><span class="line"><span class="language-javascript">&#125;</span></span><br><span class="line"><span class="language-javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span>&gt;</span>当前时间：&#123;&#123;time&#125;&#125;<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span>&gt;</span>截取props&#123;&#123;newTime&#125;&#125;<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span>&gt;</span>toRefs(props)&#123;&#123;refTime&#125;&#125;<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">lang</span>=<span class="string">&quot;ts&quot;</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript"><span class="keyword">import</span> &#123;toRefs&#125; <span class="keyword">from</span> <span class="string">&#x27;vue&#x27;</span></span></span><br><span class="line"><span class="language-javascript"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span></span><br><span class="line"><span class="language-javascript">  <span class="title function_">setup</span>(<span class="params">props</span>) &#123;</span></span><br><span class="line"><span class="language-javascript">    <span class="keyword">let</span> &#123;<span class="attr">time</span>: newTime&#125; = props</span></span><br><span class="line"><span class="language-javascript">    <span class="keyword">let</span> &#123;<span class="attr">time</span>: refTime&#125; = <span class="title function_">toRefs</span>(props)</span></span><br><span class="line"><span class="language-javascript">    <span class="variable language_">console</span>.<span class="title function_">log</span>(refTime)</span></span><br><span class="line"><span class="language-javascript">    <span class="keyword">return</span> &#123;</span></span><br><span class="line"><span class="language-javascript">      newTime,</span></span><br><span class="line"><span class="language-javascript">      refTime</span></span><br><span class="line"><span class="language-javascript">    &#125;</span></span><br><span class="line"><span class="language-javascript">  &#125;</span></span><br><span class="line"><span class="language-javascript">&#125;</span></span><br><span class="line"><span class="language-javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/assets/vue3/vue3-toRefs-code.png" alt="vue3-toRefs-code"><br>使用 toRefs 解构 props 的时候 如果想要直接访问 需要访问其 value 属性，下面是打印出来的解构出来的值,最后需要使用 return 抛出需要渲染和使用的变量及方法<br><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/assets/vue3/vue3-toRefs-props.png" alt="vue3-toRefs-props"></p>
+</li>
+<li><p><strong>context</strong> 暴露了三个组件的 <code>property</code> (<code>attrs</code>, <code>slots</code>, <code>emit</code>) </p>
+<blockquote>
+<p><code>attrs</code> 为父组件在子组件上传递的属性(未被<code>props</code>接收)<br><code>slots</code> 为父组件在子组件中传入的插槽 默认有一个 <code>default</code> 插槽<br><code>emit</code>  这是一个执行函数，相当于 <code>Vue.$emit()</code> 可以用于发送事件</p>
+</blockquote>
+<p><code>context</code> 是一个普通的 JavaScript 非响应式对象，可以安全的使用 ES6 的解构赋值操作</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 父组件 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">setup-hook</span> <span class="attr">:time</span>=<span class="string">&quot;time&quot;</span> <span class="attr">other</span>=<span class="string">&quot;other&quot;</span> <span class="attr">:other-time</span>=<span class="string">&quot;time&quot;</span> @<span class="attr">success</span>=<span class="string">&quot;handleSuccess&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">span</span>&gt;</span> 23123<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">template</span> <span class="attr">v-slot:title</span>&gt;</span> 23123<span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">template</span> <span class="attr">v-slot:bottom</span>&gt;</span> 23123<span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">setup-hook</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 子组件 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">  <span class="title function_">setup</span>(<span class="params">props, &#123;attrs, emit, slots&#125;</span>) &#123;</span></span><br><span class="line"><span class="language-javascript">    <span class="keyword">let</span> &#123;<span class="attr">time</span>: newTime&#125; = props</span></span><br><span class="line"><span class="language-javascript">    <span class="keyword">let</span> &#123;<span class="attr">time</span>: refTime&#125; = <span class="title function_">toRefs</span>(props)</span></span><br><span class="line"><span class="language-javascript">    <span class="variable language_">console</span>.<span class="title function_">log</span>(refTime)</span></span><br><span class="line"><span class="language-javascript">    <span class="variable language_">console</span>.<span class="title function_">log</span>(attrs, slots)</span></span><br><span class="line"><span class="language-javascript">    <span class="title function_">emit</span>(<span class="string">&#x27;success&#x27;</span>)</span></span><br><span class="line"><span class="language-javascript">    <span class="keyword">return</span> &#123;</span></span><br><span class="line"><span class="language-javascript">      newTime,</span></span><br><span class="line"><span class="language-javascript">      refTime</span></span><br><span class="line"><span class="language-javascript">    &#125;</span></span><br><span class="line"><span class="language-javascript">  &#125;,</span></span><br><span class="line"><span class="language-javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/assets/vue3/vue3-toRefs-context.png" alt="vue3-toRefs-context"></p>
+</li>
+</ol>
+<p>因此在执行 <code>setup</code> 的时候组件实例还未被创建，只能访问 <code>props</code>, <code>attrs</code>, <code>slots</code>, <code>emit</code>实例，无法访问 <code>data</code>, <code>computed</code>, <code>methods</code></p>
+<p><code>setup</code> 在最后会有一个返回值，这个返回值是包含我们需要渲染或者在其他生命周期需要使用的变量的对象。</p>
+<p>我们在使用 <code>setup</code> 需要注意以下几点：</p>
+<ol>
+<li><p><code>setup</code> 中的 <code>this</code> 并不是 Vue 实例的引用，因为 <code>setup()</code> 是在解析其它组件选项之前被调用的，所以 <code>setup()</code> 内部的 <code>this</code> 的行为与其它选项中的 <code>this</code> 完全不同。这在和其它选项式 API 一起使用 <code>setup()</code> 时可能会导致混淆。 </p>
+</li>
+<li><p>如果在 <code>setup</code> 中，我们定义了一个引用类型的变量，并针对这个变量进行了延时修改，这时修改之后的值并不会改变页面渲染，因为我们定义的并不是一个响应式类型的数据，如果想要创建一个响应式类型的数据，可以使用 <code>reactive</code> 来创建</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> obj = <span class="title function_">reactive</span>(&#123;<span class="attr">value</span>: <span class="number">1</span>, <span class="attr">label</span>: <span class="string">&#x27;object&#x27;</span>&#125;)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>如果我们定义的是一个基础类型的变量，此时也想要他实现响应式的一个变化，这是可以使用 <code>ref</code> 来创建，访问对象的值可以通过访问变量的 <code>value</code> 属性</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> count = <span class="title function_">ref</span>(<span class="number">0</span>)</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(count.<span class="property">value</span>) <span class="comment">// 0</span></span><br><span class="line"><span class="comment">// 此外还可以对 ref 内部进行类型指定</span></span><br><span class="line"><span class="keyword">const</span> count = ref&lt;string | number&gt;(<span class="number">0</span>)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>setup</code> 的返回值可以在其他生命周期或者函数中直接通过 <code>this</code> 调用，并且已进行过响应式处理</p>
+</li>
+</ol>
+<p>在 <code>setup</code> 中还新增了一下几种 生命周期钩子，这些钩子函数只能在 <code>setup</code> 中使用</p>
+<blockquote>
+<p><code>onBeforeMount</code><br><code>onMounted</code><br><code>onBeforeUpdate</code><br><code>onUpdated</code><br><code>onBeforeUnmount</code><br><code>onUnmount</code><br><code>onErrorCaptured</code><br><code>onRenderTracked</code><br><code>onRenderTriggered</code></p>
+</blockquote>
+<p>具体使用方法与生命周期函数类似，但是注意以上这些只能在 setup 中使用</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">setup</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="title function_">onMounted</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;mounted&#x27;</span>)</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Vue3 还提供了 <code>provide</code> 和 <code>inject</code> 方便在 <code>setup</code> 中进行 提供和注入</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">setup</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="title function_">provide</span>(<span class="string">&#x27;title&#x27;</span>, <span class="string">&#x27;this is a title&#x27;</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="title function_">setup</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> title = <span class="title function_">inject</span>(<span class="string">&#x27;title&#x27;</span>, <span class="string">&#x27;default value&#x27;</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">Author: </span><span class="post-copyright-info"><a href="https://lxx1997.github.io">lxx</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">Link: </span><span class="post-copyright-info"><a href="https://lxx1997.github.io/2021/01/17/vue/vue3-vite-typescript-02/">https://lxx1997.github.io/2021/01/17/vue/vue3-vite-typescript-02/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/TypeScript/">TypeScript</a><a class="post-meta__tags" href="/tags/Vue3/">Vue3</a><a class="post-meta__tags" href="/tags/vite/">vite</a></div><div class="post_share"><div class="social-share" data-image="/assets/cover/20200225A1295.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/gh/overtrue/share.js@master/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2021/01/20/vue/vue-learn-api-with-%E6%BA%90%E7%A0%81-02/"><img class="prev-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/assets/cover/20200225A1295.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">Previous Post</div><div class="prev_info">跟着 Vue源码学习 Vue api 系列 (二) - 全局 api</div></div></a></div><div class="next-post pull-right"><a href="/2021/01/15/vue/vue3-vite-typescript-01/"><img class="next-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/assets/cover/20200225A1295.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">Next Post</div><div class="next_info">Vue3 + Vite + TypeScript 项目实战 -----（一）搭建项目</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>Related Articles</span></div><div class="relatedPosts-list"><div><a href="/2021/01/15/vue/vue3-vite-typescript-01/" title="Vue3 + Vite + TypeScript 项目实战 -----（一）搭建项目"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/assets/cover/20200225A1295.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-01-15</div><div class="title">Vue3 + Vite + TypeScript 项目实战 -----（一）搭建项目</div></div></a></div><div><a href="/2020/10/22/vue/vue%E4%B8%AD%E4%BD%BF%E7%94%A8typescript/" title="vue中使用typescript"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/assets/cover/20200225A1295.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2020-10-22</div><div class="title">vue中使用typescript</div></div></a></div><div><a href="/2020/06/29/web/typescript-study-05/" title="TypeScript 学习之路进阶版 - 扩展"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/assets/cover/20200225A1295.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2020-06-29</div><div class="title">TypeScript 学习之路进阶版 - 扩展</div></div></a></div><div><a href="/2020/06/28/web/typescript-study-04/" title="TypeScript 学习之路进阶版 - 泛型"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/assets/cover/20200225A1295.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2020-06-28</div><div class="title">TypeScript 学习之路进阶版 - 泛型</div></div></a></div><div><a href="/2020/06/22/web/typescript-study-03/" title="typescript 学习之路进阶版  -  2"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/assets/cover/20200225A1295.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2020-06-22</div><div class="title">typescript 学习之路进阶版  -  2</div></div></a></div><div><a href="/2020/06/10/web/typescript-study-02/" title="typescript 学习之路进阶版"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/assets/cover/20200225A1295.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2020-06-10</div><div class="title">typescript 学习之路进阶版</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> Comment</span></div><div id="comment-switch"><span class="first-comment">Disqus</span><span class="switch-btn"></span><span class="second-comment">Valine</span></div></div><div class="comment-wrap"><div><div id="disqus_thread"></div></div><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/image/%E7%BB%8F%E9%AA%8C+2_81189542_p1.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">lxx</div><div class="author-info__description">前端小菜鸟,努力深造</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">93</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">67</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">21</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/lxx1997"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>Announcement</span></div><div class="announcement_content">前端小菜鸟,努力深造</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Post</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2022/08/09/react/react-custom-hooks/" title="React Hooks - 自定义hooks"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/assets/cover/20200225A1295.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="React Hooks - 自定义hooks"/></a><div class="content"><a class="title" href="/2022/08/09/react/react-custom-hooks/" title="React Hooks - 自定义hooks">React Hooks - 自定义hooks</a><time datetime="2022-08-09T01:55:31.000Z" title="Created 2022-08-09 09:55:31">2022-08-09</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/08/02/vue/vue3-composition-api-setup/" title="vue3 组合式Api setup"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/assets/cover/20200225A1295.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="vue3 组合式Api setup"/></a><div class="content"><a class="title" href="/2022/08/02/vue/vue3-composition-api-setup/" title="vue3 组合式Api setup">vue3 组合式Api setup</a><time datetime="2022-08-02T07:03:31.000Z" title="Created 2022-08-02 15:03:31">2022-08-02</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/07/20/hexo-create-categories-pages/" title="创建默认的 hexo categories 首页"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/assets/cover/%C2%B7_61032635_p2.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="创建默认的 hexo categories 首页"/></a><div class="content"><a class="title" href="/2022/07/20/hexo-create-categories-pages/" title="创建默认的 hexo categories 首页">创建默认的 hexo categories 首页</a><time datetime="2022-07-20T01:16:55.000Z" title="Created 2022-07-20 09:16:55">2022-07-20</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/07/19/vue/relearn-vue2-02/" title="重新学习vue2 - 发现隐藏其中的细节 - part2"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/assets/cover/1625533619134.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="重新学习vue2 - 发现隐藏其中的细节 - part2"/></a><div class="content"><a class="title" href="/2022/07/19/vue/relearn-vue2-02/" title="重新学习vue2 - 发现隐藏其中的细节 - part2">重新学习vue2 - 发现隐藏其中的细节 - part2</a><time datetime="2022-07-19T07:04:48.000Z" title="Created 2022-07-19 15:04:48">2022-07-19</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/07/13/web/html-webpack-plugin/" title="html-webpack-plugin 的使用与进阶"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/assets/cover/20200225A1295.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="html-webpack-plugin 的使用与进阶"/></a><div class="content"><a class="title" href="/2022/07/13/web/html-webpack-plugin/" title="html-webpack-plugin 的使用与进阶">html-webpack-plugin 的使用与进阶</a><time datetime="2022-07-13T03:19:44.000Z" title="Created 2022-07-13 11:19:44">2022-07-13</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2022 By lxx</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Read Mode"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="Switch Between Traditional Chinese And Simplified Chinese">简</button><button id="darkmode" type="button" title="Switch Between Light And Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle between single-column and double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="Setting"><i class="fas fa-cog fa-spin"></i></button><a id="to_comment" href="#post-comment" title="Scroll To Comments"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="Back To Top"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.js"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js"></script><div class="js-pjax"><script>function loadDisqus () {
+  var disqus_config = function () {
+    this.page.url = 'https://lxx1997.github.io/2021/01/17/vue/vue3-vite-typescript-02/'
+    this.page.identifier = '2021/01/17/vue/vue3-vite-typescript-02/'
+    this.page.title = 'Vue3 + Vite + TypeScript 项目实战 -----（二）Vue3 生命周期'
+  };
+
+  window.disqusReset = () => {
+    DISQUS.reset({
+      reload: true,
+      config: disqus_config
+    })
+  }
+
+  if (window.DISQUS) disqusReset()
+  else {
+    (function() { 
+      var d = document, s = d.createElement('script');
+      s.src = 'https://soulreader.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  }
+}
+
+if ('Disqus' === 'Disqus' || !true) {
+  if (true) btf.loadComment(document.getElementById('disqus_thread'), loadDisqus)
+  else loadDisqus()
+} else {
+  function loadOtherComment () {
+    loadDisqus()
+  }
+}
+</script><script>function loadValine () {
+  function initValine () {
+    const valine = new Valine(Object.assign({
+      el: '#vcomment',
+      appId: '',
+      appKey: '',
+      avatar: 'monsterid',
+      serverURLs: '',
+      emojiMaps: "",
+      path: window.location.pathname,
+      visitor: false
+    }, null))
+  }
+
+  if (typeof Valine === 'function') initValine() 
+  else getScript('https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js').then(initValine)
+}
+
+if ('Disqus' === 'Valine' || !true) {
+  if (true) btf.loadComment(document.getElementById('vcomment'),loadValine)
+  else setTimeout(loadValine, 0)
+} else {
+  function loadOtherComment () {
+    loadValine()
+  }
+}</script></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/kesyoban.model.json"},"display":{"position":"left","width":300,"height":300},"mobile":{"show":false},"log":false});</script></body></html>
