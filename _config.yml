@@ -94,6 +94,18 @@ time_format: HH:mm:ss
 per_page: 10
 pagination_dir: page
 
+# hexo-hide-posts
+hide_posts:
+  enable: true
+  # Change the filter name to fit your need
+  filter: hidden
+  # Generators which you want to expose all posts (include hidden ones) to.
+  # Common generators: index, tag, category, archive, sitemap, feed, etc.
+  public_generators: [tag, category, archive, sitemap]
+  # Add "noindex" meta tag to prevent hidden posts from being indexed by search engines
+  noindex: true
+
+
 # Disqus
 disqus_shortname:
 

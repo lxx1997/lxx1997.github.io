@@ -7,7 +7,7 @@ menu:
   Media ||fas fa-list:
     Photo: /Gallery/ || fas fa-image
   Extension ||fas fa-list:
-    Handredday: /handredday/ || fas fa-flag
+    leetcode百天挑战: /categories/handredday/leetcode/ || fas fa-flag
   Archives: /archives/ || fas fa-archive
   Tags: /tags/ || fas fa-tags
   Categories: /categories/ || fas fa-folder-open

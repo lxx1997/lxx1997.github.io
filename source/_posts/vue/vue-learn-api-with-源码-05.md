@@ -327,7 +327,7 @@ inject 的值作为 props 和 data 的初始值
         return {
           test3: 4,
           testChild: 5,
-          hide: true,
+          hidden: true,
           list: {
             name: 'listName',
             value: 'listValue'
