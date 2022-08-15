@@ -1,13 +1,14 @@
 ---
 title: vue3 状态管理工具 - pinia
+categories:
+  - - Vue3
+tags:
+  - Vue3
 cover: /assets/cover/20200225A1295.jpg
 date: 2022-08-11 15:19:53
 updated: 2022-08-11 15:19:53
-categories:
-    - [Vue3]
-tags:
-    - Vue3
 ---
+
 
 `Vue3` 出来都有一年多了，生态系统相对来说都慢慢变得完善起来了，像针对 `vue2` 的 `vue-router` 路由组件，`vuex` 状态管理工具都开始适应 `vue3` 了
 
@@ -147,4 +148,123 @@ useCountStore.$reset()
             })
         }
     }
+~~~
+
+
+如果想要直接修改这些状态属性，类似 `this.count++`,可以使用 `mapWritableState` API
+
+#### getters
+
+`getters` 的使用 类似于 `state`，但是创建方式略有不同
+
+getters 是一个有具体返回值的函数，这个函数可以是有 state的值或者其他 getters 中的值计算出来的结果
+
+
+~~~js
+import { defineStore } from "pinia"
+
+const useCountStore = defineStore("name", {
+    getters: {
+        doubleCount: (state) => state.count * 2,
+        othercount(state) {
+            return this.doubleCount * state.count
+        }
+    }
+})
+~~~
+
+在 setup 函数中使用时，可以直接通过 store 访问
+
+非 setup 函数可以通过 mapState 方法注册到 computed 属性中
+
+#### actions
+
+actions 中的方法适合用来定义业务逻辑，而且是可以进行异步操作
+
+在非 setup 函数中使用的时候可以通过 mapActions 映射出来
+
+~~~js
+    export default {
+        methods: {
+            ...mapActions(useCountStore, {
+                changeCount: "count", 
+            })
+        }
+    }
+~~~
+
+第二个参数传递的类型可以参考 mapState
+
+在 setup 函数中，可以直接在 setup 中使用，也可以在组件中通过 store 对象调用
+
+~~~js
+
+    export default {
+        setup(props) {
+            let { todoItem } = toRefs(props)
+            const todoList = useTodoListStore()
+
+            const handleEdit = () => {
+                todoList.updatedTodoList(todoItem.value.id, {
+                    isEditing: true
+                })
+            }
+
+            const handleDelete = () => {
+                todoList.removeTodoList(todoItem.value.id)
+            }
+
+            const handleConfirm = () => {
+                todoList.updatedTodoList(todoItem.value.id, {
+                    content: value.value
+                })
+            }
+            return {
+                value,
+                handleEdit,
+                handleDelete,
+                handleConfirm
+            }
+        }
+    }
+~~~
+
+另外，针对 actions vuex 提供了一个 `$onAction` 方法来订阅action 及结果
+
+当我们订阅一个 store 后，每触发一次 store 内部的 action 执行，都会触发一次回调函数，传递给它的回调在 action 之前执行。 after 处理 Promise 并允许您在 action 完成后执行函数。 以类似的方式，onError 允许您在处理中抛出错误。
+
+~~~js
+const unsubscribe = todoListStore.$onAction(
+    ({
+        name, // action 的名字
+        store, // store 实例
+        args, // 调用这个 action 的参数
+        after, // 在这个 action 执行完毕之后，执行这个函数
+        onError, // 在这个 action 抛出异常的时候，执行这个函数
+    }) => {
+        // 记录开始的时间变量
+        const startTime = Date.now()
+        // 这将在 `store` 上的操作执行之前触发
+        console.log(`Start "${name}" with params [${args.join(', ')}].`)
+
+        // 如果 action 成功并且完全运行后，after 将触发。
+        // 它将等待任何返回的 promise
+        after((result) => {
+        console.log(
+            `Finished "${name}" after ${
+            Date.now() - startTime
+            }ms.\nResult: ${result}.`
+        )
+        })
+
+        // 如果 action 抛出或返回 Promise.reject ，onError 将触发
+        onError((error) => {
+        console.warn(
+            `Failed "${name}" after ${Date.now() - startTime}ms.\nError: ${error}.`
+        )
+        })
+    }
+)
+
+unsubscribe()
 ~~~
