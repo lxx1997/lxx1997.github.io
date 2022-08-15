@@ -313,6 +313,10 @@
     <lastmod>2022-08-11</lastmod>
   </url>
   <url>
+    <loc>https://lxx1997.github.io/2022/08/11/vue-pinia-state-manager/</loc>
+    <lastmod>2022-08-11</lastmod>
+  </url>
+  <url>
     <loc>https://lxx1997.github.io/2022/08/09/react/react-custom-hooks/</loc>
     <lastmod>2022-08-09</lastmod>
   </url>
