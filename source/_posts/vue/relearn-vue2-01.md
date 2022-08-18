@@ -5,9 +5,9 @@ date: 2022-07-07 15:56:07
 updated: 2022-07-07 15:56:07
 comments: true
 categories:
-    - vue
+    - Vue
 tags:
-    - vue
+    - Vue
     - JavaScript
     - relearn
 ---
