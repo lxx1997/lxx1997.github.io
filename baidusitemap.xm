@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://lxx1997.github.io/2022/04/23/web/SPA-prerender/</loc>
+    <lastmod>2022-08-18</lastmod>
+  </url>
+  <url>
     <loc>https://lxx1997.github.io/2021/01/28/vue/vue-learn-api-with-%E6%BA%90%E7%A0%81-05/</loc>
     <lastmod>2022-08-12</lastmod>
   </url>
@@ -142,10 +146,6 @@
   </url>
   <url>
     <loc>https://lxx1997.github.io/2020/12/04/web/Symbol%E8%AF%A6%E8%A7%A3/</loc>
-    <lastmod>2022-08-11</lastmod>
-  </url>
-  <url>
-    <loc>https://lxx1997.github.io/2022/04/23/web/SPA-prerender/</loc>
     <lastmod>2022-08-11</lastmod>
   </url>
   <url>
