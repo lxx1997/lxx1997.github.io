@@ -1,6 +1,6 @@
 ---
 title: 最全的页面性能优化
-cover: /assets/cover/20200225A1295.jpg
+cover: /assets/blogCover/1608136373106.jpg
 date: 2022-06-24 22:20:06
 updated: 2022-06-24 22:20:06
 categories:
