@@ -1,6 +1,6 @@
 ---
 title: html-webpack-plugin 的使用与进阶
-cover: /assets/cover/20200225A1295.jpg
+cover: /assets/blogCover/1579266815338.jpg
 date: 2022-07-13 11:19:44
 updated: 2022-07-13 11:19:44
 categories:

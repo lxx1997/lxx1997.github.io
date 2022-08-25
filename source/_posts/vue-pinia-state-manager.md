@@ -4,7 +4,7 @@ categories:
   - - Vue3
 tags:
   - Vue3
-cover: /assets/cover/20200225A1295.jpg
+cover: /assets/blogCover/【楽曲】ダンスフィッシュ_82256105_p1.png
 date: 2022-08-11 15:19:53
 updated: 2022-08-11 15:19:53
 ---
