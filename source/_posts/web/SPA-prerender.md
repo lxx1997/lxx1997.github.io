@@ -1,10 +1,12 @@
 ---
 title: SPA-prerender
 date: 2022-04-23 22:39:08
+categories:
+    - SEO
 tags:
     - react
     - Vue
-    - seo
+    - SEO
     - Javascript
 cover: '/assets/cover/20200225A1295.jpg'
 ---
