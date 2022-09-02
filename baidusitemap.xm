@@ -2,7 +2,11 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://lxx1997.github.io/2022/04/23/web/SPA-prerender/</loc>
-    <lastmod>2022-08-18</lastmod>
+    <lastmod>2022-08-26</lastmod>
+  </url>
+  <url>
+    <loc>https://lxx1997.github.io/2022/08/26/blog-key-article-classify/</loc>
+    <lastmod>2022-08-26</lastmod>
   </url>
   <url>
     <loc>https://lxx1997.github.io/2021/01/28/vue/vue-learn-api-with-%E6%BA%90%E7%A0%81-05/</loc>
