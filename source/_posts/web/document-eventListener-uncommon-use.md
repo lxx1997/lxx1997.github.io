@@ -1,6 +1,6 @@
 ---
 title: 一些不常用的事件监听方法
-cover: /assets/blogCover/伏見稲荷_76903383.jpg
+cover: /assets/blogCover/伏見稲荷_76903383.png
 date: 2022-10-27 11:22:40
 updated: 2022-10-27 11:22:40
 categories:
