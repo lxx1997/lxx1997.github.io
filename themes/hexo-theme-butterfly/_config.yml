@@ -434,7 +434,7 @@ microsoft_clarity:
 google_adsense:
   enable: true
   auto_ads: true
-  js: https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4089716785770926
+  js: https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js
   client: ca-pub-4089716785770926
   enable_page_level_ads: true
 
