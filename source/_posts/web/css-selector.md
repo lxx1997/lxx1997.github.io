@@ -4,7 +4,10 @@ cover: /assets/blogCover/1578912686790.jpg
 date: 2022-12-02 15:23:57
 updated: 2022-12-02 15:23:57
 categories:
+  - web
 tags:
+  - web
+  - css
 ---
 
 | 选择器       | 例子         |    例子描述    |
