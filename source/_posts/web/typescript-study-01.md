@@ -1,7 +1,11 @@
 ---
 title: typescript 学习质量 - 01
 date: 2020-04-08 09:10:06
+categories:
+  - TypeScript
 tags:
+    - TypeScript
+    - ES6
 cover: '/assets/cover/20200225A1295.jpg'
 ---
 [参考文章:廖雪峰 typescript入门教程](http://ts.xcatliu.com/index.html)

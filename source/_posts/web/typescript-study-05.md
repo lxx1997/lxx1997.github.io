@@ -1,8 +1,11 @@
 ---
 title: TypeScript 学习之路进阶版 - 扩展
 date: 2020-06-29 19:39:30
+categories:
+  - TypeScript
 tags:
     - TypeScript
+    - ES6
 cover: '/assets/cover/20200225A1295.jpg'
 ---
 
