@@ -14,5 +14,5 @@ tags:
 #### 创建一个博客到指定文件夹
 
 ~~~cmd
-npx hexo new page --path [folder-path]/[blog-name]
+hexo new page --path [folder-path]/[blog-name]
 ~~~
