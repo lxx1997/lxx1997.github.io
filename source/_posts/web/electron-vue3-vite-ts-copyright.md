@@ -1,10 +1,10 @@
 ---
 title: 基于 electron 实现一个记录用户粘贴历史记录应用程序 之 基础环境搭建
-cover: /assets/blogCover/マジカルミライ2022_99254731_p2.png
+cover: /assets/blogCover/1612283238139.jpg
 date: 2022-12-15 09:59:59
 updated: 2022-12-15 09:59:59
 categories:
-  - electron]
+  - [electron]
   - [web]
   - [vue3]
   - [vite]
