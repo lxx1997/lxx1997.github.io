@@ -4,10 +4,15 @@ cover: /assets/blogCover/【楽曲】ダンスフィッシュ_82256105_p1.png
 date: 2022-11-23 16:09:03
 updated: 2022-11-23 16:09:03
 categories:
-  - web
+    - [IOS]
+    - [web]
+    - [mobile]
+    - [MobileAdaptation]
 tags:
-  - web
-  - mobile
+    - IOS
+    - web
+    - mobile
+    - MobileAdaptation
 ---
 
 ## IOS 移动端适配
