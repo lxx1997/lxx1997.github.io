@@ -35,10 +35,10 @@ const sharePromise = window.navigator.share(data);
 
 `data` 包含要共享的数据的对象。必须至少指定以下字段之一。可用选项包括：
 
-`url:` 要共享的 URL
-`text:` 要共享的文本
-`title:` 要共享的标题（**标题必传，否则无法正常使用**）
-`files:` 要共享的文件(**注意，这是一个数组**)
+* `url:` 要共享的 URL
+* `text:` 要共享的文本
+* `title:` 要共享的标题（**标题必传，否则无法正常使用**）
+* `files:` 要共享的文件(**注意，这是一个数组**)
 
 分享文件之前，先使用 navigator.canShare() 判断这个文件能否被分享
 
@@ -58,10 +58,18 @@ let options = {
   files: files
 }
 if(navigator.canShare && navigator.canShare(options)  && navigator.share && (ios && version >= 15 || android)) {
-  navigator.share(options).then(res => {
-    // 成功之后的其他操作
-  })
+  try {
+    navigator.share(options).then(res => {
+      // 成功之后的其他操作
+    }).catch(() => {
+    // 旧版本的下载
+    })
+  } catch(error) {
+    // 旧版本的下载
+  }
 } else {
   // 旧版本的下载
 }
 ~~~
+
+**补充一点：navigator.share在不刷新页面的时候只能调用一次，再次调用时 navigator.share 方法会拒绝此操作，所以需要做兼容**
