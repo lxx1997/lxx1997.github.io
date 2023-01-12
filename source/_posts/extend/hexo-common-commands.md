@@ -14,5 +14,11 @@ tags:
 #### 创建一个博客到指定文件夹
 
 ~~~cmd
-  hexo new page --path [folder-path]/[blog-name]
+hexo new page --path [folder-path]/[blog-name]
+~~~
+
+#### create leetcode 练习（专用）
+
+~~~cmd
+npx hexo new page --path handredday/leetcode/day-101-2283
 ~~~

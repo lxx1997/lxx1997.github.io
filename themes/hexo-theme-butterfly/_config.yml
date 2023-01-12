@@ -8,7 +8,8 @@ menu:
     Photo: /Gallery/ || fas fa-image
   Extension ||fas fa-list:
     leetcode百天挑战: /categories/handredday/leetcode/ || fas fa-flag
-    总结: /categories/summary/ || fas fa-thumbs-up
+    summary: /categories/summary/ || fas fa-thumbs-up
+    thinking: /categories/thinking/ || fas fa-solid fa-mug-hot
   Archives: /archives/ || fas fa-archive
   Tags: /tags/ || fas fa-tags
   Categories: /categories/ || fas fa-folder-open
