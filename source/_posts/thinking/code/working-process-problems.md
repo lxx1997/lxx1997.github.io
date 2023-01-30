@@ -1,8 +1,8 @@
 ---
-title: [杂谈] - 从一个前端的角度来看什么才是一个合格的产品
+title: 杂谈 - 从一个前端的角度来看什么才是一个合格的产品
 cover: /assets/blogCover/1578912686790.jpg
 date: 2023-01-13 23:17:09
-updated: 2023-01-13 23:17:09
+updated: 2023-01-14 23:17:09
 categories:
   - thinking
 tags:
