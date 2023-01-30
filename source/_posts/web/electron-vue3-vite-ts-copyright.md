@@ -30,21 +30,21 @@ tags:
 
 ## 环境
 
-| 插件              | 版本         |
-| ---:---          |    ---:----   |
-|node   |     v16.14.0|
-|yarn   |     v1.22.19|
-|vue    |     v3.2.45|
-|@vitejs/plugin-vue    |      4.0.0|
-|electron     |     22.0.0|
-|electron-builder     |     23.6.0|
-|electron-devtools-installer     |    3.2.0|
-|rimraf     |     3.0.2|
-|typescript    |      4.9.3|
-|vite     |     4.0.0|
-|vite-plugin-electron     |     0.10.4|
-|vite-plugin-electron-renderer   |      0.11.3|
-|vue-tsc    |     1.0.11|
+| 插件                            | 版本            |
+| ---:---                        |    ---:----    |
+|node                            |     v16.14.0   |
+|yarn                            |     v1.22.19   |
+|vue                             |     v3.2.45    |
+|@vitejs/plugin-vue              |      4.0.0     |
+|electron                        |     22.0.0     |
+|electron-builder                |     23.6.0     |
+|electron-devtools-installer     |    3.2.0       |
+|rimraf                          |     3.0.2      |
+|typescript                      |      4.9.3     |
+|vite                            |     4.0.0      |
+|vite-plugin-electron            |     0.10.4     |
+|vite-plugin-electron-renderer   |      0.11.3    |
+|vue-tsc                         |     1.0.11     |
 
 
 ## 环境搭建
