@@ -35,6 +35,18 @@ Swiper 应该是最常用的滑块插件了，兼容了 Vue， react， Angular�
 * initialSlide: number 当前选中 (活跃) 的组件
 * loop: boolean 是否循环
 * centeredSlides: boolean 是否居中显示，如果设置为 true 的 在滑动时最开始和最后的组件可以滑动到页面中央
-* 
+* isBeginning: boolean 可以用来判断是否是开头
+* isEnd: boolean 可以判断是否结尾
+~~~js
+  const onSlideChange = (slider: any) => {
+    if(slider) {
+      setShowStart(!slider.isBeginning)
+      setShowEnd(!slider.isEnd)
+    }
+  }
+~~~
 
 #### 方法
+
+* slideTo 跳转到第几个滑块
+* onSwiper 可以获取 Swiper 实例（vue 和 react 中）
