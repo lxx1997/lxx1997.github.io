@@ -25,7 +25,7 @@ hexo.extend.helper.register('aside_archives', function (options = {}) {
     format = type === 'monthly' ? 'MMMM YYYY' : 'YYYY'
   }
 
-  const posts = this.site.posts.sort('date', order)
+  const posts = this.site.posts.sort('updated', order)
   if (!posts.length) return result
 
   const data = []
