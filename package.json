@@ -27,15 +27,6 @@
     "hexo-renderer-pug": "^3.0.0",
     "hexo-renderer-stylus": "^0.2.3",
     "hexo-server": "^0.1.2",
-    "hexo-update-time": "^1.1.1",
-    "hexo-util": "^2.6.0",
-    "husky": "^8.0.3",
-    "lint-staged": "^13.1.0"
-  },
-  "script": {
-    "lint-staged": "lint-staged"
-  },
-  "lint-staged": {
-    "source/_posts/*.md": "hexo-update-time"
+    "hexo-util": "^2.6.0"
   }
 }
