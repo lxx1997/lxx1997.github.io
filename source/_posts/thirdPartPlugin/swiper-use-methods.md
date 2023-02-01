@@ -2,7 +2,7 @@
 title: Swiper - 一些常用的属性及方法
 cover: /assets/blogCover/MIKU×Kyoto_76886013.png
 date: 2023-01-18 14:45:31
-updated: 2023-01-31 14:45:31
+updated: 2023-02-01 17:45:31
 categories:
   - [web]
   - [thirdPartPlugin]
@@ -24,6 +24,8 @@ Swiper is not compatible with all platforms, it is a modern touch slider which i
 
 Swiper 並非與所有平台兼容，它是一種現代觸摸滑塊，僅專注於現代應用程序/平台，以帶來最佳體驗和簡單性。
 
+更多细节的使用可以查看官网，有 demo 且所有的api
+
 ## 使用
 
 Swiper 应该是最常用的滑块插件了，兼容了 Vue， react， Angular， solid， svelte 等三方框架，里面有很多属性和方法，里面有很多方法我们其实并不会遇到，有些方法很长用到，如果每次去查文档会浪费很多时间，在这里把一些常用的方法记录一下，方便下次查阅
@@ -31,6 +33,7 @@ Swiper 应该是最常用的滑块插件了，兼容了 Vue， react， Angular�
 #### 属性
 
 * slidesPerView: number 在屏幕内显示多少个组件，组件宽度会平分当前屏幕宽度
+* slidesPerGroup: number 每次滚动滚动滑块个数
 * spaceBetween: number 组件之间的距离
 * initialSlide: number 当前选中 (活跃) 的组件
 * loop: boolean 是否循环
@@ -45,6 +48,7 @@ Swiper 应该是最常用的滑块插件了，兼容了 Vue， react， Angular�
     }
   }
 ~~~
+* breakpoints 不同屏幕尺寸下的适配，会替换掉原来的属性值
 
 #### 方法
 
