@@ -4,7 +4,7 @@ date: 2020-12-14 17:15:09
 tags:
     - JavaScript
     - canvas
-cover: '/assets/cover/20200225A1295.jpg'
+cover: /assets/blogCover/MIKU花(4)_78753717_p1.png
 ---
 
 转载[前端大全](https://mp.weixin.qq.com/s/OTFufemlMW7XhjS2zIrHhw)

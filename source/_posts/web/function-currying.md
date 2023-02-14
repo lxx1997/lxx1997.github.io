@@ -7,7 +7,7 @@ tags:
     - design-pattern
     - JavaScript
     - function
-cover: '/assets/cover/20200225A1295.jpg'
+cover: /assets/blogCover/MIKU花(4)_78753717_p1.png
 ---
 [参考文章](https://www.cnblogs.com/pigtail/p/3447660.html)
 > [函数反柯里化](/2020/12/17/fucntion-uncurrying/)

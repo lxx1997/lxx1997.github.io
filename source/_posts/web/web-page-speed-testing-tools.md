@@ -1,6 +1,6 @@
 ---
 title: 好用的浏览器页面测试页面性能工具
-cover: /assets/cover/20200225A1295.jpg
+cover: /assets/blogCover/天使なミクさん_79993307.png
 date: 2022-07-07 11:29:14
 updated: 2022-07-07 11:29:14
 categories:

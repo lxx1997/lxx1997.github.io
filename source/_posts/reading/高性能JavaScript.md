@@ -5,7 +5,7 @@ categories:
     - reading
 tag:
     - reading
-cover:  '/assets/cover/1579266842725.jpg'
+cover: /assets/blogCover/MIKU花(4)_78753717_p1.png
 ---
 
 最近读了一本关于如果写出性能更优的JavaScript的书，提取了一些相关的知识点

@@ -5,7 +5,7 @@ categories:
     - Vue
 tags:
     - Vue
-cover: '/assets/cover/20200225A1295.jpg'
+cover: /assets/blogCover/MIKU花(4)_78753717_p1.png
 ---
 
 ### Vue源码目录结构

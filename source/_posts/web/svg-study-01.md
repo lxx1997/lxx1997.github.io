@@ -3,7 +3,7 @@ title: 矢量图形 SVG 学习之路 --- 基础版
 date: 2020-07-29 14:33:53
 tags:
     - svg
-cover: '/assets/cover/20200225A1295.jpg'
+cover: /assets/blogCover/MIKU花(4)_78753717_p1.png
 ---
 
   SVG意为可缩放矢量图形（Scalable Vector Graphics）

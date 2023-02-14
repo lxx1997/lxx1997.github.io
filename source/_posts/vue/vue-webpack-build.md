@@ -4,7 +4,7 @@ date: 2020-05-05 00:29:21
 tags: 
       - Vue
       - webpack
-cover: '/assets/cover/20200225A1295.jpg'
+cover: /assets/blogCover/MIKU花(4)_78753717_p1.png
 ---
 ### 初始化 运行环境
 

@@ -2,7 +2,7 @@
 title: Object的方法
 date: 2020-11-26 17:54:45
 tags:
-cover: '/assets/cover/20200225A1295.jpg'
+cover: /assets/blogCover/MIKU花(4)_78753717_p1.png
 ---
 
 #### 属性

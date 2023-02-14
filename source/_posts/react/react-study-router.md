@@ -5,7 +5,7 @@ tags:
     - react
     - router
     - JavaScript
-cover: '/assets/cover/20200225A1295.jpg'
+cover: /assets/blogCover/MIKU花(4)_78753717_p1.png
 ---
 
   由于最近一段时间一直在使用vue做项目，最近打算重拾react，在此记录react的点滴学习，实时更新

@@ -9,7 +9,7 @@ tags:
     - eggjs
     - nodejs
     - backEnd
-cover: '/assets/cover/20200225A1295.jpg'
+cover: /assets/blogCover/MIKU花(4)_78753717_p1.png
 ---
 ## eggjs 定义
 

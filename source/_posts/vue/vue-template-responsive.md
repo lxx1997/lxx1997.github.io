@@ -6,7 +6,7 @@ categories:
 tags:
     - Vue
     - JavaScript
-cover: '/assets/cover/20200225A1295.jpg'
+cover: /assets/blogCover/MIKU花(4)_78753717_p1.png
 ---
 
 #### 响应式原理

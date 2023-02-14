@@ -2,7 +2,7 @@
 title: typescript - Pick
 date: 2020-12-02 10:21:41
 tags:
-cover: '/assets/cover/20200225A1295.jpg'
+cover: /assets/blogCover/MIKU花(4)_78753717_p1.png
 ---
 
 #### 什么是Pick

@@ -1,6 +1,6 @@
 ---
 title: 生成 github SSH key
-cover: /assets/cover/20200225A1295.jpg
+cover: /assets/blogCover/天使なミクさん_79993307.png
 date: 2022-07-08 14:19:07
 updated: 2022-07-08 14:19:07
 categories:

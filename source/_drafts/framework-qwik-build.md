@@ -1,6 +1,6 @@
 ---
 title: 新型 Web 框架 - qwik
-cover: /assets/cover/20200225A1295.jpg
+cover: /assets/blogCover/天使なミクさん_79993307.png
 date: 2022-08-18 11:18:51
 updated: 2022-08-18 11:18:51
 categories:

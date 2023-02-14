@@ -4,7 +4,7 @@ date: 2020-09-24 15:49:01
 tags:
     - JavaScript
     - method
-cover: '/assets/cover/20200225A1295.jpg'
+cover: /assets/blogCover/MIKU花(4)_78753717_p1.png
 ---
 
 ### 数字格式化

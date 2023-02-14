@@ -1,6 +1,6 @@
 ---
 title: Google SEO优化 - 结构化数据
-cover: /assets/cover/20200225A1295.jpg
+cover: /assets/blogCover/天使なミクさん_79993307.png
 date: 2022-08-25 11:41:48
 updated: 2022-08-25 11:41:48
 categories:

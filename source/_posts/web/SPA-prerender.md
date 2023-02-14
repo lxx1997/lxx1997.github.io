@@ -8,7 +8,7 @@ tags:
     - Vue
     - SEO
     - Javascript
-cover: '/assets/cover/20200225A1295.jpg'
+cover: /assets/blogCover/MIKU花(4)_78753717_p1.png
 ---
 
 由于单页面应用只生成了一个HTML 文件，如果想要做 SEO 的话， H 标签，img 标签的 alt 这些并不会被爬虫抓取到，所以需要我们做预渲染，使得生成的html文件中包含需要 爬虫抓取的内容， react-snap 插件可以帮助实现这个操作

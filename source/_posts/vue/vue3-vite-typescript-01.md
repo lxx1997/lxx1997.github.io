@@ -9,7 +9,7 @@ tags:
     - Vue3
     - vite
     - TypeScript
-cover: '/assets/cover/20200225A1295.jpg'
+cover: /assets/blogCover/MIKU花(4)_78753717_p1.png
 ---
 
 Vue3 新版出来了这么久，虽然之前也有联系过搭建，但是并没有测试过多的东西，趁着闲暇时间，打算从头采坑，记录自己的 Vue 3.0 的爬坑历程

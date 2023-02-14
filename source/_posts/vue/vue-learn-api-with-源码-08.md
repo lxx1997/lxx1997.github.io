@@ -7,7 +7,7 @@ categories:
 tags:
     - Vue
     - SourceCode
-cover: '/assets/cover/20200225A1295.jpg'
+cover: /assets/blogCover/MIKU花(4)_78753717_p1.png
 ---
 
 #### 内置指令

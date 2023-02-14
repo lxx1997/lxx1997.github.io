@@ -1,9 +1,10 @@
 ---
 title: window.IntersectionObserver
-date: 2022-04-05 20:51:06
+date: 2023-02-14 10:54:06
+updated: 2023-02-14 10:55:18
 tags:
     - JavaScript
-cover: '/assets/cover/20200225A1295.jpg'
+cover: /assets/blogCover/天使なミクさん_79993307.png
 ---
 
 ## window.IntersectionObserver

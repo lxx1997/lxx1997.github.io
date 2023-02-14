@@ -1,9 +1,10 @@
 ---
 title: window.postMessage跨域的使用方式
-date: 2021-05-04 23:23:18
+date: 2023-02-14 10:55:18
+updated: 2023-02-14 10:55:18
 tags:
     - JavaScript
-cover: '/assets/cover/20200225A1295.jpg'
+cover: /assets/blogCover/49147446_p0.jpg
 ---
 
 最近忙着工作的事情，好久没有更新博客了，正好最近要做的一个功能，最后决定使用 postMessage 进行解决

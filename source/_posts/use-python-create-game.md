@@ -4,7 +4,7 @@ date: 2020-06-04 17:38:00
 tags:
       - python
       - pygame
-cover: '/assets/cover/20200225A1295.jpg'
+cover: /assets/blogCover/MIKU花(4)_78753717_p1.png
 ---
 
 

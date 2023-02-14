@@ -5,7 +5,7 @@ categories:
     - reading
 tags:
     - reading
-cover: '/assets/cover/20200225A1295.jpg'
+cover: /assets/blogCover/MIKU花(4)_78753717_p1.png
 ---
 
 #### 第一部分  类型和语法

@@ -3,7 +3,7 @@ title: 矢量图形 SVG 学习之路 --- 进阶版
 date: 2020-07-30 14:42:26
 tags:
     - svg
-cover: '/assets/cover/20200225A1295.jpg'
+cover: /assets/blogCover/MIKU花(4)_78753717_p1.png
 ---
 
 #### SVG 滤镜

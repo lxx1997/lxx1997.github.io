@@ -1,6 +1,6 @@
 ---
 title: 常用的前端动画库
-cover: /assets/cover/20200225A1295.jpg
+cover: /assets/blogCover/天使なミクさん_79993307.png
 date: 2022-07-12 16:58:08
 updated: 2022-07-12 16:58:08
 categories:

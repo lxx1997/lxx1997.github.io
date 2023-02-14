@@ -3,7 +3,7 @@ title: golang-切割字符串和拼接字符串
 date: 2020-11-12 14:07:23
 tags:
     - golang
-cover: '/assets/cover/20200225A1295.jpg'
+cover: /assets/blogCover/MIKU花(4)_78753717_p1.png
 ---
 
 今天在Leecode上面练习用go语言做题，偶遇一题

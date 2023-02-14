@@ -4,7 +4,7 @@ date: 2020-08-10 10:17:32
 tags:
     - JavaScript
     - canvas
-cover: '/assets/cover/20200225A1295.jpg'
+cover: /assets/blogCover/MIKU花(4)_78753717_p1.png
 ---
 
   压缩图片的方式主要是使用了canvas进行了一次转码和压缩

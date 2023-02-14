@@ -7,7 +7,7 @@ categories:
 tags:
     - deno
     - nodejs
-cover: '/assets/cover/20200225A1295.jpg'
+cover: /assets/blogCover/MIKU花(4)_78753717_p1.png
 ---
 
 **首先我们先谈一下nodeJs的无法忽视的问题**

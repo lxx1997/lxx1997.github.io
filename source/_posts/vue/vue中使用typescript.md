@@ -4,7 +4,7 @@ date: 2020-10-22 15:45:24
 tags:
     - Vue
     - TypeScript
-cover: '/assets/cover/20200225A1295.jpg'
+cover: /assets/blogCover/MIKU花(4)_78753717_p1.png
 ---
 
 在此记录一下Vue中使用typescript时 遇到的一些问题

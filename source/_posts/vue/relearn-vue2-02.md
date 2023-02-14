@@ -1,6 +1,6 @@
 ---
 title: 重新学习vue2 - 发现隐藏其中的细节 - part2
-cover: /assets/cover/1625533619134.jpg
+cover: /assets/blogCover/MIKU花(4)_78753717_p1.png
 date: 2022-07-19 15:04:48
 updated: 2022-07-19 15:04:48
 categories:

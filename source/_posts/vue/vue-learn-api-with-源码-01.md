@@ -7,7 +7,7 @@ categories:
 tags:
     - Vue
     - SourceCode
-cover: '/assets/cover/20200225A1295.jpg'
+cover: /assets/blogCover/MIKU花(4)_78753717_p1.png
 ---
 
 此篇文章用来记录 Vue 中 Api 在 Vue源码中的具体实现方法，以便更好的理解 Vue 的各种 Api 的使用方法
