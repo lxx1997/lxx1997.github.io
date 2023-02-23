@@ -3,11 +3,13 @@ title: SPA-prerender
 date: 2022-04-23 22:39:08
 categories:
     - SEO
+    - [gitlab]
 tags:
     - react
     - Vue
     - SEO
     - Javascript
+    - gitlab
 cover: /assets/blogCover/MIKU花(4)_78753717_p1.png
 ---
 

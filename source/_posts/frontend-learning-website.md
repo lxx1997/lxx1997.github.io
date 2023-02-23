@@ -19,3 +19,4 @@ tags:
 | web全栈体系 | [点击跳转](https://senior-frontend.pages.dev/) | 正在学习中 |
 | 前端技能图谱 | [点击跳转](https://leohxj.gitbooks.io/front-end-database/content/interview/skill-path.html) | 未学习 |
 | JavaScript MDN doc | [点击跳转](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript) | 正在学习中 |
+| 卡颂 React React技术揭秘 | [点击跳转](https://react.iamkasong.com/preparation/idea.html) | 正在学习中 |
