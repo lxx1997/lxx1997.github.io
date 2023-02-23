@@ -55,20 +55,20 @@ const computedPluginList = (types) => {
         }))
         break;
       case "page1": 
-        new htmlWebpackPlugin({
+        pluginList.push(new htmlWebpackPlugin({
           title: "Page1",
           template: "./public/index.html",
           filename: "page1.html",
           chunks: ["page1"]
-        })
+        }))
         break;
       case "page2": 
-        new htmlWebpackPlugin({
+        pluginList.push(new htmlWebpackPlugin({
           title: "Page2",
           template: "./public/index.html",
           filename: "page2.html",
           chunks: ["page2"]
-        })
+        }))
         break;
       default:
         break;
