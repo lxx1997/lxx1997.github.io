@@ -2,7 +2,7 @@
 title: 最全的页面性能优化
 cover: /assets/blogCover/1608136373106.jpg
 date: 2022-06-24 22:20:06
-updated: 2022-06-24 22:20:06
+updated: 2023-02-24 22:20:06
 categories:
     - performance
 tags:
@@ -195,7 +195,28 @@ axios.get*(url)
 
     vue 在内部做过处理，只有当 lazy = true， 需要渲染 LazyLoad 组件时，才会加载对应资源
 
+    **React 路由懒加载**
+
+    React.lazy 和 import 结合，使用的时候可以用 Suspense 组件包裹起来，可以在加载组件的时候提供占位效果
+
+    ~~~js
+      import React, { Suspense } from 'react';
+
+      const OtherComponent = React.lazy(() => import('./OtherComponent'));
+
+      function MyComponent() {
+        return (
+          <div>
+            <Suspense fallback={<div>Loading...</div>}>
+              <OtherComponent />
+            </Suspense>
+          </div>
+        );
+      }
+    ~~~
+
     通过以上操作，我们可以极大减少首屏加载所需要的资源大小，提高页面加载速度
+
 
 * [Tree Shaking](https://www.webpackjs.com/guides/tree-shaking/)
 
