@@ -12,6 +12,7 @@ tags:
   - react
   - JavaScript
   - gitlab
+keywords: gitlab,webpack,bash,react,react-router,customize-cra,react-app-rewired,gitlab-ci.yml,CI/CD,html-webpack-plugin,env-cmd,node.js
 ---
 
 书接上回 [React 多页面应用 - 路由配置](/2023/02/20/webpack/react-multiple-page-router/)
