@@ -118,6 +118,80 @@ module.exports = override(overrideConfig(["page1", "main"]))
 }
 ~~~
 
+执行 `set:env` 时会向 process.env 新增变量 `REACT_APP_PROJECT` 可以用来判断当前发版项目，可以在项目全局进行访问，这里主要在config-overrides 文件里进行访问
+
+~~~js
+// config-overrides.js
+
+const { override } =  require("customize-cra");
+const htmlWebpackPlugin = require("html-webpack-plugin")
+
+const entry = {
+  main: "./src/index.js",
+  page1: "./src/pages/page1/index.js",
+  page2: "./src/pages/page2/index.js"
+}
+
+const computedPluginList = (types) => {
+  let pluginList = []
+  for(let i = 0; i < types.length; i++) {
+    switch (types[i]) {
+      case "main": 
+        pluginList.push(new htmlWebpackPlugin({
+          title: "main",
+          template: "./public/index.html",
+          filename: "main.html",
+          chunks: ["main"]
+        }))
+        break;
+      case "page1": 
+        pluginList.push(new htmlWebpackPlugin({
+          title: "Page1",
+          template: "./public/index.html",
+          filename: "page1.html",
+          chunks: ["page1"]
+        }))
+        break;
+      case "page2": 
+        pluginList.push(new htmlWebpackPlugin({
+          title: "Page2",
+          template: "./public/index.html",
+          filename: "page2.html",
+          chunks: ["page2"]
+        }))
+        break;
+      default:
+        break;
+    }
+  }
+  return pluginList
+}
+const overrideConfig = () => (config) => {
+  const innerEntry = {}
+  let paths = ["main", "page1", "page2"]
+  // 这里根据设置的变量来判断打包项目，如果没传则全量打包，主要针对本地开发使用
+  if(process.env.REACT_APP_PROJECT) {
+    paths = [process.env.REACT_APP_PROJECT, "main"]
+  }
+  if(paths) {
+    for(let i = 0; i < paths.length; i++) {
+      innerEntry[paths[i]] = entry[paths[i]]
+    }
+  } else {
+    innerEntry.entry = entry
+  }
+
+  config.output = {
+    filename: "[name].[fullhash].js",
+    path: __dirname + '/dist',
+  }
+
+  config.plugins.push(...computedPluginList(paths))
+  return config
+}
+module.exports = override(overrideConfig())
+~~~
+
 #### gitlab-ci.yml 文件修改
 
 首先需要修改 gitlab-ci 文件内容，使其由原先的通过判断分支来发版，更改为判断 tag 名称发版，tag 需要定一个规则，用于区分正式，测试环境，我这边定义的规则 `V-[环境名称]-[version]-[project]`
@@ -185,6 +259,8 @@ test:sync-to-s3:
     - projectName=${CI_COMMIT_REF_NAME##*-} #设置变量 projectName
     - sh ./script/updatePackage.sh $projectName
 ~~~
+
+执行完上述命令后，gitlab 发版服务上拉取到的tag 代码，就会自动修改package.json 的内容，然后执行 打包命令的时候就会按照我们想要的发版的内容进行发版
 
 ## 扩展
 
