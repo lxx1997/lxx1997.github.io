@@ -1,6 +1,7 @@
 ---
 title: JavaScript - 手写一个 Promise 方法
 date: 2021-03-18 13:15:52
+updated: 2021-03-18 13:15:52
 tags:
     - JavaScript
 cover: /assets/blogCover/MIKU花(4)_78753717_p1.png

@@ -1,6 +1,7 @@
 ---
 title: 浏览器存储方式学习  cookie, session, localstorage, indexedDB
 date: 2020-07-22 15:27:33
+updated: 2020-07-22 15:27:33
 tags:
       - browser
       - localStorage

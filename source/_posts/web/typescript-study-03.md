@@ -1,6 +1,7 @@
 ---
 title: typescript 学习之路进阶版  -  2
 date: 2020-06-22 16:31:39
+updated: 2020-06-22 16:31:39
 categories:
   - TypeScript
 tags:

@@ -1,6 +1,7 @@
 ---
 title: SPA-prerender
 date: 2022-04-23 22:39:08
+updated: 2022-04-23 22:39:08
 categories:
     - SEO
     - [gitlab]

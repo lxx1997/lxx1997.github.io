@@ -1,6 +1,7 @@
 ---
 title: vue中使用typescript
 date: 2020-10-22 15:45:24
+updated: 2020-10-22 15:45:24
 tags:
     - Vue
     - TypeScript

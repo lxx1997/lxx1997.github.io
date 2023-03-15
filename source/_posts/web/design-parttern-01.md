@@ -1,6 +1,7 @@
 ---
 title: JavaScript 设计模式联系  -  创建型设计模式
 date: 2021-06-14 18:25:20
+updated: 2021-06-14 18:25:20
 tags:
     - JavaScript
 cover: /assets/blogCover/MIKU花(4)_78753717_p1.png

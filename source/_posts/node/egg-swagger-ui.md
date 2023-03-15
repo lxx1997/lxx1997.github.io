@@ -1,6 +1,7 @@
 ---
 title: eggjs 配置swagger-ui
 date: 2020-05-26 10:00:40
+updated: 2020-05-26 10:00:40
 tags:
       - eggjs
       - swagger-ui

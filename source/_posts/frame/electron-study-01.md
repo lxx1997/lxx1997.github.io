@@ -1,6 +1,7 @@
 ---
 title: electron - 使用javascript编写pc应用 - 01
 date: 2020-08-20 09:30:05
+updated: 2020-08-20 09:30:05
 tags:
     - electron
     - JavaScript

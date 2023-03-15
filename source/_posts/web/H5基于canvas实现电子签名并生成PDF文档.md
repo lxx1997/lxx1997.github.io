@@ -1,6 +1,7 @@
 ---
 title: H5基于canvas实现电子签名并生成PDF文档
 date: 2020-12-14 17:15:09
+updated: 2020-12-14 17:15:09
 tags:
     - JavaScript
     - canvas

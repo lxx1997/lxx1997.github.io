@@ -1,6 +1,7 @@
 ---
 title: new Object() 和 Object.create() 的区别
 date: 2021-01-04 20:46:00
+updated: 2021-01-04 20:46:00
 categories:
     - JavaScript
 tags:

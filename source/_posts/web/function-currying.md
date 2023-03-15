@@ -1,6 +1,7 @@
 ---
 title: 函数 - 函数柯里化（Currying）
 date: 2020-12-17 09:16:37
+updated: 2020-12-17 09:16:37
 categories:
     - design-pattern
 tags:

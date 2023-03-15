@@ -1,6 +1,7 @@
 ---
 title: 跟着 Vue源码学习 Vue api 系列 (一) - 全局配置
 date: 2021-01-09 22:17:53
+updated: 2021-01-09 22:17:53
 categories: 
     - [Vue]
     - [SourceCode]

@@ -1,7 +1,9 @@
 ---
 title: typescript - Pick
 date: 2020-12-02 10:21:41
+updated: 2020-12-02 10:21:41
 tags:
+  - typescrript
 cover: /assets/blogCover/MIKU花(4)_78753717_p1.png
 ---
 

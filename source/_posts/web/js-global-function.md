@@ -1,6 +1,7 @@
 ---
 title: javascript 全局函数
 date: 2020-05-05 00:38:13
+updated: 2020-05-05 00:38:13
 tags:
       - JavaScript
       - decode

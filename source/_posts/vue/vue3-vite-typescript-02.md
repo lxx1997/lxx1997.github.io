@@ -1,6 +1,7 @@
 ---
 title: Vue3 + Vite + TypeScript 项目实战 -----（二）Vue3 生命周期
 date: 2021-01-17 22:24:46
+updated: 2021-01-17 22:24:46
 categories:
     - [Vue3]
     - [vite]

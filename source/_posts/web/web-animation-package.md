@@ -4,7 +4,9 @@ cover: /assets/blogCover/天使なミクさん_79993307.png
 date: 2022-07-12 16:58:08
 updated: 2022-07-12 16:58:08
 categories:
+  - web
 tags:
+  - web
 ---
 
 #### [Lottie](https://github.com/airbnb/lottie-web)

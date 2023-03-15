@@ -1,6 +1,7 @@
 ---
 title: eggjs token验证(redis & jsonwebtoken)
 date: 2020-04-10 01:33:58
+updated: 2020-04-10 01:33:58
 tags:
       - eggjs
       - jsonwebtoken

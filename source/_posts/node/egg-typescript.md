@@ -1,6 +1,7 @@
 ---
 title: 用typescript来写eggjs
 date: 2020-05-27 09:41:28
+updated: 2020-05-27 09:41:28
 tags:
       - TypeScript
       - eggjs

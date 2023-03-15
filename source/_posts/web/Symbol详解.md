@@ -1,6 +1,7 @@
 ---
 title: Symbol详解
 date: 2020-12-04 15:23:00
+updated: 2020-12-04 15:23:00
 tags:
     - Symbol
     - ES6

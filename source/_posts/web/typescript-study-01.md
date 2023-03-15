@@ -1,6 +1,7 @@
 ---
 title: typescript 学习质量 - 01
 date: 2020-04-08 09:10:06
+updated: 2020-04-08 09:10:06
 categories:
   - TypeScript
 tags:

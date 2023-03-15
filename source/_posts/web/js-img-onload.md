@@ -1,6 +1,7 @@
 ---
 title: js 判断图片是否完全加载完成
 date: 2020-05-05 10:01:12
+updated: 2020-05-05 10:01:12
 tags:
       - JavaScript
 cover: /assets/blogCover/MIKU花(4)_78753717_p1.png

@@ -1,6 +1,7 @@
 ---
 title: 使用js压缩图片
 date: 2020-08-10 10:17:32
+updated: 2020-08-10 10:17:32
 tags:
     - JavaScript
     - canvas
