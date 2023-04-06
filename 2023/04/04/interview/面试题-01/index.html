@@ -1,0 +1,608 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>个人整理的比较全的知识 - 方便自己回顾 | SoulReader</title><meta name="keywords" content="interview,promise"><meta name="author" content="lxx,1987607597@qq.com"><meta name="copyright" content="lxx"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="HTML新增的 h5 属性 标签类 header,footer,aside,nav,article 媒体播放标签 audio,video canvas svg 等 存储属性 localStorage,sessionStorage input 标签新增type 属性 email,password,file,tel,date,url 等  CSSBFC 块级格式化上下文是块级盒子的布局过程发生的区域，">
+<meta property="og:type" content="article">
+<meta property="og:title" content="个人整理的比较全的知识 - 方便自己回顾">
+<meta property="og:url" content="https://lxx1997.github.io/2023/04/04/interview/%E9%9D%A2%E8%AF%95%E9%A2%98-01/index.html">
+<meta property="og:site_name" content="SoulReader">
+<meta property="og:description" content="HTML新增的 h5 属性 标签类 header,footer,aside,nav,article 媒体播放标签 audio,video canvas svg 等 存储属性 localStorage,sessionStorage input 标签新增type 属性 email,password,file,tel,date,url 等  CSSBFC 块级格式化上下文是块级盒子的布局过程发生的区域，">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://lxx1997.github.io/assets/blogCover/202039_80006038.png">
+<meta property="article:published_time" content="2023-04-04T09:15:19.000Z">
+<meta property="article:modified_time" content="2023-04-04T09:15:19.000Z">
+<meta property="article:author" content="lxx">
+<meta property="article:tag" content="interview">
+<meta property="article:tag" content="promise">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://lxx1997.github.io/assets/blogCover/202039_80006038.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://lxx1997.github.io/2023/04/04/interview/%E9%9D%A2%E8%AF%95%E9%A2%98-01/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//www.google-analytics.com" crossorigin=""/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css" media="print" onload="this.media='all'"><script async="async" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><script>(adsbygoogle = window.adsbygoogle || []).push({
+  google_ad_client: 'ca-pub-4089716785770926',
+  enable_page_level_ads: 'true'
+});</script><script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-ZH8W8N71EH"></script><script>window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-ZH8W8N71EH');
+</script><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":null},
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: 'Just',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '个人整理的比较全的知识 - 方便自己回顾',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-04-04 17:15:19'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.1.0"><link rel="alternate" href="/atom.xml" title="SoulReader" type="application/atom+xml">
+</head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/image/%E3%80%90%E6%97%A7%E4%BD%9C%E3%80%91%E9%9B%AA%E3%83%9F%E3%82%AF_83782310_p7.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">111</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">78</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">35</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> Media</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-image"></i><span> Photo</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> Extension</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/categories/handredday/leetcode/"><i class="fa-fw fas fa-flag"></i><span> leetcode百天挑战</span></a></li><li><a class="site-page child" href="/categories/summary/"><i class="fa-fw fas fa-thumbs-up"></i><span> summary</span></a></li><li><a class="site-page child" href="/categories/thinking/"><i class="fa-fw fas fa-solid fa-mug-hot"></i><span> thinking</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/assets/blogCover/202039_80006038.png')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">SoulReader</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> Media</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-image"></i><span> Photo</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> Extension</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/categories/handredday/leetcode/"><i class="fa-fw fas fa-flag"></i><span> leetcode百天挑战</span></a></li><li><a class="site-page child" href="/categories/summary/"><i class="fa-fw fas fa-thumbs-up"></i><span> summary</span></a></li><li><a class="site-page child" href="/categories/thinking/"><i class="fa-fw fas fa-solid fa-mug-hot"></i><span> thinking</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">个人整理的比较全的知识 - 方便自己回顾</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2023-04-04T09:15:19.000Z" title="Created 2023-04-04 17:15:19">2023-04-04</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2023-04-04T09:15:19.000Z" title="Updated 2023-04-04 17:15:19">2023-04-04</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="个人整理的比较全的知识 - 方便自己回顾"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post View:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h2 id="HTML"><a href="#HTML" class="headerlink" title="HTML"></a>HTML</h2><h4 id="新增的-h5-属性"><a href="#新增的-h5-属性" class="headerlink" title="新增的 h5 属性"></a>新增的 h5 属性</h4><ul>
+<li>标签类 <code>header</code>,<code>footer</code>,<code>aside</code>,<code>nav</code>,<code>article</code></li>
+<li>媒体播放标签 <code>audio</code>,<code>video</code></li>
+<li>canvas svg 等</li>
+<li>存储属性 localStorage,sessionStorage</li>
+<li>input 标签新增type 属性 <code>email</code>,<code>password</code>,<code>file</code>,<code>tel</code>,<code>date</code>,<code>url</code> 等</li>
+</ul>
+<h2 id="CSS"><a href="#CSS" class="headerlink" title="CSS"></a>CSS</h2><h4 id="BFC-块级格式化上下文"><a href="#BFC-块级格式化上下文" class="headerlink" title="BFC 块级格式化上下文"></a>BFC 块级格式化上下文</h4><p>是块级盒子的布局过程发生的区域，也是浮动元素与其他元素交互的区域。</p>
+<p>特性：</p>
+<ul>
+<li>块级元素会在垂直方向一个接一个排列</li>
+<li>避免子元素的margin 属性影响父元素</li>
+<li>保证子元素的属性只在BFC盒内起作用，不会影响盒外的其他元素</li>
+<li>如果子元素有 float 或者 </li>
+</ul>
+<p>触发方式：</p>
+<ul>
+<li>float: left/right</li>
+<li>position: absolute/fixed</li>
+<li>overflow: hidden/hidden-x/hidden-y</li>
+<li>display: inline-block/flex/gid</li>
+</ul>
+<h4 id="如何解决高度塌陷"><a href="#如何解决高度塌陷" class="headerlink" title="如何解决高度塌陷"></a>如何解决高度塌陷</h4><ul>
+<li>:after { clear: both;} 或者在父元素内部最后新增一个元素设置 style  clear: both;</li>
+<li>设置 position: absolute</li>
+<li>overflow: hidden</li>
+</ul>
+<h4 id="元素水平垂直居中的方法"><a href="#元素水平垂直居中的方法" class="headerlink" title="元素水平垂直居中的方法"></a>元素水平垂直居中的方法</h4><ul>
+<li><code>display: flex; align-items: center;justify-content: space-around;</code></li>
+<li><code>position:absolute; top:50%;left:50%;transform: translate(-50%, -50%)</code></li>
+<li><code>display: grid; align-items: center;justify-content: space-around;</code></li>
+<li><code>margin-top:50%;margin-left:50%;transform: translate(-50%, -50%)</code></li>
+<li>定高的话可以使用 margin-left偏移自身一般宽度和高度</li>
+</ul>
+<h4 id="flex-布局"><a href="#flex-布局" class="headerlink" title="flex 布局"></a>flex 布局</h4><p>有哪些属性</p>
+<ul>
+<li>flex-direction  布局方向 row/row-reverse/column/column-reverse</li>
+<li>flex-wrap 是否换行</li>
+<li>flex-flow flex-direction 和 flex-wrap 的简写模式</li>
+<li>justify-content  主轴上的对齐方式 flex-start/flex-end/space-around/space-between/space-evenly/center</li>
+<li>align-items: 交叉轴 flex-start/flex-end/center/base-line(以第一行文字基线对齐)/stretch</li>
+<li>align-content 多根轴线对齐 flex-start/flex-end/space-around/space-between/space-evenly/center</li>
+</ul>
+<p>子元素属性</p>
+<ul>
+<li>order 定义项目排列顺序，数值越大越靠后</li>
+<li>flex 设置 flex-grow/flex-shrik/flex-basic 的缩写</li>
+<li>flex-grow 是否放大 默认为0</li>
+<li>flex-shrink 是否缩小  默认为1</li>
+<li>flex-basic 占据主轴空间</li>
+<li>align-self 单独设置子元素的对齐方式,可以使部分子元素与其他子元素对齐方式不同 flex-start/flex-end/center/base-line(以第一行文字基线对齐)/stretch</li>
+</ul>
+<h4 id="css-选择器优先级"><a href="#css-选择器优先级" class="headerlink" title="css 选择器优先级"></a>css 选择器优先级</h4><p>css 选择器有以下几种</p>
+<ul>
+<li>ID 选择器 <code>id=&quot;abc&quot;</code></li>
+<li>类（class）选择器 <code>class=&quot;abc&quot;</code></li>
+<li>标签选择器  <code>div</code></li>
+<li>标签属性选择器  <code>div[title=&quot;abc&quot;]</code></li>
+<li>伪类和伪元素 <code>after,before,selection,focus,hover,active,</code></li>
+<li>父子选择器 <code>div &gt; p</code>  </li>
+</ul>
+<p>其中 ID 选择器的权重最高，接着是类选择器，最后是标签选择器</p>
+<h2 id="JavaScript"><a href="#JavaScript" class="headerlink" title="JavaScript"></a>JavaScript</h2><h4 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h4><p>基础数据类型有</p>
+<ul>
+<li>Number</li>
+<li>String</li>
+<li>Boolean</li>
+<li>Null</li>
+<li>Undefined</li>
+<li>Symbol</li>
+<li>Bigint (新增的，因为是为了兼容大数)</li>
+</ul>
+<p>引用数据</p>
+<ul>
+<li>Object</li>
+</ul>
+<p>如何判断数据类型</p>
+<ul>
+<li>typeof  需要注意的是 typeof null = object, typeof func() {} = function</li>
+<li>instanceof 原理是根据原型链来查找的</li>
+<li>Object.prototype.toString.call() 会返回对应元素类型 <code>[object Object/Array/RegExp/...]</code></li>
+</ul>
+<h4 id="闭包"><a href="#闭包" class="headerlink" title="闭包"></a>闭包</h4><p>闭包是一个函数及其捆绑的周边环境状态的引用的组合，闭包可以使开发者从内部函数访问外部函数的作用域。</p>
+<ul>
+<li>可以用来实现函数柯里化（将多个参数转变成单个参数传入<code>func(a,b,c) =&gt; func(a)(b)(c)</code>）</li>
+<li>可以用来模拟私有方法，因为闭包内部的部分变量和方法，函数外部无法访问</li>
+<li>闭包还可以用来解决变量提升的问题。</li>
+</ul>
+<p>使用闭包需要注意内存泄露问题，因为这些作用域不会随着函数的执行而清除掉</p>
+<h4 id="原型链"><a href="#原型链" class="headerlink" title="原型链"></a>原型链</h4><p>javascript对象上有一个属性，可以通过这个属性查找到她的原型，而且原型上也有这个属性，可以一级一级的向上查找</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> obj = <span class="keyword">new</span> <span class="title class_">Object</span>()</span><br><span class="line">obj.<span class="property"><span class="keyword">prototype</span></span> === <span class="literal">undefined</span></span><br><span class="line">obj.<span class="property">__proto__</span> === <span class="title class_">Object</span>.<span class="property"><span class="keyword">prototype</span></span></span><br><span class="line"><span class="title class_">Object</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">__proto__</span> === <span class="literal">null</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">func</span> () &#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> f = <span class="keyword">new</span> <span class="title function_">func</span>()</span><br><span class="line">f.<span class="property">__proto__</span> === func.<span class="property"><span class="keyword">prototype</span></span></span><br><span class="line">func.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">__proto__</span> === <span class="title class_">Object</span>.<span class="property"><span class="keyword">prototype</span></span> </span><br></pre></td></tr></table></figure>
+<p>当我们在查找一个对象的属性的时候，如果当前对象不存在这个属性，则会沿着原型链一级一级的向上查找，直查找到最后一级，也就是 Object 对象上</p>
+<p><strong>需要注意的是在原型链上查找比较耗时和消耗性能，如果层级比较深的话，可以选择暂存下来</strong></p>
+<p><strong>原型链上的属性和方法最好不要随意修改，否则可能会影响其他继承于该原型的函数</strong></p>
+<h4 id="this-指向"><a href="#this-指向" class="headerlink" title="this 指向"></a>this 指向</h4><ul>
+<li><p>直接执行 this 指向 window</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">func</span>(<span class="params"></span>) &#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_">func</span>() <span class="comment">// window</span></span><br><span class="line"><span class="keyword">const</span> obj = &#123;</span><br><span class="line">  <span class="attr">func</span>: <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line"></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> f1 = obj.<span class="property">func</span></span><br><span class="line"><span class="title function_">f1</span>() <span class="comment">// window</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>挂载到对象上执行  this指向当前对象</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> obj = &#123;</span><br><span class="line">  <span class="attr">func</span>: <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line"></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">obj.<span class="title function_">func</span>() <span class="comment">// obj</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>new<br>使用new 的时候会执行以下几个操作</p>
+<ol>
+<li>创建一个新的空对象</li>
+<li>将当前空对象的 prototype 指向当前函数的 prototype</li>
+<li>将前端对象替换当前函数的执行上下文（this）</li>
+<li>判断函数是否存在返回值，返回值如果是基础数据类型，则this 还是 创建的空对象，否则是return 的对象</li>
+</ol>
+</li>
+<li><p>call，bind，apply<br>call 和 apply 会立即执行函数，同时将函数的this 指向传入的this<br>bind 不会立刻执行，而且参数可以不用一次性传入</p>
+<ul>
+<li>call(this, …args) </li>
+<li>bind(this, …args) </li>
+<li>apply(this, args)</li>
+</ul>
+</li>
+</ul>
+<h4 id="事件循环-Event-Loop"><a href="#事件循环-Event-Loop" class="headerlink" title="事件循环 (Event Loop)"></a>事件循环 (Event Loop)</h4><ul>
+<li>宏任务（setTimeout，setInterval，script，ajax）</li>
+<li>微任务（Promise.then, requestAnimationFrame， process.nextTic, Object.observer, MutationObserver(监察dom节点变化)）</li>
+<li>同步任务 正常js解析，js代码执行等</li>
+</ul>
+<p>函数的执行顺序是</p>
+<ul>
+<li>如果存在同步任务，会先执行同步任务</li>
+<li>同步任务执行完成后，先查找微任务队列中是否包含任务，如果包含需要执行的任务，会立即执行</li>
+<li>微任务队列执行完成之后才会去判断宏任务中是否存在需要执行的任务，宏任务每次执行的时候都需要判断微任务队列中是否包含需要执行的任务</li>
+</ul>
+<h4 id="Promise"><a href="#Promise" class="headerlink" title="Promise"></a>Promise</h4><ul>
+<li>Promise.resolve() 返回一个以给定值解析后的 Promise 对象</li>
+<li>Promise.reject() 返回一个带有拒绝原因的 Promise 对象。</li>
+<li>Promise.then() 返回一个 Promise 对象，有两个回调函数，一个成功的回调，一个失败情况的回调</li>
+<li>Promise.catch() 返回一个 Promise 对象，只有一个失败情况的回调</li>
+<li>Promise.finally() 无论成功和失败都会执行</li>
+<li>Promise.all() 当所有的 Promise 成功后才回返回成功，结果按顺序返回，有一个失败就返回失败</li>
+<li>Promise.race() 只要有一个 Promise 成功或者失败，就是返回一个成功或者失败的结果</li>
+<li>Promise.allSettled() 当所有的 Promise 的结果都获取到才返回，不管成功还是失败</li>
+<li>Promise.any() 只要有一个 Promise 成功就会返回成功的结果，全部失败才会返回失败的结果</li>
+</ul>
+<p><a href="https://lxx1997.github.io/2023/03/13/web/hand-write-promise/">手写一个 Promise 方法</a></p>
+<h4 id="Proxy-Rflect"><a href="#Proxy-Rflect" class="headerlink" title="Proxy/Rflect"></a>Proxy/Rflect</h4><p>Proxy 对象用于创建一个对象的代理，实现对基本操作的拦截</p>
+<p><em>类似于 Object.defineProperties,但是比她的功能更强大</em></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> obj = &#123;</span><br><span class="line">  <span class="attr">a</span>: <span class="number">1</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> o = <span class="keyword">new</span> <span class="title class_">Proxy</span>(obj, &#123;</span><br><span class="line">  <span class="attr">set</span>: <span class="keyword">function</span>(<span class="params">obj, key, value</span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(obj, key, value)</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">get</span>: <span class="keyword">function</span>(<span class="params">obj, key, value</span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(obj, key, value)</span><br><span class="line">    <span class="keyword">return</span> obj[key]</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;)</span><br><span class="line">obj.<span class="property">a</span> = <span class="number">20</span></span><br><span class="line">o.<span class="property">a</span></span><br><span class="line">o.<span class="property">a</span> = <span class="number">30</span></span><br></pre></td></tr></table></figure>
+<p><strong>需要注意的是，只有通过代理后的对象修改和获取属性时，才会触发代理，原对象修改和删除并不会触发</strong></p>
+<p><strong>handler 配置属性</strong></p>
+<ul>
+<li>get   属性读取操作</li>
+<li>set   属性设置操作</li>
+<li>has   in操作符 </li>
+<li>deleteProperty  delete 操作符</li>
+<li>ownKeys Object.getOwnPropertyNames 方法和 Object.getOwnPropertySymbols 方法的捕捉器。</li>
+<li>apply   函数调用时触发</li>
+<li>construct   使用 new 操作符触发</li>
+<li>getPrototypeOf  获取原型对象扑捉器 Object.getPrototypeOf</li>
+<li>setPrototypeOf  设置原型对象扑捉器 Object.setPrototypeOf</li>
+<li>isExensible   Object.isExtensible 方法的捕捉器 是否是可扩展的</li>
+<li>preventExtensible   Object.preventExtensions 方法的捕捉器。设置对象不可扩展</li>
+<li>getOwnPropertyDescriptor  获取对象的属性描述（value,configurable,writable,get,set,enumerable）</li>
+<li>defineProperty  Object.defineProperty 方法的捕捉器。</li>
+</ul>
+<p>Reflect 方法同理，主要用来对 Proxy 对应属性的映射</p>
+<h2 id="浏览器"><a href="#浏览器" class="headerlink" title="浏览器"></a>浏览器</h2><h4 id="垃圾回收"><a href="#垃圾回收" class="headerlink" title="垃圾回收"></a>垃圾回收</h4><ul>
+<li><p>引用计数<br>引用计数的原理当创建和引用对象时，都会给该对象的引用次数加1，当给变量重新赋值或者执行的上下文清除时，引用次数 -1，当引用次数为0的时候，会被清除的。</p>
+<p>缺点是当出现循环引用的时候，由于引用计数一直不为0，所以无法被清除</p>
+</li>
+<li><p>标记清除<br>当变量进入执行环境时，会标记状态为进入，当弹出执行环境时，会标记状态为清除，标记状态为清除的会自动被js引擎清除</p>
+<p>缺点是容易造成内存碎片化</p>
+</li>
+<li><p>标记整理法<br>同标记清除，会在清除后重新整理内存地址</p>
+</li>
+<li><p>垃圾回收优化<br>将内存分为 新生代和老生代，新生代缓存的是存活时间比较短的地址，老生代缓存的是存活时间久的地址</p>
+<p>同时新生代又分为使用区和空闲区（双缓存），在进行清除时，会将使用区的变量的标记进行判断，如果被标记，则放到空闲区内，并且进行内存整理，最后将使用区的内存清空，并将使用区变成空闲区，空闲区变成使用区，并重复上述操作</p>
+</li>
+<li><p>内存泄露</p>
+<ul>
+<li>循环引用</li>
+<li>闭包</li>
+<li>没有终止的 setInterval </li>
+</ul>
+</li>
+</ul>
+<h4 id="性能优化"><a href="#性能优化" class="headerlink" title="性能优化"></a>性能优化</h4><p><a href="https://lxx1997.github.io/2022/06/24/web/how-to-make-pagespeed-fast/">最全的页面性能优化</a></p>
+<h4 id="输入一个链接地址到显示到页面上具体经过了那些步骤"><a href="#输入一个链接地址到显示到页面上具体经过了那些步骤" class="headerlink" title="输入一个链接地址到显示到页面上具体经过了那些步骤"></a>输入一个链接地址到显示到页面上具体经过了那些步骤</h4><ul>
+<li><p>浏览器首先会根据输入的网址，进行 DNS 域名解析找到对应服务器的ip地址</p>
+</li>
+<li><p>建立连接 （TCP/IP 协议）三次握手 客户端向服务端发送SYN 服务器恢复 SYN-ACK,最后客户端发送 ACK 报文</p>
+</li>
+<li><p>发送请求（请求头，请求体）到服务器，服务器会根据传入的地址，找到对应的文件返回到客户端</p>
+</li>
+<li><p>客户端下载文件后，会解析文件，将标签和样式通过对应的parse 转化为 dom 树和 CSSOM 树</p>
+</li>
+<li><p>如果在解析的过程中遇到 script 标签，如果script 标签没有引用外部文件，则会停止文件解析，等待 script 内部代码执行完成后才会继续解析，如果引入了外部文件，则会根据 defer 属性和 async 属性，来判断是否延迟加载 js文件。</p>
+</li>
+<li><p>将生成的 DOM 树和 CSSOM 树合并形成渲染树，进行布局计算，将计算结果会渲染屏幕上</p>
+</li>
+<li><p>渲染时涉及到图层的概念（position，translae3d，will-change, transform）,启动GPU加速，将所有图层最后组合到页面上正成最终结果</p>
+</li>
+</ul>
+<h4 id="浏览器缓存"><a href="#浏览器缓存" class="headerlink" title="浏览器缓存"></a>浏览器缓存</h4><ul>
+<li><p><code>cache-control</code></p>
+<ul>
+<li><code>max-age</code> 最大缓存时间</li>
+<li><code>no-store</code>  浏览器不会进行缓存，也不会进行协商缓存</li>
+<li><code>no-cache</code>  浏览器进行协商缓存通过 <code>ETag/If-Match</code> 和 <code>last-modified</code></li>
+<li><code>public</code> 可以被任何缓存例如共有缓存（CDN）和私有缓存（浏览器）</li>
+<li><code>private</code> 仅可被私有缓存（浏览器）缓存</li>
+</ul>
+</li>
+<li><p>强缓存：<br>强缓存主要是向浏览器缓存区获取文件，并且根据文件是否失效（<code>max-age</code>/<code>exproes</code>）来判断是否需要重新重服务器拿取文件</p>
+</li>
+<li><p>协商缓存：<br>当强缓存失效时，会走协商缓存，协商缓存不会直接从浏览器缓存中拿取数据，而是直接向服务器发送请求，服务器根据 ETag 和 last-Modified 参数和服务器文件进行对比，如果发生变更，则代表文件已修改，返回给客户端最新的文件，如果没有变更再去读取本地缓存的文件</p>
+</li>
+<li><p>缓存类型</p>
+<ul>
+<li>server-work （sw.js）走的是server-work 的缓存逻辑</li>
+<li>memory cache  存在内存中，如果关闭tab页缓存会失效</li>
+<li>disk cache  存在磁盘缓存中</li>
+</ul>
+</li>
+</ul>
+<h4 id="重绘和重排-回流"><a href="#重绘和重排-回流" class="headerlink" title="重绘和重排(回流)"></a>重绘和重排(回流)</h4><ul>
+<li>重绘 是指元素自身属性发生变化时，并不会影响其他元素位置和属性变化，例如：color，opciaty，backgound等</li>
+<li>重排是指元素本身的物理尺寸发生变化时，引起页面重新排列，列如修改宽，高，外边距，内边距，边框，添加和删除元素，display: none等</li>
+</ul>
+<p><strong>如何避免频繁触发重绘和重排</strong></p>
+<ul>
+<li>如果涉及到频繁修改样式，可以采用统一修改的方式，例如，添加 class 或者 cssText</li>
+<li>设置 position: absolute 脱离文档流</li>
+<li><p>这是 transform 和 will-change 属性，启动 gpu加速</p>
+</li>
+<li><p>修改元素时批量修改</p>
+<ul>
+<li>设置 display: none;修改完成后在显示出来</li>
+<li>使用文档片段 （document.createDocumentFragment()）</li>
+<li>创建一个熄灯节点，用来更新内容，更新换成后替换旧节点</li>
+</ul>
+</li>
+<li><p>获取以下属性和方法时，页面会被强制更新，因为这些属性需要根据页面上元素的最新状态进行更新<br>offsetTop、offsetLeft、offsetWidth、offsetHeight<br>scrollTop、scrollLeft、scrollWidth、scrollHeight<br>clientTop、clientLeft、clientWidth、clientHeight<br>getComputedStyle()<br>getBoundingClientRect</p>
+</li>
+</ul>
+<h4 id="HTTP1-HTTP2"><a href="#HTTP1-HTTP2" class="headerlink" title="HTTP1/HTTP2"></a>HTTP1/HTTP2</h4><h2 id="Vue2"><a href="#Vue2" class="headerlink" title="Vue2"></a>Vue2</h2><h4 id="常用指令"><a href="#常用指令" class="headerlink" title="常用指令"></a>常用指令</h4><ul>
+<li>v-if</li>
+<li>v-else</li>
+<li>v-else-if</li>
+<li>v-show</li>
+<li>v-for</li>
+<li>v-html</li>
+<li>v-text</li>
+<li>v-bind</li>
+<li>v-on</li>
+<li>v-model</li>
+<li>v-once</li>
+<li>v-slot 插件</li>
+</ul>
+<h4 id="常用修饰符"><a href="#常用修饰符" class="headerlink" title="常用修饰符"></a>常用修饰符</h4><ul>
+<li>number</li>
+<li>.lazy v-model 监听change 而非 input</li>
+<li>keyup/keydown</li>
+<li>trim</li>
+<li>prevent/stop 阻止默认事件</li>
+<li>once 只执行一次</li>
+<li>right/left 鼠标左右键点击触发</li>
+<li>camel 将属性转驼峰</li>
+</ul>
+<h4 id="生命周期"><a href="#生命周期" class="headerlink" title="生命周期"></a>生命周期</h4><p>beforeCreate<br>created<br>beforeMount<br>mounted<br>beforeUpdate<br>updated<br>beforeDestory<br>destoryed<br>errorCaptured 错误监听<br>activited  keep-alive<br>deactivited keep-alive</p>
+<h4 id="组件通讯"><a href="#组件通讯" class="headerlink" title="组件通讯"></a>组件通讯</h4><ul>
+<li>父子组件通讯<ul>
+<li>props</li>
+<li>provide/inject</li>
+<li>$emit</li>
+<li>$parent/$children</li>
+<li>$ref</li>
+<li>event bus</li>
+</ul>
+</li>
+<li>兄弟组件<ul>
+<li>通过父组件传值</li>
+<li>$parent</li>
+<li>event bus</li>
+</ul>
+</li>
+<li>不相关组件<ul>
+<li>event bus</li>
+<li>Vuex</li>
+</ul>
+</li>
+</ul>
+<p><a href="https://lxx1997.github.io/2021/01/07/vue/vue-components-transfer-data/">Vue 组件之间通讯的各种情况</a></p>
+<h4 id="computed-和-watch"><a href="#computed-和-watch" class="headerlink" title="computed 和 watch"></a>computed 和 watch</h4><ul>
+<li>computed 计算属性，计算后的结果值会被缓存下来，如果相关联的属性没有发生变化时，会取缓存后的结果</li>
+<li>watch 监听属性，当属性发生变化时，会重新执行监听函数，针对对象可以使用 immediate 和 deep 来启动立即监听和深度监听</li>
+</ul>
+<p>在日常使用中更推介使用computed 属性，因为会对得到的结果进行缓存，减少计算量</p>
+<h4 id="diff-算法"><a href="#diff-算法" class="headerlink" title="diff 算法"></a>diff 算法</h4><p>当组件创建和更新时，vue会执行内部的update函数，该函数使用render函数生成的虚拟dom树，将新旧两树进行对比，找到差异点，最终更新到真实dom</p>
+<p>对比差异的过程叫diff，vue在内部通过一个叫patch的函数完成该过程</p>
+<p>在对比时，vue采用深度优先、同级比较的方式进行比对。同级比较就是说它不会跨越结构进行比较</p>
+<p>在判断两个节点是否相同时，vue是通过虚拟节点的key和tag来进行判断的</p>
+<p>具体来说，首先对根节点进行对比，如果相同则将旧节点关联的真实dom的引用挂到新节点上，然后根据需要更新属性到真实dom，然后再对比其子节点数组；如果不相同，则按照新节点的信息递归创建所有真实dom，同时挂到对应虚拟节点上，然后移除掉旧的dom。</p>
+<p>在对比其子节点数组时，vue对每个子节点数组使用了两个指针，分别指向头尾，然后不断向中间靠拢来进行对比，这样做的目的是尽量复用真实dom，尽量少的销毁和创建真实dom。如果发现相同，则进入和根节点一样的对比流程，如果发现不同，则移动真实dom到合适的位置。</p>
+<p>这样一直递归的遍历下去，直到整棵树完成对比。</p>
+<p><a target="_blank" rel="noopener" href="https://juejin.cn/post/6958292554047553549">请阐述vue的diff算法</a></p>
+<p><strong>Vue diff 算法双指针逻辑总结</strong></p>
+<p>新创建的 子节点数组 和 旧的子节点数组分别有一个 头节点指针和尾结点指针。</p>
+<p>针对旧节点的两个指针，如果新节点的两个指针有匹配到的，则将该指针所对应的 Vnode 转移到对应的位置（头对头，尾队尾），对应头结点和尾结点的位置进行变化（头结点后移，尾结点前移）</p>
+<p>知道头尾节点均不符合匹配时，这样就筛选出来两类节点，一种是旧子节点数组上需要删除的子节点，一种是新的子节点上需要新增的子节点。</p>
+<p>这样做的目的是最大可能性的复用已有的真实dom节点，对于新增的，需要创建新的 dom节点。</p>
+<h4 id="MVVM-框架"><a href="#MVVM-框架" class="headerlink" title="MVVM 框架"></a>MVVM 框架</h4><p>MVVM 是指双向数据流，即 View-Model 之间的双向通信，由 ViewModel 作桥接</p>
+<p><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903590448857096">Mvvm 前端数据流框架精讲</a></p>
+<h4 id="v-for-和-v-if"><a href="#v-for-和-v-if" class="headerlink" title="v-for 和 v-if"></a>v-for 和 v-if</h4><p>v-for 的优先级比v-if 的优先级要高，页面会首先根据 v-for 渲染列表，然后在根据 v-if 来判断列表元素是否显示和隐藏，因此会造成性能浪费</p>
+<p>因此推荐使用 computed 属性，提前过滤需要隐藏后的数据后，在使用 v-for 进行渲染</p>
+<h4 id="v-show-和-v-if"><a href="#v-show-和-v-if" class="headerlink" title="v-show 和 v-if"></a>v-show 和 v-if</h4><p>v-show 会进行dom 树的构建，但是 display 属性为 none</p>
+<p>v-if 不会进行组件渲染，自然也不会构建 dom 树，对性能有优化</p>
+<h4 id="v-for-循环时-key的作用是什么"><a href="#v-for-循环时-key的作用是什么" class="headerlink" title="v-for 循环时 key的作用是什么"></a>v-for 循环时 key的作用是什么</h4><p>进行diff 算法时，方便进行对比组件是否更新，以及组件复用</p>
+<h4 id="nextTick-原理"><a href="#nextTick-原理" class="headerlink" title="$nextTick 原理"></a>$nextTick 原理</h4><p>主要是利用了 javascript 引擎的时间循环机制，是的 $nextTick 传入的参数在同步事件之后触发，可以拿到 修改后的dom和 data 里面的值</p>
+<p>使用 <code>Promise.then</code>,<code>setImediate</code>, <code>setTimeout</code>, <code>mutationObserve</code> 来实现</p>
+<h4 id="Vue-是如何监听属性变化的"><a href="#Vue-是如何监听属性变化的" class="headerlink" title="Vue 是如何监听属性变化的"></a>Vue 是如何监听属性变化的</h4><p>使用 <code>Object.defineProperty</code> 来监听属性的变化，重写get，set 方法，当</p>
+<h4 id="data-为什么要用一个函数的模式"><a href="#data-为什么要用一个函数的模式" class="headerlink" title="data 为什么要用一个函数的模式"></a>data 为什么要用一个函数的模式</h4><p>是因为组件是可以重复使用的，如果data 不用一个函数模式的话，可以会造成数据混乱，无法获取到想要的数据</p>
+<h4 id="Vuex-有几个模块"><a href="#Vuex-有几个模块" class="headerlink" title="Vuex 有几个模块"></a>Vuex 有几个模块</h4><ul>
+<li>module</li>
+<li>state</li>
+<li>mutations</li>
+<li>actions</li>
+<li>getters</li>
+</ul>
+<p>Vuex 提供了 mapGetters，mapState，mapActions 等方法，方便我们快速获取Vuex 的值</p>
+<h4 id="Vue-router-有几个模式"><a href="#Vue-router-有几个模式" class="headerlink" title="Vue-router 有几个模式"></a>Vue-router 有几个模式</h4><p>设置 router 的 mode 属性，默认为 hash 模式，设置 history 后，为history模式</p>
+<ul>
+<li>hash模式<br>在网址后面以 # 模式</li>
+<li>history 模式<br>直接跟在网址后面</li>
+</ul>
+<h4 id="Vue-项目如何优化"><a href="#Vue-项目如何优化" class="headerlink" title="Vue 项目如何优化"></a>Vue 项目如何优化</h4><ul>
+<li>路由懒加载 () =&gt; import(“”)</li>
+<li>组件懒加载 () =&gt; import(“”)</li>
+<li>v-if 和 v-for 避免一起使用，可以用计算属性过滤部分数据</li>
+<li>针对经常显示隐藏的页面结构，可以使用 v-show，否则应使用 v-if</li>
+</ul>
+<p>等等</p>
+<h2 id="Vue3"><a href="#Vue3" class="headerlink" title="Vue3"></a>Vue3</h2><h2 id="React"><a href="#React" class="headerlink" title="React"></a>React</h2><h4 id="生命周期-1"><a href="#生命周期-1" class="headerlink" title="生命周期"></a>生命周期</h4><p>挂载阶段</p>
+<ul>
+<li>constructor</li>
+<li>componentWillMount（新版 getDerivedtateFromProps）</li>
+<li>render</li>
+<li>componentDidMount</li>
+</ul>
+<p>更新阶段</p>
+<ul>
+<li>componentWillReceiveProps （getDerivedtateFromProps））</li>
+<li>shouldComponentUpdate</li>
+<li>componentWillUpdate （null）</li>
+<li>render</li>
+<li>（getSnapshotBeforeUpdate）</li>
+<li>componentDidUpdate</li>
+</ul>
+<p>卸载阶段</p>
+<ul>
+<li>componentWillUnmount</li>
+</ul>
+<p><strong>为什么新版的react 的生命周期要加上 UNSAFE_ 前缀</strong></p>
+<p>这个是因为这个函数不安全，原因是因为 react 16 以后 react 支持 fiber 切片后，组件会根据执行优先级来进行编译和渲染，因此可能会出现一个组件正在执行更新或者创建操作时，有一个优先级更高的任务插进来，这个时候，当前任务会被暂停掉，更换优先级更高的任务执行操作，操作完成后，才会回到之前的操作，继续执行，这个时候，部分生命周期有可能会执行两次，造成数据混乱</p>
+<h4 id="diff-算法-1"><a href="#diff-算法-1" class="headerlink" title="diff 算法"></a>diff 算法</h4><p><a target="_blank" rel="noopener" href="https://react.iamkasong.com/diff/multi.html#demo2">React技术揭秘-卡颂</a><br>React文档中提到，即使在最前沿的算法中，将前后两棵树完全比对的算法的复杂程度为 O(n 3 )，其中n是树中元素的数量</p>
+<p>React diff 算法做了以下优化</p>
+<ol>
+<li>只进行同级比较，如果一个节点在更新前后层级不一样，则不会进行比较</li>
+<li>不同类型的子元素是一个新的树，旧的树会被直接销毁，新的树会被创建</li>
+<li>可以通过key 值来判断那些子元素保持稳定</li>
+</ol>
+<p>react 在进行 diff 算法时，会首先针对 节点的 类型，key进行对比，如果都一样，在对比传入的 props，state 等属性是否有变化，有变化执行更新操作，没有变化就直接复用，不过不一样，则会创建一个新的节点</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 之前</span></span><br><span class="line">abcd</span><br><span class="line"></span><br><span class="line"><span class="comment">// 之后</span></span><br><span class="line">dabc</span><br><span class="line"></span><br><span class="line">===第一轮遍历开始===</span><br><span class="line">d（之后）vs a（之前）  </span><br><span class="line">key改变，不能复用，跳出遍历</span><br><span class="line">===第一轮遍历结束===</span><br><span class="line"></span><br><span class="line">===第二轮遍历开始===</span><br><span class="line">newChildren === dabc，没用完，不需要执行删除旧节点</span><br><span class="line">oldFiber === abcd，没用完，不需要执行插入新节点</span><br><span class="line"></span><br><span class="line">将剩余oldFiber（abcd）保存为map</span><br><span class="line"></span><br><span class="line">继续遍历剩余newChildren</span><br><span class="line"></span><br><span class="line"><span class="comment">// 当前oldFiber：abcd</span></span><br><span class="line"><span class="comment">// 当前newChildren dabc</span></span><br><span class="line"></span><br><span class="line">key === d 在 oldFiber中存在</span><br><span class="line"><span class="keyword">const</span> oldIndex = d（之前）.<span class="property">index</span>;</span><br><span class="line">此时 oldIndex === <span class="number">3</span>; <span class="comment">// 之前节点为 abcd，所以d.index === 3</span></span><br><span class="line">比较 oldIndex 与 lastPlacedIndex;</span><br><span class="line">oldIndex <span class="number">3</span> &gt; lastPlacedIndex <span class="number">0</span></span><br><span class="line">则 lastPlacedIndex = <span class="number">3</span>;</span><br><span class="line">d节点位置不变</span><br><span class="line"></span><br><span class="line">继续遍历剩余newChildren</span><br><span class="line"></span><br><span class="line"><span class="comment">// 当前oldFiber：abc</span></span><br><span class="line"><span class="comment">// 当前newChildren abc</span></span><br><span class="line"></span><br><span class="line">key === a 在 oldFiber中存在</span><br><span class="line"><span class="keyword">const</span> oldIndex = a（之前）.<span class="property">index</span>; <span class="comment">// 之前节点为 abcd，所以a.index === 0</span></span><br><span class="line">此时 oldIndex === <span class="number">0</span>;</span><br><span class="line">比较 oldIndex 与 lastPlacedIndex;</span><br><span class="line">oldIndex <span class="number">0</span> &lt; lastPlacedIndex <span class="number">3</span></span><br><span class="line">则 a节点需要向右移动</span><br><span class="line"></span><br><span class="line">继续遍历剩余newChildren</span><br><span class="line"></span><br><span class="line"><span class="comment">// 当前oldFiber：bc</span></span><br><span class="line"><span class="comment">// 当前newChildren bc</span></span><br><span class="line"></span><br><span class="line">key === b 在 oldFiber中存在</span><br><span class="line"><span class="keyword">const</span> oldIndex = b（之前）.<span class="property">index</span>; <span class="comment">// 之前节点为 abcd，所以b.index === 1</span></span><br><span class="line">此时 oldIndex === <span class="number">1</span>;</span><br><span class="line">比较 oldIndex 与 lastPlacedIndex;</span><br><span class="line">oldIndex <span class="number">1</span> &lt; lastPlacedIndex <span class="number">3</span></span><br><span class="line">则 b节点需要向右移动</span><br><span class="line"></span><br><span class="line">继续遍历剩余newChildren</span><br><span class="line"></span><br><span class="line"><span class="comment">// 当前oldFiber：c</span></span><br><span class="line"><span class="comment">// 当前newChildren c</span></span><br><span class="line"></span><br><span class="line">key === c 在 oldFiber中存在</span><br><span class="line"><span class="keyword">const</span> oldIndex = c（之前）.<span class="property">index</span>; <span class="comment">// 之前节点为 abcd，所以c.index === 2</span></span><br><span class="line">此时 oldIndex === <span class="number">2</span>;</span><br><span class="line">比较 oldIndex 与 lastPlacedIndex;</span><br><span class="line">oldIndex <span class="number">2</span> &lt; lastPlacedIndex <span class="number">3</span></span><br><span class="line">则 c节点需要向右移动</span><br><span class="line"></span><br><span class="line">===第二轮遍历结束===</span><br></pre></td></tr></table></figure>
+<h4 id="fiber-分片"><a href="#fiber-分片" class="headerlink" title="fiber 分片"></a>fiber 分片</h4><h4 id="常用-hooks"><a href="#常用-hooks" class="headerlink" title="常用 hooks"></a>常用 hooks</h4><ul>
+<li><p>useState</p>
+</li>
+<li><p>useEffect</p>
+</li>
+<li><p>useLayoutEffect</p>
+</li>
+<li><p>useRef</p>
+</li>
+<li><p>useMemo  缓存</p>
+</li>
+<li><p>useCallback 缓存</p>
+</li>
+<li><p>useContext</p>
+</li>
+<li><p>useReducer</p>
+</li>
+<li><p>useImperativeHandle/forwardRef</p>
+<p>useImperativeHandle 可以将子组件中部分函数暴露给父组件的 ref使用 </p>
+</li>
+</ul>
+<h4 id="组件通讯-1"><a href="#组件通讯-1" class="headerlink" title="组件通讯"></a>组件通讯</h4><ul>
+<li>mobx/redux 等状态管理工具</li>
+<li>props</li>
+<li>ref/useImperativeHandle</li>
+<li>发布订阅模式</li>
+</ul>
+<h4 id="React-如何监听数据变化"><a href="#React-如何监听数据变化" class="headerlink" title="React 如何监听数据变化"></a>React 如何监听数据变化</h4><p>主要是通过 setState，useState，forceUpdate，会生成一个 Update 对象，会和原属性的值进行对比，如果发生改变，则会触发更新</p>
+<h2 id="Webpack"><a href="#Webpack" class="headerlink" title="Webpack"></a>Webpack</h2><h2 id="Other"><a href="#Other" class="headerlink" title="Other"></a>Other</h2></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">Author: </span><span class="post-copyright-info"><a href="https://lxx1997.github.io">lxx</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">Link: </span><span class="post-copyright-info"><a href="https://lxx1997.github.io/2023/04/04/interview/%E9%9D%A2%E8%AF%95%E9%A2%98-01/">https://lxx1997.github.io/2023/04/04/interview/%E9%9D%A2%E8%AF%95%E9%A2%98-01/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/interview/">interview</a><a class="post-meta__tags" href="/tags/promise/">promise</a></div><div class="post_share"><div class="social-share" data-image="/assets/blogCover/202039_80006038.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/gh/overtrue/share.js@master/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/2023/03/13/web/hand-write-promise/"><img class="next-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/assets/blogCover/39_80002807.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">Next Post</div><div class="next_info">JavaScript - 手写一个 Promise 方法</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>Related Articles</span></div><div class="relatedPosts-list"><div><a href="/2021/04/01/interview/%E9%9D%A2%E8%AF%95-%E9%A2%98%E8%A7%A3/" title="记一次在面试过程中遇到的 promise 编程题"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/assets/blogCover/MIKU%E8%8A%B1(4)_78753717_p1.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-04-01</div><div class="title">记一次在面试过程中遇到的 promise 编程题</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> Comment</span></div><div id="comment-switch"><span class="first-comment">Disqus</span><span class="switch-btn"></span><span class="second-comment">Valine</span></div></div><div class="comment-wrap"><div><div id="disqus_thread"></div></div><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/image/%E3%80%90%E6%97%A7%E4%BD%9C%E3%80%91%E9%9B%AA%E3%83%9F%E3%82%AF_83782310_p7.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">lxx</div><div class="author-info__description">前端小菜鸟,努力深造</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">111</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">78</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">35</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/lxx1997"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>Announcement</span></div><div class="announcement_content">前端小菜鸟,努力深造</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>Catalog</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#HTML"><span class="toc-number">1.</span> <span class="toc-text">HTML</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%96%B0%E5%A2%9E%E7%9A%84-h5-%E5%B1%9E%E6%80%A7"><span class="toc-number">1.0.1.</span> <span class="toc-text">新增的 h5 属性</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CSS"><span class="toc-number">2.</span> <span class="toc-text">CSS</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#BFC-%E5%9D%97%E7%BA%A7%E6%A0%BC%E5%BC%8F%E5%8C%96%E4%B8%8A%E4%B8%8B%E6%96%87"><span class="toc-number">2.0.1.</span> <span class="toc-text">BFC 块级格式化上下文</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E8%A7%A3%E5%86%B3%E9%AB%98%E5%BA%A6%E5%A1%8C%E9%99%B7"><span class="toc-number">2.0.2.</span> <span class="toc-text">如何解决高度塌陷</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%85%83%E7%B4%A0%E6%B0%B4%E5%B9%B3%E5%9E%82%E7%9B%B4%E5%B1%85%E4%B8%AD%E7%9A%84%E6%96%B9%E6%B3%95"><span class="toc-number">2.0.3.</span> <span class="toc-text">元素水平垂直居中的方法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#flex-%E5%B8%83%E5%B1%80"><span class="toc-number">2.0.4.</span> <span class="toc-text">flex 布局</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#css-%E9%80%89%E6%8B%A9%E5%99%A8%E4%BC%98%E5%85%88%E7%BA%A7"><span class="toc-number">2.0.5.</span> <span class="toc-text">css 选择器优先级</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#JavaScript"><span class="toc-number">3.</span> <span class="toc-text">JavaScript</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="toc-number">3.0.1.</span> <span class="toc-text">数据类型</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%97%AD%E5%8C%85"><span class="toc-number">3.0.2.</span> <span class="toc-text">闭包</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8E%9F%E5%9E%8B%E9%93%BE"><span class="toc-number">3.0.3.</span> <span class="toc-text">原型链</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#this-%E6%8C%87%E5%90%91"><span class="toc-number">3.0.4.</span> <span class="toc-text">this 指向</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BA%8B%E4%BB%B6%E5%BE%AA%E7%8E%AF-Event-Loop"><span class="toc-number">3.0.5.</span> <span class="toc-text">事件循环 (Event Loop)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Promise"><span class="toc-number">3.0.6.</span> <span class="toc-text">Promise</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Proxy-Rflect"><span class="toc-number">3.0.7.</span> <span class="toc-text">Proxy&#x2F;Rflect</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B5%8F%E8%A7%88%E5%99%A8"><span class="toc-number">4.</span> <span class="toc-text">浏览器</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6"><span class="toc-number">4.0.1.</span> <span class="toc-text">垃圾回收</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96"><span class="toc-number">4.0.2.</span> <span class="toc-text">性能优化</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BE%93%E5%85%A5%E4%B8%80%E4%B8%AA%E9%93%BE%E6%8E%A5%E5%9C%B0%E5%9D%80%E5%88%B0%E6%98%BE%E7%A4%BA%E5%88%B0%E9%A1%B5%E9%9D%A2%E4%B8%8A%E5%85%B7%E4%BD%93%E7%BB%8F%E8%BF%87%E4%BA%86%E9%82%A3%E4%BA%9B%E6%AD%A5%E9%AA%A4"><span class="toc-number">4.0.3.</span> <span class="toc-text">输入一个链接地址到显示到页面上具体经过了那些步骤</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B5%8F%E8%A7%88%E5%99%A8%E7%BC%93%E5%AD%98"><span class="toc-number">4.0.4.</span> <span class="toc-text">浏览器缓存</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%87%8D%E7%BB%98%E5%92%8C%E9%87%8D%E6%8E%92-%E5%9B%9E%E6%B5%81"><span class="toc-number">4.0.5.</span> <span class="toc-text">重绘和重排(回流)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#HTTP1-HTTP2"><span class="toc-number">4.0.6.</span> <span class="toc-text">HTTP1&#x2F;HTTP2</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Vue2"><span class="toc-number">5.</span> <span class="toc-text">Vue2</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4"><span class="toc-number">5.0.1.</span> <span class="toc-text">常用指令</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8%E4%BF%AE%E9%A5%B0%E7%AC%A6"><span class="toc-number">5.0.2.</span> <span class="toc-text">常用修饰符</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F"><span class="toc-number">5.0.3.</span> <span class="toc-text">生命周期</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BB%84%E4%BB%B6%E9%80%9A%E8%AE%AF"><span class="toc-number">5.0.4.</span> <span class="toc-text">组件通讯</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#computed-%E5%92%8C-watch"><span class="toc-number">5.0.5.</span> <span class="toc-text">computed 和 watch</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#diff-%E7%AE%97%E6%B3%95"><span class="toc-number">5.0.6.</span> <span class="toc-text">diff 算法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#MVVM-%E6%A1%86%E6%9E%B6"><span class="toc-number">5.0.7.</span> <span class="toc-text">MVVM 框架</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#v-for-%E5%92%8C-v-if"><span class="toc-number">5.0.8.</span> <span class="toc-text">v-for 和 v-if</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#v-show-%E5%92%8C-v-if"><span class="toc-number">5.0.9.</span> <span class="toc-text">v-show 和 v-if</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#v-for-%E5%BE%AA%E7%8E%AF%E6%97%B6-key%E7%9A%84%E4%BD%9C%E7%94%A8%E6%98%AF%E4%BB%80%E4%B9%88"><span class="toc-number">5.0.10.</span> <span class="toc-text">v-for 循环时 key的作用是什么</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#nextTick-%E5%8E%9F%E7%90%86"><span class="toc-number">5.0.11.</span> <span class="toc-text">$nextTick 原理</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Vue-%E6%98%AF%E5%A6%82%E4%BD%95%E7%9B%91%E5%90%AC%E5%B1%9E%E6%80%A7%E5%8F%98%E5%8C%96%E7%9A%84"><span class="toc-number">5.0.12.</span> <span class="toc-text">Vue 是如何监听属性变化的</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#data-%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E7%94%A8%E4%B8%80%E4%B8%AA%E5%87%BD%E6%95%B0%E7%9A%84%E6%A8%A1%E5%BC%8F"><span class="toc-number">5.0.13.</span> <span class="toc-text">data 为什么要用一个函数的模式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Vuex-%E6%9C%89%E5%87%A0%E4%B8%AA%E6%A8%A1%E5%9D%97"><span class="toc-number">5.0.14.</span> <span class="toc-text">Vuex 有几个模块</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Vue-router-%E6%9C%89%E5%87%A0%E4%B8%AA%E6%A8%A1%E5%BC%8F"><span class="toc-number">5.0.15.</span> <span class="toc-text">Vue-router 有几个模式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Vue-%E9%A1%B9%E7%9B%AE%E5%A6%82%E4%BD%95%E4%BC%98%E5%8C%96"><span class="toc-number">5.0.16.</span> <span class="toc-text">Vue 项目如何优化</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Vue3"><span class="toc-number">6.</span> <span class="toc-text">Vue3</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#React"><span class="toc-number">7.</span> <span class="toc-text">React</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F-1"><span class="toc-number">7.0.1.</span> <span class="toc-text">生命周期</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#diff-%E7%AE%97%E6%B3%95-1"><span class="toc-number">7.0.2.</span> <span class="toc-text">diff 算法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#fiber-%E5%88%86%E7%89%87"><span class="toc-number">7.0.3.</span> <span class="toc-text">fiber 分片</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8-hooks"><span class="toc-number">7.0.4.</span> <span class="toc-text">常用 hooks</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BB%84%E4%BB%B6%E9%80%9A%E8%AE%AF-1"><span class="toc-number">7.0.5.</span> <span class="toc-text">组件通讯</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#React-%E5%A6%82%E4%BD%95%E7%9B%91%E5%90%AC%E6%95%B0%E6%8D%AE%E5%8F%98%E5%8C%96"><span class="toc-number">7.0.6.</span> <span class="toc-text">React 如何监听数据变化</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Webpack"><span class="toc-number">8.</span> <span class="toc-text">Webpack</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Other"><span class="toc-number">9.</span> <span class="toc-text">Other</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Post</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2023/04/04/interview/%E9%9D%A2%E8%AF%95%E9%A2%98-01/" title="个人整理的比较全的知识 - 方便自己回顾"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/assets/blogCover/202039_80006038.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="个人整理的比较全的知识 - 方便自己回顾"/></a><div class="content"><a class="title" href="/2023/04/04/interview/%E9%9D%A2%E8%AF%95%E9%A2%98-01/" title="个人整理的比较全的知识 - 方便自己回顾">个人整理的比较全的知识 - 方便自己回顾</a><time datetime="2023-04-04T09:15:19.000Z" title="Updated 2023-04-04 17:15:19">2023-04-04</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/08/15/frame/threeJs-study-api/" title="threeJs 学习之路 - API 及 参数传递"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/assets/blogCover/MIKU%E8%8A%B1(4)_78753717_p1.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="threeJs 学习之路 - API 及 参数传递"/></a><div class="content"><a class="title" href="/2021/08/15/frame/threeJs-study-api/" title="threeJs 学习之路 - API 及 参数传递">threeJs 学习之路 - API 及 参数传递</a><time datetime="2023-03-15T03:48:08.305Z" title="Updated 2023-03-15 11:48:08">2023-03-15</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/03/13/web/hand-write-promise/" title="JavaScript - 手写一个 Promise 方法"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/assets/blogCover/39_80002807.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="JavaScript - 手写一个 Promise 方法"/></a><div class="content"><a class="title" href="/2023/03/13/web/hand-write-promise/" title="JavaScript - 手写一个 Promise 方法">JavaScript - 手写一个 Promise 方法</a><time datetime="2023-03-13T08:22:04.000Z" title="Updated 2023-03-13 16:22:04">2023-03-13</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/03/03/learning-target-list/" title="学习目标"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/assets/blogCover/1579266815338.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="学习目标"/></a><div class="content"><a class="title" href="/2023/03/03/learning-target-list/" title="学习目标">学习目标</a><time datetime="2023-03-03T01:28:36.000Z" title="Updated 2023-03-03 09:28:36">2023-03-03</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/06/24/web/how-to-make-pagespeed-fast/" title="最全的页面性能优化"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/assets/blogCover/1608136373106.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="最全的页面性能优化"/></a><div class="content"><a class="title" href="/2022/06/24/web/how-to-make-pagespeed-fast/" title="最全的页面性能优化">最全的页面性能优化</a><time datetime="2023-02-24T14:20:06.000Z" title="Updated 2023-02-24 22:20:06">2023-02-24</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/02/23/webpack/react-multiple-page-pack-separately/" title="React 多页面应用 - 实现多页面应用每个页面可以单独打包 及 gitlab CI/CD 发版配置"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/assets/blogCover/39_80002807.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="React 多页面应用 - 实现多页面应用每个页面可以单独打包 及 gitlab CI/CD 发版配置"/></a><div class="content"><a class="title" href="/2023/02/23/webpack/react-multiple-page-pack-separately/" title="React 多页面应用 - 实现多页面应用每个页面可以单独打包 及 gitlab CI/CD 发版配置">React 多页面应用 - 实现多页面应用每个页面可以单独打包 及 gitlab CI/CD 发版配置</a><time datetime="2023-02-23T07:30:48.000Z" title="Updated 2023-02-23 15:30:48">2023-02-23</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2023 By lxx</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Read Mode"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="Switch Between Traditional Chinese And Simplified Chinese">简</button><button id="darkmode" type="button" title="Switch Between Light And Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle between single-column and double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="Setting"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table Of Contents"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="Scroll To Comments"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="Back To Top"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.js"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js"></script><div class="js-pjax"><script>function loadDisqus () {
+  var disqus_config = function () {
+    this.page.url = 'https://lxx1997.github.io/2023/04/04/interview/%E9%9D%A2%E8%AF%95%E9%A2%98-01/'
+    this.page.identifier = '2023/04/04/interview/面试题-01/'
+    this.page.title = '个人整理的比较全的知识 - 方便自己回顾'
+  };
+
+  window.disqusReset = () => {
+    DISQUS.reset({
+      reload: true,
+      config: disqus_config
+    })
+  }
+
+  if (window.DISQUS) disqusReset()
+  else {
+    (function() { 
+      var d = document, s = d.createElement('script');
+      s.src = 'https://soulreader.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  }
+}
+
+if ('Disqus' === 'Disqus' || !true) {
+  if (true) btf.loadComment(document.getElementById('disqus_thread'), loadDisqus)
+  else loadDisqus()
+} else {
+  function loadOtherComment () {
+    loadDisqus()
+  }
+}
+</script><script>function loadValine () {
+  function initValine () {
+    const valine = new Valine(Object.assign({
+      el: '#vcomment',
+      appId: '',
+      appKey: '',
+      avatar: 'monsterid',
+      serverURLs: '',
+      emojiMaps: "",
+      path: window.location.pathname,
+      visitor: false
+    }, null))
+  }
+
+  if (typeof Valine === 'function') initValine() 
+  else getScript('https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js').then(initValine)
+}
+
+if ('Disqus' === 'Valine' || !true) {
+  if (true) btf.loadComment(document.getElementById('vcomment'),loadValine)
+  else setTimeout(loadValine, 0)
+} else {
+  function loadOtherComment () {
+    loadValine()
+  }
+}</script></div><script id="canvas_nest" defer="defer" color="0,0,255" opacity="0.7" zIndex="-1" count="99" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/canvas-nest.min.js"></script><script id="click-heart" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/click-heart.min.js" async="async" mobile="false"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/kesyoban.model.json"},"display":{"position":"left","width":300,"height":300},"mobile":{"show":false},"log":false});</script></body></html>
