@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://lxx1997.github.io/2023/04/16/react/react-typescript-some-usual-types/</loc>
+    <lastmod>2023-04-16</lastmod>
+  </url>
+  <url>
     <loc>https://lxx1997.github.io/2023/04/04/interview/%E9%9D%A2%E8%AF%95%E9%A2%98-01/</loc>
     <lastmod>2023-04-10</lastmod>
   </url>
