@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://lxx1997.github.io/2023/04/26/frame/svelte-web-learn/</loc>
+    <lastmod>2023-04-26</lastmod>
+  </url>
+  <url>
+    <loc>https://lxx1997.github.io/2023/04/26/frame/graphql-web-learn/</loc>
+    <lastmod>2023-04-26</lastmod>
+  </url>
+  <url>
     <loc>https://lxx1997.github.io/2023/04/16/react/react-typescript-some-usual-types/</loc>
     <lastmod>2023-04-16</lastmod>
   </url>
@@ -41,11 +49,11 @@
     <lastmod>2023-02-21</lastmod>
   </url>
   <url>
-    <loc>https://lxx1997.github.io/2023/02/14/web/window-IntersectionObserver/</loc>
+    <loc>https://lxx1997.github.io/2023/02/14/web/window-postMessage%E8%B7%A8%E5%9F%9F%E7%9A%84%E4%BD%BF%E7%94%A8%E6%96%B9%E5%BC%8F/</loc>
     <lastmod>2023-02-14</lastmod>
   </url>
   <url>
-    <loc>https://lxx1997.github.io/2023/02/14/web/window-postMessage%E8%B7%A8%E5%9F%9F%E7%9A%84%E4%BD%BF%E7%94%A8%E6%96%B9%E5%BC%8F/</loc>
+    <loc>https://lxx1997.github.io/2023/02/14/web/window-IntersectionObserver/</loc>
     <lastmod>2023-02-14</lastmod>
   </url>
   <url>
