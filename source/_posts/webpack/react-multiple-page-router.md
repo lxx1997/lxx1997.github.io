@@ -47,7 +47,7 @@ yarn add customize-cra react-app-rewired -D
 },
 ~~~
 
-添加 config.overrides.js
+添加 config-overrides.js
 
 ~~~js
 const { override } =  require("customize-cra");
