@@ -15,6 +15,8 @@ tags:
   - TypeScript
 ---
 
+[svelte 中文文档](https://www.svelte.cn/docs)
+
 ## 什么是 Svelte
 
 Svelte 是一个构建 web 应用程序的工具。传统框架如 React 和 Vue 在浏览器中需要做大量的工作，而 Svelte 将这些工作放到构建应用程序的编译阶段来处理。
