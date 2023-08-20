@@ -4,7 +4,7 @@ date: 2020-11-12 14:07:23
 updated: 2020-11-12 14:07:23
 tags:
     - golang
-cover: /assets/blogCover/MIKU花(4)_78753717_p1.png
+cover: /assets/blogCover/Day18 I’m Not Human_100789898.png
 ---
 
 今天在Leecode上面练习用go语言做题，偶遇一题

@@ -1,6 +1,6 @@
 ---
 title: 常用的设计模式
-cover: /assets/blogCover/miku散发（重新上传）_73247827.png
+cover: /assets/blogCover/Miku_f7_66294279.png
 date: 2023-04-10 22:30:43
 updated: 2023-04-10 22:30:43
 categories:

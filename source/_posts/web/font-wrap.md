@@ -1,6 +1,6 @@
 ---
 title: 前端 - 文字换行
-cover: /assets/blogCover/1578912686790.jpg
+cover: /assets/blogCover/初音ミク_83523978.png
 date: 2023-01-18 09:38:33
 updated: 2023-01-18 09:38:33
 categories:

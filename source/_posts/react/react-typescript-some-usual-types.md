@@ -1,6 +1,6 @@
 ---
 title: React TypeScript 项目中一些常用的类型定义 
-cover: /assets/blogCover/1578912686790.jpg
+cover: /assets/blogCover/49566364_p0.jpg
 date: 2023-04-16 18:01:33
 updated: 2023-04-16 18:01:33
 categories:

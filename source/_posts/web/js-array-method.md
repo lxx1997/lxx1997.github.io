@@ -5,7 +5,7 @@ updated: 2020-05-05 00:36:09
 tags:
       - array
       - JavaScript
-cover: /assets/blogCover/MIKU花(4)_78753717_p1.png
+cover: /assets/blogCover/Day18 I’m Not Human_100789898.png
 ---
 ## Array 对象方法
 

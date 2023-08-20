@@ -4,7 +4,7 @@ date: 2020-09-18 09:49:13
 updated: 2020-09-18 09:49:13
 tags:
     - react
-cover: /assets/blogCover/MIKU花(4)_78753717_p1.png
+cover: /assets/blogCover/Day18 I’m Not Human_100789898.png
 ---
 
 * Q: 如何将带有html标签的字符串以html的形式在div等元素中显示出来

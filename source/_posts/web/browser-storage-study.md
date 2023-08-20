@@ -6,7 +6,7 @@ tags:
       - browser
       - localStorage
       - indexedDB
-cover: /assets/blogCover/MIKU花(4)_78753717_p1.png
+cover: /assets/blogCover/Day18 I’m Not Human_100789898.png
 ---
 
 #### 浏览器存储方式

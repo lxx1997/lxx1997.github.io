@@ -3,7 +3,7 @@ title: Object的方法
 date: 2020-11-26 17:54:45
 updated: 2020-11-26 17:54:45
 tags:
-cover: /assets/blogCover/MIKU花(4)_78753717_p1.png
+cover: /assets/blogCover/Day18 I’m Not Human_100789898.png
 ---
 
 #### 属性

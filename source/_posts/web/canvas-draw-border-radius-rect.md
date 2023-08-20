@@ -1,6 +1,6 @@
 ---
 title: CANVAS 绘图小技巧 - 绘制一个带有圆角的矩形
-cover: /assets/blogCover/1578912686790.jpg
+cover: /assets/blogCover/初音ミク_83523978.png
 date: 2023-01-11 17:59:18
 updated: 2023-01-11 17:59:18
 categories:

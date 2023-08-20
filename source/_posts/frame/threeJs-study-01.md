@@ -6,7 +6,7 @@ tags:
     - threeJs
     - webgl
     - JavaScript
-cover: /assets/blogCover/MIKU花(4)_78753717_p1.png
+cover: /assets/blogCover/Day18 I’m Not Human_100789898.png
 ---
 
 > **因为threeJs 版本在不断更新，所以本文可能部分 api 被替换，如果出现问题，请百度或者查找官方文档对应api**

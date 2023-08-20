@@ -1,6 +1,6 @@
 ---
 title: 移动端适配 - IOS 高版本无法下载之 navigator.share 使用
-cover: /assets/blogCover/1620428630502.jpg
+cover: /assets/blogCover/初音ミク_83523978.png
 date: 2023-01-01 10:30:26
 updated: 2023-01-01 10:30:26
 categories:

@@ -5,7 +5,7 @@ updated: 2020-09-24 15:49:01
 tags:
     - JavaScript
     - method
-cover: /assets/blogCover/MIKU花(4)_78753717_p1.png
+cover: /assets/blogCover/Day18 I’m Not Human_100789898.png
 ---
 
 ### 数字格式化

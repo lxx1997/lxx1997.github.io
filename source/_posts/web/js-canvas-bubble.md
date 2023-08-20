@@ -5,7 +5,7 @@ updated: 2020-05-06 10:48:06
 tags:
       - canvas
       - JavaScript
-cover: /assets/blogCover/MIKU花(4)_78753717_p1.png
+cover: /assets/blogCover/Day18 I’m Not Human_100789898.png
 ---
 
 **实现步骤**

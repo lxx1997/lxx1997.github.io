@@ -7,7 +7,7 @@ categories:
 tags:
     - Vue
     - JavaScript
-cover: /assets/blogCover/MIKU花(4)_78753717_p1.png
+cover: /assets/blogCover/Day18 I’m Not Human_100789898.png
 ---
 
 本片文章根据bilibili [vue源码分析](https://www.bilibili.com/video/BV1LE411e7HE) 视频练习及知识点记录

@@ -1,6 +1,6 @@
 ---
 title: web - H5 移动端适配问题
-cover: /assets/blogCover/【楽曲】ダンスフィッシュ_82256105_p1.png
+cover: /assets/blogCover/【寄稿】砂の惑星_76098630.png
 date: 2022-11-23 16:09:03
 updated: 2022-11-23 16:09:03
 categories:

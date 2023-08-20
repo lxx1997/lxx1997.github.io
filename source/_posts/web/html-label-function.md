@@ -5,7 +5,7 @@ updated: 2020-08-11 10:09:34
 tags:
     - html
     - function
-cover: /assets/blogCover/MIKU花(4)_78753717_p1.png
+cover: /assets/blogCover/Day18 I’m Not Human_100789898.png
 ---
 
 #### HTML全局属性

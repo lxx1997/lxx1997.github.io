@@ -1,6 +1,6 @@
 ---
 title: Svelte - 前端框架学习
-cover: /assets/blogCover/1578912686790.jpg
+cover: /assets/blogCover/Miku_f7_66294279.png
 date: 2023-04-26 22:48:55
 updated: 2023-04-26 22:48:55
 categories:

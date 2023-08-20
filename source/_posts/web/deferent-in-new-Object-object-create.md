@@ -6,7 +6,7 @@ categories:
     - JavaScript
 tags:
     - JavaScript
-cover: /assets/blogCover/MIKU花(4)_78753717_p1.png
+cover: /assets/blogCover/Day18 I’m Not Human_100789898.png
 ---
 
   今天我们来谈一谈通过 `new Object()` 和 `Object.create()` 创造的对象有什么区别

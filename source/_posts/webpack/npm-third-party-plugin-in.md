@@ -4,7 +4,7 @@ date: 2020-08-19 17:16:20
 updated: 2020-08-19 17:16:20
 tags:
     - npm
-cover: /assets/blogCover/MIKU花(4)_78753717_p1.png
+cover: /assets/blogCover/Day18 I’m Not Human_100789898.png
 ---
 
   此博客用来记录使用第三方插件安装及使用的时候采坑记录

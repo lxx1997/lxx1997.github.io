@@ -8,7 +8,7 @@ tags:
     - design-pattern
     - JavaScript
     - function
-cover: /assets/blogCover/MIKU花(4)_78753717_p1.png
+cover: /assets/blogCover/Day18 I’m Not Human_100789898.png
 ---
 
 [参考链接](https://segmentfault.com/a/1190000012912503)

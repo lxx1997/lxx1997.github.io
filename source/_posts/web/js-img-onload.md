@@ -4,7 +4,7 @@ date: 2020-05-05 10:01:12
 updated: 2020-05-05 10:01:12
 tags:
       - JavaScript
-cover: /assets/blogCover/MIKU花(4)_78753717_p1.png
+cover: /assets/blogCover/Day18 I’m Not Human_100789898.png
 ---
 [原文网址](https://www.cnblogs.com/huanghuali/p/10310691.html "js图片处理")
 在日常写代码的时候，我们有时候会遇到当图片未加载完成时，会发生高度塌陷，如果这个时候我们获取元素高度的时候获取到的不是元素真正的高度，会造成样式紊乱

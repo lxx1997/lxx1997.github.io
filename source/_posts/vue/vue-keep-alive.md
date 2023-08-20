@@ -6,7 +6,7 @@ categories:
     - Vue
 tags:
     - Vue
-cover: /assets/blogCover/MIKU花(4)_78753717_p1.png
+cover: /assets/blogCover/Day18 I’m Not Human_100789898.png
 ---
 
   这段时间做项目时，老板要求要缓存一些页面的表单数据，于是想到了 vue 的 keep-alive ，在使用时，自己也犯了一些错误，在此记录一下

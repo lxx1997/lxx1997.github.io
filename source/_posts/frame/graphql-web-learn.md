@@ -1,6 +1,6 @@
 ---
 title: Graphql - 前端知识学习
-cover: /assets/blogCover/MIKU×Kyoto_76886013.png
+cover: /assets/blogCover/Miku _ October_65437059.png
 date: 2023-04-26 11:17:26
 updated: 2023-04-26 11:17:26
 categories:

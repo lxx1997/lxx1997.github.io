@@ -4,7 +4,7 @@ date: 2020-07-30 14:42:26
 updated: 2020-07-30 14:42:26
 tags:
     - svg
-cover: /assets/blogCover/MIKU花(4)_78753717_p1.png
+cover: /assets/blogCover/Day18 I’m Not Human_100789898.png
 ---
 
 #### SVG 滤镜

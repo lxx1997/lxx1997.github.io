@@ -1,6 +1,6 @@
 ---
 title: 创建默认的 hexo categories 首页
-cover: /assets/blogCover/MIKU花(4)_78753717_p1.png
+cover: /assets/blogCover/Day18 I’m Not Human_100789898.png
 date: 2022-07-20 09:16:55
 updated: 2022-07-20 09:16:55
 categories:

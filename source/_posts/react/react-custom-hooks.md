@@ -6,7 +6,7 @@ categories:
 tags:
   - react
   - hooks
-cover: /assets/blogCover/202039_80006038.png
+cover: /assets/blogCover/49566364_p0.jpg
 date: 2022-08-09 09:55:31
 updated: 2022-08-09 09:55:31
 ---

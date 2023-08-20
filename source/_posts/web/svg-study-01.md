@@ -4,7 +4,7 @@ date: 2020-07-29 14:33:53
 updated: 2020-07-29 14:33:53
 tags:
     - svg
-cover: /assets/blogCover/MIKU花(4)_78753717_p1.png
+cover: /assets/blogCover/Day18 I’m Not Human_100789898.png
 ---
 
   SVG意为可缩放矢量图形（Scalable Vector Graphics）

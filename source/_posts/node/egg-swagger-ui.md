@@ -5,7 +5,7 @@ updated: 2020-05-26 10:00:40
 tags:
       - eggjs
       - swagger-ui
-cover: /assets/blogCover/MIKU花(4)_78753717_p1.png
+cover: /assets/blogCover/Day18 I’m Not Human_100789898.png
 ---
 
 如何在eggjs中搭建一个swagger-ui接口预览文档?下面这篇文章将会教你如何搭建swagger-ui

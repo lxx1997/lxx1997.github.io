@@ -7,7 +7,7 @@ tags:
     - JavaScript
     - html
     - css
-cover: /assets/blogCover/MIKU花(4)_78753717_p1.png
+cover: /assets/blogCover/Day18 I’m Not Human_100789898.png
 ---
 
   在[electron官网](https://www.electronjs.org/)根据文档指示，下载了一个electron模板并安装依赖成功运行

@@ -8,7 +8,7 @@ categories:
 tags:
     - deno
     - nodejs
-cover: /assets/blogCover/MIKU花(4)_78753717_p1.png
+cover: /assets/blogCover/Day18 I’m Not Human_100789898.png
 ---
 
 **首先我们先谈一下nodeJs的无法忽视的问题**

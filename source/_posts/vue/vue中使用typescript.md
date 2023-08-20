@@ -5,7 +5,7 @@ updated: 2020-10-22 15:45:24
 tags:
     - Vue
     - TypeScript
-cover: /assets/blogCover/MIKU花(4)_78753717_p1.png
+cover: /assets/blogCover/Day18 I’m Not Human_100789898.png
 ---
 
 在此记录一下Vue中使用typescript时 遇到的一些问题

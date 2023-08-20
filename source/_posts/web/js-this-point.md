@@ -7,7 +7,7 @@ categories:
 tags:
     - JavaScript
     - this
-cover: /assets/blogCover/MIKU花(4)_78753717_p1.png
+cover: /assets/blogCover/Day18 I’m Not Human_100789898.png
 ---
 
 this 的指向问题一直是 JavaScript 中一个很重要的问题，我们在日常编程中，经常会遇到在函数中执行的时候，发现从 this 中取不到我们想要的东西，面试的过程中，this 也是经常会被面试官问到的一个问题。

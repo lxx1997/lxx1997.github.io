@@ -4,7 +4,7 @@ date: 2020-09-18 09:53:38
 updated: 2020-09-18 09:53:38
 tags:
     - react
-cover: /assets/blogCover/MIKU花(4)_78753717_p1.png
+cover: /assets/blogCover/Day18 I’m Not Human_100789898.png
 ---
 
 Q: 如何配置路径别名

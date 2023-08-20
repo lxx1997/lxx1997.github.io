@@ -5,7 +5,7 @@ updated: 2020-05-27 09:41:28
 tags:
       - TypeScript
       - eggjs
-cover: /assets/blogCover/MIKU花(4)_78753717_p1.png
+cover: /assets/blogCover/Day18 I’m Not Human_100789898.png
 ---
 
 由于用javasript的某种限制和不足，所以决定使用typescript来写eggjs

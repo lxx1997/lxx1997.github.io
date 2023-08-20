@@ -4,7 +4,7 @@ date: 2020-12-02 10:21:41
 updated: 2020-12-02 10:21:41
 tags:
   - typescrript
-cover: /assets/blogCover/MIKU花(4)_78753717_p1.png
+cover: /assets/blogCover/Day18 I’m Not Human_100789898.png
 ---
 
 #### 什么是Pick

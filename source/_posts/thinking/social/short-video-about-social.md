@@ -1,6 +1,6 @@
 ---
 title: 杂谈 - 短视频对现实生活的影响
-cover: /assets/blogCover/202039_80006038.png
+cover: /assets/blogCover/49566364_p0.jpg
 date: 2023-01-26 19:29:40
 updated: 2023-01-26 19:29:40
 categories:

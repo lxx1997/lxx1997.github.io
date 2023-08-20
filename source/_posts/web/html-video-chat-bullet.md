@@ -5,7 +5,7 @@ updated: 2020-08-13 15:21:48
 tags:
     - HTML
     - JavaScript
-cover: /assets/blogCover/MIKU花(4)_78753717_p1.png
+cover: /assets/blogCover/Day18 I’m Not Human_100789898.png
 ---
 
   闲来无事，对于bili上面的弹幕感兴趣，于是自己打算尝试制作一个简单的弹幕系统

@@ -1,6 +1,6 @@
 ---
 title: 一些精品的前端学习网站
-cover: /assets/blogCover/miku星裙_73356409.png
+cover: /assets/blogCover/Miku Dazzle Flowers__56480020.png
 date: 2023-02-02 09:32:37
 updated: 2023-02-02 09:32:37
 top: true

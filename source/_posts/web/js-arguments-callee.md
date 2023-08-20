@@ -6,7 +6,7 @@ categories:
     - JavaScript
 tags:
     - JavaScript
-cover: /assets/blogCover/MIKU花(4)_78753717_p1.png
+cover: /assets/blogCover/Day18 I’m Not Human_100789898.png
 ---
 
 arguments.callee 在哪个函数中执行，它就代表哪个函数，通常用于匿名函数中

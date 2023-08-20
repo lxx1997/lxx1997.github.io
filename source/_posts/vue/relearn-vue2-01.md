@@ -1,6 +1,6 @@
 ---
 title: 重新学习vue2 - 发现隐藏其中的细节 - part1
-cover: /assets/blogCover/MIKU花(4)_78753717_p1.png
+cover: /assets/blogCover/Day18 I’m Not Human_100789898.png
 date: 2022-07-07 15:56:07
 updated: 2022-07-07 15:56:07
 comments: true

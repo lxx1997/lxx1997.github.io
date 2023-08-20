@@ -1,6 +1,6 @@
 ---
 title: Swiper - 一些常用的属性及方法
-cover: /assets/blogCover/MIKU×Kyoto_76886013.png
+cover: /assets/blogCover/Miku _ October_65437059.png
 date: 2023-01-18 14:45:31
 updated: 2023-02-01 17:45:31
 categories:

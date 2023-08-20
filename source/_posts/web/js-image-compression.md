@@ -5,7 +5,7 @@ updated: 2020-08-10 10:17:32
 tags:
     - JavaScript
     - canvas
-cover: /assets/blogCover/MIKU花(4)_78753717_p1.png
+cover: /assets/blogCover/Day18 I’m Not Human_100789898.png
 ---
 
   压缩图片的方式主要是使用了canvas进行了一次转码和压缩

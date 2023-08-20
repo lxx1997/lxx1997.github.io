@@ -3,7 +3,7 @@ title: threeJs 学习之路 - API 及 参数传递
 date: 2021-08-15 09:53:24
 uupdated: 2021-08-15 09:53:24
 tags:
-cover: /assets/blogCover/MIKU花(4)_78753717_p1.png
+cover: /assets/blogCover/Day18 I’m Not Human_100789898.png
 ---
 
 * THREE.Scene() 创建场景对象

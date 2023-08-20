@@ -1,6 +1,6 @@
 ---
 title: 数组部分方法原理重写
-cover: /assets/blogCover/1578912686790.jpg
+cover: /assets/blogCover/初音ミク_83523978.png
 date: 2023-04-08 17:11:23
 updated: 2023-04-08 17:11:23
 categories:

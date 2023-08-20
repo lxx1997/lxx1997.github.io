@@ -5,7 +5,7 @@ updated: 2020-12-14 17:15:09
 tags:
     - JavaScript
     - canvas
-cover: /assets/blogCover/MIKU花(4)_78753717_p1.png
+cover: /assets/blogCover/Day18 I’m Not Human_100789898.png
 ---
 
 转载[前端大全](https://mp.weixin.qq.com/s/OTFufemlMW7XhjS2zIrHhw)

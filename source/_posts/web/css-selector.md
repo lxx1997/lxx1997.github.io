@@ -1,6 +1,6 @@
 ---
 title: css 选择器
-cover: /assets/blogCover/1578912686790.jpg
+cover: /assets/blogCover/初音ミク_83523978.png
 date: 2022-12-02 15:23:57
 updated: 2022-12-02 15:23:57
 categories:

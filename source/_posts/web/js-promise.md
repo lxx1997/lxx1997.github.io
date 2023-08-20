@@ -4,7 +4,7 @@ date: 2021-03-18 13:15:52
 updated: 2021-03-18 13:15:52
 tags:
     - JavaScript
-cover: /assets/blogCover/MIKU花(4)_78753717_p1.png
+cover: /assets/blogCover/Day18 I’m Not Human_100789898.png
 ---
 
 
