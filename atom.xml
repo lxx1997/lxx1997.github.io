@@ -6,7 +6,7 @@
   <link href="https://lxx1997.github.io/atom.xml" rel="self"/>
   
   <link href="https://lxx1997.github.io/"/>
-  <updated>2023-05-12T07:30:43.000Z</updated>
+  <updated>2023-08-13T12:46:47.000Z</updated>
   <id>https://lxx1997.github.io/</id>
   
   <author>
@@ -17,23 +17,26 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>Golang - 编程语言学习</title>
-    <link href="https://lxx1997.github.io/2023/05/12/frame/frame-golang-learn/"/>
-    <id>https://lxx1997.github.io/2023/05/12/frame/frame-golang-learn/</id>
-    <published>2023-05-12T07:30:43.000Z</published>
-    <updated>2023-05-12T07:30:43.000Z</updated>
+    <title>Golang学习 - 项目中，不同package的包内容引入</title>
+    <link href="https://lxx1997.github.io/2023/08/13/golang/golang-package-import/"/>
+    <id>https://lxx1997.github.io/2023/08/13/golang/golang-package-import/</id>
+    <published>2023-08-13T12:46:47.000Z</published>
+    <updated>2023-08-13T12:46:47.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>在刚开始学习<code>golang</code>语言的时候，我们肯定会学习到如何创建一个<code>go</code>程序，并且使用使它能够成功运行，但是项目内容多一点涉及到多个包的时候，这个时候我们在 <code>packge main</code> 中引入其他 <code>package</code> 的内容时，可能会感到疑惑而不知该如何引入，在此记录一下需要如何引入</p><h2 id="框架前提"><a href="#框架前提" class="headerlink" title="框架前提"></a>框架前提</h2><p>  使用g<code>o mod</code> 进行项目管理,因此初始的时候通过 <code>go mod init &lt;project-name&gt;</code> 创建一个基础的 <code>mod</code>，在项目中定义的<code>package</code>都可以用这个来引入</p>  <figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">go</span> mod init gin-web</span><br></pre></td></tr></table></figure><h2 id="项目架构"><a href="#项目架构" class="headerlink" title="项目架构"></a>项目架构</h2><ul><li>main.go</li></ul><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line"><span class="string">&quot;gin-web/routes&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="string">&quot;github.com/gin-gonic/gin&quot;</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    r := gin.Default()</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 导入路由定义</span></span><br><span class="line">    routes.ImportRoutes(r)</span><br><span class="line"></span><br><span class="line">    r.Run(<span class="string">&quot;:8080&quot;</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure><ul><li>routes.go</li></ul><p>需要注意的是因为<code>package</code> 是 <code>routes</code> ，所以需要创建一个<code>routes</code> 目录用来防止 <code>routes.go</code> 文件，否则引入的时候会报错</p><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> routes</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line"><span class="string">&quot;gin-web/handler&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="string">&quot;github.com/gin-gonic/gin&quot;</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">ImportRoutes</span><span class="params">(r *gin.Engine)</span></span> &#123;</span><br><span class="line">    r.GET(<span class="string">&quot;/&quot;</span>, handler.HelloHandler)</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure><ul><li>handles.go</li></ul><p>注意事项同 <code>routes.go</code></p><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> handler</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line"><span class="string">&quot;github.com/gin-gonic/gin&quot;</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">HelloHandler</span><span class="params">(c *gin.Context)</span></span> &#123;</span><br><span class="line">    c.JSON(<span class="number">200</span>, gin.H&#123;</span><br><span class="line">        <span class="string">&quot;message&quot;</span>: <span class="string">&quot;Hello, Gin!&quot;</span>,</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure><p><strong>需要注意的事，提供给其他<code>package</code>使用的属性和方法，首字母必须大写，否则其他<code>package</code>无法访问到</strong></p><h2 id="项目启动"><a href="#项目启动" class="headerlink" title="项目启动"></a>项目启动</h2><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">go run main.go</span><br></pre></td></tr></table></figure><p>启动成功后，访问 <code>localhost:8080</code> 地址，如果能正常访问代表程序没有问题</p>]]></content>
     
     
+      
+      
+    <summary type="html">&lt;p&gt;在刚开始学习&lt;code&gt;golang&lt;/code&gt;语言的时候，我们肯定会学习到如何创建一个&lt;code&gt;go&lt;/code&gt;程序，并且使用使它能够成功运行，但是项目内容多一点涉及到多个包的时候，这个时候我们在 &lt;code&gt;packge main&lt;/code&gt; 中引入其他 &lt;co</summary>
+      
     
     
-    <category term="frame" scheme="https://lxx1997.github.io/categories/frame/"/>
     
     <category term="golang" scheme="https://lxx1997.github.io/categories/golang/"/>
     
     
     <category term="golang" scheme="https://lxx1997.github.io/tags/golang/"/>
-    
-    <category term="frame" scheme="https://lxx1997.github.io/tags/frame/"/>
     
   </entry>
   
@@ -1185,7 +1188,7 @@
     <link href="https://lxx1997.github.io/2021/08/15/frame/threeJs-study-api/"/>
     <id>https://lxx1997.github.io/2021/08/15/frame/threeJs-study-api/</id>
     <published>2021-08-15T01:53:24.000Z</published>
-    <updated>2023-03-15T03:48:08.305Z</updated>
+    <updated>2023-08-20T13:57:14.811Z</updated>
     
     <content type="html"><![CDATA[<ul><li><p>THREE.Scene() 创建场景对象<br>方法</p><ul><li>add 添加物体，会被添加到坐标为 (0, 0, 0)的位置上</li></ul></li><li><p>THREE.PerspectiveCamera()</p><p>这个对象是 threeJs 中相机的其中一种 <em>透视摄像机</em><br>参数有四个</p><ul><li><strong>视野角度</strong> 表示在显示器上看到的场景的范围，值是一个角度（值会 mod 360）</li><li><strong>长宽比</strong> 长宽比的值会影响我们渲染物体的是否是正常的还是拉伸的，压扁的</li><li><strong>远剪切面</strong> </li><li><strong>近剪切面</strong> 物体所在的位置比摄像机的远剪切面远或者所在位置比近剪切面近的时候，该物体超出的部分将不会被渲染到场景中，根据我们渲染的物体的z轴的值和摄像机的z轴位置来决定的</li></ul></li></ul><ul><li><p>THREE.WebGLRenderer()</p><p>创建一个渲染器实例<br><strong>属性</strong></p><ul><li>domElement 渲染器生成的dom元素，通过 appendChild 方法插入到页面中</li><li>setSize(width, height, updateStyle) 第二个参数决定是否以较低的分辨率来渲染</li><li>render(scene, camera)  渲染场景和摄像机</li></ul></li></ul>]]></content>
     

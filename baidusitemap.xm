@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://lxx1997.github.io/2023/05/12/frame/frame-golang-learn/</loc>
-    <lastmod>2023-05-12</lastmod>
+    <loc>https://lxx1997.github.io/2021/08/15/frame/threeJs-study-api/</loc>
+    <lastmod>2023-08-20</lastmod>
+  </url>
+  <url>
+    <loc>https://lxx1997.github.io/2023/08/13/golang/golang-package-import/</loc>
+    <lastmod>2023-08-13</lastmod>
   </url>
   <url>
     <loc>https://lxx1997.github.io/2023/04/26/frame/svelte-web-learn/</loc>
@@ -27,10 +31,6 @@
   <url>
     <loc>https://lxx1997.github.io/2023/04/08/web/array-methods-rewrite/</loc>
     <lastmod>2023-04-08</lastmod>
-  </url>
-  <url>
-    <loc>https://lxx1997.github.io/2021/08/15/frame/threeJs-study-api/</loc>
-    <lastmod>2023-03-15</lastmod>
   </url>
   <url>
     <loc>https://lxx1997.github.io/2023/03/13/web/hand-write-promise/</loc>
